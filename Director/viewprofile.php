@@ -86,6 +86,29 @@ include_once('../auth/db.php');
             transform: translateY(-3px); /* Slight upward movement on hover */
         }
     </style>
+    <style>
+        /* Footer Styles */
+        .footer {
+            padding-bottom: 10px;
+            color: #fff;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align all footer content */
+        }
+
+        .footer .powered-by {
+            font-weight: lighter;
+        }
+
+        .footer .company-name {
+            font-weight: bold;
+        }
+
+        .footer .copyright {
+            margin-top: 5px; /* Space between company name and copyright */
+        }
+    </style>
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -94,17 +117,13 @@ include_once('../auth/db.php');
         <!-- Sidebar -->
         <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#36b9cc; width: 200px; transition: all 0.3s; padding-left: 20px;">
             <!-- Sidebar - Brand -->
-             <i 
+            <img 
                 id="sidebarToggleIcon" 
-                class="fas fa-bars" 
+                src="../images/logo_white.png" 
+                alt="Toggle Sidebar" 
                 onclick="toggleSidebar()" 
-                style="cursor: pointer; font-size: 20px; color: white; margin: 10px;"
-            ></i>
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div style="color:white; font-weight:bold; font-family:'Poppins'; font-size:20px">
-                    SALES PULSE
-                </div>
-            </a>
+                style="cursor: pointer; width: 24px; height: 24px; margin: 10px;"
+            />
             <div style="height: 0.5px;"></div>
             <!-- Divider -->
             <hr class="sidebar-divider my-2">
@@ -133,6 +152,14 @@ include_once('../auth/db.php');
                     <span style="font-size:13px; font-family:'Poppins'; ">Team Members</span>
                 </a>
             </li>
+            <!-- Spacer to Push Footer to Bottom -->
+            <li style="flex-grow: 1;"></li>
+            
+            <li class="nav-item footer">
+                <span class="powered-by">Powered by</span>
+                <span class="company-name">Workforce Management</span><br>
+                <span>&copy; <span id="current-year"></span></span>
+            </li>
         </ul>
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
@@ -156,11 +183,64 @@ include_once('../auth/db.php');
                     <!-- Right Section: Notification and Profile -->
                     <div class="d-flex align-items-center">
                         <!-- Notification Button -->
-                        <div class="mr-2">
-                            <button class="btn" style="color:#36b9cc;" id="notification-button">
-                                <i class="fas fa-bell"></i>
-                                <span id="notification-count" class="badge badge-danger">3</span>
+                        <div class="mr-2" style="position: relative;">
+                            <!-- Notification Button -->
+                            <button id="notification-button" style="color: #36b9cc; padding-right: 50px; position: relative; background: none; border: none; cursor: pointer;">
+                                <img src="../images/notif.png" alt="Notification" style="height: 20px; width: 20px;">
+                                <span id="notification-count" style="
+                                    font-family: 'Poppins', sans-serif; 
+                                    font-weight: bold; 
+                                    font-size: 10px; 
+                                    color: white; 
+                                    background: red; 
+                                    border-radius: 10px; 
+                                    padding: 2px 6px; 
+                                    position: absolute; 
+                                    top: -5px; 
+                                    right: 35px;">
+                                    
+                                </span>
                             </button>
+
+
+                            <!-- Dropdown Container (Initially hidden) -->
+                            <div id="notification-dropdown" 
+                                style="
+                                    display: none; 
+                                    position: absolute; 
+                                    top: 40px; 
+                                    right: 0; 
+                                    width: 220px; 
+                                    background-color: #fff; 
+                                    border: 1px solid #ccc; 
+                                    border-radius: 5px; 
+                                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                                ">
+                                <h6 style=" color: black; padding: 8px; margin: 0; border-bottom: 1px solid #ccc; font-size: 14px;">Notifications</h6>
+
+                                <!-- Notification Items -->
+                                <div class="notify" id="notifs" style="padding: 8px; font-size: 13px; color: #555; max-height: 200px; overflow-y: auto;"></div>
+                                <div style="text-align: center; border-top: 1px solid #ccc; padding: 8px;">
+                                    <a href="#" id="toggleNotifications"  style="font-size: 12px; color: #36b9cc; text-decoration: none;">Show All Alerts</a>
+                                </div>
+                                <style>
+                                /* Optional: Add a border or styling for the scrollable area */
+                                    .notify::-webkit-scrollbar {
+                                        width: 4px; /* Width of the vertical scrollbar */
+                                        height: 4px; /* Height of the horizontal scrollbar */
+                                    }
+
+                                    .notify::-webkit-scrollbar-thumb {
+                                        background-color: #36b9cc;
+                                        border-radius: 10px;
+                                        height: 5px; /* Minimum height for the scrollbar thumb */
+                                    }
+
+                                    .notify::-webkit-scrollbar-thumb:hover {
+                                        background-color: #555;
+                                    }
+                                </style>
+                            </div>
                         </div>
                         <!-- Profile Name and Picture -->
                         <div class="d-flex align-items-center">
@@ -359,6 +439,11 @@ include_once('../auth/db.php');
 
     <script src="../js/demo/datatables-demo.js"></script>
     <script src="toogleNav.js"></script>
+    <script src="alerts/notif.js"></script>
+    <script src="alerts/notifCount.js"></script>
+    <script src="notif.js"></script>
+    <script src="current_year.js"></script>
+    
     <script>
         function startPhase() {
             // Fetch the project ID from the <strong> tag

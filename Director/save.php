@@ -1,6 +1,5 @@
 <?php
 header('Content-Type: application/json');
-
 ini_set('display_errors', 0); // Disable error output
 ini_set('log_errors', 1);
 ini_set('error_log', __DIR__ . '/php-error.log');
@@ -21,29 +20,29 @@ try {
         exit;
     }
 
-    $step = $data['step'];
+    $step = intval($data['step']);
     $projectUniqueId = $data['project_unique_id'];
     $inputData = $data['data'];
 
     switch ($step) {
         case 1:
-            updateStageOne($conn, $projectUniqueId, $inputData);
+            $message = updateStageOne($conn, $projectUniqueId, $inputData);
             break;
 
         case 2:
-            updateStageTwo($conn, $projectUniqueId, $inputData);
+            $message = updateStageTwo($conn, $projectUniqueId, $inputData);
             break;
 
         case 3:
-            updateStageThree($conn, $projectUniqueId, $inputData);
+            $message = updateStageThree($conn, $projectUniqueId, $inputData);
             break;
 
         case 4:
-            updateStageFour($conn, $projectUniqueId, $inputData);
+            $message = updateStageFour($conn, $projectUniqueId, $inputData);
             break;
 
         case 5:
-            updateStageFive($conn, $projectUniqueId, $inputData);
+            $message = updateStageFive($conn, $projectUniqueId, $inputData);
             break;
 
         default:
@@ -53,7 +52,11 @@ try {
     }
 
     ob_clean();
-    echo json_encode(["message" => "Step $step data processed successfully", "processed_data" => $inputData]);
+    echo json_encode([
+        "message" => "Step $step data processed successfully",
+        "processed_data" => $inputData,
+        "details" => $message
+    ]);
 } catch (Exception $e) {
     ob_clean();
     file_put_contents(__DIR__ . '/debug.log', "Error: " . $e->getMessage() . "\n", FILE_APPEND);
@@ -61,17 +64,18 @@ try {
     echo json_encode(["message" => "Error occurred", "error" => $e->getMessage()]);
 }
 
+// Helper functions for different stages
+
 function updateStageOne($conn, $projectUniqueId, $inputData) {
+    // Implementation already provided
     try {
-        // Update the stageone table, temporarily setting requirement_id_one to NULL
         $query = "UPDATE stageone SET 
             solution = ?, 
             technology = ?, 
             deal_size = ?, 
             distributor = ?, 
             stage_one_remarks = ?, 
-            product = ?, 
-            requirement_id_one = ? 
+            product = ? 
             WHERE project_unique_id = ?";
         $stmt = $conn->prepare($query);
         $stmt->execute([
@@ -81,48 +85,31 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
             $inputData['distributor'] ?? null,
             $inputData['stage_one_remarks'] ?? null,
             $inputData['product'] ?? null,
-            null, // Temporarily setting requirement_id_one to NULL
             $projectUniqueId
         ]);
 
-        // Insert requirements into the requirementone_tb if they exist
-        // Insert into requirementone_tb
+        // Handle requirements
         if (!empty($inputData['requirement_one'])) {
             $requirementQuery = "INSERT INTO requirementone_tb (project_unique_id, requirement_one) 
                                  VALUES (?, ?)";
-            $stmt = $conn->prepare($requirementQuery);
+            $reqStmt = $conn->prepare($requirementQuery);
 
             foreach ($inputData['requirement_one'] as $requirement) {
-                try {
-                    // Since requirement_one[] is a simple array, $requirement is a scalar
-                    $requirementValue = $requirement;
-
-                    // Validate
-                    if (empty($requirementValue)) {
-                        error_log("Empty requirement for Project ID {$projectUniqueId}. Skipping insert.");
-                        continue;
-                    }
-
-                    // Optional: Sanitize (if necessary)
-                    $requirementValue = htmlspecialchars($requirementValue, ENT_QUOTES, 'UTF-8');
-
-                    // Execute insert
-                    $stmt->execute([$projectUniqueId, $requirementValue]);
-                } catch (PDOException $e) {
-                    // Log the error with specific details
-                    error_log("Failed to insert requirement for Project ID {$projectUniqueId}: " . $e->getMessage());
-
-                    // Optionally, decide whether to continue or throw an exception
-                    // For atomicity, you might want to throw an exception to rollback
-                    throw new Exception("Failed to insert requirement: " . $e->getMessage());
+                if (!empty($requirement)) {
+                    $reqStmt->execute([$projectUniqueId, htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8')]);
                 }
             }
         }
+        return "Stage One updated successfully.";
+    } catch (Exception $e) {
+        error_log("Error in Stage One: " . $e->getMessage());
+        throw $e;
+    }
 }
-
 
 function updateStageTwo($conn, $projectUniqueId, $inputData) {
     try {
+        // Update main stage two data
         $query = "UPDATE stagetwo SET 
             stage_two_remarks = ?, 
             technology = ?, 
@@ -140,43 +127,44 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        // Handle requirements for requirement_two
+        // Insert or update requirements
         if (!empty($inputData['requirement_two'])) {
             $requirementQuery = "INSERT INTO requirement_twotb (project_unique_id, requirement_two, requirement_date, requirement_remarks) 
-                                VALUES (?, ?, ?, ?) 
-                                ON DUPLICATE KEY UPDATE requirement_two = ?, requirement_date = ?, requirement_remarks = ?";
-            $stmt = $conn->prepare($requirementQuery);
+                                 VALUES (?, ?, ?, ?) 
+                                 ON DUPLICATE KEY UPDATE 
+                                 requirement_two = VALUES(requirement_two), 
+                                 requirement_date = VALUES(requirement_date), 
+                                 requirement_remarks = VALUES(requirement_remarks)";
+            $reqStmt = $conn->prepare($requirementQuery);
 
-            // Process parallel arrays
-            foreach ($inputData['requirement_two'] as $index => $requirementTwo) {
+            foreach ($inputData['requirement_two'] as $index => $requirement) {
                 $requirementDate = $inputData['requirement_date'][$index] ?? null;
                 $requirementRemarks = $inputData['requirement_remarks'][$index] ?? null;
 
-                if (empty($requirementTwo)) {
+                if (empty($requirement)) {
                     error_log("Empty requirement_two for Project ID {$projectUniqueId}. Skipping insert.");
                     continue;
                 }
 
-                $stmt->execute([
+                $reqStmt->execute([
                     $projectUniqueId,
-                    htmlspecialchars($requirementTwo, ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($requirementDate ?? '', ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($requirementRemarks ?? '', ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($requirementTwo, ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($requirementDate ?? '', ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($requirementRemarks ?? '', ENT_QUOTES, 'UTF-8')
+                    htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($requirementDate, ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($requirementRemarks, ENT_QUOTES, 'UTF-8')
                 ]);
             }
         }
 
-        // Handle engagements for engagement_type
+        // Insert or update engagements
         if (!empty($inputData['engagement_type'])) {
             $engagementQuery = "INSERT INTO engagement_twotb (project_unique_id, engagement_type, engagement_date, engagement_remarks) 
                                 VALUES (?, ?, ?, ?) 
-                                ON DUPLICATE KEY UPDATE engagement_type = ?, engagement_date = ?, engagement_remarks = ?";
-            $stmt = $conn->prepare($engagementQuery);
+                                ON DUPLICATE KEY UPDATE 
+                                engagement_type = VALUES(engagement_type), 
+                                engagement_date = VALUES(engagement_date), 
+                                engagement_remarks = VALUES(engagement_remarks)";
+            $engStmt = $conn->prepare($engagementQuery);
 
-            // Process parallel arrays
             foreach ($inputData['engagement_type'] as $index => $engagementType) {
                 $engagementDate = $inputData['engagement_date'][$index] ?? null;
                 $engagementRemarks = $inputData['engagement_remarks'][$index] ?? null;
@@ -186,28 +174,31 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
                     continue;
                 }
 
-                $stmt->execute([
-                    htmlspecialchars($projectUniqueId, ENT_QUOTES, 'UTF-8'),
+                $engStmt->execute([
+                    $projectUniqueId,
                     htmlspecialchars($engagementType, ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($engagementDate ?? '', ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($engagementRemarks ?? '', ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($engagementType, ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($engagementDate ?? '', ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($engagementRemarks ?? '', ENT_QUOTES, 'UTF-8')
+                    htmlspecialchars($engagementDate, ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($engagementRemarks, ENT_QUOTES, 'UTF-8')
                 ]);
             }
         }
 
+        return "Stage Two updated successfully.";
+    } catch (Exception $e) {
+        error_log("Stage Two Update Failed for Project ID {$projectUniqueId}: " . $e->getMessage());
+        throw new Exception("Stage Two Update Failed: " . $e->getMessage());
+    }
 }
 
 function updateStageThree($conn, $projectUniqueId, $inputData) {
     try {
+        // Update main stage three data
         $query = "UPDATE stagethree SET 
             stage_three_remarks = ?, 
             product = ?, 
             deal_size = ?, 
             technology = ?, 
-            solution = ?
+            solution = ? 
             WHERE project_unique_id = ?";
         $stmt = $conn->prepare($query);
         $stmt->execute([
@@ -219,7 +210,7 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        // Handle requirements for requirement_three
+        // Handle requirements
         if (!empty($inputData['requirement_three'])) {
             $requirementQuery = "INSERT INTO requirement_threetb (
                                     project_unique_id, 
@@ -235,23 +226,22 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
                                     bill_of_materials = VALUES(bill_of_materials), 
                                     requirement_remarks_three = VALUES(requirement_remarks_three), 
                                     pricing = VALUES(pricing)";
-            $stmt = $conn->prepare($requirementQuery);
+            $reqStmt = $conn->prepare($requirementQuery);
 
-            // Process parallel arrays
-            foreach ($inputData['requirement_three'] as $index => $requirementThree) {
+            foreach ($inputData['requirement_three'] as $index => $requirement) {
                 $quantity = $inputData['quantity'][$index] ?? null;
                 $billOfMaterials = $inputData['bill_of_materials'][$index] ?? null;
                 $requirementRemarks = $inputData['requirement_remarks_three'][$index] ?? null;
                 $pricing = $inputData['pricing'][$index] ?? null;
 
-                if (empty($requirementThree)) {
+                if (empty($requirement)) {
                     error_log("Empty requirement_three for Project ID {$projectUniqueId}. Skipping insert.");
                     continue;
                 }
 
-                $stmt->execute([
-                    htmlspecialchars($projectUniqueId, ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($requirementThree, ENT_QUOTES, 'UTF-8'),
+                $reqStmt->execute([
+                    $projectUniqueId,
+                    htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8'),
                     htmlspecialchars($quantity ?? '', ENT_QUOTES, 'UTF-8'),
                     htmlspecialchars($billOfMaterials ?? '', ENT_QUOTES, 'UTF-8'),
                     htmlspecialchars($requirementRemarks ?? '', ENT_QUOTES, 'UTF-8'),
@@ -272,40 +262,45 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
                                     engagement_three = VALUES(engagement_three), 
                                     engagement_date = VALUES(engagement_date), 
                                     engagement_remarks_three = VALUES(engagement_remarks_three)";
-            $stmt = $conn->prepare($engagementQuery);
+            $engStmt = $conn->prepare($engagementQuery);
 
-            // Process parallel arrays
-            foreach ($inputData['engagement_three'] as $index => $engagementThree) {
+            foreach ($inputData['engagement_three'] as $index => $engagement) {
                 $engagementDate = $inputData['engagement_date'][$index] ?? null;
                 $engagementRemarks = $inputData['engagement_remarks_three'][$index] ?? null;
 
-                if (empty($engagementThree)) {
+                if (empty($engagement)) {
                     error_log("Empty engagement_three for Project ID {$projectUniqueId}. Skipping insert.");
                     continue;
                 }
 
-                $stmt->execute([
-                    htmlspecialchars($projectUniqueId, ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($engagementThree, ENT_QUOTES, 'UTF-8'),
+                $engStmt->execute([
+                    $projectUniqueId,
+                    htmlspecialchars($engagement, ENT_QUOTES, 'UTF-8'),
                     htmlspecialchars($engagementDate ?? '', ENT_QUOTES, 'UTF-8'),
                     htmlspecialchars($engagementRemarks ?? '', ENT_QUOTES, 'UTF-8')
                 ]);
             }
         }
+
+        return "Stage Three updated successfully.";
+    } catch (Exception $e) {
+        error_log("Stage Three Update Failed for Project ID {$projectUniqueId}: " . $e->getMessage());
+        throw new Exception("Stage Three Update Failed: " . $e->getMessage());
+    }
 }
 
 function updateStageFour($conn, $projectUniqueId, $inputData) {
     try {
         $query = "UPDATE stagefour SET 
-            stage_four_remarks = ?,  
+            stage_four_remarks = ?, 
             product = ?, 
             deal_size = ?, 
             technology = ?, 
-            solution = ?
+            solution = ? 
             WHERE project_unique_id = ?";
         $stmt = $conn->prepare($query);
         $stmt->execute([
-            $inputData['stage_four_remarks'] ?? null
+            $inputData['stage_four_remarks'] ?? null,
             $inputData['product'] ?? null,
             $inputData['deal_size'] ?? null,
             $inputData['technology'] ?? null,
@@ -313,7 +308,7 @@ function updateStageFour($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        // Handle requirements for requirement_four
+        // Handle requirements
         if (!empty($inputData['requirement_four'])) {
             $requirementQuery = "INSERT INTO requirement_fourtb (
                                     project_unique_id, 
@@ -322,37 +317,34 @@ function updateStageFour($conn, $projectUniqueId, $inputData) {
                                     bill_of_materials, 
                                     pricing, 
                                     date_required
-                                ) VALUES (?, ?, ?, ?, ?, ?) 
-                                ON DUPLICATE KEY UPDATE 
+                                 ) VALUES (?, ?, ?, ?, ?, ?) 
+                                 ON DUPLICATE KEY UPDATE 
                                     requirement_four = VALUES(requirement_four), 
                                     quantity = VALUES(quantity), 
                                     bill_of_materials = VALUES(bill_of_materials), 
                                     pricing = VALUES(pricing), 
                                     date_required = VALUES(date_required)";
-            $stmt = $conn->prepare($requirementQuery);
+            $reqStmt = $conn->prepare($requirementQuery);
 
-            // Process parallel arrays
-            foreach ($inputData['requirement_four'] as $index => $requirementFour) {
-                $quantity = $inputData['quantity'][$index] ?? null;
-                $billOfMaterials = $inputData['bill_of_materials'][$index] ?? null;
-                $pricing = $inputData['pricing'][$index] ?? null;
-                $dateRequired = $inputData['date_required'][$index] ?? null;
-
-                if (empty($requirementFour)) {
-                    error_log("Empty requirement_four for Project ID {$projectUniqueId}. Skipping insert.");
-                    continue;
-                }
-
-                $stmt->execute([
-                    htmlspecialchars($projectUniqueId, ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($requirementFour, ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($quantity ?? '', ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($billOfMaterials ?? '', ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($pricing ?? '', ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($dateRequired ?? '', ENT_QUOTES, 'UTF-8')
+            foreach ($inputData['requirement_four'] as $index => $requirement) {
+                $reqStmt->execute([
+                    $projectUniqueId,
+                    htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($inputData['quantity'][$index] ?? '', ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($inputData['bill_of_materials'][$index] ?? '', ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($inputData['pricing'][$index] ?? '', ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($inputData['date_required'][$index] ?? '', ENT_QUOTES, 'UTF-8')
                 ]);
             }
         }
+        return "Stage Four updated successfully.";
+    } catch (Exception $e) {
+        error_log("Error in Stage Four: " . $e->getMessage());
+        throw $e;
+    }
+
+
+
 }
 
 function updateStageFive($conn, $projectUniqueId, $inputData) {
@@ -365,7 +357,7 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
             technology = ?, 
             deal_size = ?, 
             product = ?, 
-            remarks_stage_five = ?
+            remarks_stage_five = ? 
             WHERE project_unique_id = ?";
         $stmt = $conn->prepare($query);
         $stmt->execute([
@@ -380,7 +372,8 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        // Handle requirements
+
+         // Handle requirements
         if (!empty($inputData['req_five'])) {
             $requirementQuery = "INSERT INTO requirementfive_tb (
                                     project_unique_id, 
@@ -416,6 +409,7 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
             }
         }
 
+
         // Handle upsells
         if (!empty($inputData['upsell'])) {
             $upsellQuery = "INSERT INTO upsell_tb (
@@ -435,24 +429,19 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
             $upsellStmt = $conn->prepare($upsellQuery);
 
             foreach ($inputData['upsell'] as $index => $upsell) {
-                $billsMaterialsUpsell = $inputData['bill_materials_upsell'][$index] ?? null;
-                $quantityUpsell = $inputData['quantity_upsell'][$index] ?? null;
-                $remarksUpsell = $inputData['remarks_upsell'][$index] ?? null;
-                $amountUpsell = $inputData['amount_upsell'][$index] ?? null;
-
-                if (empty($upsell)) {
-                    error_log("Empty upsell at index {$index} for Project ID {$projectUniqueId}. Skipping insert.");
-                    continue;
-                }
-
                 $upsellStmt->execute([
                     $projectUniqueId,
                     htmlspecialchars($upsell, ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($billsMaterialsUpsell ?? '', ENT_QUOTES, 'UTF-8'),
-                    $quantityUpsell ?? 0, // Numeric fields don't need htmlspecialchars
-                    htmlspecialchars($remarksUpsell ?? '', ENT_QUOTES, 'UTF-8'),
-                    $amountUpsell ?? 0
+                    htmlspecialchars($inputData['bills_materials_upsell'][$index] ?? '', ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($inputData['quantity_upsell'][$index] ?? '', ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($inputData['remarks_upsell'][$index] ?? '', ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($inputData['amount_upsell'][$index] ?? '', ENT_QUOTES, 'UTF-8')
                 ]);
             }
         }
+        return "Stage Five updated successfully.";
+    } catch (Exception $e) {
+        error_log("Error in Stage Five: " . $e->getMessage());
+        throw $e;
+    }
 }

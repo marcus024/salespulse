@@ -14,9 +14,29 @@ include_once('dirback/dirviewback.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <style>
+        /* Set Poppins as the default font for the entire document */
+        body, html {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body.fade-out {
+        opacity: 10;
+        transition: opacity 0.5s ease;
+        }
+        /* Ensure headings and other elements use Poppins */
+        h1, h2, h3, h4, h5, h6, p, span, button, input, a, label {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Override any specific styles that may set a different font */
+        .btn, .form-control, .table, .modal-title, .nav-item, .nav-link, .dropdown-item {
+            font-family: 'Poppins', sans-serif !important;
+        }
+    </style>
     <style>
         /* Floating sidebar styles */
        .floating-sidebar {
@@ -47,7 +67,7 @@ include_once('dirback/dirviewback.php');
         }
         /* Active Nav Item Background Color */
         .nav-item.active .nav-link {
-            padding-left:10px;
+            /* padding-left:10px; */
             background-color: white; /* Change this color to your preferred background color */
             color: #36b9cc; /* Optional: Adjust text color when the item is active */
             font-weight: bold; /* Optional: Make the active menu text bold */
@@ -56,7 +76,7 @@ include_once('dirback/dirviewback.php');
         }
         /* Hover Effect for Nav Items */
         .nav-item .nav-link:hover {
-            padding-left:10px;
+            /* padding-left:10px; */
             background-color: white; /* Same color for hover effect */
             color: #36b9cc; /* Text color for hover */
             border-radius:10px;
@@ -83,6 +103,29 @@ include_once('dirback/dirviewback.php');
             transform: translateY(-3px); /* Slight upward movement on hover */
         }
     </style>
+    <style>
+        /* Footer Styles */
+        .footer {
+            padding-bottom: 10px;
+            color: #fff;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align all footer content */
+        }
+
+        .footer .powered-by {
+            font-weight: lighter;
+        }
+
+        .footer .company-name {
+            font-weight: bold;
+        }
+
+        .footer .copyright {
+            margin-top: 5px; /* Space between company name and copyright */
+        }
+    </style>
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -91,44 +134,48 @@ include_once('dirback/dirviewback.php');
         <!-- Sidebar -->
         <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#36b9cc; width: 200px; transition: all 0.3s; padding-left: 20px;">
             <!-- Sidebar - Brand -->
-             <i 
+            <img 
                 id="sidebarToggleIcon" 
-                class="fas fa-bars" 
+                src="../images/logo_white.png" 
+                alt="Toggle Sidebar" 
                 onclick="toggleSidebar()" 
-                style="cursor: pointer; font-size: 20px; color: white; margin: 10px;"
-            ></i>
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div style="color:white; font-weight:bold; font-family:'Poppins'; font-size:20px">
-                    SALES PULSE
-                </div>
-            </a>
+                style="cursor: pointer; width: 24px; height: 24px; margin: 10px;"
+            />
             <div style="height: 0.5px;"></div>
             <!-- Divider -->
             <hr class="sidebar-divider my-2">
             <!-- Nav Items -->
             <li class="nav-item active" >
-                <a class="nav-link selected" href="director.php" style="border-radius:10px;">
+                <a class="nav-link selected" href="director.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-home"></i>
                     <span style="font-size:13px; font-family:'Poppins'; ">Home</span>
                 </a>
             </li>
             <li class="nav-item" >
-                <a class="nav-link" href="calendar.php" style="border-radius:10px; ">
+                <a class="nav-link" href="calendar.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-calendar-alt" style="white"></i>
                     <span style="font-size:13px; font-family:'Poppins';">Calendar</span>
                 </a>
             </li>
             <li class="nav-item" >
-                <a class="nav-link" href="contacts.php" style="border-radius:10px;">
+                <a class="nav-link" href="contacts.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-address-book"></i>
                     <span style="font-size:13px; font-family:'Poppins';">Contacts</span>
                 </a>
             </li>
             <li class="nav-item" >
-                <a class="nav-link" href="team.php" style="border-radius:10px;">
+                <a class="nav-link" href="team.php" style="border-radius:10px;padding-left:10px;">
                     <i class="fas fa-fw fa-users"></i>
                     <span style="font-size:13px; font-family:'Poppins'; ">Team Members</span>
                 </a>
+            </li>
+            <!-- Spacer to Push Footer to Bottom -->
+            <li style="flex-grow: 1;"></li>
+            
+            <li class="nav-item footer">
+                <span class="powered-by">Powered by</span>
+                <span class="company-name">Workforce Management</span><br>
+                <span>&copy; <span id="current-year"></span></span>
             </li>
         </ul>
         <!-- End of Sidebar -->
@@ -150,11 +197,64 @@ include_once('dirback/dirviewback.php');
                     <!-- Right Section: Notification and Profile -->
                     <div class="d-flex align-items-center">
                         <!-- Notification Button -->
-                        <div class="mr-2">
-                            <button class="btn" style="color:#36b9cc;" id="notification-button">
-                                <i class="fas fa-bell"></i>
-                                <span id="notification-count" class="badge badge-danger">3</span>
+                        <div class="mr-2" style="position: relative;">
+                            <!-- Notification Button -->
+                            <button id="notification-button" style="color: #36b9cc; padding-right: 50px; position: relative; background: none; border: none; cursor: pointer;">
+                                <img src="../images/notif.png" alt="Notification" style="height: 20px; width: 20px;">
+                                <span id="notification-count" style="
+                                    font-family: 'Poppins', sans-serif; 
+                                    font-weight: bold; 
+                                    font-size: 10px; 
+                                    color: white; 
+                                    background: red; 
+                                    border-radius: 10px; 
+                                    padding: 2px 6px; 
+                                    position: absolute; 
+                                    top: -5px; 
+                                    right: 35px;">
+                                    
+                                </span>
                             </button>
+
+
+                            <!-- Dropdown Container (Initially hidden) -->
+                            <div id="notification-dropdown" 
+                                style="
+                                    display: none; 
+                                    position: absolute; 
+                                    top: 40px; 
+                                    right: 0; 
+                                    width: 220px; 
+                                    background-color: #fff; 
+                                    border: 1px solid #ccc; 
+                                    border-radius: 5px; 
+                                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                                ">
+                                <h6 style=" color: black; padding: 8px; margin: 0; border-bottom: 1px solid #ccc; font-size: 14px;">Notifications</h6>
+
+                                <!-- Notification Items -->
+                                <div class="notify" id="notifs" style="padding: 8px; font-size: 13px; color: #555; max-height: 200px; overflow-y: auto;"></div>
+                                <div style="text-align: center; border-top: 1px solid #ccc; padding: 8px;">
+                                    <a href="#" id="toggleNotifications"  style="font-size: 12px; color: #36b9cc; text-decoration: none;">Show All Alerts</a>
+                                </div>
+                                <style>
+                                /* Optional: Add a border or styling for the scrollable area */
+                                    .notify::-webkit-scrollbar {
+                                        width: 4px; /* Width of the vertical scrollbar */
+                                        height: 4px; /* Height of the horizontal scrollbar */
+                                    }
+
+                                    .notify::-webkit-scrollbar-thumb {
+                                        background-color: #36b9cc;
+                                        border-radius: 10px;
+                                        height: 5px; /* Minimum height for the scrollbar thumb */
+                                    }
+
+                                    .notify::-webkit-scrollbar-thumb:hover {
+                                        background-color: #555;
+                                    }
+                                </style>
+                            </div>
                         </div>
                         <!-- Profile Name and Picture -->
                         <div class="d-flex align-items-center">
@@ -168,7 +268,7 @@ include_once('dirback/dirviewback.php');
                                     <?php echo $_SESSION['position']; ?>
                                 </p>
                             </div>
-                            <img src="../images/woman.png" alt="Profile Picture" class="rounded-circle" style="width: 40px; height: 40px; margin-left: 10px; cursor: pointer;" onclick="togglePopup()">
+                            <img src="<?php echo $_SESSION['image']; ?>" alt="Profile Picture" class="rounded-circle" style="width: 40px; height: 40px; margin-left: 10px; cursor: pointer;" onclick="togglePopup()">
                         </div>
                         <!-- Popup Container -->
                         <div id="popup-container" 
@@ -280,120 +380,221 @@ include_once('dirback/dirviewback.php');
                                                         <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['client_type']); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
                                                     </div>
                                                 </div>
-                                                 
-                                                    <div class="col-md-2 mb-2">
-                                                        <label for="summary" class="form-label" style="font-weight:bold; font-size: 12px; color: white; display:flex-end;"></label>
-                                                    </div>
-
-                                                    <div class="col-md-2 mb-2">
-                                                        <label for="startDate" class="form-label" style="font-weight:bold; font-size: 12px; color: white;"></label>
-                                                    </div>
-
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="endDate" class="form-label" style="font-weight:bold; font-size: 12px; color: white;"></label>
-                                                    </div>
-                                              
-                                                <div class="row">
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="summary" class="form-label" style="font-weight:bold; font-size: 12px; color: white; display:flex-end;">Stages Summary</label>
-                                                    </div>
-                                                    <div class="col-md-2 mb-2">
-                                                        <label for="startDate" class="form-label" style="font-weight:bold; font-size: 12px; color: white;">Start Date</label>
-                                                    </div>
-                                                    <div class="col-md-2 mb-2">
-                                                        <label for="endDate" class="form-label" style="font-weight:bold; font-size: 12px; color: white;">End Date</label>
-                                                    </div>
-                                                    <div class="col-md-2 mb-2">
-                                                        <label for="status" class="form-label" style="font-weight:bold; font-size: 12px; color: white;">Duration(Days)</label>
-                                                    </div>
-                                                </div>
                                                 <?php include("dirback/pro_stage_details.php"); ?>
-                                                <!-- Stage 1 - Awareness/Prospecting -->
-                                                <div class="row">
-                                                    <a href="#step1" class="col-md-4 mb-2" style="position: relative; display: block; text-decoration: none;">
-                                                        <label for="summary" class="form-label" style="font-size: 12px; color: white;">Stage 1 - Awareness/Prospecting</label>
-                                                    </a>
-                                                    <style>
-                                                        a:hover {
-                                                            text-decoration: underline;
-                                                        }
-                                                    </style>
-                                                    <div class="col-md-2 mb-2">
-                                                        <input readonly type="text" class="form-control" id="startDate" value="<?php echo htmlspecialchars($start_date_stage_one); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
+                                                  
+                                              
+                                                <div class="container mt-4 p-3" style="background: white; border-radius: 8px;">
+                                                    <h3 style="font-family: 'Poppins', sans-serif; font-weight: bold; color: #555; text-align: center; margin-bottom: 5pxpx;">Stages Summary of <?php echo htmlspecialchars($project['company_name']); ?></h3>
+                                                   <!-- Row to hold the search bar and export buttons -->
+                                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                                        <!-- Placeholder for future left-side content (if needed) -->
+                                                        <div></div>
+                                                        <!-- Right side: Search bar and Export dropdown -->
+                                                        <div class="d-flex align-items-center" style="gap: 10px;">
+                                                            <!-- Refresh Text Button -->
+                                                            <button type="button" class="btn btn-link" onclick="refreshPage()" 
+                                                                    style="font-size: 12px; text-decoration: underline; color: #36b9cc; margin: 0; padding: 0;">
+                                                                Refresh
+                                                            </button>
+                                                            <!-- Dropdown for Export Options -->
+                                                            <div class="btn-group" role="group">
+                                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
+                                                                        style="font-size: 10px; height: 30px; margin: 0; border:none; background-color:#36b9cc">
+                                                                    Export
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item" href="#" onclick="exportToPDF()">Download PDF</a></li>
+                                                                    <li><a class="dropdown-item" href="#" onclick="exportToExcel()">Download Excel</a></li>
+                                                                    <li><a class="dropdown-item" href="#" onclick="exportToCSV()">Download CSV</a></li>
+                                                                    <li><a class="dropdown-item" href="#" onclick="printTable()">Print</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-2 mb-2">
-                                                        <input readonly type="text" class="form-control" id="endDate" value="<?php echo htmlspecialchars($end_date_stage_one); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-2 mb-2">
-                                                        <input readonly type="text" class="form-control" id="duration" value="<?php echo htmlspecialchars($duration_stage_one); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                </div>
+                                                    <div id="table-view"  >
+                                                        <table class="table table-bordered " id="stageTable" style="font-size: 12px;">
+                                                            <thead class="table-light">
+                                                                <tr>
+                                                                    <th>Stage</th>
+                                                                    <th>Start Date</th>
+                                                                    <th>End Date</th>
+                                                                    <th>Duration (Days)</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <!-- Stage 1 -->
+                                                                <tr>
+                                                                    <td>Stage 1 - Awareness/Prospecting</td>
+                                                                    <td><?php echo !empty($project_data['stage_one']['start_date_stage_one']) ? htmlspecialchars($project_data['stage_one']['start_date_stage_one']) : 'Not Yet Started'; ?></td>
+                                                                    <td><?php echo !empty($project_data['stage_one']['end_date_stage_one']) ? htmlspecialchars($project_data['stage_one']['end_date_stage_one']) : 'Not Yet Ended'; ?></td>
+                                                                    <td><?php echo !empty($project_data['stage_one']['duration']) ? htmlspecialchars($project_data['stage_one']['duration']) : '0'; ?></td>
+                                                                    <td class="action-buttons">
+                                                                        <!-- View Button -->
+                                                                        <a 
+                                                                            class="view-btn" 
+                                                                            href="#" 
+                                                                            onclick="smoothNavigate('viewstage1.php?project_id=<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
+                                                                            >
+                                                                            <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
+                                                                        </a>
 
-                                                <!-- Stage 2 - Engagement/Discovery -->
-                                                <div class="row">
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="summary" class="form-label" style="font-size: 12px; color: white;">Stage 2 - Engagement/Discovery</label>
+                                                                        <!-- Edit Button -->
+                                                                        <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#multiStepModal" onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')" style="background: none; border: none;">
+                                                                            <i class="fas fa-pencil-alt" style="font-size: 12px; color: #36b9cc;"></i>
+                                                                        </button>
+                                                                        <!-- Delete Button -->
+                                                                        <button type="button" class="delete-btn" id="deleteButtons1" data-project-id="<?php echo $project['project_unique_id']; ?>" style="background: none; border: none;">
+                                                                            <i class="fas fa-trash" style="font-size: 12px; color: #ff4c4c;"></i>
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                                <!-- Stage 2 -->
+                                                                <tr>
+                                                                    <td>Stage 2 - Engagement/Discovery</td>
+                                                                    <td><?php echo !empty($project_data['stage_two']['start_date_stage_two']) ? htmlspecialchars($project_data['stage_two']['start_date_stage_two']) : 'Not Yet Started'; ?></td>
+                                                                    <td><?php echo !empty($project_data['stage_two']['end_date_stage_two']) ? htmlspecialchars($project_data['stage_two']['end_date_stage_two']) : 'Not Yet Ended'; ?></td>
+                                                                    <td><?php echo !empty($project_data['stage_two']['duration']) ? htmlspecialchars($project_data['stage_two']['duration']) : '0'; ?></td>
+                                                                    <td class="action-buttons">
+                                                                        <!-- View Button -->
+                                                                        <a 
+                                                                            class="view-btn" 
+                                                                            href="#" 
+                                                                            onclick="smoothNavigate('viewstage2.php?project_id=<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
+                                                                            >
+                                                                            <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
+                                                                        </a>
+                                                                        <!-- Edit Button -->
+                                                                        <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#multiStepModal" onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')" style="background: none; border: none;">
+                                                                            <i class="fas fa-pencil-alt" style="font-size: 12px; color: #36b9cc;"></i>
+                                                                        </button>
+                                                                        <!-- Delete Button -->
+                                                                        <button type="button" class="delete-btn" id="deleteButtons2" data-project-id="<?php echo $project['project_unique_id']; ?>" style="background: none; border: none;">
+                                                                            <i class="fas fa-trash" style="font-size: 12px; color: #ff4c4c;"></i>
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                                <!-- Stage 3 -->
+                                                                <tr>
+                                                                    <td>Stage 3 - Presentation/Proposal</td>
+                                                                    <td><?php echo !empty($project_data['stage_three']['start_date_stage_three']) ? htmlspecialchars($project_data['stage_three']['start_date_stage_three']) : 'Not Yet Started'; ?></td>
+                                                                    <td><?php echo !empty($project_data['stage_three']['end_date_stage_three']) ? htmlspecialchars($project_data['stage_three']['end_date_stage_three']) : 'Not Yet Ended'; ?></td>
+                                                                    <td><?php echo !empty($project_data['stage_three']['duration']) ? htmlspecialchars($project_data['stage_three']['duration']) : '0'; ?></td>
+                                                                    <td class="action-buttons">
+                                                                        <!-- View Button -->
+                                                                        <a 
+                                                                            class="view-btn" 
+                                                                            href="#" 
+                                                                            onclick="smoothNavigate('viewstage3.php?project_id=<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
+                                                                            >
+                                                                            <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
+                                                                        </a>
+                                                                        <!-- Edit Button -->
+                                                                        <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#multiStepModal" onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')" style="background: none; border: none;">
+                                                                            <i class="fas fa-pencil-alt" style="font-size: 12px; color: #36b9cc;"></i>
+                                                                        </button>
+                                                                        <!-- Delete Button -->
+                                                                        <button type="button" class="delete-btn" id="deleteButtons3" data-project-id="<?php echo $project['project_unique_id']; ?>" style="background: none; border: none;">
+                                                                            <i class="fas fa-trash" style="font-size: 12px; color: #ff4c4c;"></i>
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                                <!-- Stage 4 -->
+                                                                <tr>
+                                                                    <td>Stage 4 - Negotiation/Commitment</td>
+                                                                    <td><?php echo !empty($project_data['stage_four']['start_date_stage_four']) ? htmlspecialchars($project_data['stage_four']['start_date_stage_four']) : 'Not Yet Started'; ?></td>
+                                                                    <td><?php echo !empty($project_data['stage_four']['end_date_stage_four']) ? htmlspecialchars($project_data['stage_four']['end_date_stage_four']) : 'Not Yet Ended'; ?></td>
+                                                                    <td><?php echo !empty($project_data['stage_four']['duration']) ? htmlspecialchars($project_data['stage_four']['duration']) : '0'; ?></td>
+                                                                    <td class="action-buttons">
+                                                                        <!-- View Button -->
+                                                                        <a 
+                                                                            class="view-btn" 
+                                                                            href="#" 
+                                                                            onclick="smoothNavigate('viewstage4.php?project_id=<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
+                                                                            >
+                                                                            <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
+                                                                        </a>
+                                                                        <!-- Edit Button -->
+                                                                        <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#multiStepModal" onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')" style="background: none; border: none;">
+                                                                            <i class="fas fa-pencil-alt" style="font-size: 12px; color: #36b9cc;"></i>
+                                                                        </button>
+                                                                        <!-- Delete Button -->
+                                                                        <button type="button" class="delete-btn" id="deleteButtons4" data-project-id="<?php echo $project['project_unique_id']; ?>" style="background: none; border: none;">
+                                                                            <i class="fas fa-trash" style="font-size: 12px; color: #ff4c4c;"></i>
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                                <!-- Stage 5 -->
+                                                                <tr>
+                                                                    <td>Stage 5 - Delivery/Follow-Up</td>
+                                                                    <td><?php echo !empty($project_data['stage_five']['start_date_stage_five']) ? htmlspecialchars($project_data['stage_five']['start_date_stage_five']) : 'Not Yet Started'; ?></td>
+                                                                    <td><?php echo !empty($project_data['stage_five']['end_date_stage_five']) ? htmlspecialchars($project_data['stage_five']['end_date_stage_five']) : 'Not Yet Ended'; ?></td>
+                                                                    <td><?php echo !empty($project_data['stage_five']['duration']) ? htmlspecialchars($project_data['stage_five']['duration']) : '0'; ?></td>
+                                                                    <td class="action-buttons">
+                                                                        <!-- View Button -->
+                                                                        <a 
+                                                                            class="view-btn" 
+                                                                            href="#" 
+                                                                            onclick="smoothNavigate('viewstage5.php?project_id=<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
+                                                                            >
+                                                                            <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
+                                                                        </a>
+                                                                        <!-- Edit Button -->
+                                                                        <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#multiStepModal" onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')" style="background: none; border: none;">
+                                                                            <i class="fas fa-pencil-alt" style="font-size: 12px; color: #36b9cc;"></i>
+                                                                        </button>
+                                                                        <!-- Delete Button -->
+                                                                        <button type="button" class="delete-btn" id="deleteButtons5" data-project-id="<?php echo $project['project_unique_id']; ?>" style="background: none; border: none;">
+                                                                            <i class="fas fa-trash" style="font-size: 12px; color: #ff4c4c;"></i>
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
                                                     </div>
-                                                    <div class="col-md-2 mb-2">
-                                                        <input readonly type="text" class="form-control" id="startDate" value="<?php echo htmlspecialchars($start_date_stage_two); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-2 mb-2">
-                                                        <input readonly type="text" class="form-control" id="endDate" value="<?php echo htmlspecialchars($end_date_stage_two); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-2 mb-2">
-                                                        <input readonly type="text" class="form-control" id="duration" value="<?php echo htmlspecialchars($duration_stage_two); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
+                                                    <div id="details-view" style="display: none;">
+                                                        
                                                     </div>
                                                 </div>
+                                                <style>
+                                                    .action-buttons {
+                                                        display: flex;
+                                                        gap: 10px; /* Space between buttons */
+                                                        align-items: center;
+                                                    }
+                                                    
 
-                                                <!-- Stage 3 - Presentation/Proposal -->
-                                                <div class="row">
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="summary" class="form-label" style="font-size: 12px; color: white;">Stage 3 - Presentation/Proposal</label>
-                                                    </div>
-                                                    <div class="col-md-2 mb-2">
-                                                        <input readonly type="text" class="form-control" id="startDate" value="<?php echo htmlspecialchars($start_date_stage_three); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-2 mb-2">
-                                                        <input readonly type="text" class="form-control" id="endDate" value="<?php echo htmlspecialchars($end_date_stage_three); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-2 mb-2">
-                                                        <input readonly type="text" class="form-control" id="duration" value="<?php echo htmlspecialchars($duration_stage_three); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                </div>
+                                                    .action-buttons .view-btn i,
+                                                    .action-buttons .edit-btn i,
+                                                    .action-buttons .delete-btn i {
+                                                        transition: color 0.3s ease, transform 0.3s ease;
+                                                        cursor: pointer;
+                                                    }
 
-                                                <!-- Stage 4 - Negotiation/Commitment -->
-                                                <div class="row">
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="summary" class="form-label" style="font-size: 12px; color: white;">Stage 4 - Negotiation/Commitment</label>
-                                                    </div>
-                                                    <div class="col-md-2 mb-2">
-                                                        <input readonly type="text" class="form-control" id="startDate" value="<?php echo htmlspecialchars($start_date_stage_four); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-2 mb-2">
-                                                        <input readonly type="text" class="form-control" id="endDate" value="<?php echo htmlspecialchars($end_date_stage_four); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-2 mb-2">
-                                                        <input readonly type="text" class="form-control" id="duration" value="<?php echo htmlspecialchars($duration_stage_four); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                </div>
+                                                    .action-buttons .view-btn i:hover {
+                                                        color: #009394; /* Hover color for view icon */
+                                                        transform: scale(1.2); /* Slightly enlarge */
+                                                    }
 
-                                                <!-- Stage 5 - Delivery/Follow-Up -->
-                                                <div class="row">
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="summary" class="form-label" style="font-size: 12px; color: white;">Stage 5 - Delivery/Follow-Up</label>
-                                                    </div>
-                                                    <div class="col-md-2 mb-2">
-                                                        <input readonly type="text" class="form-control" id="startDate" value="<?php echo htmlspecialchars($start_date_stage_five); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-2 mb-2">
-                                                        <input readonly type="text" class="form-control" id="endDate" value="<?php echo htmlspecialchars($end_date_stage_five); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-2 mb-2">
-                                                        <input readonly type="text" class="form-control" id="duration" value="<?php echo htmlspecialchars($duration_stage_five); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                </div>
+                                                    .action-buttons .edit-btn i:hover {
+                                                        color: #009394; /* Hover color for edit icon */
+                                                        transform: scale(1.2); /* Slightly enlarge */
+                                                    }
+
+                                                    .action-buttons .delete-btn i:hover {
+                                                        color: #cc0000; /* Hover color for delete icon */
+                                                        transform: scale(1.2); /* Slightly enlarge */
+                                                    }
+
+                                                </style>
+
                                                     <div class="container" style="background-color: #36b9cc; padding-top: 100px; border-radius: 20px; position: relative;">
-                                                        <?php if ($status_stage_five === 'Completed'): ?>
+                                                        <?php
+                                                       $stageFiveStatus = isset($project_data['stage_five']['status_stage_five']) 
+                                                        ? htmlspecialchars($project_data['stage_five']['status_stage_five']) 
+                                                        : null;
+ 
+                                                        if ($stageFiveStatus === 'Completed'): ?>
                                                             <!-- Show the "Complete Project" button -->
                                                            <button 
                                                                 class="btn btn-white play-btn" 
@@ -581,7 +782,126 @@ include_once('dirback/dirviewback.php');
     <script src="../js/demo/datatables-demo.js"></script>
     <script src="openModal.js"></script>
     <script src="comProj.js"></script>
-     <script src="toogleNav.js"></script>
+    <script src="toogleNav.js"></script>
+    <script src="alerts/notif.js"></script>
+    <script src="alerts/notifCount.js"></script>
+
+    <!-- Table Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="dirviewproject.js"></script>
+    <script src="notif.js"></script>
+    <script src="navStage.js"></script>
+    <script src="current_year.js"></script>
+    
+    <script>
+        // Export to PDF
+        async function exportToPDF() {
+            const { jsPDF } = window.jspdf; // Get jsPDF
+            const doc = new jsPDF();
+
+            // Add title to the PDF
+            doc.setFontSize(16);
+            doc.text("Project Stages", 14, 20);
+
+            // Fetch the table
+            const table = document.getElementById("stageTable");
+
+            // Parse table data for autoTable
+            const data = [];
+            const rows = table.querySelectorAll("tr");
+            rows.forEach((row, rowIndex) => {
+                const rowData = [];
+                const cells = row.querySelectorAll("th, td");
+                cells.forEach(cell => {
+                    rowData.push(cell.innerText);
+                });
+                data.push(rowData);
+            });
+
+            // AutoTable options
+            doc.autoTable({
+                head: [data[0]], // First row is the table header
+                body: data.slice(1), // Remaining rows are the body
+                startY: 30, // Start after title
+                styles: {
+                    fontSize: 9, // Font size for table
+                },
+                headStyles: {
+                    fillColor: [54, 185, 204], // Header color matching your theme
+                    textColor: 255, // White text
+                    halign: "center" // Center align header text
+                },
+            });
+
+            // Save the PDF
+            doc.save("ProjectStages.pdf");
+        }
+
+        // Export to CSV
+        function exportToCSV() {
+            const table = document.getElementById("stageTable");
+            const rows = Array.from(table.rows).map(row =>
+                Array.from(row.cells).map(cell => cell.innerText)
+            );
+
+            let csvContent = "data:text/csv;charset=utf-8,";
+
+            rows.forEach(row => {
+                const rowData = row.join(",");
+                csvContent += rowData + "\r\n";
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "Projectstages.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Export to Excel
+        function exportToExcel() {
+            const table = document.getElementById("stageTable");
+
+            // Convert HTML table to an array of arrays
+            const rows = Array.from(table.rows).map(row =>
+                Array.from(row.cells).map(cell => cell.innerText)
+            );
+
+            // Create a new workbook and worksheet
+            const workbook = XLSX.utils.book_new();
+            const worksheet = XLSX.utils.aoa_to_sheet(rows); // Convert array of arrays to a sheet
+
+            // Append worksheet to workbook
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Project Stages");
+
+            // Write file
+            XLSX.writeFile(workbook, "Project Stages.xlsx");
+        }
+
+        // Print Table
+        function printTable() {
+            const printContent = document.getElementById("stageTable").outerHTML;
+            const newWindow = window.open("", "", "width=800,height=600");
+            newWindow.document.write("<html><head><title>Project Stages</title></head><body>");
+            newWindow.document.write(printContent);
+            newWindow.document.write("</body></html>");
+            newWindow.document.close();
+            newWindow.print();
+        }
+    </script>
+
+
+
+    <script>
+        // Refresh the page
+        function refreshPage() {
+            location.reload();
+        }
+    </script>
     <script>
         // Function to start the phase
 function startPhase() {
@@ -668,9 +988,9 @@ function checkProjectStatus() {
 }
 
 // Call the function to check project status when the page loads
-window.onload = function() {
-    checkProjectStatus();
-};
+// window.onload = function() {
+//     checkProjectStatus();
+// };
 
     </script>
 
@@ -745,6 +1065,9 @@ window.onload = function() {
         checkProjectStageAndNavigate();
     });
     </script>
+
+
+
 
 </body>
 </html>

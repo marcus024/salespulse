@@ -1,9 +1,7 @@
 <?php
 session_start();
 header('Content-Type: application/json');
-include('../../auth/db.php'); // Adjust the path to your DB connection
-
-// Ensure we have a schedule ID from the query string (e.g. ?sched_id=7)
+include('../../auth/db.php'); 
 if (!isset($_GET['sched_id'])) {
     echo json_encode(['error' => true, 'message' => 'Missing sched_id']);
     exit;
@@ -11,11 +9,9 @@ if (!isset($_GET['sched_id'])) {
 
 $scheduleId = $_GET['sched_id'];
 
-// Make sure we know who is the current user
 $userId = $_SESSION['user_id_c'] ?? 0;
 
 try {
-    // Fetch one schedule that belongs to this user
     $stmt = $conn->prepare("
         SELECT sched_id, event, start, time, venue
         FROM schedule_tb

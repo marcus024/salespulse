@@ -72,7 +72,7 @@
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
-                alert('Error fetching project data. Please try again.' + error.message);
+                alert('Your project is not yet started!');
             });
     }
 

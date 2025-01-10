@@ -1,0 +1,288 @@
+
+        .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        }
+        #myTable {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        #myTable th, #myTable td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .action-buttons button {
+            margin: 0 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9px; /* Set font size to 9px */
+            margin-bottom: 20px;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            color: #333;
+        }
+
+        /* Header Style */
+        table th {
+            background-color: #36b9cc;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Table Row Hover Effect */
+        table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Search Box */
+        #searchInput {
+            margin-bottom: 15px;
+            padding: 8px;
+            width: 250px;
+            font-size: 9px;
+            border: 1px solid #36b9cc;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        #searchInput:focus {
+            border-color: #007b7f;
+        }
+
+        .pagination {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .pagination a {
+            padding: 5px 10px;
+            margin: 0 5px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            color: #36b9cc;
+            border-radius: 4px;
+            font-size:10px;
+        }
+        .pagination a.active {
+            background-color: #36b9cc;
+            color: white;
+            border: 1px solid #36b9cc;
+        }
+        .pagination a:hover {
+            background-color: #007b7f;
+            color: white;
+        }
+
+        /* Buttons for each row */
+        .action-buttons {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .action-buttons button {
+            padding: 4px 8px;
+            font-size: 8px;
+            cursor: pointer;
+            border: 1px solid #36b9cc;
+            border-radius: 4px;
+            background-color: white;
+            color: #36b9cc;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .action-buttons button:hover {
+            background-color: #36b9cc;
+            color: white;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            #searchInput {
+                width: 100%;
+            }
+
+            table th, table td {
+                padding: 6px;
+            }
+
+            .pagination {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            table th, table td {
+                font-size: 8px;
+                padding: 4px;
+            }
+
+            .pagination a {
+                padding: 4px 8px;
+            }
+
+            .action-buttons button {
+                padding: 3px 6px;
+                font-size: 7px;
+            }
+        }
+   
+
+
+
+
+
+    .rectangle-card {
+        width: calc(25% - 4px); 
+        height: 90px;
+        background-color:#36b9cc;
+        box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        padding: 10px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        transition: all 0.3s ease;
+        
+    }
+    .card-title {
+        font-size: 12px;
+        font-weight: bold;
+        color:white;
+        text-transform: uppercase;
+        margin-bottom: 3px;
+    }
+
+    .card-number {
+        font-size: 40px;
+        font-weight: bold;
+        color:white;
+    }
+
+    .card-icon {
+        font-size: 40px;
+        color: #17a2b8;
+        margin-right: 10px;
+    }
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        flex-grow: 1;
+        
+    }
+    .rectangle-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    .sidebar.collapsed ~ .rectangle-card {
+        width: 80%;
+        max-width: 120px;
+    }
+    @media (max-width: 768px) {
+        .rectangle-card {
+            width: calc(100% - 10px);
+            height: auto;
+            padding: 10px;
+        }
+
+        .card-title {
+            font-size: 10px;
+        }
+
+        .card-number {
+            font-size: 30px;
+        }
+
+        .card-icon {
+            font-size: 30px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .rectangle-card {
+            width: 100%;
+            padding: 8px;
+        }
+
+        .card-title,
+        .card-number,
+        .card-icon {
+            font-size: 50%;
+        }
+    }
+    
+
+
+
+
+       .floating-sidebar {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            height: 95vh; 
+            z-index: 1000;
+            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 10px; 
+            overflow-y: auto;
+            display: flex;
+        }
+        body{
+            padding-left:200px;
+            padding-bottom:30px;
+            padding-top:50px;
+            color:white;
+        }
+
+
+
+
+        .sidebar.collapsed {
+            width: 50px;
+            overflow: hidden;
+        }
+        .sidebar.collapsed .nav-link span {
+            display: none; 
+        }
+        .sidebar.collapsed #sidebarToggleBtn {
+            display: block;
+        }
+        .sidebar {
+            width: 200px;
+            transition: all 0.3s;
+        }
+        .sidebar:not(.collapsed) #sidebarToggleBtn {
+            display: none;
+        }
+    
+
+
+
+
+        .nav-item{
+            color: white; 
+            font-weight: bold;
+            border-radius:10px;
+            margin-bottom:5px;
+        }
+        .nav-item.active .nav-link {
+            background-color: white; 
+            color: #36b9cc; 
+            font-weight: bold;
+            border-radius:10px;
+            margin-bottom:5px;
+        }
+        .nav-item .nav-link:hover {
+            background-color: white; 
+            color: #36b9cc; 
+            border-radius:10px;
+            margin-bottom:5px;
+        }
+    

@@ -100,7 +100,7 @@
                                 <div class="form-step" id="step1">
                                     <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
                                         <div class="stage-title" style="width: 30%; text-align: left; margin-bottom: 0; padding-bottom: 0;">
-                                            <p id="projectUniqueId" style="color: #36b9cc; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 1 - <span id="project-id-placeholder">[Project ID]</span></p> 
+                                            <p id="projectUniqueId" style="color: #36b9cc; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 1 <span hidden style="color:rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span></p> 
                                             <h4 style="color: #36b9cc; margin-top: 0; font-family: 'Poppins', sans-serif;">Awareness/Prospecting</h4>
                                         </div>
                                         <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
@@ -226,7 +226,7 @@
                                 <div class="form-step d-none" id="step2">
                                     <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
                                         <div class="stage-title" style="width: 30%; text-align: left; margin-bottom: 0; padding-bottom: 0;">
-                                            <p class="project-id-dis" style="color: #36b9cc; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 2 - <span id="project-id-placeholder-step2">[Project ID]</span></p>
+                                            <p class="project-id-dis" style="color: #36b9cc; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 2 <span hidden style="color:rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span></p>
                                             <h4 style="color: #36b9cc; margin-top: 0; font-family: 'Poppins', sans-serif;">Engagement/Discovery</h4>
                                         </div>
                                         <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
@@ -377,7 +377,7 @@
                                 <div class="form-step d-none" id="step3">
                                 <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
                                         <div class="stage-title" style="width: 30%; text-align: left; margin-bottom: 0; padding-bottom: 0;">
-                                            <p class="project-id-dis" style="color: #36b9cc; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 3 - <span id="project-id-placeholder-step3">[Project ID]</span></p>
+                                            <p class="project-id-dis" style="color: #36b9cc; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 3 <span hidden style="color:rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span></p>
                                             <h4 style="color: #36b9cc; margin-top: 0; font-family: 'Poppins', sans-serif;">Presentation/Proposal</h4>
                                         </div>
                                         <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
@@ -489,7 +489,7 @@
                                                     <label for="requirement" class="form-label text-white">Pricing</label>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Requirement Remarks</label>
+                                                    <label for="requirement" class="form-label text-white">Remarks</label>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <!-- Add Another Button -->
@@ -531,7 +531,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label for="requirement" class="form-label text-white">Stage Remarks</label>
-                                                    <input name="stage_three-remarks" type="textarea" class="form-control" id="requirement"style="height: 50px;">
+                                                    <input name="stage_three_remarks" type="textarea" class="form-control" id="requirement"style="height: 50px;">
                                                 </div>
                                             </div>
                                         </div>
@@ -540,7 +540,7 @@
                                 <div class="form-step d-none" id="step4">
                                     <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
                                         <div class="stage-title" style="width: 30%; text-align: left; margin-bottom: 0; padding-bottom: 0;">
-                                            <p class="project-id-dis" style="color: #36b9cc; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 4 - <span id="project-id-placeholder-step4">[Project ID]</span></p>
+                                            <p class="project-id-dis" style="color: #36b9cc; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 4<span hidden style="color:rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span></p>
                                             <h4 style="color: #36b9cc; margin-top: 0; font-family: 'Poppins', sans-serif;">Negotiation/Commitment</h4>
                                         </div>
                                         <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
@@ -664,7 +664,7 @@
                                 <div class="form-step d-none" id="step5">
                                 <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
                                         <div class="stage-title" style="width: 30%; text-align: left; margin-bottom: 0; padding-bottom: 0;">
-                                            <p class="project-id-dis" style="color: #36b9cc; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 5 - <span id="project-id-placeholder-step5">[Project ID]</span></p>
+                                            <p class="project-id-dis" style="color: #36b9cc; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 5 <span hidden style="color:rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span></p>
                                             <h4 style="color: #36b9cc; margin-top: 0; font-family: 'Poppins', sans-serif;">Delivery/Follow-up</h4>
                                         </div>
                                         <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
@@ -826,7 +826,7 @@
                                                             <input type="text" class="form-control" name="upsell[]" placeholder="e.g Router 2000">
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <input name="bill_materials_upsell[]" type="number" class="form-control" placeholder="e.g 5000">
+                                                            <input name="bills_materials_upsell[]" type="number" class="form-control" placeholder="e.g 5000">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <input name="quantity_upsell[]" type="number" class="form-control" placeholder="e.g 50">
@@ -890,8 +890,7 @@
                                 #logoPlaceholder {
                                     width: 30px;
                                     height: 30px;
-                                    background-color: #36b9cc;
-                                    border-radius: 50%;
+                                    background-color:transparent;
                                     margin-right: 10px;
                                 }
                                 #salesPulse {
@@ -903,7 +902,9 @@
                             </style>
                             <div class="modal-footer">
                                 <div class="footer-left">
-                                    <div id="logoPlaceholder"></div>
+                                    <div >
+                                        <img id="logoPlaceholder" src="../images/logo_blue.png" alt="salespulselogo">
+                                    </div>
                                     <div id="salesPulse">Sales Pulse</div>
                                 </div>
                                 <button type="button" class="btn btn-danger " id="deleteButton" style="border-color: red; background-color: #fff; color: red; font-size: 12px;">
@@ -1103,82 +1104,333 @@
     });
 
     document.getElementById('saveButton').addEventListener('click', async () => {
-        // Retrieve the Project ID from the hidden input field
-        const projectIdInput = document.getElementById('project-unique-id');
-        const projectId = projectIdInput ? projectIdInput.value.trim() : null;
+     // Display a confirmation dialog with Yes (OK) and No (Cancel)
+    const userConfirmed = confirm(`Are you sure you want to save the current data of Step ${currentStep}?`);
 
-        if (!projectId) {
-            alert("Project ID is missing. Cannot save data.");
-            console.error("Error: Project ID not found.");
-            return;
-        }
+    // If the user clicks "No" (Cancel), stop further execution
+    if (!userConfirmed) {
+        console.log("Save canceled by user.");
+        return;
+    }
+    const projectIdInput = document.getElementById('project-unique-id');
+    const projectId = projectIdInput ? projectIdInput.value.trim() : null;
 
-        // Get all the input elements within the current step
-        const inputs = document.querySelectorAll(`#step${currentStep} input, #step${currentStep} textarea, #step${currentStep} select`);
+    if (!projectId) {
+        alert("Project ID is missing. Cannot save data.");
+        console.error("Error: Project ID not found.");
+        return;
+    }
 
-        // Collect values from the inputs
-        const inputValues = Array.from(inputs).reduce((acc, input) => {
-            acc[input.name || input.id] = input.value.trim();
-            return acc;
-        }, {});
+    // Get all the input elements within the current step
+    const currentStepFields = document.querySelectorAll(
+        `#step${currentStep} input, #step${currentStep} textarea, #step${currentStep} select`
+    );
 
-        // Log the collected values to the console for inspection
-        console.log("Collected input values:", inputValues);
+    // Collect values from the inputs within this step
+    const inputValues = {};
 
-        // Prepare the data to be sent
-        const dataToSend = {
-            step: currentStep,
-            project_unique_id: projectId,
-            data: inputValues,
-        };
-
-        console.log("Data to send:", dataToSend);
-
-        try {
-            const response = await fetch('save.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(dataToSend),
-            });
-
-            if (!response.ok) {
-                // If the HTTP status is not OK (e.g., 400, 500), log and alert the user
-                const errorText = await response.text(); // Get the raw response for debugging
-                console.error("HTTP Error:", response.status, errorText);
-                throw new Error(`HTTP Error ${response.status}: ${response.statusText}`);
+    currentStepFields.forEach(field => {
+        const name = field.name || field.id;
+        if (name.endsWith('[]')) {
+            const key = name.replace('[]', '');
+            if (!inputValues[key]) {
+                inputValues[key] = [];
             }
-
-            // Try to parse the JSON response
-            let result;
-            try {
-                result = await response.json();
-            } catch (jsonError) {
-                // If parsing fails, log the raw text and alert the user
-                const rawResponse = await response.text();
-                console.error("Error parsing JSON:", jsonError, "Raw Response:", rawResponse);
-                throw new Error("The server returned an invalid JSON response.");
-            }
-
-            // Log the backend response and proceed with your logic
-            console.log("Backend response:", result);
-
-            // Handle success based on the backend response
-            if (result.message === `Step ${currentStep} data processed successfully`) {
-                alert(`Step ${currentStep} saved successfully!`);
-            } else {
-                alert(`Unexpected response: ${result.message}`);
-            }
-        } catch (error) {
-            // Handle errors (network issues, server issues, etc.)
-            console.error("Error in fetch operation:", error);
-            alert(`An error occurred while saving Step ${currentStep}: ${error.message}`);
+            inputValues[key].push(field.value.trim());
+        } else {
+            inputValues[name] = field.value.trim();
         }
     });
+
+    console.log("Collected input values:", inputValues);
+
+    // Prepare the data to be sent
+    const dataToSend = {
+        step: currentStep,
+        project_unique_id: projectId,
+        data: inputValues,
+    };
+
+    console.log("Data to send:", dataToSend);
+
+    try {
+        const response = await fetch('save.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dataToSend),
+        });
+
+        // Store the raw response to ensure the body is read only once
+        const responseText = await response.text();
+
+        // Check if the response status is OK
+        if (!response.ok) {
+            console.error("HTTP Error:", response.status, responseText);
+            throw new Error(`HTTP Error ${response.status}: ${response.statusText}`);
+        }
+
+        // Parse the response JSON
+        let result;
+        try {
+            result = JSON.parse(responseText);
+        } catch (jsonError) {
+            console.error("Error parsing JSON:", jsonError, "Raw Response:", responseText);
+            throw new Error("The server returned an invalid JSON response.");
+        }
+
+        console.log("Backend response:", result);
+
+        // Handle success based on the backend response
+        if (result.message === `Step ${currentStep} data processed successfully`) {
+            alert(`Step ${currentStep} saved successfully!`);
+        } else {
+            alert(`Unexpected response: ${result.message}`);
+        }
+    } catch (error) {
+        // Handle errors (network issues, server issues, etc.)
+        console.error("Error in fetch operation:", error);
+        alert(`An error occurred while saving Step ${currentStep}: ${error.message}`);
+    }
+});
 
     // Initialize on DOMContentLoaded
     document.addEventListener('DOMContentLoaded', () => {
         showStep(currentStep);
         updateProjectId();
+    });
+
+
+    // Stages Delete
+    document.getElementById('deleteButtons1').addEventListener('click', async () => {
+        if (confirm('Are you sure you want to cancel this process? This action cannot be undone.')) {
+            const projectId = document
+            .getElementById('deleteButtons1')
+            .getAttribute('data-project-id');
+
+            if (!projectId) {
+                alert("Project ID is missing. Cannot proceed with cancellation.");
+                console.error("Error: Project ID not found.");
+                return;
+            }
+
+            try {
+                // Send the request to update the status in the backend
+                const response = await fetch('delete.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ project_unique_id: projectId }),
+                });
+
+                if (!response.ok) {
+                    // Log and alert if the HTTP status is not OK
+                    console.error("HTTP Error:", response.status, response.statusText);
+                    alert("Failed to cancel the project. Please try again.");
+                    return;
+                }
+
+                // Parse the JSON response
+                const result = await response.json();
+
+                // Log the backend response
+                console.log("Backend response:", result);
+
+                // Handle the backend response
+                if (result.success) {
+                    alert("The project has been successfully canceled.");
+                    location.reload(); // Refresh the page
+                } else {
+                    alert(`Failed to cancel the project: ${result.message}`);
+                }
+            } catch (error) {
+                console.error("Error in fetch operation:", error);
+                alert(`An error occurred while canceling the project: ${error.message}`);
+            }
+        }
+    });
+
+    document.getElementById('deleteButtons2').addEventListener('click', async () => {
+        if (confirm('Are you sure you want to cancel this process? This action cannot be undone.')) {
+            const projectId = document
+            .getElementById('deleteButtons2')
+            .getAttribute('data-project-id');
+
+            if (!projectId) {
+                alert("Project ID is missing. Cannot proceed with cancellation.");
+                console.error("Error: Project ID not found.");
+                return;
+            }
+
+            try {
+                // Send the request to update the status in the backend
+                const response = await fetch('delete.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ project_unique_id: projectId }),
+                });
+
+                if (!response.ok) {
+                    // Log and alert if the HTTP status is not OK
+                    console.error("HTTP Error:", response.status, response.statusText);
+                    alert("Failed to cancel the project. Please try again.");
+                    return;
+                }
+
+                // Parse the JSON response
+                const result = await response.json();
+
+                // Log the backend response
+                console.log("Backend response:", result);
+
+                // Handle the backend response
+                if (result.success) {
+                    alert("The project has been successfully canceled.");
+                    location.reload(); // Refresh the page
+                } else {
+                    alert(`Failed to cancel the project: ${result.message}`);
+                }
+            } catch (error) {
+                console.error("Error in fetch operation:", error);
+                alert(`An error occurred while canceling the project: ${error.message}`);
+            }
+        }
+    });
+    document.getElementById('deleteButtons3').addEventListener('click', async () => {
+        if (confirm('Are you sure you want to cancel this process? This action cannot be undone.')) {
+            const projectId = document
+            .getElementById('deleteButtons3')
+            .getAttribute('data-project-id');
+
+            if (!projectId) {
+                alert("Project ID is missing. Cannot proceed with cancellation.");
+                console.error("Error: Project ID not found.");
+                return;
+            }
+
+            try {
+                // Send the request to update the status in the backend
+                const response = await fetch('delete.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ project_unique_id: projectId }),
+                });
+
+                if (!response.ok) {
+                    // Log and alert if the HTTP status is not OK
+                    console.error("HTTP Error:", response.status, response.statusText);
+                    alert("Failed to cancel the project. Please try again.");
+                    return;
+                }
+
+                // Parse the JSON response
+                const result = await response.json();
+
+                // Log the backend response
+                console.log("Backend response:", result);
+
+                // Handle the backend response
+                if (result.success) {
+                    alert("The project has been successfully canceled.");
+                    location.reload(); // Refresh the page
+                } else {
+                    alert(`Failed to cancel the project: ${result.message}`);
+                }
+            } catch (error) {
+                console.error("Error in fetch operation:", error);
+                alert(`An error occurred while canceling the project: ${error.message}`);
+            }
+        }
+    });
+    document.getElementById('deleteButtons4').addEventListener('click', async () => {
+        if (confirm('Are you sure you want to cancel this process? This action cannot be undone.')) {
+            const projectId = document
+            .getElementById('deleteButtons5')
+            .getAttribute('data-project-id');
+
+            if (!projectId) {
+                alert("Project ID is missing. Cannot proceed with cancellation.");
+                console.error("Error: Project ID not found.");
+                return;
+            }
+
+            try {
+                // Send the request to update the status in the backend
+                const response = await fetch('delete.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ project_unique_id: projectId }),
+                });
+
+                if (!response.ok) {
+                    // Log and alert if the HTTP status is not OK
+                    console.error("HTTP Error:", response.status, response.statusText);
+                    alert("Failed to cancel the project. Please try again.");
+                    return;
+                }
+
+                // Parse the JSON response
+                const result = await response.json();
+
+                // Log the backend response
+                console.log("Backend response:", result);
+
+                // Handle the backend response
+                if (result.success) {
+                    alert("The project has been successfully canceled.");
+                    location.reload(); // Refresh the page
+                } else {
+                    alert(`Failed to cancel the project: ${result.message}`);
+                }
+            } catch (error) {
+                console.error("Error in fetch operation:", error);
+                alert(`An error occurred while canceling the project: ${error.message}`);
+            }
+        }
+    });
+    document.getElementById('deleteButtons5').addEventListener('click', async () => {
+        if (confirm('Are you sure you want to cancel this process? This action cannot be undone.')) {
+            const projectId = document
+            .getElementById('deleteButtons5')
+            .getAttribute('data-project-id');
+
+            if (!projectId) {
+                alert("Project ID is missing. Cannot proceed with cancellation.");
+                console.error("Error: Project ID not found.");
+                return;
+            }
+
+            try {
+                // Send the request to update the status in the backend
+                const response = await fetch('delete.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ project_unique_id: projectId }),
+                });
+
+                if (!response.ok) {
+                    // Log and alert if the HTTP status is not OK
+                    console.error("HTTP Error:", response.status, response.statusText);
+                    alert("Failed to cancel the project. Please try again.");
+                    return;
+                }
+
+                // Parse the JSON response
+                const result = await response.json();
+
+                // Log the backend response
+                console.log("Backend response:", result);
+
+                // Handle the backend response
+                if (result.success) {
+                    alert("The project has been successfully canceled.");
+                    location.reload(); // Refresh the page
+                } else {
+                    alert(`Failed to cancel the project: ${result.message}`);
+                }
+            } catch (error) {
+                console.error("Error in fetch operation:", error);
+                alert(`An error occurred while canceling the project: ${error.message}`);
+            }
+        }
     });
 </script>
 
@@ -1403,13 +1655,13 @@
                         <input name="requirement_three[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
                     </div>
                     <div class="col-md-2">
-                        <input name="quantity[]" type="date" class="form-control">
+                        <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
                     </div>
                     <div class="col-md-2">
-                        <input name="bill_of_materials[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+                        <input name="bill_of_materials[]" type="text" class="form-control" placeholder="e.g. 5000">
                     </div>
                     <div class="col-md-2">
-                        <input name="pricing[]" type="date" class="form-control">
+                        <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 5000">
                     </div>
                     <div class="col-md-2">
                         <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
@@ -1568,7 +1820,7 @@
                             <input type="text" class="form-control" name="upsell[]" placeholder="e.g Router 2000">
                         </div>
                         <div class="col-md-2">
-                            <input name="bill_materials_upsell[]" type="number" class="form-control" placeholder="e.g 5000">
+                            <input name="bills_materials_upsell[]" type="number" class="form-control" placeholder="e.g 5000">
                         </div>
                         <div class="col-md-2">
                             <input name="quantity_upsell[]" type="number" class="form-control" placeholder="e.g 50">
@@ -1599,6 +1851,7 @@
                 });
             });
         </script>
+        
         
 
 

@@ -7,7 +7,7 @@ try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $company_name = trim($_POST['company_name']);
         $account_manager = trim($_POST['account_manager']);
-        // Capitalize the first letter of each word
+         
         $account_manager = preg_replace_callback('/\b\w/', function ($matches) {
             return strtoupper($matches[0]);
         }, strtolower($account_manager));
@@ -16,7 +16,7 @@ try {
         $end_date = trim($_POST['end_date']) ?: 'Not Yet Ended'; 
         $source = trim($_POST['source']); 
         $status = trim($_POST['status']) ?: 'Not Yet Started'; 
-        $current_stage = trim($_POST['current_stage']) ?: 'Not Yet Started'; // Default value
+        $current_stage = trim($_POST['current_stage']) ?: 'Not Yet Started';  
         $client_type = trim($_POST['client_type']);
 
         if (

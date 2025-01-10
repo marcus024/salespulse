@@ -41,10 +41,8 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
         if ($stmt->rowCount() > 0) {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // Ensure SPR_number has a fallback value if null
             $sprNum = $result['SPR_number'] ?? 'No SPR Number';
 
-            // Convert the result to include default values for NULL fields
             echo json_encode([
                 'status' => 'success',
                 'company_name' => $result['company_name'] ?? '',

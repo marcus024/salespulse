@@ -284,6 +284,7 @@ include("../auth/db.php");
         .nav-item{
             color: white; 
             font-weight: bold;
+
             border-radius:10px;
             margin-bottom:5px;
         }
@@ -301,6 +302,29 @@ include("../auth/db.php");
             margin-bottom:5px;
         }
     </style>
+    <style>
+        /* Footer Styles */
+        .footer {
+            padding-bottom: 10px;
+            color: #fff;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align all footer content */
+        }
+
+        .footer .powered-by {
+            font-weight: lighter;
+        }
+
+        .footer .company-name {
+            font-weight: bold;
+        }
+
+        .footer .copyright {
+            margin-top: 5px; /* Space between company name and copyright */
+        }
+    </style>
 </head>
 <body id="page-top" >
     <!-- Page Wrapper -->
@@ -309,17 +333,24 @@ include("../auth/db.php");
         <!-- Sidebar -->
         <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#36b9cc; width: 200px; transition: all 0.3s; padding-left: 20px;">
             <!-- Sidebar - Brand -->
-            <i 
+            <!-- <i 
                 id="sidebarToggleIcon" 
                 class="fas fa-bars" 
                 onclick="toggleSidebar()" 
                 style="cursor: pointer; font-size: 20px; color: white; margin: 10px;"
-            ></i>
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            ></i> -->
+            <img 
+                id="sidebarToggleIcon" 
+                src="../images/logo_white.png" 
+                alt="Toggle Sidebar" 
+                onclick="toggleSidebar()" 
+                style="cursor: pointer; width: 24px; height: 24px; margin: 10px;"
+            />
+            <!-- <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div style="color:white; font-weight:bold; font-family:'Poppins'; font-size:20px">
                     SALES PULSE
                 </div>
-            </a>
+            </a> -->
             <div style="height: 0.5px;"></div>
             <!-- Divider -->
             <hr class="sidebar-divider my-2">
@@ -348,6 +379,14 @@ include("../auth/db.php");
                     <span style="font-size:13px; font-family:'Poppins'">Team Members</span>
                 </a>
             </li>
+            <!-- Spacer to Push Footer to Bottom -->
+            <li style="flex-grow: 1;"></li>
+            
+            <li class="nav-item footer">
+                <span class="powered-by">Powered by</span>
+                <span class="company-name">Workforce Management</span><br>
+                <span>&copy; <span id="current-year"></span></span>
+            </li>
         </ul>
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
@@ -373,11 +412,22 @@ include("../auth/db.php");
                         <!-- Notification Button -->
                         <div class="mr-2" style="position: relative;">
                             <!-- Notification Button -->
-                            <button class="btn" id="notification-button" style="color: #36b9cc; padding-right:50px; position: relative;">
-                                <i class="fas fa-bell"></i>
-                                <span id="notification-count" class="badge badge-danger" style="position: absolute; top: -5px; right: 30px;">3</span>
+                            <button id="notification-button" style="color: #36b9cc; padding-right: 50px; position: relative; background: none; border: none; cursor: pointer;">
+                                <img src="../images/notif.png" alt="Notification" style="height: 20px; width: 20px;">
+                                <span id="notification-count" style="
+                                    font-family: 'Poppins', sans-serif; 
+                                    font-weight: bold; 
+                                    font-size: 10px; 
+                                    color: white; 
+                                    background: red; 
+                                    border-radius: 10px; 
+                                    padding: 2px 6px; 
+                                    position: absolute; 
+                                    top: -5px; 
+                                    right: 35px;">
+                                    
+                                </span>
                             </button>
-
                             <!-- Dropdown Container (Initially hidden) -->
                             <div id="notification-dropdown" 
                                 style="
@@ -391,27 +441,27 @@ include("../auth/db.php");
                                     border-radius: 5px; 
                                     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                                 ">
-                                <h6 style="padding: 8px; margin: 0; border-bottom: 1px solid #ccc; font-size: 14px;">Notifications</h6>
+                                <h6 style=" color: black; padding: 8px; margin: 0; border-bottom: 1px solid #ccc; font-size: 14px; font-family:'Poppins'">Notifications</h6>
 
                                 <!-- Notification Items -->
-                                <div style="padding: 8px; font-size: 13px; color: #555;">
-                                    <a href="#" style="text-decoration: none; color: #555; display: block; margin-bottom: 5px;">
-                                        <div style="font-weight: bold;">New Monthly Report</div>
-                                        <span style="font-size: 11px; color: #999;">Dec 12, 2024</span>
-                                    </a>
-                                    <a href="#" style="text-decoration: none; color: #555; display: block; margin-bottom: 5px;">
-                                        <div style="font-weight: bold;">$290 Deposited</div>
-                                        <span style="font-size: 11px; color: #999;">Dec 7, 2024</span>
-                                    </a>
-                                    <a href="#" style="text-decoration: none; color: #555; display: block; margin-bottom: 5px;">
-                                        <div style="font-weight: bold;">Unusual Spending Alert</div>
-                                        <span style="font-size: 11px; color: #999;">Dec 2, 2024</span>
-                                    </a>
-                                </div>
-                                <!-- Footer/Show all link -->
+                                <div class="notify" id="notifs" style="padding: 8px; font-size: 13px; color: #555; max-height: 200px; overflow-y: auto;"></div>
                                 <div style="text-align: center; border-top: 1px solid #ccc; padding: 8px;">
-                                    <a href="#" style="font-size: 12px; color: #36b9cc; text-decoration: none;">Show All Alerts</a>
+                                    <a href="#" id="toggleNotifications"  style="font-size: 12px; color: #36b9cc; text-decoration: none;">Show All Alerts</a>
                                 </div>
+                                <style>
+                                    .notify::-webkit-scrollbar {
+                                        width: 4px; 
+                                        height: 4px; 
+                                    }
+                                    .notify::-webkit-scrollbar-thumb {
+                                        background-color: #36b9cc;
+                                        border-radius: 10px;
+                                        height: 5px; 
+                                    }
+                                    .notify::-webkit-scrollbar-thumb:hover {
+                                        background-color: #555;
+                                    }
+                                </style>
                             </div>
                         </div>
                         <!-- Profile Name and Picture -->
@@ -469,37 +519,47 @@ include("../auth/db.php");
                 <!-- End of Topbar -->
                 <!-- Home Content -->
                 <div class="container-fluid" style="padding-top: 50px;">
-                    <div class="row">
+                    <div class="d-flex" style="width: 100%;">
+
+                    <div class="row g-0">
                         <!-- Column for Add Project -->
-                        <div class="col-md-4 mb-4">
+                        <div class="col-auto" >
                             <div class="card shadow-sm" id="collapsible-card" style="width: 330px; transition: width 0.3s ease;">
                                 <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <p style="font-family: 'Poppins'; color: #555; font-size: 15px; font-weight: 700;">Projects</p>
-                                        <!-- Toggle Arrow Button -->
-                                         <button onclick="toggleCardWidth()" class="btn" type="button">
-                                            <i id="toggle-icon" class="fas fa-chevron-left" style="color:#36b9cc"></i>
-                                        </button>
+                                    <div  class="d-flex justify-content-between align-items-center">
+                                        <p id="project-collapse" style="font-family: 'Poppins'; color: #555; font-size: 15px; font-weight: 700;">Projects</p>
                                     </div>
                                     <div class="col-12 mb-3" id="card-content">
-                                        <a href="#" class="btn btn-info btn-icon-split w-70 " data-bs-toggle="modal" data-bs-target="#addProjectModal">
-                                            <span class="icon text-white-0">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                        <!-- LEFT END: Add Project Button (opens modal) -->
+                                        <a href="#" class="btn btn-info btn-icon-split w-70 add-btn-p"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#addProjectModal" id="addProjectBtn">
+                                        <span class="icon text-white-0" id="icon-col">
                                             <i class="fas fa-plus"></i>
-                                            </span>
-                                            <style>
-                                                .icon i{
-                                                    background: none;
-                                                    border: none;
-                                                    padding: 0;
-                                                    margin: 0;
-                                                    box-shadow: none; 
-                                                    display: inline-block; 
-                                                    color: inherit; 
-                                                    font-size:15px;
-                                                }
-                                            </style>
-                                            <span class="text" style="font-family:'Poppins'; font-size: 15px">Add Project</span>
+                                        </span>
+                                        <style>
+                                            .icon i {
+                                            background: none;
+                                            border: none;
+                                            padding: 0;
+                                            margin: 0;
+                                            box-shadow: none;
+                                            display: inline-block;
+                                            color: inherit;
+                                            font-size: 15px;
+                                            }
+                                        </style>
+                                        <span id="addProjectBtnText" class="text" style="font-family: 'Poppins'; font-size: 15px;">
+                                            Add Project
+                                        </span>
                                         </a>
+                                        
+                                        <!-- RIGHT END: Toggle Arrow Button -->
+                                        <button onclick="toggleCardWidth()" class="btn" type="button">
+                                        <i id="toggle-icon" class="fas fa-chevron-left" style="color: #36b9cc"></i>
+                                        </button>
+                                    </div>
                                         <hr class="sidebar-divider my-3">
                                         <!-- Dynamic Navbar -->
                                         <style>
@@ -654,14 +714,14 @@ include("../auth/db.php");
                                                 transition: width 0.3s ease;
                                             }
                                         </style>
-                                        <nav>
+                                        <nav id="project-collapse">
                                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                                 <button class="project-nav-link active ongoing" id="nav-ongoing-tab" data-bs-toggle="tab" data-bs-target="#nav-ongoing" type="button" role="tab" aria-controls="nav-ongoing" aria-selected="true">On Going</button>
                                                 <button class="project-nav-link completed" id="nav-completed-tab" data-bs-toggle="tab" data-bs-target="#nav-completed" type="button" role="tab" aria-controls="nav-completed" aria-selected="false">Completed</button>
                                                 <button class="project-nav-link cancelled" id="nav-cancelled-tab" data-bs-toggle="tab" data-bs-target="#nav-cancelled" type="button" role="tab" aria-controls="nav-cancelled" aria-selected="false">Cancelled</button>
                                             </div>
                                         </nav>
-                                        <div class="tab-content mt-3" id="nav-tabContent" >
+                                        <div class="tab-content mt-3" id="nav-tabContent"  style="display:flex;">
                                             <?php
                                             $user_id = $_SESSION['user_id_c'] ?? null;
                                             if (!$user_id) {
@@ -767,9 +827,9 @@ include("../auth/db.php");
                             </div>
                         </div>
                     <!-- Blank Column -->
-                    <div class="col-md-8 mb-0">
-                        <div class="card shadow-sm" style="background:white; margin-top: 0.4rem; ">
-                            <div class="card-body" style="margin-top: 0.25rem; margin-bottom: 0.5rem;">
+                    <div class="col" id="table-card-collapse" style="transition: width 0.3s ease; width: 690px;">
+                        <div class="card shadow-sm"   >
+                            <div class="card-body" style="margin-top: 0.25rem; margin-bottom: 0.5rem; ">
                                 <!-- Start of Cards -->
                                  <?php include('dirback/cardsStatus.php'); ?>
                                 <div class="row" style="padding: 10px; gap: 4px; margin-top: -0.5rem;"> <!-- Reduced margin above cards -->
@@ -813,27 +873,50 @@ include("../auth/db.php");
                                 <!-- End of Cards -->
                                 <div class="col-md-14 mb-3">
                                     <div class="card shadow mb-4" style="box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); margin-bottom: 0.2rem;">
-                                        <div class="card-header py-3 d-flex justify-content-between align-items-center" style="background-color: #f8f9fa; border-bottom: 1px solid #ddd; height: 50px; padding: 0 15px;">
+                                        <div class="card-header py-3 d-flex justify-content-between align-items-center" style="background-color: #f8f9fa; border-bottom: 1px solid #ddd; height: auto;">
+                                            <!-- Title -->
                                             <h6 class="m-0 font-weight-bold" style="color: #36b9cc; line-height: 1;">Project Lists</h6>
-                                            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search..." style="font-size: 9px; border: 1px solid #36b9cc; border-radius: 4px; outline: none; width: 150px; padding: 5px 8px; height: 25px;">
+                                            
+                                            <!-- Row to hold the search bar and dropdowns -->
+                                            <div class="d-flex align-items-center" style="gap: 10px;">
+                                                <!-- Search Bar -->
+                                                <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search..." 
+                                                    style="font-size: 10px; border: 1px solid #36b9cc; border-radius: 4px; outline: none; width: 200px; height: 30px; margin: 0;">
+                                                
+                                                <!-- Dropdown for Export Options -->
+                                                <div class="btn-group" role="group">
+                                                    <!-- Export Dropdown -->
+                                                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
+                                                            style="font-size: 10px; height: 30px; margin: 0; border:none; background-color:#36b9cc">
+                                                        Export
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="#" onclick="exportToPDF()">Download PDF</a></li>
+                                                        <li><a class="dropdown-item" href="#" onclick="exportToExcel()">Download Excel</a></li>
+                                                        <li><a class="dropdown-item" href="#" onclick="exportToCSV()">Download CSV</a></li>
+                                                        <li><a class="dropdown-item" href="#" onclick="printTable()">Print</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="card-body" style="padding-top: 0.5rem; padding-bottom: 0.5rem;">
                                             <style>
                                                  .table-responsive::-webkit-scrollbar {
                                                     width: 4px;
+                                                    height: 4px;
                                                 }
 
                                                 .table-responsive::-webkit-scrollbar-thumb {
                                                     background-color: #36b9cc;
                                                     border-radius: 10px;
-                                                    height: 40px;
+                                                    height: 10px;
                                                 }
 
                                                 .table-responsive::-webkit-scrollbar-thumb:hover {
                                                     background-color: #555;
                                                 }
                                             </style>
-                                            <div class="table-responsive" style="max-height: 250px; overflow-y: auto;">
+                                            <div class="table-responsive" style="max-height: 250px; overflow-y: auto; ">
                                                 <?php
                                                 // Fetch the current user's ID from the session
                                                 $user_id = $_SESSION['user_id_c'] ?? null;
@@ -854,6 +937,11 @@ include("../auth/db.php");
                                                             p.start_date, 
                                                             p.end_date, 
                                                             p.created_at,
+                                                            p.product_type,
+                                                            p.current_stage,
+                                                            p.client_type,
+                                                            p.source,
+                                                            DATEDIFF(p.end_date, p.start_date) + 1 AS duration,
                                                             s.user_id_current
                                                         FROM projecttb p
                                                         INNER JOIN salesauth s 
@@ -875,7 +963,7 @@ include("../auth/db.php");
 
                                                 <!-- HTML Table to Display Project Data -->
                                                 <?php if (!empty($projects)): ?>
-                                                    <table id="projectTable">
+                                                    <table id="projectTable" class="table table-bordered" >
                                                         <thead>
                                                             <tr>
                                                                 <th>Project ID</th>
@@ -908,7 +996,7 @@ include("../auth/db.php");
                                                                     ?>;"><?php echo htmlspecialchars($project['pstatus']); ?></td>
                                                                     <td class="action-buttons">
                                                                         <a href="dirviewproject.php?project_id=<?php echo $project['project_unique_id']; ?>" class="view-btn">
-                                                                            <i class="fas fa-eye" style="font-size: 15px; color: #36b9cc;"></i> 
+                                                                            <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i> 
                                                                         </a>
                                                                         <!-- <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#editProjectModal" data-project-id="<?php echo $project['project_unique_id']; ?>">
                                                                             <i class="fas fa-pencil-alt" style="font-size: 10px; color: #36b9cc;"></i>
@@ -1115,6 +1203,17 @@ include("../auth/db.php");
                                                 .scheduleScroll::-webkit-scrollbar-thumb:hover {
                                                     background-color: #555;
                                                 }
+                                                .view-schedule-btn i {
+                                                    font-size: 10px;
+                                                    color: #36b9cc;
+                                                    transition: color 0.3s ease, transform 0.3s ease;
+                                                }
+
+                                                .view-schedule-btn:hover i {
+                                                    color: #009394; /* Change to desired hover color */
+                                                    transform: scale(1.2); /* Slightly enlarge the icon */
+                                                }
+                                            
                                             </style>
                                             <div class="card-body scheduleScroll" style="height: 180px; overflow-y: auto; padding-top: 0.5rem; padding-bottom: 0.5rem;">
                                                 <!-- Schedule Widget -->
@@ -1152,21 +1251,27 @@ include("../auth/db.php");
                                                         $eventTime   = $schedule['time']   ?? 'No Time';
                                                         ?>
                                                     
-                                                    <div class="d-flex justify-content-between align-items-center p-2 rounded border">
-                                                        <div class="text-start" style="margin-right: 15px;">
-                                                        <strong style="font-size: 10px;"><?php echo htmlspecialchars($eventName); ?></strong>
-                                                        <br>
-                                                        <span style="font-size: 10px; color: #555;">Date: <?php echo htmlspecialchars($eventDate); ?></span>
-                                                        <br>
-                                                        <span style="font-size: 10px; color: #555;">Time: <?php echo htmlspecialchars($eventTime); ?></span>
+                                                    <div class="p-2 rounded border d-flex flex-column" style="position: relative; min-height: 120px;">
+                                                        <!-- Event Details -->
+                                                        <div class="mb-auto">
+                                                            <strong style="font-size: 10px;"><?php echo htmlspecialchars($eventName); ?></strong>
+                                                            <br>
+                                                            <span style="font-size: 10px; color: #555;">Date: <?php echo htmlspecialchars($eventDate); ?></span>
+                                                            <br>
+                                                            <span style="font-size: 10px; color: #555;">Time: <?php echo htmlspecialchars($eventTime); ?></span>
                                                         </div>
-                                                        <button class="btn btn-sm view-schedule-btn"
-                                                                style="font-size: 10px; height: 25px; background-color: #36b9cc; color: white; border: none;"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#schedModal"
-                                                                data-sched-id="<?php echo $scheduleId; ?>">
-                                                        View
-                                                        </button>
+                                                        <!-- Action Buttons -->
+                                                        <div class="d-flex justify-content-end" style="position: absolute; bottom: 10px; right: 10px;">
+                                                            <a href="" class="view-schedule-btn" data-bs-toggle="modal"
+                                                            data-bs-target="#schedModal" data-sched-id="<?php echo $scheduleId; ?>">
+                                                                <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
+                                                            </a>
+                                                          <!-- Delete Button -->
+                                                            <a href="javascript:void(0)" class="delete-schedule-btn" data-bs-toggle="modal" 
+                                                            data-bs-target="#schedDel" onclick="setDeleteScheduleId('<?php echo $scheduleId; ?>')">
+                                                                <i class="fas fa-trash" style="font-size: 12px; color: red; margin-left: 10px;"></i>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                     <?php
                                                     }
@@ -1177,8 +1282,8 @@ include("../auth/db.php");
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                             <div class="modal-header" style="background-color: #36b9cc; color: white;">
-                                                                <h5 class="modal-title" id="scheduleModalLabel" style="font-size: 14px;color:white;">Schedule Details</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background: white;"></button>
+                                                                <h5 class="modal-title" id="scheduleModalLabel" style="font-size: 14px;color:white;">Schedule Detail</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
                                                             </div>
                                                             <div class="modal-body" style="font-size: 12px;">
                                                                 <!-- Existing structure, do NOT change IDs of spans -->
@@ -1238,6 +1343,24 @@ include("../auth/db.php");
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- Delete Schedule Modal -->
+                                        <div class="modal fade" id="schedDel" tabindex="-1" aria-labelledby="deleteSchedModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header" style="background-color: #dc3545; color: white;">
+                                                        <h5 class="modal-title" id="deleteTaskModalLabel" style="font-size: 14px; color:white;">Delete Schedule</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+                                                    </div>
+                                                    <div class="modal-body" style="font-size: 12px;">
+                                                        Are you sure you want to delete this schedule?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" style="font-size: 10px;">Cancel</button>
+                                                        <button type="button" class="btn btn-danger btn-sm" style="font-size: 10px;" onclick="deleteSchedule()">Delete</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="card col-md-6 shadow mb-1 mr-0 p-0" style=" box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);"> 
                                             <div class="card-header py-2" style="background: white">
                                                 <div class="d-flex justify-content-between align-items-center">
@@ -1270,26 +1393,10 @@ include("../auth/db.php");
                                             <div class="card-body todo-scroll" style="height: 120px; overflow-y: auto;">
                                                 <!-- To-Do List Widget -->
                                                 <div class="d-flex flex-column gap-2">
-                                                    <!-- Task 1 -->
-                                                    <div class="d-flex flex-column p-2 border rounded" style="height: auto; min-height: 40px;">
-                                                        <div>
-                                                            <input type="checkbox" id="task1" style="margin-right: 10px;">
-                                                            <label for="task1" style="font-size: 10px;">Prepare meeting notes and finalize agenda for upcoming meeting</label>
-                                                        </div>
-                                                        <div class="d-flex gap-1 justify-content-end mt-1">
-                                                            <!-- Edit Button -->
-                                                            <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#editTaskModal" 
-                                                                style="font-size: 10px; height: 25px; background-color: #36b9cc; color: white; border: none;">
-                                                                Edit
-                                                            </button>
-                                                            <!-- Delete Button -->
-                                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteTaskModal" 
-                                                                style="font-size: 10px; height: 25px;">
-                                                                Delete
-                                                            </button>
-                                                        </div>
-                                                    </div>
 
+                                                    <div id="taskList" class="d-flex flex-column gap-2 p-2 border rounded" style="height: auto; min-height: 40px;">
+                                                    <!-- Tasks will be dynamically appended here -->
+                                                    </div>
                                                     <!-- Edit Task Modal -->
                                                     <div class="modal fade" id="editTaskModal" tabindex="-1" aria-labelledby="editTaskModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
@@ -1323,7 +1430,7 @@ include("../auth/db.php");
                                                             <div class="modal-content">
                                                                 <div class="modal-header" style="background-color: #dc3545; color: white;">
                                                                     <h5 class="modal-title" id="deleteTaskModalLabel" style="font-size: 14px; color:white;">Delete Task</h5>
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background: white;"></button>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
                                                                 </div>
                                                                 <div class="modal-body" style="font-size: 12px;">
                                                                     Are you sure you want to delete this task?
@@ -1335,28 +1442,6 @@ include("../auth/db.php");
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <!-- Task 2 -->
-                                                    <div class="d-flex flex-column p-2 border rounded" style="height: auto; min-height: 40px;">
-                                                        <div>
-                                                            <input type="checkbox" id="task2" style="margin-right: 10px;">
-                                                            <label for="task2" style="font-size: 10px;">Review project proposal with the team and make necessary revisions</label>
-                                                        </div>
-                                                        <div class="d-flex gap-1 justify-content-end mt-1">
-                                                            <button class="btn btn-sm" style="font-size: 10px; height: 25px; background-color: #36b9cc; color: white; border: none;">Edit</button>
-                                                            <button class="btn btn-danger btn-sm" style="font-size: 10px; height: 25px;">Delete</button>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Task 3 -->
-                                                    <div class="d-flex flex-column p-2 border rounded" style="height: auto; min-height: 40px;">
-                                                        <div>
-                                                            <input type="checkbox" id="task3" style="margin-right: 10px;">
-                                                            <label for="task3" style="font-size: 10px;">Submit expense report by 5 PM to the finance department</label>
-                                                        </div>
-                                                        <div class="d-flex gap-1 justify-content-end mt-1">
-                                                            <button class="btn btn-sm" style="font-size: 10px; height: 25px; background-color: #006270; color: white; border: none;">Edit</button>
-                                                            <button class="btn btn-danger btn-sm" style="font-size: 10px; height: 25px;">Delete</button>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -1364,6 +1449,7 @@ include("../auth/db.php");
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -1446,50 +1532,115 @@ include("../auth/db.php");
 
             <!-- Add New Task Modal -->
             <div class="modal fade" id="addTask" tabindex="-1" aria-labelledby="addProjectModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Centered and large modal for better responsiveness -->
-                <div class="modal-content" class="modal-content" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(2px); border-radius: 5px;">
-                <div class="modal-header" style="background-color:#36b9cc; height: 50px;">
-                    <font color="white">
-                    <h5 class="mo" id="addProjectModalLabel">Add New Task</h5>
-                    </font>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- Form to add task -->
-                    <form>
-                    <div class="row">
-                        <!-- Task -->
-                        <div class="col-md-6 mb-3">
-                        <label for="clientCompany" class="form-label" style="color:#555">Task</label>
-                        <input type="text" class="form-control" id="clientCompany" placeholder="Enter task name" required>
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <!-- Centered and large modal for better responsiveness -->
+                    <div class="modal-content" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(2px); border-radius: 5px;">
+                        <div class="modal-header" style="background-color:#36b9cc; height: 50px;">
+                            <font color="white">
+                                <h5 class="modal-title" id="addProjectModalLabel">Add New Task</h5>
+                            </font>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <!-- Assign to -->
-                        <div class="col-md-6 mb-3">
-                        <label for="accountManager" class="form-label" style="color:#555">Assign to</label>
-                        <input type="text" class="form-control" id="accountManager" placeholder="Enter assignee name" required>
+                        <div class="modal-body">
+                            <!-- Form to add task -->
+                            <form id="taskForm">
+                                <div class="row">
+                                    <!-- Task -->
+                                    <div class="col-md-6 mb-3">
+                                        <label for="taskName" class="form-label" style="color:#555">Task</label>
+                                        <input name="taskname" type="text" class="form-control" id="taskName" placeholder="Enter task name" required>
+                                    </div>
+                                    <!-- Assign to -->
+                                    <div class="col-md-6 mb-3">
+                                        <label for="assignedTo" class="form-label" style="color:#555">Assign to</label>
+                                        <input name="assigned" type="text" class="form-control" id="assignedTo" placeholder="Enter assignee name" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <!-- Start Date -->
+                                    <div class="col-md-6 mb-3">
+                                        <label for="startDate" class="form-label" style="color:#555">Start Date</label>
+                                        <input name="starttask" type="date" class="form-control" id="startTask" required>
+                                    </div>
+                                    <!-- End Date -->
+                                    <div class="col-md-6 mb-3">
+                                        <label for="endDate" class="form-label" style="color:#555">End Date</label>
+                                        <input name="endtask" type="date" class="form-control" id="endTask" required>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary todo-save" style="background-color:#36b9cc; color:white;" id="saveTaskBtn">Save</button>
                         </div>
                     </div>
-                    <div class="row">
-                        <!-- Start Date -->
-                        <div class="col-md-6 mb-3">
-                        <label for="startDate" class="form-label" style="color:#555">Start Date</label>
-                        <input type="date" class="form-control" id="startDate" required>
-                        </div>
-                        <!-- End Date -->
-                        <div class="col-md-6 mb-3">
-                        <label for="endDate" class="form-label" style="color:#555">End Date</label>
-                        <input type="date" class="form-control" id="endDate" required>
-                        </div>
+                </div>
+            </div>
+
+            <!--  Task Modal -->
+            <div class="modal fade" id="editTask" tabindex="-1" aria-labelledby="scheduleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header" style="background-color: #36b9cc; color: white;">
+                        <h5 class="modal-title" id="taskModalLabel" style="font-size: 14px;color:white;">Task Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
                     </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" style="background-color:#36b9cc; color:white;">Save</button>
-                </div>
+                    <div class="modal-body" style="font-size: 12px;">
+                        <!-- Existing structure, do NOT change IDs of spans -->
+
+                        <p>
+                        <strong style="color:black">Task:</strong>
+                        <span style="color:#555" id="modalTask"></span>
+                        <!-- New hidden <input> for editing Event -->
+                        <input name="taskname" type="text" id="modalTask_edit" class="form-control d-none" />
+                        </p>
+
+                        <p>
+                        <strong style="color:black">Assigned to:</strong>
+                        <span style="color:#555" id="modalAssign"></span>
+                        <!-- New hidden <input> for editing Date -->
+                        <input name="assigned" type="text" id="modalAssign_edit" class="form-control d-none" />
+                        </p>
+
+                        <p>
+                        <strong style="color:black">Start Date:</strong>
+                        <span style="color:#555" id="modalstartDate"></span>
+                        <!-- New hidden <input> for editing Time -->
+                        <input name="starttask" type="date" id="modalStart_edit" class="form-control d-none" />
+                        </p>
+
+                        <p>
+                        <strong style="color:black">End Date:</strong>
+                        <span style="color:#555" id="modalendDate"></span>
+                        <!-- New hidden <input> for editing Venue -->
+                        <input name="endtask" type="date" id="modalEnd_edit" class="form-control d-none" />
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button 
+                        type="button" 
+                        class="btn btn-secondary btn-sm" 
+                        data-bs-dismiss="modal" 
+                        style="font-size: 10px;"
+                        >
+                        Close
+                        </button>
+                        <!-- The toggle button for edit/save -->
+                        <button 
+                        type="button" 
+                        id="editSaveButton" 
+                        class="btn btn-primary btn-sm" 
+                        style="font-size: 10px; background-color: #36b9cc; border: none;"
+                        >
+                        Edit
+                        </button>
+                    </div>
+                    </div>
                 </div>
             </div>
-            </div>
+            <!-- End of Schedule Modal -->
+            
             <!-- MultiStep Form Modal -->
             <?php include('multistepModal.php'); ?>
             <!-- End of Multi Step form -->
@@ -1614,6 +1765,15 @@ include("../auth/db.php");
             </div>
         </div>
     </div>
+    <button 
+        id="continueJourneyButton" 
+        type="button" 
+        class="d-none" 
+        data-bs-toggle="modal" 
+        data-bs-target="#multistepModal">
+        
+    </button>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const tabs = document.querySelectorAll('.nav-tabs .nav-link');
@@ -1650,9 +1810,119 @@ include("../auth/db.php");
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="openModal.js"></script>
     <script src="toogleNav.js"></script>
-    <script src="sched.js"></script>
-    <script src="fetchSched.js"></script>
-    <script src="editSched.js"></script>
+    <script src="dirback/schedule/sched.js"></script>
+    <script src="dirback/schedule/fetchSched.js"></script>
+    <script src="dirback/schedule/editSched.js"></script>
+    <script src="dirback/schedule/deleteSched.js"></script>
+    <script src="dirback/to-do/inser_task.js"></script>
+    <script src="dirback/to-do/load_task.js"></script>
+    <script src="alerts/notif.js"></script>
+    <script src="current_year.js"></script>
+    
+
+    
+    <!-- Table Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script>
+    // Export to PDF
+    async function exportToPDF() {
+        const { jsPDF } = window.jspdf; // Get jsPDF
+        const doc = new jsPDF();
+
+        // Add title to the PDF
+        doc.setFontSize(16);
+        doc.text("Project Lists", 14, 20);
+
+        // Fetch the table
+        const table = document.getElementById("projectTable");
+
+        // Parse table data for autoTable
+        const data = [];
+        const rows = table.querySelectorAll("tr");
+        rows.forEach((row, rowIndex) => {
+            const rowData = [];
+            const cells = row.querySelectorAll("th, td");
+            cells.forEach(cell => {
+                rowData.push(cell.innerText);
+            });
+            data.push(rowData);
+        });
+
+        // AutoTable options
+        doc.autoTable({
+            head: [data[0]], // First row is the table header
+            body: data.slice(1), // Remaining rows are the body
+            startY: 30, // Start after title
+            styles: {
+                fontSize: 9, // Font size for table
+            },
+            headStyles: {
+                fillColor: [54, 185, 204], // Header color matching your theme
+                textColor: 255, // White text
+                halign: "center" // Center align header text
+            },
+        });
+
+        // Save the PDF
+        doc.save("ProjectLists.pdf");
+    }
+
+    // Export to CSV
+    function exportToCSV() {
+        const table = document.getElementById("projectTable");
+        const rows = Array.from(table.rows).map(row =>
+            Array.from(row.cells).map(cell => cell.innerText)
+        );
+
+        let csvContent = "data:text/csv;charset=utf-8,";
+
+        rows.forEach(row => {
+            const rowData = row.join(",");
+            csvContent += rowData + "\r\n";
+        });
+
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "ProjectLists.csv");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    // Export to Excel
+    function exportToExcel() {
+        const table = document.getElementById("projectTable");
+
+        // Convert HTML table to an array of arrays
+        const rows = Array.from(table.rows).map(row =>
+            Array.from(row.cells).map(cell => cell.innerText)
+        );
+
+        // Create a new workbook and worksheet
+        const workbook = XLSX.utils.book_new();
+        const worksheet = XLSX.utils.aoa_to_sheet(rows); // Convert array of arrays to a sheet
+
+        // Append worksheet to workbook
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Project Lists");
+
+        // Write file
+        XLSX.writeFile(workbook, "ProjectLists.xlsx");
+    }
+
+    // Print Table
+    function printTable() {
+        const printContent = document.getElementById("projectTable").outerHTML;
+        const newWindow = window.open("", "", "width=800,height=600");
+        newWindow.document.write("<html><head><title>Project Lists</title></head><body>");
+        newWindow.document.write(printContent);
+        newWindow.document.write("</body></html>");
+        newWindow.document.close();
+        newWindow.print();
+    }
+</script>
 
    <script>
         let currentStep = 1;
@@ -2039,9 +2309,6 @@ include("../auth/db.php");
     </script>
     <!-- stage project unique id fetcher -->
   
-   
-
-
 
     <script>
         function toggleIcon() {
@@ -2114,106 +2381,139 @@ include("../auth/db.php");
     </script>
     <script>
         function toggleCardWidth() {
-            const projectCard = document.getElementById('collapsible-card');
-            const toggleIcon = document.getElementById('toggle-icon');
-            const otherContainers = document.querySelectorAll('.col-md-8, .rectangle-card, .table-responsive, #projectTable');
+        const projectCard = document.getElementById('collapsible-card');
+        const tableCard = document.getElementById('table-card-collapse'); // ← Grab the table column
+        const toggleIcon = document.getElementById('toggle-icon');
+        const projectText = document.getElementById('project-collapse');
+        const otherContainers = document.querySelectorAll(
+            ' .rectangle-card, .table-responsive, #projectTable'
+        );
 
-            if (projectCard.style.width === '330px') {
-                // Collapse project card
-                projectCard.style.width = '100px';
-                toggleIcon.classList.remove('fa-chevron-left');
-                toggleIcon.classList.add('fa-chevron-right');
+        // Get the span that holds "Add Project" text
+        const addProjectBtnText = document.getElementById('addProjectBtnText');
+        const nav = document.getElementById('nav-tabContent');
+        const navlist = document.getElementById('nav-tab');
+        const pbutton = document.getElementById('icon-col');
 
-                // Adjust other containers for collapse
-                otherContainers.forEach(container => {
-                    if (container.classList.contains('col-md-8')) {
-                        container.style.width = 'calc(100% - 120px)'; // Adjust for collapsed project card
-                        container.style.transition = 'width 0.3s ease';
-                    } else if (container.classList.contains('rectangle-card')) {
-                        container.style.width = '20%'; // Adjust card width proportionally
-                    } else if (container.id === 'projectTable') {
-                        container.style.width = '90%'; // Adjust table width proportionally
-                    }
-                });
-            } else {
-                // Expand project card
-                projectCard.style.width = '330px';
-                toggleIcon.classList.remove('fa-chevron-right');
-                toggleIcon.classList.add('fa-chevron-left');
+        // Check if the project card is currently "expanded" at 330px
+        if (projectCard.style.width === '330px') {
+            // -------- COLLAPSE project card --------
+            projectCard.style.width = '100px'; // shrink the left card
+            projectCard.style.height = '70px'; 
+            toggleIcon.classList.remove('fa-chevron-left');
+            toggleIcon.classList.add('fa-chevron-right');
 
-                // Adjust other containers for expansion
-                otherContainers.forEach(container => {
-                    if (container.classList.contains('col-md-8')) {
-                        container.style.width = ''; // Reset to default
-                    } else if (container.classList.contains('rectangle-card')) {
-                        container.style.width = ''; // Reset card width to default
-                    } else if (container.id === 'projectTable') {
-                        container.style.width = ''; // Reset table width to default
-                    }
-                });
+            // Hide the “Add Project” text when collapsed
+            addProjectBtnText.style.display = 'none';
+            projectText.style.display = 'none';
+            nav.style.display = 'none';
+            navlist.style.display = 'none';
+            pbutton.style.display = 'none';
+
+            // Increase the size of the table card
+            tableCard.style.width = '900px'; 
+
+            // Adjust other containers if needed
+            otherContainers.forEach((container) => {
+            if (container.classList.contains('col-md-8')) {
+                container.style.width = '120%'; // or whatever suits your layout
+                container.style.transition = 'width 0.3s ease';
+            } else if (container.classList.contains('rectangle-card')) {
+                container.style.width = '24.5%';
+            } else if (container.id === 'projectTable') {
+                container.style.width = '100%';
             }
+            });
+        } else {
+            // -------- EXPAND project card --------
+            projectCard.style.width = '330px'; // expand the left card
+            projectCard.style.height = ''; 
+            toggleIcon.classList.remove('fa-chevron-right');
+            toggleIcon.classList.add('fa-chevron-left');
+
+            // Show the “Add Project” text when expanded
+            addProjectBtnText.style.display = '';
+            projectText.style.display = '';
+            nav.style.display = '';
+            navlist.style.display = '';
+            pbutton.style.display = '';
+
+            // Restore table card (remove manual width or reset to default)
+            tableCard.style.width = '685px';
+
+            // Reset other containers
+            otherContainers.forEach((container) => {
+            if (container.classList.contains('col-md-8')) {
+                container.style.width = ''; // revert to default or auto
+            } else if (container.classList.contains('rectangle-card')) {
+                container.style.width = ''; // revert to default
+            } else if (container.id === 'projectTable') {
+                container.style.width = ''; // revert to default
+            }
+            });
+        }
         }
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-    const table = $('#projectTable').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            {
-                extend: 'print',
-                text: 'Print',
-                title: 'Project Data',
-                className: 'btn btn-light btn-sm'
-            },
-            {
-                extend: 'csvHtml5',
-                text: 'CSV',
-                title: 'Project Data',
-                className: 'btn btn-light btn-sm'
-            },
-            {
-                extend: 'excelHtml5',
-                text: 'Excel',
-                title: 'Project Data',
-                className: 'btn btn-light btn-sm'
-            },
-            {
-                extend: 'pdfHtml5',
-                text: 'PDF',
-                title: 'Project Data',
-                className: 'btn btn-light btn-sm',
-                orientation: 'landscape',
-                pageSize: 'A4'
-            }
-        ],
-        scrollX: true,
-        paging: true,
-        searching: true,
-        ordering: true
-    });
+            const table = $('#projectTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'print',
+                        text: 'Print',
+                        title: 'Project Data',
+                        className: 'btn btn-light btn-sm'
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        text: 'CSV',
+                        title: 'Project Data',
+                        className: 'btn btn-light btn-sm'
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        text: 'Excel',
+                        title: 'Project Data',
+                        className: 'btn btn-light btn-sm'
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: 'PDF',
+                        title: 'Project Data',
+                        className: 'btn btn-light btn-sm',
+                        orientation: 'landscape',
+                        pageSize: 'A4'
+                    }
+                ],
+                scrollX: true,
+                paging: true,
+                searching: true,
+                ordering: true
+            });
 
-    // Attach search functionality
-    $('#searchTable').on('keyup', function () {
-        table.search(this.value).draw();
-    });
+            // Attach search functionality
+            $('#searchTable').on('keyup', function () {
+                table.search(this.value).draw();
+            });
 
-    // Attach button click handlers for dropdown
-    $('#exportPrint').on('click', function () {
-        table.button('.buttons-print').trigger();
-    });
+            // Attach button click handlers for dropdown
+            $('#exportPrint').on('click', function () {
+                table.button('.buttons-print').trigger();
+            });
 
-    $('#exportCSV').on('click', function () {
-        table.button('.buttons-csv').trigger();
-    });
+            $('#exportCSV').on('click', function () {
+                table.button('.buttons-csv').trigger();
+            });
 
-    $('#exportExcel').on('click', function () {
-        table.button('.buttons-excel').trigger();
-    });
+            $('#exportExcel').on('click', function () {
+                table.button('.buttons-excel').trigger();
+            });
 
-    $('#exportPDF').on('click', function () {
-        table.button('.buttons-pdf').trigger();
-    });
-});
+            $('#exportPDF').on('click', function () {
+                table.button('.buttons-pdf').trigger();
+            });
+        });
 
     </script>
 

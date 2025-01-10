@@ -1,0 +1,214 @@
+SELECT 
+    p.project_unique_id, 
+    p.company_name, 
+    p.account_manager, 
+    p.status AS pstatus,
+    p.start_date, 
+    p.end_date, 
+    p.created_at,
+    s.user_id_current
+FROM projecttb p
+INNER JOIN salesauth s 
+    ON p.user_id_cur = s.user_id_current
+WHERE 
+    s.user_id_current = :current_user AND 
+    DATEDIFF(CURDATE(), GREATEST(p.created_at, p.start_date)) > 3 AND
+    p.status NOT IN ('Cancelled', 'Completed')
+ORDER BY p.created_at DESC
+
+
+
+-- Fetch Teams
+
+
+<?php
+// Fetch the current user's role, user_id, and full name from the session
+$currentUserId = $_SESSION['user_id_c'];
+$currentUserRole = $_SESSION['role']; // e.g., 'unithead', 'salesmember', etc.
+$currentUserName = $_SESSION['user_name']; // Full name of the current user
+
+// Determine roles to fetch based on the current user's role
+$fetchRoles = [];
+if (in_array($currentUserRole, ['ithead', 'itmember'])) {
+    $fetchRoles = ['ithead', 'itmember', 'director'];
+} elseif (in_array($currentUserRole, ['saleshead', 'salesmember'])) {
+    $fetchRoles = ['saleshead', 'salesmember', 'director'];
+} elseif ($currentUserRole === 'director') {
+    $fetchRoles = ['ithead', 'itmember', 'saleshead', 'salesmember', 'director'];
+} else {
+    $fetchRoles = [$currentUserRole]; // Default to the current user's role
+}
+
+// Role mapping for human-readable labels
+$roleLabels = [
+    'unithead' => 'Business Unit Head',
+    'salesmanager' => 'Sales Manager',
+    'salesdirector' => 'Sales and Marketing Director',
+    'accountmanager' => 'Account Manager',
+    // Add more roles if necessary
+];
+
+// Prepare SQL query to fetch team members with project stats and full name
+$query = "
+    SELECT 
+        sa.user_id_current,
+        sa.role,
+        sa.gender,
+        sa.firstname,
+        sa.lastname,
+        COUNT(CASE WHEN p.status = 'Completed' THEN 1 END) AS completed_projects,
+        COUNT(CASE WHEN p.status = 'Ongoing' THEN 1 END) AS ongoing_projects,
+        COUNT(CASE WHEN p.status = 'Cancelled' THEN 1 END) AS cancelled_projects
+    FROM salesauth sa
+    LEFT JOIN projecttb p ON sa.user_id_current = p.user_id_cur
+    WHERE sa.role IN (" . implode(", ", array_fill(0, count($fetchRoles), "?")) . ")
+    GROUP BY sa.user_id_current, sa.role, sa.gender, sa.firstname, sa.lastname
+";
+
+try {
+    // Prepare and execute the query with parameterized roles
+    $stmt = $conn->prepare($query);
+    $stmt->execute($fetchRoles);
+
+    // Fetch all team members
+    $teamMembers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Add the current user's name and map roles to human-readable labels
+    foreach ($teamMembers as &$member) {
+        // Concatenate first name and last name for full name
+        $member['name'] = $member['firstname'] . ' ' . $member['lastname'];
+        
+        if ($member['user_id_current'] == $currentUserId) {
+            // Set the current user's full name
+            $member['name'] = $currentUserName;
+        }
+
+        // Map role to human-readable label
+        $member['role_display'] = $roleLabels[$member['role']] ?? ucfirst($member['role']);
+    }
+    unset($member); // Break reference to avoid potential issues
+} catch (PDOException $e) {
+    // Handle SQL errors
+    error_log("Database Error: " . $e->getMessage());
+    echo "An error occurred while fetching team members. Please try again later.";
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+// Include the database connection
+include '../../auth/db.php'; // Adjust the path to your database connection file
+
+// Sanitize and fetch parameters
+$current_project_id = htmlspecialchars($_GET['project_id'] ?? ''); // Ensure project ID is sanitized
+$stage = intval($_GET['stage'] ?? 0); // Ensure stage number is an integer
+
+$response = [];
+
+// Validate inputs
+if (!$current_project_id) {
+    header('Content-Type: application/json');
+    echo json_encode(['error' => 'Project ID is required']);
+    exit;
+}
+
+// Function to fetch data from the database
+function fetchStageDetails($query, $conn, $project_id) {
+    try {
+        $stmt = $conn->prepare($query); // Prepare the query
+        $stmt->bindParam(':project_id', $project_id, PDO::PARAM_STR); // Bind the parameter
+        $stmt->execute(); // Execute the query
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
+    } catch (PDOException $e) {
+        // Return an error message
+        return ['error' => $e->getMessage()];
+    }
+}
+
+// Function to fetch project details
+function fetchProjectDetails($conn, $project_id) {
+    try {
+        $query = "SELECT status account_manager, company_name, start_date, end_date 
+                  FROM projecttb
+                  WHERE project_unique_id = :project_id";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':project_id', $project_id, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        return ['error' => $e->getMessage()];
+    }
+}
+
+// Fetch project details
+$projectDetails = fetchProjectDetails($conn, $current_project_id);
+if ($projectDetails) {
+    $response['project_details'] = $projectDetails;
+}
+
+// Fetch data for the requested stage
+try {
+    switch ($stage) {
+        case 1:
+            $response['stage_one'] = fetchStageDetails("
+                SELECT start_date_stage_one, end_date_stage_one, technology, solution, deal_size, distributor, stage_one_remarks, product, status_stage_one
+                FROM stageone WHERE project_unique_id = :project_id", $conn, $current_project_id);
+            $response['requirement_one'] = fetchStageDetails("
+                SELECT requirement_one FROM requirementone_tb WHERE project_unique_id = :project_id", $conn, $current_project_id);
+            break;
+        case 2:
+            $response['stage_two'] = fetchStageDetails("
+                SELECT start_date_stage_two, end_date_stage_two, technology, solution, deal_size, product, stage_two_remarks, status_stage_two
+                FROM stagetwo WHERE project_unique_id = :project_id", $conn, $current_project_id);
+            $response['requirements_two'] = fetchStageDetails("
+                SELECT requirement_two, requirement_date, requirement_remarks FROM requirement_twotb WHERE project_unique_id = :project_id", $conn, $current_project_id);
+            $response['engagements_two'] = fetchStageDetails("
+                SELECT engagement_type, engagement_date, engagement_remarks FROM engagement_twotb WHERE project_unique_id = :project_id", $conn, $current_project_id);
+            break;
+        case 3:
+            $response['stage_three'] = fetchStageDetails("
+                SELECT start_date_stage_three, end_date_stage_three, technology, solution, deal_size, product, stage_three_remarks, status_stage_three
+                FROM stagethree WHERE project_unique_id = :project_id", $conn, $current_project_id);
+            $response['requirements_three'] = fetchStageDetails("
+                SELECT requirement_three, quantity, bill_of_materials, requirement_remarks_three, pricing FROM requirement_threetb WHERE project_unique_id = :project_id", $conn, $current_project_id);
+            $response['engagements_three'] = fetchStageDetails("
+                SELECT engagement_three, engagement_date, engagement_remarks_three FROM enagement_threetb WHERE project_unique_id = :project_id", $conn, $current_project_id);
+            break;
+        case 4:
+            $response['stage_four'] = fetchStageDetails("
+                SELECT start_date_stage_four, end_date_stage_four, technology, solution, deal_size, product, stage_four_remarks, status_stage_four
+                FROM stagefour WHERE project_unique_id = :project_id", $conn, $current_project_id);
+            $response['requirements_four'] = fetchStageDetails("
+                SELECT requirement_four, quantity, bill_of_materials, pricing, date_required FROM requirement_fourtb WHERE project_unique_id = :project_id", $conn, $current_project_id);
+            break;
+        case 5:
+            $response['stage_five'] = fetchStageDetails("
+                SELECT start_date_stage_five, end_date_stage_five, SPR_number, contract_duration, billing_type, solution, technology, deal_size, product, remarks_stage_five, status_stage_five
+                FROM stagefive WHERE project_unique_id = :project_id", $conn, $current_project_id);
+            $response['requirements_five'] = fetchStageDetails("
+                SELECT req_five, quantity, bills_materials_req, remarks_req FROM requirementfive_tb WHERE project_unique_id = :project_id", $conn, $current_project_id);
+            $response['upsell'] = fetchStageDetails("
+                SELECT upsell, bills_materials_upsell, quantity_upsell, remarks_upsell, amount_upsell FROM upsell_tb WHERE project_unique_id = :project_id", $conn, $current_project_id);
+            break;
+        default:
+            throw new Exception("Invalid stage number.");
+    }
+
+    // Return response
+    header('Content-Type: application/json');
+    echo json_encode($response);
+} catch (Exception $e) {
+    header('Content-Type: application/json');
+    echo json_encode(['error' => $e->getMessage()]);
+}
+?>

@@ -99,3 +99,61 @@ Stack trace:
 [29-Dec-2024 14:19:44 Europe/Berlin] Missing project_unique_id or engagement_type for engagement. Skipping insert.
 [29-Dec-2024 18:35:01 Europe/Berlin] Empty requirement at index 0 for Project ID UASP93. Skipping insert.
 [29-Dec-2024 18:35:01 Europe/Berlin] Empty upsell at index 0 for Project ID UASP93. Skipping insert.
+[30-Dec-2024 11:58:34 Europe/Berlin] Empty requirement_three for Project ID UASP94. Skipping insert.
+[30-Dec-2024 12:05:23 Europe/Berlin] Empty requirement_four for Project ID UASP94. Skipping insert.
+[30-Dec-2024 13:35:28 Europe/Berlin] Empty upsell at index 0 for Project ID UASP98. Skipping insert.
+[02-Jan-2025 05:49:04 Europe/Berlin] Empty requirement for Project ID UASP100. Skipping insert.
+[02-Jan-2025 05:49:10 Europe/Berlin] Empty requirement_two for Project ID UASP100. Skipping insert.
+[02-Jan-2025 05:49:10 Europe/Berlin] Empty engagement_type for Project ID UASP100. Skipping insert.
+[02-Jan-2025 05:49:20 Europe/Berlin] Empty requirement_three for Project ID UASP100. Skipping insert.
+[02-Jan-2025 05:49:20 Europe/Berlin] Empty engagement_three for Project ID UASP100. Skipping insert.
+[02-Jan-2025 15:49:22 Europe/Berlin] Empty requirement_two for Project ID UASP92. Skipping insert.
+[02-Jan-2025 15:49:22 Europe/Berlin] Empty engagement_type for Project ID UASP92. Skipping insert.
+[02-Jan-2025 15:49:29 Europe/Berlin] Empty requirement_three for Project ID UASP92. Skipping insert.
+[02-Jan-2025 15:49:29 Europe/Berlin] Empty engagement_three for Project ID UASP92. Skipping insert.
+[02-Jan-2025 15:49:37 Europe/Berlin] Empty requirement_four for Project ID UASP92. Skipping insert.
+[02-Jan-2025 15:50:52 Europe/Berlin] Empty upsell at index 0 for Project ID UASP92. Skipping insert.
+[02-Jan-2025 16:22:41 Europe/Berlin] Empty upsell at index 0 for Project ID UASP92. Skipping insert.
+[02-Jan-2025 16:23:11 Europe/Berlin] Empty upsell at index 0 for Project ID UASP92. Skipping insert.
+[06-Jan-2025 06:32:34 Europe/Berlin] Empty requirement for Project ID <br />
+<b>Warning</b>:  Undefined variable $projectId in <b>C:\xampp\htdocs\webapp\Director\multistepModal.php</b> on line <b>215</b><br />. Skipping insert.
+[06-Jan-2025 06:32:38 Europe/Berlin] Empty requirement_two for Project ID <br />
+<b>Warning</b>:  Undefined variable $projectId in <b>C:\xampp\htdocs\webapp\Director\multistepModal.php</b> on line <b>215</b><br />. Skipping insert.
+[06-Jan-2025 06:32:38 Europe/Berlin] Empty engagement_type for Project ID <br />
+<b>Warning</b>:  Undefined variable $projectId in <b>C:\xampp\htdocs\webapp\Director\multistepModal.php</b> on line <b>215</b><br />. Skipping insert.
+[06-Jan-2025 06:49:31 Europe/Berlin] Empty requirement for Project ID UASP99. Skipping insert.
+[06-Jan-2025 06:49:54 Europe/Berlin] Empty requirement_two for Project ID UASP99. Skipping insert.
+[06-Jan-2025 06:49:54 Europe/Berlin] Empty engagement_type for Project ID UASP99. Skipping insert.
+[06-Jan-2025 06:49:57 Europe/Berlin] Empty requirement_three for Project ID UASP99. Skipping insert.
+[06-Jan-2025 06:49:57 Europe/Berlin] Empty engagement_three for Project ID UASP99. Skipping insert.
+[06-Jan-2025 06:50:01 Europe/Berlin] Empty requirement_four for Project ID UASP99. Skipping insert.
+[06-Jan-2025 07:50:55 Europe/Berlin] Empty requirement_two for Project ID UASP99. Skipping insert.
+[06-Jan-2025 07:50:55 Europe/Berlin] Empty engagement_type for Project ID UASP99. Skipping insert.
+[06-Jan-2025 07:51:28 Europe/Berlin] Empty requirement_three for Project ID UASP99. Skipping insert.
+[06-Jan-2025 07:51:28 Europe/Berlin] Empty engagement_three for Project ID UASP99. Skipping insert.
+[06-Jan-2025 07:53:44 Europe/Berlin] Empty requirement_four for Project ID UASP99. Skipping insert.
+[06-Jan-2025 07:53:52 Europe/Berlin] Empty upsell at index 0 for Project ID UASP99. Skipping insert.
+[06-Jan-2025 17:03:05 Europe/Berlin] Empty requirement for Project ID <br />
+<b>Warning</b>:  Undefined variable $projectId in <b>C:\xampp\htdocs\webapp\Director\multistepModal.php</b> on line <b>215</b><br />. Skipping insert.
+[08-Jan-2025 02:30:57 Europe/Berlin] Empty requirement for Project ID UASP106. Skipping insert.
+[08-Jan-2025 02:33:06 Europe/Berlin] Empty requirement_two for Project ID UASP106. Skipping insert.
+[08-Jan-2025 02:33:06 Europe/Berlin] Empty engagement_type for Project ID UASP106. Skipping insert.
+[08-Jan-2025 02:41:41 Europe/Berlin] Empty requirement for Project ID UASP103. Skipping insert.
+[08-Jan-2025 07:23:53 Europe/Berlin] Empty requirement for Project ID UASP110. Skipping insert.
+[08-Jan-2025 07:24:10 Europe/Berlin] Empty requirement for Project ID UASP112. Skipping insert.
+[08-Jan-2025 07:24:14 Europe/Berlin] Empty requirement_two for Project ID UASP112. Skipping insert.
+[08-Jan-2025 07:24:14 Europe/Berlin] Empty engagement_type for Project ID UASP112. Skipping insert.
+[08-Jan-2025 08:08:50 Europe/Berlin] Empty requirement for Project ID UASP113. Skipping insert.
+[08-Jan-2025 09:43:27 Europe/Berlin] Empty requirement_two for Project ID UASP113. Skipping insert.
+[08-Jan-2025 09:43:27 Europe/Berlin] Empty engagement_type for Project ID UASP113. Skipping insert.
+[08-Jan-2025 10:22:15 Europe/Berlin] Empty requirement for Project ID UASP114. Skipping insert.
+[08-Jan-2025 10:22:18 Europe/Berlin] Empty requirement_two for Project ID UASP114. Skipping insert.
+[08-Jan-2025 10:22:18 Europe/Berlin] Empty engagement_type for Project ID UASP114. Skipping insert.
+[08-Jan-2025 10:22:22 Europe/Berlin] Empty requirement_three for Project ID UASP114. Skipping insert.
+[08-Jan-2025 10:22:22 Europe/Berlin] Empty engagement_three for Project ID UASP114. Skipping insert.
+[08-Jan-2025 10:22:24 Europe/Berlin] Empty requirement_four for Project ID UASP114. Skipping insert.
+[09-Jan-2025 06:58:23 Europe/Berlin] Empty requirement for Project ID UASP117. Skipping insert.
+[09-Jan-2025 07:09:47 Europe/Berlin] Empty requirement_two for Project ID UASP117. Skipping insert.
+[09-Jan-2025 07:09:47 Europe/Berlin] Empty engagement_type for Project ID UASP117. Skipping insert.
+[09-Jan-2025 08:18:29 Europe/Berlin] Empty requirement_four for Project ID UASP121. Skipping insert.
+[09-Jan-2025 08:24:54 Europe/Berlin] Empty upsell at index 0 for Project ID UASP121. Skipping insert.

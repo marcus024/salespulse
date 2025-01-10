@@ -1,9 +1,9 @@
 <?php
-include('../../auth/db.php'); // Include DB connection
+include('../../auth/db.php');  
 
 header('Content-Type: application/json');
 
-// Validate project_id
+ 
 if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
     $project_id = $_GET['project_id'];
 
@@ -24,7 +24,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
             echo json_encode(['status' => 'error', 'message' => 'Project not found.']);
         }
     } catch (PDOException $e) {
-        // Log the error for debugging purposes
+         
         echo json_encode(['status' => 'error', 'message' => 'Database error: ' . $e->getMessage()]);
     }
 } else {

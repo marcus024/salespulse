@@ -21,7 +21,7 @@ include("../auth/db.php");
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
+    
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -88,6 +88,29 @@ include("../auth/db.php");
             margin-bottom:5px;
         }
     </style>
+    <style>
+        /* Footer Styles */
+        .footer {
+            padding-bottom: 10px;
+            color: #fff;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align all footer content */
+        }
+
+        .footer .powered-by {
+            font-weight: lighter;
+        }
+
+        .footer .company-name {
+            font-weight: bold;
+        }
+
+        .footer .copyright {
+            margin-top: 5px; /* Space between company name and copyright */
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -96,17 +119,13 @@ include("../auth/db.php");
         <!-- Sidebar -->
         <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#36b9cc; width: 200px; transition: all 0.3s; padding-left: 20px;">
             <!-- Sidebar - Brand -->
-            <i 
+            <img 
                 id="sidebarToggleIcon" 
-                class="fas fa-bars" 
+                src="../images/logo_white.png" 
+                alt="Toggle Sidebar" 
                 onclick="toggleSidebar()" 
-                style="cursor: pointer; font-size: 20px; color: white; margin: 10px;"
-            ></i>
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div style="color:white; font-weight:bold; font-family:'Poppins'; font-size:20px">
-                    SALES PULSE
-                </div>
-            </a>
+                style="cursor: pointer; width: 24px; height: 24px; margin: 10px;"
+            />
             <div style="height: 0.5px;"></div>
             <!-- Divider -->
             <hr class="sidebar-divider my-2">
@@ -135,6 +154,14 @@ include("../auth/db.php");
                     <span style="font-size:13px; font-family:'Poppins'; ">Team Members</span>
                 </a>
             </li>
+            <!-- Spacer to Push Footer to Bottom -->
+            <li style="flex-grow: 1;"></li>
+            
+            <li class="nav-item footer">
+                <span class="powered-by">Powered by</span>
+                <span class="company-name">Workforce Management</span><br>
+                <span>&copy; <span id="current-year"></span></span>
+            </li>
         </ul>
         <!-- End of Sidebar -->
 
@@ -148,7 +175,7 @@ include("../auth/db.php");
                 <!-- Fixed Topbar -->
                 <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:white; padding-right:30px; padding-left:220px; z-index: 300;">
                     <!-- Left Section: Home and Welcome Message -->
-                    <div class="d-flex align-items-center" style="margin-top: 10px;"> <!-- Added margin-top to lower the left section -->
+                    <div class="d-flex align-items-center" style="margin-top: 30px;"> <!-- Added margin-top to lower the left section -->
                         <div>
                             <h1 style="color:#36b9cc; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Calendar</h1> <!-- Reduced spacing -->
                             <!-- <p style="font-size:15px; color: #555; font-family:'Poppins'; margin: 0px;">Welcome Back <?php echo $_SESSION['user_name']; ?>!</p> -->
@@ -157,12 +184,64 @@ include("../auth/db.php");
 
                     <!-- Right Section: Notification and Profile -->
                     <div class="d-flex align-items-center">
-                        <!-- Notification Button -->
-                        <div class="mr-2">
-                            <button class="btn" style="color:#36b9cc;" id="notification-button">
-                                <i class="fas fa-bell"></i>
-                                <span id="notification-count" class="badge badge-danger">3</span>
+                        <div class="mr-2" style="position: relative;">
+                            <!-- Notification Button -->
+                            <button id="notification-button" style="color: #36b9cc; padding-right: 50px; position: relative; background: none; border: none; cursor: pointer;">
+                                <img src="../images/notif.png" alt="Notification" style="height: 20px; width: 20px;">
+                                <span id="notification-count" style="
+                                    font-family: 'Poppins', sans-serif; 
+                                    font-weight: bold; 
+                                    font-size: 10px; 
+                                    color: white; 
+                                    background: red; 
+                                    border-radius: 10px; 
+                                    padding: 2px 6px; 
+                                    position: absolute; 
+                                    top: -5px; 
+                                    right: 35px;">
+                                    
+                                </span>
                             </button>
+
+
+                            <!-- Dropdown Container (Initially hidden) -->
+                            <div id="notification-dropdown" 
+                                style="
+                                    display: none; 
+                                    position: absolute; 
+                                    top: 40px; 
+                                    right: 0; 
+                                    width: 220px; 
+                                    background-color: #fff; 
+                                    border: 1px solid #ccc; 
+                                    border-radius: 5px; 
+                                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                                ">
+                                <h6 style=" color: black; padding: 8px; margin: 0; border-bottom: 1px solid #ccc; font-size: 14px;">Notifications</h6>
+
+                                <!-- Notification Items -->
+                                <div class="notify" id="notifs" style="padding: 8px; font-size: 13px; color: #555; max-height: 200px; overflow-y: auto;"></div>
+                                <div style="text-align: center; border-top: 1px solid #ccc; padding: 8px;">
+                                    <a href="#" id="toggleNotifications"  style="font-size: 12px; color: #36b9cc; text-decoration: none;">Show All Alerts</a>
+                                </div>
+                                <style>
+                                /* Optional: Add a border or styling for the scrollable area */
+                                    .notify::-webkit-scrollbar {
+                                        width: 4px; /* Width of the vertical scrollbar */
+                                        height: 4px; /* Height of the horizontal scrollbar */
+                                    }
+
+                                    .notify::-webkit-scrollbar-thumb {
+                                        background-color: #36b9cc;
+                                        border-radius: 10px;
+                                        height: 5px; /* Minimum height for the scrollbar thumb */
+                                    }
+
+                                    .notify::-webkit-scrollbar-thumb:hover {
+                                        background-color: #555;
+                                    }
+                                </style>
+                            </div>
                         </div>
                         <!-- Profile Name and Picture -->
                         <div class="d-flex align-items-center">
@@ -175,6 +254,7 @@ include("../auth/db.php");
                                 <p style="margin: 0; font-size:10px; font-family:'Poppins'; color:lightgray;">
                                     <?php echo $_SESSION['position']; ?>
                                 </p>
+                                <input  hidden id="currentUser" value="<?php echo $_SESSION['user_id_c']; ?>">
                             </div>
                             <img src="<?php echo $_SESSION['image']; ?>" alt="Profile Picture" class="rounded-circle" style="width: 40px; height: 40px; margin-left: 10px; cursor: pointer;" onclick="togglePopup()">
                         </div>
@@ -220,7 +300,6 @@ include("../auth/db.php");
                     </div>
                 </div>
                 <!-- End of Topbar -->
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div class="row">
@@ -228,22 +307,266 @@ include("../auth/db.php");
                         <div class="col-md-3 mb-4">
                             <div class="card shadow-sm">
                                 <div class="card-body">
-                                    <p style="font-family:'Poppins'; font-size:15px; font-weight:700; color:#555">Calendar</p>
-                                    <!-- Button for Outlook Calendar -->
-                                    <a href="#" class="btn calendar-button w-90" onclick="addCalendar('Outlook')">
+                                    <div class="col align-items-center" style="display: flex; justify-content: space-between;">
+                                        <!-- Calendar Text -->
+                                        <p style="font-family:'Poppins'; font-size:15px; font-weight:700; color:#555; margin: 0;">Calendar</p>
+                                        <!-- Edit Button -->
+                                        <i class="fas fa-edit edit-icon"
+                                        style="font-size: 10px; color: #555; cursor: pointer;"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal"></i>
+                                    </div>
+                                    <!-- Calendar Button -->
+                                    <a href="#" class="btn calendar-button w-90" id="calendarButton" style="display:none;">
                                         <span class="icon">
                                             <img src="../images/outlookcalendar.png" alt="Outlook Calendar Icon" style="width: 30px; height: 30px;">
                                         </span>
                                         <p style="font-size:13px; font-family:'Poppins'; font-weight:bold; padding-left:5px; padding-top:10px">Outlook Calendar</p>
                                     </a>
+                                    <style>                   
+                                        i {
+                                            transition: color 0.3s ease, transform 0.3s ease;
+                                            cursor: pointer;
+                                        }
+                                        i:hover {
+                                            color: #009394; /* Hover color for edit icon */
+                                            transform: scale(1.2); /* Slightly enlarge */
+                                        }
+                                    </style>
+                                    <!-- Edit Calendar Modal -->
+                                     <!-- Modal Structure -->
+                                    <div
+                                        class="modal fade"
+                                        id="exampleModal"
+                                        tabindex="-1"
+                                        aria-labelledby="exampleModalLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog" style="width: 420px;">
+                                            <div class="modal-content">
+                                                <!-- Modal Header -->
+                                                <div class="modal-header" style="background-color:#36b9cc">
+                                                <h5 class="modal-title" id="exampleModalLabel" style="color:white; font-family:'Poppins'; font-size:15px;">Edit Item</h5>
+                                                <button
+                                                    type="button"
+                                                    class="btn-close"
+                                                    data-bs-dismiss="modal"
+                                                    aria-label="Close"
+                                                ></button>
+                                                </div>
+                                                <!-- Modal Body with two fields + aligned save buttons -->
+                                                <div class="modal-body">
+                                                    <form id="modalForm">
+                                                        <!-- Field One + Save -->
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-8">
+                                                                <label for="fieldOne" class="form-label" style="color:#555; font-family:'Poppins'; font-size:12px; font-weight:bold;">Outlook Calendar Link</label>
+                                                                <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                id="fieldOne"
+                                                                placeholder="Enter first value" style="color:#555; font-family:'Poppins'; font-size:12px;"
+                                                                />
+                                                            </div>
+                                                            <div class="col-md-4 d-flex align-items-end">
+                                                                <button
+                                                                type="button"
+                                                                class="btn btn-primary w-100 mt-4 mt-md-0 button-cal"
+                                                                id="saveButton1"
+                                                                data-bs-dismiss="modal" 
+                                                                >
+                                                                Save
+                                                                </button>
+                                                            </div>
+                                                            </div>
+                                                            <!-- Field Two + Save -->
+                                                            <div class="row mb-3">
+                                                            <div class="col-md-8">
+                                                                <label for="fieldTwo" class="form-label" style="color:#555; font-family:'Poppins'; font-size:12px; font-weight:bold;">Google Calendar Link</label>
+                                                                <input
+                                                                type="text" style="color:#555; font-family:'Poppins'; font-size:12px;"
+                                                                class="form-control"
+                                                                id="fieldTwo"
+                                                                placeholder="Enter second value"
+                                                                />
+                                                            </div>
+                                                            <div class="col-md-4 d-flex align-items-end">
+                                                                <button
+                                                                type="button"
+                                                                class="btn btn-success w-100 mt-4 mt-md-0 button-cal"
+                                                                id="saveButton2"
+                                                                data-bs-dismiss="modal" 
+                                                                >
+                                                                Save
+                                                                </button>
+                                                            <style>
+                                                                .button-cal{
+                                                                border: none; 
+                                                                color:white; 
+                                                                background-color: #36b9cc; 
+                                                                font-family:'Poppins'; 
+                                                                font-size:12px;
+                                                                }
+                                                                .button-cal:hover{
+                                                                    background:#006272;
+                                                                }
+                                                                
+                                                            </style>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Modal for Inputting Calendar Link -->
+                                    <div class="modal fade" id="addCalendarModal" tabindex="-1" aria-labelledby="addCalendarModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="background:#36b9cc">
+                                                    <h5 class="modal-title" style="font-weight:bold; font-size:12px; font-family:'Poppins'; color:white;" id="addCalendarModalLabel">Add Calendar Link</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="calendarForm">
+                                                        <div class="mb-3">
+                                                            <label for="calendarLink" style="font-size:12px; font-weight:bold; font-family:'Poppins';" class="form-label">Calendar Link</label>
+                                                            <input type="url" class="form-control" id="calendarLink" required>
+                                                        </div>
+                                                        <button type="submit" class="btn" style="background:#36b9cc; color:white; font-family:'Poppins'; font-size:15px;">Save</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <hr class="my-2">
                                     <!-- Button for Google Calendar -->
-                                    <a href="#" class="btn calendar-button w-90" onclick="addCalendar('Google')">
+                                    <a href="#" class="btn calendar-button w-90" id="gCalButton" style="display:none;">
                                         <span class="icon">
                                             <img src="../images/gcalendar.png" alt="Google Calendar Icon" style="width: 30px; height: 30px;">
                                         </span>
                                         <p style="font-size:13px; font-family:'Poppins'; font-weight:bold; padding-left:5px; padding-top:10px;">Google Calendar</p>
                                     </a>
+                                    <!-- Modal for Inputting Calendar Link -->
+                                    <div class="modal fade" id="addGCal" tabindex="-1" aria-labelledby="addCalendarModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header" style="background:#36b9cc">
+                                                    <p class="modal-title" style="font-weight:bold; font-size:12px; font-family:'Poppins'; color:white;" id="addCalendarModalLabel">Add Calendar Link</p>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form id="gcalendarForm">
+                                                        <div class="mb-3">
+                                                            <label for="calendarLink" style="font-size:12px; font-weight:bold; font-family:'Poppins';" class="form-label">Calendar Link</label>
+                                                            <input type="url" class="form-control" id="gcalendarLink" required>
+                                                        </div>
+                                                        <button type="submit" class="btn" style="background:#36b9cc; color:white; font-family:'Poppins'; font-size:15px;">Save</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr class="my-2">
+                                   <!-- Trigger Button -->
+                                    <!-- Trigger Button -->
+                                    <a href="#" class="btn calendar-button w-90 text-center" data-bs-toggle="modal" data-bs-target="#calendarGuideModal" 
+                                    style="font-size: 13px; font-family: 'Poppins'; font-weight: bold; text-decoration: none;">
+                                        Guide to Add Calendar
+                                    </a>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="calendarGuideModal" tabindex="-1" aria-labelledby="calendarGuideModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="calendarGuideModalLabel" style="font-family:'Poppins'; color:#555; font-size:15px">User Guide to Add a Calendar</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <!-- Modal Body -->
+                                                <div class="modal-body">
+                                                    <!-- Tab Navigation -->
+                                                    <ul class="nav nav-tabs" id="calendarGuideTabs" role="tablist">
+                                                        <li class="nav-item">
+                                                            <button style ="font-size:12px; font-family:'Poppins'" class="nav-link active" id="google-tab" data-bs-toggle="tab" data-bs-target="#google" type="button" role="tab" aria-controls="google" aria-selected="true">
+                                                                Google Calendar
+                                                            </button>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <button style ="font-size:12px; font-family:'Poppins'" class="nav-link" id="outlook-tab" data-bs-toggle="tab" data-bs-target="#outlook" type="button" role="tab" aria-controls="outlook" aria-selected="false">
+                                                                Outlook Calendar
+                                                            </button>
+                                                        </li>
+                                                    </ul>
+
+                                                    <!-- Tab Content -->
+                                                    <div class="tab-content mt-3" id="calendarGuideTabContent">
+                                                        <!-- Google Calendar Tab -->
+                                                        <div class="tab-pane fade show active" id="google" role="tabpanel" aria-labelledby="google-tab">
+                                                            <div id="googleCarousel" class="carousel slide" data-bs-ride="carousel">
+                                                                <div class="carousel-inner">
+                                                                    <div class="carousel-item active">
+                                                                        <img src="../images/1.png" class="d-block w-100" alt="Google Calendar Step 1">
+                                                                    </div>
+                                                                    <div class="carousel-item">
+                                                                        <img src="../images/2.png" class="d-block w-100" alt="Google Calendar Step 2">
+                                                                    </div>
+                                                                    <div class="carousel-item">
+                                                                        <img src="../images/3.png" class="d-block w-100" alt="Google Calendar Step 3">
+                                                                    </div>
+                                                                    <div class="carousel-item">
+                                                                        <img src="../images/4.png" class="d-block w-100" alt="Google Calendar Step 4">
+                                                                    </div>
+                                                                </div>
+                                                                <button class="carousel-control-prev" type="button" data-bs-target="#googleCarousel" data-bs-slide="prev">
+                                                                    <span class="carousel-control-prev-icon" aria-hidden="true" style="color: #36b9cc;"></span>
+                                                                    <span class="visually-hidden">Previous</span>
+                                                                </button>
+                                                                <button class="carousel-control-next" type="button" data-bs-target="#googleCarousel" data-bs-slide="next">
+                                                                    <span class="carousel-control-next-icon" aria-hidden="true" style="color: #36b9cc;"></span>
+                                                                    <span class="visually-hidden">Next</span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Outlook Calendar Tab -->
+                                                        <div class="tab-pane fade" id="outlook" role="tabpanel" aria-labelledby="outlook-tab">
+                                                            <div id="outlookCarousel" class="carousel slide" data-bs-ride="carousel">
+                                                                <div class="carousel-inner">
+                                                                    <div class="carousel-item active">
+                                                                        <img src="../images/6.png" class="d-block w-100" alt="Outlook Calendar Step 1">
+                                                                    </div>
+                                                                    <div class="carousel-item">
+                                                                        <img src="../images/7.png" class="d-block w-100" alt="Outlook Calendar Step 2">
+                                                                    </div>
+                                                                    <div class="carousel-item">
+                                                                        <img src="../images/8.png" class="d-block w-100" alt="Outlook Calendar Step 3">
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                <button class="carousel-control-prev" type="button" data-bs-target="#outlookCarousel" data-bs-slide="prev">
+                                                                    <span class="carousel-control-prev-icon" aria-hidden="true" style="color: #dc3545;"></span>
+                                                                    <span class="visually-hidden">Previous</span>
+                                                                </button>
+                                                                <button class="carousel-control-next" type="button" data-bs-target="#outlookCarousel" data-bs-slide="next">
+                                                                    <span class="carousel-control-next-icon" aria-hidden="true" style="color: #dc3545;"></span>
+                                                                    <span class="visually-hidden">Next</span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Modal Footer -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
                                     <!-- Styling remains the same -->
                                     <style>
                                         .calendar-button {
@@ -287,12 +610,8 @@ include("../auth/db.php");
                                         }
                                     </style>
                                 </div>
-
-
-
                             </div>
                         </div>
-
                         <!-- Wide Container for Calendar Content -->
                         <div class="col-md-9 mb-4">
                             <div class="card shadow-sm" style="background: #36b9cc">
@@ -361,40 +680,15 @@ include("../auth/db.php");
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <!-- Calendar script (if needed in the future) -->
     <!-- <script src="path_to_calendar_script.js"></script> -->
-   <script>
-    function addCalendar(type) {
-    const calendarContainer = document.getElementById('calendar-container');
-
-    // Clear previous calendar content before adding a new one
-    calendarContainer.innerHTML = '';
-
-    if (type === 'Outlook') {
-        const iframe = document.createElement('iframe');
-        iframe.style.width = '100%';
-        iframe.style.height = '390px';
-        iframe.style.border = '1px solid white';
-        iframe.style.borderRadius = '5px';
-        iframe.src = "https://outlook.office365.com/owa/calendar/d02aec1836114286a7fad6531c48851c@uas.com.ph/7a3b2b761fab4055a30f896a80c358aa14889519084045600576/calendar.html";
-        calendarContainer.appendChild(iframe);
-    } else if (type === 'Google') {
-        const iframe = document.createElement('iframe');
-        iframe.style.width = '100%';
-        iframe.style.height = '390px';
-        iframe.style.border = '1px solid white';
-        iframe.style.borderRadius = '5px';
-        iframe.src = "https://calendar.google.com/calendar/embed?src=markantony.calipayan%40ssu.edu.ph&ctz=Asia%2FManila";
-        calendarContainer.appendChild(iframe);
-    }
-}
-
-   </script>
-    <script>
-        // Toggle sidebar collapse
-        document.getElementById('sidebarToggle').addEventListener('click', function () {
-            const sidebar = document.getElementById('accordionSidebar');
-            sidebar.classList.toggle('collapsed');
-        });
-    </script>
+     <script src="calendar/outlook/calendar.js"></script>
+     <script src="calendar/google/gcalendar.js"></script>
+    <script src="alerts/notif.js"></script>
+    <script src="notif.js"></script>
+    <script src="alerts/notifCount.js"></script>
+    <script src="calendar/update/updateCal.js"></script>
+    <script src="current_year.js"></script>
+     
+   
      <script>
         function togglePopup() {
             const popup = document.getElementById('popup-container');

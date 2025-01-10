@@ -1,0 +1,188 @@
+/* Sidebar Styles */
+.sidebar {
+    transition: width 0.3s;
+}
+.sidebar.collapsed {
+    width: 80px;
+}
+.sidebar.collapsed .nav-item span {
+    display: none;
+}
+.sidebar.collapsed .sidebar-brand-text {
+    display: none;
+}
+.sidebar.collapsed .sidebar-brand-icon {
+    margin: 0 auto;
+}
+
+/* Floating Sidebar Styles */
+.floating-sidebar {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    height: 95vh; /* Adjust the height to be 90% of the viewport height */
+    z-index: 1000;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px; /* Combined padding */
+    overflow-y: auto; /* Allow scrolling inside the sidebar */
+    display: flex;
+}
+body {
+    padding-left: 200px;
+    padding-bottom: 30px;
+    padding-top: 100px;
+    color: white;
+    font-family:'Poppins';
+}
+
+/* Navigation Item Styles */
+.nav-item {
+    color: white; /* Optional: Adjust text color when the item is active */
+    font-weight: bold; /* Optional: Make the active menu text bold */
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+/* Active Nav Item Background Color */
+.nav-item.active .nav-link {
+    background-color: white; /* Change this color to your preferred background color */
+    color: #36b9cc; /* Optional: Adjust text color when the item is active */
+    font-weight: bold; /* Optional: Make the active menu text bold */
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+/* Hover Effect for Nav Items */
+.nav-item .nav-link:hover {
+    background-color: white; /* Same color for hover effect */
+    color: #36b9cc; /* Text color for hover */
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+/* Cards Design */
+.rectangle-card {
+    width: calc(20% - 50px);
+    height: 90px;
+    background-color: #36b9cc;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding-left: 10px;
+    margin-left:18px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+.card-title {
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+}
+.card-number {
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+}
+.card-icon {
+    font-size: 40px;
+    color: #17a2b8;
+    margin-right: 10px;
+}
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-grow: 1;
+}
+.rectangle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.3);
+}
+.sidebar.collapsed ~ .rectangle-card {
+    width: 80%;
+    max-width: 120px;
+}
+/* Responsive Card Styles */
+@media (max-width: 768px) {
+    .rectangle-card {
+        width: calc(100% - 10px);
+        height: auto;
+        padding: 10px;
+    }
+    .card-title {
+        font-size: 10px;
+    }
+    .card-number {
+        font-size: 30px;
+    }
+    .card-icon {
+        font-size: 30px;
+    }
+}
+@media (max-width: 480px) {
+    .rectangle-card {
+        width: 100%;
+        padding: 8px;
+    }
+    .card-title,
+    .card-number,
+    .card-icon {
+        font-size: 50%;
+    }
+}
+
+/* Scrollbar Styling */
+.notify::-webkit-scrollbar {
+    width: 4px; /* Width of the vertical scrollbar */
+    height: 4px; /* Height of the horizontal scrollbar */
+}
+.notify::-webkit-scrollbar-thumb {
+    background-color: #36b9cc;
+    border-radius: 10px;
+    height: 5px; /* Minimum height for the scrollbar thumb */
+}
+.notify::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+/* Profile Hover Effects */
+.profile-img:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
+}
+.popup-link {
+    padding: 8px 0;
+    text-decoration: none;
+    color: #555;
+    margin-bottom: 5px;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+.popup-link:hover {
+    color: #36b9cc;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.logout-link:hover {
+    color: #36b9cc;
+    text-decoration: none;
+}
+
+/* Smaller Table Font */
+.table-smaller th,
+.table-smaller td {
+    font-size: 0.85rem; /* Adjust font size as needed */
+}
+
+/* Form Control Focus */
+.form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.card-header h6 {
+            font-family: 'Poppins', sans-serif;
+            color: #36b9cc;
+        }

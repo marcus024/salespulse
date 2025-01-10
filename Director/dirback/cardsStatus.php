@@ -1,5 +1,5 @@
 <?php
-// Fetch the current user's ID from the session
+ 
 $user_id = $_SESSION['user_id_c'] ?? null;
 if (!$user_id) {
     echo "<script>alert('User not logged in. Please log in.'); window.location.href = '../../login.php';</script>";
@@ -9,11 +9,11 @@ if (!$user_id) {
 $completedCount = 0;
 $ongoingCount   = 0;
 $cancelledCount = 0;
-// We'll store the average duration here
+ 
 $avgDuration    = 0.0;
 
 try {
-    // SQL query to get the count of projects by status AND average duration
+     
     $sql = "
         SELECT 
             p.status AS pstatus,
@@ -34,16 +34,14 @@ try {
     $stmt->bindParam(':current_user', $user_id, PDO::PARAM_STR);
     $stmt->execute();
 
-    // Fetch results
     $statuses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // If at least one row returned, grab the average duration from any row (they're identical)
     if (!empty($statuses)) {
-        // For instance, just take it from the first row
+         
         $avgDuration = $statuses[0]['avg_duration'] ?? 0.0;
     }
 
-    // Assign values based on status
+     
     foreach ($statuses as $status) {
         if ($status['pstatus'] === 'Completed') {
             $completedCount = $status['project_count'];

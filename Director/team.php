@@ -88,27 +88,44 @@ include("../auth/db.php");
             margin-bottom:5px;
         }
     </style>
+    <style>
+        /* Footer Styles */
+        .footer {
+            padding-bottom: 10px;
+            color: #fff;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align all footer content */
+        }
+
+        .footer .powered-by {
+            font-weight: lighter;
+        }
+
+        .footer .company-name {
+            font-weight: bold;
+        }
+
+        .footer .copyright {
+            margin-top: 5px; /* Space between company name and copyright */
+        }
+    </style>
 </head>
 
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
         <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#36b9cc; width: 200px; transition: all 0.3s; padding-left: 20px;">
             <!-- Sidebar - Brand -->
-            <i 
+            <img 
                 id="sidebarToggleIcon" 
-                class="fas fa-bars" 
+                src="../images/logo_white.png" 
+                alt="Toggle Sidebar" 
                 onclick="toggleSidebar()" 
-                style="cursor: pointer; font-size: 20px; color: white; margin: 10px;"
-            ></i>
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div style="color:white; font-weight:bold; font-family:'Poppins'; font-size:20px">
-                    SALES PULSE
-                </div>
-            </a>
+                style="cursor: pointer; width: 24px; height: 24px; margin: 10px;"
+            />
             <div style="height: 0.5px;"></div>
             <!-- Divider -->
             <hr class="sidebar-divider my-2">
@@ -137,6 +154,14 @@ include("../auth/db.php");
                     <span style="font-size:13px; font-family:'Poppins'; ">Team Members</span>
                 </a>
             </li>
+            <!-- Spacer to Push Footer to Bottom -->
+            <li style="flex-grow: 1;"></li>
+            
+            <li class="nav-item footer">
+                <span class="powered-by">Powered by</span>
+                <span class="company-name">Workforce Management</span><br>
+                <span>&copy; <span id="current-year"></span></span>
+            </li>
         </ul>
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
@@ -148,7 +173,7 @@ include("../auth/db.php");
                 <!-- Topbar -->
                 <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:white; padding-right:30px; padding-left:220px; z-index: 300;">
                     <!-- Left Section: Home and Welcome Message -->
-                    <div class="d-flex align-items-center" style="margin-top: 10px;"> <!-- Added margin-top to lower the left section -->
+                    <div class="d-flex align-items-center" style="margin-top: 30px;"> <!-- Added margin-top to lower the left section -->
                         <div>
                             <h1 style="color:#36b9cc; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Team Members</h1> <!-- Reduced spacing -->
                             <!-- <p style="font-size:15px; color: #555; font-family:'Poppins'; margin: 0px;">Welcome Back <?php echo $_SESSION['user_name']; ?>!</p> -->
@@ -157,11 +182,64 @@ include("../auth/db.php");
                     <!-- Right Section: Notification and Profile -->
                     <div class="d-flex align-items-center">
                         <!-- Notification Button -->
-                        <div class="mr-2">
-                            <button class="btn" style="color:#36b9cc;" id="notification-button">
-                                <i class="fas fa-bell"></i>
-                                <span id="notification-count" class="badge badge-danger">3</span>
+                        <div class="mr-2" style="position: relative;">
+                            <!-- Notification Button -->
+                            <button id="notification-button" style="color: #36b9cc; padding-right: 50px; position: relative; background: none; border: none; cursor: pointer;">
+                                <img src="../images/notif.png" alt="Notification" style="height: 20px; width: 20px;">
+                                <span id="notification-count" style="
+                                    font-family: 'Poppins', sans-serif; 
+                                    font-weight: bold; 
+                                    font-size: 10px; 
+                                    color: white; 
+                                    background: red; 
+                                    border-radius: 10px; 
+                                    padding: 2px 6px; 
+                                    position: absolute; 
+                                    top: -5px; 
+                                    right: 35px;">
+                                    
+                                </span>
                             </button>
+
+
+                            <!-- Dropdown Container (Initially hidden) -->
+                            <div id="notification-dropdown" 
+                                style="
+                                    display: none; 
+                                    position: absolute; 
+                                    top: 40px; 
+                                    right: 0; 
+                                    width: 220px; 
+                                    background-color: #fff; 
+                                    border: 1px solid #ccc; 
+                                    border-radius: 5px; 
+                                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                                ">
+                                <h6 style=" color: black; padding: 8px; margin: 0; border-bottom: 1px solid #ccc; font-size: 14px;">Notifications</h6>
+
+                                <!-- Notification Items -->
+                                <div class="notify" id="notifs" style="padding: 8px; font-size: 13px; color: #555; max-height: 200px; overflow-y: auto;"></div>
+                                <div style="text-align: center; border-top: 1px solid #ccc; padding: 8px;">
+                                    <a href="#" id="toggleNotifications"  style="font-size: 12px; color: #36b9cc; text-decoration: none;">Show All Alerts</a>
+                                </div>
+                                <style>
+                                /* Optional: Add a border or styling for the scrollable area */
+                                    .notify::-webkit-scrollbar {
+                                        width: 4px; /* Width of the vertical scrollbar */
+                                        height: 4px; /* Height of the horizontal scrollbar */
+                                    }
+
+                                    .notify::-webkit-scrollbar-thumb {
+                                        background-color: #36b9cc;
+                                        border-radius: 10px;
+                                        height: 5px; /* Minimum height for the scrollbar thumb */
+                                    }
+
+                                    .notify::-webkit-scrollbar-thumb:hover {
+                                        background-color: #555;
+                                    }
+                                </style>
+                            </div>
                         </div>
                         <!-- Profile Name and Picture -->
                         <div class="d-flex align-items-center">
@@ -229,7 +307,7 @@ include("../auth/db.php");
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <p style="font-family:'Poppins'; font-size:15px; font-weight:700; color:#555">Team Members</p>
-                                    <a href="#" class="btn btn-info btn-icon-split w-70" data-bs-toggle="modal" data-bs-target="#addTeam">
+                                    <a href="#" class="btn btn-info btn-icon-split w-70" data-bs-toggle="modal" data-bs-target="<?php echo ($_SESSION['role'] === 'salesdirector' || $_SESSION['role'] === 'unithead') ? '#addTeam' : '#contactAdmin'; ?>">
                                         <span class="icon text-white-0">
                                         <i class="fas fa-plus"></i>
                                         </span>
@@ -300,7 +378,7 @@ include("../auth/db.php");
                                                                 <?php echo htmlspecialchars($member['name']); ?>
                                                             </p>
                                                             <p class="mb-1" style="font-size: 15px; font-family: 'Poppins';">
-                                                                <?php echo htmlspecialchars($member['role']); ?>
+                                                                <?php echo htmlspecialchars($member['role_display']); ?>
                                                             </p>
                                                             <div class="row mt-0" style="gap: 10px; padding-right:5px;">
                                                                 <div class="col card text-center" style="border-color:white; background: white; border-radius: 15px; padding: 2px; width: 140px;">
@@ -323,7 +401,7 @@ include("../auth/db.php");
                                                                 </div>
                                                                 <div class="col card text-center" style="border-color:white; background: white; border-radius: 15px; padding: 2px; width: 140px;">
                                                                     <p style="font-size: 30px; color:#006270; font-weight: bold; margin: 0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">
-                                                                        NA
+                                                                        <?php echo $member['avg_project_duration'] ?? 0; ?>
                                                                     </p>
                                                                     <p style="font-size: 9px; font-weight: bold; color:#006270; margin: 0; width: 100%;">Avg. Days/Comp. Proj.</p>
                                                                 </div>
@@ -344,51 +422,67 @@ include("../auth/db.php");
             </div>
             <!-- End of Main Content -->
             <!-- Modals -->
-             <!-- Add Contacts Modal -->
-                <div class="modal fade" id="addTeam" tabindex="-1" aria-labelledby="editTaskModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
+            <!-- Contact Admin Modal -->
+            <div class="modal fade" id="contactAdmin" tabindex="-1" aria-labelledby="contactAdminLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div style="background-color:red" class="modal-header">
+                            <h6 style="color:white;"class="modal-title" id="contactAdminLabel">Access Denied</h6>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p style="color:#555">You are not authorized to add team members. Please contact your admin or head for assistance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!-- Add Team Modal -->
+                <div class="modal fade" id="addTeam" tabindex="-1" aria-labelledby="addTeamModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
                         <div class="modal-content">
-                            <div class="modal-header" style="background-color:#009394; height: 50px;">
-                                <h5 class="modal-title" id="addProjectModalLabel" style="font-family:'Poppins';font-size: 15px; color:white;">Add Team Member</h5>
+                            <!-- Modal Header -->
+                            <div class="modal-header" style="background-color:#36b9cc; height: 50px;">
+                                <h5 class="modal-title" id="addTeamModalLabel" style="font-family:'Poppins';font-size: 15px; color:white;">Add Team Member</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body" style="font-size: 12px;">
-                                <form id="editTaskForm">
-                                    <!-- Third Row: Company and Name -->
-                                    <div class="row mb-3">
-                                        <div class="col-md-12">
-                                            <label for="company" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Company</label>
-                                            <input type="text" style="font-family:'Poppins'; font-size:14px" class="form-control form-control-sm" id="company" placeholder="Enter company name">
-                                        </div>
+                            <!-- Modal Body -->
+                            <div class="modal-body" style="height: 400px;">
+                                <!-- Search Engine -->
+                                <div class="row mb-3">
+                                    <div class="col-12">
+                                        <input type="text" id="userSearch" class="form-control" onkeyup="filterUsers()" placeholder="Search users by name or position..." 
+                                            style="font-family:'Poppins'; font-size: 14px; border: 1px solid #36b9cc; border-radius: 4px; padding: 8px;">
                                     </div>
-                                    <div class="row mb-3">
-                                        <div class="col-md-12">
-                                            <label for="name" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Name</label>
-                                            <input type="text" style="font-family:'Poppins'; font-size:14px" class="form-control form-control-sm" id="name" placeholder="Enter name">
-                                        </div>
+                                </div>
+                                <style>
+                                /* Optional: Add a border or styling for the scrollable area */
+                                    .userClass::-webkit-scrollbar {
+                                        width: 4px; /* Width of the vertical scrollbar */
+                                        height: 4px; /* Height of the horizontal scrollbar */
+                                    }
+
+                                    .userClass::-webkit-scrollbar-thumb {
+                                        background-color: #36b9cc;
+                                        border-radius: 10px;
+                                        height: 5px; /* Minimum height for the scrollbar thumb */
+                                    }
+
+                                    .userClass::-webkit-scrollbar-thumb:hover {
+                                        background-color: #555;
+                                    }
+                                </style>
+                                <!-- User List -->
+                                <div class="row">
+                                    <div class="col-12">
+                                        <ul class="list-group" id="userList" class="userClass" style="max-height: 380px; overflow-y: auto;">
+                                            
+                                        </ul>
                                     </div>
-                                    <div class="row mb-3">
-                                        <div class="col-md-12">
-                                            <label for="position" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Position</label>
-                                            <input type="text" style="font-family:'Poppins'; font-size:14px" class="form-control form-control-sm" id="position" placeholder="Enter position">
-                                        </div>
-                                    </div>
-                                    <!-- Fourth Row: Position, Number, and Email -->
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="number" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Number</label>
-                                            <input type="number" style="font-family:'Poppins'; font-size:14px" class="form-control form-control-sm" id="number" placeholder="Enter number">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="email" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Email</label>
-                                            <input type="email" style="font-family:'Poppins'; font-size:14px" class="form-control form-control-sm" id="email" placeholder="Enter email">
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
+                            <!-- Modal Footer -->
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" style="font-family:'Poppins'; font-size: 12px;">Cancel</button>
-                                <button type="button" class="btn btn-primary btn-sm" style="font-family:'Poppins'; font-size: 12px; background-color: #006270; border: none;">Save Changes</button>
+                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" style="font-family:'Poppins'; font-size: 12px;">Close</button>
                             </div>
                         </div>
                     </div>
@@ -465,6 +559,9 @@ include("../auth/db.php");
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="toogleNav.js"></script>
+    <script src="alerts/notif.js"></script>
+    <script src="alerts/notifCount.js"></script>
+    <script src="current_year.js"></script>
     <script>
         // Toggle sidebar collapse
         document.getElementById('sidebarToggle').addEventListener('click', function () {
@@ -488,6 +585,105 @@ include("../auth/db.php");
             }
         });
     </script>
+
+<script>
+    let users = []; // Global variable to store the fetched users
+    
+
+    // Fetch users dynamically from the server
+    async function fetchUsers() {
+        try {
+            const response = await fetch("dirback/teamUser.php");
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            users = await response.json(); // Store the users globally
+            renderUserList(users); // Render the initial user list
+        } catch (error) {
+            console.error("Error fetching users:", error);
+        }
+    }
+
+    // Render user list dynamically
+    function renderUserList(userList) {
+        const userListContainer = document.getElementById("userList");
+        userListContainer.innerHTML = ""; // Clear existing list
+
+        userList.forEach(user => {
+            const li = document.createElement("li");
+            li.className = "list-group-item d-flex justify-content-between align-items-center";
+            li.style.fontFamily = "Poppins";
+            li.style.fontSize = "14px";
+
+            li.innerHTML = `
+                <div>
+                    <strong>${user.name}</strong>
+                    <p class="mb-0 text-muted" style="font-size: 12px;">${user.position}</p>
+                </div>
+                <button class="btn btn-sm btn-primary" style="background-color: #36b9cc; border: none;" onclick="addUser('${currentUserId}', '${user.user_id_current}')">
+                    <i class="fas fa-plus"></i> Add
+                </button>
+            `;
+
+            userListContainer.appendChild(li);
+        });
+    }
+
+    // Filter user list based on search input
+    function filterUsers() {
+        const searchValue = document.getElementById("userSearch").value.toLowerCase();
+        const filteredUsers = users.filter(user => 
+            user.name.toLowerCase().includes(searchValue) || user.position.toLowerCase().includes(searchValue)
+        );
+
+        renderUserList(filteredUsers); // Render the filtered list
+    }
+
+   // Add user function (custom logic to handle adding the user)
+    async function addUser(currentUserId, selectedUserId) {
+         const confirmAdd = confirm(`Are you sure you want to add user with ID ${selectedUserId} to your team?`);
+
+        if (!confirmAdd) {
+            // If the user cancels, exit the function
+            return;
+        }
+        try {
+            // Send the user IDs to the backend
+            const response = await fetch("dirback/addTeam.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    head_user_id: currentUserId,
+                    team_user_id: selectedUserId,
+                }),
+            });
+
+            // Parse the response
+            const result = await response.json();
+
+            if (result.success) {
+                alert(`User successfully added to the team: ${result.message}`);
+                window.location.reload();
+            } else {
+                throw new Error(result.message);
+            }
+        } catch (error) {
+            console.error("Error adding user to the team:", error);
+            alert("Failed to add user to the team. Please try again.");
+        }
+    }
+
+
+    // Initialize the user list on page load
+    document.addEventListener("DOMContentLoaded", () => {
+        fetchUsers(); // Fetch the users list
+    });
+</script>
+
+
+
 </body>
 
 </html>

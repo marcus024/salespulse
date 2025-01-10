@@ -1,0 +1,72 @@
+/* Custom Styles for Dropdown Cards */
+        .dropdown-card {
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 27px 12px; /* Reduced padding */
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            margin-bottom: 10px; /* Reduced margin */
+            margin-left: 5px;
+            width: 150px; /* Adjusted width */
+        }
+
+        .dropdown-card:hover {
+            background-color: #e2e6ea;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .dropdown-card .card-icon {
+            margin-right: 0px; /* Reduced margin */
+            color: #36b9cc;
+            width: 15px; /* Reduced width */
+            height: 15px; /* Reduced height */
+        }
+
+        .dropdown-card .card-icon img {
+            width: 10px;
+            height: 10px;
+            object-fit: contain;
+        }
+
+        .dropdown-card .card-content {
+            flex-grow: 1;
+        }
+
+        .dropdown-card .card-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 12px; /* Reduced font size */
+            color: #555;
+        }
+
+        .dropdown-card .card-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 10px; /* Reduced font size */
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Adjust the dropdown menu to fit the card */
+        .dropdown-menu {
+            width: 100%;
+        }
+
+        /* Hide the default dropdown toggle arrow */
+        .dropdown-toggle::after {
+            display: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 500px) { /* Adjusted breakpoint for smaller screens */
+            .dropdown-card {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%; /* Full width on small screens */
+            }
+
+            .dropdown-card .card-icon {
+                margin-bottom: 5px;
+            }
+        }

@@ -1,6 +1,6 @@
 <?php
 // Include the database connection
-require_once '../auth/db.php'; // Replace with the actual path to your database connection script
+require_once '../auth/db.php';
 
 header('Content-Type: application/json');
 
@@ -15,6 +15,10 @@ try {
     }
 
     $projectId = $data['project_unique_id'];
+
+    // Debugging logs
+    error_log("Incoming Data: " . print_r($data, true));
+    error_log("Project ID: " . $projectId);
 
     // Get today's date in YYYY-MM-DD format
     $today = date('Y-m-d');
@@ -31,14 +35,14 @@ try {
     $stmt->bindParam(':end_date', $today);
     $stmt->bindParam(':unique_id', $projectId, PDO::PARAM_STR);
 
-    // Execute the query
-    if ($stmt->execute()) {
+    // Execute the query and check if rows are updated
+    if ($stmt->execute() && $stmt->rowCount() > 0) {
         echo json_encode(['success' => true, 'message' => 'Project successfully canceled.']);
     } else {
-        echo json_encode(['success' => false, 'message' => 'Failed to cancel the project.']);
+        echo json_encode(['success' => false, 'message' => 'No project was updated. It may not exist or is already canceled.']);
     }
 } catch (PDOException $e) {
     // Handle database errors
+    error_log("Database error: " . $e->getMessage());
     echo json_encode(['success' => false, 'message' => 'Database error: ' . $e->getMessage()]);
 }
-?>

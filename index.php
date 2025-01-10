@@ -1,92 +1,310 @@
-<?php include("auth/db.php") ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>SB Admin 2 - Login</title>
-    <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-    <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Pulse Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    /* General Reset */
+    body, html {
+      margin: 0;
+      padding-left: 0;
+      padding-right: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom right, #f0f4f8, #d9f7f6);
+      height: 100%;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    /* Main Container */
+    .container {
+      display: flex;
+      align-items: center; /* Center align vertically */
+      justify-content: space-between; /* Align sections at both ends */
+      height: 100vh;
+      flex-wrap: wrap;
+      margin: 0; /* Remove margin */
+      padding: 0;
+      background-color: white;
+    }
+    .left-section {
+      flex: 1;
+      max-width: 400px;
+      height: 100vh; /* Full height of the viewport */
+      text-align: center;
+      background-color: #006270;
+      border-top-left-radius: 50px; /* Curved top-left corner */
+      border-bottom-left-radius: 50px; /* Curved bottom-left corner */
+      display: flex; /* Center content */
+      justify-content: center;
+      align-items: center;
+    }
+    
+    /* Right Section */
+    .right-section {
+      flex: 1;
+      max-width: 600px;
+      background: transparent;
+      border-radius: 10px;
+      padding: 40px;
+    }
+    .right-section h1 {
+      font-family: 'Poppins';
+      font-size: 2rem;
+      color: #555;
+      margin-bottom: 0;
+    }
+    .right-section p {
+      font-size: 1rem;
+      color: #777;
+      font-family: 'Poppins';
+      font-weight: bold;
+    }
+    .input-group {
+      margin-bottom: 20px;
+      position: relative;
+      text-align: left; 
+    }
+    .input-group label {
+      font-size: 14px;
+      font-weight: bold;
+      font-family: 'Poppins';
+      color: #555;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .input-group input {
+   
+      padding: 15px;
+      font-size: 12px;
+      font-family:'Poppins';
+      border: 1px solid #006272;
+      border-radius: 10px;
+      background-color: white; /* Light green background */
+      color: #36b9cc;
+      width: 70%;
+      margin: 0 auto; 
+    }
+    .input-group input::placeholder {
+      color: #36b9cc;
+      font-size:12px;
+      font-family:'Poppins'
+    }
+    .input-group input:focus::placeholder {
+    color: #36b9cc; /* Makes the placeholder invisible */
+    }
+    .input-group input:focus {
+      border-color: #36b9cc;
+      outline: none;
+      background-color: white; /* Slightly darker green when focused */
+    }
+    .input-group span {
+    position: absolute;
+    right: 30%; /* Aligns "Forgot Password" to the right edge */
+    top: 120%; /* Vertically centers the text */
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight:bold;
+    font-family:'Poppins';
+    color: #17a2b8;
+    cursor: pointer;
 
+  }
+    .login-btn {
+      width: 130px;
+      height: 40px;
+      padding: 5px;
+      background: #17a2b8;
+      color: #ffffff;
+      font-size: 15px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family:'Poppins';
+      font-weight:bold;
+      display: block; /* Ensure it's treated as a block-level element */
+      margin:30px auto; 
+      margin-left:20%;
+    }
+    .login-btn:hover {
+      background: #138996;
+    }
+    .signup-link {
+      margin-left: 12%;
+      margin-top: 1%;
+      font-family:'Poppins';
+      font-size:12px;
+     
+    }
+    .signup-link a {
+      color: #17a2b8;
+      text-decoration: none;
+    }
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .left-section {
+        border-radius: 0; /* Remove curves on small screens */
+        height: auto; /* Adjust height for smaller devices */
+      }
+      .left-section img {
+        margin: auto;
+      }
+    }
+
+    .overlay-image {
+    position: absolute;
+    top: 55%;
+    left: 68%;
+    transform: translate(-50%, -50%);
+    width: 700px; /* Default size for larger screens */
+    max-width: 100%; /* Ensures it doesn't exceed the screen width */
+    z-index: 2;
+    pointer-events: none;
+    animation: float 3s ease-in-out infinite;
+    }
+
+    @media (max-width: 1024px) {
+    .overlay-image {
+        width: 500px; /* Reduce size for medium screens */
+        top: 60%; /* Adjust position */
+        left: 65%;
+    }
+    }
+
+    @media (max-width: 768px) {
+    .overlay-image {
+        width: 350px; /* Further reduce size for small screens */
+        top: 65%; /* Adjust position */
+        left: 50%;
+    }
+    }
+
+    @media (max-width: 480px) {
+    .overlay-image {
+        width: 250px; /* Minimum size for very small screens */
+        top: 70%;
+        left: 50%;
+    }
+    }
+    @keyframes float {
+      0%, 100% {
+        transform: translate(-50%, -50%) translateY(0);
+      }
+      50% {
+        transform: translate(-50%, -50%) translateY(-20px); /* Float upward */
+      }
+    }
+
+    /* Loading Overlay */
+.loading-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 9999; /* Ensure it overlays all content */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Loading Spinner */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #17a2b8; /* Color of the spinner */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+}
+
+/* Spinner Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Loading Text */
+.loading-text {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+  </style>
 </head>
-
-<body class="bg-gradient-primary">
-
-    <div class="container">
-
-        <div class="row justify-content-center">
-
-            <div class="col-xl-10 col-lg-12 col-md-9">
-
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                                    </div>
-                                    <form class="user" action="auth/loginBack.php" method="POST">
-                                        <div class="form-group">
-                                            <input required name= "email" type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
-                                        </div>
-                                        <div class="form-group">
-                                            <input required name="password" type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
-                                        <hr>
-                                        <a href="index.php" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a href="index.php" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>
-                                    </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="auth/reg.php">Create an Account!</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+<body>
+  <div class="container">
+    <!-- Right Section -->
+    <div class="right-section">
+      <h1>
+        <img src="images/salespulselogo.png" alt="Logo" style="width: 45px; height: 40px; vertical-align: middle; margin-right: 10px;">
+        Sales Pulse
+      </h1>
+      <p>Welcome back!</p>
+      <p class="loginP" style="font-size: 40px; font-family:'Poppins'; margin: 0; margin-bottom: 10px; color: black;">Log In</p>
+      <div class="loading-overlay" id="loadingOverlay">
+          <div class="spinner"></div>
+          <div class="loading-text">Logging in, please wait...</div>
+      </div>
+        <form class="user" action="auth/loginBack.php" method="POST" onsubmit="showLoading(event)">
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input required  name="email" type="email" placeholder="Enter your email" autocomplete="off" />
             </div>
-
-        </div>
-
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input required name="password" type="password" placeholder="Enter your password" autocomplete="off" />
+                <span onclick="togglePassword()">Forgot Password?</span>
+            </div>
+            <button type="submit" class="login-btn">LOGIN</button>
+        </form>
+      <div class="signup-link">
+        Don't have an account yet? <a href="auth/register.php">Sign up for Free!</a>
+      </div>
     </div>
+    <img class="overlay-image" src="images/logpic.png" alt="Illustration" />
 
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <div class="left-section">
+      <!-- Left Section Content -->
+    </div>
+  </div>
 
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script>
+    function showLoading(event) {
+        event.preventDefault(); // Prevent immediate form submission for testing
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        loadingOverlay.style.display = 'flex'; // Show the loading overlay
 
-    <script src="js/sb-admin-2.min.js"></script>
+        const loginBtn = document.querySelector('.login-btn');
+        loginBtn.disabled = true; // Disable the login button
 
+        // Simulate form submission delay (remove this in production)
+        setTimeout(() => {
+            event.target.submit(); // Submit the form after showing the spinner
+        }, 2000);
+    }
+
+    function togglePassword() {
+      alert('Password recovery is not implemented yet.');
+    }
+  </script>
+  
 </body>
-
 </html>

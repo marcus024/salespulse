@@ -1,17 +1,15 @@
 <?php
-include('../../auth/db.php'); // Include DB connection
+include('../../auth/db.php');  
 
 header('Content-Type: application/json');
 
-// Validate project_id and stage
+ 
 if (isset($_GET['project_id']) && !empty($_GET['project_id']) && isset($_GET['stage']) && !empty($_GET['stage'])) {
     $project_id = $_GET['project_id'];
-    $stage = $_GET['stage']; // Get the stage dynamically
+    $stage = $_GET['stage'];  
 
     try {
-        // Prepare the SQL query based on the dynamic stage
-        // This assumes that the stage number is part of the database field names
-        // Example: stage_one, stage_two, etc.
+         
         $sql = "SELECT start_date_stage_{$stage}, end_date_stage_{$stage}, status_stage_{$stage} 
                 FROM stagetwo WHERE project_unique_id = :project_id";
         
@@ -31,7 +29,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id']) && isset($_GET['st
             echo json_encode(['status' => 'error', 'message' => 'Project not found.']);
         }
     } catch (PDOException $e) {
-        // Log the error for debugging purposes
+         
         echo json_encode(['status' => 'error', 'message' => 'Database error: ' . $e->getMessage()]);
     }
 } else {

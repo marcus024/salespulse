@@ -88,6 +88,29 @@ include("../auth/db.php");
             margin-bottom:5px;
         }
     </style>
+    <style>
+        /* Footer Styles */
+        .footer {
+            padding-bottom: 10px;
+            color: #fff;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align all footer content */
+        }
+
+        .footer .powered-by {
+            font-weight: lighter;
+        }
+
+        .footer .company-name {
+            font-weight: bold;
+        }
+
+        .footer .copyright {
+            margin-top: 5px; /* Space between company name and copyright */
+        }
+    </style>
 
 </head>
 
@@ -95,48 +118,71 @@ include("../auth/db.php");
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#36b9cc; width: 200px; transition: all 0.3s; padding-left: 20px;">
+        <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="
+            background-color:#36b9cc; 
+            width: 200px; 
+            transition: all 0.3s; 
+            padding-left: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            height: 100vh;">
+            
             <!-- Sidebar - Brand -->
-             <i 
-                id="sidebarToggleIcon" 
-                class="fas fa-bars" 
-                onclick="toggleSidebar()" 
-                style="cursor: pointer; font-size: 20px; color: white; margin: 10px;"
-            ></i>
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div style="color:white; font-weight:bold; font-family:'Poppins'; font-size:20px">
-                    SALES PULSE
-                </div>
-            </a>
-            <div style="height: 0.5px;"></div>
+            <li class="nav-item">
+                <img 
+                    id="sidebarToggleIcon" 
+                    src="../images/logo_white.png" 
+                    alt="Toggle Sidebar" 
+                    onclick="toggleSidebar()" 
+                    style="cursor: pointer; width: 24px; height: 24px; margin: 10px;"
+                />
+            </li>
+            
             <!-- Divider -->
-            <hr class="sidebar-divider my-2">
+            <li class="nav-item">
+                <hr class="sidebar-divider my-2">
+            </li>
+            
             <!-- Nav Items -->
-            <li class="nav-item" >
-                <a class="nav-link selected" href="director.php" style="border-radius:10px;padding-left:10px;">
+            <li class="nav-item">
+                <a class="nav-link selected" href="director.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-home"></i>
-                    <span style="font-size:13px; font-family:'Poppins'; ">Home</span>
+                    <span style="font-size:13px; font-family:'Poppins';">Home</span>
                 </a>
             </li>
-            <li class="nav-item " >
-                <a class="nav-link" href="calendar.php" style="border-radius:10px;padding-left:10px; ">
-                    <i class="fas fa-fw fa-calendar-alt" style="white"></i>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="calendar.php" style="border-radius:10px; padding-left:10px;">
+                    <i class="fas fa-fw fa-calendar-alt"></i>
                     <span style="font-size:13px; font-family:'Poppins';">Calendar</span>
                 </a>
             </li>
-            <li class="nav-item active" >
-                <a class="nav-link" href="contacts.php" style="border-radius:10px;padding-left:10px;">
+            
+            <li class="nav-item active">
+                <a class="nav-link" href="contacts.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-address-book"></i>
                     <span style="font-size:13px; font-family:'Poppins';">Contacts</span>
                 </a>
             </li>
-            <li class="nav-item" >
-                <a class="nav-link" href="team.php" style="border-radius:10px;padding-left:10px;">
+            
+            <li class="nav-item">
+                <a class="nav-link" href="team.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-users"></i>
-                    <span style="font-size:13px; font-family:'Poppins'; ">Team Members</span>
+                    <span style="font-size:13px; font-family:'Poppins';">Team Members</span>
                 </a>
             </li>
+            
+            <!-- Spacer to Push Footer to Bottom -->
+            <li style="flex-grow: 1;"></li>
+            
+            <li class="nav-item footer">
+                <span class="powered-by">Powered by</span>
+                <span class="company-name">Workforce Management</span><br>
+                <span>&copy; <span id="current-year"></span></span>
+            </li>
+            
         </ul>
+
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -149,7 +195,7 @@ include("../auth/db.php");
                 <!-- Fixed Topbar -->
                 <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:white; padding-right:30px; padding-left:220px; z-index: 300;">
                     <!-- Left Section: Home and Welcome Message -->
-                    <div class="d-flex align-items-center" style="margin-top: 10px;"> <!-- Added margin-top to lower the left section -->
+                    <div class="d-flex align-items-center" style="margin-top: 30px;"> <!-- Added margin-top to lower the left section -->
                         <div>
                             <h1 style="color:#36b9cc; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Contacts</h1> <!-- Reduced spacing -->
                             <!-- <p style="font-size:15px; color: #555; font-family:'Poppins'; margin: 0px;">Welcome Back <?php echo $_SESSION['user_name']; ?>!</p> -->
@@ -159,11 +205,63 @@ include("../auth/db.php");
                     <!-- Right Section: Notification and Profile -->
                     <div class="d-flex align-items-center">
                         <!-- Notification Button -->
-                        <div class="mr-2">
-                            <button class="btn" style="color:#36b9cc;" id="notification-button">
-                                <i class="fas fa-bell"></i>
-                                <span id="notification-count" class="badge badge-danger">3</span>
+                        <div class="mr-2" style="position: relative;">
+                            <!-- Notification Button -->
+                            <button id="notification-button" style="color: #36b9cc; padding-right: 50px; position: relative; background: none; border: none; cursor: pointer;">
+                                <img src="../images/notif.png" alt="Notification" style="height: 20px; width: 20px;">
+                                <span id="notification-count" style="
+                                    font-family: 'Poppins', sans-serif; 
+                                    font-weight: bold; 
+                                    font-size: 10px; 
+                                    color: white; 
+                                    background: red; 
+                                    border-radius: 10px; 
+                                    padding: 2px 6px; 
+                                    position: absolute; 
+                                    top: -5px; 
+                                    right: 35px;">
+                                    
+                                </span>
                             </button>
+
+                            <!-- Dropdown Container (Initially hidden) -->
+                            <div id="notification-dropdown" 
+                                style="
+                                    display: none; 
+                                    position: absolute; 
+                                    top: 40px; 
+                                    right: 0; 
+                                    width: 220px; 
+                                    background-color: #fff; 
+                                    border: 1px solid #ccc; 
+                                    border-radius: 5px; 
+                                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                                ">
+                                <h6 style=" color: black; padding: 8px; margin: 0; border-bottom: 1px solid #ccc; font-size: 14px;">Notifications</h6>
+
+                                <!-- Notification Items -->
+                                <div class="notify" id="notifs" style="padding: 8px; font-size: 13px; color: #555; max-height: 200px; overflow-y: auto;"></div>
+                                <div style="text-align: center; border-top: 1px solid #ccc; padding: 8px;">
+                                    <a href="#" id="toggleNotifications"  style="font-size: 12px; color: #36b9cc; text-decoration: none;">Show All Alerts</a>
+                                </div>
+                                <style>
+                                /* Optional: Add a border or styling for the scrollable area */
+                                    .notify::-webkit-scrollbar {
+                                        width: 4px; /* Width of the vertical scrollbar */
+                                        height: 4px; /* Height of the horizontal scrollbar */
+                                    }
+
+                                    .notify::-webkit-scrollbar-thumb {
+                                        background-color: #36b9cc;
+                                        border-radius: 10px;
+                                        height: 5px; /* Minimum height for the scrollbar thumb */
+                                    }
+
+                                    .notify::-webkit-scrollbar-thumb:hover {
+                                        background-color: #555;
+                                    }
+                                </style>
+                            </div>
                         </div>
                         <!-- Profile Name and Picture -->
                         <div class="d-flex align-items-center">
@@ -221,7 +319,6 @@ include("../auth/db.php");
                     </div>
                 </div>
                 <!-- End of Topbar -->
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div class="row">
@@ -318,32 +415,54 @@ include("../auth/db.php");
                                                                 <?php endif; ?>
                                                             <div class="contact-info">
                                                                 <p class="mb-1" style="font-size: 15px; font-family: 'Poppins';">
-                                                                    <strong><?php echo htmlspecialchars($contact['company']); ?></strong>
-                                                                    <i class="fas fa-edit" style="font-size: 10px; color: #555; cursor: pointer; margin-left: 10px;" title="Edit"></i>
+                                                                    <strong hidden id="contact_id" data-field="contact"><?php echo htmlspecialchars($contact['contact_id']); ?></strong>
+        
                                                                 </p>
-                                                                <p class="mb-1" style="font-size: 30px; font-weight: bold; font-family: 'Poppins';">
-                                                                    <?php echo htmlspecialchars($contact['name']); ?>
-                                                                    <i class="fas fa-edit" style="font-size: 10px; color: #555; cursor: pointer; margin-left: 10px;" title="Edit"></i>
-                                                                </p>
+                                                                <!-- Company -->
                                                                 <p class="mb-1" style="font-size: 15px; font-family: 'Poppins';">
-                                                                    <?php echo htmlspecialchars($contact['position']); ?>
-                                                                    <i class="fas fa-edit" style="font-size: 10px; color: #555; cursor: pointer; margin-left: 10px;" title="Edit"></i>
+                                                                    <strong id="company" data-field="company"><?php echo htmlspecialchars($contact['company']); ?></strong>
+                                                                    <i class="fas fa-edit edit-icon" data-target="company" style="font-size: 9px; color: #555;"></i>
                                                                 </p>
+
+                                                                <!-- Name -->
+                                                                <p class="mb-1" style="font-size: 30px; font-weight: bold; font-family: 'Poppins';">
+                                                                    <span id="name" data-field="name"><?php echo htmlspecialchars($contact['name']); ?></span>
+                                                                    <i class="fas fa-edit edit-icon" data-target="name" style="font-size: 9px; color: #555;"></i>
+                                                                </p>
+
+                                                                <!-- Position -->
+                                                                <p class="mb-1" style="font-size: 15px; font-family: 'Poppins';">
+                                                                    <span id="position" data-field="position"><?php echo htmlspecialchars($contact['position']); ?></span>
+                                                                    <i class="fas fa-edit edit-icon" data-target="position" style="font-size: 9px; color: #555;"></i>
+                                                                </p>
+
+                                                                <!-- Email -->
                                                                 <div style="height:10px;"></div>
                                                                 <div class="d-flex justify-content-between align-items-center" style="font-size: 14px;">
                                                                     <p class="mb-0" style="font-size: 10px; font-family: 'Poppins';">
-                                                                        <i class="fas fa-envelope" style="font-size: 20px; color: #009394; margin-right: 5px;"></i> 
-                                                                        <?php echo htmlspecialchars($contact['email']); ?>
-                                                                        <i class="fas fa-edit" style="font-size: 10px; color: #555; cursor: pointer; margin-left: 10px;" title="Edit"></i>
+                                                                        <i class="fas fa-envelope" style="font-size: 20px; color: #009394; margin-right: 5px;"></i>
+                                                                        <span id="email" data-field="email"><?php echo htmlspecialchars($contact['email']); ?></span>
+                                                                        <i class="fas fa-edit edit-icon" data-target="email" style="font-size: 9px; color: #555;"></i>
                                                                     </p>
                                                                     <div style="width: 20px;"></div>
                                                                     <p class="mb-0" style="font-size: 10px; font-family: 'Poppins';">
-                                                                        <i class="fas fa-phone-alt" style="font-size: 20px; color: #009394; margin-right: 8px;"></i> 
-                                                                        <?php echo htmlspecialchars($contact['contact_number']); ?>
-                                                                        <i class="fas fa-edit" style="font-size: 10px; color: #555; cursor: pointer; margin-left: 10px;" title="Edit"></i>
+                                                                        <i class="fas fa-phone-alt" style="font-size: 20px; color: #009394; margin-right: 8px;"></i>
+                                                                        <span id="contact_number" data-field="contact_number"><?php echo htmlspecialchars($contact['contact_number']); ?></span>
+                                                                        <i class="fas fa-edit edit-icon" data-target="contact_number" style="font-size: 9px; color: #555;"></i>
                                                                     </p>
                                                                 </div>
                                                             </div>
+                                                            <style>
+                                                            
+                                                                i {
+                                                                    transition: color 0.3s ease, transform 0.3s ease;
+                                                                    cursor: pointer;
+                                                                }
+                                                                i:hover {
+                                                                    color: #009394; /* Hover color for edit icon */
+                                                                    transform: scale(1.2); /* Slightly enlarge */
+                                                                }
+                                                            </style>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -368,19 +487,19 @@ include("../auth/db.php");
                             <div class="modal-body" style="font-size: 12px;">
                                 <form id="editTaskForm" method="POST"action="dirback/add_contact.php">
                                     <!-- Third Row: Company and Name -->
-                                    <div class="row mb-3">
+                                    <div class="row mb-1">
                                         <div class="col-md-12">
                                             <label for="company" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Company</label>
                                             <input name="companyContact" type="text" style="font-family:'Poppins'; font-size:14px" class="form-control form-control-sm" id="company" placeholder="Enter company name">
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
+                                    <div class="row mb-1">
                                         <div class="col-md-12">
                                             <label for="name" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Name</label>
                                             <input name="nameContact" type="text" style="font-family:'Poppins'; font-size:14px" class="form-control form-control-sm" id="name" placeholder="Enter name">
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
+                                    <div class="row mb-1">
                                         <div class="col-md-6">
                                             <label for="position" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Position</label>
                                             <input name="position" type="text" style="font-family:'Poppins'; font-size:14px" class="form-control form-control-sm" id="position" placeholder="Enter position">
@@ -411,13 +530,11 @@ include("../auth/db.php");
                                     </div>
                                 </form>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
             </div>
             <!-- End of Main Content -->
-
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
@@ -427,10 +544,8 @@ include("../auth/db.php");
                 </div>
             </footer>
             <!-- End of Footer -->
-
         </div>
         <!-- End of Content Wrapper -->
-
     </div>
     <!-- End of Page Wrapper -->
 
@@ -493,14 +608,12 @@ include("../auth/db.php");
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="toogleNav.js"></script>
+    <script src="alerts/notif.js"></script>
+    <script src="alerts/notifCount.js"></script>
+    <script src="notif.js"></script>
+    <script src="current_year.js"></script>
 
-    <script>
-        // Toggle sidebar collapse
-        document.getElementById('sidebarToggle').addEventListener('click', function () {
-            const sidebar = document.getElementById('accordionSidebar');
-            sidebar.classList.toggle('collapsed');
-        });
-    </script>
+    
      <script>
         function togglePopup() {
             const popup = document.getElementById('popup-container');
@@ -579,8 +692,73 @@ include("../auth/db.php");
         });
     </script>
 
+    <script>
+        document.querySelectorAll('.edit-icon').forEach(icon => {
+            icon.addEventListener('click', (event) => {
+                const targetId = event.target.getAttribute('data-target');
+                const targetElement = document.getElementById(targetId);
+                const contactId = document.getElementById('contact_id').textContent; // Get contact_id
 
-    
+                if (targetElement) {
+                    const field = targetElement.getAttribute('data-field');
+                    const currentValue = targetElement.textContent;
+
+                    // Create an input field
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.value = currentValue;
+                    input.className = 'form-control';
+                    input.style.fontSize = 'inherit';
+                    input.style.fontFamily = 'inherit';
+                    input.setAttribute('data-field', field);
+
+                    // Replace the content with the input field
+                    targetElement.replaceWith(input);
+
+                    // Handle blur event to save automatically
+                    input.addEventListener('blur', () => {
+                        const newValue = input.value;
+                        const span = document.createElement('span');
+                        span.id = targetId;
+                        span.setAttribute('data-field', field);
+                        span.textContent = newValue;
+
+                    console.log(`Saving changes for ${field}. New value: "${newValue}"`);
+
+
+                        // Send updated value to the backend
+                        fetch('dirback/update_contact.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                contact_id: contactId, // Include contact_id in the payload
+                                field: field,
+                                value: newValue,
+                            }),
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                alert('Updated Successfully');
+                                if (!data.success) {
+                                    alert('Failed to update. Please try again.');
+                                }
+                            })
+                            .catch(error => console.error('Error:', error));
+
+                        // Replace input with span
+                        input.replaceWith(span);
+                    });
+
+                    // Focus on the input
+                    input.focus();
+                }
+            });
+        });
+    </script>
+
+
 </body>
 
 </html>

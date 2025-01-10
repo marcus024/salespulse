@@ -105,6 +105,9 @@ function saveChanges(scheduleId) {
             } else {
                 disableEditMode(); // Only switch to view mode on success
                 alert("Schedule updated!");
+                setTimeout(function() {
+          window.location.reload(true); // Force reload without using cache
+        }, 500);
             }
         })
         .catch(err => {
