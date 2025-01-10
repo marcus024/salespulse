@@ -1,0 +1,101 @@
+[24-Dec-2024 18:06:37 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\webapp\Director\save.php on line 93
+[24-Dec-2024 18:06:37 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\webapp\Director\save.php:93
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\webapp\Director\save.php on line 93
+[24-Dec-2024 18:07:55 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\webapp\Director\save.php on line 93
+[24-Dec-2024 18:07:55 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\webapp\Director\save.php:93
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\webapp\Director\save.php on line 93
+[24-Dec-2024 18:25:05 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\webapp\Director\save.php on line 30
+[24-Dec-2024 18:25:05 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\webapp\Director\save.php:80
+Stack trace:
+#0 C:\xampp\htdocs\webapp\Director\save.php(30): updateStageOne(NULL, 'UASP75', Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\webapp\Director\save.php on line 80
+[24-Dec-2024 18:28:50 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\webapp\Director\save.php on line 30
+[24-Dec-2024 18:28:50 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\webapp\Director\save.php:80
+Stack trace:
+#0 C:\xampp\htdocs\webapp\Director\save.php(30): updateStageOne(NULL, 'UASP75', Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\webapp\Director\save.php on line 80
+[24-Dec-2024 18:34:09 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\webapp\Director\save.php on line 30
+[24-Dec-2024 18:34:09 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\webapp\Director\save.php:80
+Stack trace:
+#0 C:\xampp\htdocs\webapp\Director\save.php(30): updateStageOne(NULL, 'UASP75', Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\webapp\Director\save.php on line 80
+[24-Dec-2024 18:36:07 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\webapp\Director\save.php on line 34
+[24-Dec-2024 18:36:07 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\webapp\Director\save.php:128
+Stack trace:
+#0 C:\xampp\htdocs\webapp\Director\save.php(34): updateStageTwo(NULL, 'UASP75', Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\webapp\Director\save.php on line 128
+[24-Dec-2024 18:41:10 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\webapp\Director\save.php on line 30
+[24-Dec-2024 18:41:10 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\webapp\Director\save.php:80
+Stack trace:
+#0 C:\xampp\htdocs\webapp\Director\save.php(30): updateStageOne(NULL, 'UASP75', Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\webapp\Director\save.php on line 80
+[24-Dec-2024 18:43:11 Europe/Berlin] Error: Missing required parameters: 'step' or 'project_unique_id'
+[24-Dec-2024 18:43:19 Europe/Berlin] Error: Missing required parameters: 'step' or 'project_unique_id'
+[24-Dec-2024 18:44:36 Europe/Berlin] Error: Missing required fields: 'step' or 'project_unique_id'.
+[24-Dec-2024 18:44:40 Europe/Berlin] Error: Missing required fields: 'step' or 'project_unique_id'.
+[24-Dec-2024 18:44:52 Europe/Berlin] Error: Missing required fields: 'step' or 'project_unique_id'.
+[24-Dec-2024 18:47:29 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\webapp\Director\save.php on line 30
+[24-Dec-2024 18:47:29 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\webapp\Director\save.php:80
+Stack trace:
+#0 C:\xampp\htdocs\webapp\Director\save.php(30): updateStageOne(NULL, 'UASP75', Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\webapp\Director\save.php on line 80
+[24-Dec-2024 18:53:42 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\webapp\Director\save.php on line 23
+[24-Dec-2024 18:53:42 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\webapp\Director\save.php:65
+Stack trace:
+#0 C:\xampp\htdocs\webapp\Director\save.php(23): handleStageOne(NULL, 'UASP75', Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\webapp\Director\save.php on line 65
+Error: Stage One Update Failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'salespulsedb.stageone_requirements' doesn't exist
+[24-Dec-2024 19:05:35 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 96
+[24-Dec-2024 19:06:36 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 96
+Error: Stage One Update Failed: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'stageone_id' cannot be null
+[24-Dec-2024 19:15:15 Europe/Berlin] PHP Warning:  Undefined variable $pdo in C:\xampp\htdocs\webapp\Director\save.php on line 128
+[24-Dec-2024 19:15:15 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\webapp\Director\save.php:128
+Stack trace:
+#0 C:\xampp\htdocs\webapp\Director\save.php(34): updateStageTwo(Object(PDO), 'UASP75', Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\webapp\Director\save.php on line 128
+[24-Dec-2024 19:20:18 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 92
+[25-Dec-2024 07:51:54 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 92
+[25-Dec-2024 07:54:04 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 92
+[25-Dec-2024 07:57:59 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 91
+[25-Dec-2024 07:58:46 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 91
+[25-Dec-2024 07:59:55 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 91
+[25-Dec-2024 08:00:16 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 91
+[25-Dec-2024 08:01:24 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 91
+[25-Dec-2024 08:03:59 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 95
+[25-Dec-2024 08:07:26 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 91
+[25-Dec-2024 08:12:11 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 96
+[25-Dec-2024 08:13:07 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 96
+[25-Dec-2024 08:14:43 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 96
+[25-Dec-2024 08:14:49 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 96
+[25-Dec-2024 08:15:03 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 96
+[25-Dec-2024 08:15:08 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 96
+[25-Dec-2024 08:16:27 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 96
+[25-Dec-2024 08:19:54 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 96
+[25-Dec-2024 08:21:28 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 96
+[25-Dec-2024 08:23:41 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 96
+[25-Dec-2024 08:24:12 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 96
+[25-Dec-2024 08:26:27 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 105
+[25-Dec-2024 08:29:06 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\save.php on line 96
+[26-Dec-2024 05:53:09 Europe/Berlin] PHP Warning:  foreach() argument must be of type array|object, string given in C:\xampp\htdocs\webapp\Director\complete.php on line 89
+[29-Dec-2024 14:16:58 Europe/Berlin] Empty requirement_two for Project ID UASP97. Skipping insert.
+[29-Dec-2024 14:16:58 Europe/Berlin] Empty requirement_two for Project ID UASP97. Skipping insert.
+[29-Dec-2024 14:16:58 Europe/Berlin] Missing project_unique_id, stagetwo_id, or engagement_type for engagement. Skipping insert.
+[29-Dec-2024 14:16:58 Europe/Berlin] Missing project_unique_id, stagetwo_id, or engagement_type for engagement. Skipping insert.
+[29-Dec-2024 14:19:44 Europe/Berlin] Empty requirement_two for Project ID UASP97. Skipping insert.
+[29-Dec-2024 14:19:44 Europe/Berlin] Empty requirement_two for Project ID UASP97. Skipping insert.
+[29-Dec-2024 14:19:44 Europe/Berlin] Missing project_unique_id or engagement_type for engagement. Skipping insert.
+[29-Dec-2024 14:19:44 Europe/Berlin] Missing project_unique_id or engagement_type for engagement. Skipping insert.
+[29-Dec-2024 18:35:01 Europe/Berlin] Empty requirement at index 0 for Project ID UASP93. Skipping insert.
+[29-Dec-2024 18:35:01 Europe/Berlin] Empty upsell at index 0 for Project ID UASP93. Skipping insert.
