@@ -157,7 +157,7 @@ include_once('../auth/db.php');
             
             <li class="nav-item footer">
                 <span class="powered-by">Powered by</span>
-                <span class="company-name">Workforce Management</span><br>
+                <span class="company-name">WORKFORCE NEXTGEN</span><br>
                 <span>&copy; <span id="current-year"></span></span>
             </li>
         </ul>
