@@ -49,7 +49,7 @@ $(document).ready(function () {
             },
             error: function (xhr, status, error) {
                 console.error("Failed to fetch tasks:", error);
-                alert("An error occurredvhghgf loading tasks.");
+                alert("This is a test!");
             }
         });
     }
