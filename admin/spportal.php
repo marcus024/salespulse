@@ -211,22 +211,22 @@ include("../auth/db.php");
                                     </div>
                                     <div class="col">
                                         <div class="dropdown">
-                                            <button class="btn dropdown-card w-100 dropdown-toggle" type="button" id="usersDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fas fa-users card-icon"></i>
+                                            <button class="btn dropdown-card w-100 dropdown-toggle text-truncate" type="button" id="usersDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <img src="../images/user.png" style="height:30px; width:30px;" alt="month">
                                                 <div class="card-content">
                                                     <div class="card-title">Users</div>
-                                                    <div class="card-number" id="selected-user">Select</div>
+                                                    <div class="card-number text-truncate" id="selected-user" title="Select">Select</div>
                                                 </div>
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="usersDropdown" id="usersDropdownMenu">
-                                                
+                                                <!-- Dropdown items will be dynamically added here -->
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="dropdown">
                                             <button class="btn dropdown-card w-100 dropdown-toggle" type="button" id="usersDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fas fa-list card-icon"></i>
+                                                <img src="../images/project.png" style="height:30px; width:30px;" alt="month">
                                                 <div class="card-content">
                                                     <div class="card-title">Projects</div>
                                                     <div class="card-number" id="selected-user">Select </div>
@@ -241,7 +241,7 @@ include("../auth/db.php");
                                     <div class="col">
                                         <div class="dropdown">
                                             <button class="btn dropdown-card w-100 dropdown-toggle" type="button" id="monthsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fas fa-calendar-alt card-icon"></i>
+                                                <img src="../images/month.png" style="height:30px; width:30px;" alt="month">
                                                 <div class="card-content">
                                                     <div class="card-title">Months</div>
                                                     <div class="card-number" id="selected-month">Select </div>

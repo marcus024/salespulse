@@ -212,6 +212,7 @@ try {
     exit;
 }
 
+//Return fetched data to frontend
 $response = [
     'totalUsers'    => $totalUsers,
     'totalProjects' => $totalProjects,
