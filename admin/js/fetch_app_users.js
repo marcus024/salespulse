@@ -2,7 +2,7 @@
 $(document).ready(function() {
   // When the page loads, fetch the app users
   $.ajax({
-    url: 'x-nd/fetchAppUsers.php',  // <-- Path to your new PHP script
+    url: 'x-nd/fetch_app_users.php',  // <-- Path to your new PHP script
     type: 'GET', 
     dataType: 'json',
     success: function(response) {
