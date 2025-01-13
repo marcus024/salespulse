@@ -308,7 +308,11 @@ include("../auth/db.php");
                                                         <style>
                                                             .th{
                                                                 font-size:15px;
+
                                                                 
+                                                            }
+                                                            .td{
+                                                                font-size:12px;
                                                             }
                                                         </style>
                                                     </div>
