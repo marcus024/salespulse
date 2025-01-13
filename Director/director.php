@@ -1808,7 +1808,7 @@ include("../auth/db.php");
     <!-- Page level custom scripts -->
     <script src="../js/demo/datatables-demo.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="openModal.js"></script>
+    <script src="./openModal.js"></script>
     <script src="toogleNav.js"></script>
     <script src="dirback/schedule/sched.js"></script>
     <script src="dirback/schedule/fetchSched.js"></script>
