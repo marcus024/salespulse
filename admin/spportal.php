@@ -317,7 +317,6 @@ include("../auth/db.php");
                                                                 <th>Last&nbsp;Name</th>
                                                                 <th>Company</th>
                                                                 <th>User&nbsp;ID</th>
-                                                                <th>Peak&nbsp;ID</th>
                                                                 <th>Peak&nbsp;User</th>
                                                                 <th>Logged&nbsp;In</th>
                                                             </tr>
