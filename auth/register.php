@@ -330,8 +330,6 @@
                         <option value="unithead">Business Unit Head</option>
                         <option value="salesmanager">Sales Manager</option>
                         <option value="accountmanager">Account Manager</option>
-                        <option value="portal">Portal Manager</option>
-                        <option value="central">Central Manager</option>
                     </select>
                 </div>
             </div>
