@@ -8,7 +8,7 @@
         doc.text("App Users", 14, 20);
 
         // Fetch the table
-        const table = document.getElementById("projectTable");
+        const table = document.getElementById("appUserTable");
 
         // Parse table data for autoTable
         const data = [];
@@ -43,7 +43,7 @@
 
     // Export to CSV
     function exportToCSV() {
-        const table = document.getElementById("projectTable");
+        const table = document.getElementById("appUserTable");
         const rows = Array.from(table.rows).map(row =>
             Array.from(row.cells).map(cell => cell.innerText)
         );
@@ -58,7 +58,7 @@
         const encodedUri = encodeURI(csvContent);
         const link = document.createElement("a");
         link.setAttribute("href", encodedUri);
-        link.setAttribute("download", "ProjectLists.csv");
+        link.setAttribute("download", "App Users.csv");
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -66,7 +66,7 @@
 
     // Export to Excel
     function exportToExcel() {
-        const table = document.getElementById("projectTable");
+        const table = document.getElementById("appUserTable");
 
         // Convert HTML table to an array of arrays
         const rows = Array.from(table.rows).map(row =>
@@ -86,7 +86,7 @@
 
     // Print Table
     function printTable() {
-        const printContent = document.getElementById("projectTable").outerHTML;
+        const printContent = document.getElementById("appUserTable").outerHTML;
         const newWindow = window.open("", "", "width=800,height=600");
         newWindow.document.write("<html><head><title>App Users</title></head><body>");
         newWindow.document.write(printContent);
