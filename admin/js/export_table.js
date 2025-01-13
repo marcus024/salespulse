@@ -5,7 +5,7 @@
 
         // Add title to the PDF
         doc.setFontSize(16);
-        doc.text("Project Lists", 14, 20);
+        doc.text("App Users", 14, 20);
 
         // Fetch the table
         const table = document.getElementById("projectTable");
@@ -38,7 +38,7 @@
         });
 
         // Save the PDF
-        doc.save("ProjectLists.pdf");
+        doc.save("App Users.pdf");
     }
 
     // Export to CSV
@@ -81,14 +81,14 @@
         XLSX.utils.book_append_sheet(workbook, worksheet, "Project Lists");
 
         // Write file
-        XLSX.writeFile(workbook, "ProjectLists.xlsx");
+        XLSX.writeFile(workbook, "App Users.xlsx");
     }
 
     // Print Table
     function printTable() {
         const printContent = document.getElementById("projectTable").outerHTML;
         const newWindow = window.open("", "", "width=800,height=600");
-        newWindow.document.write("<html><head><title>Project Lists</title></head><body>");
+        newWindow.document.write("<html><head><title>App Users</title></head><body>");
         newWindow.document.write(printContent);
         newWindow.document.write("</body></html>");
         newWindow.document.close();
