@@ -22,17 +22,17 @@
         fetch(`./dirback/openModaldata.php?project_id=${projectId}`)
   .then(response => {
     console.log("HTTP status:", response.status);
+    // If not in 2xx range
     if (!response.ok) {
       throw new Error(`HTTP Error: ${response.status}`);
     }
-    return response.text(); // <-- see raw text instead of .json()
+    return response.text(); // <-- get raw text
   })
   .then(rawText => {
     console.log("Raw response text:", rawText);
-
-    // Try to parse it manually to confirm it's valid JSON:
+    // If you see HTML, that’s the root cause
     try {
-      const data = JSON.parse(rawText);
+      const data = JSON.parse(rawText); // parse manually
       console.log("Parsed data:", data);
     } catch (parseErr) {
       console.error("JSON parse error:", parseErr);
@@ -42,6 +42,7 @@
     console.error("Caught error:", error);
     alert("Something went wrong: " + error.message);
   });
+
 
     }
 
