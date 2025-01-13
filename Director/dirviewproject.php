@@ -11,7 +11,7 @@ include_once('dirback/dirviewback.php');
     <meta name="author" content="">
     <title>SALES PULSE</title>
     <!-- Custom fonts for this template -->
-<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -19,6 +19,87 @@ include_once('dirback/dirviewback.php');
 <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 <!-- Custom styles for this page (if needed) -->
 <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<!-- Modal Font Size -->
+ <style>
+    .step {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .step-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: white;
+        color: #36b9cc;
+        font-size: 20px;
+        font-family: 'Poppins';
+        font-weight : 700px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #36b9cc;
+    }
+    .step-line {
+        flex: 1;
+        height: 2px;
+        background: #ddd;
+    }
+    .step-circle.active {
+        background: #36b9cc;
+        color: #fff;
+        border-color: #36b9cc;
+    }
+    .step-line.active {
+        background: #36b9cc;
+    }
+    .step-circle.completed {
+        background: #36b9cc;
+        color: #fff;
+        border-color: #36b9cc;
+        font-size: 24px; /* Adjust the font size for the check mark */
+    }
+    .form-label, .btn {
+        font-size: 12px;
+        color:white;
+        font-family: 'Poppins'
+    }
+    .modal-title{
+        color:black;
+        font-size: 15px;
+        font-weight: 600px;
+        font-family: 'Poppins'
+    }
+    input, select {
+        font-size: 12px;
+        color:#555;
+        font-family: 'Poppins';
+    }
+    #multiStepModal .modal-dialog {
+        max-width: 800px; /* Increased width */
+    }
+    #multiStepModal .form-container {
+        background-color: #009393;
+        padding: 20px;
+        border-radius: 8px;
+    }
+    #multiStepModal .stage-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #fff;
+        margin-bottom: 20px;
+        text-align: center;
+        font-family: 'Poppins';
+    }
+    #multiStepModal .sales-pulse {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        font-size: 1rem;
+        color: #555;
+    }
+</style>
+
 
     <style>
         /* Set Poppins as the default font for the entire document */
