@@ -58,15 +58,15 @@
                     // document.getElementById('stage-five-spr').value = data.stages.stage_five.sprNum || 'No Data';
 
                     // Navigate to the current stage
-                    const currentStage = data.current_stage;
-                    if (currentStage) {
-                        const stageNumber = parseInt(currentStage.split(' ')[1]); // Extract stage number
-                        currentStage = stageNumber;
-                        markCompletedSteps(stageNumber); // Mark previous steps as completed
-                        showStep(stageNumber); // Show the current step
-                    } else {
-                        console.warn("No current stage data found.");
-                    }
+                    // const currentStage = data.current_stage;
+                    // if (currentStage) {
+                    //     const stageNumber = parseInt(currentStage.split(' ')[1]); // Extract stage number
+                    //     currentStage = stageNumber;
+                    //     markCompletedSteps(stageNumber); // Mark previous steps as completed
+                    //     showStep(stageNumber); // Show the current step
+                    // } else {
+                    //     console.warn("No current stage data found.");
+                    // }
                 } else {
                     console.error('Error:', data.message);
                     console.error('API Error:', data.message);
