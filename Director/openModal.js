@@ -20,66 +20,29 @@
 
         // Fetch project details, including current stage, from the backend
         fetch(`./dirback/openModaldata.php?project_id=${projectId}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP Error: ${response.status}`);
-                }
-                alert("Successfully fetched data from server!");
-                return response.json();
-                
-            })
-            .then(data => {
-                // Check our JSON
-                console.log("Data from server:", data);
-                
-                if (data.status === 'success') {
-                    alert("Successful Fetch");
-                    // Populate modal fields with project data
-                    // document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
-                    // document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || 'No Data';
-                    // document.getElementById('status-placeholder').value     = data.stages.stage_one.status     || 'No Data';
+  .then(response => {
+    console.log("HTTP status:", response.status);
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status}`);
+    }
+    return response.text(); // <-- see raw text instead of .json()
+  })
+  .then(rawText => {
+    console.log("Raw response text:", rawText);
 
-                    // document.getElementById('project-unique-id').value = projectId || 'No Data';
-                    // document.getElementById('client-name').textContent = data.company_name || 'No Data';
+    // Try to parse it manually to confirm it's valid JSON:
+    try {
+      const data = JSON.parse(rawText);
+      console.log("Parsed data:", data);
+    } catch (parseErr) {
+      console.error("JSON parse error:", parseErr);
+    }
+  })
+  .catch(error => {
+    console.error("Caught error:", error);
+    alert("Something went wrong: " + error.message);
+  });
 
-                    // // Populate all stage data
-                    // document.getElementById('stage-two-start').value  = data.stages.stage_two.start_date || 'No Data';
-                    // document.getElementById('stage-two-end').value    = data.stages.stage_two.end_date   || 'No Data';
-                    // document.getElementById('stage-two-status').value = data.stages.stage_two.status     || 'No Data';
-
-                    // document.getElementById('stage-three-start').value  = data.stages.stage_three.start_date || 'No Data';
-                    // document.getElementById('stage-three-end').value    = data.stages.stage_three.end_date   || 'No Data';
-                    // document.getElementById('stage-three-status').value = data.stages.stage_three.status     || 'No Data';
-
-                    // document.getElementById('stage-four-start').value  = data.stages.stage_four.start_date || 'No Data';
-                    // document.getElementById('stage-four-end').value    = data.stages.stage_four.end_date   || 'No Data';
-                    // document.getElementById('stage-four-status').value = data.stages.stage_four.status     || 'No Data';
-
-                    // document.getElementById('stage-five-start').value = data.stages.stage_five.start_date || 'No Data';
-                    // document.getElementById('stage-five-end').value = data.stages.stage_five.end_date || 'No Data';
-                    // document.getElementById('stage-five-status').value = data.stages.stage_five.status || 'No Data';
-                    // document.getElementById('stage-five-spr').value = data.stages.stage_five.sprNum || 'No Data';
-
-                    // Navigate to the current stage
-                    // const currentStage = data.current_stage;
-                    // if (currentStage) {
-                    //     const stageNumber = parseInt(currentStage.split(' ')[1]); // Extract stage number
-                    //     currentStage = stageNumber;
-                    //     markCompletedSteps(stageNumber); // Mark previous steps as completed
-                    //     showStep(stageNumber); // Show the current step
-                    // } else {
-                    //     console.warn("No current stage data found.");
-                    // }
-                } else {
-                    console.error('Error:', data.message);
-                    console.error('API Error:', data.message);
-                    alert('Waray data: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-                alert('Project ID is Missing');
-            });
     }
 
     // Function to mark completed steps
