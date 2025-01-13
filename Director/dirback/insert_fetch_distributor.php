@@ -1,4 +1,13 @@
 <?php
+// insertDistributor.php
+
+session_start();
+
+// Set response type
+header('Content-Type: application/json');
+
+// Include the database connection
+include('../../auth/db.php');
 
 // Ensure the request is a POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
