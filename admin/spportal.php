@@ -305,6 +305,12 @@ include("../auth/db.php");
                                                             </thead>
                                                             <tbody><!-- Rows will be appended by JS --></tbody>
                                                         </table>
+                                                        <style>
+                                                            .th{
+                                                                font-size:15px;
+                                                                
+                                                            }
+                                                        </style>
                                                     </div>
                                                 </div>
                                             </div>
