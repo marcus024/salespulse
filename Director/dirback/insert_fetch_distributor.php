@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $newDistributor = trim($_POST['distributor']);
 
         // Retrieve the current user's ID and company from the session
-        $currentUserId   = $_SESSION['user_id']   ?? '';
+        $currentUserId   = $_SESSION['user_id_c']   ?? '';
         $currentCompany  = $_SESSION['company']   ?? '';
 
         if (empty($currentUserId) || empty($currentCompany)) {
