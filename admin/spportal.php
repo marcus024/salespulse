@@ -393,6 +393,7 @@ include("../auth/db.php");
     <script src="js/peak_user.js"></script>
     <script src="js/fetch_app_users.js"></script>
     <script src="js/export_table.js"></script>
+    <script src="js/search_item.js"></script>
     
 </body>
 </html>
