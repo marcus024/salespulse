@@ -308,7 +308,7 @@ include("../auth/db.php");
                                                         <style>
                                                         /* Target the table header cells */
                                                         #appUserTable thead th {
-                                                            font-size: 15px;
+                                                            font-size: 12px;
                                                         }
 
                                                         /* Target the table body cells */
