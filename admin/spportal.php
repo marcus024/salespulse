@@ -281,16 +281,30 @@ include("../auth/db.php");
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12"> <!-- Adjust the column size as needed -->
+                                            <div class="col-md-12">
                                                 <div class="card shadow mb-4">
                                                     <div class="card-header py-2 d-flex justify-content-between align-items-center">
-                                                        <!-- Header Title -->
-                                                        <h6 class="m-0 font-weight-bold" style="color:#36b9cc;">Peak Users per Day</h6>
-                                                        <!-- Optional: Add an icon or button in the header -->
+                                                        <h6 class="m-0 font-weight-bold" style="color:#36b9cc;">App User</h6>
                                                         <i class="fas fa-chart-line" style="color:#36b9cc;"></i>
                                                     </div>
                                                     <div class="card-body">
-                                                        <canvas id="peakUsersChart" width="400" height="100"></canvas>
+                                                    <!-- We will insert our table here -->
+                                                        <table id="appUserTable" class="table table-bordered">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>First&nbsp;Name</th>
+                                                                <th>Last&nbsp;Name</th>
+                                                                <th>Company</th>
+                                                                <th>User&nbsp;ID</th>
+                                                                <th>Peak&nbsp;ID</th>
+                                                                <th>Peak&nbsp;User</th>
+                                                                <th>Logged&nbsp;In</th>
+                                                                <th>Image</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody><!-- Rows will be appended by JS --></tbody>
+                                                        </table>
                                                     </div>
                                                 </div>
                                             </div>
@@ -348,7 +362,7 @@ include("../auth/db.php");
     <script src="../Director/toogleNav.js"></script>
     <script src="js/peak.js"></script>
     <script src="js/peak_user.js"></script>
-    
+    <script src="js/fetch_app_users.js"></script>
     
 </body>
 </html>
