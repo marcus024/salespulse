@@ -76,7 +76,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'start_date' => $result['start_date_stage_five'],
                         'end_date' => $result['end_date_stage_five'],
                         'status' => $result['status_stage_five'],
-                        'sprNum' => $sprNum
+                        // 'sprNum' => $sprNum
                     ]
                 ]
             ]);
