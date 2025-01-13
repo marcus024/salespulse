@@ -2,6 +2,8 @@
 include('../../auth/db.php');
 
 header('Content-Type: application/json');
+echo json_encode(["test" => "OK"]);
+
 
 if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
     $project_id = $_GET['project_id'];
