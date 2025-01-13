@@ -12,7 +12,7 @@ $(document).ready(function() {
         const rows = response.data;
 
         // Clear any existing rows
-        $('#appUserTable tbody').empty();
+        $('#projectTable tbody').empty();
 
         // Loop through each row and append to table
         rows.forEach(function(row) {
