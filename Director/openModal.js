@@ -24,6 +24,7 @@
                 if (!response.ok) {
                     throw new Error(`HTTP Error: ${response.status}`);
                 }
+                alert("Successfully fetched data from server!");
                 return response.json();
                 
             })
