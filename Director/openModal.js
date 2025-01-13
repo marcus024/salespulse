@@ -18,26 +18,95 @@
         // Update the display in all steps
         updateProjectIdDisplay(projectId);
 
-        // Fetch project details, including current stage, from the backend
         fetch(`./dirback/openModaldata.php?project_id=${projectId}`)
   .then(response => {
-    console.log("HTTP status:", response.status);
-    // If not in 2xx range
     if (!response.ok) {
       throw new Error(`HTTP Error: ${response.status}`);
     }
-    return response.text(); // <-- get raw text
+    alert("Successfully fetched data from server!");
+    return response.text(); // <--- get raw text instead of .json()
   })
   .then(rawText => {
-    console.log("Raw response text:", rawText);
-    // If you see HTML, that’s the root cause
-   
+    console.log("Raw text response:", rawText);
+
+    // Attempt to parse the raw text as JSON
+    let data;
+    try {
+      data = JSON.parse(rawText);
+    } catch (error) {
+      console.error("Failed to parse JSON:", error);
+      alert("The response is not valid JSON. See console for details.");
+      return; // Stop here if parsing fails
+    }
+
+    // Now 'data' is our parsed JSON object
+    if (data.status === 'success') {
+      alert("Successful Fetch");
+
+      // Populate modal fields with project data
+      document.getElementById('start-date-placeholder').value =
+        data.stages.stage_one.start_date || 'No Data';
+      document.getElementById('end-date-placeholder').value =
+        data.stages.stage_one.end_date || 'No Data';
+      document.getElementById('status-placeholder').value =
+        data.stages.stage_one.status || 'No Data';
+
+      document.getElementById('project-unique-id').value =
+        data.project_id || 'No Data';
+      document.getElementById('client-name').textContent =
+        data.company_name || 'No Data';
+
+      // Populate all stage data
+      document.getElementById('stage-two-start').value =
+        data.stages.stage_two.start_date || 'No Data';
+      document.getElementById('stage-two-end').value =
+        data.stages.stage_two.end_date || 'No Data';
+      document.getElementById('stage-two-status').value =
+        data.stages.stage_two.status || 'No Data';
+
+      document.getElementById('stage-three-start').value =
+        data.stages.stage_three.start_date || 'No Data';
+      document.getElementById('stage-three-end').value =
+        data.stages.stage_three.end_date || 'No Data';
+      document.getElementById('stage-three-status').value =
+        data.stages.stage_three.status || 'No Data';
+
+      document.getElementById('stage-four-start').value =
+        data.stages.stage_four.start_date || 'No Data';
+      document.getElementById('stage-four-end').value =
+        data.stages.stage_four.end_date || 'No Data';
+      document.getElementById('stage-four-status').value =
+        data.stages.stage_four.status || 'No Data';
+
+      document.getElementById('stage-five-start').value =
+        data.stages.stage_five.start_date || 'No Data';
+      document.getElementById('stage-five-end').value =
+        data.stages.stage_five.end_date || 'No Data';
+      document.getElementById('stage-five-status').value =
+        data.stages.stage_five.status || 'No Data';
+      document.getElementById('stage-five-spr').value =
+        data.stages.stage_five.sprNum || 'No Data';
+
+      // Navigate to the current stage
+      const currentStage = data.current_stage;
+      if (currentStage) {
+        const stageNumber = parseInt(currentStage.split(' ')[1]); // e.g. "Stage 3" => 3
+        currentStep = stageNumber;
+        markCompletedSteps(stageNumber);
+        showStep(stageNumber);
+      } else {
+        console.warn("No current stage data found.");
+      }
+    } else {
+      console.error('Error:', data.message);
+      console.error('API Error:', data.message);
+      alert('Waray data: ' + data.message);
+    }
   })
   .catch(error => {
-    console.error("Caught error:", error);
-    alert("Something went wrong: " + error.message);
+    console.error('Error fetching data:', error);
+    alert('Project ID is Missing');
   });
-
 
     }
 
