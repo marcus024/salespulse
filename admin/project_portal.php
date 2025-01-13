@@ -314,7 +314,6 @@ include("../auth/db.php");
                                                                 <thead>
                                                                 <tr>
                                                                     <th>Project ID</th>
-                                                                    <th>Project Owner</th>
                                                                     <th>Client Name/Company</th>
                                                                     <th>Account Manager</th>
                                                                     <th>Product Type</th>

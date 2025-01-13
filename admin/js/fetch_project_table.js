@@ -15,7 +15,6 @@
             let rowHtml = `
               <tr>
                 <td>${escapeHtml(project.project_unique_id)}</td>
-                <td>${escapeHtml(project.project_owner)}</td>
                 <td>${escapeHtml(project.client_name)}</td>
                 <td>${escapeHtml(project.account_manager)}</td>
                 <td>${escapeHtml(project.product_type)}</td>
