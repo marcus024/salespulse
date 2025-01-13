@@ -19,7 +19,7 @@
         updateProjectIdDisplay(projectId);
 
         // Fetch project details, including current stage, from the backend
-        fetch(`dirback/openModaldata.php?project_id=${project_id}`)
+        fetch(`openModaldata.php?project_id=${project_id}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP Error: ${response.status}`);
