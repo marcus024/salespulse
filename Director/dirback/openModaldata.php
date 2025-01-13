@@ -8,7 +8,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
 
     try {
         $sql = "SELECT 
-                    projecttb.project_unique_id AS project_id
+                    projecttb.project_unique_id AS project_id,
                     projecttb.company_name,
                     projecttb.current_stage,
                     stagefive.SPR_number,
