@@ -26,6 +26,11 @@ include_once('dirback/dirviewback.php');
             font-family: 'Poppins', sans-serif;
         }
 
+        input, select {
+                    font-size: 12px;
+                    color:#555;
+                    font-family: 'Poppins';
+                }
         body.fade-out {
         opacity: 10;
         transition: opacity 0.5s ease;
