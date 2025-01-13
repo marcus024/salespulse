@@ -59,19 +59,19 @@ include("../auth/db.php");
             <!-- Divider -->
             <hr class="sidebar-divider my-2">
             <!-- Nav Items -->
-            <li class="nav-item active" >
+            <li class="nav-item " >
                 <a class="nav-link selected " href="spportal.php" style="border-radius:10px;padding-left:10px;">
                     <i class="fas fa-fw fa-home"></i>
                     <span style="font-size:13px; font-family:'Poppins';">Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item " >
+            <li class="nav-item active" >
                 <a class="nav-link" href="project_portal" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-calendar-alt" style="white"></i>
                     <span style="font-size:13px; font-family:'Poppins';">Projects</span>
                 </a>
             </li>
-            <li class="nav-item" >
+            <li class="nav-item " >
                 <a class="nav-link" href="contacts_portal" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-address-book"></i>
                     <span style="font-size:13px; font-family:'Poppins';">Contacts</span>
