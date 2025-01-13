@@ -36,7 +36,7 @@
                     document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || 'No Data';
                     document.getElementById('status-placeholder').value     = data.stages.stage_one.status     || 'No Data';
 
-                    document.getElementById('project-unique-id').value = projectId || 'No Data';
+                    document.getElementById('project-unique-id').value = data.project_id || 'No Data';
                     document.getElementById('client-name').textContent = data.company_name || 'No Data';
 
                     // Populate all stage data
@@ -55,7 +55,7 @@
                     document.getElementById('stage-five-start').value = data.stages.stage_five.start_date || 'No Data';
                     document.getElementById('stage-five-end').value = data.stages.stage_five.end_date || 'No Data';
                     document.getElementById('stage-five-status').value = data.stages.stage_five.status || 'No Data';
-                    // document.getElementById('stage-five-spr').value = data.stages.stage_five.sprNum || 'No Data';
+                    document.getElementById('stage-five-spr').value = data.stages.stage_five.sprNum || 'No Data';
 
                     // Navigate to the current stage
                     // const currentStage = data.current_stage;
