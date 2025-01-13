@@ -181,15 +181,16 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
-                                                     <div class="mb-2">
-                                                        <label for="technology" class="form-label text-white">Distributor</label>
-                                                        <select name="distributor" class="form-control custom-select" >
-                                                            <option disabled >Select</option>
-                                                            <option value="Ardent1">Ardent1</option>
-                                                            <option value="Ardent1">Ardent2</option>
-                                                            <option value="Ardent1">Ardent3</option>
-                                                        </select>
-                                                    </div>
+                                                    <div class="mb-2">
+  <label for="distributor" class="form-label text-white">Distributor</label>
+  <select name="distributor" id="distributorSelect" class="form-control custom-select">
+    <option disabled selected>Select</option>
+    <!-- Existing options can be removed or loaded dynamically -->
+    <!-- Special option for adding new distributor -->
+    <option value="add_new">+ Add New Distributor...</option>
+  </select>
+</div>
+
                                                     <div class="mb-2">
                                                         <label for="product" class="form-label text-white">Product</label>
                                                         <select name="product" class="form-control custom-select">
