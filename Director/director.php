@@ -1818,8 +1818,8 @@ include("../auth/db.php");
     <script src="dirback/to-do/load_task.js"></script>
     <script src="alerts/notif.js"></script>
     <script src="current_year.js"></script>
+    <script src="insert_fetch_distributor.js"></script>
     
-
     
     <!-- Table Export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>

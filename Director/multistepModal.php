@@ -1852,43 +1852,5 @@
             });
         </script>
         
- <script>
-  // Assume you already have code to detect that the "add_new" option was selected.
-  // Here is an example using a prompt to get the new distributor from the user.
-  $('#distributorSelect').on('change', function() {
-    if ($(this).val() === 'add_new') {
-      let newDistributor = prompt("Enter the new distributor:");
-      if (newDistributor && newDistributor.trim() !== "") {
-        // Post the new distributor to the backend
-        $.ajax({
-          url: './dirback/insertDistributor.php',
-          type: 'POST',
-          dataType: 'json',
-          data: { distributor: newDistributor.trim() },
-          success: function(response) {
-            if (response.status === 'success') {
-              // Add the new distributor as an option (before the special option)
-              $('#distributorSelect').find('option[value="add_new"]').before(
-                `<option value="${response.distributor}">${response.distributor}</option>`
-              );
-              // Set the select to the new distributor
-              $('#distributorSelect').val(response.distributor);
-              alert(response.message);
-            } else {
-              alert("Error: " + response.message);
-              // Optionally reset the selection
-              $('#distributorSelect').val("");
-            }
-          },
-          error: function(xhr, status, error) {
-            alert("An error occurred: " + error);
-          }
-        });
-      } else {
-        // Reset the select if nothing valid was entered
-        $(this).val("");
-      }
-    }
-  });
-</script>
+ 
 
