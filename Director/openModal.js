@@ -1,4 +1,4 @@
-  function openModal(project_id) {
+  function openModal(projectsID) {
         // Check if projectId is valid before proceeding
         console.log("Received Project ID:", projectId);
         if (!projectId) {
@@ -19,7 +19,7 @@
         updateProjectIdDisplay(projectId);
 
         // Fetch project details, including current stage, from the backend
-        fetch(`openModaldata.php?project_id=${project_id}`)
+        fetch(`dirback/openModaldata.php?project_id=${projectsID}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP Error: ${response.status}`);
