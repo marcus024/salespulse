@@ -31,12 +31,7 @@
   .then(rawText => {
     console.log("Raw response text:", rawText);
     // If you see HTML, that’s the root cause
-    try {
-      const data = JSON.parse(rawText); // parse manually
-      console.log("Parsed data:", data);
-    } catch (parseErr) {
-      console.error("JSON parse error:", parseErr);
-    }
+   
   })
   .catch(error => {
     console.error("Caught error:", error);
