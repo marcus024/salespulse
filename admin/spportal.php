@@ -285,7 +285,27 @@ include("../auth/db.php");
                                                 <div class="card shadow mb-4">
                                                     <div class="card-header py-2 d-flex justify-content-between align-items-center">
                                                         <h6 class="m-0 font-weight-bold" style="color:#36b9cc;">App User</h6>
-                                                        <i class="fas fa-chart-line" style="color:#36b9cc;"></i>
+                                                        <!-- Row to hold the search bar and dropdowns -->
+                                                        <div class="d-flex align-items-center" style="gap: 10px;">
+                                                            <!-- Search Bar -->
+                                                            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search..." 
+                                                                style="font-size: 10px; border: 1px solid #36b9cc; border-radius: 4px; outline: none; width: 200px; height: 30px; margin: 0;">
+                                                            
+                                                            <!-- Dropdown for Export Options -->
+                                                            <div class="btn-group" role="group">
+                                                                <!-- Export Dropdown -->
+                                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
+                                                                        style="font-size: 10px; height: 30px; margin: 0; border:none; background-color:#36b9cc">
+                                                                    Export
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item" href="#" onclick="exportToPDF()">Download PDF</a></li>
+                                                                    <li><a class="dropdown-item" href="#" onclick="exportToExcel()">Download Excel</a></li>
+                                                                    <li><a class="dropdown-item" href="#" onclick="exportToCSV()">Download CSV</a></li>
+                                                                    <li><a class="dropdown-item" href="#" onclick="printTable()">Print</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <div class="card-body">
                                                     <!-- We will insert our table here -->
@@ -374,6 +394,7 @@ include("../auth/db.php");
     <script src="js/peak.js"></script>
     <script src="js/peak_user.js"></script>
     <script src="js/fetch_app_users.js"></script>
+    <script src="js/export_table.js"></script>
     
 </body>
 </html>
