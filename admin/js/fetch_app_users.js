@@ -26,7 +26,6 @@ $(document).ready(function() {
               <td>${escapeHtml(row.peak_id)}</td>
               <td>${escapeHtml(row.peak_user)}</td>
               <td>${escapeHtml(row.logged_in)}</td>
-              <td>${escapeHtml(row.image)}</td>
             </tr>
           `;
           $('#appUserTable tbody').append(htmlRow);

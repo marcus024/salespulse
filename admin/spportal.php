@@ -320,7 +320,6 @@ include("../auth/db.php");
                                                                 <th>Peak&nbsp;ID</th>
                                                                 <th>Peak&nbsp;User</th>
                                                                 <th>Logged&nbsp;In</th>
-                                                                <th>Image</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody><!-- Rows will be appended by JS --></tbody>
