@@ -13,7 +13,7 @@
           response.data.forEach(function(project) {
             // Build a table row
             let rowHtml = `
-              <tr>
+            <tr>
                 <td>${escapeHtml(project.project_unique_id)}</td>
                 <td>${escapeHtml(project.client_name)}</td>
                 <td>${escapeHtml(project.account_manager)}</td>
@@ -22,9 +22,12 @@
                 <td>${escapeHtml(project.current_stage)}</td>
                 <td>${escapeHtml(project.start_date)}</td>
                 <td>${escapeHtml(project.end_date)}</td>
-                <td>${escapeHtml(project.status)}</td>
+                <!-- Use the helper to get color for the 'status' cell -->
+                <td style="color:${getStatusColor(project.status)}">
+                    ${escapeHtml(project.status)}
+                </td>
                 <td>${escapeHtml(project.duration)}</td>
-              </tr>
+            </tr>
             `;
             $('#appUserTable tbody').append(rowHtml);
           });
@@ -50,3 +53,18 @@
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;');
   }
+
+  function getStatusColor(status) {
+  switch (status) {
+    case 'Completed':
+      return 'green';
+    case 'Ongoing':
+      return 'blue';
+    case 'Cancelled':
+      return 'red';
+    case 'Not yet Started':
+      return 'gray';
+    default:
+      return '#000'; // fallback (black)
+  }
+}
