@@ -9,27 +9,36 @@ include('../../auth/db.php');
 $currentUserCompany = $_SESSION['company'] ?? '';
 
 try {
-    // 2. Build the query
-    // If "Project Owner" is the user’s full name, use CONCAT(s.firstname, ' ', s.lastname).
-    // If "Project Owner" is something else, adapt as needed.
+ 
     $sql = "SELECT 
-                p.project_unique_id,
-                CONCAT(s.firstname, ' ', s.lastname) AS project_owner, 
-                p.company_name     AS client_name,
-                p.account_manager,
-                p.product_type,
-                p.start_date,
-                p.end_date,
-                p.source,
-                p.status,
-                p.current_stage,
-                p.client_type,
-                p.created_at,
-                p.duration
-            FROM projecttb AS p
-            JOIN salesauth AS s 
-              ON s.user_id_current = p.user_id_cur
-            WHERE s.company = :company";
+    p.project_unique_id,
+    CONCAT(s.firstname, ' ', s.lastname) AS project_owner, 
+    p.company_name     AS client_name,
+    p.account_manager,
+    p.product_type,
+    p.start_date,
+    p.end_date,
+    p.source,
+    p.status,
+    p.current_stage,
+    p.client_type,
+    p.created_at,
+
+    CASE
+       WHEN p.start_date IS NULL 
+         OR p.start_date = '' 
+         OR p.start_date = 'No Data'
+         OR p.end_date IS NULL 
+         OR p.end_date = '' 
+         OR p.end_date = 'No Data'
+       THEN 'NA'
+       ELSE CONCAT(TIMESTAMPDIFF(DAY, p.start_date, p.end_date), ' days')
+    END AS duration
+FROM projecttb AS p
+JOIN salesauth AS s
+  ON s.user_id_current = p.user_id_cur
+WHERE s.company = :company
+";
 
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':company', $currentUserCompany, PDO::PARAM_STR);
