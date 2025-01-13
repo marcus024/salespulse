@@ -313,12 +313,16 @@ include("../auth/db.php");
                                                             <table id="appUserTable" class="table table-bordered">
                                                                 <thead>
                                                                 <tr>
-                                                                    <th>ID</th>
-                                                                    <th>First&nbsp;Name</th>
-                                                                    <th>Last&nbsp;Name</th>
-                                                                    <th>Company</th>
-                                                                    <th>User&nbsp;ID</th>
-                                                                    <th>Logged&nbsp;In</th>
+                                                                    <th>Project ID</th>
+                                                                    <th>Project Owner</th>
+                                                                    <th>Client Name/Company</th>
+                                                                    <th>Account Manager</th>
+                                                                    <th>Product Type</th>
+                                                                    <th>Source</th>
+                                                                    <th>Current Stage</th>
+                                                                    <th>Start Date</th>
+                                                                    <th>End Date</th>
+                                                                    <th>Status</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody></tbody>
@@ -391,6 +395,7 @@ include("../auth/db.php");
     <script src="js/fetch_app_users.js"></script>
     <script src="js/export_table.js"></script>
     <script src="js/search_item.js"></script>
+    <script src="js/fetch_project_table.js"></script>
     
 </body>
 </html>
