@@ -72,7 +72,7 @@
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
-                alert('Project ID is not found!');
+                alert('Wrong Directory');
             });
     }
 
