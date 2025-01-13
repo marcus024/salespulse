@@ -61,7 +61,7 @@
                     const currentStage = data.current_stage;
                     if (currentStage) {
                         const stageNumber = parseInt(currentStage.split(' ')[1]); // Extract stage number
-                        currentStep = stageNumber;
+                        currentStage = stageNumber;
                         markCompletedSteps(stageNumber); // Mark previous steps as completed
                         showStep(stageNumber); // Show the current step
                     } else {
