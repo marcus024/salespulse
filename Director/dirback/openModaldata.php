@@ -46,7 +46,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
             echo json_encode([
                 'status' => 'success',
                 'company_name' => $result['company_name'] ?? '',
-                'project_id'    => $result['project_unique_id'] ?? '', 
+                'project_id'    => $result['project_id'] ?? '', 
                 'current_stage' => $result['current_stage'] ?? '',
                 'stages' => [
                     'stage_one' => [
