@@ -309,7 +309,7 @@ include("../auth/db.php");
                                                     </div>
                                                     <div class="card-body">
                                                     <!-- We will insert our table here -->
-                                                        <table id="projectTable" class="table table-bordered">
+                                                        <table id="appUserTable" class="table table-bordered">
                                                             <thead>
                                                             <tr>
                                                                 <th>ID</th>
