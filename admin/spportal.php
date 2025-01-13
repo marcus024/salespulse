@@ -281,6 +281,19 @@ include("../auth/db.php");
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-12"> <!-- Adjust the column size as needed -->
+                                                <div class="card shadow mb-4">
+                                                    <div class="card-header py-2 d-flex justify-content-between align-items-center">
+                                                        <!-- Header Title -->
+                                                        <h6 class="m-0 font-weight-bold" style="color:#36b9cc;">Peak Users per Day</h6>
+                                                        <!-- Optional: Add an icon or button in the header -->
+                                                        <i class="fas fa-chart-line" style="color:#36b9cc;"></i>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <canvas id="peakUsersChart" width="400" height="100"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
