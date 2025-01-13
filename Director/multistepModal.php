@@ -104,7 +104,7 @@
                                             <h4 style="color: #36b9cc; margin-top: 0; font-family: 'Poppins', sans-serif;">Awareness/Prospecting</h4>
                                         </div>
                                         <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
-                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: #36b9cc;">70%</span></p>
+                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: #36b9cc;">20%</span></p>
                                         </div>
                                     </div>
                                     <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
@@ -230,7 +230,7 @@
                                             <h4 style="color: #36b9cc; margin-top: 0; font-family: 'Poppins', sans-serif;">Engagement/Discovery</h4>
                                         </div>
                                         <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
-                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: #36b9cc;">70%</span></p>
+                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: #36b9cc;">40%</span></p>
                                         </div>
                                     </div>
                                     <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
@@ -381,7 +381,7 @@
                                             <h4 style="color: #36b9cc; margin-top: 0; font-family: 'Poppins', sans-serif;">Presentation/Proposal</h4>
                                         </div>
                                         <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
-                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: #36b9cc;">70%</span></p>
+                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: #36b9cc;">60%</span></p>
                                         </div>
                                     </div>
                                     <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
@@ -544,7 +544,7 @@
                                             <h4 style="color: #36b9cc; margin-top: 0; font-family: 'Poppins', sans-serif;">Negotiation/Commitment</h4>
                                         </div>
                                         <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
-                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: #36b9cc;">70%</span></p>
+                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: #36b9cc;">80%</span></p>
                                         </div>
                                     </div>
                                     <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
@@ -668,7 +668,7 @@
                                             <h4 style="color: #36b9cc; margin-top: 0; font-family: 'Poppins', sans-serif;">Delivery/Follow-up</h4>
                                         </div>
                                         <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
-                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: #36b9cc;">70%</span></p>
+                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: #36b9cc;">100%</span></p>
                                         </div>
                                     </div>
                                     <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
