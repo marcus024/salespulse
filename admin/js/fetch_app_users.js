@@ -23,7 +23,6 @@ $(document).ready(function() {
               <td>${escapeHtml(row.lastname)}</td>
               <td>${escapeHtml(row.company)}</td>
               <td>${escapeHtml(row.user_id_current)}</td>
-              <td>${escapeHtml(row.peak_user)}</td>
               <td>${escapeHtml(row.logged_in)}</td>
             </tr>
           `;
