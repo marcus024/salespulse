@@ -24,7 +24,7 @@
       throw new Error(`HTTP Error: ${response.status}`);
     }
     alert("Successfully fetched data from server!");
-    return response.text(); // <--- get raw text instead of .json()
+    return response.text(); // <--- get raw text instead of response.json()
   })
   .then(rawText => {
     console.log("Raw text response:", rawText);
@@ -90,7 +90,7 @@
       // Navigate to the current stage
       const currentStage = data.current_stage;
       if (currentStage) {
-        const stageNumber = parseInt(currentStage.split(' ')[1]); // e.g. "Stage 3" => 3
+        const stageNumber = parseInt(currentStage.split(' ')[1]); // e.g., "Stage 3" => 3
         currentStep = stageNumber;
         markCompletedSteps(stageNumber);
         showStep(stageNumber);
