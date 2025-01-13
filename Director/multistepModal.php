@@ -1852,38 +1852,43 @@
             });
         </script>
         
-        
-
-
-<script>
-  document.getElementById('distributorSelect').addEventListener('change', function() {
-    const select = this;
-    const selectedValue = select.value;
-    
-    // If the special "add_new" option was selected
-    if (selectedValue === 'add_new') {
-      // Prompt the user for the new distributor name
+ <script>
+  // Assume you already have code to detect that the "add_new" option was selected.
+  // Here is an example using a prompt to get the new distributor from the user.
+  $('#distributorSelect').on('change', function() {
+    if ($(this).val() === 'add_new') {
       let newDistributor = prompt("Enter the new distributor:");
-      
-      // Trim the input and check if it's not empty
       if (newDistributor && newDistributor.trim() !== "") {
-        newDistributor = newDistributor.trim();
-        
-        // Create a new <option> element
-        const newOption = document.createElement('option');
-        newOption.value = newDistributor;
-        newOption.textContent = newDistributor;
-        
-        // Insert the new option before the special "add_new" option so that it remains at the end
-        select.insertBefore(newOption, select.lastElementChild);
-        
-        // Set the new distributor as the selected value
-        select.value = newDistributor;
+        // Post the new distributor to the backend
+        $.ajax({
+          url: './dirback/insertDistributor.php',
+          type: 'POST',
+          dataType: 'json',
+          data: { distributor: newDistributor.trim() },
+          success: function(response) {
+            if (response.status === 'success') {
+              // Add the new distributor as an option (before the special option)
+              $('#distributorSelect').find('option[value="add_new"]').before(
+                `<option value="${response.distributor}">${response.distributor}</option>`
+              );
+              // Set the select to the new distributor
+              $('#distributorSelect').val(response.distributor);
+              alert(response.message);
+            } else {
+              alert("Error: " + response.message);
+              // Optionally reset the selection
+              $('#distributorSelect').val("");
+            }
+          },
+          error: function(xhr, status, error) {
+            alert("An error occurred: " + error);
+          }
+        });
       } else {
-        // If the user canceled or provided an empty string,
-        // reset the select to its previous valid state (here, we clear the selection)
-        select.value = "";
+        // Reset the select if nothing valid was entered
+        $(this).val("");
       }
     }
   });
 </script>
+
