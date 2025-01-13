@@ -77,7 +77,7 @@ try {
 
                 // Redirect based on role
                 if ($user['role'] === 'central') {
-                    header("Location: ../admin/spportal.php");
+                    header("Location: ../admin/spcentral.php");
                 }  else if ($user['role'] === 'portal') {
                     header("Location: ../admin/spportal.php");
                 }else {
