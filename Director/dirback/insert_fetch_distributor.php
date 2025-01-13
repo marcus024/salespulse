@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         try {
             // Optional: Check if the distributor already exists for this company
-            $sqlCheck = "SELECT * FROM distrubutor WHERE distrubutor = :distrubutor AND company = :company";
+            $sqlCheck = "SELECT * FROM distributor WHERE distrubutor = :distrubutor AND company = :company";
             $stmtCheck = $conn->prepare($sqlCheck);
             $stmtCheck->bindParam(':distrubutor', $newDistributor, PDO::PARAM_STR);
             $stmtCheck->bindParam(':company', $currentCompany, PDO::PARAM_STR);
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             // Insert the new distributor into the 'distrubutor' table
-            $sql = "INSERT INTO distrubutor (distrubutor, created_at, user_id, company) 
+            $sql = "INSERT INTO distributor (distrubutor, created_at, user_id, company) 
                     VALUES (:distrubutor, NOW(), :user_id, :company)";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':distrubutor', $newDistributor, PDO::PARAM_STR);
