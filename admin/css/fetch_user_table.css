@@ -1,0 +1,10 @@
+
+/* Target the table header cells */
+#appUserTable thead th {
+    font-size: 12px;
+}
+
+/* Target the table body cells */
+#appUserTable tbody td {
+    font-size: 12px;
+}

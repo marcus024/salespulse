@@ -29,6 +29,7 @@ include("../auth/db.php");
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
     <link href="css/spportal.css" rel="stylesheet">
     <link href="css/user_date_dp.css" rel="stylesheet">
+    <link href="css/fetch_user_table.css" rel="stylesheet">
 
 </head>
 <body id="page-top">
@@ -322,17 +323,7 @@ include("../auth/db.php");
                                                             </thead>
                                                             <tbody><!-- Rows will be appended by JS --></tbody>
                                                         </table>
-                                                        <style>
-                                                        /* Target the table header cells */
-                                                        #appUserTable thead th {
-                                                            font-size: 12px;
-                                                        }
-
-                                                        /* Target the table body cells */
-                                                        #appUserTable tbody td {
-                                                            font-size: 12px;
-                                                        }
-                                                        </style>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
