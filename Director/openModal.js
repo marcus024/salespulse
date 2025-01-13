@@ -25,9 +25,11 @@
                     throw new Error(`HTTP Error: ${response.status}`);
                 }
                 return response.json();
+                
             })
             .then(data => {
                 if (data.status === 'success') {
+                    alert("Successful Fetch");
                     // Populate modal fields with project data
                     document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
                     document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || 'No Data';
