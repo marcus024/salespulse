@@ -23,6 +23,7 @@
                 <td>${escapeHtml(project.start_date)}</td>
                 <td>${escapeHtml(project.end_date)}</td>
                 <td>${escapeHtml(project.status)}</td>
+                <td>${escapeHtml(project.duration)}</td>
               </tr>
             `;
             $('#appUserTable tbody').append(rowHtml);
