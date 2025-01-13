@@ -29,6 +29,9 @@
                 
             })
             .then(data => {
+                // Check our JSON
+                console.log("Data from server:", data);
+                
                 if (data.status === 'success') {
                     alert("Successful Fetch");
                     // Populate modal fields with project data
