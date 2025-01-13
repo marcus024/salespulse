@@ -798,6 +798,7 @@ include_once('dirback/dirviewback.php');
     <script src="notif.js"></script>
     <script src="navStage.js"></script>
     <script src="current_year.js"></script>
+    <script src="insert_fetch_distributor.js"></script>
     
     <script>
         // Export to PDF
