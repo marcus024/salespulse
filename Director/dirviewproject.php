@@ -26,11 +26,6 @@ include_once('dirback/dirviewback.php');
             font-family: 'Poppins', sans-serif;
         }
 
-        input, select {
-                    font-size: 12px;
-                    color:#555;
-                    font-family: 'Poppins';
-                }
         body.fade-out {
         opacity: 10;
         transition: opacity 0.5s ease;
@@ -41,8 +36,9 @@ include_once('dirback/dirviewback.php');
         }
 
         /* Override any specific styles that may set a different font */
-        .btn, .form-control, .table, .modal-title, .nav-item, .nav-link, .dropdown-item {
+        .btn, .form-control, .input, .table, .modal-title, .nav-item, .nav-link, .dropdown-item {
             font-family: 'Poppins', sans-serif !important;
+            font-size: 12px;
         }
     </style>
     <style>
