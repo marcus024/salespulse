@@ -24,13 +24,13 @@
                 if (!response.ok) {
                     throw new Error(`HTTP Error: ${response.status}`);
                 }
-                alert("Successfully fetched data from server!");
+                // alert("Successfully fetched data from server!");
                 return response.json();
                 
             })
             .then(data => {
                 if (data.status === 'success') {
-                    alert("Successful Fetch");
+                    // alert("Successful Fetch");
                     //Populate modal fields with project data
                     document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
                     document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || 'No Data';
