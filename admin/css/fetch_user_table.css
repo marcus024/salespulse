@@ -8,3 +8,18 @@
 #appUserTable tbody td {
     font-size: 12px;
 }
+
+.card-body::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+.card-body::-webkit-scrollbar-thumb {
+    background-color: #36b9cc;
+    border-radius: 10px;
+    height: 10px;
+}
+
+.card-body::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
