@@ -306,14 +306,15 @@ include("../auth/db.php");
                                                             <tbody><!-- Rows will be appended by JS --></tbody>
                                                         </table>
                                                         <style>
-                                                            .th{
-                                                                font-size:15px;
+                                                        /* Target the table header cells */
+                                                        #appUserTable thead th {
+                                                            font-size: 15px;
+                                                        }
 
-                                                                
-                                                            }
-                                                            .td{
-                                                                font-size:12px;
-                                                            }
+                                                        /* Target the table body cells */
+                                                        #appUserTable tbody td {
+                                                            font-size: 12px;
+                                                        }
                                                         </style>
                                                     </div>
                                                 </div>
