@@ -1,4 +1,4 @@
-<!-- 
+
 
 <?php
 /*
@@ -12,7 +12,6 @@ try {
 ?>
 
 
- -->
 <?php
 try {
     $conn = new PDO("mysql:host=127.0.0.1;port=3306;dbname=u390688067_salespulse_db", "u390688067_un_salespulse", "Pass-salespulse123");
