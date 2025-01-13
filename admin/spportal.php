@@ -309,21 +309,21 @@ include("../auth/db.php");
                                                         </div>
                                                     </div>
                                                     <div class="card-body">
-                                                    <!-- We will insert our table here -->
-                                                        <table id="appUserTable" class="table table-bordered">
-                                                            <thead>
-                                                            <tr>
-                                                                <th>ID</th>
-                                                                <th>First&nbsp;Name</th>
-                                                                <th>Last&nbsp;Name</th>
-                                                                <th>Company</th>
-                                                                <th>User&nbsp;ID</th>
-                                                                <th>Logged&nbsp;In</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody><!-- Rows will be appended by JS --></tbody>
-                                                        </table>
-                                                        
+                                                        <div class="table-responsive" style="max-height: 250px; overflow-y: auto; ">
+                                                            <table id="appUserTable" class="table table-bordered">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>ID</th>
+                                                                    <th>First&nbsp;Name</th>
+                                                                    <th>Last&nbsp;Name</th>
+                                                                    <th>Company</th>
+                                                                    <th>User&nbsp;ID</th>
+                                                                    <th>Logged&nbsp;In</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody></tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
