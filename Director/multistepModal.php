@@ -182,15 +182,14 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="mb-2">
-  <label for="distributor" class="form-label text-white">Distributor</label>
-  <select name="distributor" id="distributorSelect" class="form-control custom-select">
-    <option disabled selected>Select</option>
-    <!-- Existing options can be removed or loaded dynamically -->
-    <!-- Special option for adding new distributor -->
-    <option value="add_new">+ Add New Distributor...</option>
-  </select>
-</div>
-
+                                                    <label for="distributor" class="form-label text-white">Distributor</label>
+                                                    <select name="distributor" id="distributorSelect" class="form-control custom-select">
+                                                        <option disabled selected>Select</option>
+                                                        <!-- Existing options can be removed or loaded dynamically -->
+                                                        <!-- Special option for adding new distributor -->
+                                                        <option value="add_new">+ Add New Distributor...</option>
+                                                    </select>
+                                                    </div>
                                                     <div class="mb-2">
                                                         <label for="product" class="form-label text-white">Product</label>
                                                         <select name="product" class="form-control custom-select">
@@ -1856,3 +1855,35 @@
         
 
 
+<script>
+  document.getElementById('distributorSelect').addEventListener('change', function() {
+    const select = this;
+    const selectedValue = select.value;
+    
+    // If the special "add_new" option was selected
+    if (selectedValue === 'add_new') {
+      // Prompt the user for the new distributor name
+      let newDistributor = prompt("Enter the new distributor:");
+      
+      // Trim the input and check if it's not empty
+      if (newDistributor && newDistributor.trim() !== "") {
+        newDistributor = newDistributor.trim();
+        
+        // Create a new <option> element
+        const newOption = document.createElement('option');
+        newOption.value = newDistributor;
+        newOption.textContent = newDistributor;
+        
+        // Insert the new option before the special "add_new" option so that it remains at the end
+        select.insertBefore(newOption, select.lastElementChild);
+        
+        // Set the new distributor as the selected value
+        select.value = newDistributor;
+      } else {
+        // If the user canceled or provided an empty string,
+        // reset the select to its previous valid state (here, we clear the selection)
+        select.value = "";
+      }
+    }
+  });
+</script>
