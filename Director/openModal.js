@@ -40,22 +40,22 @@
                     document.getElementById('client-name').textContent = data.company_name || 'No Data';
 
                     // Populate all stage data
-                    document.getElementById('stage-two-start').value  = data.stages.stage_two.start_date || 'No Data';
-                    document.getElementById('stage-two-end').value    = data.stages.stage_two.end_date   || 'No Data';
-                    document.getElementById('stage-two-status').value = data.stages.stage_two.status     || 'No Data';
+                    // document.getElementById('stage-two-start').value  = data.stages.stage_two.start_date || 'No Data';
+                    // document.getElementById('stage-two-end').value    = data.stages.stage_two.end_date   || 'No Data';
+                    // document.getElementById('stage-two-status').value = data.stages.stage_two.status     || 'No Data';
 
-                    document.getElementById('stage-three-start').value  = data.stages.stage_three.start_date || 'No Data';
-                    document.getElementById('stage-three-end').value    = data.stages.stage_three.end_date   || 'No Data';
-                    document.getElementById('stage-three-status').value = data.stages.stage_three.status     || 'No Data';
+                    // document.getElementById('stage-three-start').value  = data.stages.stage_three.start_date || 'No Data';
+                    // document.getElementById('stage-three-end').value    = data.stages.stage_three.end_date   || 'No Data';
+                    // document.getElementById('stage-three-status').value = data.stages.stage_three.status     || 'No Data';
 
-                    document.getElementById('stage-four-start').value  = data.stages.stage_four.start_date || 'No Data';
-                    document.getElementById('stage-four-end').value    = data.stages.stage_four.end_date   || 'No Data';
-                    document.getElementById('stage-four-status').value = data.stages.stage_four.status     || 'No Data';
+                    // document.getElementById('stage-four-start').value  = data.stages.stage_four.start_date || 'No Data';
+                    // document.getElementById('stage-four-end').value    = data.stages.stage_four.end_date   || 'No Data';
+                    // document.getElementById('stage-four-status').value = data.stages.stage_four.status     || 'No Data';
 
-                    document.getElementById('stage-five-start').value = data.stages.stage_five.start_date || 'No Data';
-                    document.getElementById('stage-five-end').value = data.stages.stage_five.end_date || 'No Data';
-                    document.getElementById('stage-five-status').value = data.stages.stage_five.sprNum || 'No Data';
-                    document.getElementById('stage-five-spr').value = data.stages.stage_five.sprNum || 'No Data';
+                    // document.getElementById('stage-five-start').value = data.stages.stage_five.start_date || 'No Data';
+                    // document.getElementById('stage-five-end').value = data.stages.stage_five.end_date || 'No Data';
+                    // document.getElementById('stage-five-status').value = data.stages.stage_five.sprNum || 'No Data';
+                    // document.getElementById('stage-five-spr').value = data.stages.stage_five.sprNum || 'No Data';
 
                     // Navigate to the current stage
                     const currentStage = data.current_stage;
