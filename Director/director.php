@@ -776,22 +776,29 @@ include("../auth/db.php");
                                             ?>
                                             <!-- Ongoing Projects -->
                                             <div class="tab-pane fade show active"  id="nav-ongoing" role="tabpanel" aria-labelledby="nav-ongoing-tab">
-                                                <ul class="list-group" >
-                                                    <?php if (!empty($ongoing_projects)): ?>
-                                                        <?php foreach ($ongoing_projects as $project): ?>
-                                                            <li 
-                                                                class="list-group-item" 
-                                                                data-bs-toggle="modal" 
-                                                                data-bs-target="#multiStepModal" 
-                                                                onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
-                                                            >
-                                                                <?php echo htmlspecialchars($project['company_name']); ?>
-                                                            </li>
-                                                        <?php endforeach; ?>
-                                                    <?php else: ?>
-                                                        <p style="color:#555; font-size:12px; font-family:'Poppins'">No ongoing projects available.</p>
-                                                    <?php endif; ?>
-                                                </ul>
+                                               <ul class="list-group">
+    <?php if (!empty($ongoing_projects)): ?>
+        <?php foreach ($ongoing_projects as $project): ?>
+            <?php 
+            // Check if Stage 5 is completed
+            $isStageFiveCompleted = !empty($project['status_stage_five']) && $project['status_stage_five'] === 'Completed';
+            ?>
+            <li 
+                class="list-group-item" 
+                <?php if (!$isStageFiveCompleted): ?>
+                    data-bs-toggle="modal" 
+                    data-bs-target="#multiStepModal" 
+                    onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
+                <?php endif; ?>
+            >
+                <?php echo htmlspecialchars($project['company_name']); ?>
+            </li>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p style="color:#555; font-size:12px; font-family:'Poppins'">No ongoing projects available.</p>
+    <?php endif; ?>
+</ul>
+
                                             </div>
                                             <!-- Completed Projects -->
                                             <div class="tab-pane fade" id="nav-completed" role="tabpanel" aria-labelledby="nav-completed-tab">
