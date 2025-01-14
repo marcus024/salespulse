@@ -234,6 +234,8 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
+        error_log("Main stage three data updated for Project ID: $projectUniqueId");
+
         // Handle requirements
         if (!empty($inputData['requirement_three'])) {
             $requirementQuery = "INSERT INTO requirement_threetb (
@@ -253,7 +255,6 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
             $reqStmt = $conn->prepare($requirementQuery);
 
             foreach ($inputData['requirement_three'] as $index => $requirement) {
-                // Retrieve related values
                 $quantity = $inputData['quantity'][$index] ?? null;
                 $billOfMaterials = $inputData['bill_of_materials'][$index] ?? null;
                 $requirementRemarks = $inputData['requirement_remarks_three'][$index] ?? null;
@@ -262,7 +263,6 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
                 // Debugging logs
                 error_log("Processing requirement_three: {$requirement}, quantity: {$quantity}, file: {$billOfMaterials}, remarks: {$requirementRemarks}, pricing: {$pricing}");
 
-                // Validate inputs
                 if (empty($requirement)) {
                     error_log("Empty requirement_three for Project ID {$projectUniqueId}. Skipping insert.");
                     continue;
@@ -278,11 +278,11 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
                     htmlspecialchars($pricing ?? '', ENT_QUOTES, 'UTF-8')
                 ]);
             }
+        } else {
+            error_log("No requirements found for Project ID: $projectUniqueId");
         }
 
-
-
-        // Handle engagements for engagement_three
+        // Handle engagements
         if (!empty($inputData['engagement_three'])) {
             $engagementQuery = "INSERT INTO enagement_threetb (
                                     project_unique_id, 
@@ -300,11 +300,14 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
                 $engagementDate = $inputData['engagement_date'][$index] ?? null;
                 $engagementRemarks = $inputData['engagement_remarks_three'][$index] ?? null;
 
+                error_log("Processing engagement_three: {$engagement}, date: {$engagementDate}, remarks: {$engagementRemarks}");
+
                 if (empty($engagement)) {
                     error_log("Empty engagement_three for Project ID {$projectUniqueId}. Skipping insert.");
                     continue;
                 }
 
+                // Execute query
                 $engStmt->execute([
                     $projectUniqueId,
                     htmlspecialchars($engagement, ENT_QUOTES, 'UTF-8'),
@@ -312,6 +315,8 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
                     htmlspecialchars($engagementRemarks ?? '', ENT_QUOTES, 'UTF-8')
                 ]);
             }
+        } else {
+            error_log("No engagements found for Project ID: $projectUniqueId");
         }
 
         return "Stage Three updated successfully.";
@@ -320,6 +325,7 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
         throw new Exception("Stage Three Update Failed: " . $e->getMessage());
     }
 }
+
 
 function updateStageFour($conn, $projectUniqueId, $inputData) {
     try {
