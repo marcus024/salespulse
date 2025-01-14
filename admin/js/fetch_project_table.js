@@ -130,7 +130,7 @@ function generateHorizontalBarChart(projects) {
           label: 'Number of Projects',
           data: data,
           backgroundColor: '#36b9cc',
-          barThickness: 30, // Optional: Adjust bar thickness if needed
+          
         },
       ],
     },
