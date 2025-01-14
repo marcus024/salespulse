@@ -565,7 +565,7 @@ include_once('dirback/dirviewback.php');
                                                                 style="position: absolute; bottom: 10px; right: 10px;">
                                                                 <i class="fas fa-play"></i> Complete Project
                                                             </button>
-                                                        <?php elseif ($status != 'Not Yet Started'): ?>
+                                                        <?php elseif ($status == 'Not Yet Started'): ?>
                                                             <!-- Original logic: if not 'Ongoing', show "Start Journey" -->
                                                             <button 
                                                                 class="btn btn-white play-btn" 
