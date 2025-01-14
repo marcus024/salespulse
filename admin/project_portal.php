@@ -396,8 +396,6 @@ include("../auth/db.php");
     <!-- Calendar script (if needed in the future) -->
     <!-- <script src="path_to_calendar_script.js"></script> -->
     <script src="../Director/toogleNav.js"></script>
-    <script src="js/peak.js"></script>
-    <script src="js/peak_user.js"></script>
     <script src="js/export_table.js"></script>
     <script src="js/search_item.js"></script>
     <script src="js/fetch_project_table.js"></script>
