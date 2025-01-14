@@ -90,24 +90,31 @@ $(document).ready(function () {
     });
   }
 
-  // Update card values
-  function updateCards(projects) {
-    $('#totalProjects').text(projects.length);
+ // Update card values
+function updateCards(projects) {
+  $('#totalProjects').text(projects.length);
 
-    const uniqueManagers = new Set(
-      projects.map((project) => project.account_manager)
-    );
-    $('#totalUsers').text(uniqueManagers.size);
+  const uniqueManagers = new Set(
+    projects.map((project) => project.account_manager)
+  );
+  $('#totalUsers').text(uniqueManagers.size);
 
-    const durations = projects
-      .filter((project) => project.duration !== 'NA')
-      .map((project) => parseInt(project.duration));
-    const avgDuration =
-      durations.length > 0
-        ? Math.round(durations.reduce((a, b) => a + b, 0) / durations.length)
-        : 0;
-    $('#avgDuration').text(`${avgDuration}`);
-  }
+  const durations = projects
+    .filter(
+      (project) =>
+        project.duration !== 'NA' && 
+        !isNaN(Date.parse(project.start_date)) && 
+        !isNaN(Date.parse(project.end_date))
+    )
+    .map((project) => parseInt(project.duration));
+
+  const avgDuration =
+    durations.length > 0
+      ? Math.round(durations.reduce((a, b) => a + b, 0) / durations.length)
+      : 0;
+
+  $('#avgDuration').text(`${isNaN(avgDuration) ? 0 : avgDuration}`);
+}
 
 // Generate the horizontal bar chart
 function generateHorizontalBarChart(projects) {
