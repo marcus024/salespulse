@@ -188,7 +188,7 @@ include("../auth/db.php");
                                             <img src="../images/comP.png" alt="icon" width="30" height="30">
                                         </i>
                                         <div class="card-content">
-                                            <div class="card-title" style="font-family:'Poppins'">USERS</div>
+                                            <div class="card-title" style="font-family:'Poppins'">HEADS</div>
                                             <div id="totalUsers" class="card-number" style="font-family:'Poppins'">0</div>
                                         </div>
                                     </div>
@@ -197,7 +197,7 @@ include("../auth/db.php");
                                             <img src="../images/ongoingP.png" alt="icon" width="30" height="30">
                                         </i>
                                         <div class="card-content">
-                                            <div class="card-title" style="font-family:'Poppins'">PROJECTS</div>
+                                            <div class="card-title" style="font-family:'Poppins'">MEMBERS</div>
                                             <div id="totalProjects" class="card-number" style="font-family:'Poppins'">0</div>
                                         </div>
                                     </div>
@@ -206,7 +206,7 @@ include("../auth/db.php");
                                             <img src="../images/cancelP.png" alt="icon" width="30" height="30">
                                         </i>
                                         <div class="card-content">
-                                            <div class="card-title" style="font-family:'Poppins'">DURATION</div>
+                                            <div class="card-title" style="font-family:'Poppins'">PROJECTS</div>
                                             <div class="card-number" style="font-family:'Poppins'" id="avgDuration">0</div>
                                         </div>
                                     </div>
@@ -269,19 +269,10 @@ include("../auth/db.php");
                                         <!-- Row to Hold the Cards -->
                                         <div class="row mx-0"> <!-- Remove margin with mx-0 -->
                                             <!-- First Card: Peak Users per Day -->
-                                            <div class="col-md-12"> <!-- Adjust the column size as needed -->
-                                                <div class="card shadow mb-4">
-                                                    <div class="card-header py-2 d-flex justify-content-between align-items-center">
-                                                        <!-- Header Title -->
-                                                        <h6 class="m-0 font-weight-bold" style="color:#36b9cc;">Peak Users per Day</h6>
-                                                        <!-- Optional: Add an icon or button in the header -->
-                                                        <i class="fas fa-chart-line" style="color:#36b9cc;"></i>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <canvas id="peakUsersChart" width="400" height="100"></canvas>
-                                                    </div>
-                                                </div>
+                                            <div class="col-md-12" id="orgStructureContainer" style="text-align: center;">
+                                                <!-- Organizational structure will be rendered here -->
                                             </div>
+
                                             <div class="col-md-12">
                                                 <div class="card shadow mb-4">
                                                     <div class="card-header py-2 d-flex justify-content-between align-items-center">
@@ -363,6 +354,39 @@ include("../auth/db.php");
             </div>
         </div>
     </div>
+
+    <style>
+  #orgStructureContainer .director {
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff;
+  }
+
+  #orgStructureContainer .unit-head {
+    font-size: 14px;
+    font-weight: bold;
+    color: #28a745;
+  }
+
+  #orgStructureContainer .member {
+    font-size: 12px;
+    font-weight: normal;
+    color: #6c757d;
+  }
+
+  #orgStructureContainer .members {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  #orgStructureContainer .unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style>
+
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -391,6 +415,73 @@ include("../auth/db.php");
     <script src="js/fetch_app_users.js"></script>
     <script src="js/export_table.js"></script>
     <script src="js/search_item.js"></script>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+  const container = document.getElementById("orgStructureContainer");
+
+  function renderProfile(person, type = "profile") {
+    const imgSrc = person.gender === "male" ? "../images/man.png" : "../images/woman.png";
+    return `
+      <div class="${type}" style="display: inline-block; margin: 10px; text-align: center;">
+        <img src="${imgSrc}" alt="${person.name}" style="width: 80px; height: 80px; border-radius: 50%;">
+        <div style="font-weight: bold;">${person.name}</div>
+        <div style="font-size: 12px; color: gray;">${person.position}</div>
+      </div>
+    `;
+  }
+
+  function renderOrgStructure(data) {
+    let html = "";
+
+    // Render Director
+    html += `<div style="margin-bottom: 30px;">${renderProfile(data.director, "director")}</div>`;
+
+    // Render Units
+    data.units.forEach((unit, index) => {
+      html += `
+        <div class="unit" style="margin-bottom: 20px;">
+          ${renderProfile(unit.head, "unit-head")}
+          <div class="members" style="margin-top: 10px;">
+            ${unit.members.map((member) => renderProfile(member, "member")).join("")}
+          </div>
+        </div>
+      `;
+    });
+
+    container.innerHTML = html;
+  }
+
+  // Call the function to render the structure
+  renderOrgStructure(organizationData);
+});
+
+const organizationData = {
+  director: {
+    name: "Alex Johnson",
+    position: "Director",
+    gender: "male"
+  },
+  units: [
+    {
+      head: { name: "Taylor Smith", position: "Unit Head", gender: "female" },
+      members: [
+        { name: "Chris Lee", position: "Team Member", gender: "male" },
+        { name: "Jamie Garcia", position: "Team Member", gender: "female" }
+      ]
+    },
+    {
+      head: { name: "Jordan Brown", position: "Unit Head", gender: "male" },
+      members: [
+        { name: "Morgan White", position: "Team Member", gender: "female" },
+        { name: "Drew Black", position: "Team Member", gender: "male" }
+      ]
+    }
+  ]
+};
+
+    </script>
     
 </body>
 </html>
