@@ -278,7 +278,7 @@ include("../auth/db.php");
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <div class="col-md-6">
+                                            <div class="col-md-6">
                                                 <div class="card shadow mb-4">
                                                     <div class="card-header">
                                                         <h6 class="m-0 font-weight-bold text-primary">Project Status Distribution</h6>
@@ -287,7 +287,7 @@ include("../auth/db.php");
                                                         <canvas id="projectStatusChart"></canvas>
                                                     </div>
                                                 </div>
-                                            </div> -->
+                                            </div>
                                             <div class="col-md-12">
                                                 <div class="card shadow mb-4">
                                                     <div class="card-header py-2 d-flex justify-content-between align-items-center">
