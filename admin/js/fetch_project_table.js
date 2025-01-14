@@ -133,7 +133,7 @@ $(document).ready(function () {
       { Completed: 0, Ongoing: 0, Cancelled: 0, 'Not yet Started': 0 }
     );
 
-    const ctx = document.getElementById('projectStatusChart').getContext('2d');
+    const ctx = document.getElementById('projectStatusChart').getContext('3d');
     new Chart(ctx, {
       type: 'pie',
       data: {
