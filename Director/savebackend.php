@@ -10,11 +10,9 @@ try {
     ob_start(); // Start output buffering
 
     // Get raw POST data
-    // Process form fields from $_POST
-    $step = intval($_POST['step'] ?? 0);
-    $projectUniqueId = $_POST['project_unique_id'] ?? null;
-    $inputData = $_POST; // Non-file data
-
+    $rawData = file_get_contents('php://input');
+    file_put_contents(__DIR__ . '/debug.log', "Raw Input: $rawData\n", FILE_APPEND); // Log raw input
+    $data = json_decode($rawData, true);
 
     if (!isset($data['step'], $data['project_unique_id'], $data['data'])) {
         ob_clean();
@@ -25,32 +23,6 @@ try {
     $step = intval($data['step']);
     $projectUniqueId = $data['project_unique_id'];
     $inputData = $data['data'];
-
-    $uploadedFiles = [];
-    if (!empty($_FILES)) {
-        foreach ($_FILES as $fieldName => $file) {
-            if ($file['error'] === UPLOAD_ERR_OK) {
-                $uploadDir = __DIR__ . '/uploads/';
-                if (!is_dir($uploadDir)) {
-                    mkdir($uploadDir, 0755, true);
-                }
-                $uniqueFileName = uniqid() . '_' . basename($file['name']);
-                $uploadFilePath = $uploadDir . $uniqueFileName;
-
-                if (move_uploaded_file($file['tmp_name'], $uploadFilePath)) {
-                    $uploadedFiles[$fieldName] = $uploadFilePath; // Store file paths
-                } else {
-                    error_log("Failed to move uploaded file: {$file['name']}");
-                }
-            }
-        }
-    }
-
-    // Add uploaded file paths to inputData for database handling
-    foreach ($uploadedFiles as $field => $filePath) {
-        $inputData[$field] = $filePath;
-    }
-
 
     switch ($step) {
         case 1:
@@ -238,28 +210,45 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        foreach ($inputData['requirement_three'] as $index => $requirement) {
-            $quantity = $inputData['quantity'][$index] ?? null;
-            $billOfMaterials = $inputData['bill_of_materials'][$index] ?? null; // File path
-            $requirementRemarks = $inputData['requirement_remarks_three'][$index] ?? null;
-            $pricing = $inputData['pricing'][$index] ?? null;
+        // Handle requirements
+        if (!empty($inputData['requirement_three'])) {
+            $requirementQuery = "INSERT INTO requirement_threetb (
+                                    project_unique_id, 
+                                    requirement_three, 
+                                    quantity, 
+                                    bill_of_materials, 
+                                    requirement_remarks_three, 
+                                    pricing
+                                 ) VALUES (?, ?, ?, ?, ?, ?) 
+                                 ON DUPLICATE KEY UPDATE 
+                                    requirement_three = VALUES(requirement_three), 
+                                    quantity = VALUES(quantity), 
+                                    bill_of_materials = VALUES(bill_of_materials), 
+                                    requirement_remarks_three = VALUES(requirement_remarks_three), 
+                                    pricing = VALUES(pricing)";
+            $reqStmt = $conn->prepare($requirementQuery);
 
-            // Validate the uploaded file exists
-            if (!empty($billOfMaterials) && !file_exists($billOfMaterials)) {
-                error_log("File does not exist for Project ID {$projectUniqueId}: {$billOfMaterials}");
-                $billOfMaterials = null; // Skip invalid file paths
+            foreach ($inputData['requirement_three'] as $index => $requirement) {
+                $quantity = $inputData['quantity'][$index] ?? null;
+                $billOfMaterials = $inputData['bill_of_materials'][$index] ?? null;
+                $requirementRemarks = $inputData['requirement_remarks_three'][$index] ?? null;
+                $pricing = $inputData['pricing'][$index] ?? null;
+
+                if (empty($requirement)) {
+                    error_log("Empty requirement_three for Project ID {$projectUniqueId}. Skipping insert.");
+                    continue;
+                }
+
+                $reqStmt->execute([
+                    $projectUniqueId,
+                    htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($quantity ?? '', ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($billOfMaterials ?? '', ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($requirementRemarks ?? '', ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($pricing ?? '', ENT_QUOTES, 'UTF-8')
+                ]);
             }
-
-            $reqStmt->execute([
-                $projectUniqueId,
-                htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8'),
-                htmlspecialchars($quantity ?? '', ENT_QUOTES, 'UTF-8'),
-                htmlspecialchars($billOfMaterials ?? '', ENT_QUOTES, 'UTF-8'), // Save file path
-                htmlspecialchars($requirementRemarks ?? '', ENT_QUOTES, 'UTF-8'),
-                htmlspecialchars($pricing ?? '', ENT_QUOTES, 'UTF-8')
-            ]);
         }
-
 
         // Handle engagements for engagement_three
         if (!empty($inputData['engagement_three'])) {
