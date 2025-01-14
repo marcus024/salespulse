@@ -7,6 +7,9 @@ $(document).ready(function () {
       if (response.status === 'success') {
         const projects = response.data;
 
+        // Populate table
+        populateTable(projects);
+
         // Populate dropdowns
         populateDropdowns(projects);
 
@@ -18,15 +21,38 @@ $(document).ready(function () {
         generatePieChart(projects);
       } else {
         alert("Error: " + response.message);
+        console.error("Server error:", response.message);
       }
     },
     error: function (xhr, status, error) {
       console.error("AJAX Error:", status, error);
+      alert("An error occurred while fetching project data.");
     },
   });
 
+  // Populate the project table
+  function populateTable(projects) {
+    $('#appUserTable tbody').empty();
+    projects.forEach(function (project) {
+      let rowHtml = `
+        <tr>
+          <td>${escapeHtml(project.project_unique_id)}</td>
+          <td>${escapeHtml(project.client_name)}</td>
+          <td>${escapeHtml(project.account_manager)}</td>
+          <td>${escapeHtml(project.product_type)}</td>
+          <td>${escapeHtml(project.source)}</td>
+          <td>${escapeHtml(project.current_stage)}</td>
+          <td>${escapeHtml(project.start_date)}</td>
+          <td>${escapeHtml(project.end_date)}</td>
+          <td style="color:${getStatusColor(project.status)}">${escapeHtml(project.status)}</td>
+          <td>${escapeHtml(project.duration)}</td>
+        </tr>`;
+      $('#appUserTable tbody').append(rowHtml);
+    });
+  }
+
+  // Populate dropdown menus
   function populateDropdowns(projects) {
-    // Extract unique values for dropdowns
     const months = new Set();
     const accountManagers = new Set();
     const projectIds = new Set();
@@ -42,7 +68,6 @@ $(document).ready(function () {
       projectIds.add(project.project_unique_id);
     });
 
-    // Populate months dropdown
     $('#monthsDropdownMenu').empty();
     months.forEach((month) => {
       $('#monthsDropdownMenu').append(
@@ -50,7 +75,6 @@ $(document).ready(function () {
       );
     });
 
-    // Populate account managers dropdown
     $('#usersDropdownMenu').empty();
     accountManagers.forEach((manager) => {
       $('#usersDropdownMenu').append(
@@ -58,7 +82,6 @@ $(document).ready(function () {
       );
     });
 
-    // Populate projects dropdown
     $('#projectsDropdownMenu').empty();
     projectIds.forEach((id) => {
       $('#projectsDropdownMenu').append(
@@ -67,17 +90,15 @@ $(document).ready(function () {
     });
   }
 
+  // Update card values
   function updateCards(projects) {
-    // Total projects
     $('#totalProjects').text(projects.length);
 
-    // Total account managers
     const uniqueManagers = new Set(
       projects.map((project) => project.account_manager)
     );
     $('#totalUsers').text(uniqueManagers.size);
 
-    // Average duration
     const durations = projects
       .filter((project) => project.duration !== 'NA')
       .map((project) => parseInt(project.duration));
@@ -88,6 +109,7 @@ $(document).ready(function () {
     $('#avgDuration').text(`${avgDuration} days`);
   }
 
+  // Generate the horizontal bar chart
   function generateHorizontalBarChart(projects) {
     const accountManagerCounts = projects.reduce((counts, project) => {
       counts[project.account_manager] =
@@ -123,6 +145,7 @@ $(document).ready(function () {
     });
   }
 
+  // Generate the pie chart
   function generatePieChart(projects) {
     const statusCounts = projects.reduce(
       (counts, project) => {
@@ -133,7 +156,7 @@ $(document).ready(function () {
       { Completed: 0, Ongoing: 0, Cancelled: 0, 'Not yet Started': 0 }
     );
 
-    const ctx = document.getElementById('projectStatusChart').getContext('3d');
+    const ctx = document.getElementById('projectStatusChart').getContext('2d');
     new Chart(ctx, {
       type: 'pie',
       data: {
@@ -156,5 +179,30 @@ $(document).ready(function () {
         },
       },
     });
+  }
+
+  // Helper functions
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function getStatusColor(status) {
+    switch (status) {
+      case 'Completed':
+        return 'green';
+      case 'Ongoing':
+        return 'blue';
+      case 'Cancelled':
+        return 'red';
+      case 'Not yet Started':
+        return 'gray';
+      default:
+        return '#000';
+    }
   }
 });
