@@ -839,10 +839,10 @@ try {
                                                 <ul class="list-group">
                                                     <?php if (!empty($cancelled_projects)): ?>
                                                         <?php foreach ($cancelled_projects as $project): ?>
-                                                            <li class="list-group-item" 
-                                                                data-bs-toggle="modal" 
-                                                                data-bs-target="#multiStepModal" 
-                                                                >
+                                                            <li 
+                                                                class="list-group-item"
+                                                                onclick="window.location.href='viewCancelledProject.php?project_id=<?php echo htmlspecialchars($project['project_unique_id']); ?>'"
+                                                            >
                                                                 <?php echo htmlspecialchars($project['company_name']); ?>
                                                             </li>
                                                         <?php endforeach; ?>
@@ -851,7 +851,6 @@ try {
                                                     <?php endif; ?>
                                                 </ul>
                                             </div>
-                                            
                                         </div>
                                     </div>
                                 </div>
