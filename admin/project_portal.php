@@ -269,26 +269,25 @@ include("../auth/db.php");
                                         <!-- Row to Hold the Cards -->
                                         <div class="row mx-0"> <!-- Remove margin with mx-0 -->
                                             <div class="col-md-6">
-  <div class="card shadow mb-4">
-    <div class="card-header">
-      <h6 class="m-0 font-weight-bold text-primary">Projects per Account Manager</h6>
-    </div>
-    <div class="card-body">
-      <canvas id="projectsPerAccountManagerChart"></canvas>
-    </div>
-  </div>
-</div>
-<div class="col-md-6">
-  <div class="card shadow mb-4">
-    <div class="card-header">
-      <h6 class="m-0 font-weight-bold text-primary">Project Status Distribution</h6>
-    </div>
-    <div class="card-body">
-      <canvas id="projectStatusChart"></canvas>
-    </div>
-  </div>
-</div>
-
+                                                <div class="card shadow mb-4">
+                                                    <div class="card-header">
+                                                    <h6 class="m-0 font-weight-bold text-primary">Projects per Account Manager</h6>
+                                                    </div>
+                                                    <div class="card-body">
+                                                    <canvas id="projectsPerAccountManagerChart"></canvas>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                <div class="card shadow mb-4">
+                                                    <div class="card-header">
+                                                    <h6 class="m-0 font-weight-bold text-primary">Project Status Distribution</h6>
+                                                    </div>
+                                                    <div class="card-body">
+                                                    <canvas id="projectStatusChart"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-md-12">
                                                 <div class="card shadow mb-4">
                                                     <div class="card-header py-2 d-flex justify-content-between align-items-center">
