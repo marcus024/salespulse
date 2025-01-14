@@ -24,7 +24,32 @@ try {
     $projectUniqueId = $data['project_unique_id'];
     $inputData = $data['data'];
 
-    
+     // Process file uploads
+    $uploadedFiles = [];
+    if (!empty($_FILES)) {
+        foreach ($_FILES as $fieldName => $file) {
+            if ($file['error'] === UPLOAD_ERR_OK) {
+                $uploadDir = __DIR__ . '/uploads/';
+                if (!is_dir($uploadDir)) {
+                    mkdir($uploadDir, 0755, true);
+                }
+                $uniqueFileName = uniqid() . '_' . basename($file['name']);
+                $uploadFilePath = $uploadDir . $uniqueFileName;
+
+                if (move_uploaded_file($file['tmp_name'], $uploadFilePath)) {
+                    $uploadedFiles[$fieldName] = $uploadFilePath; // Store file paths
+                } else {
+                    error_log("Failed to move uploaded file: {$file['name']}");
+                }
+            }
+        }
+    }
+
+    // Add uploaded file paths to inputData for database handling
+    foreach ($uploadedFiles as $field => $filePath) {
+        $inputData[$field] = $filePath;
+    }
+
 
     switch ($step) {
         case 1:
