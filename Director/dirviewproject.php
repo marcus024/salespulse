@@ -471,12 +471,15 @@ include_once('dirback/dirviewback.php');
                                                                         <a class="view-btn" href="#" onclick="smoothNavigate('viewstage<?php echo $stage_map[$key]; ?>.php?project_id=<?php echo htmlspecialchars($current_project_id); ?>')">
                                                                             <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
                                                                         </a>
-                                                                        <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#multiStepModal" onclick="openModal('<?php echo htmlspecialchars($current_project_id); ?>')" style="background: none; border: none;">
-                                                                            <i class="fas fa-pencil-alt" style="font-size: 12px; color: #36b9cc;"></i>
-                                                                        </button>
-                                                                        <!-- Delete Button -->
-                                                                       
-<!-- Delete Button -->
+                                                                        <?php if (empty($project_data['stage_five']['status_stage_five']) || $project_data['stage_five']['status_stage_five'] !== 'Completed'): ?>
+                                                                            <button type="button" class="edit-btn" 
+                                                                                    data-bs-toggle="modal" 
+                                                                                    data-bs-target="#multiStepModal" 
+                                                                                    onclick="openModal('<?php echo htmlspecialchars($current_project_id); ?>')" 
+                                                                                    style="background: none; border: none;">
+                                                                                <i class="fas fa-pencil-alt" style="font-size: 12px; color: #36b9cc;"></i>
+                                                                            </button>
+                                                                        <?php endif; ?>
                                                                         <button type="button" class="delete-btn" id="deleteButtons<?php echo $stage_map[$key]; ?>"  data-project-id="<?php echo $project['project_unique_id']; ?>" style="background: none; border: none;">
                                                                             <i class="fas fa-trash" style="font-size: 12px; color: #ff4c4c;"></i>
                                                                         </button>

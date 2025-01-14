@@ -550,9 +550,7 @@ include("../auth/db.php");
     <script src="alerts/notif.js"></script>
     <script src="alerts/notifCount.js"></script>
     <script src="notif.js"></script>
-
-    
-     <script>
+    <script>
         // Toggle sidebar collapse
         document.getElementById('sidebarToggle').addEventListener('click', function () {
             const sidebar = document.getElementById('accordionSidebar');
@@ -575,102 +573,101 @@ include("../auth/db.php");
             }
         });
     </script>
+    <script>
+        let users = []; // Global variable to store the fetched users
+        const currentUserId = "<?php echo $_SESSION['user_id_c']; ?>"; // Current user's ID from PHP session
 
-<script>
-    let users = []; // Global variable to store the fetched users
-    const currentUserId = "<?php echo $_SESSION['user_id_c']; ?>"; // Current user's ID from PHP session
-
-    // Fetch users dynamically from the server
-    async function fetchUsers() {
-        try {
-            const response = await fetch("dirback/teamUser.php");
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+        // Fetch users dynamically from the server
+        async function fetchUsers() {
+            try {
+                const response = await fetch("dirback/teamUser.php");
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                users = await response.json(); // Store the users globally
+                renderUserList(users); // Render the initial user list
+            } catch (error) {
+                console.error("Error fetching users:", error);
             }
-            users = await response.json(); // Store the users globally
-            renderUserList(users); // Render the initial user list
-        } catch (error) {
-            console.error("Error fetching users:", error);
         }
-    }
 
-    // Render user list dynamically
-    function renderUserList(userList) {
-        const userListContainer = document.getElementById("userList");
-        userListContainer.innerHTML = ""; // Clear existing list
+        // Render user list dynamically
+        function renderUserList(userList) {
+            const userListContainer = document.getElementById("userList");
+            userListContainer.innerHTML = ""; // Clear existing list
 
-        userList.forEach(user => {
-            const li = document.createElement("li");
-            li.className = "list-group-item d-flex justify-content-between align-items-center";
-            li.style.fontFamily = "Poppins";
-            li.style.fontSize = "14px";
+            userList.forEach(user => {
+                const li = document.createElement("li");
+                li.className = "list-group-item d-flex justify-content-between align-items-center";
+                li.style.fontFamily = "Poppins";
+                li.style.fontSize = "14px";
 
-            li.innerHTML = `
-                <div>
-                    <strong>${user.name}</strong>
-                    <p class="mb-0 text-muted" style="font-size: 12px;">${user.position}</p>
-                </div>
-                <button class="btn btn-sm btn-primary" style="background-color: #36b9cc; border: none;" onclick="addUser('${currentUserId}', '${user.user_id_current}')">
-                    <i class="fas fa-plus"></i> Add
-                </button>
-            `;
+                li.innerHTML = `
+                    <div>
+                        <strong>${user.name}</strong>
+                        <p class="mb-0 text-muted" style="font-size: 12px;">${user.position}</p>
+                    </div>
+                    <button class="btn btn-sm btn-primary" style="background-color: #36b9cc; border: none;" onclick="addUser('${currentUserId}', '${user.user_id_current}')">
+                        <i class="fas fa-plus"></i> Add
+                    </button>
+                `;
 
-            userListContainer.appendChild(li);
-        });
-    }
-
-    // Filter user list based on search input
-    function filterUsers() {
-        const searchValue = document.getElementById("userSearch").value.toLowerCase();
-        const filteredUsers = users.filter(user => 
-            user.name.toLowerCase().includes(searchValue) || user.position.toLowerCase().includes(searchValue)
-        );
-
-        renderUserList(filteredUsers); // Render the filtered list
-    }
-
-   // Add user function (custom logic to handle adding the user)
-    async function addUser(currentUserId, selectedUserId) {
-         const confirmAdd = confirm(`Are you sure you want to add user with ID ${selectedUserId} to your team?`);
-
-        if (!confirmAdd) {
-            // If the user cancels, exit the function
-            return;
-        }
-        try {
-            // Send the user IDs to the backend
-            const response = await fetch("dirback/addTeam.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    head_user_id: currentUserId,
-                    team_user_id: selectedUserId,
-                }),
+                userListContainer.appendChild(li);
             });
-
-            // Parse the response
-            const result = await response.json();
-
-            if (result.success) {
-                alert(`User successfully added to the team: ${result.message}`);
-                window.location.reload();
-            } else {
-                throw new Error(result.message);
-            }
-        } catch (error) {
-            console.error("Error adding user to the team:", error);
-            alert("Failed to add user to the team. Please try again.");
         }
-    }
+
+        // Filter user list based on search input
+        function filterUsers() {
+            const searchValue = document.getElementById("userSearch").value.toLowerCase();
+            const filteredUsers = users.filter(user => 
+                user.name.toLowerCase().includes(searchValue) || user.position.toLowerCase().includes(searchValue)
+            );
+
+            renderUserList(filteredUsers); // Render the filtered list
+        }
+
+    // Add user function (custom logic to handle adding the user)
+        async function addUser(currentUserId, selectedUserId) {
+            const confirmAdd = confirm(`Are you sure you want to add user with ID ${selectedUserId} to your team?`);
+
+            if (!confirmAdd) {
+                // If the user cancels, exit the function
+                return;
+            }
+            try {
+                // Send the user IDs to the backend
+                const response = await fetch("dirback/addTeam.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        head_user_id: currentUserId,
+                        team_user_id: selectedUserId,
+                    }),
+                });
+
+                // Parse the response
+                const result = await response.json();
+
+                if (result.success) {
+                    alert(`User successfully added to the team: ${result.message}`);
+                    window.location.reload();
+                } else {
+                    throw new Error(result.message);
+                }
+            } catch (error) {
+                console.error("Error adding user to the team:", error);
+                alert("Failed to add user to the team. Please try again.");
+            }
+        }
 
 
-    // Initialize the user list on page load
-    document.addEventListener("DOMContentLoaded", () => {
-        fetchUsers(); // Fetch the users list
-    });
-</script>
+        // Initialize the user list on page load
+        document.addEventListener("DOMContentLoaded", () => {
+            fetchUsers(); // Fetch the users list
+        });
+    </script>
 
 
 </body>
