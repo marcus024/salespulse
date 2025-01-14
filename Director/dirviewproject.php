@@ -910,7 +910,7 @@ function startPhase() {
                 modalInstance.hide();
 
                 // Show a success message
-                alert(response.message);
+                location.reload();
             }
         } else {
             alert("Failed to update start date.");
