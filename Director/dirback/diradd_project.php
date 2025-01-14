@@ -47,10 +47,15 @@ try {
         $stmt->bindParam(':user_id_c',$user_id);
         
         if ($stmt->execute()) {
-            echo "<script>alert('Project added successfully!'); window.location.href = '../director.php';</script>";
+            echo "<script>
+                showNotification('Project added successfully!', '../director.php');
+            </script>";
         } else {
-            echo "<script>alert('Failed to add project. Please try again.'); window.history.back();</script>";
+            echo "<script>
+                showNotification('Failed to add project. Please try again.', null, true);
+            </script>";
         }
+
     }
 } catch (PDOException $e) {
     error_log("Database Error: " . $e->getMessage(), 3, "../../logs/error.log");
