@@ -81,6 +81,7 @@ try {
     ob_clean();
     echo json_encode([
         "message" => "Step $step data processed successfully",
+        "uploaded_files" => $uploadedFiles, // Include uploaded file paths for debugging
         "processed_data" => $inputData,
         "details" => $message
     ]);
