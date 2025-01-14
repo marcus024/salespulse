@@ -285,7 +285,7 @@ include("../auth/db.php");
                                             <div class="col-md-12">
                                                 <div class="card shadow mb-4">
                                                     <div class="card-header py-2 d-flex justify-content-between align-items-center">
-                                                        <h6 class="m-0 font-weight-bold" style="color:#36b9cc;">App User</h6>
+                                                        <h6 class="m-0 font-weight-bold" style="color:#36b9cc;">Projects</h6>
                                                         <!-- Row to hold the search bar and dropdowns -->
                                                         <div class="d-flex align-items-center" style="gap: 10px;">
                                                             <!-- Search Bar -->

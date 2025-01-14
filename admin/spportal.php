@@ -391,6 +391,7 @@ include("../auth/db.php");
     <script src="js/fetch_app_users.js"></script>
     <script src="js/export_table.js"></script>
     <script src="js/search_item.js"></script>
+    <script src="js/toggle_portal_profile.js"></script>
     
 </body>
 </html>
