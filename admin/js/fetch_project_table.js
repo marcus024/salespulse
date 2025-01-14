@@ -213,49 +213,38 @@ function generateHorizontalBarChart(projects) {
 }
 
 
-  function generatePieChart(projects) {
-  // Count the statuses, handling "Not yet Started" dynamically
-  const statusCounts = projects.reduce(
-    (counts, project) => {
-      const status = project.status && project.status.trim() !== '' 
-                     ? project.status 
-                     : 'Not Yet Started'; // Default if status is missing or empty
-      counts[status] = (counts[status] || 0) + 1;
-      return counts;
-    },
-    { Completed: 0, Ongoing: 0, Cancelled: 0, 'Not Yet Started': 0 } // Initialize all statuses
-  );
+function generatePieChart(projects) {
+  const statusCounts = projects.reduce((counts, project) => {
+    const status = project.status.trim(); // Ensure status is clean
+    counts[status] = (counts[status] || 0) + 1; // Increment status count
+    return counts;
+  }, { Completed: 0, Ongoing: 0, Cancelled: 0, 'Not Yet Started': 0 }); // Initialize all statuses
 
-  // Debugging: Log the status counts
-  console.log('Status Counts:', statusCounts);
-
-  // Get the chart canvas context
   const ctx = document.getElementById('projectStatusChart').getContext('2d');
-
-  // Create the pie chart
   new Chart(ctx, {
     type: 'pie',
     data: {
-      labels: ['Completed', 'Ongoing', 'Cancelled', 'Not Yet Started'], // Status labels
+      labels: ['Completed', 'Ongoing', 'Cancelled', 'Not Yet Started'],
       datasets: [
         {
           data: [
             statusCounts.Completed,
             statusCounts.Ongoing,
             statusCounts.Cancelled,
-            statusCounts['Not yet Started'],
-          ], // Data for each status
-          backgroundColor: ['#28a745', '#007bff', '#dc3545', '#6c757d'], // Colors for each status
+            statusCounts['Not Yet Started'],
+          ],
+          backgroundColor: ['#28a745', '#007bff', '#dc3545', '#6c757d'],
         },
       ],
     },
     options: {
       plugins: {
-        legend: { position: 'top' }, // Display legend at the top
+        legend: { position: 'top' },
       },
     },
   });
 }
+
 
 
   // Helper functions
