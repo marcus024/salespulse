@@ -7,25 +7,25 @@ ini_set('error_log', __DIR__ . '/php-error.log');
 include("../auth/db.php");
 
 try {
-    ob_start(); // Start output buffering
-
-    // Get raw POST data
-    // Process form fields from $_POST
-    $step = intval($_POST['step'] ?? 0);
-    $projectUniqueId = $_POST['project_unique_id'] ?? null;
-    $inputData = $_POST; // Non-file data
-
-
-    if (!isset($data['step'], $data['project_unique_id'], $data['data'])) {
-        ob_clean();
-        echo json_encode(["message" => "Invalid input data"]);
+    // Ensure the request method is POST
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        echo json_encode(["message" => "Invalid request method"]);
         exit;
     }
 
-    $step = intval($data['step']);
-    $projectUniqueId = $data['project_unique_id'];
-    $inputData = $data['data'];
+    // Extract step and project ID from POST data
+    $step = intval($_POST['step'] ?? 0);
+    $projectUniqueId = $_POST['project_unique_id'] ?? null;
 
+    if (!$step || !$projectUniqueId) {
+        echo json_encode(["message" => "Missing required input data"]);
+        exit;
+    }
+
+    // Collect input data from $_POST
+    $inputData = $_POST;
+
+    // Process file uploads
     $uploadedFiles = [];
     if (!empty($_FILES)) {
         foreach ($_FILES as $fieldName => $file) {
@@ -51,7 +51,7 @@ try {
         $inputData[$field] = $filePath;
     }
 
-
+    // Call the appropriate update function based on the step
     switch ($step) {
         case 1:
             $message = updateStageOne($conn, $projectUniqueId, $inputData);
@@ -74,24 +74,20 @@ try {
             break;
 
         default:
-            ob_clean();
             echo json_encode(["message" => "Invalid step number"]);
             exit;
     }
 
-    ob_clean();
     echo json_encode([
         "message" => "Step $step data processed successfully",
         "processed_data" => $inputData,
         "details" => $message
     ]);
 } catch (Exception $e) {
-    ob_clean();
-    file_put_contents(__DIR__ . '/debug.log', "Error: " . $e->getMessage() . "\n", FILE_APPEND);
+    error_log("Error: " . $e->getMessage());
     http_response_code(500);
     echo json_encode(["message" => "Error occurred", "error" => $e->getMessage()]);
 }
-
 // Helper functions for different stages
 
 function updateStageOne($conn, $projectUniqueId, $inputData) {
@@ -238,26 +234,39 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        foreach ($inputData['requirement_three'] as $index => $requirement) {
-            $quantity = $inputData['quantity'][$index] ?? null;
-            $billOfMaterials = $inputData['bill_of_materials'][$index] ?? null; // File path
-            $requirementRemarks = $inputData['requirement_remarks_three'][$index] ?? null;
-            $pricing = $inputData['pricing'][$index] ?? null;
+        // Handle requirements
+        if (!empty($inputData['requirement_three'])) {
+            $requirementQuery = "INSERT INTO requirement_threetb (
+                                    project_unique_id, 
+                                    requirement_three, 
+                                    quantity, 
+                                    bill_of_materials, 
+                                    requirement_remarks_three, 
+                                    pricing
+                                 ) VALUES (?, ?, ?, ?, ?, ?) 
+                                 ON DUPLICATE KEY UPDATE 
+                                    requirement_three = VALUES(requirement_three), 
+                                    quantity = VALUES(quantity), 
+                                    bill_of_materials = VALUES(bill_of_materials), 
+                                    requirement_remarks_three = VALUES(requirement_remarks_three), 
+                                    pricing = VALUES(pricing)";
+            $reqStmt = $conn->prepare($requirementQuery);
 
-            // Validate the uploaded file exists
-            if (!empty($billOfMaterials) && !file_exists($billOfMaterials)) {
-                error_log("File does not exist for Project ID {$projectUniqueId}: {$billOfMaterials}");
-                $billOfMaterials = null; // Skip invalid file paths
+            foreach ($inputData['requirement_three'] as $index => $requirement) {
+                $quantity = $inputData['quantity'][$index] ?? null;
+                $billOfMaterials = $inputData['bill_of_materials'][$index] ?? null; // File path
+                $requirementRemarks = $inputData['requirement_remarks_three'][$index] ?? null;
+                $pricing = $inputData['pricing'][$index] ?? null;
+
+                $reqStmt->execute([
+                    $projectUniqueId,
+                    htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($quantity ?? '', ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($billOfMaterials ?? '', ENT_QUOTES, 'UTF-8'), // Save file path
+                    htmlspecialchars($requirementRemarks ?? '', ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($pricing ?? '', ENT_QUOTES, 'UTF-8')
+                ]);
             }
-
-            $reqStmt->execute([
-                $projectUniqueId,
-                htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8'),
-                htmlspecialchars($quantity ?? '', ENT_QUOTES, 'UTF-8'),
-                htmlspecialchars($billOfMaterials ?? '', ENT_QUOTES, 'UTF-8'), // Save file path
-                htmlspecialchars($requirementRemarks ?? '', ENT_QUOTES, 'UTF-8'),
-                htmlspecialchars($pricing ?? '', ENT_QUOTES, 'UTF-8')
-            ]);
         }
 
 
