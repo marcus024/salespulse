@@ -271,7 +271,7 @@ include("../auth/db.php");
                                             <div class="col-md-6" >
                                                 <div class="card shadow mb-4">
                                                     <div class="card-header">
-                                                    <h6 class="m-0 font-weight-bold text-primary">Projects per Account Manager</h6>
+                                                    <h6 class="m-0 font-weight-bold " style="color:#36b9cc">Projects per Account Manager</h6>
                                                     </div>
                                                     <div class="card-body" style="height: 500px;">
                                                     <canvas id="projectsPerAccountManagerChart"></canvas>
@@ -281,9 +281,9 @@ include("../auth/db.php");
                                             <div class="col-md-6">
                                                 <div class="card shadow mb-4">
                                                     <div class="card-header">
-                                                        <h6 class="m-0 font-weight-bold text-primary">Project Status Distribution</h6>
+                                                        <h6 class="m-0 font-weight-bold " style="color:#36b9cc">Project Status Distribution</h6>
                                                     </div>
-                                                    <div class="card-body">
+                                                    <div class="card-body" style="height: 500px;">
                                                         <canvas id="projectStatusChart"></canvas>
                                                     </div>
                                                 </div>
