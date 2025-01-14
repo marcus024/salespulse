@@ -459,7 +459,16 @@ include_once('dirback/dirviewback.php');
                                                                     <td style="padding: 5px;"><?php echo !empty($stage_data['product']) ? htmlspecialchars($stage_data['product']) : 'N/A'; ?></td>
                                                                     <td style="padding: 5px;"><?php echo !empty($stage_data['stage_' . $key . '_remarks']) ? htmlspecialchars($stage_data['stage_' . $key . '_remarks']) : 'N/A'; ?></td>
                                                                     <td class="action-buttons" style="padding: 5px;">
-                                                                        <a class="view-btn" href="#" onclick="smoothNavigate('viewstage<?php echo substr($key, -1); ?>.php?project_id=<?php echo htmlspecialchars($current_project_id); ?>')">
+                                                                       <?php 
+                                                                        $stage_map = [
+                                                                            'stage_one' => '1',
+                                                                            'stage_two' => '2',
+                                                                            'stage_three' => '3',
+                                                                            'stage_four' => '4',
+                                                                            'stage_five' => '5',
+                                                                        ];
+                                                                        ?>
+                                                                        <a class="view-btn" href="#" onclick="smoothNavigate('viewstage<?php echo $stage_map[$key]; ?>.php?project_id=<?php echo htmlspecialchars($current_project_id); ?>')">
                                                                             <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
                                                                         </a>
                                                                         <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#multiStepModal" onclick="openModal('<?php echo htmlspecialchars($current_project_id); ?>')" style="background: none; border: none;">
