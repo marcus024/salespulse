@@ -841,7 +841,7 @@ try {
                                                         <?php foreach ($cancelled_projects as $project): ?>
                                                             <li 
                                                                 class="list-group-item"
-                                                                onclick="window.location.href='viewCancelledProject.php?project_id=<?php echo htmlspecialchars($project['project_unique_id']); ?>'"
+                                                                onclick="window.location.href='dirviewproject.php?project_id=<?php echo htmlspecialchars($project['project_unique_id']); ?>'"
                                                             >
                                                                 <?php echo htmlspecialchars($project['company_name']); ?>
                                                             </li>
