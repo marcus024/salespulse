@@ -109,7 +109,7 @@ $(document).ready(function () {
     $('#avgDuration').text(`${avgDuration}`);
   }
 
-  // Generate the horizontal bar chart
+// Generate the horizontal bar chart
 function generateHorizontalBarChart(projects) {
   const accountManagerCounts = projects.reduce((counts, project) => {
     counts[project.account_manager] =
@@ -130,7 +130,6 @@ function generateHorizontalBarChart(projects) {
           label: 'Number of Projects',
           data: data,
           backgroundColor: '#36b9cc',
-          
         },
       ],
     },
@@ -141,11 +140,20 @@ function generateHorizontalBarChart(projects) {
         legend: { display: true },
       },
       scales: {
-        x: { beginAtZero: true },
+        x: {
+          beginAtZero: true,
+          ticks: {
+            stepSize: 1, // Ensure step size is 1
+            callback: function (value) {
+              return Number(value).toFixed(0); // Force whole numbers
+            },
+          },
+        },
       },
     },
   });
 }
+
 
   // Generate the pie chart
   function generatePieChart(projects) {
