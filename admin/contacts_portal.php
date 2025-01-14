@@ -74,7 +74,7 @@ include("../auth/db.php");
             <li class="nav-item active" >
                 <a class="nav-link" href="contacts_portal.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-address-book"></i>
-                    <span style="font-size:13px; font-family:'Poppins';">Contacts</span>
+                    <span style="font-size:13px; font-family:'Poppins';">Teams</span>
                 </a>
             </li>
             <li class="nav-item" >
