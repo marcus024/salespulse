@@ -816,12 +816,15 @@ try {
                                                 <ul class="list-group">
                                                     <?php if (!empty($completed_projects)): ?>
                                                         <?php foreach ($completed_projects as $project): ?>
+                                                            <?php 
+                                                            // Check if Stage 5 is completed
+                                                            $isStageFiveCompleted = !empty($project['status_stage_five']) && $project['status_stage_five'] === 'Completed';
+                                                            ?>
                                                             <li 
-                                                                class="list-group-item" 
-                                                                data-bs-toggle="modal" 
-                                                                data-bs-target="#multiStepModal" 
-                                                                data-project-id="<?php echo htmlspecialchars($project['project_unique_id']); ?>" 
-                                                                
+                                                                class="list-group-item"
+                                                                <?php if ($isStageFiveCompleted): ?>
+                                                                    onclick="window.location.href='dirviewproject.php?project_id=<?php echo htmlspecialchars($project['project_unique_id']); ?>'"
+                                                                <?php endif; ?>
                                                             >
                                                                 <?php echo htmlspecialchars($project['company_name']); ?>
                                                             </li>
