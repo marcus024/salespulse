@@ -420,9 +420,16 @@ include_once('dirback/dirviewback.php');
                                                             <thead class="table-light">
                                                                 <tr>
                                                                     <th>Stage</th>
+                                                                    <th>Unique ID</th>
                                                                     <th>Start Date</th>
                                                                     <th>End Date</th>
-                                                                    <th>Duration (Days)</th>
+                                                                    <th>Status</th>
+                                                                    <th>Duration</th>
+                                                                    <th>Solution</th>
+                                                                    <th>Technology</th>
+                                                                    <th>Deal Size</th>
+                                                                    <th>Product</th>
+                                                                    <th>Stage Remarks</th>
                                                                     <th>Action</th>
                                                                 </tr>
                                                             </thead>
