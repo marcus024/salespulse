@@ -62,4 +62,6 @@ try {
     echo "<script>alert('An internal error occurred. Please try again later.'); window.history.back();</script>";
 }
 $conn = null;
+
+
 ?>
