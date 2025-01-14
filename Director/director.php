@@ -2010,7 +2010,7 @@ try {
 
 
     <script>
-        function showNotification(message, redirectUrl = null, isError = false) {
+        function alert(message, redirectUrl = null, isError = false) {
             const notification = document.getElementById('notification');
             const messageSpan = document.getElementById('notification-message');
 
