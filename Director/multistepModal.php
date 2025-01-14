@@ -308,7 +308,7 @@
                                                         <input name="engagement_type[]" type="text" class="form-control" placeholder="e.g. Sample Engagement">
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input name="engagement_date[]" type="date" class="form-control">
+                                                        <input name="engagement_date[]" type="date" class="form-control" style="font-size:10px;">
                                                     </div>
                                                     <div class="col-md-5">
                                                         <input name="engagement_remarks[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
@@ -350,7 +350,7 @@
                                                         <input name="requirement_two[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input name="requirement_date[]" type="date" class="form-control">
+                                                        <input name="requirement_date[]" type="date" class="form-control" style="font-size:10px;">
                                                     </div>
                                                     <div class="col-md-5">
                                                         <input name="requirement_remarks[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
@@ -459,7 +459,7 @@
                                                         <input name="engagement_three[]" type="text" class="form-control" placeholder="e.g. Sample Engagement">
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input name="engagement_date[]" type="date" class="form-control">
+                                                        <input name="engagement_date[]" type="date" class="form-control" style="font-size:10px;">
                                                     </div>
                                                     <div class="col-md-5">
                                                         <input name="engagement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
@@ -641,7 +641,7 @@
                                                         <input name="pricing[]" type="text" class="form-control" placeholder="e.g. 2000">
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input name="date_required[]" type="date" class="form-control">
+                                                        <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
                                                     </div>
                                                     <div class="col-md-2">
                                                         <button type="button" class="btn btn-danger btn-sm deleteRequirement">
@@ -1456,7 +1456,7 @@
                             <input name="engagement_type[]" type="text" class="form-control" placeholder="e.g. Sample Engagement">
                         </div>
                         <div class="col-md-2">
-                            <input name="engagement_date[]" type="date" class="form-control">
+                            <input name="engagement_date[]" type="date" class="form-control" style="font-size:10px;">
                         </div>
                         <div class="col-md-5">
                             <input name="engagement_remarks[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
@@ -1503,7 +1503,7 @@
                             <input name="requirement_two[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
                         </div>
                         <div class="col-md-2">
-                            <input name="requirement_date[]" type="date" class="form-control">
+                            <input name="requirement_date[]" type="date" class="form-control" style="font-size:10px;">
                         </div>
                         <div class="col-md-5">
                             <input name="requirement_remarks[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
@@ -1607,7 +1607,7 @@
                             <input name="engagement_three[]" type="text" class="form-control" placeholder="e.g. Sample Engagement">
                         </div>
                         <div class="col-md-2">
-                            <input name="engagement_date[]" type="date" class="form-control">
+                            <input name="engagement_date[]" type="date" class="form-control" style="font-size:10px;">
                         </div>
                         <div class="col-md-5">
                             <input name="engagement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
@@ -1719,7 +1719,7 @@
                             <input name="pricing[]" type="text" class="form-control" placeholder="e.g. 2000">
                         </div>
                         <div class="col-md-2">
-                            <input name="date_required[]" type="date" class="form-control">
+                            <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
                         </div>
                         <div class="col-md-2">
                             <button type="button" class="btn btn-danger btn-sm deleteRequirement">
