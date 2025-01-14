@@ -117,13 +117,22 @@ include_once('../auth/db.php');
         <!-- Sidebar -->
         <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#36b9cc; width: 200px; transition: all 0.3s; padding-left: 20px;">
             <!-- Sidebar - Brand -->
-            <img 
-                id="sidebarToggleIcon" 
-                src="../images/logo_white.png" 
-                alt="Toggle Sidebar" 
-                onclick="toggleSidebar()" 
-                style="cursor: pointer; width: 24px; height: 24px; margin: 10px;"
-            />
+            <div 
+                class="d-flex align-items-center mx-1" 
+                id="salespulse" 
+                style="font-weight: bold; font-family: 'Poppins';"
+                >
+                <!-- The image outside the text element -->
+                <img
+                    id="sidebarToggleIcon"
+                    src="../images/logo_white.png"
+                    alt="Toggle Sidebar"
+                    onclick="toggleSidebar()"
+                    style="cursor: pointer; width: 24px; height: 24px; margin-right: 10px;"
+                />
+                <!-- The text -->
+                <span>SALES PULSE</span>
+            </div>
             <div style="height: 0.5px;"></div>
             <!-- Divider -->
             <hr class="sidebar-divider my-2">

@@ -339,7 +339,7 @@ include("../auth/db.php");
                 onclick="toggleSidebar()" 
                 style="cursor: pointer; font-size: 20px; color: white; margin: 10px;"
             ></i> -->
-           <div 
+            <div 
                 class="d-flex align-items-center mx-1" 
                 id="salespulse" 
                 style="font-weight: bold; font-family: 'Poppins';"

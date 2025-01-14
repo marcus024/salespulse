@@ -128,15 +128,22 @@ include("../auth/db.php");
             height: 100vh;">
             
             <!-- Sidebar - Brand -->
-            <li class="nav-item">
-                <img 
-                    id="sidebarToggleIcon" 
-                    src="../images/logo_white.png" 
-                    alt="Toggle Sidebar" 
-                    onclick="toggleSidebar()" 
-                    style="cursor: pointer; width: 24px; height: 24px; margin: 10px;"
+            <div 
+                class="d-flex align-items-center mx-1" 
+                id="salespulse" 
+                style="font-weight: bold; font-family: 'Poppins';"
+                >
+                <!-- The image outside the text element -->
+                <img
+                    id="sidebarToggleIcon"
+                    src="../images/logo_white.png"
+                    alt="Toggle Sidebar"
+                    onclick="toggleSidebar()"
+                    style="cursor: pointer; width: 24px; height: 24px; margin-right: 10px;"
                 />
-            </li>
+                <!-- The text -->
+                <span>SALES PULSE</span>
+            </div>
             
             <!-- Divider -->
             <li class="nav-item">
