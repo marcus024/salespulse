@@ -1,70 +1,160 @@
-// Run this code when the page loads or whenever you want to fetch the projects
-  $(document).ready(function() {
-    $.ajax({
-      url: 'x-nd/fetch_project_table.php',  // The server-side script we created
-      method: 'GET',                       // or 'POST' if needed
-      dataType: 'json',
-      success: function(response) {
-        if (response.status === 'success') {
-          // Clear existing rows
-          $('#appUserTable tbody').empty();
-          
-          // Loop through each project record
-          response.data.forEach(function(project) {
-            // Build a table row
-            let rowHtml = `
-            <tr>
-                <td>${escapeHtml(project.project_unique_id)}</td>
-                <td>${escapeHtml(project.client_name)}</td>
-                <td>${escapeHtml(project.account_manager)}</td>
-                <td>${escapeHtml(project.product_type)}</td>
-                <td>${escapeHtml(project.source)}</td>
-                <td>${escapeHtml(project.current_stage)}</td>
-                <td>${escapeHtml(project.start_date)}</td>
-                <td>${escapeHtml(project.end_date)}</td>
-                <!-- Use the helper to get color for the 'status' cell -->
-                <td style="color:${getStatusColor(project.status)}">
-                    ${escapeHtml(project.status)}
-                </td>
-                <td>${escapeHtml(project.duration)}</td>
-            </tr>
-            `;
-            $('#appUserTable tbody').append(rowHtml);
-          });
+$(document).ready(function () {
+  $.ajax({
+    url: 'x-nd/fetch_project_table.php', // Fetch projects
+    method: 'GET',
+    dataType: 'json',
+    success: function (response) {
+      if (response.status === 'success') {
+        const projects = response.data;
 
-        } else {
-          alert("Error: " + response.message);
-          console.error("Server error:", response.message);
-        }
-      },
-      error: function(xhr, status, error) {
-        console.error("AJAX Error:", status, error);
-        alert("An error occurred while fetching project data.");
+        // Populate dropdowns
+        populateDropdowns(projects);
+
+        // Update cards
+        updateCards(projects);
+
+        // Generate charts
+        generateHorizontalBarChart(projects);
+        generatePieChart(projects);
+      } else {
+        alert("Error: " + response.message);
       }
-    });
+    },
+    error: function (xhr, status, error) {
+      console.error("AJAX Error:", status, error);
+    },
   });
 
-  // A basic HTML-escape function to prevent potential XSS
-  function escapeHtml(str) {
-    if (!str) return '';
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+  function populateDropdowns(projects) {
+    // Extract unique values for dropdowns
+    const months = new Set();
+    const accountManagers = new Set();
+    const projectIds = new Set();
+
+    projects.forEach((project) => {
+      if (project.start_date) {
+        const month = new Date(project.start_date).toLocaleString('default', {
+          month: 'long',
+        });
+        months.add(month);
+      }
+      accountManagers.add(project.account_manager);
+      projectIds.add(project.project_unique_id);
+    });
+
+    // Populate months dropdown
+    $('#monthsDropdownMenu').empty();
+    months.forEach((month) => {
+      $('#monthsDropdownMenu').append(
+        `<li><a class="dropdown-item" href="#">${month}</a></li>`
+      );
+    });
+
+    // Populate account managers dropdown
+    $('#usersDropdownMenu').empty();
+    accountManagers.forEach((manager) => {
+      $('#usersDropdownMenu').append(
+        `<li><a class="dropdown-item" href="#">${manager}</a></li>`
+      );
+    });
+
+    // Populate projects dropdown
+    $('#projectsDropdownMenu').empty();
+    projectIds.forEach((id) => {
+      $('#projectsDropdownMenu').append(
+        `<li><a class="dropdown-item" href="#">${id}</a></li>`
+      );
+    });
   }
 
-  function getStatusColor(status) {
-  switch (status) {
-    case 'Completed':
-      return 'green';
-    case 'Ongoing':
-      return 'blue';
-    case 'Cancelled':
-      return 'red';
-    case 'Not yet Started':
-      return 'gray';
-    default:
-      return '#000'; // fallback (black)
+  function updateCards(projects) {
+    // Total projects
+    $('#totalProjects').text(projects.length);
+
+    // Total account managers
+    const uniqueManagers = new Set(
+      projects.map((project) => project.account_manager)
+    );
+    $('#totalUsers').text(uniqueManagers.size);
+
+    // Average duration
+    const durations = projects
+      .filter((project) => project.duration !== 'NA')
+      .map((project) => parseInt(project.duration));
+    const avgDuration =
+      durations.length > 0
+        ? Math.round(durations.reduce((a, b) => a + b, 0) / durations.length)
+        : 0;
+    $('#avgDuration').text(`${avgDuration} days`);
   }
-}
+
+  function generateHorizontalBarChart(projects) {
+    const accountManagerCounts = projects.reduce((counts, project) => {
+      counts[project.account_manager] =
+        (counts[project.account_manager] || 0) + 1;
+      return counts;
+    }, {});
+
+    const labels = Object.keys(accountManagerCounts);
+    const data = Object.values(accountManagerCounts);
+
+    const ctx = document.getElementById('peakUsersChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Number of Projects',
+            data: data,
+            backgroundColor: '#36b9cc',
+          },
+        ],
+      },
+      options: {
+        indexAxis: 'y',
+        plugins: {
+          legend: { display: false },
+        },
+        scales: {
+          x: { beginAtZero: true },
+        },
+      },
+    });
+  }
+
+  function generatePieChart(projects) {
+    const statusCounts = projects.reduce(
+      (counts, project) => {
+        counts[project.status] =
+          (counts[project.status] || 0) + 1;
+        return counts;
+      },
+      { Completed: 0, Ongoing: 0, Cancelled: 0, 'Not yet Started': 0 }
+    );
+
+    const ctx = document.getElementById('peakUsersChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Completed', 'Ongoing', 'Cancelled', 'Not yet Started'],
+        datasets: [
+          {
+            data: [
+              statusCounts.Completed,
+              statusCounts.Ongoing,
+              statusCounts.Cancelled,
+              statusCounts['Not yet Started'],
+            ],
+            backgroundColor: ['#28a745', '#007bff', '#dc3545', '#6c757d'],
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          legend: { position: 'top' },
+        },
+      },
+    });
+  }
+});

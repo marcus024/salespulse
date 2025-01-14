@@ -268,20 +268,27 @@ include("../auth/db.php");
                                     <div class="container my-0 px-0"> <!-- Remove padding with px-0 -->
                                         <!-- Row to Hold the Cards -->
                                         <div class="row mx-0"> <!-- Remove margin with mx-0 -->
-                                            <!-- First Card: Peak Users per Day -->
-                                            <div class="col-md-12"> <!-- Adjust the column size as needed -->
-                                                <div class="card shadow mb-4">
-                                                    <div class="card-header py-2 d-flex justify-content-between align-items-center">
-                                                        <!-- Header Title -->
-                                                        <h6 class="m-0 font-weight-bold" style="color:#36b9cc;">Peak Users per Day</h6>
-                                                        <!-- Optional: Add an icon or button in the header -->
-                                                        <i class="fas fa-chart-line" style="color:#36b9cc;"></i>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <canvas id="peakUsersChart" width="400" height="100"></canvas>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <div class="col-md-6">
+  <div class="card shadow mb-4">
+    <div class="card-header">
+      <h6 class="m-0 font-weight-bold text-primary">Projects per Account Manager</h6>
+    </div>
+    <div class="card-body">
+      <canvas id="projectsPerAccountManagerChart"></canvas>
+    </div>
+  </div>
+</div>
+<div class="col-md-6">
+  <div class="card shadow mb-4">
+    <div class="card-header">
+      <h6 class="m-0 font-weight-bold text-primary">Project Status Distribution</h6>
+    </div>
+    <div class="card-body">
+      <canvas id="projectStatusChart"></canvas>
+    </div>
+  </div>
+</div>
+
                                             <div class="col-md-12">
                                                 <div class="card shadow mb-4">
                                                     <div class="card-header py-2 d-flex justify-content-between align-items-center">
@@ -395,6 +402,8 @@ include("../auth/db.php");
     <script src="js/export_table.js"></script>
     <script src="js/search_item.js"></script>
     <script src="js/fetch_project_table.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     
 </body>
 </html>
