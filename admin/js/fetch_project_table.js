@@ -223,7 +223,7 @@ function generateHorizontalBarChart(projects) {
       counts[status] = (counts[status] || 0) + 1;
       return counts;
     },
-    { Completed: 0, Ongoing: 0, Cancelled: 0, 'Not yet Started': 0 } // Initialize all statuses
+    { Completed: 0, Ongoing: 0, Cancelled: 0, 'Not Yet Started': 0 } // Initialize all statuses
   );
 
   // Debugging: Log the status counts
@@ -236,7 +236,7 @@ function generateHorizontalBarChart(projects) {
   new Chart(ctx, {
     type: 'pie',
     data: {
-      labels: ['Completed', 'Ongoing', 'Cancelled', 'Not yet Started'], // Status labels
+      labels: ['Completed', 'Ongoing', 'Cancelled', 'Not Yet Started'], // Status labels
       datasets: [
         {
           data: [
