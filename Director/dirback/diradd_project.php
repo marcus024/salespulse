@@ -47,13 +47,9 @@ try {
         $stmt->bindParam(':user_id_c',$user_id);
         
         if ($stmt->execute()) {
-            echo "<script>
-                showNotification('Project added successfully!', '../director.php');
-            </script>";
+            echo "<script>showNotification('Project added successfully!'); window.location.href = '../director.php';</script>";
         } else {
-            echo "<script>
-                showNotification('Failed to add project. Please try again.', null, true);
-            </script>";
+            echo "<script>showNotification('Failed to add project. Please try again.'); window.history.back();</script>";
         }
 
     }
@@ -62,6 +58,4 @@ try {
     echo "<script>alert('An internal error occurred. Please try again later.'); window.history.back();</script>";
 }
 $conn = null;
-
-
 ?>
