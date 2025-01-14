@@ -28,12 +28,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function renderProfile(person, type = "profile") {
     const imgSrc = person.gender === "male" ? "../images/man.png" : "../images/woman.png";
+    const profileUrl = `/profile/${person.name.replace(/\s+/g, '-').toLowerCase()}`;
     return `
-      <div class="${type}" style="display: inline-block; margin: 10px; text-align: center;">
+      <a href="${profileUrl}" class="${type}" style="text-decoration: none; color: inherit;">
+      <div style="display: inline-block; margin: 10px; text-align: center;">
         <img src="${imgSrc}" alt="${person.name}" style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid #007bff;">
         <div class="profile-name">${person.name}</div>
         <div class="profile-position">${person.position}</div>
       </div>
+    </a>
     `;
   }
 
