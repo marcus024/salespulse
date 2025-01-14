@@ -219,7 +219,7 @@ function generateHorizontalBarChart(projects) {
     (counts, project) => {
       const status = project.status && project.status.trim() !== '' 
                      ? project.status 
-                     : 'Not yet Started'; // Default if status is missing or empty
+                     : 'Not Yet Started'; // Default if status is missing or empty
       counts[status] = (counts[status] || 0) + 1;
       return counts;
     },
