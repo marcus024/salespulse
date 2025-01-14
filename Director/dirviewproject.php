@@ -475,13 +475,11 @@ include_once('dirback/dirviewback.php');
                                                                             <i class="fas fa-pencil-alt" style="font-size: 12px; color: #36b9cc;"></i>
                                                                         </button>
                                                                         <!-- Delete Button -->
-                                                                        <button type="button" class="delete-btn" id="deleteButtons<?php echo substr($key, -1); ?>" 
-                                                                            data-project-id="<?php echo htmlspecialchars($project['project_unique_id']); ?>" 
-                                                                            onclick="deleteStage('<?php echo substr($key, -1); ?>', '<?php echo htmlspecialchars($project['project_unique_id']); ?>')" 
-                                                                            style="background: none; border: none;">
+                                                                       
+<!-- Delete Button -->
+                                                                        <button type="button" class="delete-btn" id="deleteButtons<?php echo $stage_map[$key]; ?>"  data-project-id="<?php echo $project['project_unique_id']; ?>" style="background: none; border: none;">
                                                                             <i class="fas fa-trash" style="font-size: 12px; color: #ff4c4c;"></i>
                                                                         </button>
-
                                                                     </td>
                                                                 </tr>
                                                                 <?php } ?>
