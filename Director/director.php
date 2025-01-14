@@ -1726,10 +1726,10 @@ try {
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="clientType" class="form-label" style="font-size: 10px; color: #000;">Client Type</label>
-                                        <select name="client_type" class="form-select" id="clientType" style="font-size: 10px; color: #000; padding: 5px;" required>
-                                            <option value="" selected disabled>Select Client Type</option>
-                                            <option value="IT Company">IT Company</option>
-                                            <option value="HealthCare">HealthCare</option>
+                                        <select name="client_type" id="clientTypeSelect" class="form-select" style="font-size: 10px; color: #000; padding: 5px;" required>
+                                            <option value="" disabled selected>Select</option>
+                                            <!-- Special option for adding a new client type -->
+                                            <option value="add_new">+ Add New Client Type...</option>
                                         </select>
                                     </div>
                                 </div>
@@ -1876,7 +1876,7 @@ try {
     <script src="alerts/notif.js"></script>
     <script src="current_year.js"></script>
     <script src="insert_fetch_distributor.js"></script>
-    
+    <script src="insert_fetch_client.js"></script>
     
     <!-- Table Export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
