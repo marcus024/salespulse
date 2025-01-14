@@ -106,7 +106,7 @@ $(document).ready(function () {
       durations.length > 0
         ? Math.round(durations.reduce((a, b) => a + b, 0) / durations.length)
         : 0;
-    $('#avgDuration').text(`${avgDuration} days`);
+    $('#avgDuration').text(`${avgDuration}`);
   }
 
   // Generate the horizontal bar chart
