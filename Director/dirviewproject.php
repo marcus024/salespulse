@@ -415,7 +415,7 @@ include_once('dirback/dirviewback.php');
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div id="table-view"  style="overflow-x: auto; overflow-y: auto; max-height: 400px;">
+                                                    <div class="table-responsive"  id="table-view"  style="overflow-x: auto; overflow-y: auto; max-height: 400px;">
                                                         <table class="table table-bordered " id="stageTable" style="font-size: 10px; width: 100%; min-width: 1200px;">
                                                             <thead class="table-light" yle="font-size: 10px;">
                                                                 <tr>
@@ -508,6 +508,22 @@ include_once('dirback/dirviewback.php');
                                                         transform: scale(1.2); /* Slightly enlarge */
                                                     }
 
+                                                </style>
+                                                <style>
+                                                    .table-responsive::-webkit-scrollbar {
+                                                        width: 4px;
+                                                        height: 4px;
+                                                    }
+
+                                                    .table-responsive::-webkit-scrollbar-thumb {
+                                                        background-color: #36b9cc;
+                                                        border-radius: 10px;
+                                                        height: 10px;
+                                                    }
+
+                                                    .table-responsive::-webkit-scrollbar-thumb:hover {
+                                                        background-color: #555;
+                                                    }
                                                 </style>
 
                                                     <div class="container" style="background-color: #36b9cc; padding-top: 100px; border-radius: 20px; position: relative;">
