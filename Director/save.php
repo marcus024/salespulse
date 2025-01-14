@@ -268,6 +268,12 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
                     continue;
                 }
 
+                // Ensure file paths are valid
+                if (!empty($billOfMaterials) && !file_exists($billOfMaterials)) {
+                    error_log("File does not exist: {$billOfMaterials}");
+                    continue;
+                }
+
                 // Execute query
                 $reqStmt->execute([
                     $projectUniqueId,
@@ -281,6 +287,7 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
         } else {
             error_log("No requirements found for Project ID: $projectUniqueId");
         }
+
 
         // Handle engagements
         if (!empty($inputData['engagement_three'])) {
