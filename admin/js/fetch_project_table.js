@@ -217,7 +217,7 @@ function generatePieChart(projects) {
   // Count the statuses, ensuring "Not yet Started" is included
   const statusCounts = projects.reduce(
     (counts, project) => {
-      const status = project.status || 'Not yet Started'; // Default to 'Not yet Started' if status is empty
+      const status = project.status || 'Not Yet Started'; // Default to 'Not yet Started' if status is empty
       counts[status] = (counts[status] || 0) + 1;
       return counts;
     },
