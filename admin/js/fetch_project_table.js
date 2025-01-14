@@ -136,7 +136,7 @@ $(document).ready(function () {
       options: {
         indexAxis: 'y',
         plugins: {
-          legend: { display: false },
+          legend: { display: true },
         },
         scales: {
           x: { beginAtZero: true },
