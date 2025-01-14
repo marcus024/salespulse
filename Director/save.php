@@ -24,6 +24,8 @@ try {
     $projectUniqueId = $data['project_unique_id'];
     $inputData = $data['data'];
 
+    
+
     switch ($step) {
         case 1:
             $message = updateStageOne($conn, $projectUniqueId, $inputData);
