@@ -253,21 +253,33 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
             $reqStmt = $conn->prepare($requirementQuery);
 
             foreach ($inputData['requirement_three'] as $index => $requirement) {
+                // Retrieve related values
                 $quantity = $inputData['quantity'][$index] ?? null;
-                $billOfMaterials = $inputData['bill_of_materials'][$index] ?? null; // File path
+                $billOfMaterials = $inputData['bill_of_materials'][$index] ?? null;
                 $requirementRemarks = $inputData['requirement_remarks_three'][$index] ?? null;
                 $pricing = $inputData['pricing'][$index] ?? null;
 
+                // Debugging logs
+                error_log("Processing requirement_three: {$requirement}, quantity: {$quantity}, file: {$billOfMaterials}, remarks: {$requirementRemarks}, pricing: {$pricing}");
+
+                // Validate inputs
+                if (empty($requirement)) {
+                    error_log("Empty requirement_three for Project ID {$projectUniqueId}. Skipping insert.");
+                    continue;
+                }
+
+                // Execute query
                 $reqStmt->execute([
                     $projectUniqueId,
                     htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8'),
                     htmlspecialchars($quantity ?? '', ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($billOfMaterials ?? '', ENT_QUOTES, 'UTF-8'), // Save file path
+                    htmlspecialchars($billOfMaterials ?? '', ENT_QUOTES, 'UTF-8'),
                     htmlspecialchars($requirementRemarks ?? '', ENT_QUOTES, 'UTF-8'),
                     htmlspecialchars($pricing ?? '', ENT_QUOTES, 'UTF-8')
                 ]);
             }
         }
+
 
 
         // Handle engagements for engagement_three
