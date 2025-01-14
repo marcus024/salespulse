@@ -794,7 +794,7 @@ include("../auth/db.php");
                                                                 data-bs-toggle="modal" 
                                                                 data-bs-target="#multiStepModal" 
                                                                 data-project-id="<?php echo htmlspecialchars($project['project_unique_id']); ?>" 
-                                                                onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
+                                                                
                                                             >
                                                                 <?php echo htmlspecialchars($project['company_name']); ?>
                                                             </li>
@@ -812,7 +812,7 @@ include("../auth/db.php");
                                                             <li class="list-group-item" 
                                                                 data-bs-toggle="modal" 
                                                                 data-bs-target="#multiStepModal" 
-                                                                onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')">
+                                                                >
                                                                 <?php echo htmlspecialchars($project['company_name']); ?>
                                                             </li>
                                                         <?php endforeach; ?>
