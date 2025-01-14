@@ -213,16 +213,21 @@ function generateHorizontalBarChart(projects) {
 }
 
 
-function generatePieChart(projects) {
-  // Count the statuses, ensuring "Not yet Started" is included
+  function generatePieChart(projects) {
+  // Count the statuses, handling "Not yet Started" dynamically
   const statusCounts = projects.reduce(
     (counts, project) => {
-      const status = project.status || 'Not Yet Started'; // Default to 'Not yet Started' if status is empty
+      const status = project.status && project.status.trim() !== '' 
+                     ? project.status 
+                     : 'Not yet Started'; // Default if status is missing or empty
       counts[status] = (counts[status] || 0) + 1;
       return counts;
     },
     { Completed: 0, Ongoing: 0, Cancelled: 0, 'Not yet Started': 0 } // Initialize all statuses
   );
+
+  // Debugging: Log the status counts
+  console.log('Status Counts:', statusCounts);
 
   // Get the chart canvas context
   const ctx = document.getElementById('projectStatusChart').getContext('2d');
