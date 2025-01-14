@@ -213,41 +213,45 @@ function generateHorizontalBarChart(projects) {
 }
 
 
-  // Generate the pie chart
-  function generatePieChart(projects) {
-    const statusCounts = projects.reduce(
-      (counts, project) => {
-        counts[project.status] =
-          (counts[project.status] || 0) + 1;
-        return counts;
-      },
-      { Completed: 0, Ongoing: 0, Cancelled: 0, 'Not yet Started': 0 }
-    );
+function generatePieChart(projects) {
+  // Count the statuses, ensuring "Not yet Started" is included
+  const statusCounts = projects.reduce(
+    (counts, project) => {
+      const status = project.status || 'Not yet Started'; // Default to 'Not yet Started' if status is empty
+      counts[status] = (counts[status] || 0) + 1;
+      return counts;
+    },
+    { Completed: 0, Ongoing: 0, Cancelled: 0, 'Not yet Started': 0 } // Initialize all statuses
+  );
 
-    const ctx = document.getElementById('projectStatusChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'pie',
-      data: {
-        labels: ['Completed', 'Ongoing', 'Cancelled', 'Not yet Started'],
-        datasets: [
-          {
-            data: [
-              statusCounts.Completed,
-              statusCounts.Ongoing,
-              statusCounts.Cancelled,
-              statusCounts['Not yet Started'],
-            ],
-            backgroundColor: ['#28a745', '#007bff', '#dc3545', '#6c757d'],
-          },
-        ],
-      },
-      options: {
-        plugins: {
-          legend: { position: 'top' },
+  // Get the chart canvas context
+  const ctx = document.getElementById('projectStatusChart').getContext('2d');
+
+  // Create the pie chart
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['Completed', 'Ongoing', 'Cancelled', 'Not yet Started'], // Status labels
+      datasets: [
+        {
+          data: [
+            statusCounts.Completed,
+            statusCounts.Ongoing,
+            statusCounts.Cancelled,
+            statusCounts['Not yet Started'],
+          ], // Data for each status
+          backgroundColor: ['#28a745', '#007bff', '#dc3545', '#6c757d'], // Colors for each status
         },
+      ],
+    },
+    options: {
+      plugins: {
+        legend: { position: 'top' }, // Display legend at the top
       },
-    });
-  }
+    },
+  });
+}
+
 
   // Helper functions
   function escapeHtml(str) {
