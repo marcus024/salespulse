@@ -51,44 +51,95 @@ $(document).ready(function () {
     });
   }
 
-  // Populate dropdown menus
-  function populateDropdowns(projects) {
-    const months = new Set();
-    const accountManagers = new Set();
-    const projectIds = new Set();
+  // Populate dropdown menus and set up filtering
+function populateDropdowns(projects) {
+  const months = new Set();
+  const accountManagers = new Set();
+  const projectIds = new Set();
 
-    projects.forEach((project) => {
-      if (project.start_date) {
-        const month = new Date(project.start_date).toLocaleString('default', {
-          month: 'long',
-        });
-        months.add(month);
+  projects.forEach((project) => {
+    if (project.start_date && !isNaN(Date.parse(project.start_date))) {
+      const month = new Date(project.start_date).toLocaleString('default', {
+        month: 'long',
+      });
+      months.add(month);
+    }
+    accountManagers.add(project.account_manager);
+    projectIds.add(project.project_unique_id);
+  });
+
+  // Populate and attach event listeners to months dropdown
+  $('#monthsDropdownMenu').empty();
+  months.forEach((month) => {
+    $('#monthsDropdownMenu').append(
+      `<li><a class="dropdown-item month-item" href="#" data-month="${month}">${month}</a></li>`
+    );
+  });
+
+  // Populate and attach event listeners to account managers dropdown
+  $('#usersDropdownMenu').empty();
+  accountManagers.forEach((manager) => {
+    $('#usersDropdownMenu').append(
+      `<li><a class="dropdown-item manager-item" href="#" data-manager="${manager}">${manager}</a></li>`
+    );
+  });
+
+  // Populate and attach event listeners to projects dropdown
+  $('#projectsDropdownMenu').empty();
+  projectIds.forEach((id) => {
+    $('#projectsDropdownMenu').append(
+      `<li><a class="dropdown-item project-item" href="#" data-project-id="${id}">${id}</a></li>`
+    );
+  });
+
+  // Attach filtering logic
+  attachFilteringLogic(projects);
+}
+
+function attachFilteringLogic(projects) {
+  // Filter by month
+  $(document).on('click', '.month-item', function () {
+    const selectedMonth = $(this).data('month');
+    const filteredProjects = projects.filter((project) => {
+      if (!project.start_date || isNaN(Date.parse(project.start_date))) {
+        return false;
       }
-      accountManagers.add(project.account_manager);
-      projectIds.add(project.project_unique_id);
+      const projectMonth = new Date(project.start_date).toLocaleString(
+        'default',
+        { month: 'long' }
+      );
+      return projectMonth === selectedMonth;
     });
 
-    $('#monthsDropdownMenu').empty();
-    months.forEach((month) => {
-      $('#monthsDropdownMenu').append(
-        `<li><a class="dropdown-item" href="#">${month}</a></li>`
-      );
-    });
+    updateCards(filteredProjects);
+    generateHorizontalBarChart(filteredProjects);
+    generatePieChart(filteredProjects);
+  });
 
-    $('#usersDropdownMenu').empty();
-    accountManagers.forEach((manager) => {
-      $('#usersDropdownMenu').append(
-        `<li><a class="dropdown-item" href="#">${manager}</a></li>`
-      );
-    });
+  // Filter by account manager
+  $(document).on('click', '.manager-item', function () {
+    const selectedManager = $(this).data('manager');
+    const filteredProjects = projects.filter(
+      (project) => project.account_manager === selectedManager
+    );
 
-    $('#projectsDropdownMenu').empty();
-    projectIds.forEach((id) => {
-      $('#projectsDropdownMenu').append(
-        `<li><a class="dropdown-item" href="#">${id}</a></li>`
-      );
-    });
-  }
+    updateCards(filteredProjects);
+    generateHorizontalBarChart(filteredProjects);
+    generatePieChart(filteredProjects);
+  });
+
+  // Filter by project ID
+  $(document).on('click', '.project-item', function () {
+    const selectedProjectId = $(this).data('project-id');
+    const filteredProjects = projects.filter(
+      (project) => project.project_unique_id === selectedProjectId
+    );
+
+    updateCards(filteredProjects);
+    generateHorizontalBarChart(filteredProjects);
+    generatePieChart(filteredProjects);
+  });
+}
 
  // Update card values
 function updateCards(projects) {
