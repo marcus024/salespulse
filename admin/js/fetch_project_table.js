@@ -130,7 +130,7 @@ $(document).ready(function () {
             label: 'Number of Projects',
             data: data,
              backgroundColor: '#36b9cc',
-             barThickness: 30, // Increase bar thickness
+             barThickness: 10, // Increase bar thickness
              maxBarThickness: 50, // Optional: Set maximum thickness
           },
         ],
