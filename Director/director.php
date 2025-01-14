@@ -339,13 +339,22 @@ include("../auth/db.php");
                 onclick="toggleSidebar()" 
                 style="cursor: pointer; font-size: 20px; color: white; margin: 10px;"
             ></i> -->
-            <img 
-                id="sidebarToggleIcon" 
-                src="../images/logo_white.png" 
-                alt="Toggle Sidebar" 
-                onclick="toggleSidebar()" 
-                style="cursor: pointer; width: 24px; height: 24px; margin: 10px;"
-            />
+           <div 
+                class="d-flex align-items-center mx-1" 
+                id="salespulse" 
+                style="font-weight: bold; font-family: 'Poppins';"
+                >
+                <!-- The image outside the text element -->
+                <img
+                    id="sidebarToggleIcon"
+                    src="../images/logo_white.png"
+                    alt="Toggle Sidebar"
+                    onclick="toggleSidebar()"
+                    style="cursor: pointer; width: 24px; height: 24px; margin-right: 10px;"
+                />
+                <!-- The text -->
+                <span>SALES PULSE</span>
+            </div>
             <!-- <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div style="color:white; font-weight:bold; font-family:'Poppins'; font-size:20px">
                     SALES PULSE
