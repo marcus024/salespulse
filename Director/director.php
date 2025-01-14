@@ -740,65 +740,76 @@ include("../auth/db.php");
                                             $ongoing_projects = [];
                                             $completed_projects = [];
                                             $cancelled_projects = [];
+try {
+    $sql = "
+        SELECT 
+            p.project_unique_id, 
+            p.company_name, 
+            p.status,
+            p.start_date,
+            sf.status_stage_five
+        FROM 
+            projecttb p
+        INNER JOIN 
+            salesauth s 
+        ON 
+            p.user_id_cur = s.user_id_current
+        LEFT JOIN 
+            stagefive sf
+        ON 
+            p.project_unique_id = sf.project_unique_id
+        WHERE 
+            s.user_id_current = :current_user
+    ";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':current_user', $user_id, PDO::PARAM_STR);
+    $stmt->execute();
 
-                                            try {
-                                                $sql = "
-                                                    SELECT 
-                                                        p.project_unique_id, 
-                                                        p.company_name, 
-                                                        p.status,
-                                                        p.start_date 
-                                                    FROM 
-                                                        projecttb p
-                                                    INNER JOIN 
-                                                        salesauth s 
-                                                    ON 
-                                                        p.user_id_cur = s.user_id_current
-                                                    WHERE 
-                                                        s.user_id_current = :current_user
-                                                ";
-                                                $stmt = $conn->prepare($sql);
-                                                $stmt->bindParam(':current_user', $user_id, PDO::PARAM_STR);
-                                                $stmt->execute();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        // Include the stage 5 status in each project row
+        $row['status_stage_five'] = $row['status_stage_five'] ?? null;
 
-                                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                                    if ($row['status'] === 'Ongoing') {
-                                                        $ongoing_projects[] = $row;
-                                                    } elseif ($row['status'] === 'Completed') {
-                                                        $completed_projects[] = $row;
-                                                    } elseif ($row['status'] === 'Cancelled') {
-                                                        $cancelled_projects[] = $row;
-                                                    }
-                                                }
-                                            } catch (PDOException $e) {
+        if ($row['status'] === 'Ongoing') {
+            $ongoing_projects[] = $row;
+        } elseif ($row['status'] === 'Completed') {
+            $completed_projects[] = $row;
+        } elseif ($row['status'] === 'Cancelled') {
+            $cancelled_projects[] = $row;
+        }
+    }
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+ catch (PDOException $e) {
                                                 echo "<script>alert('Error: " . $e->getMessage() . "'); window.history.back();</script>";
                                             }
                                             ?>
                                             <!-- Ongoing Projects -->
-                                            <div class="tab-pane fade show active"  id="nav-ongoing" role="tabpanel" aria-labelledby="nav-ongoing-tab">
-                                               <ul class="list-group">
-    <?php if (!empty($ongoing_projects)): ?>
-        <?php foreach ($ongoing_projects as $project): ?>
-            <?php 
-            // Check if Stage 5 is completed
-            $isStageFiveCompleted = !empty($project['status_stage_five']) && $project['status_stage_five'] === 'Completed';
-            ?>
-            <li 
-                class="list-group-item" 
-                <?php if (!$isStageFiveCompleted): ?>
-                    data-bs-toggle="modal" 
-                    data-bs-target="#multiStepModal" 
-                    onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
-                <?php endif; ?>
-            >
-                <?php echo htmlspecialchars($project['company_name']); ?>
-            </li>
-        <?php endforeach; ?>
-    <?php else: ?>
-        <p style="color:#555; font-size:12px; font-family:'Poppins'">No ongoing projects available.</p>
-    <?php endif; ?>
-</ul>
-
+                                            <div class="tab-pane fade show active" id="nav-ongoing" role="tabpanel" aria-labelledby="nav-ongoing-tab">
+                                                <ul class="list-group">
+                                                    <?php if (!empty($ongoing_projects)): ?>
+                                                        <?php foreach ($ongoing_projects as $project): ?>
+                                                            <?php 
+                                                            // Determine the action based on Stage 5 status
+                                                            $isStageFiveCompleted = !empty($project['status_stage_five']) && $project['status_stage_five'] === 'Completed';
+                                                            ?>
+                                                            <li 
+                                                                class="list-group-item" 
+                                                                <?php if ($isStageFiveCompleted): ?>
+                                                                    onclick="window.location.href='dirviewproject.php?project_id=<?php echo htmlspecialchars($project['project_unique_id']); ?>'"
+                                                                <?php else: ?>
+                                                                    data-bs-toggle="modal" 
+                                                                    data-bs-target="#multiStepModal" 
+                                                                    onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
+                                                                <?php endif; ?>
+                                                            >
+                                                                <?php echo htmlspecialchars($project['company_name']); ?>
+                                                            </li>
+                                                        <?php endforeach; ?>
+                                                    <?php else: ?>
+                                                        <p style="color:#555; font-size:12px; font-family:'Poppins'">No ongoing projects available.</p>
+                                                    <?php endif; ?>
+                                                </ul>
                                             </div>
                                             <!-- Completed Projects -->
                                             <div class="tab-pane fade" id="nav-completed" role="tabpanel" aria-labelledby="nav-completed-tab">
@@ -837,6 +848,7 @@ include("../auth/db.php");
                                                     <?php endif; ?>
                                                 </ul>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
