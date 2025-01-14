@@ -273,7 +273,7 @@ include("../auth/db.php");
                                                     <div class="card-header">
                                                     <h6 class="m-0 font-weight-bold text-primary">Projects per Account Manager</h6>
                                                     </div>
-                                                    <div class="card-body" style="height: 1000px;">
+                                                    <div class="card-body" style="height: 500px;">
                                                     <canvas id="projectsPerAccountManagerChart"></canvas>
                                                     </div>
                                                 </div>
