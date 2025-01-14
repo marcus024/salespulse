@@ -268,11 +268,9 @@ include("../auth/db.php");
                                     <div class="container my-0 px-0"> <!-- Remove padding with px-0 -->
                                         <!-- Row to Hold the Cards -->
                                         <div class="row mx-0"> <!-- Remove margin with mx-0 -->
-                                            <!-- First Card: Peak Users per Day -->
-                                            <div class="col-md-12" id="orgStructureContainer" style="text-align: center;">
-                                                <!-- Organizational structure will be rendered here -->
+                                            <div class="col-md-12" id="orgStructureContainer" style="overflow-x: auto; white-space: nowrap;">
+                                                <!-- Organizational structure will be dynamically rendered here -->
                                             </div>
-
                                             <div class="col-md-12">
                                                 <div class="card shadow mb-4">
                                                     <div class="card-header py-2 d-flex justify-content-between align-items-center">
@@ -356,6 +354,28 @@ include("../auth/db.php");
     </div>
 
     <style>
+  #orgStructureContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px;
+  }
+
+  #orgStructureContainer .unit-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 30px;
+  }
+
+  #orgStructureContainer .org-line,
+  #orgStructureContainer .members {
+    display: flex;
+    justify-content: center;
+  }
+
   #orgStructureContainer .director {
     font-size: 16px;
     font-weight: bold;
@@ -374,18 +394,11 @@ include("../auth/db.php");
     color: #6c757d;
   }
 
-  #orgStructureContainer .members {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  #orgStructureContainer .unit {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  #orgStructureContainer svg {
+    display: block;
   }
 </style>
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
@@ -424,7 +437,7 @@ include("../auth/db.php");
   function renderProfile(person, type = "profile") {
     const imgSrc = person.gender === "male" ? "../images/man.png" : "../images/woman.png";
     return `
-      <div class="${type}" style="display: inline-block; margin: 10px; text-align: center;">
+      <div class="${type}" style="display: inline-block; text-align: center; margin: 10px;">
         <img src="${imgSrc}" alt="${person.name}" style="width: 80px; height: 80px; border-radius: 50%;">
         <div style="font-weight: bold;">${person.name}</div>
         <div style="font-size: 12px; color: gray;">${person.position}</div>
@@ -433,27 +446,35 @@ include("../auth/db.php");
   }
 
   function renderOrgStructure(data) {
-    let html = "";
-
-    // Render Director
-    html += `<div style="margin-bottom: 30px;">${renderProfile(data.director, "director")}</div>`;
-
-    // Render Units
-    data.units.forEach((unit, index) => {
-      html += `
-        <div class="unit" style="margin-bottom: 20px;">
-          ${renderProfile(unit.head, "unit-head")}
-          <div class="members" style="margin-top: 10px;">
-            ${unit.members.map((member) => renderProfile(member, "member")).join("")}
-          </div>
-        </div>
-      `;
-    });
+    let html = `
+      <div class="org-line" style="display: flex; justify-content: center; position: relative;">
+        <div>${renderProfile(data.director, "director")}</div>
+      </div>
+      <svg height="50" width="100%" style="margin: -20px 0;">
+        <line x1="50%" y1="0" x2="50%" y2="50" stroke="#36b9cc" stroke-width="2"/>
+      </svg>
+      <div class="unit-container" style="display: flex; align-items: center; gap: 30px; margin-top: 10px; position: relative;">
+        ${data.units
+          .map(
+            (unit, index) => `
+              <div class="unit" style="display: flex; flex-direction: column; align-items: center;">
+                ${renderProfile(unit.head, "unit-head")}
+                <svg height="50" width="100%">
+                  <line x1="50%" y1="0" x2="50%" y2="50" stroke="#36b9cc" stroke-width="2"/>
+                </svg>
+                <div class="members" style="display: flex; gap: 10px; margin-top: 10px;">
+                  ${unit.members.map((member) => renderProfile(member, "member")).join("")}
+                </div>
+              </div>
+            `
+          )
+          .join("")}
+      </div>
+    `;
 
     container.innerHTML = html;
   }
 
-  // Call the function to render the structure
   renderOrgStructure(organizationData);
 });
 
