@@ -110,42 +110,42 @@ $(document).ready(function () {
   }
 
   // Generate the horizontal bar chart
-  function generateHorizontalBarChart(projects) {
-    const accountManagerCounts = projects.reduce((counts, project) => {
-      counts[project.account_manager] =
-        (counts[project.account_manager] || 0) + 1;
-      return counts;
-    }, {});
+function generateHorizontalBarChart(projects) {
+  const accountManagerCounts = projects.reduce((counts, project) => {
+    counts[project.account_manager] =
+      (counts[project.account_manager] || 0) + 1;
+    return counts;
+  }, {});
 
-    const labels = Object.keys(accountManagerCounts);
-    const data = Object.values(accountManagerCounts);
+  const labels = Object.keys(accountManagerCounts);
+  const data = Object.values(accountManagerCounts);
 
-    const ctx = document.getElementById('projectsPerAccountManagerChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [
-          {
-            label: 'Number of Projects',
-            data: data,
-             backgroundColor: '#36b9cc',
-             barThickness: 10, // Increase bar thickness
-             maxBarThickness: 50, // Optional: Set maximum thickness
-          },
-        ],
-      },
-      options: {
-        indexAxis: 'y',
-        plugins: {
-          legend: { display: true },
+  const ctx = document.getElementById('projectsPerAccountManagerChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Number of Projects',
+          data: data,
+          backgroundColor: '#36b9cc',
+          barThickness: 30, // Optional: Adjust bar thickness if needed
         },
-        scales: {
-          x: { beginAtZero: true },
-        },
+      ],
+    },
+    options: {
+      maintainAspectRatio: false, // Allow chart height customization
+      indexAxis: 'y', // Horizontal bars
+      plugins: {
+        legend: { display: true },
       },
-    });
-  }
+      scales: {
+        x: { beginAtZero: true },
+      },
+    },
+  });
+}
 
   // Generate the pie chart
   function generatePieChart(projects) {
