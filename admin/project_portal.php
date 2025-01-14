@@ -268,12 +268,12 @@ include("../auth/db.php");
                                     <div class="container my-0 px-0"> <!-- Remove padding with px-0 -->
                                         <!-- Row to Hold the Cards -->
                                         <div class="row mx-0"> <!-- Remove margin with mx-0 -->
-                                            <div class="col-md-6" style="height: 500px;">
+                                            <div class="col-md-6" >
                                                 <div class="card shadow mb-4">
                                                     <div class="card-header">
                                                     <h6 class="m-0 font-weight-bold text-primary">Projects per Account Manager</h6>
                                                     </div>
-                                                    <div class="card-body">
+                                                    <div class="card-body" style="height: 1000px;">
                                                     <canvas id="projectsPerAccountManagerChart"></canvas>
                                                     </div>
                                                 </div>
