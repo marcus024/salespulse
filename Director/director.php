@@ -1804,7 +1804,10 @@ try {
         
     </button>
     
-    <style>
+    
+   
+    <!-- Notification bar -->
+     <style>
     #notification {
         font-family: 'Poppins', sans-serif;
         animation: fadeIn 0.5s ease, fadeOut 0.5s ease 4.5s; /* Fades in, stays, then fades out */
@@ -1820,33 +1823,38 @@ try {
         to { opacity: 0; }
     }
     </style>
-    <script>
-    function showNotification(message, redirectUrl = null, isError = false) {
-        const notification = document.getElementById('notification');
-        const messageSpan = document.getElementById('notification-message');
-
-        // Set the message and style
-        messageSpan.textContent = message;
-        notification.style.backgroundColor = isError ? '#ff4c4c' : '#36b9cc'; // Red for error, blue for success
-
-        // Show the notification
-        notification.style.display = 'block';
-
-        // Hide the notification after 4 seconds
-        setTimeout(() => {
-            notification.style.display = 'none';
-            if (redirectUrl) {
-                window.location.href = redirectUrl;
-            }
-        }, 4000);
-    }
-    </script>
-
-    <!-- Notification bar -->
 
     <div id="notification" style="position: fixed; top: 20px; right: 20px; z-index: 9999; display: none; background-color: #36b9cc; color: white; padding: 10px 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
         <span id="notification-message"></span>
     </div>
+
+    <div id="notification" style="display: block; background-color: #ff4c4c;">
+        <span id="notification-message">Failed to add project. Please try again.</span>
+    </div>
+
+
+    <script>
+        function showNotification(message, redirectUrl = null, isError = false) {
+            const notification = document.getElementById('notification');
+            const messageSpan = document.getElementById('notification-message');
+
+            // Set the message and style
+            messageSpan.textContent = message;
+            notification.style.backgroundColor = isError ? '#ff4c4c' : '#36b9cc'; // Red for error, blue for success
+
+            // Show the notification
+            notification.style.display = 'block';
+
+            // Hide the notification after 4 seconds
+            setTimeout(() => {
+                notification.style.display = 'none';
+                if (redirectUrl) {
+                    window.location.href = redirectUrl;
+                }
+            }, 4000);
+        }
+        </script>
+
 
     <!-- Notification bar -->
     <script>
