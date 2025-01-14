@@ -396,10 +396,6 @@ include("../auth/db.php");
     color: gray;
   }
 
-  /* Lines */
-  .line-svg {
-    position: absolute;
-  }
 </style>
 
 
