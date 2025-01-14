@@ -417,151 +417,63 @@ include_once('dirback/dirviewback.php');
                                                     </div>
                                                     <div id="table-view"  >
                                                         <table class="table table-bordered " id="stageTable" style="font-size: 12px;">
-                                                            <thead class="table-light">
-                                                                <tr>
-                                                                    <th>Stage</th>
-                                                                    <th>Unique ID</th>
-                                                                    <th>Start Date</th>
-                                                                    <th>End Date</th>
-                                                                    <th>Status</th>
-                                                                    <th>Duration</th>
-                                                                    <th>Solution</th>
-                                                                    <th>Technology</th>
-                                                                    <th>Deal Size</th>
-                                                                    <th>Product</th>
-                                                                    <th>Stage Remarks</th>
-                                                                    <th>Action</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <!-- Stage 1 -->
-                                                                <tr>
-                                                                    <td>Stage 1 - Awareness/Prospecting</td>
-                                                                    <td><?php echo !empty($project_data['stage_one']['start_date_stage_one']) ? htmlspecialchars($project_data['stage_one']['start_date_stage_one']) : 'Not Yet Started'; ?></td>
-                                                                    <td><?php echo !empty($project_data['stage_one']['end_date_stage_one']) ? htmlspecialchars($project_data['stage_one']['end_date_stage_one']) : 'Not Yet Ended'; ?></td>
-                                                                    <td><?php echo !empty($project_data['stage_one']['duration']) ? htmlspecialchars($project_data['stage_one']['duration']) : '0'; ?></td>
-                                                                    <td class="action-buttons">
-                                                                        <!-- View Button -->
-                                                                        <a 
-                                                                            class="view-btn" 
-                                                                            href="#" 
-                                                                            onclick="smoothNavigate('viewstage1.php?project_id=<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
-                                                                            >
-                                                                            <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
-                                                                        </a>
+    <thead class="table-light">
+        <tr>
+            <th>Stage</th>
+            <th>Unique ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Status</th>
+            <th>Duration</th>
+            <th>Solution</th>
+            <th>Technology</th>
+            <th>Deal Size</th>
+            <th>Product</th>
+            <th>Stage Remarks</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php 
+        $stages = [
+            'stage_one' => 'Stage 1 - Awareness/Prospecting',
+            'stage_two' => 'Stage 2 - Engagement/Discovery',
+            'stage_three' => 'Stage 3 - Presentation/Proposal',
+            'stage_four' => 'Stage 4 - Negotiation/Commitment',
+            'stage_five' => 'Stage 5 - Delivery/Follow-Up'
+        ];
 
-                                                                        <!-- Edit Button -->
-                                                                        <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#multiStepModal" onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')" style="background: none; border: none;">
-                                                                            <i class="fas fa-pencil-alt" style="font-size: 12px; color: #36b9cc;"></i>
-                                                                        </button>
-                                                                        <!-- Delete Button -->
-                                                                        <button type="button" class="delete-btn" id="deleteButtons1" data-project-id="<?php echo $project['project_unique_id']; ?>" style="background: none; border: none;">
-                                                                            <i class="fas fa-trash" style="font-size: 12px; color: #ff4c4c;"></i>
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                <!-- Stage 2 -->
-                                                                <tr>
-                                                                    <td>Stage 2 - Engagement/Discovery</td>
-                                                                    <td><?php echo !empty($project_data['stage_two']['start_date_stage_two']) ? htmlspecialchars($project_data['stage_two']['start_date_stage_two']) : 'Not Yet Started'; ?></td>
-                                                                    <td><?php echo !empty($project_data['stage_two']['end_date_stage_two']) ? htmlspecialchars($project_data['stage_two']['end_date_stage_two']) : 'Not Yet Ended'; ?></td>
-                                                                    <td><?php echo !empty($project_data['stage_two']['duration']) ? htmlspecialchars($project_data['stage_two']['duration']) : '0'; ?></td>
-                                                                    <td class="action-buttons">
-                                                                        <!-- View Button -->
-                                                                        <a 
-                                                                            class="view-btn" 
-                                                                            href="#" 
-                                                                            onclick="smoothNavigate('viewstage2.php?project_id=<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
-                                                                            >
-                                                                            <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
-                                                                        </a>
-                                                                        <!-- Edit Button -->
-                                                                        <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#multiStepModal" onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')" style="background: none; border: none;">
-                                                                            <i class="fas fa-pencil-alt" style="font-size: 12px; color: #36b9cc;"></i>
-                                                                        </button>
-                                                                        <!-- Delete Button -->
-                                                                        <button type="button" class="delete-btn" id="deleteButtons2" data-project-id="<?php echo $project['project_unique_id']; ?>" style="background: none; border: none;">
-                                                                            <i class="fas fa-trash" style="font-size: 12px; color: #ff4c4c;"></i>
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                <!-- Stage 3 -->
-                                                                <tr>
-                                                                    <td>Stage 3 - Presentation/Proposal</td>
-                                                                    <td><?php echo !empty($project_data['stage_three']['start_date_stage_three']) ? htmlspecialchars($project_data['stage_three']['start_date_stage_three']) : 'Not Yet Started'; ?></td>
-                                                                    <td><?php echo !empty($project_data['stage_three']['end_date_stage_three']) ? htmlspecialchars($project_data['stage_three']['end_date_stage_three']) : 'Not Yet Ended'; ?></td>
-                                                                    <td><?php echo !empty($project_data['stage_three']['duration']) ? htmlspecialchars($project_data['stage_three']['duration']) : '0'; ?></td>
-                                                                    <td class="action-buttons">
-                                                                        <!-- View Button -->
-                                                                        <a 
-                                                                            class="view-btn" 
-                                                                            href="#" 
-                                                                            onclick="smoothNavigate('viewstage3.php?project_id=<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
-                                                                            >
-                                                                            <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
-                                                                        </a>
-                                                                        <!-- Edit Button -->
-                                                                        <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#multiStepModal" onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')" style="background: none; border: none;">
-                                                                            <i class="fas fa-pencil-alt" style="font-size: 12px; color: #36b9cc;"></i>
-                                                                        </button>
-                                                                        <!-- Delete Button -->
-                                                                        <button type="button" class="delete-btn" id="deleteButtons3" data-project-id="<?php echo $project['project_unique_id']; ?>" style="background: none; border: none;">
-                                                                            <i class="fas fa-trash" style="font-size: 12px; color: #ff4c4c;"></i>
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                <!-- Stage 4 -->
-                                                                <tr>
-                                                                    <td>Stage 4 - Negotiation/Commitment</td>
-                                                                    <td><?php echo !empty($project_data['stage_four']['start_date_stage_four']) ? htmlspecialchars($project_data['stage_four']['start_date_stage_four']) : 'Not Yet Started'; ?></td>
-                                                                    <td><?php echo !empty($project_data['stage_four']['end_date_stage_four']) ? htmlspecialchars($project_data['stage_four']['end_date_stage_four']) : 'Not Yet Ended'; ?></td>
-                                                                    <td><?php echo !empty($project_data['stage_four']['duration']) ? htmlspecialchars($project_data['stage_four']['duration']) : '0'; ?></td>
-                                                                    <td class="action-buttons">
-                                                                        <!-- View Button -->
-                                                                        <a 
-                                                                            class="view-btn" 
-                                                                            href="#" 
-                                                                            onclick="smoothNavigate('viewstage4.php?project_id=<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
-                                                                            >
-                                                                            <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
-                                                                        </a>
-                                                                        <!-- Edit Button -->
-                                                                        <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#multiStepModal" onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')" style="background: none; border: none;">
-                                                                            <i class="fas fa-pencil-alt" style="font-size: 12px; color: #36b9cc;"></i>
-                                                                        </button>
-                                                                        <!-- Delete Button -->
-                                                                        <button type="button" class="delete-btn" id="deleteButtons4" data-project-id="<?php echo $project['project_unique_id']; ?>" style="background: none; border: none;">
-                                                                            <i class="fas fa-trash" style="font-size: 12px; color: #ff4c4c;"></i>
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                                <!-- Stage 5 -->
-                                                                <tr>
-                                                                    <td>Stage 5 - Delivery/Follow-Up</td>
-                                                                    <td><?php echo !empty($project_data['stage_five']['start_date_stage_five']) ? htmlspecialchars($project_data['stage_five']['start_date_stage_five']) : 'Not Yet Started'; ?></td>
-                                                                    <td><?php echo !empty($project_data['stage_five']['end_date_stage_five']) ? htmlspecialchars($project_data['stage_five']['end_date_stage_five']) : 'Not Yet Ended'; ?></td>
-                                                                    <td><?php echo !empty($project_data['stage_five']['duration']) ? htmlspecialchars($project_data['stage_five']['duration']) : '0'; ?></td>
-                                                                    <td class="action-buttons">
-                                                                        <!-- View Button -->
-                                                                        <a 
-                                                                            class="view-btn" 
-                                                                            href="#" 
-                                                                            onclick="smoothNavigate('viewstage5.php?project_id=<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
-                                                                            >
-                                                                            <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
-                                                                        </a>
-                                                                        <!-- Edit Button -->
-                                                                        <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#multiStepModal" onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')" style="background: none; border: none;">
-                                                                            <i class="fas fa-pencil-alt" style="font-size: 12px; color: #36b9cc;"></i>
-                                                                        </button>
-                                                                        <!-- Delete Button -->
-                                                                        <button type="button" class="delete-btn" id="deleteButtons5" data-project-id="<?php echo $project['project_unique_id']; ?>" style="background: none; border: none;">
-                                                                            <i class="fas fa-trash" style="font-size: 12px; color: #ff4c4c;"></i>
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+        foreach ($stages as $key => $stage_name) {
+            $stage_data = $project_data[$key];
+        ?>
+        <tr>
+            <td><?php echo $stage_name; ?></td>
+            <td><?php echo htmlspecialchars($current_project_id); ?></td>
+            <td><?php echo !empty($stage_data['start_date_' . $key]) ? htmlspecialchars($stage_data['start_date_' . $key]) : 'Not Yet Started'; ?></td>
+            <td><?php echo !empty($stage_data['end_date_' . $key]) ? htmlspecialchars($stage_data['end_date_' . $key]) : 'Not Yet Ended'; ?></td>
+            <td><?php echo !empty($stage_data['status_' . $key]) ? htmlspecialchars($stage_data['status_' . $key]) : 'No Status'; ?></td>
+            <td><?php echo !empty($stage_data['duration']) ? htmlspecialchars($stage_data['duration']) : '0'; ?></td>
+            <td><?php echo !empty($stage_data['solution']) ? htmlspecialchars($stage_data['solution']) : 'N/A'; ?></td>
+            <td><?php echo !empty($stage_data['technology']) ? htmlspecialchars($stage_data['technology']) : 'N/A'; ?></td>
+            <td><?php echo !empty($stage_data['deal_size']) ? htmlspecialchars($stage_data['deal_size']) : 'N/A'; ?></td>
+            <td><?php echo !empty($stage_data['product']) ? htmlspecialchars($stage_data['product']) : 'N/A'; ?></td>
+            <td><?php echo !empty($stage_data['stage_' . $key . '_remarks']) ? htmlspecialchars($stage_data['stage_' . $key . '_remarks']) : 'N/A'; ?></td>
+            <td class="action-buttons">
+                <a class="view-btn" href="#" onclick="smoothNavigate('viewstage<?php echo substr($key, -1); ?>.php?project_id=<?php echo htmlspecialchars($current_project_id); ?>')">
+                    <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
+                </a>
+                <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#multiStepModal" onclick="openModal('<?php echo htmlspecialchars($current_project_id); ?>')" style="background: none; border: none;">
+                    <i class="fas fa-pencil-alt" style="font-size: 12px; color: #36b9cc;"></i>
+                </button>
+                <button type="button" class="delete-btn" id="deleteButtons<?php echo substr($key, -1); ?>" data-project-id="<?php echo htmlspecialchars($current_project_id); ?>" style="background: none; border: none;">
+                    <i class="fas fa-trash" style="font-size: 12px; color: #ff4c4c;"></i>
+                </button>
+            </td>
+        </tr>
+        <?php } ?>
+    </tbody>
+</table>
+
                                                     </div>
                                                     <div id="details-view" style="display: none;">
                                                         
