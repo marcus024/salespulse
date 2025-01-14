@@ -98,7 +98,7 @@ $(document).ready(function () {
     const labels = Object.keys(accountManagerCounts);
     const data = Object.values(accountManagerCounts);
 
-    const ctx = document.getElementById('peakUsersChart').getContext('2d');
+    const ctx = document.getElementById('projectsPerAccountManagerChart').getContext('2d');
     new Chart(ctx, {
       type: 'bar',
       data: {
@@ -133,7 +133,7 @@ $(document).ready(function () {
       { Completed: 0, Ongoing: 0, Cancelled: 0, 'Not yet Started': 0 }
     );
 
-    const ctx = document.getElementById('peakUsersChart').getContext('2d');
+    const ctx = document.getElementById('projectStatusChart').getContext('2d');
     new Chart(ctx, {
       type: 'pie',
       data: {
