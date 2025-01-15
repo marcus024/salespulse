@@ -510,7 +510,7 @@
                                                         <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input name="bill_of_materials[]" type="file" class="form-control" placeholder="e.g. 5000">
+                                                        <input name="bill_of_materials[]" type="number" class="form-control" placeholder="e.g. 5000">
                                                     </div>
                                                     <div class="col-md-2">
                                                         <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 5000">
