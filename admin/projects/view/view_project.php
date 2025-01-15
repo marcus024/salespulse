@@ -274,7 +274,7 @@ include_once('../model/view_project.php');
                 </div>
                 <!-- End of Topbar -->
                 <!-- Home Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" style="margin:20px;">
                     <div class="col-md-12 mb-6">
                         <div class="card shadow-sm">
                             <div class="card-body">

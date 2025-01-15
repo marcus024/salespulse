@@ -176,7 +176,7 @@ include("../auth/db.php");
                 </div>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" >
                     <!-- Cards Content -->
                      <div class="col-mb-12" >
                         <div class="card" style="background-color:transparent; border: none;"  >
