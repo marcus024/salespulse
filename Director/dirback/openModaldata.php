@@ -17,6 +17,12 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stageone.start_date_stage_one, 'No Data') AS start_date_stage_one,
                     COALESCE(stageone.end_date_stage_one, 'No Data') AS end_date_stage_one,
                     COALESCE(stageone.status_stage_one, 'No Data') AS status_stage_one,
+                    COALESCE(stageone.requirements, 'No Data') AS requirements,
+                    COALESCE(stageone.solution, 'No Data') AS solution,
+                    COALESCE(stageone.deal_size, 'No Data') AS deal_size,
+                    COALESCE(stageone.remarks, 'No Data') AS remarks,
+                    COALESCE(stageone.distributor, 'No Data') AS distributor,
+                    COALESCE(stageone.product, 'No Data') AS product
                     COALESCE(stagetwo.start_date_stage_two, 'No Data') AS start_date_stage_two,
                     COALESCE(stagetwo.end_date_stage_two, 'No Data') AS end_date_stage_two,
                     COALESCE(stagetwo.status_stage_two, 'No Data') AS status_stage_two,
@@ -55,7 +61,13 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     'stage_one' => [
                         'start_date' => $result['start_date_stage_one'],
                         'end_date' => $result['end_date_stage_one'],
-                        'status' => $result['status_stage_one']
+                        'status' => $result['status_stage_one'],
+                        'requirements' => $result['requirements'] ?? 'No Data',
+                        'solution' => $result['solution'] ?? 'No Data',
+                        'deal_size' => $result['deal_size'] ?? 'No Data',
+                        'remarks' => $result['remarks'] ?? 'No Data',
+                        'distributor' => $result['distributor'] ?? 'No Data',
+                        'product' => $result['product'] ?? 'No Data'
                     ],
                     'stage_two' => [
                         'start_date' => $result['start_date_stage_two'],

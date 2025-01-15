@@ -124,7 +124,7 @@
                                                         <div class="row align-items-center requirement-field" id="requirement-container" style="margin-top:5px; margin-bottom: 5px;">
                                                             <div class="col-9 d-flex align-items-center">
                                                                 <!-- Input field for Requirement -->
-                                                                <input  name="requirement_one[]" style="width: 100%;" type="text" class="form-control" id="requirement" placeholder="e.g. Sample Requirement">
+                                                                <input  name="requirement_one[]" style="width: 100%;" type="text" class="form-control" id="requirement1" placeholder="e.g. Sample Requirement">
                                                             </div>
                                                             <div class="col-2 d-flex justify-content-end align-items-center">
                                                                 <!-- Delete Button -->
@@ -136,8 +136,8 @@
                                                     </div>
                                                     <div class="mb-2">
                                                         <label for="solution" class="form-label text-white">Solution</label>
-                                                        <textarea name="solution" class="form-control" id="solution" placeholder="e.g. Sample Solution" 
-                                                                style="height:100px;"></textarea>
+                                                        <textarea name="solution" class="form-control" id="solution1" placeholder="e.g. Sample Solution" 
+                                                        style="height:100px;"></textarea>
                                                     </div>
                                                     <style>
                                                         .custom-select {
@@ -158,7 +158,7 @@
                                                     </style>
                                                     <div class="mb-2">
                                                         <label for="technology" class="form-label text-white">Technology</label>
-                                                        <select name="technology" class="form-control custom-select" >
+                                                        <select name="technology" class="form-control custom-select" id="technology1">
                                                             <option disabled>Select</option>
                                                             <option>Artificial Intelligence</option>
                                                             <option>Machine Learning</option>
@@ -169,14 +169,14 @@
                                                     </div>
                                                     <div class="mb-2">
                                                         <label for="dealSize" class="form-label text-white">Deal Size</label>
-                                                        <input name="deal_size" type="number" class="form-control" id="dealSize" placeholder="e.g. 5000">
+                                                        <input name="deal_size" type="number" class="form-control" id="dealSize1" placeholder="e.g. 5000">
                                                     </div>
                                                    
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="mb-6">
                                                         <label for="remarks" class="form-label text-white">Stage Remarks</label>
-                                                        <textarea name="stage_one_remarks" class="form-control" id="remarks" placeholder="e.g. Sample Remarks" 
+                                                        <textarea name="stage_one_remarks" class="form-control" id="stageremarks1" placeholder="e.g. Sample Remarks" 
                                                                 style="height: 300px;"></textarea>
                                                     </div>
                                                 </div>
@@ -192,7 +192,7 @@
                                                     </div>
                                                     <div class="mb-2">
                                                         <label for="product" class="form-label text-white">Product</label>
-                                                        <input name="product" id="product" type="text" class="form-control">
+                                                        <input name="product" id="product1" type="text" class="form-control">
                                                     </div>
                                                     <div class="mb-2">
                                                          <div class="mb-2">
@@ -566,7 +566,7 @@
                                                 <div class="col-md-6">
                                                     <label for="status" class="form-label text-white">Solution</label>
                                                     <textarea name="solution" class="form-control" id="solution" placeholder="e.g. Sample Solution" 
-                                                        style="height:50px;"></textarea>
+                                                    style="height:50px;"></textarea>
                                                 </div>
                                                 
                                             </div>
