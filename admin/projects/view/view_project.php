@@ -428,18 +428,7 @@ include_once('../model/view_project.php');
                                                                         <a class="view-btn" href="#" onclick="smoothNavigate('viewstage<?php echo $stage_map[$key]; ?>.php?project_id=<?php echo htmlspecialchars($current_project_id); ?>')">
                                                                             <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
                                                                         </a>
-                                                                        <?php if (empty($project_data['stage_five']['status_stage_five']) || $project_data['stage_five']['status_stage_five'] !== 'Completed'): ?>
-                                                                            <button type="button" class="edit-btn" 
-                                                                                    data-bs-toggle="modal" 
-                                                                                    data-bs-target="#multiStepModal" 
-                                                                                    onclick="openModal('<?php echo htmlspecialchars($current_project_id); ?>')" 
-                                                                                    style="background: none; border: none;">
-                                                                                <i class="fas fa-pencil-alt" style="font-size: 12px; color: #36b9cc;"></i>
-                                                                            </button>
-                                                                        <?php endif; ?>
-                                                                        <button type="button" class="delete-btn" id="deleteButtons<?php echo $stage_map[$key]; ?>"  data-project-id="<?php echo $project['project_unique_id']; ?>" style="background: none; border: none;">
-                                                                            <i class="fas fa-trash" style="font-size: 12px; color: #ff4c4c;"></i>
-                                                                        </button>
+                                                                        
                                                                     </td>
                                                                 </tr>
                                                                 <?php } ?>
@@ -582,7 +571,7 @@ include_once('../model/view_project.php');
             </div>
         </div>
     </div>
-    <?php include("multistepModal.php"); ?>
+    
         <!-- jQuery -->
     <script src="../../../vendor/jquery/jquery.min.js"></script>
 
@@ -608,7 +597,7 @@ include_once('../model/view_project.php');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="current_year.js"></script>
+    <script src="../../current_year.js"></script>
     
     
     <script>
