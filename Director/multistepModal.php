@@ -192,14 +192,7 @@
                                                     </div>
                                                     <div class="mb-2">
                                                         <label for="product" class="form-label text-white">Product</label>
-                                                        <select name="product" class="form-control custom-select">
-                                                            <option disabled>Select a Product</option>
-                                                            <option value="Mobile Application">Mobile Application</option>
-                                                            <option value="Web Platform">Web Platform</option>
-                                                            <option value="Desktop Software">Desktop Software</option>
-                                                            <option value="API Service">API Service</option>
-                                                            <option value="Embedded System">Embedded System</option>
-                                                        </select>
+                                                        <input name="product" id="product" type="text" class="form-control">
                                                     </div>
                                                     <div class="mb-2">
                                                          <div class="mb-2">
@@ -267,14 +260,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="product" class="form-label text-white">Product</label>
-                                                    <select name="product" class="form-control custom-select" id="product">
-                                                        <option disabled>Select a Product</option>
-                                                        <option value=" Mobile Application" >Mobile Application</option>
-                                                        <option value="Web Platform" >Web Platform</option>
-                                                        <option value="Desktop Software" >Desktop Software</option>
-                                                        <option value="API Service" >API Service</option>
-                                                        <option value="Embedded System" >Embedded System</option>
-                                                    </select>
+                                                    <input name="product" id="product" type="text" class="form-control">
                                                 </div>
                                                 <div class="col-md-6">
                                                    <label for="solution" class="form-label text-white">Solution</label>
@@ -414,14 +400,7 @@
                                             <div class="row mb-3">
                                                 <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Product</label>
-                                                    <select name="product" class="form-control custom-select" id="product">
-                                                        <option disabled>Select a Product</option>
-                                                        <option value="Mobile Application" >Mobile Application</option>
-                                                        <option value="Web Platform" >Web Platform</option>
-                                                        <option value="Desktop Software">Desktop Software</option>
-                                                        <option value="API Service">API Service</option>
-                                                        <option value="Embedded System">Embedded System</option>
-                                                    </select>
+                                                    <input name="product" id="product" type="text" class="form-control">
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="status" class="form-label text-white">Deal Size(Amount)</label>
@@ -577,15 +556,8 @@
                                             </div>
                                             <div class="row mb-3">
                                                  <div class="col-md-3">
-                                                   <label for="product" class="form-label text-white">Product</label>
-                                                    <select name="product" class="form-control custom-select" >
-                                                        <option disabled>Select a Product</option>
-                                                        <option value="Mobile Application">Mobile Application</option>
-                                                        <option value="Web Platform">Web Platform</option>
-                                                        <option value="Desktop Software">Desktop Software</option>
-                                                        <option value="API Service">API Service</option>
-                                                        <option value="Embedded System">Embedded System</option>
-                                                    </select>
+                                                    <label for="product" class="form-label text-white">Product</label>
+                                                    <input name="product" id="product" type="text" class="form-control">
                                                 </div>
                                                 <div class="col-md-3">
                                                    <label for="dealSize" class="form-label text-white">Deal Size</label>
@@ -701,14 +673,7 @@
                                              <div class="row mb-3">
                                                 <div class="col-md-3">
                                                     <label for="product" class="form-label text-white">Product</label>
-                                                    <select name="product" class="form-control custom-select" >
-                                                        <option disabled>Select a Product</option>
-                                                        <option value="Mobile Application">Mobile Application</option>
-                                                        <option value="Web Platform">Web Platform</option>
-                                                        <option value="Desktop Software">Desktop Software</option>
-                                                        <option value="API Service">API Service</option>
-                                                        <option value="Embedded System">Embedded System</option>
-                                                    </select>
+                                                    <input name="product" id="product" type="text" class="form-control">
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Deal Size(Amount)</label>
