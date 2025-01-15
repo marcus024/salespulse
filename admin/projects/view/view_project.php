@@ -155,41 +155,34 @@ include_once('../model/view_project.php');
                 <!-- The text -->
                 <span>SALES PULSE</span>
             </div>
+
             <div style="height: 0.5px;"></div>
             <!-- Divider -->
             <hr class="sidebar-divider my-2">
             <!-- Nav Items -->
-            <li class="nav-item active" >
-                <a class="nav-link selected" href="director.php" style="border-radius:10px; padding-left:10px;">
+            <li class="nav-item " >
+                <a class="nav-link selected " href="spportal.php" style="border-radius:10px;padding-left:10px;">
                     <i class="fas fa-fw fa-home"></i>
-                    <span style="font-size:13px; font-family:'Poppins'; ">Home</span>
+                    <span style="font-size:13px; font-family:'Poppins';">Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item" >
-                <a class="nav-link" href="calendar.php" style="border-radius:10px; padding-left:10px;">
+            <li class="nav-item active" >
+                <a class="nav-link" href="project_portal.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-calendar-alt" style="white"></i>
-                    <span style="font-size:13px; font-family:'Poppins';">Calendar</span>
+                    <span style="font-size:13px; font-family:'Poppins';">Projects</span>
                 </a>
             </li>
-            <li class="nav-item" >
-                <a class="nav-link" href="contacts.php" style="border-radius:10px; padding-left:10px;">
+            <li class="nav-item " >
+                <a class="nav-link" href="contacts_portal.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-address-book"></i>
-                    <span style="font-size:13px; font-family:'Poppins';">Contacts</span>
+                    <span style="font-size:13px; font-family:'Poppins';">Teams</span>
                 </a>
             </li>
             <li class="nav-item" >
-                <a class="nav-link" href="team.php" style="border-radius:10px;padding-left:10px;">
+                <a class="nav-link" href="employees_portal.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-users"></i>
-                    <span style="font-size:13px; font-family:'Poppins'; ">Team Members</span>
+                    <span style="font-size:13px; font-family:'Poppins'; ">Employees</span>
                 </a>
-            </li>
-            <!-- Spacer to Push Footer to Bottom -->
-            <li style="flex-grow: 1;"></li>
-            
-            <li class="nav-item footer">
-                <span class="powered-by">Powered by</span>
-                <span class="company-name">WORKFORCE NEXTGEN</span><br>
-                <span>&copy; <span id="current-year"></span></span>
             </li>
         </ul>
         <!-- End of Sidebar -->
@@ -198,19 +191,18 @@ include_once('../model/view_project.php');
 
             <!-- Main Content -->
             <div id="content" style="background-color:white;">
-                <!-- Topbar -->
+                <!-- Fixed Topbar -->
                 <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:white; padding-right:30px; padding-left:220px; z-index: 300;">
                     <!-- Left Section: Home and Welcome Message -->
-                    <div class="d-flex align-items-center" style="margin-top: 10px;"> <!-- Added margin-top to lower the left section -->
+                    <div class="d-flex align-items-center" style="margin-top: 30px;"> <!-- Added margin-top to lower the left section -->
                         <div>
-                            <h1 style="color:#36b9cc; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Home</h1> <!-- Reduced spacing -->
-                            <p style="font-size:15px; color: #555; font-family:'Poppins'; margin: 0px;">Welcome Back <?php echo $_SESSION['user_name']; ?>!</p>
+                            <h1 style="color:#36b9cc; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">PORTAL</h1> <!-- Reduced spacing -->
+                            <!-- <p style="font-size:15px; color: #555; font-family:'Poppins'; margin: 0px;">Welcome Back <?php echo $_SESSION['user_name']; ?>!</p> -->
                         </div>
                     </div>
 
                     <!-- Right Section: Notification and Profile -->
                     <div class="d-flex align-items-center">
-                        <!-- Notification Button -->
                         <div class="mr-2" style="position: relative;">
                             <!-- Notification Button -->
                             <button id="notification-button" style="color: #36b9cc; padding-right: 50px; position: relative; background: none; border: none; cursor: pointer;">
@@ -229,8 +221,6 @@ include_once('../model/view_project.php');
                                     
                                 </span>
                             </button>
-
-
                             <!-- Dropdown Container (Initially hidden) -->
                             <div id="notification-dropdown" 
                                 style="
@@ -251,23 +241,7 @@ include_once('../model/view_project.php');
                                 <div style="text-align: center; border-top: 1px solid #ccc; padding: 8px;">
                                     <a href="#" id="toggleNotifications"  style="font-size: 12px; color: #36b9cc; text-decoration: none;">Show All Alerts</a>
                                 </div>
-                                <style>
-                                /* Optional: Add a border or styling for the scrollable area */
-                                    .notify::-webkit-scrollbar {
-                                        width: 4px; /* Width of the vertical scrollbar */
-                                        height: 4px; /* Height of the horizontal scrollbar */
-                                    }
-
-                                    .notify::-webkit-scrollbar-thumb {
-                                        background-color: #36b9cc;
-                                        border-radius: 10px;
-                                        height: 5px; /* Minimum height for the scrollbar thumb */
-                                    }
-
-                                    .notify::-webkit-scrollbar-thumb:hover {
-                                        background-color: #555;
-                                    }
-                                </style>
+                                
                             </div>
                         </div>
                         <!-- Profile Name and Picture -->
@@ -281,6 +255,7 @@ include_once('../model/view_project.php');
                                 <p style="margin: 0; font-size:10px; font-family:'Poppins'; color:lightgray;">
                                     <?php echo $_SESSION['position']; ?>
                                 </p>
+                                <input  hidden id="currentUser" value="<?php echo $_SESSION['user_id_c']; ?>">
                             </div>
                             <img src="<?php echo $_SESSION['image']; ?>" alt="Profile Picture" class="rounded-circle" style="width: 40px; height: 40px; margin-left: 10px; cursor: pointer;" onclick="togglePopup()">
                         </div>
@@ -290,39 +265,11 @@ include_once('../model/view_project.php');
                             style="position: absolute; top: 50px; right: 0; width: 200px; background-color: #fff; border: 1px solid #ccc; border-radius: 8px; padding: 10px; display: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                             <nav style="display: flex; flex-direction: column; font-family: 'Poppins'; font-size: 14px;">
                                 <a href="#" class="popup-link" onclick="showProfile()">Profile</a>
-                                <a href="#" class="popup-link" onclick="showProfile()">Settings</a>
+                                <a href="#" class="popup-link" >Settings</a>
                                 <a href="#" class="popup-link logout-link" data-bs-toggle="modal" data-bs-target="#outLog">Logout</a>
                             </nav>
                         </div>
-                        <style>
-                            /* Hover effect for profile image */
-                            .profile-img:hover {
-                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                                transform: scale(1.1);
-                                transition: all 0.2s ease-in-out;
-                            }
-
-                            /* Hover effect for popup links */
-                            .popup-link {
-                                padding: 8px 0;
-                                text-decoration: none;
-                                color: #555;
-                                margin-bottom: 5px;
-                                transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-                            }
-
-                            .popup-link:hover {
-                                color: #36b9cc;
-                                border-radius: 4px;
-                                text-decoration:none;
-                            }
-
-                            /* Special hover for logout link */
-                            .logout-link:hover {
-                                color: #36b9cc;
-                                text-decoration:none;
-                            }
-                        </style>
+                        
                     </div>
                 </div>
                 <!-- End of Topbar -->
@@ -334,7 +281,7 @@ include_once('../model/view_project.php');
                                     <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
                                     <div class="stage-title" style="width: 100%; text-align: left; margin-bottom: 0; padding-bottom: 0; display: flex; align-items: start;">
                                         <div style="margin-right: 10px;">
-                                            <img src="../images/projecticon.png" alt="Project Icon" style="width: 60px; height: 60px; vertical-align: middle;" />
+                                            <img src="../../../images/projecticon.png" alt="Project Icon" style="width: 60px; height: 60px; vertical-align: middle;" />
                                         </div>
                                         <div class="col-md-12 mb-3">
                                             <p style="color: #36b9cc; margin-top: 0; font-family: 'Poppins'; font-size:30px; font-weight:bold; display: inline;">PROJECT PROFILE</p>

@@ -47,7 +47,7 @@ $(document).ready(function () {
           <td style="color:${getStatusColor(project.status)}">${escapeHtml(project.status)}</td>
           <td>${escapeHtml(project.duration)}</td>
           <td class="action-buttons">
-              <a href="projects/view/view_project.php?project_id=${escapeHtml(project.project_unique_id)}" class="view-btn">
+              <a href="../projects/view/view_project.php?project_id=${escapeHtml(project.project_unique_id)}" class="view-btn">
                   <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i> 
               </a>
               <!-- <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#editProjectModal" data-project-id="<?php echo $project['project_unique_id']; ?>">
