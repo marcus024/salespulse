@@ -16,8 +16,8 @@ include_once('../model/view_project.php');
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../../../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <style>
         /* Set Poppins as the default font for the entire document */
         body, html {
@@ -151,28 +151,28 @@ include_once('../model/view_project.php');
             <!-- Divider -->
             <hr class="sidebar-divider my-2">
             <!-- Nav Items -->
-            <li class="nav-item active" >
-                <a class="nav-link selected" href="director.php" style="border-radius:10px; padding-left:10px;">
+            <li class="nav-item " >
+                <a class="nav-link selected " href="../../spportal.php" style="border-radius:10px;padding-left:10px;">
                     <i class="fas fa-fw fa-home"></i>
-                    <span style="font-size:13px; font-family:'Poppins'; ">Home</span>
+                    <span style="font-size:13px; font-family:'Poppins';">Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item" >
-                <a class="nav-link" href="calendar.php" style="border-radius:10px; padding-left:10px;">
+            <li class="nav-item active" >
+                <a class="nav-link" href="../../project_portal.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-calendar-alt" style="white"></i>
-                    <span style="font-size:13px; font-family:'Poppins';">Calendar</span>
+                    <span style="font-size:13px; font-family:'Poppins';">Projects</span>
                 </a>
             </li>
-            <li class="nav-item" >
-                <a class="nav-link" href="contacts.php" style="border-radius:10px; padding-left:10px;">
+            <li class="nav-item " >
+                <a class="nav-link" href="../../contacts_portal.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-address-book"></i>
-                    <span style="font-size:13px; font-family:'Poppins';">Contacts</span>
+                    <span style="font-size:13px; font-family:'Poppins';">Teams</span>
                 </a>
             </li>
             <li class="nav-item" >
-                <a class="nav-link" href="team.php" style="border-radius:10px;padding-left:10px;">
+                <a class="nav-link" href="../../employees_portal.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-users"></i>
-                    <span style="font-size:13px; font-family:'Poppins'; ">Team Members</span>
+                    <span style="font-size:13px; font-family:'Poppins'; ">Employees</span>
                 </a>
             </li>
             <!-- Spacer to Push Footer to Bottom -->
@@ -206,7 +206,7 @@ include_once('../model/view_project.php');
                         <div class="mr-2" style="position: relative;">
                             <!-- Notification Button -->
                             <button id="notification-button" style="color: #36b9cc; padding-right: 50px; position: relative; background: none; border: none; cursor: pointer;">
-                                <img src="../images/notif.png" alt="Notification" style="height: 20px; width: 20px;">
+                                <img src="../../../images/notif.png" alt="Notification" style="height: 20px; width: 20px;">
                                 <span id="notification-count" style="
                                     font-family: 'Poppins', sans-serif; 
                                     font-weight: bold; 
@@ -274,7 +274,7 @@ include_once('../model/view_project.php');
                                     <?php echo $_SESSION['position']; ?>
                                 </p>
                             </div>
-                            <img src="<?php echo $_SESSION['image']; ?>" alt="Profile Picture" class="rounded-circle" style="width: 40px; height: 40px; margin-left: 10px; cursor: pointer;" onclick="togglePopup()">
+                            <img src="../../<?php echo $_SESSION['image']; ?>" alt="Profile Picture" class="rounded-circle" style="width: 40px; height: 40px; margin-left: 10px; cursor: pointer;" onclick="togglePopup()">
                         </div>
                         <!-- Popup Container -->
                         <div id="popup-container" 

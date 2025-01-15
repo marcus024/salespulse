@@ -151,28 +151,28 @@ include_once('../model/view_project.php');
             <!-- Divider -->
             <hr class="sidebar-divider my-2">
             <!-- Nav Items -->
-            <li class="nav-item active" >
-                <a class="nav-link selected" href="director.php" style="border-radius:10px; padding-left:10px;">
+            <li class="nav-item " >
+                <a class="nav-link selected " href="../../spportal.php" style="border-radius:10px;padding-left:10px;">
                     <i class="fas fa-fw fa-home"></i>
-                    <span style="font-size:13px; font-family:'Poppins'; ">Home</span>
+                    <span style="font-size:13px; font-family:'Poppins';">Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item" >
-                <a class="nav-link" href="calendar.php" style="border-radius:10px; padding-left:10px;">
+            <li class="nav-item active" >
+                <a class="nav-link" href="../../project_portal.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-calendar-alt" style="white"></i>
-                    <span style="font-size:13px; font-family:'Poppins';">Calendar</span>
+                    <span style="font-size:13px; font-family:'Poppins';">Projects</span>
                 </a>
             </li>
-            <li class="nav-item" >
-                <a class="nav-link" href="contacts.php" style="border-radius:10px; padding-left:10px;">
+            <li class="nav-item " >
+                <a class="nav-link" href="../../contacts_portal.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-address-book"></i>
-                    <span style="font-size:13px; font-family:'Poppins';">Contacts</span>
+                    <span style="font-size:13px; font-family:'Poppins';">Teams</span>
                 </a>
             </li>
             <li class="nav-item" >
-                <a class="nav-link" href="team.php" style="border-radius:10px;padding-left:10px;">
+                <a class="nav-link" href="../../employees_portal.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-users"></i>
-                    <span style="font-size:13px; font-family:'Poppins'; ">Team Members</span>
+                    <span style="font-size:13px; font-family:'Poppins'; ">Employees</span>
                 </a>
             </li>
             <!-- Spacer to Push Footer to Bottom -->
