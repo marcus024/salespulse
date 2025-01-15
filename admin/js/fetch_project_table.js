@@ -46,7 +46,26 @@ $(document).ready(function () {
           <td>${escapeHtml(project.end_date)}</td>
           <td style="color:${getStatusColor(project.status)}">${escapeHtml(project.status)}</td>
           <td>${escapeHtml(project.duration)}</td>
-          
+          <td class="action-buttons">
+              <a href="../projects/view/view_project.php?project_id=${escapeHtml(project.project_unique_id)}" class="view-btn">
+                  <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i> 
+              </a>
+              <!-- <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#editProjectModal" data-project-id="<?php echo $project['project_unique_id']; ?>">
+                  <i class="fas fa-pencil-alt" style="font-size: 10px; color: #36b9cc;"></i>
+              </button> -->
+              <style>
+                  .view-btn i {
+                      font-size: 10px;
+                      color: #36b9cc;
+                      transition: color 0.3s ease, transform 0.3s ease;
+                  }
+
+                  .view-btn:hover i {
+                      color: #009394; /* Change to desired hover color */
+                      transform: scale(1.2); /* Slightly enlarge the icon */
+                  }
+              </style>
+          </td>
         </tr>`;
       $('#appUserTable tbody').append(rowHtml);
     });
