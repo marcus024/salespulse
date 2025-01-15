@@ -22,7 +22,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stageone.deal_size, 'No Data') AS deal_size,
                     COALESCE(stageone.remarks, 'No Data') AS remarks,
                     COALESCE(stageone.distributor, 'No Data') AS distributor,
-                    COALESCE(stageone.product, 'No Data') AS product
+                    COALESCE(stageone.product, 'No Data') AS product,
                     COALESCE(stagetwo.start_date_stage_two, 'No Data') AS start_date_stage_two,
                     COALESCE(stagetwo.end_date_stage_two, 'No Data') AS end_date_stage_two,
                     COALESCE(stagetwo.status_stage_two, 'No Data') AS status_stage_two,
