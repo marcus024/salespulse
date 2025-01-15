@@ -275,7 +275,7 @@ include_once('../model/view_project.php');
                 <!-- End of Topbar -->
                 <!-- Home Content -->
                 <div class="container-fluid" >
-                    <div class="col-md-12 mb-6"  style="margin:50px;">
+                    <div class="col-md-12 mb-6" >
                         <div class="card shadow-sm">
                             <div class="card-body">
                                     <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
