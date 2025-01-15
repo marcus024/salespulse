@@ -10,14 +10,14 @@ include_once('../model/view_project.php');
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Sales Pulse</title>
-    <link rel="icon" href="../images/logo_blue.ico" type="image/x-icon">
+    <link rel="icon" href="../../../images/logo_blue.ico" type="image/x-icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../../../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <style>
         /* Set Poppins as the default font for the entire document */
         body, html {
@@ -139,7 +139,7 @@ include_once('../model/view_project.php');
                 <!-- The image outside the text element -->
                 <img
                     id="sidebarToggleIcon"
-                    src="../images/logo_white.png"
+                    src="../../../images/logo_white.png"
                     alt="Toggle Sidebar"
                     onclick="toggleSidebar()"
                     style="cursor: pointer; width: 24px; height: 24px; margin-right: 10px;"
@@ -206,7 +206,7 @@ include_once('../model/view_project.php');
                         <div class="mr-2" style="position: relative;">
                             <!-- Notification Button -->
                             <button id="notification-button" style="color: #36b9cc; padding-right: 50px; position: relative; background: none; border: none; cursor: pointer;">
-                                <img src="../images/notif.png" alt="Notification" style="height: 20px; width: 20px;">
+                                <img src="../../../images/notif.png" alt="Notification" style="height: 20px; width: 20px;">
                                 <span id="notification-count" style="
                                     font-family: 'Poppins', sans-serif; 
                                     font-weight: bold; 
@@ -274,7 +274,7 @@ include_once('../model/view_project.php');
                                     <?php echo $_SESSION['position']; ?>
                                 </p>
                             </div>
-                            <img src="<?php echo $_SESSION['image']; ?>" alt="Profile Picture" class="rounded-circle" style="width: 40px; height: 40px; margin-left: 10px; cursor: pointer;" onclick="togglePopup()">
+                            <img src="../../<?php echo $_SESSION['image']; ?>" alt="Profile Picture" class="rounded-circle" style="width: 40px; height: 40px; margin-left: 10px; cursor: pointer;" onclick="togglePopup()">
                         </div>
                         <!-- Popup Container -->
                         <div id="popup-container" 
