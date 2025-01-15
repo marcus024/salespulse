@@ -57,7 +57,7 @@ include_once('../model/view_project.php');
             display: flex;
         }
         body{
-            padding-left:200px;
+            padding-left:250px;
             padding-bottom:30px;
             padding-top:100px;
             color:white;
