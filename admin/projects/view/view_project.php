@@ -147,7 +147,7 @@ include_once('../model/view_project.php');
                 <!-- The image outside the text element -->
                 <img
                     id="sidebarToggleIcon"
-                    src="../images/logo_white.png"
+                    src="../../../images/logo_white.png"
                     alt="Toggle Sidebar"
                     onclick="toggleSidebar()"
                     style="cursor: pointer; width: 24px; height: 24px; margin-right: 10px;"
