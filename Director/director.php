@@ -11,7 +11,7 @@ include("../auth/db.php");
     <meta name="description" content="">
     <meta name="author" content="">
     <title>SALES PULSE</title>
-    <link rel="icon" href="images/logo_blue" type="image/x-icon">
+    <link rel="icon" href="images/logo_blue.png" type="image/x-icon">
     <!-- Custom fonts for this template-->
 
     <!-- Bootstrap CSS (use only one version) -->
