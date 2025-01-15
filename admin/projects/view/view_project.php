@@ -425,7 +425,7 @@ include_once('../model/view_project.php');
                                                                             'stage_five' => '5',
                                                                         ];
                                                                         ?>
-                                                                        <a class="view-btn" href="#" onclick="smoothNavigate('../view/viewstage<?php echo $stage_map[$key]; ?>.php?project_id=<?php echo htmlspecialchars($current_project_id); ?>')">
+                                                                        <a class="view-btn" href="#" onclick="smoothNavigate('viewstage<?php echo $stage_map[$key]; ?>.php?project_id=<?php echo htmlspecialchars($current_project_id); ?>')">
                                                                             <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
                                                                         </a>
                                                                         
@@ -727,7 +727,17 @@ include_once('../model/view_project.php');
         });
     </script>
     
-
+    <script>
+        function smoothNavigate(url) {
+    // Add the fade-out class
+    document.body.classList.add('fade-out');
+    
+    // After the transition ends, navigate to the new page
+    setTimeout(function() {
+        window.location.href = url;
+    }, 500); // 500ms matches the CSS transition duration
+    }
+    </script>
 
 
 
