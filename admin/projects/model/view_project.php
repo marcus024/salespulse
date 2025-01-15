@@ -18,10 +18,9 @@ if ($project_id) {
         
         $sql = "SELECT project_unique_id, company_name, account_manager, start_date, end_date, status,product_type,current_stage,client_type,source
                 FROM projecttb
-                WHERE project_unique_id = :project_id;
+                WHERE project_unique_id = :project_id";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':project_id', $project_id, PDO::PARAM_STR); 
-        
         $stmt->execute();
         
       
