@@ -415,7 +415,7 @@ include_once('../model/view_project.php');
                                                             </div>
                                                         </div> -->
                                                     </div>
-                                                    <?php include('dirback/fetch_s1.php'); ?>
+                                                    <?php include('../model/fetch_s1.php'); ?>
                                                     <div id="details-view" >
                                                         <div class="container" style="background-color:white; padding: 10px; border-radius: 20px"> 
                                                             <div class="container" style="background-color:white; padding: 10px; border-radius: 20px">
