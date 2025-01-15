@@ -329,6 +329,7 @@ include("../auth/db.php");
                                                                     <th>End Date</th>
                                                                     <th>Status</th>
                                                                     <th>Duration</th>
+                                                                    <th>Actions</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody></tbody>
