@@ -692,7 +692,7 @@ include_once('../model/view_project.php');
     <script src="../js/demo/datatables-demo.js"></script>
     <script src="openModal.js"></script>
     <script src="comProj.js"></script>
-    <script src="toogleNav.js"></script>
+    <script src="../../../Director/toogleNav.js"></script>
     <script src="alerts/notif.js"></script>
     <script src="alerts/notifCount.js"></script>
 
