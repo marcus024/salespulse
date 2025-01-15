@@ -7,51 +7,23 @@ ini_set('error_log', __DIR__ . '/php-error.log');
 include("../auth/db.php");
 
 try {
-    // Ensure the request method is POST
-    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        echo json_encode(["message" => "Invalid request method"]);
+    ob_start(); // Start output buffering
+
+    // Get raw POST data
+    $rawData = file_get_contents('php://input');
+    file_put_contents(__DIR__ . '/debug.log', "Raw Input: $rawData\n", FILE_APPEND); // Log raw input
+    $data = json_decode($rawData, true);
+
+    if (!isset($data['step'], $data['project_unique_id'], $data['data'])) {
+        ob_clean();
+        echo json_encode(["message" => "Invalid input data"]);
         exit;
     }
 
-    // Extract step and project ID from POST data
-    $step = intval($_POST['step'] ?? 0);
-    $projectUniqueId = $_POST['project_unique_id'] ?? null;
+    $step = intval($data['step']);
+    $projectUniqueId = $data['project_unique_id'];
+    $inputData = $data['data'];
 
-    if (!$step || !$projectUniqueId) {
-        echo json_encode(["message" => "Missing required input data"]);
-        exit;
-    }
-
-    // Collect input data from $_POST
-    $inputData = $_POST;
-
-    // Process file uploads
-    $uploadedFiles = [];
-    if (!empty($_FILES)) {
-        foreach ($_FILES as $fieldName => $file) {
-            if ($file['error'] === UPLOAD_ERR_OK) {
-                $uploadDir = __DIR__ . '/uploads/';
-                if (!is_dir($uploadDir)) {
-                    mkdir($uploadDir, 0755, true);
-                }
-                $uniqueFileName = uniqid() . '_' . basename($file['name']);
-                $uploadFilePath = $uploadDir . $uniqueFileName;
-
-                if (move_uploaded_file($file['tmp_name'], $uploadFilePath)) {
-                    $uploadedFiles[$fieldName] = $uploadFilePath; // Store file paths
-                } else {
-                    error_log("Failed to move uploaded file: {$file['name']}");
-                }
-            }
-        }
-    }
-
-    // Add uploaded file paths to inputData for database handling
-    foreach ($uploadedFiles as $field => $filePath) {
-        $inputData[$field] = $filePath;
-    }
-
-    // Call the appropriate update function based on the step
     switch ($step) {
         case 1:
             $message = updateStageOne($conn, $projectUniqueId, $inputData);
@@ -74,20 +46,24 @@ try {
             break;
 
         default:
+            ob_clean();
             echo json_encode(["message" => "Invalid step number"]);
             exit;
     }
 
+    ob_clean();
     echo json_encode([
         "message" => "Step $step data processed successfully",
         "processed_data" => $inputData,
         "details" => $message
     ]);
 } catch (Exception $e) {
-    error_log("Error: " . $e->getMessage());
+    ob_clean();
+    file_put_contents(__DIR__ . '/debug.log', "Error: " . $e->getMessage() . "\n", FILE_APPEND);
     http_response_code(500);
     echo json_encode(["message" => "Error occurred", "error" => $e->getMessage()]);
 }
+
 // Helper functions for different stages
 
 function updateStageOne($conn, $projectUniqueId, $inputData) {
@@ -234,8 +210,6 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        error_log("Main stage three data updated for Project ID: $projectUniqueId");
-
         // Handle requirements
         if (!empty($inputData['requirement_three'])) {
             $requirementQuery = "INSERT INTO requirement_threetb (
@@ -260,21 +234,11 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
                 $requirementRemarks = $inputData['requirement_remarks_three'][$index] ?? null;
                 $pricing = $inputData['pricing'][$index] ?? null;
 
-                // Debugging logs
-                error_log("Processing requirement_three: {$requirement}, quantity: {$quantity}, file: {$billOfMaterials}, remarks: {$requirementRemarks}, pricing: {$pricing}");
-
                 if (empty($requirement)) {
                     error_log("Empty requirement_three for Project ID {$projectUniqueId}. Skipping insert.");
                     continue;
                 }
 
-                // Ensure file paths are valid
-                if (!empty($billOfMaterials) && !file_exists($billOfMaterials)) {
-                    error_log("File does not exist: {$billOfMaterials}");
-                    continue;
-                }
-
-                // Execute query
                 $reqStmt->execute([
                     $projectUniqueId,
                     htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8'),
@@ -284,12 +248,9 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
                     htmlspecialchars($pricing ?? '', ENT_QUOTES, 'UTF-8')
                 ]);
             }
-        } else {
-            error_log("No requirements found for Project ID: $projectUniqueId");
         }
 
-
-        // Handle engagements
+        // Handle engagements for engagement_three
         if (!empty($inputData['engagement_three'])) {
             $engagementQuery = "INSERT INTO enagement_threetb (
                                     project_unique_id, 
@@ -307,14 +268,11 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
                 $engagementDate = $inputData['engagement_date'][$index] ?? null;
                 $engagementRemarks = $inputData['engagement_remarks_three'][$index] ?? null;
 
-                error_log("Processing engagement_three: {$engagement}, date: {$engagementDate}, remarks: {$engagementRemarks}");
-
                 if (empty($engagement)) {
                     error_log("Empty engagement_three for Project ID {$projectUniqueId}. Skipping insert.");
                     continue;
                 }
 
-                // Execute query
                 $engStmt->execute([
                     $projectUniqueId,
                     htmlspecialchars($engagement, ENT_QUOTES, 'UTF-8'),
@@ -322,8 +280,6 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
                     htmlspecialchars($engagementRemarks ?? '', ENT_QUOTES, 'UTF-8')
                 ]);
             }
-        } else {
-            error_log("No engagements found for Project ID: $projectUniqueId");
         }
 
         return "Stage Three updated successfully.";
@@ -332,7 +288,6 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
         throw new Exception("Stage Three Update Failed: " . $e->getMessage());
     }
 }
-
 
 function updateStageFour($conn, $projectUniqueId, $inputData) {
     try {

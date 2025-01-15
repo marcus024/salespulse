@@ -1103,16 +1103,15 @@
         }
     });
 
-  document.getElementById('saveButton').addEventListener('click', async () => {
-    // Display a confirmation dialog with Yes (OK) and No (Cancel)
+ document.getElementById('saveButton').addEventListener('click', async () => {
+     // Display a confirmation dialog with Yes (OK) and No (Cancel)
     const userConfirmed = confirm(`Are you sure you want to save the current data of Step ${currentStep}?`);
 
+    // If the user clicks "No" (Cancel), stop further execution
     if (!userConfirmed) {
         console.log("Save canceled by user.");
         return;
     }
-
-    // Retrieve the project ID
     const projectIdInput = document.getElementById('project-unique-id');
     const projectId = projectIdInput ? projectIdInput.value.trim() : null;
 
@@ -1122,69 +1121,73 @@
         return;
     }
 
-    // Create FormData object to handle file uploads and other form data
-    const formData = new FormData();
-
-    // Append project ID and current step to FormData
-    formData.append('project_unique_id', projectId);
-    formData.append('step', currentStep);
-
-    // Get all input fields within the current step
+    // Get all the input elements within the current step
     const currentStepFields = document.querySelectorAll(
         `#step${currentStep} input, #step${currentStep} textarea, #step${currentStep} select`
     );
 
-    // Append all fields to FormData
+    // Collect values from the inputs within this step
+    const inputValues = {};
+
     currentStepFields.forEach(field => {
         const name = field.name || field.id;
-
-        // Handle array-like fields (e.g., 'requirement_four[]')
         if (name.endsWith('[]')) {
             const key = name.replace('[]', '');
-            if (field.type === 'file' && field.files.length > 0) {
-                formData.append(key, field.files[0]); // Append file
-            } else {
-                formData.append(key, field.value.trim()); // Append value
+            if (!inputValues[key]) {
+                inputValues[key] = [];
             }
+            inputValues[key].push(field.value.trim());
         } else {
-            if (field.type === 'file' && field.files.length > 0) {
-                formData.append(name, field.files[0]); // Append file
-            } else {
-                formData.append(name, field.value.trim()); // Append value
-            }
+            inputValues[name] = field.value.trim();
         }
     });
 
-    console.log("FormData values:", Array.from(formData.entries())); // Debugging
+    console.log("Collected input values:", inputValues);
+
+    // Prepare the data to be sent
+    const dataToSend = {
+        step: currentStep,
+        project_unique_id: projectId,
+        data: inputValues,
+    };
+
+    console.log("Data to send:", dataToSend);
 
     try {
-        // Send FormData using fetch
         const response = await fetch('save.php', {
             method: 'POST',
-            body: formData, // FormData contains all files and inputs
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dataToSend),
         });
 
-        // Get the response text for debugging
+        // Store the raw response to ensure the body is read only once
         const responseText = await response.text();
 
+        // Check if the response status is OK
         if (!response.ok) {
             console.error("HTTP Error:", response.status, responseText);
             throw new Error(`HTTP Error ${response.status}: ${response.statusText}`);
         }
 
-        // Parse JSON response
-        const result = JSON.parse(responseText);
+        // Parse the response JSON
+        let result;
+        try {
+            result = JSON.parse(responseText);
+        } catch (jsonError) {
+            console.error("Error parsing JSON:", jsonError, "Raw Response:", responseText);
+            throw new Error("The server returned an invalid JSON response.");
+        }
 
         console.log("Backend response:", result);
 
-        // Display success or error messages
+        // Handle success based on the backend response
         if (result.message === `Step ${currentStep} data processed successfully`) {
             alert(`Step ${currentStep} saved successfully!`);
         } else {
             alert(`Unexpected response: ${result.message}`);
         }
     } catch (error) {
-        // Handle errors
+        // Handle errors (network issues, server issues, etc.)
         console.error("Error in fetch operation:", error);
         alert(`An error occurred while saving Step ${currentStep}: ${error.message}`);
     }
