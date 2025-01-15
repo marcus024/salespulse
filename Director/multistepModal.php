@@ -510,7 +510,7 @@
                                                         <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input name="bill_of_materials[]" type="number" class="form-control" placeholder="e.g. 5000">
+                                                        <input name="bill_of_materials[]" type="text" class="form-control" placeholder="e.g. 5000">
                                                     </div>
                                                     <div class="col-md-2">
                                                         <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 5000">
@@ -1103,7 +1103,7 @@
         }
     });
 
- document.getElementById('saveButton').addEventListener('click', async () => {
+    document.getElementById('saveButton').addEventListener('click', async () => {
      // Display a confirmation dialog with Yes (OK) and No (Cancel)
     const userConfirmed = confirm(`Are you sure you want to save the current data of Step ${currentStep}?`);
 
@@ -1192,7 +1192,6 @@
         alert(`An error occurred while saving Step ${currentStep}: ${error.message}`);
     }
 });
-
 
     // Initialize on DOMContentLoaded
     document.addEventListener('DOMContentLoaded', () => {
