@@ -675,34 +675,31 @@ include_once('../model/view_project.php');
     </div>
     
         <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../../../vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap core JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript -->
-    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../../../vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages -->
-    <script src="../js/sb-admin-2.min.js"></script>
+    <script src="../../../js/sb-admin-2.min.js"></script>
 
     <!-- DataTables JavaScript -->
-    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="../../../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <script src="../js/demo/datatables-demo.js"></script>
-    <script src="openModal.js"></script>
-    <script src="comProj.js"></script>
-    <script src="toogleNav.js"></script>
-    <script src="alerts/notif.js"></script>
-    <script src="alerts/notifCount.js"></script>
-    <script src="current_year.js"></script>
+
+    <script src="../../../Director/toogleNav.js"></script>
+    
+    <script src="../../../Director/current_year.js"></script>
     <!-- Table Export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="dirviewproject.js"></script>
-    <script src="notif.js"></script>
+    
     
     
     <script>
@@ -812,97 +809,6 @@ include_once('../model/view_project.php');
             location.reload();
         }
     </script>
-    <script>
-        // Function to start the phase
-function startPhase() {
-    // Fetch the project ID from the <strong> tag
-    var projectId = document.querySelector("#project-id-placeholder strong").textContent.trim();
-    console.log("Project ID from HTML: " + projectId); // Debugging line to confirm the project ID
-
-    // Get the current date in YYYY-MM-DD format
-    var currentDate = new Date().toISOString().slice(0, 10);
-
-    // Create an AJAX request
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "start_project.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    // Send the start date and project ID to the server
-    xhr.send("start_date=" + encodeURIComponent(currentDate) + "&project_id=" + encodeURIComponent(projectId));
-
-    // Handle the response
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            var response = JSON.parse(xhr.responseText); // Assuming the response is JSON
-            console.log(response); // Debugging line to check the response
-
-            if (response.status === 'error') {
-                // Handle error (project not found or access denied)
-                alert(response.message); // Display the error message
-            } else {
-                // Update the button text based on the project status
-                var button = document.querySelector(".play-btn");
-
-                if (response.project_status === 'Ongoing') {
-                    button.innerHTML = '<i class="fas fa-play"></i> Continue Journey'; // Change text to Continue Journey
-                    button.id = "continueJourneyButton"; // Update the button ID
-                    button.setAttribute("onclick", "continuePhase()"); // Update the onclick action
-                } else {
-                    button.innerHTML = '<i class="fas fa-play"></i> Start Journey'; // Default text
-                }
-
-                // Dismiss the modal programmatically
-                var modal = document.getElementById("startJourneyModal");
-                var modalInstance = bootstrap.Modal.getInstance(modal);
-                modalInstance.hide();
-
-                // Show a success message
-                alert(response.message);
-            }
-        } else {
-            alert("Failed to update start date.");
-        }
-    };
-}
-
-// Function to check project status on page load
-function checkProjectStatus() {
-    var projectId = document.querySelector("#project-id-placeholder strong").textContent.trim();
-
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "check_project_status.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    // Send the project ID to check the status
-    xhr.send("project_id=" + encodeURIComponent(projectId));
-
-    // Handle the response
-    xhr.onload = function() {
-        if (xhr.status == 200) {
-            var response = JSON.parse(xhr.responseText);
-            console.log(response); // Debugging line to check the response
-
-            if (response.status === 'success') {
-                var button = document.querySelector(".play-btn");
-
-                if (response.project_status === 'Ongoing') {
-                    button.innerHTML = '<i class="fas fa-play"></i> Continue Journey'; // Change text to Continue Journey
-                    button.setAttribute("onclick", "continuePhase()"); // Update the onclick action
-                } else {
-                    button.innerHTML = '<i class="fas fa-play"></i> Start Journey'; // Default text
-                    button.setAttribute("onclick", "startPhase()"); // Set onclick action for start
-                }
-            }
-        }
-    };
-}
-
-// Call the function to check project status when the page loads
-// window.onload = function() {
-//     checkProjectStatus();
-// };
-
-    </script>
 
     <script>
         function togglePopup() {
@@ -921,61 +827,6 @@ function checkProjectStatus() {
             }
         });
     </script>
-    
-    <script>
-    // Function to fetch project stage and navigate to the correct step
-    function checkProjectStageAndNavigate() {
-        // Fetch the project ID from the <strong> tag
-        var projectId = document.querySelector("#project-id-placeholder strong").textContent.trim();
-        console.log("Project ID from HTML: " + projectId); // Debugging line to confirm the project ID
-
-        // Make an AJAX request to fetch the current stage of the project
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "dirback/current_stage.php", true);  // Your PHP script to get current stage
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-        // Send the project ID to the server
-        xhr.send("project_id=" + encodeURIComponent(projectId));
-
-        // Handle the response when the request is complete
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                var response = JSON.parse(xhr.responseText);
-
-                if (response.status === 'success') {
-                    var currentStage = response.current_stage;  // Get the current stage from the response
-                    console.log("Current Stage: " + currentStage);  // Debugging the current stage
-
-                    // Map the current stage to the corresponding step in the modal
-                    var stageToStepMap = {
-                        'Stage 1': '#step1',
-                        'Stage 2': '#step2',
-                        'Stage 3': '#step3',
-                        'Stage 4': '#step4',
-                        'Stage 5': '#step5'
-                    };
-
-                    // If a valid stage exists, show the corresponding step
-                    if (stageToStepMap[currentStage]) {
-                        // Hide all steps before showing the relevant one
-                        $('.step').hide();  // Hide all steps
-                        $(stageToStepMap[currentStage]).show();  // Show the corresponding step
-                    }
-                } else {
-                    alert('Error fetching project stage');
-                }
-            } else {
-                alert('Failed to fetch project stage');
-            }
-        };
-    }
-
-    // Call the function on page load or when the modal is triggered
-    document.addEventListener('DOMContentLoaded', function() {
-        checkProjectStageAndNavigate();
-    });
-    </script>
-
 
 
 
