@@ -257,7 +257,7 @@ include_once('../model/view_project.php');
                                 </p>
                                 <input  hidden id="currentUser" value="<?php echo $_SESSION['user_id_c']; ?>">
                             </div>
-                            <img src="<?php echo $_SESSION['image']; ?>" alt="Profile Picture" class="rounded-circle" style="width: 40px; height: 40px; margin-left: 10px; cursor: pointer;" onclick="togglePopup()">
+                            <img src="../../<?php echo $_SESSION['image']; ?>" alt="Profile Picture" class="rounded-circle" style="width: 40px; height: 40px; margin-left: 10px; cursor: pointer;" onclick="togglePopup()">
                         </div>
                         <!-- Popup Container -->
                         <div id="popup-container" 
