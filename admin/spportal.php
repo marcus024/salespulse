@@ -12,7 +12,8 @@ include("../auth/db.php");
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SALES PULSE</title>
+    <title>Sales Pulse</title>
+    <link rel="icon" href="../../images/logo_blue.ico" type="image/x-icon">
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
