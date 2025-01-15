@@ -35,7 +35,6 @@
                     document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
                     document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || 'No Data';
                     document.getElementById('status-placeholder').value     = data.stages.stage_one.status     || 'No Data';
-                    document.getElementById('requirement1').value = data.stages.stage_one.requirements || 'No Data';
                     document.getElementById('solution1').value = data.stages.stage_one.solution || 'No Data';
                     document.getElementById('dealSize1').value = data.stages.stage_one.deal_size || 'No Data';
                     document.getElementById('stageremarks1').value = data.stages.stage_one.remarks || 'No Data';
