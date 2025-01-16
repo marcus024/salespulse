@@ -55,7 +55,7 @@
                         }
                     });
                     const requirementContainer = document.getElementById('requirement-container');
-                    requirementContainer.innerHTML = ''; // Clear existing fields
+                    
 
                     const requirements = data.stages.stage_one.requirement1 || []; // Fetch requirements from data
 
