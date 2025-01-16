@@ -1022,19 +1022,23 @@
         }
     });
 
-    function refreshModal() {
-        // Get all the input fields within the modal
-        const modalInputs = document.querySelectorAll('#myModal input, #myModal textarea, #myModal select');
-        
-        // Reset all input fields to default/empty values
-        modalInputs.forEach(input => {
-            if (input.type === 'checkbox' || input.type === 'radio') {
-                input.checked = false;
-            } else {
-                input.value = input.defaultValue || '';
-            }
-        });
-    }
+   function refreshModal() {
+    // Get the modal element
+    const modal = document.getElementById('multiStepModal');
+
+    // Trigger a "refresh" by updating the modal content
+    // For example, you can clear and re-load the modal's content if necessary
+    // Here, we assume you have a function that fetches the updated content.
+    
+    // Example: Re-set or update the modal content dynamically
+    const modalContent = document.querySelector('#multiStepModal .modal-content');
+    
+    // Add logic to update the modal's content (this could be fetching data or resetting specific values)
+    // This could be as simple as re-adding or updating HTML content
+    modalContent.innerHTML = modalContent.innerHTML; // This "refreshes" the content
+  
+}
+
 
 
     document.getElementById('deleteButton').addEventListener('click', async () => {
