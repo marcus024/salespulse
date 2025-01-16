@@ -23,7 +23,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stageone.distributor, 'No Data') AS distributor,
                     COALESCE(stageone.product, 'No Data') AS product,
                     COALESCE(stageone.technology, 'No Data') AS technology,
-                    GROUP_CONCAT(requirementone_tb.requirement_one SEPARATOR ',') AS requirement_one,
+                    stageone_requirements.requirement AS requirement,
                     COALESCE(stagetwo.start_date_stage_two, 'No Data') AS start_date_stage_two,
                     COALESCE(stagetwo.end_date_stage_two, 'No Data') AS end_date_stage_two,
                     COALESCE(stagetwo.status_stage_two, 'No Data') AS status_stage_two,
@@ -54,6 +54,13 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
             $sprNum = $result['SPR_number'] ?? 'No SPR Number';
+            // Extract requirements distinctly
+            $requirements = [];
+            foreach ($results as $row) {
+                if (!empty($row['requirement'])) {
+                    $requirements[] = $row['requirement'];
+                }
+            }
 
             echo json_encode([
                 'status' => 'success',
@@ -71,7 +78,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'distributor' => $result['distributor'] ?? 'No Data',
                         'product' => $result['product'] ?? 'No Data',
                         'technology' => $result['technology'] ?? 'No Data',
-                        'requirement1' => isset($result['requirement_one']) ? explode(',', $result['requirement_one']) : []
+                        'requirement1' => $requirements
                     ],
                     'stage_two' => [
                         'start_date' => $result['start_date_stage_two'],
