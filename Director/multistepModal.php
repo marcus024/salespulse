@@ -1012,6 +1012,7 @@
                 } else {
                     alert('All steps completed!');
                 }
+                refreshModal();
             } else {
                 alert(`Unexpected response: ${result.message}`);
             }
@@ -1020,6 +1021,20 @@
             alert(`An error occurred while completing Step ${currentStep}: ${error.message}`);
         }
     });
+
+    function refreshModal() {
+        // Get all the input fields within the modal
+        const modalInputs = document.querySelectorAll('#myModal input, #myModal textarea, #myModal select');
+        
+        // Reset all input fields to default/empty values
+        modalInputs.forEach(input => {
+            if (input.type === 'checkbox' || input.type === 'radio') {
+                input.checked = false;
+            } else {
+                input.value = input.defaultValue || '';
+            }
+        });
+    }
 
 
     document.getElementById('deleteButton').addEventListener('click', async () => {
