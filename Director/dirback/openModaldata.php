@@ -65,17 +65,17 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'start_date' => $result['start_date_stage_one'],
                         'end_date' => $result['end_date_stage_one'],
                         'status' => $result['status_stage_one'],
-                        'solution' => $result['solution'],
-                        'deal_size' => $result['deal_size'],
-                        'remarks' => $result['stage_one_remarks'],
-                        'distributor' => $result['distributor'],
-                        'product' => $result['product'],
-                        'technology' => $result['technology'],
+                        'solution' => $result['solution'] ?? 'No Data',
+                        'deal_size' => $result['deal_size'] ?? 'No Data',
+                        'remarks' => $result['stage_one_remarks'] ?? 'No Data',
+                        'distributor' => $result['distributor'] ?? 'No Data',
+                        'product' => $result['product'] ?? 'No Data',
+                        'technology' => $result['technology'] ?? 'No Data',
                         'requirements' => isset($result['requirements']) ? array_map(function ($requirement) {
                             $parts = explode(':', $requirement); // Split "id:requirement" format
                             return [
                                 'requirement_id_one' => $parts[0] ?? null,  // ID
-                                'requirement_one' => $parts[1] // Requirement text
+                                'requirement_one' => $parts[1] ?? 'No Data' // Requirement text
                             ];
                         }, array_unique(explode(',', $result['requirements']))) : []
                     ],
