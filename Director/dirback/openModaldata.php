@@ -23,7 +23,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stageone.distributor, 'No Data') AS distributor,
                     COALESCE(stageone.product, 'No Data') AS product,
                     COALESCE(stageone.technology, 'No Data') AS technology,
-                    GROUP_CONCAT(DISTINCT requirementone_tb.requirement_one SEPARATOR ',') AS requirement_one,
+                    GROUP_CONCAT(DISTINCT CONCAT(requirementone_tb.requirement_id_one, ':', requirementone_tb.requirement_one) SEPARATOR ',') AS requirements
                     COALESCE(stagetwo.start_date_stage_two, 'No Data') AS start_date_stage_two,
                     COALESCE(stagetwo.end_date_stage_two, 'No Data') AS end_date_stage_two,
                     COALESCE(stagetwo.status_stage_two, 'No Data') AS status_stage_two,
@@ -71,9 +71,13 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'distributor' => $result['distributor'] ?? 'No Data',
                         'product' => $result['product'] ?? 'No Data',
                         'technology' => $result['technology'] ?? 'No Data',
-                        'requirement1' => isset($result['requirement_one'])
-                        ? array_values(array_unique(explode(',', $result['requirement_one'])))
-                        : []
+                        'requirements' => isset($result['requirements']) ? array_map(function ($requirement) {
+                            $parts = explode(':', $requirement); // Split "id:requirement" format
+                            return [
+                                'requirement_id_one' => $parts[0] ?? null,  // ID
+                                'requirement_one' => $parts[1] ?? 'No Data' // Requirement text
+                            ];
+                        }, array_unique(explode(',', $result['requirements']))) : []
                     ],
                     'stage_two' => [
                         'start_date' => $result['start_date_stage_two'],
