@@ -92,7 +92,7 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
         if (!empty($inputData['requirement_one'])) {
             // Prepare query to check for existence and update if needed
             $requirementQuery = "
-                INSERT INTO requirementone_tb (id, project_unique_id, requirement_one)
+                INSERT INTO requirementone_tb (requirement_id_one, project_unique_id, requirement_one)
                 VALUES (?, ?, ?)
                 ON DUPLICATE KEY UPDATE requirement_one = VALUES(requirement_one)";
             $reqStmt = $conn->prepare($requirementQuery);
