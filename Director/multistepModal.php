@@ -1012,7 +1012,7 @@
                 } else {
                     alert('All steps completed!');
                 }
-                refreshModal();
+                openModal(projectIdValue);
             } else {
                 alert(`Unexpected response: ${result.message}`);
             }
