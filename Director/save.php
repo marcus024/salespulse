@@ -88,42 +88,29 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        // Initialize status for requirements
-        $requirementStatus = [];
-
         // Handle requirements
         if (!empty($inputData['requirement_one'])) {
+            // Prepare query to check for existence and update if needed
+            $requirementQuery = "
+                INSERT INTO requirementone_tb (requirement_id_one, project_unique_id, requirement_one)
+                VALUES (?, ?, ?)
+                ON DUPLICATE KEY UPDATE requirement_one = VALUES(requirement_one)";
+            $reqStmt = $conn->prepare($requirementQuery);
+
             foreach ($inputData['requirement_one'] as $requirement) {
                 if (!empty($requirement['requirement_one'])) {
-                    $requirementId = $requirement['requirement_id_one'] ?? null;
-                    $requirementValue = htmlspecialchars($requirement['requirement_one'], ENT_QUOTES, 'UTF-8');
+                    $requirementId = $requirement['requirement_id_one'] ?? null; // ID of the requirement (if provided)
+                    $requirementValue = htmlspecialchars($requirement['requirement_one'], ENT_QUOTES, 'UTF-8'); // Sanitize input
 
-                    // Check if requirement exists
-                    if ($requirementId) {
-                        // Update requirement
-                        $updateQuery = "UPDATE requirementone_tb SET 
-                            requirement_one = ? 
-                            WHERE requirement_id_one = ? AND project_unique_id = ?";
-                        $updateStmt = $conn->prepare($updateQuery);
-                        $updateStmt->execute([$requirementValue, $requirementId, $projectUniqueId]);
-                        $requirementStatus[] = "Updated requirement: {$requirementValue}";
-                    } else {
-                        // Insert new requirement
-                        $insertQuery = "INSERT INTO requirementone_tb (project_unique_id, requirement_one) 
-                            VALUES (?, ?)";
-                        $insertStmt = $conn->prepare($insertQuery);
-                        $insertStmt->execute([$projectUniqueId, $requirementValue]);
-                        $requirementStatus[] = "Inserted new requirement: {$requirementValue}";
-                    }
+                    // Execute the query with the requirement ID, project ID, and value
+                    $reqStmt->execute([
+                        $requirementId,             // ID of the requirement (null for new)
+                        $projectUniqueId,           // Project unique ID
+                        $requirementValue           // Sanitized requirement value
+                    ]);
                 }
             }
         }
-
-        return [
-            'status' => 'success',
-            'message' => 'Stage One updated successfully.',
-            'requirementStatus' => $requirementStatus
-        ];
 
         return "Stage One updated successfully.";
     } catch (Exception $e) {
