@@ -90,28 +90,16 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
 
         // Handle requirements
         if (!empty($inputData['requirement_one'])) {
-            // Prepare query to check for existence and update if needed
-            $requirementQuery = "
-                INSERT INTO requirementone_tb (requirement_id_one, project_unique_id, requirement_one)
-                VALUES (?, ?, ?)
-                ON DUPLICATE KEY UPDATE requirement_one = VALUES(requirement_one)";
+            $requirementQuery = "INSERT INTO requirementone_tb (project_unique_id, requirement_one) 
+                                 VALUES (?, ?)";
             $reqStmt = $conn->prepare($requirementQuery);
 
             foreach ($inputData['requirement_one'] as $requirement) {
-                if (!empty($requirement['requirement_one'])) {
-                    $requirementId = $requirement['requirement_id_one'] ?? null; // ID of the requirement (if provided)
-                    $requirementValue = htmlspecialchars($requirement['requirement_one'], ENT_QUOTES, 'UTF-8'); // Sanitize input
-
-                    // Execute the query with the requirement ID, project ID, and value
-                    $reqStmt->execute([
-                        $requirementId,             // ID of the requirement (null for new)
-                        $projectUniqueId,           // Project unique ID
-                        $requirementValue           // Sanitized requirement value
-                    ]);
+                if (!empty($requirement)) {
+                    $reqStmt->execute([$projectUniqueId, htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8')]);
                 }
             }
         }
-
         return "Stage One updated successfully.";
     } catch (Exception $e) {
         error_log("Error in Stage One: " . $e->getMessage());
