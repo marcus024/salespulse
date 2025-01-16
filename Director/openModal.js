@@ -61,7 +61,7 @@
                     requirements.forEach((requirement) => {
                         const requirementRow = document.createElement('div');
                         requirementRow.className = 'row align-items-center requirement-field';
-                        // requirementRow.style.margin = '5px 0';
+                        requirementRow.style.margin = '5px 0';
 
                         requirementRow.innerHTML = `
                             <div class="col-9 d-flex align-items-center">
