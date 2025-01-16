@@ -69,7 +69,8 @@
                                     value="${requirement}" placeholder="e.g. Sample Requirement">
                             </div>
                             <div class="col-2 d-flex justify-content-end align-items-center">
-                                <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;" onclick="removeRequirement(this)">
+                                <!-- Delete Button -->
+                                <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;" id="deleteRequirement">
                                     <i class="fas fa-minus"></i>
                                 </button>
                             </div>
@@ -77,13 +78,7 @@
 
                         requirementContainer.appendChild(requirementRow);
                     });
-                    function removeRequirement(button) {
-                        const row = button.closest('.requirement-field');
-                        if (row) {
-                            row.remove();
-                        }
-                    }
-
+                    
 
 
 
