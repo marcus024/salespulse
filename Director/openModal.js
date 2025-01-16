@@ -58,7 +58,7 @@
                     requirementContainer.innerHTML = ''; // Clear existing fields
 
                     const requirements = data.requirement1 || [];
-                    requirements.forEach((requirement) => {
+                    requirements.forEach((requirement, index) => {
                         const requirementRow = document.createElement('div');
                         requirementRow.className = 'row align-items-center requirement-field';
                         requirementRow.style.margin = '5px 0';
@@ -77,7 +77,6 @@
 
                         requirementContainer.appendChild(requirementRow);
                     });
-
 
 
 
