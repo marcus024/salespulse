@@ -243,7 +243,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="technology" class="form-label text-white">Technology</label>
-                                                    <select name="technology" class="form-control custom-select" id="technology1">
+                                                    <select name="technology" class="form-control custom-select" id="technology2">
                                                         <option disabled>Select</option>
                                                         <option value="Artificial Intelligence" >Artificial Intelligence</option>
                                                         <option value="Machine Learning" >Machine Learning</option>
@@ -256,15 +256,15 @@
                                              <div class="row mb-3">
                                                 <div class="col-md-3">
                                                     <label for="dealSize" class="form-label text-white">Deal Size</label>
-                                                    <input name="deal_size" type="number" class="form-control" id="dealSize1" placeholder="e.g. 5000">
+                                                    <input name="deal_size" type="number" class="form-control" id="dealSize2" placeholder="e.g. 5000">
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="product" class="form-label text-white">Product</label>
-                                                    <input name="product" id="product1" type="text" class="form-control" placeholder="e.g. Router">
+                                                    <input name="product" id="product2" type="text" class="form-control" placeholder="e.g. Router">
                                                 </div>
                                                 <div class="col-md-6">
                                                    <label for="solution" class="form-label text-white">Solution</label>
-                                                        <textarea name="solution" class="form-control" id="solution1" placeholder="e.g. Sample Solution" 
+                                                        <textarea name="solution" class="form-control" id="solution2" placeholder="e.g. Sample Solution" 
                                                         style="height:50px;"></textarea>
                                                 </div>
                                             </div>
