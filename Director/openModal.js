@@ -77,6 +77,13 @@
 
                         requirementContainer.appendChild(requirementRow);
                     });
+                    function removeRequirement(button) {
+                        const row = button.closest('.requirement-field');
+                        if (row) {
+                            row.remove();
+                        }
+                    }
+
 
 
 
