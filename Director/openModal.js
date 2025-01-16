@@ -128,6 +128,19 @@
                     document.getElementById('stage-two-start').value  = data.stages.stage_two.start_date || 'No Data';
                     document.getElementById('stage-two-end').value    = data.stages.stage_two.end_date   || 'No Data';
                     document.getElementById('stage-two-status').value = data.stages.stage_two.status     || 'No Data';
+                     document.getElementById('solution2').value = data.stages.stage_one.solution_two || 'No Data';
+                    document.getElementById('dealSize2').value = data.stages.stage_one.deal_size_two || 'No Data';
+                    document.getElementById('stageremarks2').value = data.stages.stage_one.remarks_two || 'No Data';
+                    document.getElementById('product2').value = data.stages.stage_one.product_two || 'No Data';
+                    const technology2 = document.getElementById('technology2');
+                    const tech2 = data.stages.stage_one.technology_two || 'Select';
+                    Array.from(technology2.options).forEach(option => {
+                        if (option.value === techValue) {
+                            option.selected = true;
+                        }
+                    });
+
+
 
                     document.getElementById('stage-three-start').value  = data.stages.stage_three.start_date || 'No Data';
                     document.getElementById('stage-three-end').value    = data.stages.stage_three.end_date   || 'No Data';

@@ -243,7 +243,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="technology" class="form-label text-white">Technology</label>
-                                                    <select name="technology" class="form-control custom-select" id="technology">
+                                                    <select name="technology" class="form-control custom-select" id="technology2">
                                                         <option disabled>Select</option>
                                                         <option value="Artificial Intelligence" >Artificial Intelligence</option>
                                                         <option value="Machine Learning" >Machine Learning</option>
@@ -256,15 +256,15 @@
                                              <div class="row mb-3">
                                                 <div class="col-md-3">
                                                     <label for="dealSize" class="form-label text-white">Deal Size</label>
-                                                    <input name="deal_size" type="number" class="form-control" id="dealSize" placeholder="e.g. 5000">
+                                                    <input name="deal_size" type="number" class="form-control" id="dealSize2" placeholder="e.g. 5000">
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="product" class="form-label text-white">Product</label>
-                                                    <input name="product" id="product" type="text" class="form-control">
+                                                    <input name="product" id="product2" type="text" class="form-control" placeholder="e.g. Router">
                                                 </div>
                                                 <div class="col-md-6">
                                                    <label for="solution" class="form-label text-white">Solution</label>
-                                                        <textarea name="solution" class="form-control" id="remarks" placeholder="e.g. Sample Remarks" 
+                                                        <textarea name="solution" class="form-control" id="solution2" placeholder="e.g. Sample Solution" 
                                                         style="height:50px;"></textarea>
                                                 </div>
                                             </div>
@@ -291,13 +291,13 @@
                                             <div id="engagement-fields-container">
                                                 <div class="row engagement-fields mb-3">
                                                     <div class="col-md-3">
-                                                        <input name="engagement_type[]" type="text" class="form-control" placeholder="e.g. Sample Engagement">
+                                                        <input name="engagement_type[]" type="text" id="engtype2" class="form-control" placeholder="e.g. Sample Engagement">
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input name="engagement_date[]" type="date" class="form-control" style="font-size:10px;">
+                                                        <input name="engagement_date[]" type="date" id="engdate2" class="form-control" style="font-size:10px;">
                                                     </div>
                                                     <div class="col-md-5">
-                                                        <input name="engagement_remarks[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+                                                        <input name="engagement_remarks[]" type="text" id="engremarks2" class="form-control" placeholder="e.g. Sample Remarks">
                                                     </div>
                                                     <div class="col-md-2">
                                                         <!-- Remove Button -->
@@ -333,13 +333,13 @@
                                                 <!-- Initial Requirement Row -->
                                                 <div class="row requirement-fields mb-3">
                                                     <div class="col-md-3">
-                                                        <input name="requirement_two[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
+                                                        <input name="requirement_two[]" type="text" id="req2" class="form-control" placeholder="e.g. Sample Requirement">
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input name="requirement_date[]" type="date" class="form-control" style="font-size:10px;">
+                                                        <input name="requirement_date[]" type="date" id="reqdate2" class="form-control" style="font-size:10px;">
                                                     </div>
                                                     <div class="col-md-5">
-                                                        <input name="requirement_remarks[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+                                                        <input name="requirement_remarks[]" type="text" id="reqremarks2"class="form-control" placeholder="e.g. Sample Remarks">
                                                     </div>
                                                     <div class="col-md-2">
                                                         <!-- Remove Button -->
@@ -354,7 +354,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label for="requirement" class="form-label text-white">Stage Remarks</label>
-                                                    <input name="stage_two_remarks" type="textarea" class="form-control" id="stageremarks"style="height: 50px;">
+                                                    <input name="stage_two_remarks" type="textarea" class="form-control" id="stageremarks2" style="height: 50px;">
                                                 </div>
                                             </div>
                                         </div>

@@ -27,6 +27,11 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stagetwo.start_date_stage_two, 'No Data') AS start_date_stage_two,
                     COALESCE(stagetwo.end_date_stage_two, 'No Data') AS end_date_stage_two,
                     COALESCE(stagetwo.status_stage_two, 'No Data') AS status_stage_two,
+                    COALESCE(stagetwo.stage_two_remarks, 'No Data') AS stage_two_remarks,
+                    COALESCE(stagetwo.technology, 'No Data') AS technology_stage_two,
+                    COALESCE(stagetwo.deal_size, 'No Data') AS deal_size_stage_two,
+                    COALESCE(stagetwo.product, 'No Data') AS product_stage_two,
+                    COALESCE(stagetwo.solution, 'No Data') AS solution_stage_two,
                     COALESCE(stagethree.start_date_stage_three, 'No Data') AS start_date_stage_three,
                     COALESCE(stagethree.end_date_stage_three, 'No Data') AS end_date_stage_three,
                     COALESCE(stagethree.status_stage_three, 'No Data') AS status_stage_three,
@@ -84,7 +89,12 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     'stage_two' => [
                         'start_date' => $result['start_date_stage_two'],
                         'end_date' => $result['end_date_stage_two'],
-                        'status' => $result['status_stage_two']
+                        'status' => $result['status_stage_two'],
+                        'remarks_two' => $result['stage_two_remarks'],
+                        'technology_two' => $result['technology_stage_two'],
+                        'deal_size_two' => $result['deal_size_stage_two'],
+                        'product_two' => $result['product_stage_two'],
+                        'solution_two' => $result['solution_stage_two']
                     ],
                     'stage_three' => [
                         'start_date' => $result['start_date_stage_three'],
