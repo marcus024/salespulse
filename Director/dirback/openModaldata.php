@@ -71,7 +71,9 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'distributor' => $result['distributor'] ?? 'No Data',
                         'product' => $result['product'] ?? 'No Data',
                         'technology' => $result['technology'] ?? 'No Data',
-                        'requirement1' => isset($result['requirement_one']) ? explode(',', $result['requirement_one']) : []
+                        'requirement1' => isset($result['requirement_one'])
+                        ? array_values(array_unique(explode(',', $result['requirement_one'])))
+                        : []
                     ],
                     'stage_two' => [
                         'start_date' => $result['start_date_stage_two'],
