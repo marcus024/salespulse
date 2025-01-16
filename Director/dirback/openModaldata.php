@@ -23,6 +23,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stageone.distributor, 'No Data') AS distributor,
                     COALESCE(stageone.product, 'No Data') AS product,
                     COALESCE(stageone.technology, 'No Data') AS technology,
+                    GROUP_CONCAT(requirementone_tb.requirement_one SEPARATOR ',') AS requirement_one,
                     COALESCE(stagetwo.start_date_stage_two, 'No Data') AS start_date_stage_two,
                     COALESCE(stagetwo.end_date_stage_two, 'No Data') AS end_date_stage_two,
                     COALESCE(stagetwo.status_stage_two, 'No Data') AS status_stage_two,
@@ -36,12 +37,14 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stagefive.end_date_stage_five, 'No Data') AS end_date_stage_five,
                     COALESCE(stagefive.status_stage_five, 'No Data') AS status_stage_five
                 FROM projecttb
+                LEFT JOIN requirementone_tb ON projecttb.project_unique_id = requirementone_tb.project_unique_id
                 LEFT JOIN stageone ON projecttb.project_unique_id = stageone.project_unique_id
                 LEFT JOIN stagetwo ON projecttb.project_unique_id = stagetwo.project_unique_id
                 LEFT JOIN stagethree ON projecttb.project_unique_id = stagethree.project_unique_id
                 LEFT JOIN stagefour ON projecttb.project_unique_id = stagefour.project_unique_id
                 LEFT JOIN stagefive ON projecttb.project_unique_id = stagefive.project_unique_id
-                WHERE projecttb.project_unique_id = :project_id";
+                WHERE projecttb.project_unique_id = :project_id
+                GROUP BY projecttb.project_unique_id";
 
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':project_id', $project_id, PDO::PARAM_STR);
@@ -67,7 +70,8 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'remarks' => $result['stage_one_remarks'] ?? 'No Data',
                         'distributor' => $result['distributor'] ?? 'No Data',
                         'product' => $result['product'] ?? 'No Data',
-                        'technology' => $result['technology'] ?? 'No Data'
+                        'technology' => $result['technology'] ?? 'No Data',
+                        'requirement1' => isset($result['requirement_one']) ? explode(',', $result['requirement_one']) : []
                     ],
                     'stage_two' => [
                         'start_date' => $result['start_date_stage_two'],

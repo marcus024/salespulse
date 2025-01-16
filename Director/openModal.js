@@ -54,6 +54,30 @@
                             option.selected = true;
                         }
                     });
+                    const requirementContainer = document.getElementById('requirement-container');
+                    requirementContainer.innerHTML = ''; // Clear existing fields
+
+                    const requirements = data.stages.stage_one.requirement1 || [];
+                    requirements.forEach((requirement, index) => {
+                        const requirementRow = document.createElement('div');
+                        requirementRow.className = 'row align-items-center requirement-field';
+                        requirementRow.style.margin = '5px 0';
+
+                        requirementRow.innerHTML = `
+                            <div class="col-9 d-flex align-items-center">
+                                <input name="requirement_one[]" style="width: 100%;" type="text" class="form-control" 
+                                    value="${requirement}" placeholder="e.g. Sample Requirement">
+                            </div>
+                            <div class="col-2 d-flex justify-content-end align-items-center">
+                                <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;" onclick="removeRequirement(this)">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        `;
+
+                        requirementContainer.appendChild(requirementRow);
+                    });
+
 
 
 
