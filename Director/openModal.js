@@ -32,14 +32,14 @@
                 if (data.status === 'success') {
                     // alert("Successful Fetch");
                     //Populate modal fields with project data
-                    document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || '';
-                    document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || '';
-                    document.getElementById('status-placeholder').value     = data.stages.stage_one.status     || '';
-                    document.getElementById('solution1').value = data.stages.stage_one.solution || '';
-                    document.getElementById('dealSize1').value = data.stages.stage_one.deal_size || '';
-                    document.getElementById('stageremarks1').value = data.stages.stage_one.remarks || '';
-                    document.getElementById('distributorSelect').value = data.stages.stage_one.distributor || '';
-                    document.getElementById('product1').value = data.stages.stage_one.product || '';
+                    document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
+                    document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || 'No Data';
+                    document.getElementById('status-placeholder').value     = data.stages.stage_one.status     || 'No Data';
+                    document.getElementById('solution1').value = data.stages.stage_one.solution || 'No Data';
+                    document.getElementById('dealSize1').value = data.stages.stage_one.deal_size || 'No Data';
+                    document.getElementById('stageremarks1').value = data.stages.stage_one.remarks || 'No Data';
+                    document.getElementById('distributorSelect').value = data.stages.stage_one.distributor || 'Select';
+                    document.getElementById('product1').value = data.stages.stage_one.product || 'No Data';
                     const distributorSelect = document.getElementById('distributorSelect');
                     const distributorValue = data.stages.stage_one.distributor || 'Select';
                     Array.from(distributorSelect.options).forEach(option => {
