@@ -84,16 +84,41 @@
                         // Add delete functionality to the button
                         const deleteButton = requirementRow.querySelector('button');
                         deleteButton.addEventListener('click', () => {
-                            // Remove the row from the DOM
-                            requirementRow.remove();
+                            // Confirm before deletion
+                            if (confirm('Are you sure you want to delete this requirement?')) {
+                                // Send a request to the backend to delete the requirement
+                                fetch('./dirback/delete_req1.php', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        requirement: requirement, // Requirement to delete
+                                        project_id: projectId     // Project ID for context
+                                    }),
+                                })
+                                    .then((response) => response.json())
+                                    .then((data) => {
+                                        if (data.status === 'success') {
+                                            // Remove the row from the DOM
+                                            requirementRow.remove();
 
-                            // Optionally, update the `requirements` array to reflect the removed value
-                            const index = requirements.indexOf(requirement);
-                            if (index > -1) {
-                                requirements.splice(index, 1); // Remove the requirement from the array
+                                            // Optionally update the requirements array
+                                            const index = requirements.indexOf(requirement);
+                                            if (index > -1) {
+                                                requirements.splice(index, 1);
+                                            }
+
+                                            alert('Requirement deleted successfully.');
+                                        } else {
+                                            alert('Error: ' + data.message);
+                                        }
+                                    })
+                                    .catch((error) => {
+                                        console.error('Error deleting requirement:', error);
+                                        alert('Failed to delete requirement. Please try again.');
+                                    });
                             }
-
-                            console.log('Updated Requirements:', requirements); // For debugging
                         });
                     });
 
