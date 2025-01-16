@@ -122,12 +122,6 @@
                         });
                     });
 
-                    
-
-
-
-
-
                     document.getElementById('project-unique-id').value = data.project_id || 'No Data';
                     document.getElementById('client-name').textContent = data.company_name || 'No Data';
 
