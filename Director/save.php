@@ -90,7 +90,7 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
 
         // Handle requirements
         if (!empty($inputData['requirement_one'])) {
-            // Prepare query to check for existence and update if needed
+            // Prepare the query to insert or update requirements
             $requirementQuery = "
                 INSERT INTO requirementone_tb (requirement_id_one, project_unique_id, requirement_one)
                 VALUES (?, ?, ?)
@@ -102,7 +102,10 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
                     $requirementId = $requirement['requirement_id_one'] ?? null; // ID of the requirement (if provided)
                     $requirementValue = htmlspecialchars($requirement['requirement_one'], ENT_QUOTES, 'UTF-8'); // Sanitize input
 
-                    // Execute the query with the requirement ID, project ID, and value
+                    // Handle null requirement_id_one for new inserts
+                    $requirementId = $requirementId ?: null;
+
+                    // Execute the query
                     $reqStmt->execute([
                         $requirementId,             // ID of the requirement (null for new)
                         $projectUniqueId,           // Project unique ID
@@ -111,6 +114,7 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
                 }
             }
         }
+
 
         return "Stage One updated successfully.";
     } catch (Exception $e) {
