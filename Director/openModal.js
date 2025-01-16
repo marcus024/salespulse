@@ -54,10 +54,11 @@
                             option.selected = true;
                         }
                     });
-                    const requirementContainer = document.getElementById('requirement-container');
-                    // requirementContainer.innerHTML = ''; 
+                   const requirementContainer = document.getElementById('requirement-container');
+                    // Clear existing fields
+                    requirementContainer.innerHTML = ''; 
 
-                    const requirements = data.stages.stage_one.requirement1 || []; // Fetch requirements from data
+                    const requirements = data.stages.stage_one.requirements || []; // Fetch requirements from data
 
                     requirements.forEach((requirement) => {
                         const requirementRow = document.createElement('div');
@@ -67,8 +68,15 @@
                         requirementRow.innerHTML = `
                             <div class="col-10 d-flex align-items-center">
                                 <!-- Input field for Requirement -->
-                                <input value="${requirement}" name="requirement_one[]" style="width: 100%;" type="text" 
-                                    class="form-control" id="requirement1" placeholder="e.g. Sample Requirement">
+                                <input 
+                                    value="${requirement.requirement_one}" 
+                                    name="requirement_one[]" 
+                                    style="width: 100%;" 
+                                    type="text" 
+                                    class="form-control" 
+                                    data-id="${requirement.requirement_id_one}" 
+                                    placeholder="e.g. Sample Requirement"
+                                >
                             </div>
                             <div class="col-2 d-flex justify-content-end align-items-center">
                                 <!-- Delete Button -->
@@ -84,17 +92,15 @@
                         // Add delete functionality to the button
                         const deleteButton = requirementRow.querySelector('button');
                         deleteButton.addEventListener('click', () => {
-                            // Confirm before deletion
                             if (confirm('Are you sure you want to delete this requirement?')) {
-                                // Send a request to the backend to delete the requirement
                                 fetch('./dirback/delete_req1.php', {
                                     method: 'POST',
                                     headers: {
                                         'Content-Type': 'application/json',
                                     },
                                     body: JSON.stringify({
-                                        requirement: requirement, // Requirement to delete
-                                        project_id: projectId     // Project ID for context
+                                        requirement_id: requirement.requirement_id_one, // Use the requirement ID for deletion
+                                        project_id: projectId // Project ID for context
                                     }),
                                 })
                                     .then((response) => response.json())
@@ -104,7 +110,7 @@
                                             requirementRow.remove();
 
                                             // Optionally update the requirements array
-                                            const index = requirements.indexOf(requirement);
+                                            const index = requirements.findIndex(req => req.requirement_id_one === requirement.requirement_id_one);
                                             if (index > -1) {
                                                 requirements.splice(index, 1);
                                             }
@@ -121,6 +127,7 @@
                             }
                         });
                     });
+
 
                     document.getElementById('project-unique-id').value = data.project_id || 'No Data';
                     document.getElementById('client-name').textContent = data.company_name || 'No Data';
