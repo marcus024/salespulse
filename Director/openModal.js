@@ -115,7 +115,7 @@
                                                 requirements.splice(index, 1);
                                             }
 
-                                            alert('Requirement deleted successfully.');
+                                           
                                         } else {
                                             alert('Error: ' + data.message);
                                         }
