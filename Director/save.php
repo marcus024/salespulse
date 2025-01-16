@@ -90,16 +90,31 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
 
         // Handle requirements
         if (!empty($inputData['requirement_one'])) {
-            $requirementQuery = "INSERT INTO requirementone_tb (project_unique_id, requirement_one) 
-                                 VALUES (?, ?)";
-            $reqStmt = $conn->prepare($requirementQuery);
-
             foreach ($inputData['requirement_one'] as $requirement) {
-                if (!empty($requirement)) {
-                    $reqStmt->execute([$projectUniqueId, htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8')]);
+                if (!empty($requirement['requirement_one'])) {
+                    $requirementId = $requirement['requirement_id_one'] ?? null; // ID of the requirement (if provided)
+                    $requirementValue = htmlspecialchars($requirement['requirement_one'], ENT_QUOTES, 'UTF-8'); // Sanitize input
+
+                    if (!empty($requirementId)) {
+                        // Update if the ID exists
+                        $updateQuery = "
+                            UPDATE requirementone_tb 
+                            SET requirement_one = ?, project_unique_id = ? 
+                            WHERE requirement_id_one = ?";
+                        $updateStmt = $conn->prepare($updateQuery);
+                        $updateStmt->execute([$requirementValue, $projectUniqueId, $requirementId]);
+                    } else {
+                        // Insert if the ID does not exist
+                        $insertQuery = "
+                            INSERT INTO requirementone_tb (project_unique_id, requirement_one) 
+                            VALUES (?, ?)";
+                        $insertStmt = $conn->prepare($insertQuery);
+                        $insertStmt->execute([$projectUniqueId, $requirementValue]);
+                    }
                 }
             }
         }
+
         return "Stage One updated successfully.";
     } catch (Exception $e) {
         error_log("Error in Stage One: " . $e->getMessage());
