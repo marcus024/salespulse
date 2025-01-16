@@ -57,7 +57,7 @@
                     const requirementContainer = document.getElementById('requirement-container');
                     requirementContainer.innerHTML = ''; // Clear existing fields
 
-                    const requirements = data.stages.stage_one.requirement1 || [];
+                    const requirements = data.requirement1 || [];
                     requirements.forEach((requirement, index) => {
                         const requirementRow = document.createElement('div');
                         requirementRow.className = 'row align-items-center requirement-field';

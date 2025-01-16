@@ -67,6 +67,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                 'company_name' => $result['company_name'] ?? '',
                 'project_id'    => $result['project_id'] ?? '', 
                 'current_stage' => $result['current_stage'] ?? '',
+                'requirement1' => $requirements
                 'stages' => [
                     'stage_one' => [
                         'start_date' => $result['start_date_stage_one'],
@@ -78,7 +79,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'distributor' => $result['distributor'] ?? 'No Data',
                         'product' => $result['product'] ?? 'No Data',
                         'technology' => $result['technology'] ?? 'No Data',
-                        'requirement1' => $requirements
+                        
                     ],
                     'stage_two' => [
                         'start_date' => $result['start_date_stage_two'],
