@@ -88,48 +88,18 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-       if (!empty($inputData['requirement_one'])) {
-        try {
-            foreach ($inputData['requirement_one'] as $requirement) {
-                if (!empty($requirement['value'])) {
-                    $requirementValue = htmlspecialchars($requirement['value'], ENT_QUOTES, 'UTF-8'); // Sanitize input
+        // Handle requirements
+        if (!empty($inputData['requirement_one'])) {
+            $requirementQuery = "INSERT INTO requirementone_tb (project_unique_id, requirement_one) 
+                                 VALUES (?, ?)";
+            $reqStmt = $conn->prepare($requirementQuery);
 
-                    if (!empty($requirement['id'])) {
-                        // Update existing requirement
-                        $updateQuery = "UPDATE requirementone_tb 
-                                        SET requirement_one = ?, 
-                                            project_unique_id = ? 
-                                        WHERE requirement_id_one = ?";
-                        $updateStmt = $conn->prepare($updateQuery);
-                        $updateStmt->execute([
-                            $requirementValue,
-                            $inputData['project_unique_id'],
-                            $requirement['id']
-                        ]);
-                    } else {
-                        // Insert new requirement
-                        $insertQuery = "INSERT INTO requirementone_tb (project_unique_id, requirement_one) 
-                                        VALUES (?, ?)";
-                        $insertStmt = $conn->prepare($insertQuery);
-                        $insertStmt->execute([
-                            $inputData['project_unique_id'],
-                            $requirementValue
-                        ]);
-                    }
+            foreach ($inputData['requirement_one'] as $requirement) {
+                if (!empty($requirement)) {
+                    $reqStmt->execute([$projectUniqueId, htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8')]);
                 }
             }
-
-            echo json_encode(['status' => 'success', 'message' => 'Requirements processed successfully.']);
-        } catch (Exception $e) {
-            error_log("Error processing requirements: " . $e->getMessage());
-            echo json_encode(['status' => 'error', 'message' => 'Failed to process requirements: ' . $e->getMessage()]);
         }
-    } else {
-        echo json_encode(['status' => 'error', 'message' => 'No requirements provided.']);
-    }
-
-
-
         return "Stage One updated successfully.";
     } catch (Exception $e) {
         error_log("Error in Stage One: " . $e->getMessage());
