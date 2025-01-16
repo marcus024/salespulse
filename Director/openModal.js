@@ -65,7 +65,7 @@
                         requirementRow.style.margin = '5px 0 0 0';
 
                         requirementRow.innerHTML = `
-                            <div class="col-9 d-flex align-items-center">
+                            <div class="col-10 d-flex align-items-center">
                                 <!-- Input field for Requirement -->
                                 <input value="${requirement}" name="requirement_one[]" style="width: 100%;" type="text" 
                                     class="form-control" id="requirement1" placeholder="e.g. Sample Requirement">
