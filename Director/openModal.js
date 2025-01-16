@@ -61,12 +61,12 @@
                     requirements.forEach((requirement) => {
                         const requirementRow = document.createElement('div');
                         requirementRow.className = 'row align-items-center requirement-field';
-                        requirementRow.style.margin = '5px 0';
+                        // requirementRow.style.margin = '5px 0';
 
                         requirementRow.innerHTML = `
                             <div class="col-9 d-flex align-items-center">
-                                <input name="requirement_one[]" style="width: 100%;" type="text" class="form-control" 
-                                    value="${requirement}" placeholder="e.g. Sample Requirement">
+                                <!-- Input field for Requirement -->
+                                <input  value="${requirement}"name="requirement_one[]" style="width: 100%;" type="text" class="form-control" id="requirement1" placeholder="e.g. Sample Requirement">
                             </div>
                             <div class="col-2 d-flex justify-content-end align-items-center">
                                 <!-- Delete Button -->
