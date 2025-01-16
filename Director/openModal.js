@@ -40,11 +40,17 @@
                     document.getElementById('stageremarks1').value = data.stages.stage_one.remarks || 'No Data';
                     document.getElementById('distributorSelect').value = data.stages.stage_one.distributor || 'Select';
                     document.getElementById('product1').value = data.stages.stage_one.product || 'No Data';
-                    document.getElementById('technology1').value = data.stages.stage_one.technology || 'No Data';
                     const distributorSelect = document.getElementById('distributorSelect');
                     const distributorValue = data.stages.stage_one.distributor || 'Select';
                     Array.from(distributorSelect.options).forEach(option => {
                         if (option.value === distributorValue) {
+                            option.selected = true;
+                        }
+                    });
+                    const technology1 = document.getElementById('technology1');
+                    const techValue = data.stages.stage_one.technology || 'Select';
+                    Array.from(technology1.options).forEach(option => {
+                        if (option.value === techValue) {
                             option.selected = true;
                         }
                     });
