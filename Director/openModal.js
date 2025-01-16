@@ -48,7 +48,7 @@
                         }
                     });
                     const technology1 = document.getElementById('technology1');
-                    const techValue = data.stages.stage_one.technology1 || 'Select';
+                    const techValue = data.stages.stage_one.technology || 'Select';
                     Array.from(technology1.options).forEach(option => {
                         if (option.value === techValue) {
                             option.selected = true;
