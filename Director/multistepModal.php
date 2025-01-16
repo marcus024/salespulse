@@ -192,7 +192,7 @@
                                                     </div>
                                                     <div class="mb-2">
                                                         <label for="product" class="form-label text-white">Product</label>
-                                                        <input name="product" id="product1" type="text" class="form-control">
+                                                        <input name="product" id="product1" type="text" class="form-control" placeholder="e.g. Cisco" >
                                                     </div>
                                                     <div class="mb-2">
                                                          <div class="mb-2">
