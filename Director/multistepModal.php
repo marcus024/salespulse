@@ -1068,15 +1068,15 @@
         }
     });
 
-   document.getElementById('saveButton').addEventListener('click', async () => {
-    // Display a confirmation dialog
+    document.getElementById('saveButton').addEventListener('click', async () => {
+     // Display a confirmation dialog with Yes (OK) and No (Cancel)
     const userConfirmed = confirm(`Are you sure you want to save the current data of Step ${currentStep}?`);
 
+    // If the user clicks "No" (Cancel), stop further execution
     if (!userConfirmed) {
         console.log("Save canceled by user.");
         return;
     }
-
     const projectIdInput = document.getElementById('project-unique-id');
     const projectId = projectIdInput ? projectIdInput.value.trim() : null;
 
@@ -1086,40 +1086,30 @@
         return;
     }
 
-    // Get all input fields within the current step
+    // Get all the input elements within the current step
     const currentStepFields = document.querySelectorAll(
         `#step${currentStep} input, #step${currentStep} textarea, #step${currentStep} select`
     );
 
-    // Collect input values
+    // Collect values from the inputs within this step
     const inputValues = {};
 
     currentStepFields.forEach(field => {
         const name = field.name || field.id;
-        const dataId = field.getAttribute('data-id'); // Fetch data-id if available
-
         if (name.endsWith('[]')) {
-            // Handle array-like fields (e.g., requirement_one[])
             const key = name.replace('[]', '');
             if (!inputValues[key]) {
                 inputValues[key] = [];
             }
-            inputValues[key].push({
-                id: dataId ? parseInt(dataId, 10) : null, // Include data-id if available
-                value: field.value.trim(), // Include the input value
-            });
+            inputValues[key].push(field.value.trim());
         } else {
-            // Handle standard fields
-            inputValues[name] = {
-                id: dataId ? parseInt(dataId, 10) : null, // Include data-id if available
-                value: field.value.trim(),
-            };
+            inputValues[name] = field.value.trim();
         }
     });
 
     console.log("Collected input values:", inputValues);
 
-    // Prepare data to send to the backend
+    // Prepare the data to be sent
     const dataToSend = {
         step: currentStep,
         project_unique_id: projectId,
@@ -1135,13 +1125,16 @@
             body: JSON.stringify(dataToSend),
         });
 
+        // Store the raw response to ensure the body is read only once
         const responseText = await response.text();
 
+        // Check if the response status is OK
         if (!response.ok) {
             console.error("HTTP Error:", response.status, responseText);
             throw new Error(`HTTP Error ${response.status}: ${response.statusText}`);
         }
 
+        // Parse the response JSON
         let result;
         try {
             result = JSON.parse(responseText);
@@ -1152,17 +1145,18 @@
 
         console.log("Backend response:", result);
 
-        if (result.status === 'success') {
+        // Handle success based on the backend response
+        if (result.message === `Step ${currentStep} data processed successfully`) {
             alert(`Step ${currentStep} saved successfully!`);
         } else {
-            alert(`Error: ${result.message}`);
+            alert(`Unexpected response: ${result.message}`);
         }
     } catch (error) {
+        // Handle errors (network issues, server issues, etc.)
         console.error("Error in fetch operation:", error);
         alert(`An error occurred while saving Step ${currentStep}: ${error.message}`);
     }
 });
-
 
     // Initialize on DOMContentLoaded
     document.addEventListener('DOMContentLoaded', () => {
