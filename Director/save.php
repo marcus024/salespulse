@@ -100,7 +100,7 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
             foreach ($inputData['requirement_one'] as $requirement) {
                 if (!empty($requirement['requirement_one'])) {
                     $requirementId = $requirement['requirement_id_one'] ?? null; // ID of the requirement (if provided)
-                    $requirementValue = htmlspecialchars($requirement['value'], ENT_QUOTES, 'UTF-8'); // Sanitize input
+                    $requirementValue = htmlspecialchars($requirement['requirement_one'], ENT_QUOTES, 'UTF-8'); // Sanitize input
 
                     // Execute the query with the requirement ID, project ID, and value
                     $reqStmt->execute([
