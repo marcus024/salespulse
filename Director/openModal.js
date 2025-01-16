@@ -57,7 +57,8 @@
                     const requirementContainer = document.getElementById('requirement-container');
                     requirementContainer.innerHTML = ''; // Clear existing fields
 
-                    const requirements = data.stages.stage_one.requirement1 || [];
+                    const requirements = data.stages.stage_one.requirement1 || []; // Fetch requirements from data
+
                     requirements.forEach((requirement) => {
                         const requirementRow = document.createElement('div');
                         requirementRow.className = 'row align-items-center requirement-field';
@@ -66,18 +67,36 @@
                         requirementRow.innerHTML = `
                             <div class="col-9 d-flex align-items-center">
                                 <!-- Input field for Requirement -->
-                                <input  value="${requirement}"name="requirement_one[]" style="width: 100%;" type="text" class="form-control" id="requirement1" placeholder="e.g. Sample Requirement">
+                                <input value="${requirement}" name="requirement_one[]" style="width: 100%;" type="text" 
+                                    class="form-control" id="requirement1" placeholder="e.g. Sample Requirement">
                             </div>
                             <div class="col-2 d-flex justify-content-end align-items-center">
                                 <!-- Delete Button -->
-                                <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;" id="deleteRequirement">
+                                <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;">
                                     <i class="fas fa-minus"></i>
                                 </button>
                             </div>
                         `;
 
+                        // Append the row to the container
                         requirementContainer.appendChild(requirementRow);
+
+                        // Add delete functionality to the button
+                        const deleteButton = requirementRow.querySelector('button');
+                        deleteButton.addEventListener('click', () => {
+                            // Remove the row from the DOM
+                            requirementRow.remove();
+
+                            // Optionally, update the `requirements` array to reflect the removed value
+                            const index = requirements.indexOf(requirement);
+                            if (index > -1) {
+                                requirements.splice(index, 1); // Remove the requirement from the array
+                            }
+
+                            console.log('Updated Requirements:', requirements); // For debugging
+                        });
                     });
+
                     
 
 
