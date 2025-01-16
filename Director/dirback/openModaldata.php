@@ -66,7 +66,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'deal_size' => $result['deal_size'] ?? 'No Data',
                         'remarks' => $result['stage_one_remarks'] ?? 'No Data',
                         'distributor' => $result['distributor'] ?? 'No Data',
-                        'product' => $result['product'] ?? 'No Data'
+                        'product' => $result['product'] ?? 'No Data',
                         'technology' => $result['technology'] ?? 'No Data'
                     ],
                     'stage_two' => [
