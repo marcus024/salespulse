@@ -88,34 +88,42 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
+        // Initialize status for requirements
+        $requirementStatus = [];
+
         // Handle requirements
         if (!empty($inputData['requirement_one'])) {
             foreach ($inputData['requirement_one'] as $requirement) {
                 if (!empty($requirement['requirement_one'])) {
-                    $requirementId = $requirement['requirement_id_one'] ?? null; // ID of the requirement (if provided)
-                    $requirementValue = htmlspecialchars($requirement['requirement_one'], ENT_QUOTES, 'UTF-8'); // Sanitize input
+                    $requirementId = $requirement['requirement_id_one'] ?? null;
+                    $requirementValue = htmlspecialchars($requirement['requirement_one'], ENT_QUOTES, 'UTF-8');
 
-                    // Check if the requirement already exists
-                    if (!empty($requirementId)) {
-                        // Update if it exists
-                        $updateQuery = "
-                            UPDATE requirementone_tb 
-                            SET requirement_one = ?, project_unique_id = ? 
-                            WHERE requirement_id_one = ?";
+                    // Check if requirement exists
+                    if ($requirementId) {
+                        // Update requirement
+                        $updateQuery = "UPDATE requirementone_tb SET 
+                            requirement_one = ? 
+                            WHERE requirement_id_one = ? AND project_unique_id = ?";
                         $updateStmt = $conn->prepare($updateQuery);
-                        $updateStmt->execute([$requirementValue, $projectUniqueId, $requirementId]);
+                        $updateStmt->execute([$requirementValue, $requirementId, $projectUniqueId]);
+                        $requirementStatus[] = "Updated requirement: {$requirementValue}";
                     } else {
-                        // Insert if it does not exist
-                        $insertQuery = "
-                            INSERT INTO requirementone_tb (project_unique_id, requirement_one) 
+                        // Insert new requirement
+                        $insertQuery = "INSERT INTO requirementone_tb (project_unique_id, requirement_one) 
                             VALUES (?, ?)";
                         $insertStmt = $conn->prepare($insertQuery);
                         $insertStmt->execute([$projectUniqueId, $requirementValue]);
+                        $requirementStatus[] = "Inserted new requirement: {$requirementValue}";
                     }
                 }
             }
         }
 
+        return [
+            'status' => 'success',
+            'message' => 'Stage One updated successfully.',
+            'requirementStatus' => $requirementStatus
+        ];
 
         return "Stage One updated successfully.";
     } catch (Exception $e) {
