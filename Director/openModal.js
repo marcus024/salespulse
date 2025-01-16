@@ -54,8 +54,11 @@
                             option.selected = true;
                         }
                     });
-                    const requirementContainer = document.getElementById('requirement-container');
-                    const requirements = data.stages.stage_one.requirements || []; 
+                   const requirementContainer = document.getElementById('requirement-container');
+                    // Clear existing fields
+                    // requirementContainer.innerHTML = ''; 
+
+                    const requirements = data.stages.stage_one.requirements || []; // Fetch requirements from data
 
                     requirements.forEach((requirement) => {
                         const requirementRow = document.createElement('div');
