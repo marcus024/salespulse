@@ -54,30 +54,80 @@
                             option.selected = true;
                         }
                     });
-                    const requirementContainer = document.getElementById('requirement-container');
-                    requirementContainer.innerHTML = ''; // Clear existing fields
-
                     const requirements = data.stages.stage_one.requirement1 || [];
-                    requirements.forEach((requirement) => {
-                        const requirementRow = document.createElement('div');
-                        requirementRow.className = 'row align-items-center requirement-field';
-                        requirementRow.style.margin = '5px 0';
+                requirements.forEach((requirement) => {
+                    // Reuse the logic from your addRequirementBtn function
+                    const newFieldContainer = document.createElement('div');
+                    newFieldContainer.classList.add('row', 'align-items-center', 'requirement-field');
+                    newFieldContainer.style.marginTop = '5px';
+                    newFieldContainer.style.marginBottom = '5px';
 
-                        requirementRow.innerHTML = `
-                            <div class="col-9 d-flex align-items-center">
-                                <!-- Input field for Requirement -->
-                                <input  value="${requirement}"name="requirement_one[]" style="width: 100%;" type="text" class="form-control" id="requirement1" placeholder="e.g. Sample Requirement">
-                            </div>
-                            <div class="col-2 d-flex justify-content-end align-items-center">
-                                <!-- Delete Button -->
-                                <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;" id="deleteRequirement">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        `;
+                    const inputFieldCol = document.createElement('div');
+                    inputFieldCol.classList.add('col-9', 'd-flex', 'align-items-center');
+                    const inputField = document.createElement('input');
+                    inputField.name = 'requirement_one[]';
+                    inputField.type = 'text';
+                    inputField.classList.add('form-control');
+                    inputField.placeholder = 'e.g. Sample Requirement';
+                    inputField.value = requirement; // Populate the value
+                    inputField.style.width = '100%';
+                    inputFieldCol.appendChild(inputField);
 
-                        requirementContainer.appendChild(requirementRow);
+                    const deleteButtonCol = document.createElement('div');
+                    deleteButtonCol.classList.add('col-2', 'd-flex', 'justify-content-end', 'align-items-center');
+                    const deleteButton = document.createElement('button');
+                    deleteButton.type = 'button';
+                    deleteButton.classList.add('btn', 'btn-danger', 'btn-sm');
+                    deleteButton.style.marginLeft = '5px';
+                    deleteButton.innerHTML = '<i class="fas fa-minus"></i>';
+                    deleteButton.addEventListener('click', () => {
+                        newFieldContainer.remove();
                     });
+                    deleteButtonCol.appendChild(deleteButton);
+
+                    newFieldContainer.appendChild(inputFieldCol);
+                    newFieldContainer.appendChild(deleteButtonCol);
+
+                    requirementContainer.appendChild(newFieldContainer);
+                });
+
+                // Ensure the "Add Requirement" button still works
+                const addRequirementBtn = document.getElementById('addRequiremen');
+                addRequirementBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    const newFieldContainer = document.createElement('div');
+                    newFieldContainer.classList.add('row', 'align-items-center', 'requirement-field');
+                    newFieldContainer.style.marginTop = '5px';
+                    newFieldContainer.style.marginBottom = '5px';
+
+                    const inputFieldCol = document.createElement('div');
+                    inputFieldCol.classList.add('col-9', 'd-flex', 'align-items-center');
+                    const inputField = document.createElement('input');
+                    inputField.name = 'requirement_one[]';
+                    inputField.type = 'text';
+                    inputField.classList.add('form-control');
+                    inputField.placeholder = 'e.g. Sample Requirement';
+                    inputField.style.width = '100%';
+                    inputFieldCol.appendChild(inputField);
+
+                    const deleteButtonCol = document.createElement('div');
+                    deleteButtonCol.classList.add('col-2', 'd-flex', 'justify-content-end', 'align-items-center');
+                    const deleteButton = document.createElement('button');
+                    deleteButton.type = 'button';
+                    deleteButton.classList.add('btn', 'btn-danger', 'btn-sm');
+                    deleteButton.style.marginLeft = '5px';
+                    deleteButton.innerHTML = '<i class="fas fa-minus"></i>';
+                    deleteButton.addEventListener('click', () => {
+                        newFieldContainer.remove();
+                    });
+                    deleteButtonCol.appendChild(deleteButton);
+
+                    newFieldContainer.appendChild(inputFieldCol);
+                    newFieldContainer.appendChild(deleteButtonCol);
+
+                    requirementContainer.appendChild(newFieldContainer);
+                });
                     
 
 
