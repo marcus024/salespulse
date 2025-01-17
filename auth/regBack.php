@@ -69,7 +69,15 @@ try {
             $to = $email;
             $subject = "Registration Successful - SalesPulse";
             $message = "Hello $first_name $last_name,\n\nThank you for registering with SalesPulse. Your account has been successfully created, but it is not yet activated. Wait for another email notification to activate your account.\n\nBest regards,\nSalesPulse Team";
-            $headers = "From: macalipayan@uas.com.ph";
+            // Check the domain of the recipient's email
+            if (strpos($email, '@gmail.com') !== false) {
+                $headers = "From: markantonyvc01@gmail.com";
+            } elseif (strpos($email, '@uas.com.ph') !== false) {
+                $headers = "From: macalipayan@uas.com.ph";
+            } else {
+                // Default case, you can change this to any other default email
+                $headers = "From: default@domain.com";
+            }
 
             if (mail($to, $subject, $message, $headers)) {
                 echo "<script>alert('Registration successful! A confirmation email has been sent. The account is not yet activated. Please notify the admin to activate the account.'); window.location.href = '../index.php';</script>";
