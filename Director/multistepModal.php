@@ -1016,7 +1016,9 @@
                 } else {
                     alert('All steps completed!');
                 }
+                 if (currentStep !== 5) {
                 openModal(projectIdValue);
+            }
             } else {
                 alert(`Unexpected response: ${result.message}`);
             }
