@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             $sql = "DELETE FROM requirement_twotb WHERE requirement_id_two = :requirement_id AND project_unique_id = :project_id";
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':requirement_id', $requirement, PDO::PARAM_INT);
+            $stmt->bindParam(':requirement_id', $requirement, PDO::PARAM_STR);
             $stmt->bindParam(':project_id', $project_id, PDO::PARAM_STR);
             $stmt->execute();
 
