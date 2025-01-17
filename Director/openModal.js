@@ -152,7 +152,7 @@
 
                     const requirementsTwo = data.stages.stage_two.requirement_stage_two || []; // Fetch requirements from data
 
-                    requirementsTwo.forEach((requirement) => {
+                    requirementsTwo.forEach((requirement2) => {
                         // Create a row for each requirement
                         const requirementRow = document.createElement('div');
                         requirementRow.className = 'row align-items-center requirement-fields mb-3';
@@ -161,7 +161,7 @@
                         requirementRow.innerHTML = `
                             <div class="col-md-3">
                                 <input 
-                                    value="${requirement.requirement_two || ''}" 
+                                    value="${requirement2.requirement_two || ''}" 
                                     name="requirement_two[]" 
                                     type="text" 
                                     id="req2" 
@@ -171,7 +171,7 @@
                             </div>
                             <div class="col-md-2">
                                 <input 
-                                    value="${requirement.requirement_date || ''}" 
+                                    value="${requirement2.requirement_date || ''}" 
                                     name="requirement_date[]" 
                                     type="date" 
                                     id="reqdate2" 
@@ -181,7 +181,7 @@
                             </div>
                             <div class="col-md-5">
                                 <input 
-                                    value="${requirement.requirement_remarks || ''}" 
+                                    value="${requirement2.requirement_remarks || ''}" 
                                     name="requirement_remarks[]" 
                                     type="text" 
                                     id="reqremarks2" 
@@ -208,7 +208,7 @@
                                     'Content-Type': 'application/json',
                                 },
                                 body: JSON.stringify({
-                                    requirement_id: requirement.requirement_id_two, // Use the requirement ID for deletion
+                                    requirement_id: requirement2.requirement_id_two, // Use the requirement ID for deletion
                                     project_id: projectId // Project ID for context
                                 }),
                             })
@@ -219,7 +219,7 @@
                                         requirementRow.remove();
 
                                         // Optionally update the requirements array
-                                        const index = requirementsTwo.findIndex(req => req.requirement_id_two === requirement.requirement_id_two);
+                                        const index = requirementsTwo.findIndex(req => req.requirement_id_two === requirement2.requirement_id_two);
                                         if (index > -1) {
                                             requirementsTwo.splice(index, 1);
                                         }
