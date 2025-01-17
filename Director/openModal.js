@@ -150,7 +150,7 @@
                     // Clear the container before rendering
                     requirementTwoContainer.innerHTML = '';
 
-                    const requirementsTwo = data.stages.stage_one.requirement_two || []; // Fetch requirements from data
+                    const requirementsTwo = data.stages.stage_one.requirement_stage_two || []; // Fetch requirements from data
 
                     requirementsTwo.forEach((requirement) => {
                         // Create a row for each requirement
@@ -200,38 +200,38 @@
                         requirementTwoContainer.appendChild(requirementRow);
 
                         // Add delete functionality to the button
-                        // const deleteButton = requirementRow.querySelector('.deleteRequirement');
-                        // deleteButton.addEventListener('click', () => {
-                        //     fetch('./dirback/delete_req2.php', {
-                        //         method: 'POST',
-                        //         headers: {
-                        //             'Content-Type': 'application/json',
-                        //         },
-                        //         body: JSON.stringify({
-                        //             requirement_id: requirement.requirement_id_two, // Use the requirement ID for deletion
-                        //             project_id: projectId // Project ID for context
-                        //         }),
-                        //     })
-                        //         .then((response) => response.json())
-                        //         .then((data) => {
-                        //             if (data.status === 'success') {
-                        //                 // Remove the row from the DOM
-                        //                 requirementRow.remove();
+                        const deleteButton = requirementRow.querySelector('.deleteRequirement');
+                        deleteButton.addEventListener('click', () => {
+                            fetch('./dirback/delete_req2.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    requirement_id: requirement.requirement_id_two, // Use the requirement ID for deletion
+                                    project_id: projectId // Project ID for context
+                                }),
+                            })
+                                .then((response) => response.json())
+                                .then((data) => {
+                                    if (data.status === 'success') {
+                                        // Remove the row from the DOM
+                                        requirementRow.remove();
 
-                        //                 // Optionally update the requirements array
-                        //                 const index = requirementsTwo.findIndex(req => req.requirement_id_two === requirement.requirement_id_two);
-                        //                 if (index > -1) {
-                        //                     requirementsTwo.splice(index, 1);
-                        //                 }
-                        //             } else {
-                        //                 alert('Error: ' + data.message);
-                        //             }
-                        //         })
-                        //         .catch((error) => {
-                        //             console.error('Error deleting requirement:', error);
-                        //             alert('Failed to delete requirement. Please try again.');
-                        //         });
-                        // });
+                                        // Optionally update the requirements array
+                                        const index = requirementsTwo.findIndex(req => req.requirement_id_two === requirement.requirement_id_two);
+                                        if (index > -1) {
+                                            requirementsTwo.splice(index, 1);
+                                        }
+                                    } else {
+                                        alert('Error: ' + data.message);
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.error('Error deleting requirement:', error);
+                                    alert('Failed to delete requirement. Please try again.');
+                                });
+                        });
                     });
 
 

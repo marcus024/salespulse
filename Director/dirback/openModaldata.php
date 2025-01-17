@@ -143,7 +143,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         : [],
 
                     // Corrected requirement_two
-                    'requirement_two' => isset($result['requirement_2']) 
+                    'requirement_stage_two' => isset($result['requirement_2']) 
                         ? array_values(array_reduce(explode(',', $result['requirement_2']), function ($carry, $requirement) {
                             $parts = explode(':', $requirement);
                             $normalized = [
