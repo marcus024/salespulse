@@ -460,7 +460,7 @@ function updateStageFour($conn, $projectUniqueId, $inputData) {
 
         // Insert into stagefive with automated SPR_number
         $stagefiveQuery = "INSERT INTO stagefive (start_date_stage_five, end_date_stage_five, status_stage_five, project_unique_id) 
-                        VALUES (?, ?, ?, ?, ?)";
+                        VALUES ( ?, ?, ?, ?)";
         $stmt = $conn->prepare($stagefiveQuery);
         $stmt->execute([
             date('Y-m-d'),
