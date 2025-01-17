@@ -100,13 +100,9 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'requirements' => isset($result['requirements'])
                         ? array_values(array_reduce(explode(',', $result['requirements']), function ($carry, $requirement) {
                             $parts = explode(':', $requirement);
-                            $normalized = [
-                                'requirement_id_one' => trim($parts[0] ?? ''),
-                                'requirement_one' => strtolower(trim($parts[1] ?? ''))
-                            ];
-                            $hash = md5(json_encode($normalized)); // Create a unique hash for the normalized data
-                            if (!isset($carry[$hash])) {
-                                $carry[$hash] = [
+                            $normalizedRequirementOne = strtolower(trim($parts[1] ?? '')); // Normalize only 'requirement_one'
+                            if (!in_array($normalizedRequirementOne, array_column($carry, 'requirement_one'))) {
+                                $carry[] = [
                                     'requirement_id_one' => $parts[0] ?? null,
                                     'requirement_one' => $parts[1] ?? null
                                 ];
@@ -114,7 +110,6 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                             return $carry;
                         }, []))
                         : [],
-
                     ],
                     'stage_two' => [
                     'start_date' => $result['start_date_stage_two'],
