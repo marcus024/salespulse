@@ -695,6 +695,10 @@
                                                     <input name="contract_duration" type="text" class="form-control" id="contract" placeholder="e.g. 6 ">
                                                 </div>
                                                 <div class="col-md-4">
+                                                    <label for="requirement" class="form-label text-white">Pricing</label>
+                                                    <input name="pricing" type="text" class="form-control" id="pricing" placeholder="e.g. 6 ">
+                                                </div>
+                                                <div class="col-md-4">
                                                     <label for="billingType" class="form-label text-white">Billing Type</label>
                                                     <select name="billing_type" class="form-control" id="billingType">
                                                         <option value="" disabled selected>Select Billing Type</option>
