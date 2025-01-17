@@ -903,51 +903,37 @@
         document.getElementById(`step${step}`).classList.remove('d-none');
     }
 
-    // Store and update the Project ID from Step 1
+    
     function updateProjectId() {
-        // Retrieve the Project ID when on Step 1
         if (currentStep === 1) {
             const projectIdElement = document.getElementById('project-id-placeholder');
             if (projectIdElement) {
                 projectId = projectIdElement.textContent.trim();
-                console.log("Project ID retrieved:", projectId); // Debugging log
+                console.log("Project ID retrieved:", projectId); 
             }
         }
-
-        // Update the Project ID display in all relevant elements
         document.querySelectorAll('.project-id-display span').forEach(el => {
             el.textContent = projectId || "[Project ID]";
         });
-
-        // Debugging log to ensure the Project ID updates properly
         console.log("Updated Project ID in all displays:", projectId);
     }
 
-    // Event Listener for Complete Button
+    
     document.getElementById('completeButton').addEventListener('click', async () => {
-        // Ask for confirmation before proceeding
         if (!confirm(`Are you sure you want to complete Step ${currentStep}?`)) {
-            return; // If user cancels, do nothing
+            return;
         }
-
-        // Retrieve the Project ID from the hidden input field
         const projectIdInput = document.getElementById('project-unique-id');
         const projectIdValue = projectIdInput ? projectIdInput.value.trim() : null;
-
         if (!projectIdValue) {
             alert("Project ID is missing. Cannot proceed.");
             console.error("Error: Project ID not found.");
             return;
         }
-
-        // Get all the input elements within the current step only
         const currentStepFields = document.querySelectorAll(
             `#step${currentStep} input, #step${currentStep} textarea, #step${currentStep} select`
         );
-
-        // Collect values from the inputs within this step
         const inputValues = {};
-
         currentStepFields.forEach(field => {
             const name = field.name || field.id;
             if (name.endsWith('[]')) {
@@ -960,32 +946,24 @@
                 inputValues[name] = field.value.trim();
             }
         });
-
-        // Prepare the data to be sent
         const dataToSend = {
             step: currentStep,
             project_unique_id: projectIdValue,
             data: inputValues,
         };
-
         console.log("Data to send:", dataToSend);
-
         try {
             const response = await fetch('complete.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(dataToSend),
             });
-
             if (!response.ok) {
-                // Handle HTTP errors
-                const errorText = await response.text(); // Get the raw response for debugging
+                const errorText = await response.text(); 
                 console.error("HTTP Error:", response.status, errorText);
                 alert(`Failed to complete Step ${currentStep}: ${response.statusText}`);
                 return;
             }
-
-            // Parse the JSON response
             let result;
             try {
                 result = await response.json();
@@ -994,25 +972,18 @@
                 console.error("Error parsing JSON:", jsonError, "Raw Response:", rawResponse);
                 throw new Error("The server returned an invalid JSON response.");
             }
-
             console.log("Backend response:", result);
-
-            // Handle success or failure based on the backend response
             if (result.message === `Step ${currentStep} data processed successfully`) {
                 alert(`Step ${currentStep} completed successfully!`);
-
-                // Mark the current step as completed visually
                 const currentStepCircle = document.getElementById(`step${currentStep}-circle`);
                 if (currentStepCircle) {
                     currentStepCircle.classList.add('completed');
                     currentStepCircle.textContent = '✔';
                 }
-
-                // Navigate to the next step, if there is one
                 if (currentStep < totalSteps) {
                     currentStep++;
-                    showStep(currentStep);  // Show the UI for the next step
-                    updateProjectId();      // Update Project ID display if necessary
+                    showStep(currentStep);  
+                    updateProjectId();      
                 } else {
                     alert('All steps completed!');
                 }
@@ -1028,25 +999,12 @@
         }
     });
 
-   function refreshModal() {
-    // Get the modal element
+    function refreshModal() {
     const modal = document.getElementById('multiStepModal');
-
-    // Trigger a "refresh" by updating the modal content
-    // For example, you can clear and re-load the modal's content if necessary
-    // Here, we assume you have a function that fetches the updated content.
-    
-    // Example: Re-set or update the modal content dynamically
     const modalContent = document.querySelector('#multiStepModal .modal-content');
-    
-    // Add logic to update the modal's content (this could be fetching data or resetting specific values)
-    // This could be as simple as re-adding or updating HTML content
-    modalContent.innerHTML = modalContent.innerHTML; // This "refreshes" the content
+    modalContent.innerHTML = modalContent.innerHTML; 
   
 }
-
-
-
     document.getElementById('deleteButton').addEventListener('click', async () => {
         if (confirm('Are you sure you want to cancel this process? This action cannot be undone.')) {
             const projectIdInput = document.getElementById('project-unique-id');
@@ -1059,7 +1017,6 @@
             }
 
             try {
-                // Send the request to update the status in the backend
                 const response = await fetch('delete.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -1067,22 +1024,16 @@
                 });
 
                 if (!response.ok) {
-                    // Log and alert if the HTTP status is not OK
+                    
                     console.error("HTTP Error:", response.status, response.statusText);
                     alert("Failed to cancel the project. Please try again.");
                     return;
                 }
-
-                // Parse the JSON response
                 const result = await response.json();
-
-                // Log the backend response
                 console.log("Backend response:", result);
-
-                // Handle the backend response
                 if (result.success) {
                     alert("The project has been successfully canceled.");
-                    location.reload(); // Refresh the page
+                    location.reload(); 
                 } else {
                     alert(`Failed to cancel the project: ${result.message}`);
                 }
@@ -1094,10 +1045,7 @@
     });
 
     document.getElementById('saveButton').addEventListener('click', async () => {
-     // Display a confirmation dialog with Yes (OK) and No (Cancel)
     const userConfirmed = confirm(`Are you sure you want to save the current data of Step ${currentStep}?`);
-
-    // If the user clicks "No" (Cancel), stop further execution
     if (!userConfirmed) {
         console.log("Save canceled by user.");
         return;
@@ -1110,13 +1058,9 @@
         console.error("Error: Project ID not found.");
         return;
     }
-
-    // Get all the input elements within the current step
     const currentStepFields = document.querySelectorAll(
         `#step${currentStep} input, #step${currentStep} textarea, #step${currentStep} select`
     );
-
-    // Collect values from the inputs within this step
     const inputValues = {};
 
     currentStepFields.forEach(field => {
@@ -1131,35 +1075,24 @@
             inputValues[name] = field.value.trim();
         }
     });
-
     console.log("Collected input values:", inputValues);
-
-    // Prepare the data to be sent
     const dataToSend = {
         step: currentStep,
         project_unique_id: projectId,
         data: inputValues,
     };
-
     console.log("Data to send:", dataToSend);
-
     try {
         const response = await fetch('save.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dataToSend),
         });
-
-        // Store the raw response to ensure the body is read only once
         const responseText = await response.text();
-
-        // Check if the response status is OK
         if (!response.ok) {
             console.error("HTTP Error:", response.status, responseText);
             throw new Error(`HTTP Error ${response.status}: ${response.statusText}`);
         }
-
-        // Parse the response JSON
         let result;
         try {
             result = JSON.parse(responseText);
@@ -1167,67 +1100,47 @@
             console.error("Error parsing JSON:", jsonError, "Raw Response:", responseText);
             throw new Error("The server returned an invalid JSON response.");
         }
-
         console.log("Backend response:", result);
-
-        // Handle success based on the backend response
         if (result.message === `Step ${currentStep} data processed successfully`) {
             alert(`Step ${currentStep} saved successfully!`);
         } else {
             alert(`Unexpected response: ${result.message}`);
         }
     } catch (error) {
-        // Handle errors (network issues, server issues, etc.)
         console.error("Error in fetch operation:", error);
         alert(`An error occurred while saving Step ${currentStep}: ${error.message}`);
     }
 });
-
-    // Initialize on DOMContentLoaded
     document.addEventListener('DOMContentLoaded', () => {
         showStep(currentStep);
         updateProjectId();
     });
-
-
-    // Stages Delete
     document.getElementById('deleteButtons1').addEventListener('click', async () => {
         if (confirm('Are you sure you want to cancel this process? This action cannot be undone.')) {
             const projectId = document
             .getElementById('deleteButtons1')
             .getAttribute('data-project-id');
-
             if (!projectId) {
                 alert("Project ID is missing. Cannot proceed with cancellation.");
                 console.error("Error: Project ID not found.");
                 return;
             }
-
             try {
-                // Send the request to update the status in the backend
                 const response = await fetch('delete.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ project_unique_id: projectId }),
                 });
-
                 if (!response.ok) {
-                    // Log and alert if the HTTP status is not OK
                     console.error("HTTP Error:", response.status, response.statusText);
                     alert("Failed to cancel the project. Please try again.");
                     return;
                 }
-
-                // Parse the JSON response
                 const result = await response.json();
-
-                // Log the backend response
                 console.log("Backend response:", result);
-
-                // Handle the backend response
                 if (result.success) {
                     alert("The project has been successfully canceled.");
-                    location.reload(); // Refresh the page
+                    location.reload(); 
                 } else {
                     alert(`Failed to cancel the project: ${result.message}`);
                 }
@@ -1251,30 +1164,21 @@
             }
 
             try {
-                // Send the request to update the status in the backend
                 const response = await fetch('delete.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ project_unique_id: projectId }),
                 });
-
                 if (!response.ok) {
-                    // Log and alert if the HTTP status is not OK
                     console.error("HTTP Error:", response.status, response.statusText);
                     alert("Failed to cancel the project. Please try again.");
                     return;
                 }
-
-                // Parse the JSON response
                 const result = await response.json();
-
-                // Log the backend response
                 console.log("Backend response:", result);
-
-                // Handle the backend response
                 if (result.success) {
                     alert("The project has been successfully canceled.");
-                    location.reload(); // Refresh the page
+                    location.reload(); 
                 } else {
                     alert(`Failed to cancel the project: ${result.message}`);
                 }
@@ -1297,30 +1201,21 @@
             }
 
             try {
-                // Send the request to update the status in the backend
                 const response = await fetch('delete.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ project_unique_id: projectId }),
                 });
-
                 if (!response.ok) {
-                    // Log and alert if the HTTP status is not OK
                     console.error("HTTP Error:", response.status, response.statusText);
                     alert("Failed to cancel the project. Please try again.");
                     return;
                 }
-
-                // Parse the JSON response
                 const result = await response.json();
-
-                // Log the backend response
                 console.log("Backend response:", result);
-
-                // Handle the backend response
                 if (result.success) {
                     alert("The project has been successfully canceled.");
-                    location.reload(); // Refresh the page
+                    location.reload();
                 } else {
                     alert(`Failed to cancel the project: ${result.message}`);
                 }
@@ -1343,7 +1238,6 @@
             }
 
             try {
-                // Send the request to update the status in the backend
                 const response = await fetch('delete.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -1351,22 +1245,15 @@
                 });
 
                 if (!response.ok) {
-                    // Log and alert if the HTTP status is not OK
                     console.error("HTTP Error:", response.status, response.statusText);
                     alert("Failed to cancel the project. Please try again.");
                     return;
                 }
-
-                // Parse the JSON response
                 const result = await response.json();
-
-                // Log the backend response
                 console.log("Backend response:", result);
-
-                // Handle the backend response
                 if (result.success) {
                     alert("The project has been successfully canceled.");
-                    location.reload(); // Refresh the page
+                    location.reload(); 
                 } else {
                     alert(`Failed to cancel the project: ${result.message}`);
                 }
@@ -1387,32 +1274,22 @@
                 console.error("Error: Project ID not found.");
                 return;
             }
-
             try {
-                // Send the request to update the status in the backend
                 const response = await fetch('delete.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ project_unique_id: projectId }),
                 });
-
                 if (!response.ok) {
-                    // Log and alert if the HTTP status is not OK
                     console.error("HTTP Error:", response.status, response.statusText);
                     alert("Failed to cancel the project. Please try again.");
                     return;
                 }
-
-                // Parse the JSON response
                 const result = await response.json();
-
-                // Log the backend response
                 console.log("Backend response:", result);
-
-                // Handle the backend response
                 if (result.success) {
                     alert("The project has been successfully canceled.");
-                    location.reload(); // Refresh the page
+                    location.reload(); 
                 } else {
                     alert(`Failed to cancel the project: ${result.message}`);
                 }
@@ -1426,21 +1303,12 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                // Container for Engagement Fields
                 const engagementFieldsContainer = document.getElementById('engagement-fields-container');
-
-                // Add Another Button
                 const addEngagementButton = document.getElementById('addEngagement');
-
-                // Add Another Event
                 addEngagementButton.addEventListener('click', (event) => {
-                    event.preventDefault(); // Prevent the default link action
-
-                    // Create a new row for engagement fields
+                    event.preventDefault(); 
                     const newRow = document.createElement('div');
                     newRow.classList.add('row', 'engagement-fields', 'mb-3');
-
-                    // Add the fields dynamically
                     newRow.innerHTML = `
                         <div class="col-md-3">
                             <input name="engagement_type[]" type="text" class="form-control" placeholder="e.g. Sample Engagement">
@@ -1457,12 +1325,8 @@
                             </button>
                         </div>
                     `;
-
-                    // Append the new row to the container
                     engagementFieldsContainer.appendChild(newRow);
                 });
-
-                // Event Delegation for Remove Button
                 engagementFieldsContainer.addEventListener('click', (event) => {
                     if (event.target.closest('.deleteRequirement')) {
                         const rowToDelete = event.target.closest('.row');
@@ -1473,21 +1337,12 @@
         </script>
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                // Container for Requirement Fields
                 const requirementFieldsContainer = document.getElementById('requirement-fields-container');
-
-                // Add Another Button
                 const addRequirementButton = document.getElementById('addReq');
-
-                // Add Another Event
                 addRequirementButton.addEventListener('click', (event) => {
-                    event.preventDefault(); // Prevent the default link action
-
-                    // Create a new row for requirement fields
+                    event.preventDefault(); 
                     const newRow = document.createElement('div');
                     newRow.classList.add('row', 'requirement-fields', 'mb-3');
-
-                    // Add the fields dynamically
                     newRow.innerHTML = `
                         <div class="col-md-3">
                             <input name="requirement_two[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
@@ -1504,12 +1359,8 @@
                             </button>
                         </div>
                     `;
-
-                    // Append the new row to the container
                     requirementFieldsContainer.appendChild(newRow);
                 });
-
-                // Event Delegation for Remove Button
                 requirementFieldsContainer.addEventListener('click', (event) => {
                     if (event.target.closest('.deleteRequirement')) {
                         const rowToDelete = event.target.closest('.row');
@@ -1522,18 +1373,12 @@
             document.addEventListener('DOMContentLoaded', () => {
                 const addRequirementBtn = document.getElementById('addRequiremen');
                 const requirementContainer = document.getElementById('requirement-container').parentNode;
-
-                // Function to add another requirement field
                 addRequirementBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-
-                    // Create a new field container
                     const newFieldContainer = document.createElement('div');
                     newFieldContainer.classList.add('row', 'align-items-center', 'requirement-field');
                     newFieldContainer.style.marginTop = '5px';
                     newFieldContainer.style.marginBottom = '5px';
-
-                    // Create input field container
                     const inputFieldCol = document.createElement('div');
                     inputFieldCol.classList.add('col-9', 'd-flex', 'align-items-center');
                     const inputField = document.createElement('input');
@@ -1543,8 +1388,6 @@
                     inputField.placeholder = 'e.g. Sample Requirement';
                     inputField.style.width = '100%';
                     inputFieldCol.appendChild(inputField);
-
-                    // Create delete button container
                     const deleteButtonCol = document.createElement('div');
                     deleteButtonCol.classList.add('col-2', 'd-flex', 'justify-content-end', 'align-items-center');
                     const deleteButton = document.createElement('button');
@@ -1556,16 +1399,10 @@
                         newFieldContainer.remove();
                     });
                     deleteButtonCol.appendChild(deleteButton);
-
-                    // Append the input field and delete button to the new field container
                     newFieldContainer.appendChild(inputFieldCol);
                     newFieldContainer.appendChild(deleteButtonCol);
-
-                    // Append the new field container to the parent container
                     requirementContainer.appendChild(newFieldContainer);
                 });
-
-                // Handle the delete button for the existing requirement field
                 const initialDeleteBtn = document.getElementById('deleteRequirement');
                 if (initialDeleteBtn) {
                     initialDeleteBtn.addEventListener('click', () => {
@@ -1574,24 +1411,14 @@
                 }
             });
         </script>
-        <!-- Add Engagement and Requirement 3 -->
          <script>
             document.addEventListener('DOMContentLoaded', () => {
-                // Container for Engagement Fields
                 const engagementFieldsContainer = document.getElementById('engagement-fields-container3');
-
-                // Add Another Button
                 const addEngagementButton = document.getElementById('addEngagement3');
-
-                // Add Another Event
                 addEngagementButton.addEventListener('click', (event) => {
-                    event.preventDefault(); // Prevent the default link action
-
-                    // Create a new row for engagement fields
+                    event.preventDefault(); 
                     const newRow = document.createElement('div');
                     newRow.classList.add('row', 'engagement-fields', 'mb-3');
-
-                    // Add the fields dynamically
                     newRow.innerHTML = `
                         <div class="col-md-3">
                             <input name="engagement_three[]" type="text" class="form-control" placeholder="e.g. Sample Engagement">
@@ -1608,12 +1435,8 @@
                             </button>
                         </div>
                     `;
-
-                    // Append the new row to the container
                     engagementFieldsContainer.appendChild(newRow);
                 });
-
-                // Event Delegation for Remove Button
                 engagementFieldsContainer.addEventListener('click', (event) => {
                     if (event.target.closest('.deleteRequirement')) {
                         const rowToDelete = event.target.closest('.row');
@@ -1624,21 +1447,12 @@
         </script>
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                // Container for Requirement Fields
                 const requirementFieldsContainer = document.getElementById('requirement-fields-container3');
-
-                // Add Another Button
                 const addRequirementButton = document.getElementById('addReq_3');
-
-                // Add Another Event
                 addRequirementButton.addEventListener('click', (event) => {
-                    event.preventDefault(); // Prevent the default link action
-
-                    // Create a new row for requirement fields
+                    event.preventDefault(); 
                     const newRow = document.createElement('div');
                     newRow.classList.add('row', 'requirement-fields', 'mb-3');
-
-                    // Add the fields dynamically
                     newRow.innerHTML = `
                        
                     <div class="col-md-2">
@@ -1664,12 +1478,8 @@
                     </div>
                                              
                     `;
-
-                    // Append the new row to the container
                     requirementFieldsContainer.appendChild(newRow);
                 });
-
-                // Event Delegation for Remove Button
                 requirementFieldsContainer.addEventListener('click', (event) => {
                     if (event.target.closest('.deleteRequirement')) {
                         const rowToDelete = event.target.closest('.row');
@@ -1680,21 +1490,12 @@
         </script>
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                // Container for input rows
                 const requirementFieldsContainer = document.getElementById('requirement-fields-container4');
-
-                // Add Another Button
                 const addRequirementButton = document.getElementById('addRequirement4');
-
-                // Add New Row Event
                 addRequirementButton.addEventListener('click', (event) => {
-                    event.preventDefault(); // Prevent default link behavior
-
-                    // Create a new input row
+                    event.preventDefault(); 
                     const newRow = document.createElement('div');
                     newRow.classList.add('row', 'mb-3', 'requirement-fields');
-
-                    // Add the fields dynamically
                     newRow.innerHTML = `
                         <div class="col-md-2">
                             <input name="requirement_four[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
@@ -1717,12 +1518,8 @@
                             </button>
                         </div>
                     `;
-
-                    // Append the new row to the container
                     requirementFieldsContainer.appendChild(newRow);
                 });
-
-                // Remove Row Event
                 requirementFieldsContainer.addEventListener('click', (event) => {
                     if (event.target.closest('.deleteRequirement')) {
                         const rowToDelete = event.target.closest('.row');
@@ -1733,21 +1530,12 @@
         </script>
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                // Container for Input Rows
                 const requirementFieldsContainer = document.getElementById('requirement-fields-container5');
-
-                // Add Another Button
                 const addRequirementButton = document.getElementById('addRequirement5');
-
-                // Add New Row Event
                 addRequirementButton.addEventListener('click', (event) => {
-                    event.preventDefault(); // Prevent default link behavior
-
-                    // Create a new input row
+                    event.preventDefault(); 
                     const newRow = document.createElement('div');
                     newRow.classList.add('row', 'mb-3', 'requirement-fields');
-
-                    // Add the fields dynamically
                     newRow.innerHTML = `
                         <div class="col-md-3">
                             <select name="req_five[]" class="form-control">
@@ -1774,12 +1562,8 @@
                             </button>
                         </div>
                     `;
-
-                    // Append the new row to the container
                     requirementFieldsContainer.appendChild(newRow);
                 });
-
-                // Remove Row Event
                 requirementFieldsContainer.addEventListener('click', (event) => {
                     if (event.target.closest('.deleteRequirement')) {
                         const rowToDelete = event.target.closest('.row');
@@ -1790,21 +1574,12 @@
         </script>
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                // Container for Upsell Rows
                 const upsellFieldsContainer = document.getElementById('upsell-fields-container');
-
-                // Add Another Button
                 const addUpsellRowButton = document.getElementById('addUpsellRow');
-
-                // Add New Row Event
                 addUpsellRowButton.addEventListener('click', (event) => {
-                    event.preventDefault(); // Prevent default link behavior
-
-                    // Create a new input row
+                    event.preventDefault(); 
                     const newRow = document.createElement('div');
                     newRow.classList.add('row', 'mb-3', 'upsell-fields');
-
-                    // Add the fields dynamically
                     newRow.innerHTML = `
                         <div class="col-md-2">
                             <input type="text" class="form-control" name="upsell[]" placeholder="e.g Router 2000">
@@ -1827,12 +1602,8 @@
                             </button>
                         </div>
                     `;
-
-                    // Append the new row to the container
                     upsellFieldsContainer.appendChild(newRow);
                 });
-
-                // Remove Row Event
                 upsellFieldsContainer.addEventListener('click', (event) => {
                     if (event.target.closest('.deleteUpsellRow')) {
                         const rowToDelete = event.target.closest('.row');
