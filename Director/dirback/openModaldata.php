@@ -136,7 +136,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     )))
                     : [],
                     // Corrected requirement_two
-                    'requirement_two' => isset($result['requirement_2']) 
+                    
    'requirement_two' => isset($result['requirement_2']) 
     ? array_map(function ($requirement) {
         $parts = explode(':', $requirement); 
