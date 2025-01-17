@@ -701,7 +701,7 @@
                                                 <div class="col-md-3">
                                                     <label for="billingType" class="form-label text-white">Billing Type</label>
                                                     <select name="billing_type" class="form-control" id="billingType">
-                                                        <option value="" disabled selected>Select Billing Type</option>
+                                                        <option value=""  selected>Select Billing Type</option>
                                                         <option value="fixed">Fixed</option>
                                                         <option value="hourly">Hourly</option>
                                                         <option value="retainer">Retainer</option>
