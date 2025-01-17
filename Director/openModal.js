@@ -150,7 +150,7 @@
                     // Clear the container before rendering
                     requirementTwoContainer.innerHTML = '';
 
-                    const requirementsTwo = data.stages.stage_one.requirement_stage_two || []; // Fetch requirements from data
+                    const requirementsTwo = data.stages.stage_two.requirement_stage_two || []; // Fetch requirements from data
 
                     requirementsTwo.forEach((requirement) => {
                         // Create a row for each requirement
