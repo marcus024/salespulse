@@ -400,15 +400,15 @@
                                             <div class="row mb-3">
                                                 <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Product</label>
-                                                    <input name="product" id="product" type="text" class="form-control">
+                                                    <input name="product" id="product3" type="text" class="form-control">
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="status" class="form-label text-white">Deal Size(Amount)</label>
-                                                   <input name="deal_size" type="number" class="form-control" id="dealSize3" placeholder="e.g. 5000">
+                                                   <input name="deal_size" type="number" class="form-control" id="deal_size3" placeholder="e.g. 5000">
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="status" class="form-label text-white">Solution</label>
-                                                   <textarea name="solution" class="form-control" id="solution" placeholder="e.g. Sample Solution" 
+                                                   <textarea name="solution" class="form-control" id="solution3" placeholder="e.g. Sample Solution" 
                                                         style="height:50px;"></textarea>
                                                 </div>
                                             </div>
@@ -510,7 +510,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label for="requirement" class="form-label text-white">Stage Remarks</label>
-                                                    <input name="stage_three_remarks" type="textarea" class="form-control" id="requirement"style="height: 50px;">
+                                                    <input name="stage_three_remarks" type="textarea" class="form-control" id="stageremarks3" style="height: 50px;">
                                                 </div>
                                             </div>
                                         </div>
@@ -543,7 +543,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Technology</label>
-                                                    <select name="technology" class="form-control custom-select" id="technology3">
+                                                    <select name="technology" class="form-control custom-select" id="technology4">
                                                         <option disabled selected>Select</option>
                                                         <option>Artificial Intelligence</option>
                                                         <option>Machine Learning</option>
@@ -557,15 +557,15 @@
                                             <div class="row mb-3">
                                                  <div class="col-md-3">
                                                     <label for="product" class="form-label text-white">Product</label>
-                                                    <input name="product" id="product" type="text" class="form-control">
+                                                    <input name="product" id="product4" type="text" class="form-control">
                                                 </div>
                                                 <div class="col-md-3">
                                                    <label for="dealSize" class="form-label text-white">Deal Size</label>
-                                                    <input name="deal_size" type="number" class="form-control" id="dealSize" placeholder="e.g. 5000">
+                                                    <input name="deal_size" type="number" class="form-control" id="deal_size4" placeholder="e.g. 5000">
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="status" class="form-label text-white">Solution</label>
-                                                    <textarea name="solution" class="form-control" id="solution" placeholder="e.g. Sample Solution" 
+                                                    <textarea name="solution" class="form-control" id="solution4" placeholder="e.g. Sample Solution" 
                                                     style="height:50px;"></textarea>
                                                 </div>
                                                 
@@ -627,7 +627,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label for="requirement" class="form-label text-white">Stage Remarks</label>
-                                                    <input name="stage_four_remarks" type="textarea" class="form-control" id="requirement"style="height: 50px;">
+                                                    <input name="stage_four_remarks" type="textarea" class="form-control" id="stageremarks4" style="height: 50px;">
                                                 </div>
                                             </div>
                                         </div>
@@ -660,7 +660,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Technology</label>
-                                                    <select name="technology" class="form-control custom-select" id="technology3">
+                                                    <select name="technology" class="form-control custom-select" id="technology5">
                                                         <option disabled selected>Select</option>
                                                         <option>Artificial Intelligence</option>
                                                         <option>Machine Learning</option>
@@ -673,22 +673,22 @@
                                              <div class="row mb-3">
                                                 <div class="col-md-3">
                                                     <label for="product" class="form-label text-white">Product</label>
-                                                    <input name="product" id="product" type="text" class="form-control">
+                                                    <input name="product" id="product5" type="text" class="form-control">
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Deal Size(Amount)</label>
-                                                    <input name="deal_size" type="text" class="form-control" id="dealSize5" placeholder="e.g. 5000">
+                                                    <input name="deal_size" type="text" class="form-control" id="deal_size5" placeholder="e.g. 5000">
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="status" class="form-label text-white">Solution</label>
-                                                   <textarea name="solution" class="form-control" id="solution" placeholder="e.g. Sample Solution" 
+                                                   <textarea name="solution" class="form-control" id="solution5" placeholder="e.g. Sample Solution" 
                                                         style="height:50px;"></textarea>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-4">
                                                     <label for="status" class="form-label text-white">SPR Number</label>
-                                                    <input type="text" class="form-control" id="stage-five-spr"  readonly placeholder="Auto-generated ">
+                                                    <input type="text" class="form-control" id="stage-five-spr"   placeholder="e.g. SPR1 ">
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label for="requirement" class="form-label text-white">Contract Duration(Days)</label>
@@ -815,7 +815,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label for="requirement" class="form-label text-white">Stage Remarks</label>
-                                                    <input name="remarks_stage_five" type="textarea" class="form-control" id="requirement"style="height: 50px;">
+                                                    <input name="remarks_stage_five" type="textarea" class="form-control" id="stageremarks5" style="height: 50px;">
                                                 </div>
                                             </div>
                                         </div>
