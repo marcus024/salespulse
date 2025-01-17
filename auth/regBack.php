@@ -65,7 +65,17 @@ try {
         $stmt->bindParam(':apass', $actual_password);
 
         if ($stmt->execute()) {
-            echo "<script>alert('Registration successful! The account is not yet activated. Please notify the admin to activate the account.'); window.location.href = '../index.php';</script>";
+            // Send confirmation email to the registered user
+            $to = $email;
+            $subject = "Registration Successful - SalesPulse";
+            $message = "Hello $first_name $last_name,\n\nThank you for registering with SalesPulse. Your account has been successfully created, but it is not yet activated. Please contact the admin to activate your account.\n\nBest regards,\nSalesPulse Team";
+            $headers = "From: markantonyvc01@gmail.com";
+
+            if (mail($to, $subject, $message, $headers)) {
+                echo "<script>alert('Registration successful! A confirmation email has been sent. The account is not yet activated. Please notify the admin to activate the account.'); window.location.href = '../index.php';</script>";
+            } else {
+                echo "<script>alert('Error: Unable to send email.'); window.history.back();</script>";
+            }
         } else {
             echo "<script>alert('Error: Unable to register. Please try again.'); window.history.back();</script>";
         }
