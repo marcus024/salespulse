@@ -151,7 +151,7 @@ const requirementTwoContainer = document.getElementById('requirement-two-contain
 requirementTwoContainer.innerHTML = '';
 
 // Fetch requirements from stage_two
-const requirementsTwo = data.stages.stage_two.requirement_stage_two || [];
+const requirementsTwo = data.stages.stage_two?.requirement_stage_two || [];
 
 requirementsTwo.forEach((requirement) => {
     // Create a row for each requirement
