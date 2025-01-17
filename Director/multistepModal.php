@@ -701,7 +701,7 @@
                                                 <div class="col-md-3">
                                                     <label for="billingType" class="form-label text-white">Billing Type</label>
                                                     <select name="billing_type" class="form-control custom-select" id="billingType">
-                                                        <option value=""  disabled selected>Select Billing Type</option>
+                                                        <option   disabled selected>Select Billing Type</option>
                                                         <option value="fixed">Fixed</option>
                                                         <option value="hourly">Hourly</option>
                                                         <option value="retainer">Retainer</option>
@@ -737,7 +737,7 @@
                                                     <div class="row mb-3 requirement-fields">
                                                         <div class="col-md-3">
                                                             <select name="req_five[]" class="form-control">
-                                                                <option value="" disabled >Select Requirement</option>
+                                                                <option  disabled selected >Select Requirement</option>
                                                                 <option value="cisco-network">Cisco Network</option>
                                                                 <option value="cloud-computing">Cloud Computing</option>
                                                                 <option value="cybersecurity">Cybersecurity</option>
