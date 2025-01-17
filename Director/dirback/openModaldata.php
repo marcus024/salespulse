@@ -118,30 +118,31 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     'solution_two' => $result['solution_stage_two'],
                     
                     // Corrected engagement_two
-                    'engagement_two' => isset($result['engagement_2']) 
-                        ? array_map(function ($engagement) {
-                            $parts = explode(':', $engagement); 
-                            return [
-                                'engagement_id_two' => $parts[0] ?? null, 
-                                'engagement_type' => $parts[1] ?? null, // Added the missing comma here
-                                'engagement_date' => $parts[2] ?? null,  
-                                'engagement_remarks' => $parts[3] ?? null // Added the missing comma here
-                            ];
-                        }, array_unique(explode(',', $result['engagement_2'])))
-                        : [],
+'engagement_two' => isset($result['engagement_2']) 
+    ? array_values(array_unique(array_map(function ($engagement) {
+        $parts = explode(':', $engagement);
+        return [
+            'engagement_id_two' => $parts[0] ?? null,
+            'engagement_type' => $parts[1] ?? null,
+            'engagement_date' => $parts[2] ?? null,
+            'engagement_remarks' => $parts[3] ?? null
+        ];
+    }, explode(',', $result['engagement_2'])), SORT_REGULAR)) // Ensures unique rows based on value
+    : [],
 
-                    // Corrected requirement_two
-                    'requirement_two' => isset($result['requirement_2']) 
-                        ? array_map(function ($requirement) {
-                            $parts = explode(':', $requirement); 
-                            return [
-                                'requirement_id_two' => $parts[0] ?? null,  
-                                'requirement_two' => $parts[1] ?? null, // Added the missing comma here
-                                'requirement_date' => $parts[2] ?? null,  
-                                'requirement_remarks' => $parts[3] ?? null // Added the missing comma here
-                            ];
-                        }, array_unique(explode(',', $result['requirement_2'])))
-                        : []
+// Corrected requirement_two
+'requirement_two' => isset($result['requirement_2']) 
+    ? array_values(array_unique(array_map(function ($requirement) {
+        $parts = explode(':', $requirement);
+        return [
+            'requirement_id_two' => $parts[0] ?? null,
+            'requirement_two' => $parts[1] ?? null,
+            'requirement_date' => $parts[2] ?? null,
+            'requirement_remarks' => $parts[3] ?? null
+        ];
+    }, explode(',', $result['requirement_2'])), SORT_REGULAR)) // Ensures unique rows based on value
+    : [],
+
                 ],
                     'stage_three' => [
                         'start_date' => $result['start_date_stage_three'],
