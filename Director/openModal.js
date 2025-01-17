@@ -164,6 +164,17 @@
                     document.getElementById('stage-four-start').value  = data.stages.stage_four.start_date || 'No Data';
                     document.getElementById('stage-four-end').value    = data.stages.stage_four.end_date   || 'No Data';
                     document.getElementById('stage-four-status').value = data.stages.stage_four.status     || 'No Data';
+                    document.getElementById('solution3').value = data.stages.stage_four.solution_four || data.stages.stage_three.solution_three || 'No Data';
+                    document.getElementById('deal_size3').value = Number(data.stages.stage_four.deal_size_four) || Number(data.stages.stage_three.deal_size_three) || 'No Data';
+                    document.getElementById('stageremarks3').value = data.stages.stage_four.remarks_four || data.stages.stage_three.remarks_three || 'No Data';
+                    document.getElementById('product3').value = data.stages.stage_four.product_four || data.stages.stage_three.product_three || 'No Data';
+                    const technology4 = document.getElementById('technology4');
+                    const techValue4 = data.stages.stage_four.technology_four || data.stages.stage_three.technology_three || 'Select';
+                    Array.from(technology4.options).forEach(option => {
+                        if (option.value === techValue4) {
+                            option.selected = true;
+                        }
+                    });
 
                     document.getElementById('stage-five-start').value = data.stages.stage_five.start_date || 'No Data';
                     document.getElementById('stage-five-end').value = data.stages.stage_five.end_date || 'No Data';
