@@ -234,6 +234,98 @@
                         });
                     });
 
+                    // Get the container for engagements
+                    const engagementFieldsContainer = document.getElementById('engagement-fields-container');
+
+                    // Clear the container before rendering
+                    engagementFieldsContainer.innerHTML = '';
+
+                    // Fetch engagements from stage_two
+                    const engagements = data.stages.stage_two?.engagement_stage_two || [];
+
+                    engagements.forEach((engagement) => {
+                        // Create a row for each engagement
+                        const engagementRow = document.createElement('div');
+                        engagementRow.className = 'row align-items-center engagement-fields mb-3';
+
+                        // Set the HTML content of the row
+                        engagementRow.innerHTML = `
+                            <div class="col-md-3">
+                                <input 
+                                    value="${engagement.engagement_type || ''}" 
+                                    name="engagement_type[]" 
+                                    type="text" 
+                                    id="engtype2" 
+                                    class="form-control" 
+                                    placeholder="e.g. Sample Engagement"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <input 
+                                    value="${engagement.engagement_date || ''}" 
+                                    name="engagement_date[]" 
+                                    type="date" 
+                                    id="engdate2" 
+                                    class="form-control" 
+                                    style="font-size:10px;"
+                                >
+                            </div>
+                            <div class="col-md-5">
+                                <input 
+                                    value="${engagement.engagement_remarks || ''}" 
+                                    name="engagement_remarks[]" 
+                                    type="text" 
+                                    id="engremarks2" 
+                                    class="form-control" 
+                                    placeholder="e.g. Sample Remarks"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-danger btn-sm deleteEngagement" style="margin-left: 5px;">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        `;
+
+                        // Append the row to the container
+                        engagementFieldsContainer.appendChild(engagementRow);
+
+                        // Add delete functionality to the button
+                        const deleteButton = engagementRow.querySelector('.deleteEngagement');
+                        deleteButton.addEventListener('click', () => {
+                            fetch('./dirback/delete_engagement2.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    engagement_id: engagement.engagement_id_two, // Use the engagement ID for deletion
+                                    project_id: projectId // Project ID for context
+                                }),
+                            })
+                                .then((response) => response.json())
+                                .then((data) => {
+                                    if (data.status === 'success') {
+                                        // Remove the row from the DOM
+                                        engagementRow.remove();
+
+                                        // Optionally update the engagements array
+                                        const index = engagements.findIndex(e => e.engagement_id_two === engagement.engagement_id_two);
+                                        if (index > -1) {
+                                            engagements.splice(index, 1);
+                                        }
+                                    } else {
+                                        alert('Error: ' + data.message);
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.error('Error deleting engagement:', error);
+                                    alert('Failed to delete engagement. Please try again.');
+                                });
+                        });
+                    });
+
+
 
                     document.getElementById('stage-three-start').value  = data.stages.stage_three.start_date || 'No Data';
                     document.getElementById('stage-three-end').value    = data.stages.stage_three.end_date   || 'No Data';
