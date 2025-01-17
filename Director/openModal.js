@@ -23,6 +23,7 @@
             })
             .then(data => {
                 if (data.status === 'success') {
+                    console.log(data);
                     document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
                     document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || 'No Data';
                     document.getElementById('status-placeholder').value     = data.stages.stage_one.status     || 'No Data';
