@@ -117,31 +117,50 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     'product_two' => $result['product_stage_two'],
                     'solution_two' => $result['solution_stage_two'],
                     
-                    // Corrected engagement_two
+// Corrected engagement_two
 'engagement_two' => isset($result['engagement_2']) 
-    ? array_values(array_unique(array_map(function ($engagement) {
+    ? array_values(array_reduce(explode(',', $result['engagement_2']), function ($carry, $engagement) {
         $parts = explode(':', $engagement);
-        return [
-            'engagement_id_two' => $parts[0] ?? null,
-            'engagement_type' => $parts[1] ?? null,
-            'engagement_date' => $parts[2] ?? null,
-            'engagement_remarks' => $parts[3] ?? null
+        $normalized = [
+            'engagement_type' => strtolower(trim($parts[1] ?? '')),
+            'engagement_date' => trim($parts[2] ?? ''),
+            'engagement_remarks' => strtolower(trim($parts[3] ?? ''))
         ];
-    }, explode(',', $result['engagement_2'])), SORT_REGULAR)) // Ensures unique rows based on value
+        $hash = md5(json_encode($normalized)); // Generate a unique key for normalization
+        if (!isset($carry[$hash])) {
+            $carry[$hash] = [
+                'engagement_id_two' => $parts[0] ?? null,
+                'engagement_type' => $parts[1] ?? null,
+                'engagement_date' => $parts[2] ?? null,
+                'engagement_remarks' => $parts[3] ?? null
+            ];
+        }
+        return $carry;
+    }, []))
     : [],
 
 // Corrected requirement_two
 'requirement_two' => isset($result['requirement_2']) 
-    ? array_values(array_unique(array_map(function ($requirement) {
+    ? array_values(array_reduce(explode(',', $result['requirement_2']), function ($carry, $requirement) {
         $parts = explode(':', $requirement);
-        return [
-            'requirement_id_two' => $parts[0] ?? null,
-            'requirement_two' => $parts[1] ?? null,
-            'requirement_date' => $parts[2] ?? null,
-            'requirement_remarks' => $parts[3] ?? null
+        $normalized = [
+            'requirement_two' => strtolower(trim($parts[1] ?? '')),
+            'requirement_date' => trim($parts[2] ?? ''),
+            'requirement_remarks' => strtolower(trim($parts[3] ?? ''))
         ];
-    }, explode(',', $result['requirement_2'])), SORT_REGULAR)) // Ensures unique rows based on value
+        $hash = md5(json_encode($normalized)); // Generate a unique key for normalization
+        if (!isset($carry[$hash])) {
+            $carry[$hash] = [
+                'requirement_id_two' => $parts[0] ?? null,
+                'requirement_two' => $parts[1] ?? null,
+                'requirement_date' => $parts[2] ?? null,
+                'requirement_remarks' => $parts[3] ?? null
+            ];
+        }
+        return $carry;
+    }, []))
     : [],
+
 
                 ],
                     'stage_three' => [
