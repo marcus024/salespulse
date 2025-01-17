@@ -256,7 +256,7 @@
                                              <div class="row mb-3">
                                                 <div class="col-md-3">
                                                     <label for="dealSize" class="form-label text-white">Deal Size</label>
-                                                    <input name="deal_size" type="number" class="form-control" id="dealSize2" placeholder="e.g. 5000">
+                                                    <input name="deal_size" type="number" class="form-control" id="deal_size2" placeholder="e.g. 5000">
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="product" class="form-label text-white">Product</label>
