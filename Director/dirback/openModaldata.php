@@ -132,8 +132,8 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                             return [
                                 'requirement_id_two' => $parts[0] ?? null,  
                                 'requirement_two' => $parts[1] 
-                                'requirement_date' => $parts[0] ?? null,  
-                                'requirement_remarks' => $parts[1] 
+                                'requirement_date' => $parts[2] ?? null,  
+                                'requirement_remarks' => $parts[3] 
                             ];
                         }, array_unique(explode(',', $result['requirement_2']))) 
                     ],
