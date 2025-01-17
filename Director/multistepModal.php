@@ -688,7 +688,7 @@
                                             <div class="row mb-3">
                                                 <div class="col-md-4">
                                                     <label for="status" class="form-label text-white">SPR Number</label>
-                                                    <input type="text" class="form-control" id="stage-five-spr"   placeholder="e.g. SPR1 ">
+                                                    <input type="text" class="form-control" id="stage-five-spr"  name="SPR_number" placeholder="e.g. SPR1 ">
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label for="requirement" class="form-label text-white">Contract Duration(Days)</label>

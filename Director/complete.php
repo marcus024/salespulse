@@ -458,26 +458,11 @@ function updateStageFour($conn, $projectUniqueId, $inputData) {
         }
 
 
-        // Generate SPR_number
-        $sprQuery = "SELECT MAX(SPR_number) AS last_spr_number FROM stagefive";
-        $sprStmt = $conn->prepare($sprQuery);
-        $sprStmt->execute();
-        $lastSPR = $sprStmt->fetch(PDO::FETCH_ASSOC)['last_spr_number'];
-
-        if ($lastSPR) {
-            // Extract numeric part and increment it
-            $nextSPRNumber = 'SPR' . ((int)substr($lastSPR, 3) + 1);
-        } else {
-            // Start with SPR1 if no records exist
-            $nextSPRNumber = 'SPR1';
-        }
-
         // Insert into stagefive with automated SPR_number
-        $stagefiveQuery = "INSERT INTO stagefive (SPR_number, start_date_stage_five, end_date_stage_five, status_stage_five, project_unique_id) 
+        $stagefiveQuery = "INSERT INTO stagefive (start_date_stage_five, end_date_stage_five, status_stage_five, project_unique_id) 
                         VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($stagefiveQuery);
         $stmt->execute([
-            $nextSPRNumber,
             date('Y-m-d'),
             'Not Yet Ended',
             'Ongoing',
@@ -517,6 +502,7 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
 
         // Update the stagefive table
         $query = "UPDATE stagefive SET 
+            SPR_number = ?,
             contract_duration = ?, 
             billing_type = ?, 
             pricing = ?, 
@@ -528,6 +514,7 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
             WHERE project_unique_id = ?";
         $stmt = $conn->prepare($query);
         $stmt->execute([
+            $inputData['SPR_number'] ?? null,
             $inputData['contract_duration'] ?? null,
             $inputData['billing_type'] ?? null,
             $inputData['pricing'] ?? null,
