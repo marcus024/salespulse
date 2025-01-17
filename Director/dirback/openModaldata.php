@@ -137,16 +137,23 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     : [],
                     // Corrected requirement_two
                     'requirement_two' => isset($result['requirement_2']) 
-                        ? array_map(function ($requirement) {
-                            $parts = explode(':', $requirement); 
-                            return [
-                                'requirement_id_two' => $parts[0] ?? null,  
-                                'requirement_two' => $parts[1] ?? null, // Added the missing comma here
-                                'requirement_date' => $parts[2] ?? null,  
-                                'requirement_remarks' => $parts[3] ?? null // Added the missing comma here
-                            ];
-                        }, array_unique(explode(',', $result['requirement_2'])))
-                        : []
+                    ? array_map(function ($requirement) {
+                        $parts = explode(':', $requirement); 
+                        return [
+                            'requirement_id_two' => $parts[0] ?? null,  
+                            'requirement_two' => $parts[1] ?? null, 
+                            'requirement_date' => $parts[2] ?? null,  
+                            'requirement_remarks' => $parts[3] ?? null
+                        ];
+                    }, array_values(array_unique(
+                        array_map(function ($requirement) {
+                            $parts = explode(':', $requirement);
+                            // Remove duplicates based on all fields except id
+                            return implode(':', array_slice($parts, 1)); // Join all parts except the id
+                        }, explode(',', $result['requirement_2']))
+                    )))
+                    : [],
+
                 ],
                     'stage_three' => [
                         'start_date' => $result['start_date_stage_three'],
