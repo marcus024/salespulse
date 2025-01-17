@@ -119,17 +119,22 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     
                     // Corrected engagement_two
                     'engagement_two' => isset($result['engagement_2']) 
-                        ? array_map(function ($engagement) {
-                            $parts = explode(':', $engagement); 
-                            return [
-                                'engagement_id_two' => $parts[0] ?? null, 
-                                'engagement_type' => $parts[1] ?? null, // Added the missing comma here
-                                'engagement_date' => $parts[2] ?? null,  
-                                'engagement_remarks' => $parts[3] ?? null // Added the missing comma here
-                            ];
-                        }, array_unique(explode(',', $result['engagement_2'])))
-                        : [],
-
+                    ? array_map(function ($engagement) {
+                        $parts = explode(':', $engagement); 
+                        return [
+                            'engagement_id_two' => $parts[0] ?? null, 
+                            'engagement_type' => $parts[1] ?? null,
+                            'engagement_date' => $parts[2] ?? null,  
+                            'engagement_remarks' => $parts[3] ?? null
+                        ];
+                    }, array_values(array_unique(
+                        array_map(function ($engagement) {
+                            $parts = explode(':', $engagement);
+                            // Remove duplicates based on all fields except id
+                            return implode(':', array_slice($parts, 1)); // Join all parts except the id
+                        }, explode(',', $result['engagement_2']))
+                    )))
+                    : [],
                     // Corrected requirement_two
                     'requirement_two' => isset($result['requirement_2']) 
                         ? array_map(function ($requirement) {
