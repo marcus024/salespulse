@@ -48,78 +48,79 @@
                     });
                     
                     // Get the container for requirements
-                    const requirementContainer = document.getElementById('requirement-container');
+const requirementContainer = document.getElementById('requirement-container');
 
-                    // Clear only if no existing fields are present
-                    if (!requirementContainer.querySelector('.requirement-field')) {
-                        const requirements = data.stages.stage_one.requirements || []; // Fetch requirements from data
+// Clear the container before adding new rows
+requirementContainer.innerHTML = ''; 
 
-                        requirements.forEach((requirement) => {
-                            // Create a row for each requirement
-                            const requirementRow = document.createElement('div');
-                            requirementRow.className = 'row align-items-center requirement-field';
-                            requirementRow.style.margin = '5px 0 0 0';
+const requirements = data.stages.stage_one.requirements || []; // Fetch requirements from data
 
-                            // Set the HTML content of the row
-                            requirementRow.innerHTML = `
-                                <div class="col-10 d-flex align-items-center">
-                                    <!-- Input field for Requirement -->
-                                    <input 
-                                        value="${requirement.requirement_one}" 
-                                        name="requirement_one[]" 
-                                        style="width: 100%;" 
-                                        type="text" 
-                                        class="form-control" 
-                                        data-id="${requirement.requirement_id_one}" 
-                                        placeholder="e.g. Sample Requirement"
-                                    >
-                                </div>
-                                <div class="col-2 d-flex justify-content-end align-items-center">
-                                    <!-- Delete Button -->
-                                    <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                </div>
-                            `;
+requirements.forEach((requirement) => {
+    // Create a row for each requirement
+    const requirementRow = document.createElement('div');
+    requirementRow.className = 'row align-items-center requirement-field';
+    requirementRow.style.margin = '5px 0 0 0';
 
-                            // Append the row to the container
-                            requirementContainer.appendChild(requirementRow);
+    // Set the HTML content of the row
+    requirementRow.innerHTML = `
+        <div class="col-10 d-flex align-items-center">
+            <!-- Input field for Requirement -->
+            <input 
+                value="${requirement.requirement_one}" 
+                name="requirement_one[]" 
+                style="width: 100%;" 
+                type="text" 
+                class="form-control" 
+                data-id="${requirement.requirement_id_one}" 
+                placeholder="e.g. Sample Requirement"
+            >
+        </div>
+        <div class="col-2 d-flex justify-content-end align-items-center">
+            <!-- Delete Button -->
+            <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
+    `;
 
-                            // Add delete functionality to the button
-                            const deleteButton = requirementRow.querySelector('button');
-                            deleteButton.addEventListener('click', () => {
-                                fetch('./dirback/delete_req1.php', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                    },
-                                    body: JSON.stringify({
-                                        requirement_id: requirement.requirement_id_one, // Use the requirement ID for deletion
-                                        project_id: projectId // Project ID for context
-                                    }),
-                                })
-                                    .then((response) => response.json())
-                                    .then((data) => {
-                                        if (data.status === 'success') {
-                                            // Remove the row from the DOM
-                                            requirementRow.remove();
+    // Append the row to the container
+    requirementContainer.appendChild(requirementRow);
 
-                                            // Optionally update the requirements array
-                                            const index = requirements.findIndex(req => req.requirement_id_one === requirement.requirement_id_one);
-                                            if (index > -1) {
-                                                requirements.splice(index, 1);
-                                            }
-                                        } else {
-                                            alert('Error: ' + data.message);
-                                        }
-                                    })
-                                    .catch((error) => {
-                                        console.error('Error deleting requirement:', error);
-                                        alert('Failed to delete requirement. Please try again.');
-                                    });
-                            });
-                        });
+    // Add delete functionality to the button
+    const deleteButton = requirementRow.querySelector('button');
+    deleteButton.addEventListener('click', () => {
+        fetch('./dirback/delete_req1.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                requirement_id: requirement.requirement_id_one, // Use the requirement ID for deletion
+                project_id: projectId // Project ID for context
+            }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.status === 'success') {
+                    // Remove the row from the DOM
+                    requirementRow.remove();
+
+                    // Optionally update the requirements array
+                    const index = requirements.findIndex(req => req.requirement_id_one === requirement.requirement_id_one);
+                    if (index > -1) {
+                        requirements.splice(index, 1);
                     }
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch((error) => {
+                console.error('Error deleting requirement:', error);
+                alert('Failed to delete requirement. Please try again.');
+            });
+    });
+});
+
 
 
 
