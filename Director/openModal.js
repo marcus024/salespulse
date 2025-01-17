@@ -145,7 +145,7 @@
                     });
 
                     // Get the container for requirements
-                    const requirementTwoContainer = document.getElementById('requirement-two-container');
+                    const requirementTwoContainer = document.getElementById('requirement-fields-container');
 
                     // Clear the container before rendering
                     requirementTwoContainer.innerHTML = '';
