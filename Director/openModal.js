@@ -241,7 +241,7 @@
                     engagementFieldsContainer.innerHTML = '';
 
                     // Fetch engagements from stage_two
-                    const engagements = data.stages.stage_two?.engagement_stage_two || [];
+                    const engagements = data.stages.stage_two.engagement_stage_two || [];
 
                     engagements.forEach((engagement) => {
                         // Create a row for each engagement

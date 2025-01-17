@@ -121,7 +121,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     'product_two' => $result['product_stage_two'],
                     'solution_two' => $result['solution_stage_two'],
                     // Corrected engagement_two
-                    'engagement_two' => isset($result['engagement_2']) 
+                    'engagement_stage_two' => isset($result['engagement_2']) 
                         ? array_values(array_reduce(explode(',', $result['engagement_2']), function ($carry, $engagement) {
                             $parts = explode(':', $engagement);
                             $normalized = [
