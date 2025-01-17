@@ -29,7 +29,7 @@ if (isset($_POST['id']) && isset($_POST['status'])) {
                 $status_message = $status === 'YES' ? 'activated' : 'deactivated';
                 $login_link = $status === 'YES' ? "\n\nYou can log in now at: SalesPulse(https://lightyellow-tarsier-650234.hostingersite.com/)" : ''; // Add login link if activated
                 $message = "Hello Admin,\n\nThe account for {$user['firstname']} {$user['lastname']} (Email: {$user['email']}) has been {$status_message}." . $login_link . "\n\nBest regards,\nSalesPulse Team";
-                $headers = "From: markantonyvc01@gmail.com";
+                $headers = "From: macalipayan@uas.com.ph";
 
                 // Send the email
                 if (mail($to, $subject, $message, $headers)) {
