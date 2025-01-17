@@ -46,6 +46,7 @@
                             option.selected = true;
                         }
                     });
+                    
                     // Get the container for requirements
                     const requirementContainer = document.getElementById('requirement-container');
 

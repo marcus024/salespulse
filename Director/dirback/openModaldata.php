@@ -32,6 +32,8 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stagetwo.deal_size, 'No Data') AS deal_size_stage_two,
                     COALESCE(stagetwo.product, 'No Data') AS product_stage_two,
                     COALESCE(stagetwo.solution, 'No Data') AS solution_stage_two,
+                    GROUP_CONCAT(DISTINCT CONCAT(engagement_twotb.engagement_id_two, ':', engagement_twotb.engagement_type, ':', engagement_twotb.engagement_date, ':', engagement_twotb.engagement_remarks) ORDER BY engagement_twotb.engagement_date) AS engagement_2,
+                    GROUP_CONCAT(DISTINCT CONCAT(requirement_twotb.requirement_id_two, ':', requirement_twotb.requirement_two, ':', requirement_twotb.requirement_date, ':', requirement_twotb.requirement_remarks) ORDER BY requirement_twotb.requirement_date) AS requirement_2,
                     COALESCE(stagethree.start_date_stage_three, 'No Data') AS start_date_stage_three,
                     COALESCE(stagethree.end_date_stage_three, 'No Data') AS end_date_stage_three,
                     COALESCE(stagethree.status_stage_three, 'No Data') AS status_stage_three,
@@ -111,7 +113,29 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'technology_two' => $result['technology_stage_two'],
                         'deal_size_two' => $result['deal_size_stage_two'],
                         'product_two' => $result['product_stage_two'],
-                        'solution_two' => $result['solution_stage_two']
+                        'solution_two' => $result['solution_stage_two'],
+                        'engagement_two' => isset($result['engagement_2'])
+                        ? array_map(function ($engagement) {
+                            $parts = explode(':', $engagement); 
+                            return [
+                                'engagement_id_two' => $parts[0] ?? null, 
+                                'engagement_type' => $parts[1] 
+                                'engagement_date' => $parts[2] ?? null,  
+                                'engagement_remarks' => $parts[3] 
+                            ];
+                        }, array_unique(explode(',', $result['engagement_2']))) 
+                        : [],
+
+                        'requirement_two' => isset($result['requirement_2'])
+                        ? array_map(function ($requirement) {
+                            $parts = explode(':', $requirement); 
+                            return [
+                                'requirement_id_two' => $parts[0] ?? null,  
+                                'requirement_two' => $parts[1] 
+                                'requirement_date' => $parts[0] ?? null,  
+                                'requirement_remarks' => $parts[1] 
+                            ];
+                        }, array_unique(explode(',', $result['requirement_2']))) 
                     ],
                     'stage_three' => [
                         'start_date' => $result['start_date_stage_three'],
@@ -146,7 +170,6 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'contract_duration' => $result['contract_duration'],
                         'pricing' => $result['pricing'],
                         'spr' => $result['spr_number']
-                        
                     ]
                 ]
             ]);
