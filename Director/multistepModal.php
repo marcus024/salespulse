@@ -690,15 +690,15 @@
                                                     <label for="status" class="form-label text-white">SPR Number</label>
                                                     <input type="text" class="form-control" id="stage-five-spr"  name="SPR_number" placeholder="e.g. SPR1 ">
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Contract Duration(Days)</label>
-                                                    <input name="contract_duration" type="text" class="form-control" id="contract" placeholder="e.g. 6 ">
+                                                <div class="col-md-3">
+                                                    <label for="requirement" class="form-label text-white">Contract Duration</label>
+                                                    <input name="contract_duration" type="text" class="form-control" id="contract" placeholder="e.g. 6 days">
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Pricing</label>
                                                     <input name="pricing" type="text" class="form-control" id="pricing" placeholder="e.g. 6 ">
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-3">
                                                     <label for="billingType" class="form-label text-white">Billing Type</label>
                                                     <select name="billing_type" class="form-control" id="billingType">
                                                         <option value="" disabled selected>Select Billing Type</option>
