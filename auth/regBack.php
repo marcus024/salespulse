@@ -68,8 +68,8 @@ try {
             // Send confirmation email to the registered user
             $to = $email;
             $subject = "Registration Successful - SalesPulse";
-            $message = "Hello $first_name $last_name,\n\nThank you for registering with SalesPulse. Your account has been successfully created, but it is not yet activated. Please contact the admin to activate your account.\n\nBest regards,\nSalesPulse Team";
-            $headers = "From: markantonyvc01@gmail.com";
+            $message = "Hello $first_name $last_name,\n\nThank you for registering with SalesPulse. Your account has been successfully created, but it is not yet activated. Wait for another email notification to activate your account.\n\nBest regards,\nSalesPulse Team";
+            $headers = "From: macalipayan@uas.com.ph";
 
             if (mail($to, $subject, $message, $headers)) {
                 echo "<script>alert('Registration successful! A confirmation email has been sent. The account is not yet activated. Please notify the admin to activate the account.'); window.location.href = '../index.php';</script>";
