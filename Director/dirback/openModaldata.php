@@ -136,22 +136,24 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     )))
                     : [],
                     // Corrected requirement_two
-                    
 'requirement_two' => isset($result['requirement_2']) 
     ? array_values(array_map(function ($requirement) {
-        $parts = explode(':', $requirement); 
+        $parts = explode(':', $requirement);
         return [
-            'requirement_id_two' => $parts[0] ?? '',  // Correctly fetch the ID
-            'requirement_two' => isset($parts[1]) ? $parts[1] : '', 
-            'requirement_date' => isset($parts[2]) ? $parts[2] : '',  
+            'requirement_id_two' => $parts[0] ?? '',  // Ensure we keep the correct ID
+            'requirement_two' => isset($parts[1]) ? $parts[1] : '',
+            'requirement_date' => isset($parts[2]) ? $parts[2] : '',
             'requirement_remarks' => isset($parts[3]) ? $parts[3] : ''
         ];
-    }, array_values(array_map(function ($requirement) {
-        $parts = explode(':', $requirement);
-        // Remove duplicates by considering the combination of requirement_two, requirement_date, and requirement_remarks
-        return implode(':', array_slice($parts, 1)); // Concatenate all parts except the id for comparison
-    }, explode(',', $result['requirement_2'])))))
+    }, array_unique(
+        array_map(function ($requirement) {
+            $parts = explode(':', $requirement);
+            // Create a unique key based on all fields except the ID
+            return implode(':', array_slice($parts, 1)); // Concatenate all parts except the id for comparison
+        }, explode(',', $result['requirement_2']))
+    )))
     : [],
+
 
 
 
