@@ -24,7 +24,7 @@ if (isset($_POST['id']) && isset($_POST['status'])) {
             
             if ($user) {
                 // Set the subject and message for the notification email
-                $to = 'desired-email@example.com';  // Change to the email where notifications should be sent
+                $to = $user['email'];  // Change to the email where notifications should be sent
                 $subject = "Account Status Changed - SalesPulse";
                 $status_message = $status === 'YES' ? 'activated' : 'deactivated';
                 $message = "Hello Admin,\n\nThe account for {$user['firstname']} {$user['lastname']} (Email: {$user['email']}) has been {$status_message}.\n\nBest regards,\nSalesPulse Team";
