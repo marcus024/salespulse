@@ -293,7 +293,7 @@
                         // Add delete functionality to the button
                         const deleteButton = engagementRow.querySelector('.deleteEngagement');
                         deleteButton.addEventListener('click', () => {
-                            fetch('./dirback/delete_engagement2.php', {
+                            fetch('./dirback/delete_eng2.php', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json',
