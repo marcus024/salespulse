@@ -137,23 +137,42 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     : [],
                     // Corrected requirement_two
                     'requirement_two' => isset($result['requirement_2']) 
-                    ? array_map(function ($requirement) {
-                        $parts = explode(':', $requirement); 
-                        return [
-                            'requirement_id_two' => $parts[0] ?? null,  
-                            'requirement_two' => $parts[1] ?? null, 
-                            'requirement_date' => $parts[2] ?? null,  
-                            'requirement_remarks' => $parts[3] ?? null
-                        ];
-                    }, array_values(array_unique(
-                        array_map(function ($requirement) {
-                            $parts = explode(':', $requirement);
-                            // Remove duplicates based on all fields except id
-                            return implode(':', array_slice($parts, 1)); // Join all parts except the id
-                        }, explode(',', $result['requirement_2']))
-                    )))
-                    : [],
+                    'requirement_two' => isset($result['requirement_2']) 
+                        ? array_map(function ($requirement) {
+                            $parts = explode(':', $requirement); 
+                            return [
+                                'requirement_id_two' => $parts[0] ?? null,  
+                                'requirement_two' => $parts[1] ?? null, 
+                                'requirement_date' => $parts[2] ?? null,  
+                                'requirement_remarks' => $parts[3] ?? null
+                            ];
+                        }, array_values(array_filter(
+                            explode(',', $result['requirement_2']),
+                            function ($requirement, $key) use ($result) {
+                                // Check if current requirement is duplicate (excluding 'id')
+                                $parts = explode(':', $requirement);
+                                $existingRequirements = isset($result['unique_requirements']) ? $result['unique_requirements'] : [];
+                                $isDuplicate = false;
 
+                                foreach ($existingRequirements as $existingRequirement) {
+                                    $existingParts = explode(':', $existingRequirement);
+                                    if ($existingParts[1] === $parts[1] && $existingParts[2] === $parts[2] && $existingParts[3] === $parts[3]) {
+                                        $isDuplicate = true;
+                                        break;
+                                    }
+                                }
+
+                                if (!$isDuplicate) {
+                                    // Add to the list of unique requirements
+                                    $result['unique_requirements'][] = $requirement;
+                                    return true;  // keep the requirement
+                                }
+
+                                return false;  // exclude duplicate
+                            },
+                            ARRAY_FILTER_USE_BOTH
+                        )))
+                        : [],
                 ],
                     'stage_three' => [
                         'start_date' => $result['start_date_stage_three'],
