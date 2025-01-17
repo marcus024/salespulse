@@ -130,7 +130,8 @@
                     document.getElementById('stage-two-end').value = data.stages.stage_two.end_date || data.stages.stage_one.end_date || 'No Data';
                     document.getElementById('stage-two-status').value = data.stages.stage_two.status || data.stages.stage_one.status || 'No Data';
                     document.getElementById('solution2').value = data.stages.stage_two.solution_two || data.stages.stage_one.solution || 'No Data';
-                    document.getElementById('deal_size2').value = data.stages.stage_two.deal_size_two || data.stages.stage_one.deal_size || 'No Data';
+                    document.getElementById('deal_size2').value = Number(data.stages.stage_two.deal_size_two) || Number(data.stages.stage_one.deal_size) || 'No Data';
+
                     document.getElementById('stageremarks2').value = data.stages.stage_two.remarks_two || data.stages.stage_one.remarks || 'No Data';
                     document.getElementById('product2').value = data.stages.stage_two.product_two || data.stages.stage_one.product || 'No Data';
 
