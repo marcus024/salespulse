@@ -126,9 +126,9 @@
                     document.getElementById('client-name').textContent = data.company_name || 'No Data';
 
 
-                    document.getElementById('stage-two-start').value = data.stages.stage_two.start_date || data.stages.stage_one.start_date || 'No Data';
-                    document.getElementById('stage-two-end').value = data.stages.stage_two.end_date || data.stages.stage_one.end_date || 'No Data';
-                    document.getElementById('stage-two-status').value = data.stages.stage_two.status || data.stages.stage_one.status || 'No Data';
+                    document.getElementById('stage-two-start').value = data.stages.stage_two.start_date || 'No Data';
+                    document.getElementById('stage-two-end').value = data.stages.stage_two.end_date ||  'No Data';
+                    document.getElementById('stage-two-status').value = data.stages.stage_two.status ||  'No Data';
                     document.getElementById('solution2').value = data.stages.stage_two.solution_two || data.stages.stage_one.solution || 'No Data';
                     document.getElementById('deal_size2').value = Number(data.stages.stage_two.deal_size_two) || Number(data.stages.stage_one.deal_size) || 'No Data';
 
@@ -148,6 +148,18 @@
                     document.getElementById('stage-three-start').value  = data.stages.stage_three.start_date || 'No Data';
                     document.getElementById('stage-three-end').value    = data.stages.stage_three.end_date   || 'No Data';
                     document.getElementById('stage-three-status').value = data.stages.stage_three.status     || 'No Data';
+                    document.getElementById('solution3').value = data.stages.stage_three.solution_three || data.stages.stage_two.solution_two || 'No Data';
+                    document.getElementById('deal_size3').value = Number(data.stages.stage_three.deal_size_three) || Number(data.stages.stage_two.deal_size_two) || 'No Data';
+                    document.getElementById('stageremarks3').value = data.stages.stage_three.remarks_three || data.stages.stage_two.remarks_two || 'No Data';
+                    document.getElementById('product3').value = data.stages.stage_three.product_three || data.stages.stage_two.product_two || 'No Data';
+                    const technology3 = document.getElementById('technology3');
+                    const techValue3 = data.stages.stage_three.technology_three || data.stages.stage_two.technology_two || 'Select';
+                    Array.from(technology3.options).forEach(option => {
+                        if (option.value === techValue3) {
+                            option.selected = true;
+                        }
+                    });
+
 
                     document.getElementById('stage-four-start').value  = data.stages.stage_four.start_date || 'No Data';
                     document.getElementById('stage-four-end').value    = data.stages.stage_four.end_date   || 'No Data';

@@ -35,12 +35,31 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stagethree.start_date_stage_three, 'No Data') AS start_date_stage_three,
                     COALESCE(stagethree.end_date_stage_three, 'No Data') AS end_date_stage_three,
                     COALESCE(stagethree.status_stage_three, 'No Data') AS status_stage_three,
+                    COALESCE(stagethree.stage_three_remarks, 'No Data') AS remarks_3,
+                    COALESCE(stagethree.product, 'No Data') AS product_3,
+                    COALESCE(stagethree.technology, 'No Data') AS technology_3,
+                    COALESCE(stagethree.deal_size, 'No Data') AS deal_3,
+                    COALESCE(stagethree.solution, 'No Data') AS solution_3,
                     COALESCE(stagefour.start_date_stage_four, 'No Data') AS start_date_stage_four,
                     COALESCE(stagefour.end_date_stage_four, 'No Data') AS end_date_stage_four,
                     COALESCE(stagefour.status_stage_four, 'No Data') AS status_stage_four,
+                    COALESCE(stagefour.stage_four_remarks, 'No Data') AS remarks_4,
+                    COALESCE(stagefour.technology, 'No Data') AS technology_4,
+                    COALESCE(stagefour.solution, 'No Data') AS solution_4,
+                    COALESCE(stagefour.product, 'No Data') AS product_4,
+                    COALESCE(stagefour.deal_size, 'No Data') AS deal_4,
                     COALESCE(stagefive.start_date_stage_five, 'No Data') AS start_date_stage_five,
                     COALESCE(stagefive.end_date_stage_five, 'No Data') AS end_date_stage_five,
-                    COALESCE(stagefive.status_stage_five, 'No Data') AS status_stage_five
+                    COALESCE(stagefive.status_stage_five, 'No Data') AS status_stage_five,
+                    COALESCE(stagefive.remarks_stage_five, 'No Data') AS remarks_5,
+                    COALESCE(stagefive.solution, 'No Data') AS solution_5,
+                    COALESCE(stagefive.technology, 'No Data') AS technology_5,
+                    COALESCE(stagefive.deal_size, 'No Data') AS deal_5,
+                    COALESCE(stagefive.product, 'No Data') AS product_5,
+                    COALESCE(stagefive.pricing, 'No Data') AS pricing,
+                    COALESCE(stagefive.contract_duration, 'No Data') AS contract_duration,
+                    COALESCE(stagefive.SPR_number, 'No Data') AS spr_number,
+                    COALESCE(stagefive.billing_type, 'No Data') AS billing_type
                 FROM projecttb
                 LEFT JOIN requirementone_tb ON projecttb.project_unique_id = requirementone_tb.project_unique_id
                 LEFT JOIN stageone ON projecttb.project_unique_id = stageone.project_unique_id
@@ -57,8 +76,6 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
 
         if ($stmt->rowCount() > 0) {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            $sprNum = $result['SPR_number'] ?? 'No SPR Number';
 
             echo json_encode([
                 'status' => 'success',
@@ -99,18 +116,37 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     'stage_three' => [
                         'start_date' => $result['start_date_stage_three'],
                         'end_date' => $result['end_date_stage_three'],
-                        'status' => $result['status_stage_three']
+                        'status' => $result['status_stage_three'],
+                        'remarks_three' => $result['remarks_3'],
+                        'product_three' => $result['product_3'],
+                        'technology_three' => $result['technology_3'],
+                        'solution_three' => $result['solution_3'],
+                        'deal_size_three' => $result['deal_3']
                     ],
                     'stage_four' => [
                         'start_date' => $result['start_date_stage_four'],
                         'end_date' => $result['end_date_stage_four'],
-                        'status' => $result['status_stage_four']
+                        'status' => $result['status_stage_four'],
+                        'remarks_four' => $result['remarks_4'],
+                        'product_four' => $result['product_4'],
+                        'technology_four' => $result['technology_4'],
+                        'solution_four' => $result['solution_4'],
+                        'deal_size_four' => $result['deal_4']
                     ],
                     'stage_five' => [
                         'start_date' => $result['start_date_stage_five'],
                         'end_date' => $result['end_date_stage_five'],
                         'status' => $result['status_stage_five'],
-                        // 'sprNum' => $sprNum
+                        'remarks_five' => $result['remarks_5'],
+                        'product_five' => $result['product_5'],
+                        'solution_five' => $result['solution_5'],
+                        'technology_five' => $result['technology_5'],
+                        'deal_size_five' => $result['deal_5'],
+                        'billing_type' => $result['billing_type'],
+                        'contract_duration' => $result['contract_duration'],
+                        'pricing' => $result['pricing'],
+                        'spr' => $result['spr_number']
+                        
                     ]
                 ]
             ]);
