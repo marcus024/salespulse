@@ -42,6 +42,8 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stagethree.technology, 'No Data') AS technology_3,
                     COALESCE(stagethree.deal_size, 'No Data') AS deal_3,
                     COALESCE(stagethree.solution, 'No Data') AS solution_3,
+                    GROUP_CONCAT(DISTINCT CONCAT(enagement_threetb.engagement_id_three, ':', enagement_threetb.engagement_three, ':', enagement_threetb.engagement_date, ':', enagement_threetb.engagement_remarks_three) ORDER BY enagement_threetb.engagement_date) AS engagement_3,
+                    GROUP_CONCAT(DISTINCT CONCAT(requirement_threetb.requirement_id_three, ':', requirement_threetb.requirement_three, ':', requirement_threetb.quantity, ':', requirement_threetb.bill_of_materials, ':', requirement_threetb.requirements_remarks_three, ':', requirement_threetb.pricing) ORDER BY requirement_threetb.requirement_three) AS requirement_2,
                     COALESCE(stagefour.start_date_stage_four, 'No Data') AS start_date_stage_four,
                     COALESCE(stagefour.end_date_stage_four, 'No Data') AS end_date_stage_four,
                     COALESCE(stagefour.status_stage_four, 'No Data') AS status_stage_four,
@@ -77,10 +79,8 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':project_id', $project_id, PDO::PARAM_STR);
         $stmt->execute();
-
         if ($stmt->rowCount() > 0) {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
             echo json_encode([
                 'status' => 'success',
                 'company_name' => $result['company_name'] ?? '',
@@ -92,7 +92,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'end_date' => $result['end_date_stage_one'],
                         'status' => $result['status_stage_one'],
                         'solution' => $result['solution'],
-                        'deal_size' => $result['dealsize'] ,
+                        'deal_size' => $result['dealsize'],
                         'remarks' => $result['stage_one_remarks'],
                         'distributor' => $result['distributor'],
                         'product' => $result['product'],
@@ -100,7 +100,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'requirements' => isset($result['requirements'])
                         ? array_values(array_reduce(explode(',', $result['requirements']), function ($carry, $requirement) {
                             $parts = explode(':', $requirement);
-                            $normalizedRequirementOne = strtolower(trim($parts[1] ?? '')); // Normalize only 'requirement_one'
+                            $normalizedRequirementOne = strtolower(trim($parts[1] ?? ''));
                             if (!in_array($normalizedRequirementOne, array_column($carry, 'requirement_one'))) {
                                 $carry[] = [
                                     'requirement_id_one' => $parts[0] ?? null,
@@ -120,7 +120,6 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     'deal_size_two' => $result['deal_size_stage_two'],
                     'product_two' => $result['product_stage_two'],
                     'solution_two' => $result['solution_stage_two'],
-                    // Corrected engagement_two
                     'engagement_stage_two' => isset($result['engagement_2']) 
                         ? array_values(array_reduce(explode(',', $result['engagement_2']), function ($carry, $engagement) {
                             $parts = explode(':', $engagement);
@@ -129,7 +128,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                                 'engagement_date' => trim($parts[2] ?? ''),
                                 'engagement_remarks' => strtolower(trim($parts[3] ?? ''))
                             ];
-                            $hash = md5(json_encode($normalized)); // Generate a unique key for normalization
+                            $hash = md5(json_encode($normalized)); 
                             if (!isset($carry[$hash])) {
                                 $carry[$hash] = [
                                     'engagement_id_two' => $parts[0] ?? null,
@@ -142,7 +141,6 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         }, []))
                         : [],
 
-                    // Corrected requirement_two
                     'requirement_stage_two' => isset($result['requirement_2']) 
                         ? array_values(array_reduce(explode(',', $result['requirement_2']), function ($carry, $requirement) {
                             $parts = explode(':', $requirement);
@@ -174,7 +172,55 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'product_three' => $result['product_3'],
                         'technology_three' => $result['technology_3'],
                         'solution_three' => $result['solution_3'],
-                        'deal_size_three' => $result['deal_3']
+                        'deal_size_three' => $result['deal_3'],
+                        'engagement_stage_three' => isset($result['engagement_3']) 
+    ? array_values(array_reduce(explode(',', $result['engagement_3']), function ($carry, $engagement) {
+        $parts = explode(':', $engagement);
+        $normalized = [
+            'engagement_id_three' => trim($parts[0] ?? ''),
+            'engagement_type' => strtolower(trim($parts[1] ?? '')),
+            'engagement_date' => trim($parts[2] ?? ''),
+            'engagement_remarks' => strtolower(trim($parts[3] ?? ''))
+        ];
+        $hash = md5(json_encode($normalized)); // Generate a unique key for normalization
+        if (!isset($carry[$hash])) {
+            $carry[$hash] = [
+                'engagement_id_three' => $parts[0] ?? null,
+                'engagement_type' => $parts[1] ?? null,
+                'engagement_date' => $parts[2] ?? null,
+                'engagement_remarks' => $parts[3] ?? null
+            ];
+        }
+        return $carry;
+    }, []))
+    : [],
+
+'requirement_stage_three' => isset($result['requirement_3']) 
+    ? array_values(array_reduce(explode(',', $result['requirement_3']), function ($carry, $requirement) {
+        $parts = explode(':', $requirement);
+        $normalized = [
+            'requirement_id_three' => trim($parts[0] ?? ''),
+            'requirement_type' => strtolower(trim($parts[1] ?? '')),
+            'requirement_quantity' => trim($parts[2] ?? ''),
+            'bill_of_materials' => trim($parts[3] ?? ''),
+            'requirement_remarks' => strtolower(trim($parts[4] ?? '')),
+            'pricing' => trim($parts[5] ?? '')
+        ];
+        $hash = md5(json_encode($normalized)); // Generate a unique key for normalization
+        if (!isset($carry[$hash])) {
+            $carry[$hash] = [
+                'requirement_id_three' => $parts[0] ?? null,
+                'requirement_type' => $parts[1] ?? null,
+                'requirement_quantity' => $parts[2] ?? null,
+                'bill_of_materials' => $parts[3] ?? null,
+                'requirement_remarks' => $parts[4] ?? null,
+                'pricing' => $parts[5] ?? null
+            ];
+        }
+        return $carry;
+    }, []))
+    : [],
+
                     ],
                     'stage_four' => [
                         'start_date' => $result['start_date_stage_four'],
