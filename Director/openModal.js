@@ -433,7 +433,7 @@
                     });
 
                     // Get the container for requirement fields
-                    const requirementFieldsContainer3 = document.getElementById('requirement-fields-container');
+                    const requirementFieldsContainer3 = document.getElementById('requirement-fields-container3');
 
                     // Clear the container before rendering
                     requirementFieldsContainer3.innerHTML = '';
