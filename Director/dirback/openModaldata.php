@@ -52,7 +52,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stagefour.solution, 'No Data') AS solution_4,
                     COALESCE(stagefour.product, 'No Data') AS product_4,
                     COALESCE(stagefour.deal_size, 'No Data') AS deal_4,
-                    GROUP_CONCAT(DISTINCT CONCAT(requirement_fourtb.requirement_id_four, ':',requirement_fourtb.requirement_four, ':', requirement_fourtb.quantity, ':', requirement_fourtb.bill_of_materials, ':', requirement_fourtb.date_required, ':', requirement_fourtb.pricing) ORDER BY requirement_fourtb.requirement_three) AS requirement_4,
+                    GROUP_CONCAT(DISTINCT CONCAT(requirement_fourtb.requirement_id_four, ':',requirement_fourtb.requirement_four, ':', requirement_fourtb.quantity, ':', requirement_fourtb.bill_of_materials, ':', requirement_fourtb.date_required, ':', requirement_fourtb.pricing) ORDER BY requirement_fourtb.requirement_four) AS requirement_4,
                     COALESCE(stagefive.start_date_stage_five, 'No Data') AS start_date_stage_five,
                     COALESCE(stagefive.end_date_stage_five, 'No Data') AS end_date_stage_five,
                     COALESCE(stagefive.status_stage_five, 'No Data') AS status_stage_five,
