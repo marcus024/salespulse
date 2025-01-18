@@ -221,24 +221,33 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'technology_four' => $result['technology_4'],
                         'solution_four' => $result['solution_4'],
                         'deal_size_four' => $result['deal_4'],
-                        'requirement_stage_four' => isset($result['requirement_4']) 
-                        ? array_values(array_reduce(explode(',', $result['requirement_4']), function ($carry, $requirement) {
-                            $parts = explode(':', $requirement);
-                            $normalizedRequirement = strtolower(trim($parts[1] ?? ''));
-                            // Avoid duplicates by checking the normalized requirement value
-                            if (!in_array($normalizedRequirement, array_column($carry, 'requirement_four'))) {
-                                $carry[] = [
-                                    'requirement_id_four' => $parts[0] ?? null,
-                                    'requirement_four' => $parts[1] ?? null,
-                                    'quantity' => $parts[2] ?? null,
-                                    'bill_of_materials' => $parts[3] ?? null,
-                                    'date_required' => $parts[4] ?? null,
-                                    'pricing' => $parts[5] ?? null
-                                ];
-                            }
-                            return $carry;
-                        }, []))
-                        : [],
+                        // Assuming $result['requirement_4'] is a string in the format "id:req:quantity:bill:date:pricing"
+'requirement_stage_four' => isset($result['requirement_4']) 
+    ? array_values(array_reduce(explode(',', $result['requirement_4']), function ($carry, $requirement) {
+        $parts = explode(':', $requirement);
+
+        // Log the parts to check the structure
+        error_log("Requirement Parts: " . print_r($parts, true));
+
+        if (count($parts) === 6) { // Ensure the parts array has exactly 6 elements
+            $normalizedRequirement = strtolower(trim($parts[1] ?? ''));
+
+            // Avoid duplicates by checking the normalized requirement value
+            if (!in_array($normalizedRequirement, array_column($carry, 'requirement_four'))) {
+                $carry[] = [
+                    'requirement_id_four' => $parts[0] ?? null,
+                    'requirement_four' => $parts[1] ?? null,
+                    'quantity' => $parts[2] ?? null,
+                    'bill_of_materials' => $parts[3] ?? null,
+                    'date_required' => $parts[4] ?? null,
+                    'pricing' => $parts[5] ?? null
+                ];
+            }
+        }
+        return $carry;
+    }, []))
+    : [],
+
                     ],
                     'stage_five' => [
                         'start_date' => $result['start_date_stage_five'],
