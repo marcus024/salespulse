@@ -148,7 +148,7 @@
                     const requirementTwoContainer = document.getElementById('requirement-fields-container');
 
                     // Clear the container before rendering
-                    requirementTwoContainer.innerHTML = '';
+                    // requirementTwoContainer.innerHTML = '';
 
                     const requirementsTwo = data.stages.stage_two.requirement_stage_two || []; // Fetch requirements from data
 
@@ -238,7 +238,7 @@
                     const engagementFieldsContainer = document.getElementById('engagement-fields-container');
 
                     // Clear the container before rendering
-                    engagementFieldsContainer.innerHTML = '';
+                    // engagementFieldsContainer.innerHTML = '';
 
                     // Fetch engagements from stage_two
                     const engagements = data.stages.stage_two.engagement_stage_two || [];
