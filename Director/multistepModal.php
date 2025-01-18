@@ -581,7 +581,7 @@
                                                     <label for="quantity" class="form-label text-white">Quantity</label>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label for="bills_of_materials" class="form-label text-white">Bills of Materials</label>
+                                                    <label for="bills_of_materials" class="form-label text-white">Bill of Materials</label>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label for="pricing" class="form-label text-white">Pricing</label>

@@ -175,42 +175,40 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'technology_three' => $result['technology_3'],
                         'solution_three' => $result['solution_3'],
                         'deal_size_three' => $result['deal_3'],
-'engagement_stage_three' => isset($result['engagement_3']) 
-    ? array_values(array_reduce(explode(',', $result['engagement_3']), function ($carry, $engagement) {
-        $parts = explode(':', $engagement);
-        $normalizedEngagement = strtolower(trim($parts[1] ?? ''));
-        // Avoid duplicates by checking the normalized engagement value
-        if (!in_array($normalizedEngagement, array_column($carry, 'engagement_three'))) {
-            $carry[] = [
-                'engagement_id_three' => $parts[0] ?? null,
-                'engagement_three' => $parts[1] ?? null,
-                'engagement_date' => $parts[2] ?? null,
-                'engagement_remarks_three' => $parts[3] ?? null
-            ];
-        }
-        return $carry;
-    }, []))
-    : [],
-
-
-'requirement_stage_three' => isset($result['requirement_3']) 
-    ? array_values(array_reduce(explode(',', $result['requirement_3']), function ($carry, $requirement) {
-        $parts = explode(':', $requirement);
-        $normalizedRequirement = strtolower(trim($parts[1] ?? ''));
-        // Avoid duplicates by checking the normalized requirement value
-        if (!in_array($normalizedRequirement, array_column($carry, 'requirement_three'))) {
-            $carry[] = [
-                'requirement_id_three' => $parts[0] ?? null,
-                'requirement_three' => $parts[1] ?? null,
-                'quantity' => $parts[2] ?? null,
-                'bill_of_materials' => $parts[3] ?? null,
-                'requirement_remarks_three' => $parts[4] ?? null,
-                'pricing' => $parts[5] ?? null
-            ];
-        }
-        return $carry;
-    }, []))
-    : [],
+                        'engagement_stage_three' => isset($result['engagement_3']) 
+                            ? array_values(array_reduce(explode(',', $result['engagement_3']), function ($carry, $engagement) {
+                                $parts = explode(':', $engagement);
+                                $normalizedEngagement = strtolower(trim($parts[1] ?? ''));
+                                // Avoid duplicates by checking the normalized engagement value
+                                if (!in_array($normalizedEngagement, array_column($carry, 'engagement_three'))) {
+                                    $carry[] = [
+                                        'engagement_id_three' => $parts[0] ?? null,
+                                        'engagement_three' => $parts[1] ?? null,
+                                        'engagement_date' => $parts[2] ?? null,
+                                        'engagement_remarks_three' => $parts[3] ?? null
+                                    ];
+                                }
+                                return $carry;
+                            }, []))
+                            : [],
+                        'requirement_stage_three' => isset($result['requirement_3']) 
+                            ? array_values(array_reduce(explode(',', $result['requirement_3']), function ($carry, $requirement) {
+                                $parts = explode(':', $requirement);
+                                $normalizedRequirement = strtolower(trim($parts[1] ?? ''));
+                                // Avoid duplicates by checking the normalized requirement value
+                                if (!in_array($normalizedRequirement, array_column($carry, 'requirement_three'))) {
+                                    $carry[] = [
+                                        'requirement_id_three' => $parts[0] ?? null,
+                                        'requirement_three' => $parts[1] ?? null,
+                                        'quantity' => $parts[2] ?? null,
+                                        'bill_of_materials' => $parts[3] ?? null,
+                                        'requirement_remarks_three' => $parts[4] ?? null,
+                                        'pricing' => $parts[5] ?? null
+                                    ];
+                                }
+                                return $carry;
+                            }, []))
+                            : [],
 
 
                     ],
