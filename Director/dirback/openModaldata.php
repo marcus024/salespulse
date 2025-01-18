@@ -180,17 +180,17 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
         $parts = explode(':', $engagement);
         $normalized = [
             'engagement_id_three' => trim($parts[0] ?? ''),
-            'engagement_type' => strtolower(trim($parts[1] ?? '')),
+            'engagement_three' => strtolower(trim($parts[1] ?? '')),
             'engagement_date' => trim($parts[2] ?? ''),
-            'engagement_remarks' => strtolower(trim($parts[3] ?? ''))
+            'engagement_remarks_three' => strtolower(trim($parts[3] ?? ''))
         ];
         $hash = md5(json_encode($normalized)); // Generate a unique key for normalization
         if (!isset($carry[$hash])) {
             $carry[$hash] = [
                 'engagement_id_three' => $parts[0] ?? null,
-                'engagement_type' => $parts[1] ?? null,
+                'engagement_three' => $parts[1] ?? null,
                 'engagement_date' => $parts[2] ?? null,
-                'engagement_remarks' => $parts[3] ?? null
+                'engagement_remarks_three' => $parts[3] ?? null
             ];
         }
         return $carry;
