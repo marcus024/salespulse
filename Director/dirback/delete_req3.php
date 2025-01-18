@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $project_id = $data['project_id'];
 
         try {
-            $sql = "DELETE FROM requrequirement_threetb WHERE requirement_id_three = :requirement_id AND project_unique_id = :project_id";
+            $sql = "DELETE FROM requirement_threetb WHERE requirement_id_three = :requirement_id AND project_unique_id = :project_id";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':requirement_id', $requirement, PDO::PARAM_STR);
             $stmt->bindParam(':project_id', $project_id, PDO::PARAM_STR);
