@@ -202,10 +202,10 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
         $parts = explode(':', $requirement);
         $normalized = [
             'requirement_id_three' => trim($parts[0] ?? ''),
-            'requirement_type' => strtolower(trim($parts[1] ?? '')),
-            'requirement_quantity' => trim($parts[2] ?? ''),
+            'requirement_three' => strtolower(trim($parts[1] ?? '')),
+            'quantity' => trim($parts[2] ?? ''),
             'bill_of_materials' => trim($parts[3] ?? ''),
-            'requirement_remarks' => strtolower(trim($parts[4] ?? '')),
+            'requirement_remarks_three' => strtolower(trim($parts[4] ?? '')),
             'pricing' => trim($parts[5] ?? '')
         ];
         $hash = md5(json_encode($normalized)); // Generate a unique key for normalization
