@@ -441,7 +441,11 @@
                     // Fetch requirement data from stage_three
                     const requirements3 = data.stages.stage_three.requirement_stage_three || [];
 
+                    console.log(requirements3); // Log the requirements to ensure data is fetched
+
                     requirements3.forEach((requirement) => {
+                        console.log(requirement); // Log each requirement to ensure it is processed correctly
+
                         // Create a row for each requirement
                         const requirementRow3 = document.createElement('div');
                         requirementRow3.className = 'row align-items-center requirement-fields mb-3';
