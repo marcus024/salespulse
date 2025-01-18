@@ -450,7 +450,7 @@
                         requirementRow3.innerHTML = `
                             <div class="col-md-2">
                                 <input 
-                                    value="${requirement.requirement_type || ''}" 
+                                    value="${requirement.requirement_three || ''}" 
                                     name="requirement_three[]" 
                                     type="text" 
                                     id="req3" 
@@ -460,7 +460,7 @@
                             </div>
                             <div class="col-md-2">
                                 <input 
-                                    value="${requirement.requirement_quantity || ''}" 
+                                    value="${requirement.quantity || ''}" 
                                     name="quantity[]" 
                                     type="number" 
                                     id="quantity3" 
@@ -490,7 +490,7 @@
                             </div>
                             <div class="col-md-2">
                                 <input 
-                                    value="${requirement.requirement_remarks || ''}" 
+                                    value="${requirement.requirement_remarks_three || ''}" 
                                     name="requirement_remarks_three[]" 
                                     type="text" 
                                     id="reqremarks3" 
