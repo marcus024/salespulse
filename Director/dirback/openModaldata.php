@@ -198,26 +198,30 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
     : [],
 
 'requirement_stage_three' => isset($result['requirement_3']) 
-    ? array_values(array_filter(array_reduce(explode(',', $result['requirement_3']), function ($carry, $requirement) {
+    ? array_values(array_reduce(explode(',', $result['requirement_3']), function ($carry, $requirement) {
         $parts = explode(':', $requirement);
-        if (count($parts) === 6) { // Ensure there are 6 parts
-            $normalized = [
-                'requirement_id_three' => trim($parts[0] ?? ''),
-                'requirement_three' => strtolower(trim($parts[1] ?? '')),
-                'quantity' => trim($parts[2] ?? ''),
-                'bill_of_materials' => trim($parts[3] ?? ''),
-                'requirement_remarks_three' => strtolower(trim($parts[4] ?? '')),
-                'pricing' => trim($parts[5] ?? '')
+        $normalized = [
+            'requirement_id_three' => trim($parts[0] ?? ''),
+            'requirement_three' => strtolower(trim($parts[1] ?? '')),
+            'quantity' => trim($parts[2] ?? ''),
+            'bill_of_materials' => trim($parts[3] ?? ''),
+            'requirement_remarks_three' => strtolower(trim($parts[4] ?? '')),
+            'pricing' => trim($parts[5] ?? '')
+        ];
+        $hash = md5(json_encode($normalized)); // Generate a unique key for normalization
+        if (!isset($carry[$hash])) {
+            $carry[$hash] = [
+                'requirement_id_three' => $parts[0] ?? null,
+                'requirement_three' => $parts[1] ?? null,
+                'quantity' => $parts[2] ?? null,
+                'bill_of_materials' => $parts[3] ?? null,
+                'requirement_remarks_three' => $parts[4] ?? null,
+                'pricing' => $parts[5] ?? null
             ];
-            $hash = md5(json_encode($normalized)); // Generate a unique key for normalization
-            if (!isset($carry[$hash])) {
-                $carry[$hash] = $normalized;
-            }
         }
         return $carry;
     }, []))
     : [],
-
 
                     ],
                     'stage_four' => [
