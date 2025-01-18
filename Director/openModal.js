@@ -341,6 +341,207 @@
                             option.selected = true;
                         }
                     });
+                    // Get the container for engagement fields
+                    const engagementFieldsContainer3 = document.getElementById('engagement-fields-container3');
+
+                    // Clear the container before rendering
+                    engagementFieldsContainer3.innerHTML = '';
+
+                    // Fetch engagement data from stage_three
+                    const engagements3 = data.stages.stage_three.engagement_stage_three || [];
+
+                    engagements3.forEach((engagement) => {
+                        // Create a row for each engagement
+                        const engagementRow3 = document.createElement('div');
+                        engagementRow3.className = 'row align-items-center engagement-fields mb-3';
+
+                        // Set the HTML content of the row
+                        engagementRow3.innerHTML = `
+                            <div class="col-md-3">
+                                <input 
+                                    value="${engagement.engagement_type || ''}" 
+                                    name="engagement_three[]" 
+                                    type="text" 
+                                    id="engtype3" 
+                                    class="form-control" 
+                                    placeholder="e.g. Sample Engagement"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <input 
+                                    value="${engagement.engagement_date || ''}" 
+                                    name="engagement_date[]" 
+                                    type="date" 
+                                    id="engdate3" 
+                                    class="form-control" 
+                                    style="font-size:10px;"
+                                >
+                            </div>
+                            <div class="col-md-5">
+                                <input 
+                                    value="${engagement.engagement_remarks || ''}" 
+                                    name="engagement_remarks_three[]" 
+                                    type="text" 
+                                    id="engremarks3" 
+                                    class="form-control" 
+                                    placeholder="e.g. Sample Remarks"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-danger btn-sm deleteEngagement3" style="margin-left: 5px;">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        `;
+
+                        // Append the row to the container
+                        engagementFieldsContainer3.appendChild(engagementRow3);
+
+                        // Add delete functionality to the button
+                        const deleteButton3 = engagementRow3.querySelector('.deleteEngagement3');
+                        deleteButton3.addEventListener('click', () => {
+                            fetch('./dirback/delete_eng3.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    engagement_id: engagement.engagement_id_three, // Use the engagement ID for deletion
+                                    project_id: projectId // Project ID for context
+                                }),
+                            })
+                                .then((response) => response.json())
+                                .then((data) => {
+                                    if (data.status === 'success') {
+                                        // Remove the row from the DOM
+                                        engagementRow3.remove();
+
+                                        // Optionally update the engagements3 array
+                                        const index = engagements3.findIndex(e => e.engagement_id_three === engagement.engagement_id_three);
+                                        if (index > -1) {
+                                            engagements3.splice(index, 1);
+                                        }
+                                    } else {
+                                        alert('Error: ' + data.message);
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.error('Error deleting engagement:', error);
+                                    alert('Failed to delete engagement. Please try again.');
+                                });
+                        });
+                    });
+
+                    // Get the container for requirement fields
+                    const requirementFieldsContainer3 = document.getElementById('requirement-fields-container');
+
+                    // Clear the container before rendering
+                    requirementFieldsContainer3.innerHTML = '';
+
+                    // Fetch requirement data from stage_three
+                    const requirements3 = data.stages.stage_three.requirement_stage_three || [];
+
+                    requirements3.forEach((requirement) => {
+                        // Create a row for each requirement
+                        const requirementRow3 = document.createElement('div');
+                        requirementRow3.className = 'row align-items-center requirement-fields mb-3';
+
+                        // Set the HTML content of the row
+                        requirementRow3.innerHTML = `
+                            <div class="col-md-2">
+                                <input 
+                                    value="${requirement.requirement_type || ''}" 
+                                    name="requirement_three[]" 
+                                    type="text" 
+                                    id="req3" 
+                                    class="form-control" 
+                                    placeholder="e.g. Sample Requirement"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <input 
+                                    value="${requirement.requirement_quantity || ''}" 
+                                    name="quantity[]" 
+                                    type="number" 
+                                    id="quantity3" 
+                                    class="form-control" 
+                                    placeholder="e.g. 50"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <input 
+                                    value="${requirement.bill_of_materials || ''}" 
+                                    name="bill_of_materials[]" 
+                                    type="text" 
+                                    id="bom3" 
+                                    class="form-control" 
+                                    placeholder="e.g. 5000"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <input 
+                                    value="${requirement.pricing || ''}" 
+                                    name="pricing[]" 
+                                    type="number" 
+                                    id="pricing3" 
+                                    class="form-control" 
+                                    placeholder="e.g. 5000"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <input 
+                                    value="${requirement.requirement_remarks || ''}" 
+                                    name="requirement_remarks_three[]" 
+                                    type="text" 
+                                    id="reqremarks3" 
+                                    class="form-control" 
+                                    placeholder="e.g. Sample Remarks"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-danger btn-sm deleteRequirement3" style="margin-left: 5px;">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        `;
+
+                        // Append the row to the container
+                        requirementFieldsContainer3.appendChild(requirementRow3);
+
+                        // Add delete functionality to the button
+                        const deleteButton3 = requirementRow3.querySelector('.deleteRequirement3');
+                        deleteButton3.addEventListener('click', () => {
+                            fetch('./dirback/delete_req3.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    requirement_id: requirement.requirement_id_three, // Use the requirement ID for deletion
+                                    project_id: projectId // Project ID for context
+                                }),
+                            })
+                                .then((response) => response.json())
+                                .then((data) => {
+                                    if (data.status === 'success') {
+                                        // Remove the row from the DOM
+                                        requirementRow3.remove();
+
+                                        // Optionally update the requirements3 array
+                                        const index = requirements3.findIndex(req => req.requirement_id_three === requirement.requirement_id_three);
+                                        if (index > -1) {
+                                            requirements3.splice(index, 1);
+                                        }
+                                    } else {
+                                        alert('Error: ' + data.message);
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.error('Error deleting requirement:', error);
+                                    alert('Failed to delete requirement. Please try again.');
+                                });
+                        });
+                    });
 
 
                     document.getElementById('stage-four-start').value  = data.stages.stage_four.start_date || 'No Data';
