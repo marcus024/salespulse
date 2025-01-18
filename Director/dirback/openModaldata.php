@@ -68,6 +68,8 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                 LEFT JOIN requirementone_tb ON projecttb.project_unique_id = requirementone_tb.project_unique_id
                 LEFT JOIN engagement_twotb ON projecttb.project_unique_id = engagement_twotb.project_unique_id
                 LEFT JOIN requirement_twotb ON projecttb.project_unique_id = requirement_twotb.project_unique_id
+                LEFT JOIN enagement_threetb ON projecttb.project_unique_id = enagement_threetb.project_unique_id
+                LEFT JOIN requirement_threetb ON projecttb.project_unique_id = requirement_threetb.project_unique_id
                 LEFT JOIN stageone ON projecttb.project_unique_id = stageone.project_unique_id
                 LEFT JOIN stagetwo ON projecttb.project_unique_id = stagetwo.project_unique_id
                 LEFT JOIN stagethree ON projecttb.project_unique_id = stagethree.project_unique_id
