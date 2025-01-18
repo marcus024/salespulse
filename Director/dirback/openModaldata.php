@@ -175,20 +175,13 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'technology_three' => $result['technology_3'],
                         'solution_three' => $result['solution_3'],
                         'deal_size_three' => $result['deal_3'],
-                       // Engagement stage three: eliminate duplicates during data preparation
 'engagement_stage_three' => isset($result['engagement_3']) 
     ? array_values(array_reduce(explode(',', $result['engagement_3']), function ($carry, $engagement) {
         $parts = explode(':', $engagement);
-        $normalized = [
-            'engagement_id_three' => trim($parts[0] ?? ''),
-            'engagement_three' => strtolower(trim($parts[1] ?? '')),
-            'engagement_date' => trim($parts[2] ?? ''),
-            'engagement_remarks_three' => strtolower(trim($parts[3] ?? ''))
-        ];
-        $hash = md5(json_encode($normalized)); // Generate a unique key for normalization
-        // Check if this engagement already exists in the array (based on its hash)
-        if (!isset($carry[$hash])) {
-            $carry[$hash] = [
+        $normalizedEngagement = strtolower(trim($parts[1] ?? ''));
+        // Avoid duplicates by checking the normalized engagement value
+        if (!in_array($normalizedEngagement, array_column($carry, 'engagement_three'))) {
+            $carry[] = [
                 'engagement_id_three' => $parts[0] ?? null,
                 'engagement_three' => $parts[1] ?? null,
                 'engagement_date' => $parts[2] ?? null,
@@ -199,22 +192,14 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
     }, []))
     : [],
 
-// Requirement stage three: eliminate duplicates during data preparation
+
 'requirement_stage_three' => isset($result['requirement_3']) 
     ? array_values(array_reduce(explode(',', $result['requirement_3']), function ($carry, $requirement) {
         $parts = explode(':', $requirement);
-        $normalized = [
-            'requirement_id_three' => trim($parts[0] ?? ''),
-            'requirement_three' => strtolower(trim($parts[1] ?? '')),
-            'quantity' => trim($parts[2] ?? ''),
-            'bill_of_materials' => trim($parts[3] ?? ''),
-            'requirement_remarks_three' => strtolower(trim($parts[4] ?? '')),
-            'pricing' => trim($parts[5] ?? '')
-        ];
-        $hash = md5(json_encode($normalized)); // Generate a unique key for normalization
-        // Check if this requirement already exists in the array (based on its hash)
-        if (!isset($carry[$hash])) {
-            $carry[$hash] = [
+        $normalizedRequirement = strtolower(trim($parts[1] ?? ''));
+        // Avoid duplicates by checking the normalized requirement value
+        if (!in_array($normalizedRequirement, array_column($carry, 'requirement_three'))) {
+            $carry[] = [
                 'requirement_id_three' => $parts[0] ?? null,
                 'requirement_three' => $parts[1] ?? null,
                 'quantity' => $parts[2] ?? null,
@@ -226,6 +211,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
         return $carry;
     }, []))
     : [],
+
 
                     ],
                     'stage_four' => [
