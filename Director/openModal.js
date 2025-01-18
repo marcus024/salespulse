@@ -562,110 +562,113 @@
                             option.selected = true;
                         }
                     });
-                    const requirements = data.requirement_stage_four || [];
+                    // Assuming data.requirement_stage_four is an array of requirements
+const requirements = data.requirement_stage_four || []; 
 
-                    // Get the container for requirement fields
-                    const requirementFieldsContainer4 = document.getElementById('requirement-fields-container4');
+// Get the container for requirement fields
+const requirementFieldsContainer4 = document.getElementById('requirement-fields-container4');
 
-                    // Clear the container before rendering
-                    requirementFieldsContainer4.innerHTML = ''; // Clear existing rows
+// Clear the container before rendering
+requirementFieldsContainer4.innerHTML = ''; // Clear existing rows
 
-                    // Create a row for each requirement
-                    requirements.forEach((requirement) => {
-                        const requirementRow4 = document.createElement('div');
-                        requirementRow4.className = 'row mb-3 requirement-fields';
+// Log the fetched requirements to ensure the data is correct
+console.log(requirements);
 
-                        // Set the HTML content of the row with requirement data
-                        requirementRow4.innerHTML = `
-                            <div class="col-md-2">
-                                <input 
-                                    value="${requirement.requirement_four || ''}" 
-                                    name="requirement_four[]" 
-                                    type="text" 
-                                    class="form-control" 
-                                    placeholder="e.g. Sample Requirement"
-                                >
-                            </div>
-                            <div class="col-md-2">
-                                <input 
-                                    value="${requirement.quantity || ''}" 
-                                    name="quantity[]" 
-                                    type="text" 
-                                    class="form-control" 
-                                    placeholder="e.g. 50"
-                                >
-                            </div>
-                            <div class="col-md-2">
-                                <input 
-                                    value="${requirement.bill_of_materials || ''}" 
-                                    name="bill_of_materials[]" 
-                                    type="text" 
-                                    class="form-control" 
-                                    placeholder="e.g. 5000"
-                                >
-                            </div>
-                            <div class="col-md-2">
-                                <input 
-                                    value="${requirement.pricing || ''}" 
-                                    name="pricing[]" 
-                                    type="text" 
-                                    class="form-control" 
-                                    placeholder="e.g. 2000"
-                                >
-                            </div>
-                            <div class="col-md-2">
-                                <input 
-                                    value="${requirement.date_required || ''}" 
-                                    name="date_required[]" 
-                                    type="date" 
-                                    class="form-control" 
-                                    style="font-size:10px;"
-                                >
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-danger btn-sm deleteRequirement" data-id="${requirement.requirement_id_four}">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        `;
+requirements.forEach((requirement) => {
+    const requirementRow4 = document.createElement('div');
+    requirementRow4.className = 'row mb-3 requirement-fields';
 
-                        // Append the row to the container
-                        requirementFieldsContainer4.appendChild(requirementRow4);
+    // Set the HTML content of the row with requirement data
+    requirementRow4.innerHTML = `
+        <div class="col-md-2">
+            <input 
+                value="${requirement.requirement_four || ''}" 
+                name="requirement_four[]" 
+                type="text" 
+                class="form-control" 
+                placeholder="e.g. Sample Requirement"
+            >
+        </div>
+        <div class="col-md-2">
+            <input 
+                value="${requirement.quantity || ''}" 
+                name="quantity[]" 
+                type="text" 
+                class="form-control" 
+                placeholder="e.g. 50"
+            >
+        </div>
+        <div class="col-md-2">
+            <input 
+                value="${requirement.bill_of_materials || ''}" 
+                name="bill_of_materials[]" 
+                type="text" 
+                class="form-control" 
+                placeholder="e.g. 5000"
+            >
+        </div>
+        <div class="col-md-2">
+            <input 
+                value="${requirement.pricing || ''}" 
+                name="pricing[]" 
+                type="text" 
+                class="form-control" 
+                placeholder="e.g. 2000"
+            >
+        </div>
+        <div class="col-md-2">
+            <input 
+                value="${requirement.date_required || ''}" 
+                name="date_required[]" 
+                type="date" 
+                class="form-control" 
+                style="font-size:10px;"
+            >
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-danger btn-sm deleteRequirement" data-id="${requirement.requirement_id_four}">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
+    `;
 
-                        // Add delete functionality to the button
-                        const deleteButton4 = requirementRow4.querySelector('.deleteRequirement');
-                        deleteButton4.addEventListener('click', () => {
-                            fetch('./dirback/delete_req4.php', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify({
-                                    requirement_id: requirement.requirement_id_four, // Use the requirement ID for deletion
-                                    project_id: projectId // Project ID for context
-                                }),
-                            })
-                            .then((response) => response.json())
-                            .then((data) => {
-                                if (data.status === 'success') {
-                                    // Remove the row from the DOM
-                                    requirementRow4.remove();
+    // Append the row to the container
+    requirementFieldsContainer4.appendChild(requirementRow4);
 
-                                    // Optionally update the requirements array (this line may be omitted if not needed)
-                                    const index = requirements.findIndex(req => req.requirement_id_four === requirement.requirement_id_four);
-                                    if (index > -1) {
-                                        requirements.splice(index, 1);
-                                    }
-                                } else {
-                                    alert('Error: ' + data.message);
-                                }
-                            })
-                            .catch((error) => {
-                                console.error('Error deleting requirement:', error);
-                                alert('Failed to delete requirement. Please try again.');
-                            });
-                        });
-                    });
+    // Add delete functionality to the button
+    const deleteButton4 = requirementRow4.querySelector('.deleteRequirement');
+    deleteButton4.addEventListener('click', () => {
+        fetch('./dirback/delete_req4.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                requirement_id: requirement.requirement_id_four, // Use the requirement ID for deletion
+                project_id: projectId // Project ID for context
+            }),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.status === 'success') {
+                // Remove the row from the DOM
+                requirementRow4.remove();
+
+                // Optionally update the requirements array (this line may be omitted if not needed)
+                const index = requirements.findIndex(req => req.requirement_id_four === requirement.requirement_id_four);
+                if (index > -1) {
+                    requirements.splice(index, 1);
+                }
+            } else {
+                alert('Error: ' + data.message);
+            }
+        })
+        .catch((error) => {
+            console.error('Error deleting requirement:', error);
+            alert('Failed to delete requirement. Please try again.');
+        });
+    });
+});
 
 
                     document.getElementById('stage-five-start').value = data.stages.stage_five.start_date || 'No Data';
