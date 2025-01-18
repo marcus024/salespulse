@@ -212,10 +212,10 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
         if (!isset($carry[$hash])) {
             $carry[$hash] = [
                 'requirement_id_three' => $parts[0] ?? null,
-                'requirement_type' => $parts[1] ?? null,
-                'requirement_quantity' => $parts[2] ?? null,
+                'requirement_three' => $parts[1] ?? null,
+                'quantity' => $parts[2] ?? null,
                 'bill_of_materials' => $parts[3] ?? null,
-                'requirement_remarks' => $parts[4] ?? null,
+                'requirement_remarks_three' => $parts[4] ?? null,
                 'pricing' => $parts[5] ?? null
             ];
         }

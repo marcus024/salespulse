@@ -359,7 +359,7 @@
                         engagementRow3.innerHTML = `
                             <div class="col-md-3">
                                 <input 
-                                    value="${engagement.engagement_type || ''}" 
+                                    value="${engagement.engagement_three || ''}" 
                                     name="engagement_three[]" 
                                     type="text" 
                                     id="engtype3" 
@@ -379,7 +379,7 @@
                             </div>
                             <div class="col-md-5">
                                 <input 
-                                    value="${engagement.engagement_remarks || ''}" 
+                                    value="${engagement.engagement_remarks_three || ''}" 
                                     name="engagement_remarks_three[]" 
                                     type="text" 
                                     id="engremarks3" 
