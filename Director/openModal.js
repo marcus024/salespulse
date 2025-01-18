@@ -562,7 +562,7 @@
                             option.selected = true;
                         }
                     });
-                    const requirements = data.requirement_stage_four || [];
+                    const requirements = data.stages.stage_four.requirement_stage_four || [];
 
                     // Log the data to ensure it’s being received
                     console.log('Fetched Requirements:', requirements);
