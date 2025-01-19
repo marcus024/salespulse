@@ -23,17 +23,6 @@
             })
             .then(data => {
                 if (data.status === 'success') {
-                    //Navigate to the current stage
-                    const currentStage = data.current_stage;
-                    if (currentStage) {
-                        const stageNumber = parseInt(currentStage.split(' ')[1]); // Extract stage number
-                        currentStep = stageNumber;
-                        markCompletedSteps(stageNumber); // Mark previous steps as completed
-                        showStep(stageNumber); // Show the current step
-                    } else {
-                        console.warn("No current stage data found.");
-                    }
-                    
                     console.log(data);
                     document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
                     document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || 'No Data';
@@ -890,7 +879,16 @@
                     });
 
 
-                    
+                    //Navigate to the current stage
+                    const currentStage = data.current_stage;
+                    if (currentStage) {
+                        const stageNumber = parseInt(currentStage.split(' ')[1]); // Extract stage number
+                        currentStep = stageNumber;
+                        markCompletedSteps(stageNumber); // Mark previous steps as completed
+                        showStep(stageNumber); // Show the current step
+                    } else {
+                        console.warn("No current stage data found.");
+                    }
                 } else {
                     console.error('Error:', data.message);
                     console.error('API Error:', data.message);
