@@ -697,7 +697,7 @@
                     });
 
                     // Fetch upsell data for stage five
-                    const upsellData = data.upsell_stage_five || [];
+                    const upsellData = data.stages.stage_five.upsell_stage_five || [];
                     const upsellFieldsContainer = document.getElementById('upsell-fields-container');
                     upsellFieldsContainer.innerHTML = ''; // Clear existing rows
 
