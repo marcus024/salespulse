@@ -1696,7 +1696,7 @@ try {
                                     <!-- Account Manager -->
                                     <div class="col-md-6 mb-2">
                                         <label for="accountManager" class="form-label" style="font-size: 10px; color: #000;">Account Manager</label>
-                                        <input readonly  name="account_manager" type="text" class="form-control" id="accountManager" value="<?php $_SESSION['user_name']; ?>" style="font-size: 10px; color: #000; padding: 5px;" required>
+                                        <input readonly  name="account_manager" type="text" class="form-control" id="accountManager" value="<?php echo $_SESSION['user_name']; ?>" style="font-size: 10px; color: #000; padding: 5px;" required>
                                     </div>
                                 </div>
                                 <div class="row">
