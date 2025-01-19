@@ -1082,7 +1082,7 @@ try {
                                                         <!-- Account Manager -->
                                                         <div class="col-md-4 mb-2">
                                                             <label for="accountManager" class="form-label" style="font-size: 10px; color: #000;">Account Manager</label>
-                                                            <input readonly type="text" class="form-control" id="modalAccountManager" value="<?php $_SESSION['user_name']; ?>" style="font-size: 10px; color: #000; padding: 5px;" required>
+                                                            <input type="text" class="form-control" id="modalAccountManager" placeholder="Enter account manager name" style="font-size: 10px; color: #000; padding: 5px;" required>
                                                         </div>
                                                         <!-- Product Type -->
                                                         <div class="col-md-4 mb-2">
@@ -1696,7 +1696,7 @@ try {
                                     <!-- Account Manager -->
                                     <div class="col-md-6 mb-2">
                                         <label for="accountManager" class="form-label" style="font-size: 10px; color: #000;">Account Manager</label>
-                                        <input name="account_manager" type="text" class="form-control" id="accountManager" placeholder="Enter account manager name" style="font-size: 10px; color: #000; padding: 5px;" required>
+                                        <input readonly  name="account_manager" type="text" class="form-control" id="accountManager" value="<?php $_SESSION['user_name']; ?>" style="font-size: 10px; color: #000; padding: 5px;" required>
                                     </div>
                                 </div>
                                 <div class="row">
