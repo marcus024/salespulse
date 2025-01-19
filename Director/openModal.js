@@ -23,6 +23,17 @@
             })
             .then(data => {
                 if (data.status === 'success') {
+                    //Navigate to the current stage
+                    const currentStage = data.current_stage;
+                    if (currentStage) {
+                        const stageNumber = parseInt(currentStage.split(' ')[1]); // Extract stage number
+                        currentStep = stageNumber;
+                        markCompletedSteps(stageNumber); // Mark previous steps as completed
+                        showStep(stageNumber); // Show the current step
+                    } else {
+                        console.warn("No current stage data found.");
+                    }
+                    
                     console.log(data);
                     document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
                     document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || 'No Data';
@@ -696,49 +707,71 @@
                         }
                     });
 
-                    // Check if data is being received correctly
-console.log("Fetched upsell data:", data.upsell_stage_five);
+                    // Fetch upsell data for stage five
+                    const upsellData = data.upsell_stage_five || [];
+                    const upsellFieldsContainer = document.getElementById('upsell-fields-container');
+                    upsellFieldsContainer.innerHTML = ''; // Clear existing rows
 
-// Fetch upsell data for stage five
-const upsellData = data.upsell_stage_five || [];
-const upsellFieldsContainer = document.getElementById('upsell-fields-container');
-upsellFieldsContainer.innerHTML = ''; // Clear existing rows
+                    upsellData.forEach((upsell) => {
+                        const upsellRow = document.createElement('div');
+                        upsellRow.className = 'row mb-3 upsell-fields';
 
-if (upsellData.length === 0) {
-    console.log("No upsell data available.");
-} else {
-    upsellData.forEach((upsell) => {
-        console.log('Upsell item:', upsell); // Log each upsell to ensure it's correct
+                        // Set the HTML content of the row with upsell data
+                        upsellRow.innerHTML = `
+                            <div class="col-md-2">
+                                <input 
+                                    value="${upsell.upsell || ''}" 
+                                    name="upsell[]" 
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="e.g Router 2000"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <input 
+                                    value="${upsell.bills_materials_upsell || ''}" 
+                                    name="bills_materials_upsell[]" 
+                                    type="number" 
+                                    class="form-control" 
+                                    placeholder="e.g 5000"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <input 
+                                    value="${upsell.quantity_upsell || ''}" 
+                                    name="quantity_upsell[]" 
+                                    type="number" 
+                                    class="form-control" 
+                                    placeholder="e.g 50"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <input 
+                                    value="${upsell.remarks_upsell || ''}" 
+                                    name="remarks_upsell[]" 
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="e.g. Sample Remarks"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <input 
+                                    value="${upsell.amount_upsell || ''}" 
+                                    name="amount_upsell[]" 
+                                    type="number" 
+                                    class="form-control" 
+                                    placeholder="e.g. 6000"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-danger btn-sm deleteUpsellRow" data-id="${upsell.upsell_id_five}">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        `;
 
-        const upsellRow = document.createElement('div');
-        upsellRow.className = 'row mb-3 upsell-fields';
-        upsellRow.innerHTML = `
-            <div class="col-md-2">
-                <input value="${upsell.upsell || ''}" name="upsell[]" type="text" class="form-control" placeholder="e.g Router 2000">
-            </div>
-            <div class="col-md-2">
-                <input value="${upsell.bills_materials_upsell || ''}" name="bills_materials_upsell[]" type="number" class="form-control" placeholder="e.g 5000">
-            </div>
-            <div class="col-md-2">
-                <input value="${upsell.quantity_upsell || ''}" name="quantity_upsell[]" type="number" class="form-control" placeholder="e.g 50">
-            </div>
-            <div class="col-md-2">
-                <input value="${upsell.remarks_upsell || ''}" name="remarks_upsell[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
-            </div>
-            <div class="col-md-2">
-                <input value="${upsell.amount_upsell || ''}" name="amount_upsell[]" type="number" class="form-control" placeholder="e.g. 6000">
-            </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-danger btn-sm deleteUpsellRow" data-id="${upsell.upsell_id_five}">
-                    <i class="fas fa-minus"></i>
-                </button>
-            </div>
-        `;
-
-        // Append the row to the container
-        upsellFieldsContainer.appendChild(upsellRow);
-
-
+                        // Append the row to the container
+                        upsellFieldsContainer.appendChild(upsellRow);
 
                         // Add delete functionality to the button
                         const deleteButton = upsellRow.querySelector('.deleteUpsellRow');
@@ -857,16 +890,7 @@ if (upsellData.length === 0) {
                     });
 
 
-                    //Navigate to the current stage
-                    const currentStage = data.current_stage;
-                    if (currentStage) {
-                        const stageNumber = parseInt(currentStage.split(' ')[1]); // Extract stage number
-                        currentStep = stageNumber;
-                        markCompletedSteps(stageNumber); // Mark previous steps as completed
-                        showStep(stageNumber); // Show the current step
-                    } else {
-                        console.warn("No current stage data found.");
-                    }
+                    
                 } else {
                     console.error('Error:', data.message);
                     console.error('API Error:', data.message);
