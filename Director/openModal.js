@@ -792,99 +792,99 @@
                     });
 
                     // Fetch requirement data for stage five
-const requirementData = data.stages.stage_five.requirement_stage_five || [];
-const requirementFieldsContainer = document.getElementById('requirement-fields-container5');
-requirementFieldsContainer.innerHTML = ''; // Clear existing rows
+                    const requirementData = data.stages.stage_five.requirement_stage_five || [];
+                    const requirementFieldsContainer = document.getElementById('requirement-fields-container5');
+                    requirementFieldsContainer.innerHTML = ''; // Clear existing rows
 
-// If no data is found, log it
-if (requirementData.length === 0) {
-    console.log("No requirement data available.");
-} else {
-    // Loop through each requirement and render a row
-    requirementData.forEach((requirement) => {
-        console.log('Requirement Item:', requirement); // Log the requirement item to ensure it's correct
+                    // If no data is found, log it
+                    if (requirementData.length === 0) {
+                        console.log("No requirement data available.");
+                    } else {
+                        // Loop through each requirement and render a row
+                        requirementData.forEach((requirement) => {
+                            console.log('Requirement Item:', requirement); // Log the requirement item to ensure it's correct
 
-        const requirementRow = document.createElement('div');
-        requirementRow.className = 'row mb-3 requirement-fields';
+                            const requirementRow = document.createElement('div');
+                            requirementRow.className = 'row mb-3 requirement-fields';
 
-        // Create and set the HTML content of the row with requirement data
-        requirementRow.innerHTML = `
-            <div class="col-md-3">
-                <select name="req_five[]" class="form-control">
-                    <option disabled selected>Select Requirement</option>
-                    <option value="cisco-network" ${requirement.req_five === 'cisco-network' ? 'selected' : ''}>Cisco Network</option>
-                    <option value="cloud-computing" ${requirement.req_five === 'cloud-computing' ? 'selected' : ''}>Cloud Computing</option>
-                    <option value="cybersecurity" ${requirement.req_five === 'cybersecurity' ? 'selected' : ''}>Cybersecurity</option>
-                    <option value="database-management" ${requirement.req_five === 'database-management' ? 'selected' : ''}>Database Management</option>
-                    <option value="software-development" ${requirement.req_five === 'software-development' ? 'selected' : ''}>Software Development</option>
-                </select>
-            </div>
-            <div class="col-md-2">
-                <input 
-                    value="${requirement.quantity || ''}" 
-                    name="quantity[]" 
-                    type="number" 
-                    class="form-control" 
-                    placeholder="e.g. 50"
-                >
-            </div>
-            <div class="col-md-2">
-                <input 
-                    value="${requirement.bills_materials_req || ''}" 
-                    name="bills_materials_req[]" 
-                    type="number" 
-                    class="form-control" 
-                    placeholder="e.g. 5000"
-                >
-            </div>
-            <div class="col-md-3">
-                <input 
-                    value="${requirement.remarks_req || ''}" 
-                    name="remarks_req[]" 
-                    type="text" 
-                    class="form-control" 
-                    placeholder="e.g. Sample Requirement Remarks"
-                >
-            </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-danger btn-sm deleteRequirement" data-id="${requirement.requirement_id_five}">
-                    <i class="fas fa-minus"></i>
-                </button>
-            </div>
-        `;
+                            // Create and set the HTML content of the row with requirement data
+                            requirementRow.innerHTML = `
+                                <div class="col-md-3">
+                                    <select name="req_five[]" class="form-control">
+                                        <option disabled selected>Select Requirement</option>
+                                        <option value="cisco-network" ${requirement.req_five === 'cisco-network' ? 'selected' : ''}>Cisco Network</option>
+                                        <option value="cloud-computing" ${requirement.req_five === 'cloud-computing' ? 'selected' : ''}>Cloud Computing</option>
+                                        <option value="cybersecurity" ${requirement.req_five === 'cybersecurity' ? 'selected' : ''}>Cybersecurity</option>
+                                        <option value="database-management" ${requirement.req_five === 'database-management' ? 'selected' : ''}>Database Management</option>
+                                        <option value="software-development" ${requirement.req_five === 'software-development' ? 'selected' : ''}>Software Development</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <input 
+                                        value="${requirement.quantity || ''}" 
+                                        name="quantity[]" 
+                                        type="number" 
+                                        class="form-control" 
+                                        placeholder="e.g. 50"
+                                    >
+                                </div>
+                                <div class="col-md-2">
+                                    <input 
+                                        value="${requirement.bills_materials_req || ''}" 
+                                        name="bills_materials_req[]" 
+                                        type="number" 
+                                        class="form-control" 
+                                        placeholder="e.g. 5000"
+                                    >
+                                </div>
+                                <div class="col-md-3">
+                                    <input 
+                                        value="${requirement.remarks_req || ''}" 
+                                        name="remarks_req[]" 
+                                        type="text" 
+                                        class="form-control" 
+                                        placeholder="e.g. Sample Requirement Remarks"
+                                    >
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-danger btn-sm deleteRequirement" data-id="${requirement.requirement_id_five}">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            `;
 
-        // Append the row to the container
-        requirementFieldsContainer.appendChild(requirementRow);
+                            // Append the row to the container
+                            requirementFieldsContainer.appendChild(requirementRow);
 
-        // Add delete functionality to the button
-        const deleteButton = requirementRow.querySelector('.deleteRequirement');
-        deleteButton.addEventListener('click', () => {
-            fetch('./dirback/delete_req5.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    requirement_id: requirement.requirement_id_five, // Use the requirement ID for deletion
-                    project_id: projectId // Project ID for context
-                }),
-            })
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.status === 'success') {
-                    // Remove the row from the DOM
-                    requirementRow.remove();
-                } else {
-                    alert('Error: ' + data.message);
-                }
-            })
-            .catch((error) => {
-                console.error('Error deleting requirement:', error);
-                alert('Failed to delete requirement. Please try again.');
-            });
-        });
-    });
-}
+                            // Add delete functionality to the button
+                            const deleteButton = requirementRow.querySelector('.deleteRequirement');
+                            deleteButton.addEventListener('click', () => {
+                                fetch('./dirback/delete_req5.php', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        requirement_id: requirement.requirement_id_five, // Use the requirement ID for deletion
+                                        project_id: projectId // Project ID for context
+                                    }),
+                                })
+                                .then((response) => response.json())
+                                .then((data) => {
+                                    if (data.status === 'success') {
+                                        // Remove the row from the DOM
+                                        requirementRow.remove();
+                                    } else {
+                                        alert('Error: ' + data.message);
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.error('Error deleting requirement:', error);
+                                    alert('Failed to delete requirement. Please try again.');
+                                });
+                            });
+                        });
+                    }
 
                     //Navigate to the current stage
                     const currentStage = data.current_stage;
