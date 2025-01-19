@@ -64,7 +64,9 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stagefive.pricing, 'No Data') AS pricing,
                     COALESCE(stagefive.contract_duration, 'No Data') AS contract_duration,
                     COALESCE(stagefive.SPR_number, 'No Data') AS spr_number,
-                    COALESCE(stagefive.billing_type, 'No Data') AS billing_type
+                    COALESCE(stagefive.billing_type, 'No Data') AS billing_type,
+                    GROUP_CONCAT(DISTINCT CONCAT(upsell_tb.upsell_id, ':', upsell_tb.bills_materials_upsell, ':', upsell_tb.quantity_upsell, ':', upsell_tb.remarks_upsell, ':', upsell_tb.upsell, ':', upsell_tb.amount_upsell) ORDER BY upsell_tb.upsell) AS upsell_5,
+                    GROUP_CONCAT(DISTINCT CONCAT(requirement_fivetb.requirement_id_five, ':', requirement_fivetb.req_five, ':', requirement_fivetb.quantity, ':', requirement_fivetb.bills_materials_req, ':', requirement_fivetb.remarks_req) ORDER BY requirement_fivetb.req_five) AS requirement_5,
                 FROM projecttb
                 LEFT JOIN requirementone_tb ON projecttb.project_unique_id = requirementone_tb.project_unique_id
                 LEFT JOIN engagement_twotb ON projecttb.project_unique_id = engagement_twotb.project_unique_id
@@ -72,6 +74,8 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                 LEFT JOIN enagement_threetb ON projecttb.project_unique_id = enagement_threetb.project_unique_id
                 LEFT JOIN requirement_threetb ON projecttb.project_unique_id = requirement_threetb.project_unique_id
                 LEFT JOIN requirement_fourtb ON projecttb.project_unique_id = requirement_fourtb.project_unique_id
+                LEFT JOIN requirement_fivetb ON projecttb.project_unique_id = requirement_fivetb.project_unique_id
+                LEFT JOIN upsell_tb ON projecttb.project_unique_id = upsell_tb.project_unique_id
                 LEFT JOIN stageone ON projecttb.project_unique_id = stageone.project_unique_id
                 LEFT JOIN stagetwo ON projecttb.project_unique_id = stagetwo.project_unique_id
                 LEFT JOIN stagethree ON projecttb.project_unique_id = stagethree.project_unique_id
@@ -252,7 +256,48 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'billing_type' => $result['billing_type'],
                         'contract_duration' => $result['contract_duration'],
                         'pricing' => $result['pricing'],
-                        'spr' => $result['spr_number']
+                        'spr' => $result['spr_number'],
+                        // Process upsell data for stage five
+                        'upsell_stage_five' => isset($result['upsell_5']) 
+                            ? array_values(array_reduce(explode(',', $result['upsell_5']), function ($carry, $upsell) {
+                                $parts = explode(':', $upsell);
+                                $normalizedUpsell = strtolower(trim($parts[4] ?? ''));
+
+                                // Avoid duplicates by checking the normalized upsell value
+                                if (!in_array($normalizedUpsell, array_column($carry, 'upsell'))) {
+                                    $carry[] = [
+                                        'upsell_id_five' => $parts[0] ?? null,
+                                        'bills_materials_upsell' => $parts[1] ?? null,
+                                        'quantity_upsell' => $parts[2] ?? null,
+                                        'remarks_upsell' => $parts[3] ?? null,
+                                        'upsell' => $parts[4] ?? null,
+                                        'amount_upsell' => $parts[5] ?? null
+                                    ];
+                                }
+                                return $carry;
+                            }, []))
+                            : [],
+
+                        // Process requirement data for stage five
+                        'requirement_stage_five' => isset($result['requirement_5']) 
+                            ? array_values(array_reduce(explode(',', $result['requirement_5']), function ($carry, $requirement) {
+                                $parts = explode(':', $requirement);
+                                $normalizedRequirement = strtolower(trim($parts[1] ?? ''));
+
+                                // Avoid duplicates by checking the normalized requirement value
+                                if (!in_array($normalizedRequirement, array_column($carry, 'req_five'))) {
+                                    $carry[] = [
+                                        'requirement_id_five' => $parts[0] ?? null,
+                                        'req_five' => $parts[1] ?? null,
+                                        'quantity' => $parts[2] ?? null,
+                                        'bills_materials_req' => $parts[3] ?? null,
+                                        'remarks_req' => $parts[4] ?? null
+                                    ];
+                                }
+                                return $carry;
+                            }, []))
+                            : [],
+
                     ]
                 ]
             ]);

@@ -719,7 +719,7 @@
                                                         <label for="quantity" class="form-label text-white">Quantity</label>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <label for="bills_materials" class="form-label text-white">Bills of Materials</label>
+                                                        <label for="bills_materials" class="form-label text-white">Bill of Materials</label>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label for="remarks" class="form-label text-white">Remarks</label>
@@ -769,7 +769,7 @@
                                                         <label for="requirement" class="form-label text-white">Upsell</label>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <label for="bills_materials" class="form-label text-white">Bills of Materials</label>
+                                                        <label for="bills_materials" class="form-label text-white">Bill of Materials</label>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <label for="quantity" class="form-label text-white">Quantity</label>

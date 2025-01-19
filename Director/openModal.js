@@ -696,6 +696,189 @@
                         }
                     });
 
+                    // Fetch upsell data for stage five
+                    const upsellData = data.upsell_stage_five || [];
+                    const upsellFieldsContainer = document.getElementById('upsell-fields-container');
+                    upsellFieldsContainer.innerHTML = ''; // Clear existing rows
+
+                    upsellData.forEach((upsell) => {
+                        const upsellRow = document.createElement('div');
+                        upsellRow.className = 'row mb-3 upsell-fields';
+
+                        // Set the HTML content of the row with upsell data
+                        upsellRow.innerHTML = `
+                            <div class="col-md-2">
+                                <input 
+                                    value="${upsell.upsell || ''}" 
+                                    name="upsell[]" 
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="e.g Router 2000"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <input 
+                                    value="${upsell.bills_materials_upsell || ''}" 
+                                    name="bills_materials_upsell[]" 
+                                    type="number" 
+                                    class="form-control" 
+                                    placeholder="e.g 5000"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <input 
+                                    value="${upsell.quantity_upsell || ''}" 
+                                    name="quantity_upsell[]" 
+                                    type="number" 
+                                    class="form-control" 
+                                    placeholder="e.g 50"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <input 
+                                    value="${upsell.remarks_upsell || ''}" 
+                                    name="remarks_upsell[]" 
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="e.g. Sample Remarks"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <input 
+                                    value="${upsell.amount_upsell || ''}" 
+                                    name="amount_upsell[]" 
+                                    type="number" 
+                                    class="form-control" 
+                                    placeholder="e.g. 6000"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-danger btn-sm deleteUpsellRow" data-id="${upsell.upsell_id_five}">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        `;
+
+                        // Append the row to the container
+                        upsellFieldsContainer.appendChild(upsellRow);
+
+                        // Add delete functionality to the button
+                        const deleteButton = upsellRow.querySelector('.deleteUpsellRow');
+                        deleteButton.addEventListener('click', () => {
+                            fetch('./dirback/delete_upsell5.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    upsell_id: upsell.upsell_id_five, // Use the upsell ID for deletion
+                                    project_id: projectId // Project ID for context
+                                }),
+                            })
+                            .then((response) => response.json())
+                            .then((data) => {
+                                if (data.status === 'success') {
+                                    // Remove the row from the DOM
+                                    upsellRow.remove();
+                                } else {
+                                    alert('Error: ' + data.message);
+                                }
+                            })
+                            .catch((error) => {
+                                console.error('Error deleting upsell:', error);
+                                alert('Failed to delete upsell. Please try again.');
+                            });
+                        });
+                    });
+
+                    // Fetch requirement data for stage five
+                    const requirementData = data.requirement_stage_five || [];
+                    const requirementFieldsContainer = document.getElementById('requirement-fields-container5');
+                    requirementFieldsContainer.innerHTML = ''; // Clear existing rows
+
+                    requirementData.forEach((requirement) => {
+                        const requirementRow = document.createElement('div');
+                        requirementRow.className = 'row mb-3 requirement-fields';
+
+                        // Set the HTML content of the row with requirement data
+                        requirementRow.innerHTML = `
+                            <div class="col-md-3">
+                                <select name="req_five[]" class="form-control">
+                                    <option disabled selected>Select Requirement</option>
+                                    <option value="cisco-network" ${requirement.req_five === 'cisco-network' ? 'selected' : ''}>Cisco Network</option>
+                                    <option value="cloud-computing" ${requirement.req_five === 'cloud-computing' ? 'selected' : ''}>Cloud Computing</option>
+                                    <option value="cybersecurity" ${requirement.req_five === 'cybersecurity' ? 'selected' : ''}>Cybersecurity</option>
+                                    <option value="database-management" ${requirement.req_five === 'database-management' ? 'selected' : ''}>Database Management</option>
+                                    <option value="software-development" ${requirement.req_five === 'software-development' ? 'selected' : ''}>Software Development</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <input 
+                                    value="${requirement.quantity || ''}" 
+                                    name="quantity[]" 
+                                    type="number" 
+                                    class="form-control" 
+                                    placeholder="e.g. 50"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <input 
+                                    value="${requirement.bills_materials_req || ''}" 
+                                    name="bills_materials_req[]" 
+                                    type="number" 
+                                    class="form-control" 
+                                    placeholder="e.g. 5000"
+                                >
+                            </div>
+                            <div class="col-md-3">
+                                <input 
+                                    value="${requirement.remarks_req || ''}" 
+                                    name="remarks_req[]" 
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="e.g. Sample Requirement Remarks"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-danger btn-sm deleteRequirement" data-id="${requirement.requirement_id_five}">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        `;
+
+                        // Append the row to the container
+                        requirementFieldsContainer.appendChild(requirementRow);
+
+                        // Add delete functionality to the button
+                        const deleteButton = requirementRow.querySelector('.deleteRequirement');
+                        deleteButton.addEventListener('click', () => {
+                            fetch('./dirback/delete_req5.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    requirement_id: requirement.requirement_id_five, // Use the requirement ID for deletion
+                                    project_id: projectId // Project ID for context
+                                }),
+                            })
+                            .then((response) => response.json())
+                            .then((data) => {
+                                if (data.status === 'success') {
+                                    // Remove the row from the DOM
+                                    requirementRow.remove();
+                                } else {
+                                    alert('Error: ' + data.message);
+                                }
+                            })
+                            .catch((error) => {
+                                console.error('Error deleting requirement:', error);
+                                alert('Failed to delete requirement. Please try again.');
+                            });
+                        });
+                    });
+
+
                     //Navigate to the current stage
                     const currentStage = data.current_stage;
                     if (currentStage) {
@@ -709,7 +892,7 @@
                 } else {
                     console.error('Error:', data.message);
                     console.error('API Error:', data.message);
-                    alert('Waray data: ' + data.message);
+                    alert('No data: ' + data.message);
                 }
             })
             .catch(error => {
