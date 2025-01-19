@@ -66,7 +66,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stagefive.SPR_number, 'No Data') AS spr_number,
                     COALESCE(stagefive.billing_type, 'No Data') AS billing_type,
                     GROUP_CONCAT(DISTINCT CONCAT(upsell_tb.upsell_id, ':', upsell_tb.bills_materials_upsell, ':', upsell_tb.quantity_upsell, ':', upsell_tb.remarks_upsell, ':', upsell_tb.upsell, ':', upsell_tb.amount_upsell) ORDER BY upsell_tb.upsell) AS upsell_5,
-                    GROUP_CONCAT(DISTINCT CONCAT(requirement_fivetb.requirement_id_five, ':', requirement_fivetb.req_five, ':', requirement_fivetb.quantity, ':', requirement_fivetb.bills_materials_req, ':', requirement_fivetb.remarks_req) ORDER BY requirement_fivetb.req_five) AS requirement_5
+                    GROUP_CONCAT(DISTINCT CONCAT(requirementfive_tb.requirement_id_five, ':', requirementfive_tb.req_five, ':', requirementfive_tb.quantity, ':', requirementfive_tb.bills_materials_req, ':', requirementfive_tb.remarks_req) ORDER BY requirementfive_tb.req_five) AS requirement_5
                 FROM projecttb
                 LEFT JOIN requirementone_tb ON projecttb.project_unique_id = requirementone_tb.project_unique_id
                 LEFT JOIN engagement_twotb ON projecttb.project_unique_id = engagement_twotb.project_unique_id
@@ -74,7 +74,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                 LEFT JOIN enagement_threetb ON projecttb.project_unique_id = enagement_threetb.project_unique_id
                 LEFT JOIN requirement_threetb ON projecttb.project_unique_id = requirement_threetb.project_unique_id
                 LEFT JOIN requirement_fourtb ON projecttb.project_unique_id = requirement_fourtb.project_unique_id
-                LEFT JOIN requirement_fivetb ON projecttb.project_unique_id = requirement_fivetb.project_unique_id
+                LEFT JOIN requirementfive_tb ON projecttb.project_unique_id = requirementfive_tb.project_unique_id
                 LEFT JOIN upsell_tb ON projecttb.project_unique_id = upsell_tb.project_unique_id
                 LEFT JOIN stageone ON projecttb.project_unique_id = stageone.project_unique_id
                 LEFT JOIN stagetwo ON projecttb.project_unique_id = stagetwo.project_unique_id
