@@ -792,7 +792,7 @@
                     });
 
                     // Fetch requirement data for stage five
-const requirementData = data.requirement_stage_five || [];
+const requirementData = data.stages.stage_five.requirement_stage_five || [];
 const requirementFieldsContainer = document.getElementById('requirement-fields-container5');
 requirementFieldsContainer.innerHTML = ''; // Clear existing rows
 
