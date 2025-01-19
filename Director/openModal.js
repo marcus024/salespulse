@@ -765,7 +765,7 @@
                         // Add delete functionality to the button
                         const deleteButton = upsellRow.querySelector('.deleteUpsellRow');
                         deleteButton.addEventListener('click', () => {
-                            fetch('./dirback/delete_upsell5.php', {
+                            fetch('./dirback/delete_upsell.php', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json',
