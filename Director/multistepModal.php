@@ -111,16 +111,16 @@
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
                                             <div class="row mb-3">
                                                 <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Start Date</label>
-                                                    <input type="text" class="form-control" id="stage-two-start" readonly>
+                                                    <label for="startDate" class="form-label">Status</label>
+                                                    <input  id="status-placeholder" type="text" class="form-control" readonly>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">End Date</label>
-                                                    <input type="text" class="form-control" id="stage-two-end"   readonly>
+                                                    <label for="startDate" class="form-label">Start Date</label>
+                                                    <input  id="start-date-placeholder" type="text" class="form-control" readonly>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Status</label>
-                                                    <input type="text" class="form-control" id="stage-two-status"   readonly>
+                                                    <label for="endDate" class="form-label">End Date</label>
+                                                    <input  id="end-date-placeholder" type="text" class="form-control" readonly>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="technology" class="form-label text-white">Technology</label>
@@ -220,21 +220,18 @@
                                                         <input name="product" id="product1" type="text" class="form-control" placeholder="e.g. Cisco" >
                                                     </div>
                                                     <div class="mb-2">
-                                                         <div class="mb-2">
-                                                        <label for="startDate" class="form-label">Status</label>
-                                                        <input  id="status-placeholder" type="text" class="form-control" readonly>
+                                                    <div class="mb-2">
+                                                        
                                                     </div>
                                                     </div>
                                                     <div class="mb-2">
-                                                        <label for="startDate" class="form-label">Start Date</label>
-                                                        <input  id="start-date-placeholder" type="text" class="form-control" readonly>
+                                                        
                                                     </div>
                                                     <div class="mb-2">
                                                         <input name="project_unique_id" id="project-unique-id" type="hidden" value="<?php echo $projectId; ?>" class="form-control" readonly>
                                                     </div>
                                                     <div class="mb-2">
-                                                        <label for="endDate" class="form-label">End Date</label>
-                                                        <input  id="end-date-placeholder" type="text" class="form-control" readonly>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
