@@ -1104,6 +1104,7 @@
         console.log("Backend response:", result);
         if (result.message === `Step ${currentStep} data processed successfully`) {
             alert(`Step ${currentStep} saved successfully!`);
+            showNotification('Data saved successfully!', true);
         } else {
             alert(`Unexpected response: ${result.message}`);
         }
