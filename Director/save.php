@@ -95,12 +95,18 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
                 INSERT INTO requirementone_tb (project_unique_id, requirement_one) 
                 VALUES (?, ?)
             ");
-            
+
             // Loop through requirements and check for existing IDs
             foreach ($inputData['requirement_one'] as $index => $requirement) {
+                // Skip if the requirement is empty or null
+                if (empty($requirement)) {
+                    continue; // Skip to the next iteration if the value is empty or null
+                }
+
                 // Check if there's a requirement_id for update
                 if (isset($inputData['requirement_ids'][$index])) {
                     $requirementId = $inputData['requirement_ids'][$index];
+
                     // Update existing requirement
                     $updateQuery = "
                         UPDATE requirementone_tb 
@@ -114,7 +120,7 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
                         $projectUniqueId
                     ]);
                 } else {
-                    // Insert new requirement if no ID exists
+                    // Insert new requirement if no ID exists and the requirement is not empty
                     $reqStmt->execute([
                         $projectUniqueId,
                         htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8')
@@ -122,7 +128,7 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
                 }
             }
         }
-        
+
         return "Stage One updated successfully.";
     } catch (Exception $e) {
         error_log("Error in Stage One: " . $e->getMessage());
