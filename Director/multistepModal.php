@@ -54,7 +54,7 @@
                     font-family: 'Poppins';
                 }
                 #multiStepModal .modal-dialog {
-                    max-width: 800px; /* Increased width */
+                    max-width: 1000px; /* Increased width */
                 }
                 #multiStepModal .form-container {
                     background-color: #009393;
