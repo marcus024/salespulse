@@ -576,6 +576,17 @@ include_once('dirback/dirviewback.php');
                                                                 style="position: absolute; bottom: 10px; right: 10px;">
                                                                 <i class="fas fa-play"></i> Start Journey
                                                             </button>
+                                                        <?php elseif ($status == 'Completed'): ?>
+                                                        <!-- Original logic: if not 'Ongoing', show "Start Journey" -->
+                                                        <button 
+                                                        
+                                                            class="btn btn-white play-btn" 
+                                                            id="startJourneyButton" 
+                                                            data-bs-toggle="modal" 
+                                                            data-bs-target="#startJourneyModal" 
+                                                            style="position: absolute; bottom: 10px; right: 10px; display:none;">
+                                                            <i class="fas fa-play"></i> Start Journey
+                                                        </button>
                                                         <?php else: ?>
                                                             <!-- Otherwise, show "Continue Journey" -->
                                                             <button 
