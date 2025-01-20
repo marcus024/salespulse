@@ -673,6 +673,8 @@ include_once('dirback/dirviewback.php');
                                                             border-color: #ddd;
                                                             cursor: not-allowed;
                                                         }
+
+
                                                     </style>
                                                     <!-- Start Journey Modal -->
                                                     <div class="modal fade" id="startJourneyModal" tabindex="-1" aria-labelledby="startJourneyModalLabel" aria-hidden="true">
@@ -687,14 +689,7 @@ include_once('dirback/dirviewback.php');
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                    <button 
-                                                                        type="button" 
-                                                                        class="btn" 
-                                                                        style="font-size:15px; font-family:'Poppins'; color: white; background: #36b9cc"
-                                                                        onclick="startPhase()" 
-                                                                    >
-                                                                        Yes, Start Journey
-                                                                    </button>
+                                                                    <button type="button" class="btn " style="font-size:15px; font-family:'Poppins'; color: white; background: #36b9cc" onclick="startPhase()" >Yes, Start Journey</button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -936,33 +931,34 @@ function startPhase() {
                 alert(response.message); // Display the error message
             } else {
                 // Update the button text based on the project status
-                openModal(projectId);
                 var button = document.querySelector(".play-btn");
 
                 if (response.project_status === 'Ongoing') {
                     button.innerHTML = '<i class="fas fa-play"></i> Continue Journey'; // Change text to Continue Journey
                     button.id = "continueJourneyButton"; // Update the button ID
                     button.setAttribute("onclick", "continuePhase()"); // Update the onclick action
-                
                 } else {
                     button.innerHTML = '<i class="fas fa-play"></i> Start Journey'; // Default text
                 }
 
-                // Dismiss the start journey modal programmatically
-                var startModal = document.getElementById("startJourneyModal");
-                var startModalInstance = bootstrap.Modal.getInstance(startModal);
-                startModalInstance.hide();
+                // Dismiss the modal programmatically
+                var modal = document.getElementById("startJourneyModal");
+                var modalInstance = bootstrap.Modal.getInstance(modal);
+                modalInstance.hide();
 
-                // Open the multi-step modal after starting the journey
+                // Now, open the multiStepModal
                 var multiStepModal = new bootstrap.Modal(document.getElementById('multiStepModal'));
                 multiStepModal.show();
+
+                // Optionally, you can pass the project ID to the multiStepModal if needed
+                openModal(projectId);
+
             }
         } else {
             alert("Failed to update start date.");
         }
     };
 }
-
 
 // Function to check project status on page load
 function checkProjectStatus() {
