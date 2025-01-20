@@ -552,55 +552,70 @@ include_once('dirback/dirviewback.php');
                                                 </style>
 
                                                     <div class="container" style="background-color: #36b9cc; padding-top: 100px; border-radius: 20px; position: relative;">
-                                                        <?php
-                                                       $stageFiveStatus = isset($project_data['stage_five']['status_stage_five']) 
-                                                        ? htmlspecialchars($project_data['stage_five']['status_stage_five']) 
-                                                        : null;
- 
-                                                        if ($stageFiveStatus === 'Completed'): ?>
-                                                            <!-- Show the "Complete Project" button -->
-                                                           <button 
-                                                                class="btn btn-white play-btn" 
-                                                                id="completeProjectButton" 
-                                                                onclick="completeProject('<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
-                                                                style="position: absolute; bottom: 10px; right: 10px;">
-                                                                <i class="fas fa-play"></i> Complete Project
-                                                            </button>
-                                                        <?php elseif ($status == 'Not Yet Started'): ?>
-                                                            <!-- Original logic: if not 'Ongoing', show "Start Journey" -->
-                                                            <button 
-                                                                class="btn btn-white play-btn" 
-                                                                id="startJourneyButton" 
-                                                                data-bs-toggle="modal" 
-                                                                data-bs-target="#startJourneyModal" 
-                                                                style="position: absolute; bottom: 10px; right: 10px;">
-                                                                <i class="fas fa-play"></i> Start Journey
-                                                            </button>
-                                                        <?php elseif ($status == 'Completed'): ?>
-                                                        <!-- Original logic: if not 'Ongoing', show "Start Journey" -->
-                                                        <button 
-                                                        
-                                                            class="btn btn-white play-btn" 
-                                                            id="startJourneyButton" 
-                                                            data-bs-toggle="modal" 
-                                                            data-bs-target="#startJourneyModal" 
-                                                            style="position: absolute; bottom: 10px; right: 10px; display:none;">
-                                                            <i class="fas fa-play"></i> Start Journey
-                                                        </button>
-                                                        <?php else: ?>
-                                                            <!-- Otherwise, show "Continue Journey" -->
-                                                            <button 
-                                                                class="btn btn-white play-btn" 
-                                                                id="continueJourneyButton" 
-                                                                data-bs-toggle="modal" 
-                                                                data-bs-target="#multiStepModal" 
-                                                                onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
-                                                                style="position: absolute; bottom: 10px; right: 10px;">
-                                                                <i class="fas fa-play"></i> Continue Journey
-                                                            </button>
-                                                            
-                                                        <?php endif; ?>
-                                                    </div>
+    <?php
+    $stageFiveStatus = isset($project_data['stage_five']['status_stage_five']) 
+        ? htmlspecialchars($project_data['stage_five']['status_stage_five']) 
+        : null;
+    
+    // Check if the project status is 'Completed', hide the buttons if true
+    if ($status === 'Completed'): ?>
+        <!-- Hide the buttons if the project is completed -->
+        <button 
+            class="btn btn-white play-btn" 
+            id="completeProjectButton" 
+            style="display: none;" 
+            disabled
+        >
+            <i class="fas fa-play"></i> Complete Project
+        </button>
+        <button 
+            class="btn btn-white play-btn" 
+            id="startJourneyButton" 
+            style="display: none;" 
+            disabled
+        >
+            <i class="fas fa-play"></i> Start Journey
+        </button>
+        <button 
+            class="btn btn-white play-btn" 
+            id="continueJourneyButton" 
+            style="display: none;" 
+            disabled
+        >
+            <i class="fas fa-play"></i> Continue Journey
+        </button>
+    <?php elseif ($stageFiveStatus === 'Completed'): ?>
+        <!-- If Stage Five is completed, show the "Complete Project" button, but hide the others -->
+        <button 
+            class="btn btn-white play-btn" 
+            id="completeProjectButton" 
+            onclick="completeProject('<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
+            style="position: absolute; bottom: 10px; right: 10px;">
+            <i class="fas fa-play"></i> Complete Project
+        </button>
+    <?php elseif ($status == 'Not Yet Started'): ?>
+        <!-- Show the "Start Journey" button if project status is 'Not Yet Started' -->
+        <button 
+            class="btn btn-white play-btn" 
+            id="startJourneyButton" 
+            data-bs-toggle="modal" 
+            data-bs-target="#startJourneyModal" 
+            style="position: absolute; bottom: 10px; right: 10px;">
+            <i class="fas fa-play"></i> Start Journey
+        </button>
+    <?php else: ?>
+        <!-- Otherwise, show "Continue Journey" -->
+        <button 
+            class="btn btn-white play-btn" 
+            id="continueJourneyButton" 
+            data-bs-toggle="modal" 
+            data-bs-target="#multiStepModal" 
+            onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
+            style="position: absolute; bottom: 10px; right: 10px;">
+            <i class="fas fa-play"></i> Continue Journey
+        </button>
+    <?php endif; ?>
+</div>
 
                                                     <style>
                                                         .btn.play-btn {
