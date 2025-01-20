@@ -912,62 +912,73 @@ include_once('dirback/dirviewback.php');
     </script>
     <script>
         // Function to start the phase
-function startPhase() {
-    // Fetch the project ID from the <strong> tag
-    var projectId = document.querySelector("#project-id-placeholder strong").textContent.trim();
-    console.log("Project ID from HTML: " + projectId); // Debugging line to confirm the project ID
+        function startPhase() {
+            // Fetch the project ID from the <strong> tag
+            var projectId = document.querySelector("#project-id-placeholder strong").textContent.trim();
+            console.log("Project ID from HTML: " + projectId); // Debugging line to confirm the project ID
 
-    // Get the current date in YYYY-MM-DD format
-    var currentDate = new Date().toISOString().slice(0, 10);
+            // Get the current date in YYYY-MM-DD format
+            var currentDate = new Date().toISOString().slice(0, 10);
 
-    // Create an AJAX request
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "start_project.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            // Create an AJAX request
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "start_project.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-    // Send the start date and project ID to the server
-    xhr.send("start_date=" + encodeURIComponent(currentDate) + "&project_id=" + encodeURIComponent(projectId));
+            // Send the start date and project ID to the server
+            xhr.send("start_date=" + encodeURIComponent(currentDate) + "&project_id=" + encodeURIComponent(projectId));
 
-    // Handle the response
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            var response = JSON.parse(xhr.responseText); // Assuming the response is JSON
-            console.log(response); // Debugging line to check the response
+            // Handle the response
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText); // Assuming the response is JSON
+                    console.log(response); // Debugging line to check the response
 
-            if (response.status === 'error') {
-                // Handle error (project not found or access denied)
-                alert(response.message); // Display the error message
-            } else {
-                // Update the button text based on the project status
-                var button = document.querySelector(".play-btn");
+                    if (response.status === 'error') {
+                        // Handle error (project not found or access denied)
+                        alert(response.message); // Display the error message
+                    } else {
+                        // Update the button text based on the project status
+                        var button = document.querySelector(".play-btn");
 
-                if (response.project_status === 'Ongoing') {
-                    button.innerHTML = '<i class="fas fa-play"></i> Continue Journey'; // Change text to Continue Journey
-                    button.id = "continueJourneyButton"; // Update the button ID
-                    button.setAttribute("onclick", "continuePhase()"); // Update the onclick action
+                        if (response.project_status === 'Ongoing') {
+                            button.innerHTML = '<i class="fas fa-play"></i> Continue Journey'; // Change text to Continue Journey
+                            button.id = "continueJourneyButton"; // Update the button ID
+                            button.setAttribute("onclick", "continuePhase()"); // Update the onclick action
+                        } else {
+                            button.innerHTML = '<i class="fas fa-play"></i> Start Journey'; // Default text
+                        }
+
+                        // Dismiss the start journey modal
+                        var startJourneyModal = document.getElementById("startJourneyModal");
+                        var startJourneyModalInstance = bootstrap.Modal.getInstance(startJourneyModal);
+                        startJourneyModalInstance.hide();
+
+                        // Wait for the modal to close before opening the next one
+                        setTimeout(function() {
+                            // Simulate the click on the "Continue Journey" button
+                            var continueButton = document.getElementById('continue-btn');
+                            if (continueButton) {
+                                continueButton.click(); // Simulate a click to continue the journey
+                            }
+
+                            // Get the multiStepModal element
+                            var multiStepModal = document.getElementById('multiStepModal');
+                            if (multiStepModal) {
+                                // Initialize and show the multiStepModal
+                                var multiStepModalInstance = new bootstrap.Modal(multiStepModal);
+                                multiStepModalInstance.show();
+                            } else {
+                                console.error("multiStepModal element not found.");
+                            }
+                        }, 300); // Delay of 300ms to ensure the modal closes before opening the next one
+                    }
                 } else {
-                    button.innerHTML = '<i class="fas fa-play"></i> Start Journey'; // Default text
+                    alert("Failed to update start date.");
                 }
-
-                // Dismiss the modal programmatically
-                var modal = document.getElementById("startJourneyModal");
-                var modalInstance = bootstrap.Modal.getInstance(modal);
-                modalInstance.hide();
-
-                var continueButton = document.getElementById('continue-btn');
-                if (continueButton) {
-                    continueButton.click(); // Simulate a click to continue the journey
-                }
-
-                var multiStepModal = document.getElementById('multiStepModal');
-                var multiStepModalInstance = new bootstrap.Modal(multiStepModal);
-                multiStepModalInstance.show(); 
-            }
-        } else {
-            alert("Failed to update start date.");
+            };
         }
-    };
-}
+
 
 // Function to check project status on page load
 function checkProjectStatus() {
