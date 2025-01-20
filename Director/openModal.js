@@ -40,6 +40,21 @@
                         currentStep = stageNumber;
                         markCompletedSteps(stageNumber); // Mark previous steps as completed
                         showStep(stageNumber); // Show the current step
+                         if (stageNumber === 1) {
+                            fetchStageOne(data);
+                        } else if (stageNumber === 2) {
+                            fetchStageOne(data);
+                            fetchStageTwo(data);
+                        } else if (stageNumber === 3) {
+                            fetchStageTwo(data);
+                            fetchStageThree(data);
+                        } else if (stageNumber === 4) {
+                            fetchStageThree(data);
+                            fetchStageFour(data);
+                        } else if (stageNumber === 5) {
+                            fetchStageFour(data);
+                            fetchStageFive(data);
+                        }
                     } else {
                         console.warn("No current stage data found.");
                     }
