@@ -954,6 +954,7 @@ function startPhase() {
                 var modal = document.getElementById("startJourneyModal");
                 var modalInstance = bootstrap.Modal.getInstance(modal);
                 modalInstance.hide();
+                openModal(projectId);
             }
         } else {
             alert("Failed to update start date.");
