@@ -689,7 +689,16 @@ include_once('dirback/dirviewback.php');
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                    <button type="button" class="btn " style="font-size:15px; font-family:'Poppins'; color: white; background: #36b9cc" onclick="startPhase()">Yes, Start Journey</button>
+                                                                    <button 
+                                                                        type="button" 
+                                                                        class="btn" 
+                                                                        style="font-size:15px; font-family:'Poppins'; color: white; background: #36b9cc"
+                                                                        onclick="startPhase(); openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>');"
+                                                                        data-bs-toggle="modal" 
+                                                                        data-bs-target="#multiStepModal"
+                                                                    >
+                                                                        Yes, Start Journey
+                                                                    </button>
                                                                 </div>
                                                             </div>
                                                         </div>
