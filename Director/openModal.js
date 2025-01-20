@@ -1,4 +1,4 @@
- async function openModal(projectId) {
+ function openModal(projectId) {
         console.log("Received Project ID:", projectId);
         if (!projectId) {
             console.error("No project ID provided.");

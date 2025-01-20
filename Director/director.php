@@ -741,47 +741,47 @@ include("../auth/db.php");
                                             $ongoing_projects = [];
                                             $completed_projects = [];
                                             $cancelled_projects = [];
-try {
-    $sql = "
-        SELECT 
-            p.project_unique_id, 
-            p.company_name, 
-            p.status,
-            p.start_date,
-            sf.status_stage_five
-        FROM 
-            projecttb p
-        INNER JOIN 
-            salesauth s 
-        ON 
-            p.user_id_cur = s.user_id_current
-        LEFT JOIN 
-            stagefive sf
-        ON 
-            p.project_unique_id = sf.project_unique_id
-        WHERE 
-            s.user_id_current = :current_user
-    ";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':current_user', $user_id, PDO::PARAM_STR);
-    $stmt->execute();
+                                            try {
+                                                $sql = "
+                                                    SELECT 
+                                                        p.project_unique_id, 
+                                                        p.company_name, 
+                                                        p.status,
+                                                        p.start_date,
+                                                        sf.status_stage_five
+                                                    FROM 
+                                                        projecttb p
+                                                    INNER JOIN 
+                                                        salesauth s 
+                                                    ON 
+                                                        p.user_id_cur = s.user_id_current
+                                                    LEFT JOIN 
+                                                        stagefive sf
+                                                    ON 
+                                                        p.project_unique_id = sf.project_unique_id
+                                                    WHERE 
+                                                        s.user_id_current = :current_user
+                                                ";
+                                                $stmt = $conn->prepare($sql);
+                                                $stmt->bindParam(':current_user', $user_id, PDO::PARAM_STR);
+                                                $stmt->execute();
 
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        // Include the stage 5 status in each project row
-        $row['status_stage_five'] = $row['status_stage_five'] ?? null;
+                                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                                    // Include the stage 5 status in each project row
+                                                    $row['status_stage_five'] = $row['status_stage_five'] ?? null;
 
-        if ($row['status'] === 'Ongoing') {
-            $ongoing_projects[] = $row;
-        } elseif ($row['status'] === 'Completed') {
-            $completed_projects[] = $row;
-        } elseif ($row['status'] === 'Cancelled') {
-            $cancelled_projects[] = $row;
-        }
-    }
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-}
- catch (PDOException $e) {
+                                                    if ($row['status'] === 'Ongoing') {
+                                                        $ongoing_projects[] = $row;
+                                                    } elseif ($row['status'] === 'Completed') {
+                                                        $completed_projects[] = $row;
+                                                    } elseif ($row['status'] === 'Cancelled') {
+                                                        $cancelled_projects[] = $row;
+                                                    }
+                                                }
+                                            } catch (PDOException $e) {
+                                                echo "Error: " . $e->getMessage();
+                                            }
+                                            catch (PDOException $e) {
                                                 echo "<script>alert('Error: " . $e->getMessage() . "'); window.history.back();</script>";
                                             }
                                             ?>
