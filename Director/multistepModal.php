@@ -189,7 +189,7 @@
                                                 <div class="col-md-12">
                                                     <label for="remarks" class="form-label text-white">Stage Remarks</label>
                                                     <textarea name="stage_one_remarks" class="form-control" id="stageremarks1" placeholder="e.g. Sample Remarks" 
-                                                    style="height: 300px;"></textarea>
+                                                    style="height: 100px;"></textarea>
                                                 </div>
                                             </div> 
                                             <style>
