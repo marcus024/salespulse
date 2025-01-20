@@ -109,6 +109,31 @@
                                     </div>
                                     <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
+                                            <div class="row mb-3">
+                                                <div class="col-md-3">
+                                                    <label for="requirement" class="form-label text-white">Start Date</label>
+                                                    <input type="text" class="form-control" id="stage-two-start" readonly>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="requirement" class="form-label text-white">End Date</label>
+                                                    <input type="text" class="form-control" id="stage-two-end"   readonly>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="requirement" class="form-label text-white">Status</label>
+                                                    <input type="text" class="form-control" id="stage-two-status"   readonly>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="technology" class="form-label text-white">Technology</label>
+                                                    <select name="technology" class="form-control custom-select" id="technology2">
+                                                        <option disabled>Select</option>
+                                                        <option value="Artificial Intelligence" >Artificial Intelligence</option>
+                                                        <option value="Machine Learning" >Machine Learning</option>
+                                                        <option value="Blockchain" >Blockchain</option>
+                                                        <option value="Internet of Things (IoT)" >Internet of Things (IoT)</option>
+                                                        <option value="Cloud Computing" >Cloud Computing</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col-md-5">
                                                     <div class="mb-2">
@@ -253,7 +278,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                             <div class="row mb-3">
+                                            <div class="row mb-3">
                                                 <div class="col-md-3">
                                                     <label for="dealSize" class="form-label text-white">Deal Size</label>
                                                     <input name="deal_size" type="number" class="form-control" id="deal_size2" placeholder="e.g. 5000">
