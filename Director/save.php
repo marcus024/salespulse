@@ -67,8 +67,9 @@ try {
 // Helper functions for different stages
 
 function updateStageOne($conn, $projectUniqueId, $inputData) {
-    // Implementation already provided
+    // Implementation for other stage one data
     try {
+        // Update other fields as before
         $query = "UPDATE stageone SET 
             solution = ?, 
             technology = ?, 
@@ -88,18 +89,40 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        // Handle requirements
+        // Handle requirements (update or insert based on presence of requirement_id_one)
         if (!empty($inputData['requirement_one'])) {
-            $requirementQuery = "INSERT INTO requirementone_tb (project_unique_id, requirement_one) 
-                                 VALUES (?, ?)";
-            $reqStmt = $conn->prepare($requirementQuery);
-
-            foreach ($inputData['requirement_one'] as $requirement) {
-                if (!empty($requirement)) {
-                    $reqStmt->execute([$projectUniqueId, htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8')]);
+            $reqStmt = $conn->prepare("
+                INSERT INTO requirementone_tb (project_unique_id, requirement_one) 
+                VALUES (?, ?)
+            ");
+            
+            // Loop through requirements and check for existing IDs
+            foreach ($inputData['requirement_one'] as $index => $requirement) {
+                // Check if there's a requirement_id for update
+                if (isset($inputData['requirement_ids'][$index])) {
+                    $requirementId = $inputData['requirement_ids'][$index];
+                    // Update existing requirement
+                    $updateQuery = "
+                        UPDATE requirementone_tb 
+                        SET requirement_one = ? 
+                        WHERE requirement_id_one = ? AND project_unique_id = ?
+                    ";
+                    $updateStmt = $conn->prepare($updateQuery);
+                    $updateStmt->execute([
+                        htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8'),
+                        $requirementId,
+                        $projectUniqueId
+                    ]);
+                } else {
+                    // Insert new requirement if no ID exists
+                    $reqStmt->execute([
+                        $projectUniqueId,
+                        htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8')
+                    ]);
                 }
             }
         }
+        
         return "Stage One updated successfully.";
     } catch (Exception $e) {
         error_log("Error in Stage One: " . $e->getMessage());

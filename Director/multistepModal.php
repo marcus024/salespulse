@@ -889,122 +889,122 @@
                     </div>
                 </div>
             </div>
-            
-<script>
-    let currentStep = 1;
-    const totalSteps = 5;
-    let projectId = ""; // Variable to hold the Project ID
+                
+    <script>
+        let currentStep = 1;
+        const totalSteps = 5;
+        let projectId = ""; // Variable to hold the Project ID
 
-    // Function to display the correct step
-    function showStep(step) {
-        for (let i = 1; i <= totalSteps; i++) {
-            document.getElementById(`step${i}`).classList.add('d-none');
-        }
-        document.getElementById(`step${step}`).classList.remove('d-none');
-    }
-
-    
-    function updateProjectId() {
-        if (currentStep === 1) {
-            const projectIdElement = document.getElementById('project-id-placeholder');
-            if (projectIdElement) {
-                projectId = projectIdElement.textContent.trim();
-                console.log("Project ID retrieved:", projectId); 
+        // Function to display the correct step
+        function showStep(step) {
+            for (let i = 1; i <= totalSteps; i++) {
+                document.getElementById(`step${i}`).classList.add('d-none');
             }
+            document.getElementById(`step${step}`).classList.remove('d-none');
         }
-        document.querySelectorAll('.project-id-display span').forEach(el => {
-            el.textContent = projectId || "[Project ID]";
-        });
-        console.log("Updated Project ID in all displays:", projectId);
-    }
 
-    
-    document.getElementById('completeButton').addEventListener('click', async () => {
-        if (!confirm(`Are you sure you want to complete Step ${currentStep}?`)) {
-            return;
-        }
-        const projectIdInput = document.getElementById('project-unique-id');
-        const projectIdValue = projectIdInput ? projectIdInput.value.trim() : null;
-        if (!projectIdValue) {
-            alert("Project ID is missing. Cannot proceed.");
-            console.error("Error: Project ID not found.");
-            return;
-        }
-        const currentStepFields = document.querySelectorAll(
-            `#step${currentStep} input, #step${currentStep} textarea, #step${currentStep} select`
-        );
-        const inputValues = {};
-        currentStepFields.forEach(field => {
-            const name = field.name || field.id;
-            if (name.endsWith('[]')) {
-                const key = name.replace('[]', '');
-                if (!inputValues[key]) {
-                    inputValues[key] = [];
+        
+        function updateProjectId() {
+            if (currentStep === 1) {
+                const projectIdElement = document.getElementById('project-id-placeholder');
+                if (projectIdElement) {
+                    projectId = projectIdElement.textContent.trim();
+                    console.log("Project ID retrieved:", projectId); 
                 }
-                inputValues[key].push(field.value.trim());
-            } else {
-                inputValues[name] = field.value.trim();
             }
-        });
-        const dataToSend = {
-            step: currentStep,
-            project_unique_id: projectIdValue,
-            data: inputValues,
-        };
-        console.log("Data to send:", dataToSend);
-        try {
-            const response = await fetch('complete.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(dataToSend),
+            document.querySelectorAll('.project-id-display span').forEach(el => {
+                el.textContent = projectId || "[Project ID]";
             });
-            if (!response.ok) {
-                const errorText = await response.text(); 
-                console.error("HTTP Error:", response.status, errorText);
-                alert(`Failed to complete Step ${currentStep}: ${response.statusText}`);
+            console.log("Updated Project ID in all displays:", projectId);
+        }
+
+        
+        document.getElementById('completeButton').addEventListener('click', async () => {
+            if (!confirm(`Are you sure you want to complete Step ${currentStep}?`)) {
                 return;
             }
-            let result;
-            try {
-                result = await response.json();
-            } catch (jsonError) {
-                const rawResponse = await response.text();
-                console.error("Error parsing JSON:", jsonError, "Raw Response:", rawResponse);
-                throw new Error("The server returned an invalid JSON response.");
+            const projectIdInput = document.getElementById('project-unique-id');
+            const projectIdValue = projectIdInput ? projectIdInput.value.trim() : null;
+            if (!projectIdValue) {
+                alert("Project ID is missing. Cannot proceed.");
+                console.error("Error: Project ID not found.");
+                return;
             }
-            console.log("Backend response:", result);
-            if (result.message === `Step ${currentStep} data processed successfully`) {
-                alert(`Step ${currentStep} completed successfully!`);
-                const currentStepCircle = document.getElementById(`step${currentStep}-circle`);
-                if (currentStepCircle) {
-                    currentStepCircle.classList.add('completed');
-                    currentStepCircle.textContent = '✔';
-                }
-                if (currentStep < totalSteps) {
-                    currentStep++;
-                    showStep(currentStep);  
-                    updateProjectId();      
+            const currentStepFields = document.querySelectorAll(
+                `#step${currentStep} input, #step${currentStep} textarea, #step${currentStep} select`
+            );
+            const inputValues = {};
+            currentStepFields.forEach(field => {
+                const name = field.name || field.id;
+                if (name.endsWith('[]')) {
+                    const key = name.replace('[]', '');
+                    if (!inputValues[key]) {
+                        inputValues[key] = [];
+                    }
+                    inputValues[key].push(field.value.trim());
                 } else {
-                    alert('All steps completed!');
+                    inputValues[name] = field.value.trim();
                 }
-                 if (currentStep !== 5) {
-                openModal(projectIdValue);
+            });
+            const dataToSend = {
+                step: currentStep,
+                project_unique_id: projectIdValue,
+                data: inputValues,
+            };
+            console.log("Data to send:", dataToSend);
+            try {
+                const response = await fetch('complete.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(dataToSend),
+                });
+                if (!response.ok) {
+                    const errorText = await response.text(); 
+                    console.error("HTTP Error:", response.status, errorText);
+                    alert(`Failed to complete Step ${currentStep}: ${response.statusText}`);
+                    return;
+                }
+                let result;
+                try {
+                    result = await response.json();
+                } catch (jsonError) {
+                    const rawResponse = await response.text();
+                    console.error("Error parsing JSON:", jsonError, "Raw Response:", rawResponse);
+                    throw new Error("The server returned an invalid JSON response.");
+                }
+                console.log("Backend response:", result);
+                if (result.message === `Step ${currentStep} data processed successfully`) {
+                    alert(`Step ${currentStep} completed successfully!`);
+                    const currentStepCircle = document.getElementById(`step${currentStep}-circle`);
+                    if (currentStepCircle) {
+                        currentStepCircle.classList.add('completed');
+                        currentStepCircle.textContent = '✔';
+                    }
+                    if (currentStep < totalSteps) {
+                        currentStep++;
+                        showStep(currentStep);  
+                        updateProjectId();      
+                    } else {
+                        alert('All steps completed!');
+                    }
+                    if (currentStep !== 5) {
+                    openModal(projectIdValue);
+                }
+                } else {
+                    alert(`Unexpected response: ${result.message}`);
+                }
+            } catch (error) {
+                console.error("Error in fetch operation:", error);
+                alert(`An error occurred while completing Step ${currentStep}: ${error.message}`);
             }
-            } else {
-                alert(`Unexpected response: ${result.message}`);
-            }
-        } catch (error) {
-            console.error("Error in fetch operation:", error);
-            alert(`An error occurred while completing Step ${currentStep}: ${error.message}`);
-        }
-    });
+        });
 
-    function refreshModal() {
-    const modal = document.getElementById('multiStepModal');
-    const modalContent = document.querySelector('#multiStepModal .modal-content');
-    modalContent.innerHTML = modalContent.innerHTML; 
-  
-}
+        function refreshModal() {
+        const modal = document.getElementById('multiStepModal');
+        const modalContent = document.querySelector('#multiStepModal .modal-content');
+        modalContent.innerHTML = modalContent.innerHTML; 
+    
+    }
     document.getElementById('deleteButton').addEventListener('click', async () => {
         if (confirm('Are you sure you want to cancel this process? This action cannot be undone.')) {
             const projectIdInput = document.getElementById('project-unique-id');
@@ -1044,12 +1044,13 @@
         }
     });
 
-    document.getElementById('saveButton').addEventListener('click', async () => {
+document.getElementById('saveButton').addEventListener('click', async () => {
     const userConfirmed = confirm(`Are you sure you want to save the current data of Step ${currentStep}?`);
     if (!userConfirmed) {
         console.log("Save canceled by user.");
         return;
     }
+
     const projectIdInput = document.getElementById('project-unique-id');
     const projectId = projectIdInput ? projectIdInput.value.trim() : null;
 
@@ -1058,41 +1059,61 @@
         console.error("Error: Project ID not found.");
         return;
     }
+
+    // Get all fields for the current step (inputs, textareas, selects)
     const currentStepFields = document.querySelectorAll(
         `#step${currentStep} input, #step${currentStep} textarea, #step${currentStep} select`
     );
+
     const inputValues = {};
 
     currentStepFields.forEach(field => {
         const name = field.name || field.id;
+        
+        // Handle array-like names (e.g., requirement_one[])
         if (name.endsWith('[]')) {
             const key = name.replace('[]', '');
             if (!inputValues[key]) {
                 inputValues[key] = [];
             }
             inputValues[key].push(field.value.trim());
+
+            // Also capture the requirement_id_one from the data-id attribute
+            const requirementId = field.getAttribute('data-id');
+            if (requirementId) {
+                if (!inputValues['requirement_ids']) {
+                    inputValues['requirement_ids'] = [];
+                }
+                inputValues['requirement_ids'].push(requirementId); // Store requirement ID
+            }
         } else {
             inputValues[name] = field.value.trim();
         }
     });
+
     console.log("Collected input values:", inputValues);
+
     const dataToSend = {
         step: currentStep,
         project_unique_id: projectId,
         data: inputValues,
     };
+
     console.log("Data to send:", dataToSend);
+
     try {
         const response = await fetch('save.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dataToSend),
         });
+
         const responseText = await response.text();
         if (!response.ok) {
             console.error("HTTP Error:", response.status, responseText);
             throw new Error(`HTTP Error ${response.status}: ${response.statusText}`);
         }
+
         let result;
         try {
             result = JSON.parse(responseText);
@@ -1100,7 +1121,9 @@
             console.error("Error parsing JSON:", jsonError, "Raw Response:", responseText);
             throw new Error("The server returned an invalid JSON response.");
         }
+
         console.log("Backend response:", result);
+
         if (result.message === `Step ${currentStep} data processed successfully`) {
             alert(`Step ${currentStep} saved successfully!`);
             // showNotification('Data saved successfully!', true);
@@ -1112,6 +1135,10 @@
         alert(`An error occurred while saving Step ${currentStep}: ${error.message}`);
     }
 });
+
+
+
+
     document.addEventListener('DOMContentLoaded', () => {
         showStep(currentStep);
         updateProjectId();
