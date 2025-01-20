@@ -954,9 +954,6 @@ function startPhase() {
                 var modal = document.getElementById("startJourneyModal");
                 var modalInstance = bootstrap.Modal.getInstance(modal);
                 modalInstance.hide();
-
-                // Show a success message
-                location.reload();
             }
         } else {
             alert("Failed to update start date.");
