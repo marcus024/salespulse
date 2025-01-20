@@ -889,7 +889,7 @@
                     </div>
                 </div>
             </div>
-            <?php include('./notifBar.php'); ?>
+            <?php include('../Director/notifBar.php'); ?>
             
 <script>
     let currentStep = 1;
