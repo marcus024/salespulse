@@ -33,17 +33,7 @@
                     fetchStageThree(data);
                     fetchStageFour(data);
                     fetchStageFive(data);
-
                     
-
-
-                   
-
-
-                    
-
-
-                   
                     //Navigate to the current stage
                     const currentStage = data.current_stage;
                     if (currentStage) {
