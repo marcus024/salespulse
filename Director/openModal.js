@@ -29,6 +29,7 @@
                     
                     
                     fetchStageOne(data);
+                    fetchStageTwo(data);
 
                     
 
