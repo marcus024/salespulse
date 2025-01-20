@@ -40,9 +40,9 @@ function showPopup() {
 
     // If the user clicks "Continue", reset the timers and close the popup
     document.getElementById('continueButton').addEventListener('click', function() {
-        clearTimeout(idlePopupTimeout); // Stop the logout timer
+       
         closePopup();
-        resetIdleTimer(); // Reset the idle timer
+
     });
 
     // If the user clicks "Log Out", log them out immediately
