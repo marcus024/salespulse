@@ -110,29 +110,22 @@
                                     <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
                                             <div class="row mb-3">
-                                                <div class="col-md-3">
+                                                <div class="col-md-6">
+                                                    
+                                                </div>
+                                                <div class="col-md-2">
                                                     <label for="startDate" class="form-label">Status</label>
                                                     <input  id="status-placeholder" type="text" class="form-control" readonly>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <label for="startDate" class="form-label">Start Date</label>
                                                     <input  id="start-date-placeholder" type="text" class="form-control" readonly>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <label for="endDate" class="form-label">End Date</label>
                                                     <input  id="end-date-placeholder" type="text" class="form-control" readonly>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <label for="technology" class="form-label text-white">Technology</label>
-                                                    <select name="technology" class="form-control custom-select" id="technology2">
-                                                        <option disabled>Select</option>
-                                                        <option value="Artificial Intelligence" >Artificial Intelligence</option>
-                                                        <option value="Machine Learning" >Machine Learning</option>
-                                                        <option value="Blockchain" >Blockchain</option>
-                                                        <option value="Internet of Things (IoT)" >Internet of Things (IoT)</option>
-                                                        <option value="Cloud Computing" >Cloud Computing</option>
-                                                    </select>
-                                                </div>
+                                                
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-5">
