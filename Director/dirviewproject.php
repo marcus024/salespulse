@@ -578,7 +578,7 @@ include_once('dirback/dirviewback.php');
                                                             </button>
                                                             <button 
                                                                 class="btn btn-white play-btn" 
-                                                                id="continueJourneyButton" 
+                                                                id="Continue" 
                                                                 style="display: none;" 
                                                                 disabled
                                                             >
