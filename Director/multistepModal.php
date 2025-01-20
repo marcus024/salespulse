@@ -934,18 +934,29 @@
                 `#step${currentStep} input, #step${currentStep} textarea, #step${currentStep} select`
             );
             const inputValues = {};
-            currentStepFields.forEach(field => {
-                const name = field.name || field.id;
-                if (name.endsWith('[]')) {
-                    const key = name.replace('[]', '');
-                    if (!inputValues[key]) {
-                        inputValues[key] = [];
-                    }
-                    inputValues[key].push(field.value.trim());
-                } else {
-                    inputValues[name] = field.value.trim();
+             currentStepFields.forEach(field => {
+        const name = field.name || field.id;
+        
+        // Handle array-like names (e.g., requirement_one[])
+        if (name.endsWith('[]')) {
+            const key = name.replace('[]', '');
+            if (!inputValues[key]) {
+                inputValues[key] = [];
+            }
+            inputValues[key].push(field.value.trim());
+
+            // Also capture the requirement_id_one from the data-id attribute
+            const requirementId = field.getAttribute('data-id');
+            if (requirementId) {
+                if (!inputValues['requirement_ids']) {
+                    inputValues['requirement_ids'] = [];
                 }
-            });
+                inputValues['requirement_ids'].push(requirementId); // Store requirement ID
+            }
+        } else {
+            inputValues[name] = field.value.trim();
+        }
+    });
             const dataToSend = {
                 step: currentStep,
                 project_unique_id: projectIdValue,
