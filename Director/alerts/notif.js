@@ -295,7 +295,7 @@ async function getAllCurrentUserNotif(currentUserId) {
             data-notification-id="${notif.notif_id}"
             data-bs-toggle="modal" 
             data-bs-target="#multiStepModal"
-            onclick="markNotificationRead(this); openModal('${notif.related_id}');">
+            onclick="markNotificationRead(this); ">
                 <div style="display: flex; align-items: center;">
                     ${isUnread ? `<div style="width: 8px; height: 8px; background-color: #36b9cc; border-radius: 50%; margin-right: 8px;"></div>` : ''}
                     <div style="font-weight: bold; font-family:'Poppins'">
