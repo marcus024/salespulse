@@ -673,8 +673,6 @@ include_once('dirback/dirviewback.php');
                                                             border-color: #ddd;
                                                             cursor: not-allowed;
                                                         }
-
-
                                                     </style>
                                                     <!-- Start Journey Modal -->
                                                     <div class="modal fade" id="startJourneyModal" tabindex="-1" aria-labelledby="startJourneyModalLabel" aria-hidden="true">
@@ -940,13 +938,14 @@ function startPhase() {
                 alert(response.message); // Display the error message
             } else {
                 // Update the button text based on the project status
-                var button = document.querySelector(".play-btn");
+                 openModal(projectId);
+                 var button = document.querySelector(".play-btn");
 
                 if (response.project_status === 'Ongoing') {
                     button.innerHTML = '<i class="fas fa-play"></i> Continue Journey'; // Change text to Continue Journey
                     button.id = "continueJourneyButton"; // Update the button ID
                     button.setAttribute("onclick", "continuePhase()"); // Update the onclick action
-                    openModal(projectId);
+                   
                 } else {
                     button.innerHTML = '<i class="fas fa-play"></i> Start Journey'; // Default text
                 }
