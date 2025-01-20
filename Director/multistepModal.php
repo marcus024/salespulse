@@ -889,6 +889,7 @@
                     </div>
                 </div>
             </div>
+            <?php include('notifBar.php'); ?>
             
 <script>
     let currentStep = 1;
