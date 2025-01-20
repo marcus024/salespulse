@@ -85,35 +85,36 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        // Insert into requirementone_tb
+        // Handle requirements (update or insert based on presence of requirement_id_one)
         if (!empty($inputData['requirement_one'])) {
-            $requirementQuery = "INSERT INTO requirementone_tb (project_unique_id, requirement_one) 
-                                 VALUES (?, ?)";
-            $stmt = $conn->prepare($requirementQuery);
-
-            foreach ($inputData['requirement_one'] as $requirement) {
-                try {
-                    // Since requirement_one[] is a simple array, $requirement is a scalar
-                    $requirementValue = $requirement;
-
-                    // Validate
-                    if (empty($requirementValue)) {
-                        error_log("Empty requirement for Project ID {$projectUniqueId}. Skipping insert.");
-                        continue;
-                    }
-
-                    // Optional: Sanitize (if necessary)
-                    $requirementValue = htmlspecialchars($requirementValue, ENT_QUOTES, 'UTF-8');
-
-                    // Execute insert
-                    $stmt->execute([$projectUniqueId, $requirementValue]);
-                } catch (PDOException $e) {
-                    // Log the error with specific details
-                    error_log("Failed to insert requirement for Project ID {$projectUniqueId}: " . $e->getMessage());
-
-                    // Optionally, decide whether to continue or throw an exception
-                    // For atomicity, you might want to throw an exception to rollback
-                    throw new Exception("Failed to insert requirement: " . $e->getMessage());
+            $reqStmt = $conn->prepare("
+                INSERT INTO requirementone_tb (project_unique_id, requirement_one) 
+                VALUES (?, ?)
+            ");
+            
+            // Loop through requirements and check for existing IDs
+            foreach ($inputData['requirement_one'] as $index => $requirement) {
+                // Check if there's a requirement_id for update
+                if (isset($inputData['requirement_ids'][$index])) {
+                    $requirementId = $inputData['requirement_ids'][$index];
+                    // Update existing requirement
+                    $updateQuery = "
+                        UPDATE requirementone_tb 
+                        SET requirement_one = ? 
+                        WHERE requirement_id_one = ? AND project_unique_id = ?
+                    ";
+                    $updateStmt = $conn->prepare($updateQuery);
+                    $updateStmt->execute([
+                        htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8'),
+                        $requirementId,
+                        $projectUniqueId
+                    ]);
+                } else {
+                    // Insert new requirement if no ID exists
+                    $reqStmt->execute([
+                        $projectUniqueId,
+                        htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8')
+                    ]);
                 }
             }
         }
