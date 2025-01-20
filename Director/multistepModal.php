@@ -147,6 +147,7 @@
                                                     <textarea name="solution" class="form-control" id="solution1" placeholder="e.g. Sample Solution" 
                                                     style="height:100px;"></textarea>
                                                 </div>
+                                                <input name="project_unique_id" id="project-unique-id" type="hidden" value="<?php echo $projectId; ?>" class="form-control" readonly>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-5">
@@ -165,6 +166,19 @@
                                                                 <!-- Input field for Requirement -->
                                                                 <input  name="requirement_one[]" style="width: 100%;" type="text" class="form-control" id="requirement1" placeholder="e.g. Sample Requirement">
                                                             </div>
+                                                            <div class="col-9 d-flex align-items-center">
+                                                                <label for="product" class="form-label text-white">Product</label>
+                                                                <input name="product" id="product1" type="text" class="form-control" placeholder="e.g. Cisco" >
+                                                            </div>
+                                                            <div class="col-9 d-flex align-items-center">
+                                                                <label for="distributor" class="form-label text-white">Distributor</label>
+                                                                <select name="distributor" id="distributorSelect" class="form-control custom-select">
+                                                                    <option disabled selected>Select</option>
+                                                                    <!-- Existing options can be removed or loaded dynamically -->
+                                                                    <!-- Special option for adding new distributor -->
+                                                                    <option value="add_new">+ Add New Distributor...</option>
+                                                                </select>
+                                                            </div>
                                                             <div class="col-2 d-flex justify-content-end align-items-center">
                                                                 <!-- Delete Button -->
                                                                 <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;" id="deleteRequirement">
@@ -173,9 +187,14 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="mb-2">
-                                                        
-                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="mb-6">
+                                                            <label for="remarks" class="form-label text-white">Stage Remarks</label>
+                                                            <textarea name="stage_one_remarks" class="form-control" id="stageremarks1" placeholder="e.g. Sample Remarks" 
+                                                            style="height: 300px;"></textarea>
+                                                        </div>
+                                                     </div>
+                                                    
                                                     <style>
                                                         .custom-select {
                                                             appearance: none; 
@@ -193,50 +212,13 @@
                                                             padding-right: 30px;
                                                         }
                                                     </style>
-                                                    <div class="mb-2">
-                                                        
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        
-                                                    </div>
+                                                    
                                                    
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <div class="mb-6">
-                                                        <label for="remarks" class="form-label text-white">Stage Remarks</label>
-                                                        <textarea name="stage_one_remarks" class="form-control" id="stageremarks1" placeholder="e.g. Sample Remarks" 
-                                                                style="height: 300px;"></textarea>
-                                                    </div>
+                                                    
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <div class="mb-2">
-                                                    <label for="distributor" class="form-label text-white">Distributor</label>
-                                                    <select name="distributor" id="distributorSelect" class="form-control custom-select">
-                                                        <option disabled selected>Select</option>
-                                                        <!-- Existing options can be removed or loaded dynamically -->
-                                                        <!-- Special option for adding new distributor -->
-                                                        <option value="add_new">+ Add New Distributor...</option>
-                                                    </select>
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        <label for="product" class="form-label text-white">Product</label>
-                                                        <input name="product" id="product1" type="text" class="form-control" placeholder="e.g. Cisco" >
-                                                    </div>
-                                                    <div class="mb-2">
-                                                    <div class="mb-2">
-                                                        
-                                                    </div>
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        <input name="project_unique_id" id="project-unique-id" type="hidden" value="<?php echo $projectId; ?>" class="form-control" readonly>
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        
-                                                    </div>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
