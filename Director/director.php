@@ -1878,6 +1878,7 @@ try {
     <script src="current_year.js"></script>
     <script src="insert_fetch_distributor.js"></script>
     <script src="insert_fetch_client.js"></script>
+    <script src="idle.js"></script>
     
     <!-- Table Export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
