@@ -958,6 +958,10 @@ function startPhase() {
                 if (continueButton) {
                     continueButton.click(); // Simulate a click to continue the journey
                 }
+
+                var multiStepModal = document.getElementById('multiStepModal');
+                var multiStepModalInstance = new bootstrap.Modal(multiStepModal);
+                multiStepModalInstance.show(); 
             }
         } else {
             alert("Failed to update start date.");
