@@ -1,68 +1,79 @@
-// Function to load sources into the select dropdown
-function loadSources() {
+$(document).ready(function () {
+  function loadSource() {
     $.ajax({
-        url: './dirback/fetchAll_source.php',  // The backend PHP endpoint that fetches the sources
+        url: './dirback/fetchAll_source.php',
         type: 'GET',
         dataType: 'json',
-        success: function(response) {
+        success: function (response) {
+            console.log(response); // Log response to verify data
             if (response.status === 'success') {
                 const $select = $('#sourceSelect');
-                $select.find('option:not([value="add_new_source"]):not(:disabled)').remove(); // Remove all other options except "Add New"
+                $select.find('option:not([value="add_new_source"]):not(:disabled)').remove();
 
-                // Add existing sources to the select dropdown
-                response.data.forEach(function(item) {
-                    const source = item.sourcetype;  // Assuming the source is stored under 'sourcetype'
+                // Add source types dynamically
+                response.data.forEach(function (item) {
+                    const sourceAdd = item.sourcetype;
                     $select.find('option[value="add_new_source"]').before(
-                        `<option style="color:black;" value="${source}">${source}</option>`
+                        `<option  value="${escapeHtml(sourceAdd)}">${escapeHtml(sourceAdd)}</option>`
                     );
                 });
             } else {
                 alert('Error: ' + response.message);
             }
         },
-        error: function(xhr, status, error) {
-            console.error('AJAX Error (fetch sources):', status, error);
-            alert('An error occurred while fetching sources.');
-        }
+        error: function (xhr, status, error) {
+            console.error('AJAX Error (fetch client types):', status, error);
+            alert('An error occurred while fetching client types.');
+        },
     });
 }
 
-// Event listener for adding a new source
-$('#sourceSelect').change(function() {
-    const selectedValue = $(this).val();
 
-    // If "Add New Source" is selected, prompt the user to input a new source
-    if (selectedValue === 'add_new_source') {
-        const newSource = prompt('Please enter the new source:');
-        if (newSource) {
-            insertNewSource(newSource); // Call the function to insert the new source
-        }
-    }
-});
+  // Call loadSource() on page load
+  loadSource();
 
-// Function to insert the new source into the database
-function insertNewSource(source) {
-    const projectId = document.querySelector("#project-id-placeholder strong").textContent.trim();  // Assuming you're getting the project ID
-
-    $.ajax({
-        url: './dirback/insert_source.php',  // Backend PHP file for inserting the new source
-        type: 'POST',
-        dataType: 'json',
-        data: {
-            project_id: projectId,
-            source: source
-        },
-        success: function(response) {
+  // Add a new client type when "add_new_source" is selected
+  $('#sourceSelect').on('change', function () {
+    if ($(this).val() === 'add_new_source') {
+      const newSource = prompt('Enter the new Client Type:');
+      if (newSource && newSource.trim() !== '') {
+        $.ajax({
+          url: './dirback/insert_source.php',
+          type: 'POST',
+          dataType: 'json',
+          data: { added_source: newSource.trim() },
+          success: function (response) {
             if (response.status === 'success') {
-                alert('New source added successfully!');
-                loadSources(); // Reload the dropdown with updated sources
+              $('#sourceSelect')
+                .find('option[value="add_new_source"]')
+                .before(
+                  `<option value="${escapeHtml(response.added_source)}">${escapeHtml(response.added_source)}</option>`
+                );
+              $('#sourceSelect').val(response.added_source);
+              alert(response.message);
             } else {
-                alert('Error: ' + response.message);
+              alert('Error: ' + response.message);
+              $('#sourceSelect').val(''); // Reset selection
             }
-        },
-        error: function(xhr, status, error) {
-            console.error('AJAX Error (insert source):', status, error);
-            alert('An error occurred while adding the new source.');
-        }
-    });
-}
+          },
+          error: function (xhr, status, error) {
+            console.error('AJAX Error (insert client type):', status, error);
+            alert('An error occurred while adding the Client Type.');
+          },
+        });
+      } else {
+        $(this).val(''); // Reset if invalid input
+      }
+    }
+  });
+
+  // Function to escape HTML
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+});
