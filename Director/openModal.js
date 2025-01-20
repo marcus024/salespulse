@@ -4,7 +4,6 @@
             console.error("No project ID provided.");
             return;
         }
-        showNotification('Data saved successfully!', true);
         document.getElementById('project-id-placeholder').textContent = projectId;
         const projectIdPlaceholder = document.getElementById('project-id-placeholder');
         if (projectIdPlaceholder) {
