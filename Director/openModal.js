@@ -27,13 +27,12 @@
                     document.getElementById('project-unique-id').value = data.project_id || 'No Data';
                     document.getElementById('client-name').textContent = data.company_name || 'No Data';
                     
-                    
-                    fetchStageOne(data);
-                    fetchStageTwo(data);
-                    fetchStageThree(data);
-                    fetchStageFour(data);
-                    fetchStageFive(data);
-                    
+                    // fetchStageOne(data);
+                    // fetchStageTwo(data);
+                    // fetchStageThree(data);
+                    // fetchStageFour(data);
+                    // fetchStageFive(data);
+
                     //Navigate to the current stage
                     const currentStage = data.current_stage;
                     if (currentStage) {
