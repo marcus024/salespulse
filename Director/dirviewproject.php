@@ -946,13 +946,10 @@ function startPhase() {
                 var modalInstance = bootstrap.Modal.getInstance(modal);
                 modalInstance.hide();
 
-                // Now, open the multiStepModal
-                var multiStepModal = new bootstrap.Modal(document.getElementById('multiStepModal'));
-                multiStepModal.show();
-
-                // Optionally, you can pass the project ID to the multiStepModal if needed
-                openModal(projectId);
-
+                var continueButton = document.getElementById('continueJourneyButton');
+                if (continueButton) {
+                    continueButton.click(); // Simulate a click to continue the journey
+                }
             }
         } else {
             alert("Failed to update start date.");
