@@ -691,9 +691,7 @@ include_once('dirback/dirviewback.php');
                                                                         type="button" 
                                                                         class="btn" 
                                                                         style="font-size:15px; font-family:'Poppins'; color: white; background: #36b9cc"
-                                                                        onclick="startPhase()"
-                                                                        data-bs-toggle="modal" 
-                                                                        data-bs-target="#multiStepModal"
+                                                                        onclick="startPhase()" 
                                                                     >
                                                                         Yes, Start Journey
                                                                     </button>
@@ -938,29 +936,33 @@ function startPhase() {
                 alert(response.message); // Display the error message
             } else {
                 // Update the button text based on the project status
-                 openModal(projectId);
-                 var button = document.querySelector(".play-btn");
+                openModal(projectId);
+                var button = document.querySelector(".play-btn");
 
                 if (response.project_status === 'Ongoing') {
                     button.innerHTML = '<i class="fas fa-play"></i> Continue Journey'; // Change text to Continue Journey
                     button.id = "continueJourneyButton"; // Update the button ID
                     button.setAttribute("onclick", "continuePhase()"); // Update the onclick action
-                   
+                
                 } else {
                     button.innerHTML = '<i class="fas fa-play"></i> Start Journey'; // Default text
                 }
 
-                // Dismiss the modal programmatically
-                var modal = document.getElementById("startJourneyModal");
-                var modalInstance = bootstrap.Modal.getInstance(modal);
-                modalInstance.hide();
-                
+                // Dismiss the start journey modal programmatically
+                var startModal = document.getElementById("startJourneyModal");
+                var startModalInstance = bootstrap.Modal.getInstance(startModal);
+                startModalInstance.hide();
+
+                // Open the multi-step modal after starting the journey
+                var multiStepModal = new bootstrap.Modal(document.getElementById('multiStepModal'));
+                multiStepModal.show();
             }
         } else {
             alert("Failed to update start date.");
         }
     };
 }
+
 
 // Function to check project status on page load
 function checkProjectStatus() {
