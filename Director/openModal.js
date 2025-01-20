@@ -23,108 +23,15 @@
             })
             .then(data => {
                 if (data.status === 'success') {
-                    console.log(data);
-                    document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
-                    document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || 'No Data';
-                    document.getElementById('status-placeholder').value     = data.stages.stage_one.status     || 'No Data';
-                    document.getElementById('solution1').value = data.stages.stage_one.solution || 'No Data';
-                    document.getElementById('dealSize1').value = data.stages.stage_one.deal_size || 'No Data';
-                    document.getElementById('stageremarks1').value = data.stages.stage_one.remarks || 'No Data';
-                    document.getElementById('distributorSelect').value = data.stages.stage_one.distributor || 'Select';
-                    document.getElementById('product1').value = data.stages.stage_one.product || 'No Data';
-                    const distributorSelect = document.getElementById('distributorSelect');
-                    const distributorValue = data.stages.stage_one.distributor || 'Select';
-                    Array.from(distributorSelect.options).forEach(option => {
-                        if (option.value === distributorValue) {
-                            option.selected = true;
-                        }
-                    });
-                    const technology1 = document.getElementById('technology1');
-                    const techValue = data.stages.stage_one.technology || 'Select';
-                    Array.from(technology1.options).forEach(option => {
-                        if (option.value === techValue) {
-                            option.selected = true;
-                        }
-                    });
-                    
-                    // Get the container for requirements
-                    const requirementContainer = document.getElementById('requirement-container');
-
-                    // Clear only if no existing fields are present
-                    if (!requirementContainer.querySelector('.requirement-field')) {
-                        const requirements = data.stages.stage_one.requirements || []; // Fetch requirements from data
-
-                        requirements.forEach((requirement) => {
-                            // Create a row for each requirement
-                            const requirementRow = document.createElement('div');
-                            requirementRow.className = 'row align-items-center requirement-field';
-                            requirementRow.style.margin = '5px 0 0 0';
-
-                            // Set the HTML content of the row
-                            requirementRow.innerHTML = `
-                                <div class="col-10 d-flex align-items-center">
-                                    <!-- Input field for Requirement -->
-                                    <input 
-                                        value="${requirement.requirement_one}" 
-                                        name="requirement_one[]" 
-                                        style="width: 100%;" 
-                                        type="text" 
-                                        class="form-control" 
-                                        data-id="${requirement.requirement_id_one}" 
-                                        placeholder="e.g. Sample Requirement"
-                                    >
-                                </div>
-                                <div class="col-2 d-flex justify-content-end align-items-center">
-                                    <!-- Delete Button -->
-                                    <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                </div>
-                            `;
-
-                            // Append the row to the container
-                            requirementContainer.appendChild(requirementRow);
-
-                            // Add delete functionality to the button
-                            const deleteButton = requirementRow.querySelector('button');
-                            deleteButton.addEventListener('click', () => {
-                                fetch('./dirback/delete_req1.php', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                    },
-                                    body: JSON.stringify({
-                                        requirement_id: requirement.requirement_id_one, // Use the requirement ID for deletion
-                                        project_id: projectId // Project ID for context
-                                    }),
-                                })
-                                    .then((response) => response.json())
-                                    .then((data) => {
-                                        if (data.status === 'success') {
-                                            // Remove the row from the DOM
-                                            requirementRow.remove();
-
-                                            // Optionally update the requirements array
-                                            const index = requirements.findIndex(req => req.requirement_id_one === requirement.requirement_id_one);
-                                            if (index > -1) {
-                                                requirements.splice(index, 1);
-                                            }
-                                        } else {
-                                            alert('Error: ' + data.message);
-                                        }
-                                    })
-                                    .catch((error) => {
-                                        console.error('Error deleting requirement:', error);
-                                        alert('Failed to delete requirement. Please try again.');
-                                    });
-                            });
-                        });
-                    }
-
-
 
                     document.getElementById('project-unique-id').value = data.project_id || 'No Data';
                     document.getElementById('client-name').textContent = data.company_name || 'No Data';
+                    
+                    
+                    fetchStageOne(data);
+
+
+                    
 
 
                     document.getElementById('stage-two-start').value = data.stages.stage_two.start_date || 'No Data';
@@ -945,4 +852,105 @@
         document.querySelectorAll('.project-id-dis span').forEach(el => {
             el.textContent = projectId || "[Project ID]";
         });
+    }
+
+    function fetchStageOne(data){
+
+        document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
+                    document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || 'No Data';
+                    document.getElementById('status-placeholder').value     = data.stages.stage_one.status     || 'No Data';
+                    document.getElementById('solution1').value = data.stages.stage_one.solution || 'No Data';
+                    document.getElementById('dealSize1').value = data.stages.stage_one.deal_size || 'No Data';
+                    document.getElementById('stageremarks1').value = data.stages.stage_one.remarks || 'No Data';
+                    document.getElementById('distributorSelect').value = data.stages.stage_one.distributor || 'Select';
+                    document.getElementById('product1').value = data.stages.stage_one.product || 'No Data';
+                    const distributorSelect = document.getElementById('distributorSelect');
+                    const distributorValue = data.stages.stage_one.distributor || 'Select';
+                    Array.from(distributorSelect.options).forEach(option => {
+                        if (option.value === distributorValue) {
+                            option.selected = true;
+                        }
+                    });
+                    const technology1 = document.getElementById('technology1');
+                    const techValue = data.stages.stage_one.technology || 'Select';
+                    Array.from(technology1.options).forEach(option => {
+                        if (option.value === techValue) {
+                            option.selected = true;
+                        }
+                    });
+                    
+                    // Get the container for requirements
+                    const requirementContainer = document.getElementById('requirement-container');
+
+                    // Clear only if no existing fields are present
+                    if (!requirementContainer.querySelector('.requirement-field')) {
+                        const requirements = data.stages.stage_one.requirements || []; // Fetch requirements from data
+
+                        requirements.forEach((requirement) => {
+                            // Create a row for each requirement
+                            const requirementRow = document.createElement('div');
+                            requirementRow.className = 'row align-items-center requirement-field';
+                            requirementRow.style.margin = '5px 0 0 0';
+
+                            // Set the HTML content of the row
+                            requirementRow.innerHTML = `
+                                <div class="col-10 d-flex align-items-center">
+                                    <!-- Input field for Requirement -->
+                                    <input 
+                                        value="${requirement.requirement_one}" 
+                                        name="requirement_one[]" 
+                                        style="width: 100%;" 
+                                        type="text" 
+                                        class="form-control" 
+                                        data-id="${requirement.requirement_id_one}" 
+                                        placeholder="e.g. Sample Requirement"
+                                    >
+                                </div>
+                                <div class="col-2 d-flex justify-content-end align-items-center">
+                                    <!-- Delete Button -->
+                                    <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            `;
+
+                            // Append the row to the container
+                            requirementContainer.appendChild(requirementRow);
+
+                            // Add delete functionality to the button
+                            const deleteButton = requirementRow.querySelector('button');
+                            deleteButton.addEventListener('click', () => {
+                                fetch('./dirback/delete_req1.php', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        requirement_id: requirement.requirement_id_one, // Use the requirement ID for deletion
+                                        project_id: projectId // Project ID for context
+                                    }),
+                                })
+                                    .then((response) => response.json())
+                                    .then((data) => {
+                                        if (data.status === 'success') {
+                                            // Remove the row from the DOM
+                                            requirementRow.remove();
+
+                                            // Optionally update the requirements array
+                                            const index = requirements.findIndex(req => req.requirement_id_one === requirement.requirement_id_one);
+                                            if (index > -1) {
+                                                requirements.splice(index, 1);
+                                            }
+                                        } else {
+                                            alert('Error: ' + data.message);
+                                        }
+                                    })
+                                    .catch((error) => {
+                                        console.error('Error deleting requirement:', error);
+                                        alert('Failed to delete requirement. Please try again.');
+                                    });
+                            });
+                        });
+                    }
+
     }
