@@ -972,7 +972,7 @@ include_once('dirback/dirviewback.php');
                             } else {
                                 console.error("multiStepModal element not found.");
                             }
-                        }, 1000); // Delay of 300ms to ensure the modal closes before opening the next one
+                        }, 500); // Delay of 300ms to ensure the modal closes before opening the next one
                     }
                 } else {
                     alert("Failed to update start date.");
