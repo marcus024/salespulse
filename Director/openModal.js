@@ -30,208 +30,7 @@
                     
                     fetchStageOne(data);
 
-
                     
-
-
-                    document.getElementById('stage-two-start').value = data.stages.stage_two.start_date || 'No Data';
-                    document.getElementById('stage-two-end').value = data.stages.stage_two.end_date ||  'No Data';
-                    document.getElementById('stage-two-status').value = data.stages.stage_two.status ||  'No Data';
-                    document.getElementById('solution2').value = data.stages.stage_two.solution_two || data.stages.stage_one.solution || 'No Data';
-                    document.getElementById('deal_size2').value = Number(data.stages.stage_two.deal_size_two) || Number(data.stages.stage_one.deal_size) || 'No Data';
-
-                    document.getElementById('stageremarks2').value = data.stages.stage_two.remarks_two || data.stages.stage_one.remarks || 'No Data';
-                    document.getElementById('product2').value = data.stages.stage_two.product_two || data.stages.stage_one.product || 'No Data';
-
-                    const technology2 = document.getElementById('technology2');
-                    const techValue2 = data.stages.stage_two.technology_two || data.stages.stage_one.technology || 'Select';
-                    Array.from(technology2.options).forEach(option => {
-                        if (option.value === techValue2) {
-                            option.selected = true;
-                        }
-                    });
-
-                    // Get the container for requirements
-                    const requirementTwoContainer = document.getElementById('requirement-fields-container');
-
-                    // Clear the container before rendering
-                    // requirementTwoContainer.innerHTML = '';
-
-                    const requirementsTwo = data.stages.stage_two.requirement_stage_two || []; // Fetch requirements from data
-
-                    requirementsTwo.forEach((requirement2) => {
-                        // Create a row for each requirement
-                        const requirementRow = document.createElement('div');
-                        requirementRow.className = 'row align-items-center requirement-fields mb-3';
-
-                        // Set the HTML content of the row
-                        requirementRow.innerHTML = `
-                            <div class="col-md-3">
-                                <input 
-                                    value="${requirement2.requirement_two || ''}" 
-                                    name="requirement_two[]" 
-                                    type="text" 
-                                    id="req2" 
-                                    class="form-control" 
-                                    placeholder="e.g. Sample Requirement"
-                                >
-                            </div>
-                            <div class="col-md-2">
-                                <input 
-                                    value="${requirement2.requirement_date || ''}" 
-                                    name="requirement_date[]" 
-                                    type="date" 
-                                    id="reqdate2" 
-                                    class="form-control" 
-                                    style="font-size:10px;"
-                                >
-                            </div>
-                            <div class="col-md-5">
-                                <input 
-                                    value="${requirement2.requirement_remarks || ''}" 
-                                    name="requirement_remarks[]" 
-                                    type="text" 
-                                    id="reqremarks2" 
-                                    class="form-control" 
-                                    placeholder="e.g. Sample Remarks"
-                                >
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        `;
-
-                        // Append the row to the container
-                        requirementTwoContainer.appendChild(requirementRow);
-
-                        // Add delete functionality to the button
-                        const deleteButton = requirementRow.querySelector('.deleteRequirement');
-                        deleteButton.addEventListener('click', () => {
-                            fetch('./dirback/delete_req2.php', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify({
-                                    requirement_id: requirement2.requirement_id_two, // Use the requirement ID for deletion
-                                    project_id: projectId // Project ID for context
-                                }),
-                            })
-                                .then((response) => response.json())
-                                .then((data) => {
-                                    if (data.status === 'success') {
-                                        // Remove the row from the DOM
-                                        requirementRow.remove();
-
-                                        // Optionally update the requirements array
-                                        const index = requirementsTwo.findIndex(req => req.requirement_id_two === requirement2.requirement_id_two);
-                                        if (index > -1) {
-                                            requirementsTwo.splice(index, 1);
-                                        }
-                                    } else {
-                                        alert('Error: ' + data.message);
-                                    }
-                                })
-                                .catch((error) => {
-                                    console.error('Error deleting requirement:', error);
-                                    alert('Failed to delete requirement. Please try again.');
-                                });
-                        });
-                    });
-
-                    // Get the container for engagements
-                    const engagementFieldsContainer = document.getElementById('engagement-fields-container');
-
-                    // Clear the container before rendering
-                    // engagementFieldsContainer.innerHTML = '';
-
-                    // Fetch engagements from stage_two
-                    const engagements = data.stages.stage_two.engagement_stage_two || [];
-
-                    engagements.forEach((engagement) => {
-                        // Create a row for each engagement
-                        const engagementRow = document.createElement('div');
-                        engagementRow.className = 'row align-items-center engagement-fields mb-3';
-
-                        // Set the HTML content of the row
-                        engagementRow.innerHTML = `
-                            <div class="col-md-3">
-                                <input 
-                                    value="${engagement.engagement_type || ''}" 
-                                    name="engagement_type[]" 
-                                    type="text" 
-                                    id="engtype2" 
-                                    class="form-control" 
-                                    placeholder="e.g. Sample Engagement"
-                                >
-                            </div>
-                            <div class="col-md-2">
-                                <input 
-                                    value="${engagement.engagement_date || ''}" 
-                                    name="engagement_date[]" 
-                                    type="date" 
-                                    id="engdate2" 
-                                    class="form-control" 
-                                    style="font-size:10px;"
-                                >
-                            </div>
-                            <div class="col-md-5">
-                                <input 
-                                    value="${engagement.engagement_remarks || ''}" 
-                                    name="engagement_remarks[]" 
-                                    type="text" 
-                                    id="engremarks2" 
-                                    class="form-control" 
-                                    placeholder="e.g. Sample Remarks"
-                                >
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-danger btn-sm deleteEngagement" style="margin-left: 5px;">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        `;
-
-                        // Append the row to the container
-                        engagementFieldsContainer.appendChild(engagementRow);
-
-                        // Add delete functionality to the button
-                        const deleteButton = engagementRow.querySelector('.deleteEngagement');
-                        deleteButton.addEventListener('click', () => {
-                            fetch('./dirback/delete_eng2.php', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify({
-                                    engagement_id: engagement.engagement_id_two, // Use the engagement ID for deletion
-                                    project_id: projectId // Project ID for context
-                                }),
-                            })
-                                .then((response) => response.json())
-                                .then((data) => {
-                                    if (data.status === 'success') {
-                                        // Remove the row from the DOM
-                                        engagementRow.remove();
-
-                                        // Optionally update the engagements array
-                                        const index = engagements.findIndex(e => e.engagement_id_two === engagement.engagement_id_two);
-                                        if (index > -1) {
-                                            engagements.splice(index, 1);
-                                        }
-                                    } else {
-                                        alert('Error: ' + data.message);
-                                    }
-                                })
-                                .catch((error) => {
-                                    console.error('Error deleting engagement:', error);
-                                    alert('Failed to delete engagement. Please try again.');
-                                });
-                        });
-                    });
-
 
 
                     document.getElementById('stage-three-start').value  = data.stages.stage_three.start_date || 'No Data';
@@ -952,5 +751,206 @@
                             });
                         });
                     }
+
+    }
+
+    function fetchStageTwo(data){
+        document.getElementById('stage-two-start').value = data.stages.stage_two.start_date || 'No Data';
+                    document.getElementById('stage-two-end').value = data.stages.stage_two.end_date ||  'No Data';
+                    document.getElementById('stage-two-status').value = data.stages.stage_two.status ||  'No Data';
+                    document.getElementById('solution2').value = data.stages.stage_two.solution_two || data.stages.stage_one.solution || 'No Data';
+                    document.getElementById('deal_size2').value = Number(data.stages.stage_two.deal_size_two) || Number(data.stages.stage_one.deal_size) || 'No Data';
+
+                    document.getElementById('stageremarks2').value = data.stages.stage_two.remarks_two || data.stages.stage_one.remarks || 'No Data';
+                    document.getElementById('product2').value = data.stages.stage_two.product_two || data.stages.stage_one.product || 'No Data';
+
+                    const technology2 = document.getElementById('technology2');
+                    const techValue2 = data.stages.stage_two.technology_two || data.stages.stage_one.technology || 'Select';
+                    Array.from(technology2.options).forEach(option => {
+                        if (option.value === techValue2) {
+                            option.selected = true;
+                        }
+                    });
+
+                    // Get the container for requirements
+                    const requirementTwoContainer = document.getElementById('requirement-fields-container');
+
+                    // Clear the container before rendering
+                    // requirementTwoContainer.innerHTML = '';
+
+                    const requirementsTwo = data.stages.stage_two.requirement_stage_two || []; // Fetch requirements from data
+
+                    requirementsTwo.forEach((requirement2) => {
+                        // Create a row for each requirement
+                        const requirementRow = document.createElement('div');
+                        requirementRow.className = 'row align-items-center requirement-fields mb-3';
+
+                        // Set the HTML content of the row
+                        requirementRow.innerHTML = `
+                            <div class="col-md-3">
+                                <input 
+                                    value="${requirement2.requirement_two || ''}" 
+                                    name="requirement_two[]" 
+                                    type="text" 
+                                    id="req2" 
+                                    class="form-control" 
+                                    placeholder="e.g. Sample Requirement"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <input 
+                                    value="${requirement2.requirement_date || ''}" 
+                                    name="requirement_date[]" 
+                                    type="date" 
+                                    id="reqdate2" 
+                                    class="form-control" 
+                                    style="font-size:10px;"
+                                >
+                            </div>
+                            <div class="col-md-5">
+                                <input 
+                                    value="${requirement2.requirement_remarks || ''}" 
+                                    name="requirement_remarks[]" 
+                                    type="text" 
+                                    id="reqremarks2" 
+                                    class="form-control" 
+                                    placeholder="e.g. Sample Remarks"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        `;
+
+                        // Append the row to the container
+                        requirementTwoContainer.appendChild(requirementRow);
+
+                        // Add delete functionality to the button
+                        const deleteButton = requirementRow.querySelector('.deleteRequirement');
+                        deleteButton.addEventListener('click', () => {
+                            fetch('./dirback/delete_req2.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    requirement_id: requirement2.requirement_id_two, // Use the requirement ID for deletion
+                                    project_id: projectId // Project ID for context
+                                }),
+                            })
+                                .then((response) => response.json())
+                                .then((data) => {
+                                    if (data.status === 'success') {
+                                        // Remove the row from the DOM
+                                        requirementRow.remove();
+
+                                        // Optionally update the requirements array
+                                        const index = requirementsTwo.findIndex(req => req.requirement_id_two === requirement2.requirement_id_two);
+                                        if (index > -1) {
+                                            requirementsTwo.splice(index, 1);
+                                        }
+                                    } else {
+                                        alert('Error: ' + data.message);
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.error('Error deleting requirement:', error);
+                                    alert('Failed to delete requirement. Please try again.');
+                                });
+                        });
+                    });
+
+                    // Get the container for engagements
+                    const engagementFieldsContainer = document.getElementById('engagement-fields-container');
+
+                    // Clear the container before rendering
+                    // engagementFieldsContainer.innerHTML = '';
+
+                    // Fetch engagements from stage_two
+                    const engagements = data.stages.stage_two.engagement_stage_two || [];
+
+                    engagements.forEach((engagement) => {
+                        // Create a row for each engagement
+                        const engagementRow = document.createElement('div');
+                        engagementRow.className = 'row align-items-center engagement-fields mb-3';
+
+                        // Set the HTML content of the row
+                        engagementRow.innerHTML = `
+                            <div class="col-md-3">
+                                <input 
+                                    value="${engagement.engagement_type || ''}" 
+                                    name="engagement_type[]" 
+                                    type="text" 
+                                    id="engtype2" 
+                                    class="form-control" 
+                                    placeholder="e.g. Sample Engagement"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <input 
+                                    value="${engagement.engagement_date || ''}" 
+                                    name="engagement_date[]" 
+                                    type="date" 
+                                    id="engdate2" 
+                                    class="form-control" 
+                                    style="font-size:10px;"
+                                >
+                            </div>
+                            <div class="col-md-5">
+                                <input 
+                                    value="${engagement.engagement_remarks || ''}" 
+                                    name="engagement_remarks[]" 
+                                    type="text" 
+                                    id="engremarks2" 
+                                    class="form-control" 
+                                    placeholder="e.g. Sample Remarks"
+                                >
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-danger btn-sm deleteEngagement" style="margin-left: 5px;">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        `;
+
+                        // Append the row to the container
+                        engagementFieldsContainer.appendChild(engagementRow);
+
+                        // Add delete functionality to the button
+                        const deleteButton = engagementRow.querySelector('.deleteEngagement');
+                        deleteButton.addEventListener('click', () => {
+                            fetch('./dirback/delete_eng2.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    engagement_id: engagement.engagement_id_two, // Use the engagement ID for deletion
+                                    project_id: projectId // Project ID for context
+                                }),
+                            })
+                                .then((response) => response.json())
+                                .then((data) => {
+                                    if (data.status === 'success') {
+                                        // Remove the row from the DOM
+                                        engagementRow.remove();
+
+                                        // Optionally update the engagements array
+                                        const index = engagements.findIndex(e => e.engagement_id_two === engagement.engagement_id_two);
+                                        if (index > -1) {
+                                            engagements.splice(index, 1);
+                                        }
+                                    } else {
+                                        alert('Error: ' + data.message);
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.error('Error deleting engagement:', error);
+                                    alert('Failed to delete engagement. Please try again.');
+                                });
+                        });
+                    });
 
     }
