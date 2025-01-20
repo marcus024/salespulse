@@ -1719,11 +1719,11 @@ include("../auth/db.php");
                                         <input name="end_date" readonly type="text" placeholder="Auto-generated" class="form-control" id="endDate" style="font-size: 10px; color: #000; padding: 5px;">
                                     </div> -->
                                     <!-- Source -->
-                                    <div class="col-md-4 mb-2">
+                                   <div class="col-md-4 mb-2">
                                         <label for="source" class="form-label" style="font-size: 10px; color: #000;">Source</label>
                                         <select name="source" class="form-control" id="sourceSelect" style="font-size: 10px; color: #000; padding: 5px;" required>
                                             <option value="" disabled selected>Select source</option>
-                                           
+                                            <!-- Option for adding a new source -->
                                             <option value="add_new_source">+ Add New Source...</option>
                                         </select>
                                     </div>

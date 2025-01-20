@@ -1,55 +1,35 @@
 <?php
 session_start();
 header('Content-Type: application/json');
-
-// Include the database connection
 include('../../auth/db.php');
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $newClientType = trim($_POST['added_source'] ?? '');
+$currentCompany = $_SESSION['company'] ?? '';
 
-    // Validate input
-    if (empty($newClientType)) {
-        echo json_encode(['status' => 'error', 'message' => 'Invalid Source.']);
-        exit;
-    }
+if (empty($currentCompany)) {
+    echo json_encode(['status' => 'error', 'message' => 'User not properly logged in.']);
+    exit;
+}
 
-    // Retrieve current user data
-    $currentUserId = $_SESSION['user_id_c'] ?? '';
-    $currentCompany = $_SESSION['company'] ?? '';
+$projectId = $_POST['project_id'] ?? '';
+$source = $_POST['source'] ?? '';
 
-    if (empty($currentUserId) || empty($currentCompany)) {
-        echo json_encode(['status' => 'error', 'message' => 'User not properly logged in.']);
-        exit;
-    }
+if (empty($projectId) || empty($source)) {
+    echo json_encode(['status' => 'error', 'message' => 'Project ID or source missing.']);
+    exit;
+}
 
-    try {
-        // Check if the client type already exists
-        $sqlCheck = "SELECT * FROM source_tb WHERE sourcetype = :source_type AND company = :company";
-        $stmtCheck = $conn->prepare($sqlCheck);
-        $stmtCheck->bindParam(':source_type', $newClientType, PDO::PARAM_STR);
-        $stmtCheck->bindParam(':company', $currentCompany, PDO::PARAM_STR);
-        $stmtCheck->execute();
+try {
+    // Insert the new source into the database
+    $sql = "INSERT INTO source_tb (company, sourcetype, project_id) VALUES (:company, :source, :project_id)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':company', $currentCompany, PDO::PARAM_STR);
+    $stmt->bindParam(':source', $source, PDO::PARAM_STR);
+    $stmt->bindParam(':project_id', $projectId, PDO::PARAM_STR);
 
-        if ($stmtCheck->rowCount() > 0) {
-            echo json_encode(['status' => 'error', 'message' => 'Client Type already exists.']);
-            exit;
-        }
+    $stmt->execute();
 
-        // Insert new client type
-        $sql = "INSERT INTO source_tb (sourcetype, created_at, user_id, company) VALUES (:source_type, NOW(), :user_id, :company)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':source_type', $newClientType, PDO::PARAM_STR);
-        $stmt->bindParam(':user_id', $currentUserId, PDO::PARAM_STR);
-        $stmt->bindParam(':company', $currentCompany, PDO::PARAM_STR);
-
-        if ($stmt->execute()) {
-            echo json_encode(['status' => 'success', 'message' => 'Source added successfully.', 'source_type' => $newClientType]);
-        } else {
-            echo json_encode(['status' => 'error', 'message' => 'Failed to add Source.']);
-        }
-    } catch (PDOException $e) {
-        echo json_encode(['status' => 'error', 'message' => 'Database error: ' . $e->getMessage()]);
-    }
+    echo json_encode(['status' => 'success', 'message' => 'Source added successfully.']);
+} catch (PDOException $e) {
+    echo json_encode(['status' => 'error', 'message' => 'Database error: ' . $e->getMessage()]);
 }
 ?>
