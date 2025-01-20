@@ -290,30 +290,22 @@ async function getAllCurrentUserNotif(currentUserId) {
 
         data.notifications.forEach((notif) => {
             const isUnread = notif.read_status === 0;
-
-            // Get the current stage data from the notification if available
-            const stageData = notif.stage_data || {}; // Assuming the stage data is available in the notification
-
-            // Generate the notification URL
-            const notificationURL = getNotificationURL(notif.type, notif.related_id, stageData);
-
             const notificationContent = `
                 <a style="text-decoration: none; color: #555; display: block; margin-bottom: 5px;"
-                    data-notification-id="${notif.notif_id}"
-                    data-bs-toggle="modal" 
-                    data-bs-target="#multiStepModal"
-                    href="${notificationURL}"
-                    onclick="markNotificationRead(this); ">
-                        <div style="display: flex; align-items: center;">
-                            ${isUnread ? `<div style="width: 8px; height: 8px; background-color: #36b9cc; border-radius: 50%; margin-right: 8px;"></div>` : ''}
-                            <div style="font-weight: bold; font-family:'Poppins'">
-                                ${notif.type}: ${notif.content}
-                            </div>
-                        </div>
-                        <span style="font-family: 'Poppins'; font-size: 11px; color: #999;">
-                            ${formatDate(notif.created_at)}
-                        </span>
-                </a>
+            data-notification-id="${notif.notif_id}"
+            data-bs-toggle="modal" 
+            data-bs-target="#multiStepModal"
+            onclick="markNotificationRead(this); openModal('${notif.related_id}');">
+                <div style="display: flex; align-items: center;">
+                    ${isUnread ? `<div style="width: 8px; height: 8px; background-color: #36b9cc; border-radius: 50%; margin-right: 8px;"></div>` : ''}
+                    <div style="font-weight: bold; font-family:'Poppins'">
+                        ${notif.type}: ${notif.content}
+                    </div>
+                </div>
+                <span style="font-family: 'Poppins'; font-size: 11px; color: #999;">
+                    ${formatDate(notif.created_at)}
+                </span>
+            </a>
 
             `;
             allNotifications.push({
@@ -334,24 +326,17 @@ async function getAllCurrentUserNotif(currentUserId) {
 
 // Helper Function to get notification URLs based on type
 // Helper Function to get notification URLs based on type
-function getNotificationURL(type, relatedId, stageData) {
+function getNotificationURL(type, relatedId) {
     switch (type) {
         case "Project":
             return `dirviewproject.php?project_id=${relatedId}`;
-
         case "Stage":
-            // Check if Stage 5 is completed and navigate to the project directory
-            if (stageData && stageData.stage_five && stageData.stage_five.status === "Completed") {
-                return `dirviewproject.php?project_id=${relatedId}`; // Redirect to the project directory page
-            }
             // Open the modal and pass the project ID
             return `javascript:openModal('${relatedId}', '#multistepModal')`;
-
         default:
             return "#";
     }
 }
-
 
 
 
