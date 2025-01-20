@@ -12,7 +12,7 @@ $(document).ready(function () {
 
           // Add client types dynamically
           response.data.forEach(function (item) {
-            const sourceAdd = item.added_source;
+            const sourceAdd = item.sourcetype;
             $select.find('option[value="add_new_source"]').before(
               `<option value="${escapeHtml(sourceAdd)}">${escapeHtml(sourceAdd)}</option>`
             );
