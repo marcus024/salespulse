@@ -166,7 +166,7 @@
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-4">
-                                                     <input  name="requirement_one[]" style="width: 100%;" type="text" class="form-control" id="requirement1" placeholder="e.g. Sample Requirement">
+                                                     <input  name="requirement_one[]"  type="text" class="form-control" id="requirement1" placeholder="e.g. Sample Requirement">
                                                 </div>
                                                 <div class="col-md-3">
                                                    <input name="product" id="product1" type="text" class="form-control" placeholder="e.g. Cisco" >
