@@ -6,10 +6,10 @@ header('Content-Type: application/json');
 include('../../auth/db.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $newClientType = trim($_POST['sourcetype'] ?? '');
+    $newSource = trim($_POST['added_source'] ?? '');
 
     // Validate input
-    if (empty($newClientType)) {
+    if (empty($newSource)) {
         echo json_encode(['status' => 'error', 'message' => 'Invalid Source.']);
         exit;
     }
@@ -24,27 +24,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        // Check if the client type already exists
+        // Check if the source already exists
         $sqlCheck = "SELECT * FROM source_tb WHERE sourcetype = :source_type AND company = :company";
         $stmtCheck = $conn->prepare($sqlCheck);
-        $stmtCheck->bindParam(':source_type', $newClientType, PDO::PARAM_STR);
+        $stmtCheck->bindParam(':source_type', $newSource, PDO::PARAM_STR);
         $stmtCheck->bindParam(':company', $currentCompany, PDO::PARAM_STR);
         $stmtCheck->execute();
 
         if ($stmtCheck->rowCount() > 0) {
-            echo json_encode(['status' => 'error', 'message' => 'Client Type already exists.']);
+            echo json_encode(['status' => 'error', 'message' => 'Source already exists.']);
             exit;
         }
 
-        // Insert new client type
+        // Insert new source
         $sql = "INSERT INTO source_tb (sourcetype, created_at, user_id, company) VALUES (:source_type, NOW(), :user_id, :company)";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':source_type', $newClientType, PDO::PARAM_STR);
+        $stmt->bindParam(':source_type', $newSource, PDO::PARAM_STR);
         $stmt->bindParam(':user_id', $currentUserId, PDO::PARAM_STR);
         $stmt->bindParam(':company', $currentCompany, PDO::PARAM_STR);
 
         if ($stmt->execute()) {
-            echo json_encode(['status' => 'success', 'message' => 'Source added successfully.', 'source_type' => $newClientType]);
+            echo json_encode(['status' => 'success', 'message' => 'Source added successfully.', 'source_type' => $newSource]);
         } else {
             echo json_encode(['status' => 'error', 'message' => 'Failed to add Source.']);
         }
