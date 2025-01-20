@@ -949,42 +949,25 @@ function startPhase() {
                     button.innerHTML = '<i class="fas fa-play"></i> Start Journey'; // Default text
                 }
 
-                showMultiStepModalIfHidden();
+                // Dismiss the modal programmatically
+                var modal = document.getElementById("startJourneyModal");
+                var modalInstance = bootstrap.Modal.getInstance(modal);
+                modalInstance.hide();
+
+                var continueButton = document.getElementById('continue-btn');
+                if (continueButton) {
+                    continueButton.click(); // Simulate a click to continue the journey
+                }
+
+                var multiStepModal = document.getElementById('multiStepModal');
+                var multiStepModalInstance = new bootstrap.Modal(multiStepModal);
+                multiStepModalInstance.show(); 
             }
         } else {
             alert("Failed to update start date.");
         }
     };
 }
-
-function showMultiStepModalIfHidden() {
-    // Get the startJourneyModal element
-    var startJourneyModal = document.getElementById("startJourneyModal");
-    
-    // Check if the modal is already hidden
-    if (startJourneyModal && startJourneyModal.classList.contains('show') === false) {
-        // If the modal is hidden, we can proceed to show the multiStepModal
-
-        // Simulate the click on the "Continue Journey" button
-        var continueButton = document.getElementById('continue-btn');
-        if (continueButton) {
-            continueButton.click(); // Simulate a click to continue the journey
-        }
-
-        // Get the multiStepModal element
-        var multiStepModal = document.getElementById('multiStepModal');
-        if (multiStepModal) {
-            // Initialize and show the multiStepModal
-            var multiStepModalInstance = new bootstrap.Modal(multiStepModal);
-            multiStepModalInstance.show();
-        } else {
-            console.error("multiStepModal element not found.");
-        }
-    } else {
-        console.log("startJourneyModal is still visible. Cannot proceed.");
-    }
-}
-
 
 // Function to check project status on page load
 function checkProjectStatus() {
@@ -1096,6 +1079,7 @@ function checkProjectStatus() {
         checkProjectStageAndNavigate();
     });
     </script>
+
 
 </body>
 </html>
