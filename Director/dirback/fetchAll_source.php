@@ -12,15 +12,15 @@ if (empty($currentCompany)) {
 }
 
 try {
-    // Retrieve client type list for the current company
+    // Retrieve source list for the current company
     $sql = "SELECT sourcetype FROM source_tb WHERE company = :company ORDER BY sourcetype ASC";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':company', $currentCompany, PDO::PARAM_STR);
     $stmt->execute();
 
-    $clientTypes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $sources = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    echo json_encode(['status' => 'success', 'data' => $clientTypes]);
+    echo json_encode(['status' => 'success', 'data' => $sources]);
 } catch (PDOException $e) {
     echo json_encode(['status' => 'error', 'message' => 'Database error: ' . $e->getMessage()]);
 }

@@ -1723,27 +1723,8 @@ include("../auth/db.php");
                                         <label for="source" class="form-label" style="font-size: 10px; color: #000;">Source</label>
                                         <select name="source" class="form-control" id="sourceSelect" style="font-size: 10px; color: #000; padding: 5px;" required>
                                             <option value="" disabled selected>Select source</option>
-                                            <!-- <option value="Referral">Referral</option>
-                                            <option value="Organic Search">Organic Search</option>
-                                            <option value="Paid Search (PPC)">Paid Search (PPC)</option>
-                                            <option value="Social Media">Social Media</option>
-                                            <option value="Email Marketing">Email Marketing</option>
-                                            <option value="Affiliate Marketing">Affiliate Marketing</option>
-                                            <option value="Direct Traffic">Direct Traffic</option>
-                                            <option value="Influencer Marketing">Influencer Marketing</option>
-                                            <option value="Display Ads">Display Ads</option>
-                                            <option value="Content Marketing">Content Marketing</option>
-                                            <option value="Product Reviews">Product Reviews</option>
-                                            <option value="Marketplace">Marketplace (e.g., Amazon, eBay)</option>
-                                            <option value="Trade Shows/Events">Trade Shows/Events</option>
-                                            <option value="Public Relations (PR)">Public Relations (PR)</option>
-                                            <option value="Word of Mouth">Word of Mouth</option>
-                                            <option value="Local Advertising">Local Advertising</option>
-                                            <option value="SMS Marketing">SMS Marketing</option>
-                                            <option value="Television/Radio Ads">Television/Radio Ads</option>
-                                            <option value="Partnerships">Partnerships</option>
-                                            <option value="Coupons/Discounts">Coupons/Discounts</option> -->
-                                            <option style="color:black;" value="add_new_source">+ Add New Source...</option>
+                                           
+                                            <option value="add_new_source">+ Add New Source...</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 mb-2">

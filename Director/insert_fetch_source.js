@@ -1,32 +1,33 @@
 $(document).ready(function () {
-  // Function to load all client types on page load
   function loadSource() {
     $.ajax({
-      url: './dirback/fetchAll_source.php',
-      type: 'GET',
-      dataType: 'json',
-      success: function (response) {
-        if (response.status === 'success') {
-          const $select = $('#sourceSelect');
-          $select.find('option:not([value="add_new_source"]):not(:disabled)').remove();
+        url: './dirback/fetchAll_source.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
+            console.log(response); // Log response to verify data
+            if (response.status === 'success') {
+                const $select = $('#sourceSelect');
+                $select.find('option:not([value="add_new_source"]):not(:disabled)').remove();
 
-          // Add client types dynamically
-          response.data.forEach(function (item) {
-            const sourceAdd = item.sourcetype;
-            $select.find('option[value="add_new_source"]').before(
-              `<option style="color:black;" value="${escapeHtml(sourceAdd)}">${escapeHtml(sourceAdd)}</option>`
-            );
-          });
-        } else {
-          alert('Error: ' + response.message);
-        }
-      },
-      error: function (xhr, status, error) {
-        console.error('AJAX Error (fetch client types):', status, error);
-        alert('An error occurred while fetching client types.');
-      },
+                // Add source types dynamically
+                response.data.forEach(function (item) {
+                    const sourceAdd = item.sourcetype;
+                    $select.find('option[value="add_new_source"]').before(
+                        `<option style="color:black;" value="${escapeHtml(sourceAdd)}">${escapeHtml(sourceAdd)}</option>`
+                    );
+                });
+            } else {
+                alert('Error: ' + response.message);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('AJAX Error (fetch client types):', status, error);
+            alert('An error occurred while fetching client types.');
+        },
     });
-  }
+}
+
 
   // Call loadSource() on page load
   loadSource();
