@@ -91,23 +91,17 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
 
         // Handle requirements (update or insert based on presence of requirement_id_one)
         if (!empty($inputData['requirement_one'])) {
-            // Prepare the insert statement
             $reqStmt = $conn->prepare("
                 INSERT INTO requirementone_tb (project_unique_id, requirement_one) 
                 VALUES (?, ?)
             ");
-
+            
             // Loop through requirements and check for existing IDs
             foreach ($inputData['requirement_one'] as $index => $requirement) {
-                // Skip if the requirement is empty or null
-                if (empty($requirement)) {
-                    continue; // Skip to the next iteration if the value is empty or null
-                }
-
                 // Check if there's a requirement_id for update
-                if (isset($inputData['requirement_ids'][$index]) && !empty($inputData['requirement_ids'][$index])) {
-                    // Requirement ID exists, so update the existing record
+                if (isset($inputData['requirement_ids'][$index])) {
                     $requirementId = $inputData['requirement_ids'][$index];
+                    // Update existing requirement
                     $updateQuery = "
                         UPDATE requirementone_tb 
                         SET requirement_one = ? 
@@ -120,7 +114,7 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
                         $projectUniqueId
                     ]);
                 } else {
-                    // No requirement ID, so insert a new requirement
+                    // Insert new requirement if no ID exists
                     $reqStmt->execute([
                         $projectUniqueId,
                         htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8')
@@ -128,8 +122,7 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
                 }
             }
         }
-
-
+        
         return "Stage One updated successfully.";
     } catch (Exception $e) {
         error_log("Error in Stage One: " . $e->getMessage());
