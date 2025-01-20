@@ -109,15 +109,19 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         ? array_values(array_reduce(explode(',', $result['requirements']), function ($carry, $requirement) {
                             $parts = explode(':', $requirement);
                             $normalizedRequirementOne = strtolower(trim($parts[1] ?? ''));
-                            if (!in_array($normalizedRequirementOne, array_column($carry, 'requirement_one'))) {
+
+                            // Skip empty requirement_one
+                            if (!empty($normalizedRequirementOne) && !in_array($normalizedRequirementOne, array_column($carry, 'requirement_one'))) {
                                 $carry[] = [
                                     'requirement_id_one' => $parts[0] ?? null,
-                                    'requirement_one' => $parts[1] ?? null
+                                    'requirement_one' => $normalizedRequirementOne,
                                 ];
                             }
+
                             return $carry;
                         }, []))
                         : [],
+
                     ],
                     'stage_two' => [
                     'start_date' => $result['start_date_stage_two'],
