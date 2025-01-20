@@ -28,8 +28,8 @@
         popup.style.textAlign = 'center';
 
         popup.innerHTML = `
-            <h3>Your session is about to expire due to inactivity.</h3>
-            <p>Do you want to continue or log out?</p>
+            <h3 style="color:black;">Your session is about to expire due to inactivity.</h3>
+            <p style="color:black;">Do you want to continue or log out?</p>
             <button id="continueButton">Continue</button>
             <button id="logoutButton">Log Out</button>
         `;
