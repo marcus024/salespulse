@@ -603,6 +603,16 @@ include_once('dirback/dirviewback.php');
                                                                 style="position: absolute; bottom: 10px; right: 10px;">
                                                                 <i class="fas fa-play"></i> Start Journey
                                                             </button>
+                                                        <?php elseif ($status == 'Cancelled'): ?>
+                                                            <!-- Show the "Start Journey" button if project status is 'Not Yet Started' -->
+                                                            <button 
+                                                                class="btn btn-white play-btn" 
+                                                                id="startJourneyButton" 
+                                                                data-bs-toggle="modal" 
+                                                                data-bs-target="#startJourneyModal" 
+                                                                style="position: absolute; bottom: 10px; right: 10px;">
+                                                                <i class="fas fa-play"></i> Continue Journey
+                                                            </button>
                                                         <?php else: ?>
                                                             <!-- Otherwise, show "Continue Journey" -->
                                                             <button 
