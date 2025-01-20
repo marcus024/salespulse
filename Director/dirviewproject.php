@@ -968,6 +968,7 @@ include_once('dirback/dirviewback.php');
                                 // Initialize and show the multiStepModal
                                 var multiStepModalInstance = new bootstrap.Modal(multiStepModal);
                                 multiStepModalInstance.show();
+                                openModal(projectId);
                             } else {
                                 console.error("multiStepModal element not found.");
                             }
