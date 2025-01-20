@@ -125,7 +125,28 @@
                                                     <label for="endDate" class="form-label">End Date</label>
                                                     <input  id="end-date-placeholder" type="text" class="form-control" readonly>
                                                 </div>
-                                                
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <label for="technology" class="form-label text-white">Technology</label>
+                                                    <select name="technology" class="form-control custom-select" id="technology1">
+                                                        <option disabled>Select</option>
+                                                        <option>Artificial Intelligence</option>
+                                                        <option>Machine Learning</option>
+                                                        <option>Blockchain</option>
+                                                        <option>Internet of Things (IoT)</option>
+                                                        <option>Cloud Computing</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label for="dealSize" class="form-label text-white">Deal Size</label>
+                                                    <input name="deal_size" type="number" class="form-control" id="dealSize1" placeholder="e.g. 5000">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="solution" class="form-label text-white">Solution</label>
+                                                    <textarea name="solution" class="form-control" id="solution1" placeholder="e.g. Sample Solution" 
+                                                    style="height:100px;"></textarea>
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-5">
@@ -153,9 +174,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="mb-2">
-                                                        <label for="solution" class="form-label text-white">Solution</label>
-                                                        <textarea name="solution" class="form-control" id="solution1" placeholder="e.g. Sample Solution" 
-                                                        style="height:100px;"></textarea>
+                                                        
                                                     </div>
                                                     <style>
                                                         .custom-select {
@@ -175,19 +194,10 @@
                                                         }
                                                     </style>
                                                     <div class="mb-2">
-                                                        <label for="technology" class="form-label text-white">Technology</label>
-                                                        <select name="technology" class="form-control custom-select" id="technology1">
-                                                            <option disabled>Select</option>
-                                                            <option>Artificial Intelligence</option>
-                                                            <option>Machine Learning</option>
-                                                            <option>Blockchain</option>
-                                                            <option>Internet of Things (IoT)</option>
-                                                            <option>Cloud Computing</option>
-                                                        </select>
+                                                        
                                                     </div>
                                                     <div class="mb-2">
-                                                        <label for="dealSize" class="form-label text-white">Deal Size</label>
-                                                        <input name="deal_size" type="number" class="form-control" id="dealSize1" placeholder="e.g. 5000">
+                                                        
                                                     </div>
                                                    
                                                 </div>
