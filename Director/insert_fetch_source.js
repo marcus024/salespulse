@@ -41,13 +41,13 @@ $(document).ready(function () {
           url: './dirback/insert_source.php',
           type: 'POST',
           dataType: 'json',
-          data: { added_source: newSource.trim() },
+          data: { sourcetype: newSource.trim() },
           success: function (response) {
             if (response.status === 'success') {
               $('#sourceSelect')
                 .find('option[value="add_new_source"]')
                 .before(
-                  `<option style="color:black;" value="${escapeHtml(response.added_source)}">${escapeHtml(response.added_source)}</option>`
+                  `<option style="color:black;" value="${escapeHtml(response.sourcetype)}">${escapeHtml(response.sourcetype)}</option>`
                 );
               $('#sourceSelect').val(response.added_source);
               alert(response.message);
