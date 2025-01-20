@@ -889,6 +889,32 @@
                     </div>
                 </div>
             </div>
+            <style>
+                #notificationBar {
+                display: none;
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: #36b9cc;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-size: 14px;
+                text-align: center;
+                z-index: 9999;
+            }
+
+            #notificationIcon {
+                margin-right: 10px;
+            }
+
+            </style>
+            <!-- Notification Bar (Initially Hidden) -->
+            <div id="notificationBar" style="display: none; position: absolute; top: 10px; left: 50%; transform: translateX(-50%); background-color: #36b9cc; color: white; padding: 10px 20px; border-radius: 5px; font-size: 14px; text-align: center;">
+                <i id="notificationIcon" class="fas fa-check-circle" style="margin-right: 10px;"></i>
+                <span id="notificationMessage">Action completed successfully!</span>
+            </div>
 
     <script>
         // Function to show the notification bar
