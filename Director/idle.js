@@ -22,15 +22,22 @@ function showPopup() {
     popup.style.backgroundColor = '#fff';
     popup.style.padding = '20px';
     popup.style.borderRadius = '10px';
-    popup.style.boxShadow = '0px 4px 10px rgba(0, 0, 0, 0.2)';
+    popup.style.boxShadow = '0px 4px 5px rgba(0, 0, 0, 0.2)';
     popup.style.zIndex = '9999';
     popup.style.textAlign = 'center';
 
     popup.innerHTML = `
         <h3  style="color:black; font-size:20px; font-family:'Poppins';">Your session is about to expire due to inactivity.</h3>
         <p style="color:black; font-size:15px; font-family:'Poppins';">Do you want to continue or log out?</p>
-        <button id="continueButton" style="font-family:'Poppins'; font-size:15px; color:#36b9cc"; background-color:white; >Continue</button>
-        <button id="logoutButton" style="font-family:'Poppins'; font-size:15px; color:white"; background-color:#36b9cc;>Log Out</button>
+        <button id="continueButton" 
+        style="font-family:'Poppins'; font-size:15px; color:#36b9cc; background-color:white; padding:10px 20px; border:2px solid #36b9cc; border-radius:5px; cursor:pointer; transition: all 0.3s ease-in-out;">
+            Continue
+        </button>
+        <button id="logoutButton" 
+                style="font-family:'Poppins'; font-size:15px; color:white; background-color:#36b9cc; padding:10px 20px; border:2px solid #36b9cc; border-radius:5px; cursor:pointer; transition: all 0.3s ease-in-out;">
+            Log Out
+        </button>
+
     `;
 
     document.body.appendChild(popup);
