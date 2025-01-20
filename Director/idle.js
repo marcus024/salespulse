@@ -1,4 +1,4 @@
-const idleTimeLimit = 60000; // 1 minute = 60000 milliseconds
+const idleTimeLimit = 10000; // 1 minute = 60000 milliseconds
 const timeoutLimit = 10000; // 10 seconds to respond to the popup
 
 let idleTime = 0; // Track the idle time
