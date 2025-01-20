@@ -889,7 +889,34 @@
                     </div>
                 </div>
             </div>
-            <?php include('../Director/notifBar.php'); ?>
+
+    <script>
+        // Function to show the notification bar
+        function showNotification(message, isSuccess) {
+            const notificationBar = document.getElementById('notificationBar');
+            const notificationMessage = document.getElementById('notificationMessage');
+            const notificationIcon = document.getElementById('notificationIcon');
+
+            // Set the message and icon based on the success or failure of the action
+            notificationMessage.textContent = message;
+            if (isSuccess) {
+                notificationIcon.classList.remove('fa-times-circle');
+                notificationIcon.classList.add('fa-check-circle');
+            } else {
+                notificationIcon.classList.remove('fa-check-circle');
+                notificationIcon.classList.add('fa-times-circle');
+            }
+
+            // Show the notification bar
+            notificationBar.style.display = 'block';
+
+            // Hide the notification after 5 seconds
+            setTimeout(() => {
+                notificationBar.style.display = 'none';
+            }, 5000);
+        }
+
+    </script>
             
 <script>
     let currentStep = 1;
