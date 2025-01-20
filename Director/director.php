@@ -1009,7 +1009,7 @@ include("../auth/db.php");
                                                         <tbody>
                                                             <?php foreach ($projects as $project): ?>
                                                                 <tr data-status="<?php echo htmlspecialchars($project['pstatus']); ?>">
-                                                                    <td style="padding-left:5px;"><?php echo htmlspecialchars($project['project_unique_id']); ?></td>
+                                                                    <td style="padding-left:5px; padding-right:5px;"><?php echo htmlspecialchars($project['project_unique_id']); ?></td>
                                                                     <td style="padding-left:5px;"><?php echo htmlspecialchars($project['company_name']); ?></td>
                                                                     <td style="padding-left:5px;"><?php echo htmlspecialchars($project['account_manager']); ?></td>
                                                                     <td style="padding-left:5px;"><?php echo htmlspecialchars($project['start_date']); ?></td>
