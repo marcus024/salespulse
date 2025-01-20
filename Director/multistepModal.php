@@ -150,7 +150,7 @@
                                                 <input name="project_unique_id" id="project-unique-id" type="hidden" value="<?php echo $projectId; ?>" class="form-control" readonly>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-5">
+                                                <div class="col-md-12">
                                                     <div class="mb-2">
                                                         <!-- Container for the Label and Add Requirement Button -->
                                                         <div class="d-flex justify-content-between align-items-center mb-2">
