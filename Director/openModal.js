@@ -1,69 +1,74 @@
-async function openModal(projectId) {
-    console.log("Received Project ID:", projectId);
-    if (!projectId) {
-        console.error("No project ID provided.");
-        return;
-    }
-
-    document.getElementById('project-id-placeholder').textContent = projectId;
-    const projectIdPlaceholder = document.getElementById('project-id-placeholder');
-    if (projectIdPlaceholder) {
-        projectIdPlaceholder.textContent = projectId;
-    } else {
-        console.error("Element #project-id-placeholder not found.");
-    }
-
-    updateProjectIdDisplay(projectId);
-
-    try {
-        const response = await fetch(`./dirback/openModaldata.php?project_id=${projectId}`);
-        if (!response.ok) {
-            throw new Error(`HTTP Error: ${response.status}`);
+ async function openModal(projectId) {
+        console.log("Received Project ID:", projectId);
+        if (!projectId) {
+            console.error("No project ID provided.");
+            return;
         }
-
-        const data = await response.json();
-
-        if (data.status === 'success') {
-            document.getElementById('project-unique-id').value = data.project_id || 'No Data';
-            document.getElementById('client-name').textContent = data.company_name || 'No Data';
-
-            //Navigate to the current stage
-            const currentStage = data.current_stage;
-            if (currentStage) {
-                const stageNumber = parseInt(currentStage.split(' ')[1]); // Extract stage number
-                currentStep = stageNumber;
-                markCompletedSteps(stageNumber); // Mark previous steps as completed
-                showStep(stageNumber); // Show the current step
-
-                // Dynamically fetch the required stages based on the current stage number
-                if (stageNumber === 1) {
-                    fetchStageOne(data);
-                } else if (stageNumber === 2) {
-                    fetchStageOne(data);
-                    fetchStageTwo(data);
-                } else if (stageNumber === 3) {
-                    fetchStageTwo(data);
-                    fetchStageThree(data);
-                } else if (stageNumber === 4) {
-                    fetchStageThree(data);
-                    fetchStageFour(data);
-                } else if (stageNumber === 5) {
-                    fetchStageFour(data);
-                    fetchStageFive(data);
-                }
-            } else {
-                console.warn("No current stage data found.");
-            }
+        document.getElementById('project-id-placeholder').textContent = projectId;
+        const projectIdPlaceholder = document.getElementById('project-id-placeholder');
+        if (projectIdPlaceholder) {
+            projectIdPlaceholder.textContent = projectId;
         } else {
-            console.error('Error:', data.message);
-            alert('No data: ' + data.message);
+            console.error("Element #project-id-placeholder not found.");
         }
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        alert('Project ID is Missing');
-    }
-}
+        updateProjectIdDisplay(projectId);
+        fetch(`./dirback/openModaldata.php?project_id=${projectId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP Error: ${response.status}`);
+                }
 
+                return response.json();
+                
+            })
+            .then(data => {
+                if (data.status === 'success') {
+
+                    document.getElementById('project-unique-id').value = data.project_id || 'No Data';
+                    document.getElementById('client-name').textContent = data.company_name || 'No Data';
+                    
+                    // fetchStageOne(data);
+                    // fetchStageTwo(data);
+                    // fetchStageThree(data);
+                    // fetchStageFour(data);
+                    // fetchStageFive(data);
+
+                    //Navigate to the current stage
+                    const currentStage = data.current_stage;
+                    if (currentStage) {
+                        const stageNumber = parseInt(currentStage.split(' ')[1]); // Extract stage number
+                        currentStep = stageNumber;
+                        markCompletedSteps(stageNumber); // Mark previous steps as completed
+                        showStep(stageNumber); // Show the current step
+                         if (stageNumber === 1) {
+                            fetchStageOne(data);
+                        } else if (stageNumber === 2) {
+                            fetchStageOne(data);
+                            fetchStageTwo(data);
+                        } else if (stageNumber === 3) {
+                            fetchStageTwo(data);
+                            fetchStageThree(data);
+                        } else if (stageNumber === 4) {
+                            fetchStageThree(data);
+                            fetchStageFour(data);
+                        } else if (stageNumber === 5) {
+                            fetchStageFour(data);
+                            fetchStageFive(data);
+                        }
+                    } else {
+                        console.warn("No current stage data found.");
+                    }
+                } else {
+                    console.error('Error:', data.message);
+                    console.error('API Error:', data.message);
+                    alert('No data: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                alert('Project ID is Missing');
+            });
+    }
     // Function to mark completed steps
     function markCompletedSteps(currentStep) {
         // Loop through all step circles
