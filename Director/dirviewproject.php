@@ -626,7 +626,15 @@ include_once('dirback/dirviewback.php');
                                                             </button>
                                                         <?php endif; ?>
                                                     </div>
-
+                                                    <button 
+                                                        class="btn btn-white play-btn" 
+                                                        id="continue-btn" 
+                                                        data-bs-toggle="modal" 
+                                                        data-bs-target="#multiStepModal" 
+                                                        onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
+                                                        style="position: absolute; bottom: 10px; right: 10px; display: none;">
+                                                        <i class="fas fa-play"></i> Continue Journey
+                                                    </button>
                                                     <style>
                                                         .btn.play-btn {
                                                             background-color: white;
@@ -946,7 +954,7 @@ function startPhase() {
                 var modalInstance = bootstrap.Modal.getInstance(modal);
                 modalInstance.hide();
 
-                var continueButton = document.getElementById('continueJourneyButton');
+                var continueButton = document.getElementById('continue-btn');
                 if (continueButton) {
                     continueButton.click(); // Simulate a click to continue the journey
                 }
