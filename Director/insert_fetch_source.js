@@ -14,7 +14,7 @@ $(document).ready(function () {
           response.data.forEach(function (item) {
             const sourceAdd = item.sourcetype;
             $select.find('option[value="add_new_source"]').before(
-              `<option value="${escapeHtml(sourceAdd)}">${escapeHtml(sourceAdd)}</option>`
+              `<option style="color:black;" value="${escapeHtml(sourceAdd)}">${escapeHtml(sourceAdd)}</option>`
             );
           });
         } else {
