@@ -37,6 +37,20 @@ function showPopup() {
                 style="font-family:'Poppins'; font-size:15px; color:white; background-color:#36b9cc; padding:10px 20px; border:2px solid #36b9cc; border-radius:5px; cursor:pointer; transition: all 0.3s ease-in-out;">
             Log Out
         </button>
+        <style>
+            #continueButton:hover {
+                background-color: #36b9cc;
+                color: white;
+                transform: scale(1.05); /* Slightly enlarge the button */
+            }
+
+            #logoutButton:hover {
+                background-color: white;
+                color: #36b9cc;
+                transform: scale(1.05); /* Slightly enlarge the button */
+            }
+        </style>
+
 
     `;
 
