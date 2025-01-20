@@ -693,7 +693,7 @@ include_once('dirback/dirviewback.php');
                                                                         type="button" 
                                                                         class="btn" 
                                                                         style="font-size:15px; font-family:'Poppins'; color: white; background: #36b9cc"
-                                                                        onclick="startPhase(); openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>');"
+                                                                        onclick="startPhase()"
                                                                         data-bs-toggle="modal" 
                                                                         data-bs-target="#multiStepModal"
                                                                     >
