@@ -1743,7 +1743,7 @@ include("../auth/db.php");
                                             <option value="Television/Radio Ads">Television/Radio Ads</option>
                                             <option value="Partnerships">Partnerships</option>
                                             <option value="Coupons/Discounts">Coupons/Discounts</option> -->
-                                            <option value="add_new_source">+ Add New Source...</option>
+                                            <option style="color:black;" value="add_new_source">+ Add New Source...</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 mb-2">
