@@ -41,19 +41,19 @@
                         markCompletedSteps(stageNumber); // Mark previous steps as completed
                         showStep(stageNumber); // Show the current step
                          if (stageNumber === 1) {
-                            fetchStageOne(data);
+                            fetchStageOne(data,projectId);
                         } else if (stageNumber === 2) {
-                            fetchStageOne(data);
-                            fetchStageTwo(data);
+                            fetchStageOne(data,projectId);
+                            fetchStageTwo(data,projectId);
                         } else if (stageNumber === 3) {
-                            fetchStageTwo(data);
-                            fetchStageThree(data);
+                            fetchStageTwo(data,projectId);
+                            fetchStageThree(data,projectId);
                         } else if (stageNumber === 4) {
-                            fetchStageThree(data);
-                            fetchStageFour(data);
+                            fetchStageThree(data,projectId);
+                            fetchStageFour(data,projectId);
                         } else if (stageNumber === 5) {
-                            fetchStageFour(data);
-                            fetchStageFive(data);
+                            fetchStageFour(data,projectId);
+                            fetchStageFive(data,projectId);
                         }
                     } else {
                         console.warn("No current stage data found.");
@@ -109,108 +109,108 @@
         });
     }
 
-    function fetchStageOne(data){
+    function fetchStageOne(data,projectId){
 
         document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
-                    document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || 'No Data';
-                    document.getElementById('status-placeholder').value     = data.stages.stage_one.status     || 'No Data';
-                    document.getElementById('solution1').value = data.stages.stage_one.solution || 'No Data';
-                    document.getElementById('dealSize1').value = data.stages.stage_one.deal_size || 'No Data';
-                    document.getElementById('stageremarks1').value = data.stages.stage_one.remarks || 'No Data';
-                    document.getElementById('distributorSelect').value = data.stages.stage_one.distributor || 'Select';
-                    document.getElementById('product1').value = data.stages.stage_one.product || 'No Data';
-                    const distributorSelect = document.getElementById('distributorSelect');
-                    const distributorValue = data.stages.stage_one.distributor || 'Select';
-                    Array.from(distributorSelect.options).forEach(option => {
-                        if (option.value === distributorValue) {
-                            option.selected = true;
-                        }
-                    });
-                    const technology1 = document.getElementById('technology1');
-                    const techValue = data.stages.stage_one.technology || 'Select';
-                    Array.from(technology1.options).forEach(option => {
-                        if (option.value === techValue) {
-                            option.selected = true;
-                        }
-                    });
-                    
-                    // Get the container for requirements
-                    const requirementContainer = document.getElementById('requirement-container');
+        document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || 'No Data';
+        document.getElementById('status-placeholder').value     = data.stages.stage_one.status     || 'No Data';
+        document.getElementById('solution1').value = data.stages.stage_one.solution || 'No Data';
+        document.getElementById('dealSize1').value = data.stages.stage_one.deal_size || 'No Data';
+        document.getElementById('stageremarks1').value = data.stages.stage_one.remarks || 'No Data';
+        document.getElementById('distributorSelect').value = data.stages.stage_one.distributor || 'Select';
+        document.getElementById('product1').value = data.stages.stage_one.product || 'No Data';
+        const distributorSelect = document.getElementById('distributorSelect');
+        const distributorValue = data.stages.stage_one.distributor || 'Select';
+        Array.from(distributorSelect.options).forEach(option => {
+            if (option.value === distributorValue) {
+                option.selected = true;
+            }
+        });
+        const technology1 = document.getElementById('technology1');
+        const techValue = data.stages.stage_one.technology || 'Select';
+        Array.from(technology1.options).forEach(option => {
+            if (option.value === techValue) {
+                option.selected = true;
+            }
+        });
+        
+        // Get the container for requirements
+        const requirementContainer = document.getElementById('requirement-container');
 
-                    // Clear only if no existing fields are present
-                    if (!requirementContainer.querySelector('.requirement-field')) {
-                        const requirements = data.stages.stage_one.requirements || []; // Fetch requirements from data
+        // Clear only if no existing fields are present
+        if (!requirementContainer.querySelector('.requirement-field')) {
+            const requirements = data.stages.stage_one.requirements || []; // Fetch requirements from data
 
-                        requirements.forEach((requirement) => {
-                            // Create a row for each requirement
-                            const requirementRow = document.createElement('div');
-                            requirementRow.className = 'row align-items-center requirement-field';
-                            requirementRow.style.margin = '5px 0 0 0';
+            requirements.forEach((requirement) => {
+                // Create a row for each requirement
+                const requirementRow = document.createElement('div');
+                requirementRow.className = 'row align-items-center requirement-field';
+                requirementRow.style.margin = '5px 0 0 0';
 
-                            // Set the HTML content of the row
-                            requirementRow.innerHTML = `
-                                <div class="col-10 d-flex align-items-center">
-                                    <!-- Input field for Requirement -->
-                                    <input 
-                                        value="${requirement.requirement_one}" 
-                                        name="requirement_one[]" 
-                                        style="width: 100%;" 
-                                        type="text" 
-                                        class="form-control" 
-                                        data-id="${requirement.requirement_id_one}" 
-                                        placeholder="e.g. Sample Requirement"
-                                    >
-                                </div>
-                                <div class="col-2 d-flex justify-content-end align-items-center">
-                                    <!-- Delete Button -->
-                                    <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                </div>
-                            `;
+                // Set the HTML content of the row
+                requirementRow.innerHTML = `
+                    <div class="col-10 d-flex align-items-center">
+                        <!-- Input field for Requirement -->
+                        <input 
+                            value="${requirement.requirement_one}" 
+                            name="requirement_one[]" 
+                            style="width: 100%;" 
+                            type="text" 
+                            class="form-control" 
+                            data-id="${requirement.requirement_id_one}" 
+                            placeholder="e.g. Sample Requirement"
+                        >
+                    </div>
+                    <div class="col-2 d-flex justify-content-end align-items-center">
+                        <!-- Delete Button -->
+                        <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                `;
 
-                            // Append the row to the container
-                            requirementContainer.appendChild(requirementRow);
+                // Append the row to the container
+                requirementContainer.appendChild(requirementRow);
 
-                            // Add delete functionality to the button
-                            const deleteButton = requirementRow.querySelector('button');
-                            deleteButton.addEventListener('click', () => {
-                                fetch('./dirback/delete_req1.php', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                    },
-                                    body: JSON.stringify({
-                                        requirement_id: requirement.requirement_id_one, // Use the requirement ID for deletion
-                                        project_id: projectId // Project ID for context
-                                    }),
-                                })
-                                    .then((response) => response.json())
-                                    .then((data) => {
-                                        if (data.status === 'success') {
-                                            // Remove the row from the DOM
-                                            requirementRow.remove();
+                // Add delete functionality to the button
+                const deleteButton = requirementRow.querySelector('button');
+                deleteButton.addEventListener('click', () => {
+                    fetch('./dirback/delete_req1.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            requirement_id: requirement.requirement_id_one, // Use the requirement ID for deletion
+                            project_id: projectId // Project ID for context
+                        }),
+                    })
+                        .then((response) => response.json())
+                        .then((data) => {
+                            if (data.status === 'success') {
+                                // Remove the row from the DOM
+                                requirementRow.remove();
 
-                                            // Optionally update the requirements array
-                                            const index = requirements.findIndex(req => req.requirement_id_one === requirement.requirement_id_one);
-                                            if (index > -1) {
-                                                requirements.splice(index, 1);
-                                            }
-                                        } else {
-                                            alert('Error: ' + data.message);
-                                        }
-                                    })
-                                    .catch((error) => {
-                                        console.error('Error deleting requirement:', error);
-                                        alert('Failed to delete requirement. Please try again.');
-                                    });
-                            });
+                                // Optionally update the requirements array
+                                const index = requirements.findIndex(req => req.requirement_id_one === requirement.requirement_id_one);
+                                if (index > -1) {
+                                    requirements.splice(index, 1);
+                                }
+                            } else {
+                                alert('Error: ' + data.message);
+                            }
+                        })
+                        .catch((error) => {
+                            console.error('Error deleting requirement:', error);
+                            alert('Failed to delete requirement. Please try again.');
                         });
-                    }
+                });
+            });
+        }
 
     }
 
-    function fetchStageTwo(data){
+    function fetchStageTwo(data,projectId){
         document.getElementById('stage-two-start').value = data.stages.stage_two.start_date || 'No Data';
         document.getElementById('stage-two-end').value = data.stages.stage_two.end_date ||  'No Data';
         document.getElementById('stage-two-status').value = data.stages.stage_two.status ||  'No Data';
@@ -411,7 +411,7 @@
 
     }
 
-    function fetchStageThree(data){
+    function fetchStageThree(data,projectId){
         document.getElementById('stage-three-start').value  = data.stages.stage_three.start_date || 'No Data';
         document.getElementById('stage-three-end').value    = data.stages.stage_three.end_date   || 'No Data';
         document.getElementById('stage-three-status').value = data.stages.stage_three.status     || 'No Data';
@@ -633,7 +633,7 @@
         });
     }
 
-    function fetchStageFour(data){
+    function fetchStageFour(data,projectId){
         document.getElementById('stage-four-start').value  = data.stages.stage_four.start_date || 'No Data';
         document.getElementById('stage-four-end').value    = data.stages.stage_four.end_date   || 'No Data';
         document.getElementById('stage-four-status').value = data.stages.stage_four.status     || 'No Data';
@@ -763,7 +763,7 @@
         }
     }
 
-    function fetchStageFive(data){
+    function fetchStageFive(data,projectId){
         document.getElementById('stage-five-start').value = data.stages.stage_five.start_date || 'No Data';
         document.getElementById('stage-five-end').value = data.stages.stage_five.end_date || 'No Data';
         document.getElementById('stage-five-status').value = data.stages.stage_five.status || 'No Data';
