@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 include('../../auth/db.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $newClientType = trim($_POST['added_source'] ?? '');
+    $newClientType = trim($_POST['sourcetype'] ?? '');
 
     // Validate input
     if (empty($newClientType)) {
