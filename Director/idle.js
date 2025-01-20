@@ -27,10 +27,10 @@ function showPopup() {
     popup.style.textAlign = 'center';
 
     popup.innerHTML = `
-        <h3 style="color:black;">Your session is about to expire due to inactivity.</h3>
-        <p style="color:black;">Do you want to continue or log out?</p>
-        <button id="continueButton">Continue</button>
-        <button id="logoutButton">Log Out</button>
+        <h3  style="color:black; font-size:20px; font-family:'Poppins';">Your session is about to expire due to inactivity.</h3>
+        <p style="color:black; font-size:15px; font-family:'Poppins';">Do you want to continue or log out?</p>
+        <button id="continueButton" style="font-family:'Poppins'; font-size:15px; color:#36b9cc"; background-color:white; >Continue</button>
+        <button id="logoutButton" style="font-family:'Poppins'; font-size:15px; color:white"; background-color:#36b9cc;>Log Out</button>
     `;
 
     document.body.appendChild(popup);
