@@ -1705,8 +1705,7 @@ include("../auth/db.php");
                                         <select name="product_type" class="form-select" id="productType" style="font-size: 10px; color: #000; padding: 5px;" required>
                                             <option value="" selected disabled>Select Product Type</option>
                                             <option value="New">New</option>
-                                            <option value="Old">Old</option>
-                                            <option value="Futuristic">Futuristic</option>
+                                            <option value="Existing">Existing</option>
                                         </select>
                                     </div>
                                     <!-- Start Date -->
