@@ -82,7 +82,7 @@
                     <div class="modal-content" class="modal-content" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(2px); border-radius: 5px;">
                         <div class="modal-header" style="background-color:#36b9cc; height: 50px;">
                             <h5 class="modal-title" id="client-name" style="font-size: 15px; color:white;"></h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="modalCloseButton"></button>
                         </div>
                         <div class="modal-body position-relative">
                             <div class="d-flex justify-content-between align-items-center mb-4 step">
@@ -1611,6 +1611,21 @@
                     }
                 });
             });
+        </script>
+        <script>
+            // Function to refresh the page when the modal is closed
+            function refreshPage() {
+                location.reload(); // Reload the current page
+            }
+
+            // Attach the refresh function to the modal close event
+            const modalCloseButton = document.getElementById('modalCloseButton');
+            if (modalCloseButton) {
+                modalCloseButton.addEventListener('click', function() {
+                    refreshPage(); // Refresh the page when the modal is closed
+                });
+            }
+
         </script>
         
  
