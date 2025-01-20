@@ -946,6 +946,7 @@ function startPhase() {
                     button.innerHTML = '<i class="fas fa-play"></i> Continue Journey'; // Change text to Continue Journey
                     button.id = "continueJourneyButton"; // Update the button ID
                     button.setAttribute("onclick", "continuePhase()"); // Update the onclick action
+                    openModal(projectId);
                 } else {
                     button.innerHTML = '<i class="fas fa-play"></i> Start Journey'; // Default text
                 }
@@ -954,7 +955,7 @@ function startPhase() {
                 var modal = document.getElementById("startJourneyModal");
                 var modalInstance = bootstrap.Modal.getInstance(modal);
                 modalInstance.hide();
-                openModal(projectId);
+                
             }
         } else {
             alert("Failed to update start date.");
