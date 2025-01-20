@@ -1088,10 +1088,9 @@ include("../auth/db.php");
                                                         <div class="col-md-4 mb-2">
                                                             <label for="productType" class="form-label" style="font-size: 10px; color: #000;">Product Type</label>
                                                             <select class="form-select" id="productType" style="font-size: 10px; color: #000; padding: 5px;" required>
-                                                                <option value="" selected disabled>Select status</option>
-                                                                <option value="active">New</option>
-                                                                <option value="inactive">Old</option>
-                                                                <option value="completed">Futuristic</option>
+                                                                <option value="" selected disabled>Select Product</option>
+                                                                <option value="New">New</option>
+                                                                <option value="Existing">Existing</option>
                                                             </select>
                                                         </div>
                                                     </div>
