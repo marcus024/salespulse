@@ -47,7 +47,7 @@ $(document).ready(function () {
               $('#sourceSelect')
                 .find('option[value="add_new_source"]')
                 .before(
-                  `<option value="${escapeHtml(response.added_source)}">${escapeHtml(response.added_source)}</option>`
+                  `<option style="color:black;" value="${escapeHtml(response.added_source)}">${escapeHtml(response.added_source)}</option>`
                 );
               $('#sourceSelect').val(response.added_source);
               alert(response.message);
