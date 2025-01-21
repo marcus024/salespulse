@@ -430,7 +430,7 @@
         const engagementFieldsContainer3 = document.getElementById('engagement-fields-container3');
 
         // Clear the container before rendering
-        engagementFieldsContainer3.innerHTML = '';
+        // engagementFieldsContainer3.innerHTML = '';
 
         // Fetch engagement data from stage_three
         const engagements3 = data.stages.stage_three.engagement_stage_three || [];
