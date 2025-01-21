@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 Requirement ${requirementCount}
             </p>
             <!-- Unique hidden ID field -->
-            <input type="hidden" name="requirement_id[]" value="${newReqId}">
+            <input type="hidden" name="requirement_id_1[]" value="${newReqId}">
 
             <div class="row mb-2">
                 <div class="col-md-4">

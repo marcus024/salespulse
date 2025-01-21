@@ -153,7 +153,7 @@
                                                     </p>
 
                                                     <!-- Unique ID hidden field (first block => st1rq1) -->
-                                                    <input type="hidden" name="requirement_id[]" value="st1rq1">
+                                                    <input type="hidden" name="requirement_id_1[]" value="st1rq1">
 
                                                     <!-- First row: Labels + "Add" button -->
                                                     <div class="row mb-2">
