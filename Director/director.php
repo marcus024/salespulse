@@ -1076,7 +1076,7 @@ include("../auth/db.php");
                                                     <div class="row">
                                                         <!-- Client/Company -->
                                                         <div class="col-md-4 mb-2">
-                                                            <label for="clientCompany" class="form-label" style="font-size: 10px; color: #000;">Client/Company</label>
+                                                            <label for="clientCompany" class="form-label" style="font-size: 10px; color: #000;">Client</label>
                                                             <input type="text" class="form-control input-sm" id="modalCompanyName" placeholder="Enter client or company name" style="font-size: 10px; color: #000; padding: 5px;" required>
                                                         </div>
                                                         <!-- Account Manager -->
@@ -1086,7 +1086,7 @@ include("../auth/db.php");
                                                         </div>
                                                         <!-- Product Type -->
                                                         <div class="col-md-4 mb-2">
-                                                            <label for="productType" class="form-label" style="font-size: 10px; color: #000;">Product Type</label>
+                                                            <label for="productType" class="form-label" style="font-size: 10px; color: #000;">Account Type</label>
                                                             <select class="form-select" id="productType" style="font-size: 10px; color: #000; padding: 5px;" required>
                                                                 <option value="" selected disabled>Select Product</option>
                                                                 <option value="New">New</option>
