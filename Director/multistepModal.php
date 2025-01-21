@@ -146,7 +146,8 @@
                                                     style="height:100px;"></textarea>
                                                 </div>
                                             </div>
-                                            <div style="border-top: 1px solid white; margin: 20px 0;"></div>
+                                            <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+
                                             <div class="row mb-3">
                                                 <div class="col-md-4">
                                                     <label for="requirement" class="form-label text-white">Requirement</label>
@@ -184,7 +185,8 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                            <div style="border-top: 1px solid white; margin: 20px 0;"></div>
+                                            <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+
                                             <div class="row mb-3">
                                                 <div class="mb-6">
                                                     <label for="remarks" class="form-label text-white">Stage Remarks</label>
@@ -261,7 +263,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid white; margin: 20px 0;"></div>
+                                        <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                             <div class="row mb-3">
                                                 <div class="col-md-4">
@@ -301,7 +304,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid white; margin: 20px 0;"></div>
+                                        <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                             <!-- Header Row -->
                                             <div class="row mb-3">
@@ -360,7 +364,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid white; margin: 20px 0;"></div>
+                                        <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -421,7 +426,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid white; margin: 20px 0;"></div>
+                                        <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                             <div class="row mb-1">
                                                 <div class="col-md-3">
@@ -461,7 +467,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid white; margin: 20px 0;"></div>
+                                        <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                             <!-- Header Row -->
                                             <div class="row mb-1">
@@ -546,7 +553,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid white; margin: 20px 0;"></div>
+                                        <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -607,7 +615,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid white; margin: 20px 0;"></div>
+                                        <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                             <!-- Header Row -->
                                             <div class="row mb-1">
@@ -692,7 +701,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid white; margin: 20px 0;"></div>
+                                        <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -776,7 +786,8 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div style="border-top: 1px solid white; margin: 20px 0;"></div>
+                                            <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+
                                             <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                                 <!-- Header Row -->
                                                 <div class="row mb-1">
@@ -868,7 +879,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div style="border-top: 1px solid white; margin: 20px 0;"></div>
+                                            <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+
                                             <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                                 <!-- Fixed Labels Row -->
                                                 <div class="row mb-1">
@@ -922,7 +934,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid white; margin: 20px 0;"></div>
+                                        <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
                                             <div class="row">
                                                 <div class="col-md-12">
