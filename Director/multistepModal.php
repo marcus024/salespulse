@@ -144,75 +144,72 @@
                                             </div>
                                             <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
                                             <!-- Container that holds ALL requirement blocks -->
-<div id="requirementsContainer">
+                                            <div id="requirementsContainer">
+                                                <!-- The initial requirement block (Requirement #1) -->
+                                                <div class="requirement-block" data-index="1">
+                                                    <!-- Title -->
+                                                    <p class="text-center text-white mb-1" 
+                                                    style="font-style:'Poppins'; font-weight:bold;">
+                                                    Requirement 1
+                                                    </p>
 
-  <!-- The initial requirement block (Requirement #1) -->
-  <div class="requirement-block" data-index="1">
-    <!-- Title -->
-    <p class="text-center text-white mb-1" 
-       style="font-style:'Poppins'; font-weight:bold;">
-       Requirement 1
-    </p>
+                                                    <!-- First row: Labels + "Add" button -->
+                                                    <div class="row mb-2">
+                                                    <div class="col-md-4">
+                                                        <label for="requirement" class="form-label text-white">Requirement</label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label for="product" class="form-label text-white">Product</label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label for="distributor" class="form-label text-white">Distributor</label>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <!-- This is the global Add button for the ENTIRE form; 
+                                                            you only want ONE 'Add' button in the first block. 
+                                                            Alternatively, you can move this outside the container. -->
+                                                        <button type="button"
+                                                                class="btn btn-primary btn-sm"
+                                                                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                                                id="addRequirement1">
+                                                        <i class="fas fa-plus"></i>&nbsp;Add
+                                                        </button>
+                                                    </div>
+                                                    </div>
 
-    <!-- First row: Labels + "Add" button -->
-    <div class="row mb-2">
-      <div class="col-md-4">
-          <label for="requirement" class="form-label text-white">Requirement</label>
-      </div>
-      <div class="col-md-3">
-          <label for="product" class="form-label text-white">Product</label>
-      </div>
-      <div class="col-md-3">
-          <label for="distributor" class="form-label text-white">Distributor</label>
-      </div>
-      <div class="col-md-2">
-        <!-- This is the global Add button for the ENTIRE form; 
-             you only want ONE 'Add' button in the first block. 
-             Alternatively, you can move this outside the container. -->
-        <button type="button"
-                class="btn btn-primary btn-sm"
-                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                id="addRequirement1">
-          <i class="fas fa-plus"></i>&nbsp;Add
-        </button>
-      </div>
-    </div>
-
-    <!-- Second row: Input fields + "Remove" button -->
-    <div class="row mb-3">
-      <div class="col-md-4">
-        <input name="requirement_one[]" 
-               style="width: 100%;" 
-               type="text" 
-               class="form-control" 
-               placeholder="e.g. Sample Requirement">
-      </div>
-      <div class="col-md-3">
-        <select name="product_one[]" 
-                class="form-control custom-select">
-          <option disabled selected>Select</option>
-          <option value="add_new_product">+ Add New Product...</option>
-        </select>
-      </div>
-      <div class="col-md-3">
-        <select name="distributor_one[]" 
-                class="form-control custom-select">
-          <option disabled selected>Select</option>
-          <option value="add_new">+ Add New Distributor...</option>
-        </select>
-      </div>
-      <div class="col-md-2">
-        <button type="button"
-                class="btn btn-danger btn-sm removeRequirement"
-                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
-          <i class="fas fa-minus"></i>&nbsp;Remove
-        </button>
-      </div>
-    </div>
-  </div> <!-- /.requirement-block -->
-
-</div> <!-- /#requirementsContainer -->
-
+                                                    <!-- Second row: Input fields + "Remove" button -->
+                                                    <div class="row mb-3">
+                                                    <div class="col-md-4">
+                                                        <input name="requirement_one[]" 
+                                                            style="width: 100%;" 
+                                                            type="text" 
+                                                            class="form-control" 
+                                                            placeholder="e.g. Sample Requirement">
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <select name="product_one[]" 
+                                                                class="form-control custom-select">
+                                                        <option disabled selected>Select</option>
+                                                        <option value="add_new_product">+ Add New Product...</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <select name="distributor_one[]" 
+                                                                class="form-control custom-select">
+                                                        <option disabled selected>Select</option>
+                                                        <option value="add_new">+ Add New Distributor...</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <button type="button"
+                                                                class="btn btn-danger btn-sm removeRequirement"
+                                                                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
+                                                        <i class="fas fa-minus"></i>&nbsp;Remove
+                                                        </button>
+                                                    </div>
+                                                    </div>
+                                                </div> <!-- /.requirement-block -->
+                                            </div> <!-- /#requirementsContainer -->
                                             <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
                                             <div class="row mb-3">
                                                 <div class="mb-6">
@@ -1038,6 +1035,9 @@
                     </div>
                 </div>
             </div>
+
+    <!-- javascript -->
+    <script src="modal_req/duplicate_req_one.js"></script>
                 
     <script>
         let currentStep = 1;
