@@ -155,8 +155,11 @@
                                                    <label for="distributor" class="form-label text-white">Distributor</label>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <button type="button" class="btn btn-primary btn-sm" style="width:70px;" id="addRequirement">
-                                                        <i class="fas fa-plus"></i> Add
+                                                    <button type="button"
+                                                            class="btn btn-primary btn-sm"
+                                                            style="width:100px; display:inline-flex; align-items:center; justify-content:center;"
+                                                            id="addRequirement">
+                                                        <i class="fas fa-plus"></i>&nbsp;Add
                                                     </button>
                                                 </div>
                                             </div>
@@ -179,8 +182,10 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <button type="button" class="btn btn-danger btn-sm deleteRequirement">
-                                                        <i class="fas fa-minus"></i> Remove
+                                                    <button type="button"
+                                                            class="btn btn-danger btn-sm deleteRequirement"
+                                                            style="width:100px; display:inline-flex; align-items:center; justify-content:center;">
+                                                        <i class="fas fa-minus"></i>&nbsp;Remove
                                                     </button>
                                                 </div>
                                             </div>
