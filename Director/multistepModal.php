@@ -312,7 +312,7 @@
                                                 <div class="col-md-2">
                                                    <label for="distributor" class="form-label text-white">Distributor</label>
                                                 </div>
-                                                <div class="col-md-1">
+                                                <div class="col-md-2">
                                                     <label for="requirement" class="form-label text-white">Date</label>
                                                 </div>
                                                 <div class="col-md-3">
