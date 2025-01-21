@@ -599,7 +599,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
+                                        <div class="container" style="background-color: white; border-color:white; padding: 5px; border-radius: 20px">
                                             <!-- Header Row -->
                                             <div class="row mb-1">
                                                 <div class="col-md-3">
