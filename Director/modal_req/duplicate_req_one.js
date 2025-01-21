@@ -1,33 +1,35 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Start at 1 because the first block is "Requirement 1"
+    // Start at 1 because the initial block is "Requirement 1" / st1rq1
     let requirementCount = 1;
 
-    // The container that holds all blocks
+    // Container that holds all blocks
     const requirementsContainer = document.getElementById('requirementsContainer');
 
-    // The "Add" button in the first block
-    const addBtn = document.getElementById('addRequirement1');
+    // "Add" button in the first block
+    const addBtn = document.getElementById('addRequirementBtn');
 
-    // 1. ADD functionality
+    // ADD functionality
     addBtn.addEventListener('click', function(e) {
         e.preventDefault();
 
         // Increment the counter
         requirementCount++;
 
-        // Create a new DIV for the next requirement
+        // Create a new DIV
         const newBlock = document.createElement('div');
         newBlock.classList.add('requirement-block');
         newBlock.dataset.index = requirementCount;
 
-        // Fill in the HTML, including new "Requirement X" title
-        // Note that we've removed 'id' attributes (like #addRequirement1) 
-        // to avoid duplicates. 
+        // Build the "st1rqX" format for the hidden ID
+        const newReqId = 'st1rq' + requirementCount;
+
         newBlock.innerHTML = `
             <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
                 Requirement ${requirementCount}
             </p>
+            <!-- Unique hidden ID field -->
+            <input type="hidden" name="requirement_id[]" value="${newReqId}">
 
             <div class="row mb-2">
                 <div class="col-md-4">
@@ -40,16 +42,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     <label class="form-label text-white">Distributor</label>
                 </div>
                 <div class="col-md-2">
-                    <!-- We do NOT include another "Add" button here 
-                         because we only want one global add button. 
-                         If you want each block to have its own Add, 
-                         you can copy that markup. -->
+                    <!-- We only keep one Add button in the first block, 
+                         so no Add button here. 
+                         If you want each row to have an Add, 
+                         you can replicate it. -->
                 </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col-md-4">
-                    <input name="requirement_one[]" style="width: 100%;" type="text" class="form-control" placeholder="e.g. Sample Requirement">
+                    <input name="requirement_one[]" 
+                           style="width: 100%;" 
+                           type="text" 
+                           class="form-control" 
+                           placeholder="e.g. Sample Requirement">
                 </div>
                 <div class="col-md-3">
                     <select name="product_one[]" class="form-control custom-select">
@@ -77,9 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         requirementsContainer.appendChild(newBlock);
     });
 
-    // 2. REMOVE functionality
-    // We'll use event delegation so any .removeRequirement button 
-    // in the container will work (even for newly added blocks).
+    // REMOVE functionality with event delegation
     requirementsContainer.addEventListener('click', function(e) {
         if (e.target.closest('.removeRequirement')) {
             e.preventDefault();
@@ -89,5 +93,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-
 });
