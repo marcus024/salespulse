@@ -563,15 +563,15 @@
                                     <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                             <div class="row mb-3">
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <label for="requirement" class="form-label text-white">Start Date</label>
                                                     <input type="text" class="form-control" id="stage-four-start"  readonly>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <label for="requirement" class="form-label text-white">End Date</label>
                                                     <input type="text" class="form-control" id="stage-four-end"  readonly>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2x">
                                                     <label for="status" class="form-label text-white">Status</label>
                                                     <input type="text" class="form-control" id="stage-four-status"  readonly>
                                                 </div>
@@ -586,17 +586,17 @@
                                                         <option>Cloud Computing</option>
                                                     </select>
                                                 </div>
-                                               
+                                                <div class="col-md-3">
+                                                   <label for="dealSize" class="form-label text-white">Deal Size</label>
+                                                    <input name="deal_size" type="number" class="form-control" id="deal_size4" placeholder="e.g. 5000">
+                                                </div>
                                             </div>
                                             <div class="row mb-3">
                                                  <div class="col-md-3">
                                                     <label for="product" class="form-label text-white">Product</label>
                                                     <input name="product" id="product4" type="text" class="form-control">
                                                 </div>
-                                                <div class="col-md-3">
-                                                   <label for="dealSize" class="form-label text-white">Deal Size</label>
-                                                    <input name="deal_size" type="number" class="form-control" id="deal_size4" placeholder="e.g. 5000">
-                                                </div>
+                                                
                                                 <div class="col-md-6">
                                                     <label for="status" class="form-label text-white">Solution</label>
                                                     <textarea name="solution" class="form-control" id="solution4" placeholder="e.g. Sample Solution" 
