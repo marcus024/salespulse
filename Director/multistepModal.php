@@ -142,48 +142,61 @@
                                                     style="height:100px;"></textarea>
                                                 </div>
                                             </div>
-                                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
-                                            <div class="row mb-3">
-                                                <div class="col-md-4">
-                                                    <label for="requirement" class="form-label text-white">Requirement</label>
-                                                </div>
-                                                <div class="col-md-3">
-                                                   <label for="product" class="form-label text-white">Product</label>
-                                                </div>
-                                                <div class="col-md-3">
-                                                   <label for="distributor" class="form-label text-white">Distributor</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <a href="#" id="addRequiremen" class="form-label text-white" style="font-size:10px; cursor: pointer;">
-                                                        <i class="fas fa-plus"></i> Add Another
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-md-4">
-                                                     <input  name="requirement_one[]" style="width: 100%;" type="text" class="form-control" id="requirement1" placeholder="e.g. Sample Requirement">
-                                                </div>
-                                                <div class="col-md-3">
-                                                   <select name="product_one[]" id="productSelect" class="form-control custom-select">
-                                                        <option disabled selected>Select</option>
-                                                        <option value="add_new_product">+ Add New Product...</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <select name="distributor_one[]" id="distributorSelect" class="form-control custom-select">
-                                                        <option disabled selected>Select</option>
-                                                        <!-- Existing options can be removed or loaded dynamically -->
-                                                        <!-- Special option for adding new distributor -->
-                                                        <option value="add_new">+ Add New Distributor...</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;" id="deleteRequirement">
-                                                        <i class="fas fa-minus"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
+                                           <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+
+<!-- Container to hold all "requirement" sets -->
+<div id="requirementsContainer">
+
+    <!-- ONE requirement set (starting with #1) -->
+    <div class="requirement-block" data-index="1">
+        <h5 style="color: white; margin-bottom: 10px;">Requirement 1.</h5>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <input name="requirement_one[]" style="width: 100%;" type="text" class="form-control" id="requirement1" placeholder="e.g. Sample Requirement">
+            </div>
+            <div class="col-md-3">
+                <select name="product_one[]" id="productSelect" class="form-control custom-select">
+                    <option disabled selected>Select</option>
+                    <option value="add_new_product">+ Add New Product...</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select name="distributor_one[]" id="distributorSelect" class="form-control custom-select">
+                    <option disabled selected>Select</option>
+                    <option value="add_new">+ Add New Distributor...</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Controls row (title + Add Another link) -->
+<div class="row mb-3">
+    <div class="col-md-4">
+        <label for="requirement" class="form-label text-white">Requirement</label>
+    </div>
+    <div class="col-md-3">
+        <label for="product" class="form-label text-white">Product</label>
+    </div>
+    <div class="col-md-3">
+        <label for="distributor" class="form-label text-white">Distributor</label>
+    </div>
+    <div class="col-md-2">
+        <!-- Add Another link -->
+        <a href="#" id="addRequirement" class="form-label text-white" style="font-size:10px; cursor: pointer;">
+            <i class="fas fa-plus"></i> Add Another
+        </a>
+    </div>
+</div>
+
+<div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+
                                             <div class="row mb-3">
                                                 <div class="mb-6">
                                                     <label for="remarks" class="form-label text-white">Stage Remarks</label>
