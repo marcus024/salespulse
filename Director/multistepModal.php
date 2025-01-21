@@ -494,13 +494,13 @@
                                             <div id="requirement-fields-container-3">
                                                 <!-- Initial Requirement Row -->
                                                 <div class="row requirement-fields mb-3">
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-1">
                                                         <input name="requirement_three[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-1">
                                                         <input name="product" id="product3" type="text" class="form-control">
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-1">
                                                         <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
                                                             <option disabled selected>Select</option>
                                                             <!-- Existing options can be removed or loaded dynamically -->
@@ -508,22 +508,22 @@
                                                             <option value="add_new">+ Add New Distributor...</option>
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-1">
                                                         <input name="requirement_date[]" type="date" id="reqdate2" class="form-control" style="font-size:10px;">
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-1">
                                                         <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-1">
                                                         <input name="bill_of_materials[]" type="text" class="form-control" placeholder="e.g. 5000">
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-1">
                                                         <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 5000">
                                                     </div>
                                                     <div class="col-md-2">
                                                         <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-1">
                                                         <!-- Remove Button -->
                                                         <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
                                                             <i class="fas fa-minus"></i>
