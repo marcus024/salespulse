@@ -1701,7 +1701,7 @@ include("../auth/db.php");
                                 <div class="row">
                                     <!-- Product Type -->
                                     <div class="col-md-4 mb-2">
-                                        <label for="product_type" class="form-label" style="font-size: 10px; color: #000;">Product Type</label>
+                                        <label for="product_type" class="form-label" style="font-size: 10px; color: #000;">Account Type</label>
                                         <select name="product_type" class="form-select" id="productType" style="font-size: 10px; color: #000; padding: 5px;" required>
                                             <option value="" selected disabled>Select Product Type</option>
                                             <option value="New">New</option>
