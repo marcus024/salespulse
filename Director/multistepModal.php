@@ -857,7 +857,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div style="border-top: 2px solid white; margin: 20px 0;"></div>
+                                            <div style="border-top: 1px solid white; margin: 20px 0;"></div>
                                             <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                                 <!-- Fixed Labels Row -->
                                                 <div class="row mb-1">
