@@ -143,7 +143,7 @@
                                                 </div>
                                             </div>
                                             <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
-                                            <p class="text-center text-white mb-1" style="font-style:'Poppins' ">Requirement 1</p> 
+                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold; ">Requirement 1</p> 
                                             <div class="row mb-3">
                                                 <div class="col-md-4">
                                                     <label for="requirement" class="form-label text-white">Requirement</label>
