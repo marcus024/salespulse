@@ -592,14 +592,11 @@
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                 
-                                                
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <label for="status" class="form-label text-white">Solution</label>
                                                     <textarea name="solution" class="form-control" id="solution4" placeholder="e.g. Sample Solution" 
                                                     style="height:100px;"></textarea>
                                                 </div>
-                                                
                                             </div>
                                         </div>
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
