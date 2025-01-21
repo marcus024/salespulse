@@ -253,10 +253,7 @@
                                             </div>
                                             <div class="row mb-3">
                                                 
-                                                <div class="col-md-3">
-                                                    <label for="product" class="form-label text-white">Product</label>
-                                                    <input name="product" id="product2" type="text" class="form-control" placeholder="e.g. Router">
-                                                </div>
+                                                
                                                 <div class="col-md-6">
                                                    <label for="solution" class="form-label text-white">Solution</label>
                                                         <textarea name="solution" class="form-control" id="solution2" placeholder="e.g. Sample Solution" 
@@ -306,13 +303,19 @@
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                             <!-- Header Row -->
                                             <div class="row mb-3">
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <label for="requirement" class="form-label text-white">Requirement</label>
                                                 </div>
                                                 <div class="col-md-2">
+                                                   <label for="product" class="form-label text-white">Product</label>
+                                                </div>
+                                                <div class="col-md-2">
+                                                   <label for="distributor" class="form-label text-white">Distributor</label>
+                                                </div>
+                                                <div class="col-md-1">
                                                     <label for="requirement" class="form-label text-white">Date</label>
                                                 </div>
-                                                <div class="col-md-5">
+                                                <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Requirement Remarks</label>
                                                 </div>
                                                 <div class="col-md-2">
@@ -327,16 +330,27 @@
                                             <div id="requirement-fields-container">
                                                 <!-- Initial Requirement Row -->
                                                 <div class="row requirement-fields mb-3">
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-2">
                                                         <input name="requirement_two[]" type="text" id="req2" class="form-control" placeholder="e.g. Sample Requirement">
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <input name="product" id="product2" type="text" class="form-control" placeholder="e.g. Router">
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
+                                                            <option disabled selected>Select</option>
+                                                            <!-- Existing options can be removed or loaded dynamically -->
+                                                            <!-- Special option for adding new distributor -->
+                                                            <option value="add_new">+ Add New Distributor...</option>
+                                                        </select>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <input name="requirement_date[]" type="date" id="reqdate2" class="form-control" style="font-size:10px;">
                                                     </div>
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-3">
                                                         <input name="requirement_remarks[]" type="text" id="reqremarks2"class="form-control" placeholder="e.g. Sample Remarks">
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-1">
                                                         <!-- Remove Button -->
                                                         <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
                                                             <i class="fas fa-minus"></i>
