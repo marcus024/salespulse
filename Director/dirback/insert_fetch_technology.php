@@ -1,5 +1,8 @@
 <?php
 session_start();
+// Right after session_start():
+error_log("Session: " . print_r($_SESSION, true));
+
 header('Content-Type: application/json');
 include('../../auth/db.php');
 
