@@ -110,9 +110,6 @@
                                     <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
                                             <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    
-                                                </div>
                                                 <div class="col-md-2">
                                                     <label for="startDate" class="form-label">Status</label>
                                                     <input  id="status-placeholder" type="text" class="form-control" readonly>
@@ -125,7 +122,7 @@
                                                     <label for="endDate" class="form-label">End Date</label>
                                                     <input  id="end-date-placeholder" type="text" class="form-control" readonly>
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-3">
                                                     <div class="col-md-4">
                                                         <label for="technology" class="form-label text-white">Technology</label>
                                                         <select name="technology" class="form-control custom-select" id="technology1">
@@ -138,7 +135,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-3">
                                                     <label for="dealSize" class="form-label text-white">Deal Size</label>
                                                     <input name="deal_size" type="number" class="form-control" id="dealSize1" placeholder="e.g. 5000">
                                                 </div>
