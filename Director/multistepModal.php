@@ -153,9 +153,7 @@
                                                 <div class="col-md-4">
                                                     <label for="requirement" class="form-label text-white">Requirement</label>
                                                     <!-- Clickable label for adding another field -->
-                                                    <a href="#" id="addRequiremen" class="form-label text-white" style="font-size:10px; cursor: pointer;">
-                                                        <i class="fas fa-plus"></i> Add Another
-                                                    </a>
+                                                    
                                                 </div>
                                                 <div class="col-md-2">
                                                    <label for="product" class="form-label text-white">Product</label>
@@ -163,6 +161,9 @@
                                                 <div class="col-md-6">
                                                    <label for="distributor" class="form-label text-white">Distributor</label>
                                                 </div>
+                                                <a href="#" id="addRequiremen" class="form-label text-white" style="font-size:10px; cursor: pointer;">
+                                                    <i class="fas fa-plus"></i> Add Another
+                                                </a>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-3">
@@ -179,9 +180,7 @@
                                                         <option value="add_new">+ Add New Distributor...</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-2">
-                                                   <input name="product" id="product1" type="text" class="form-control" placeholder="e.g. Cisco" >
-                                                </div>
+                                                
                                                 <div class="col-md-2">
                                                     <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;" id="deleteRequirement">
                                                         <i class="fas fa-minus"></i>
