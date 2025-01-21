@@ -123,17 +123,15 @@
                                                     <input  id="end-date-placeholder" type="text" class="form-control" readonly>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <div class="col-md-4">
-                                                        <label for="technology" class="form-label text-white">Technology</label>
-                                                        <select name="technology" class="form-control custom-select" id="technology1">
-                                                            <option disabled>Select</option>
-                                                            <option>Artificial Intelligence</option>
-                                                            <option>Machine Learning</option>
-                                                            <option>Blockchain</option>
-                                                            <option>Internet of Things (IoT)</option>
-                                                            <option>Cloud Computing</option>
-                                                        </select>
-                                                    </div>
+                                                    <label for="technology" class="form-label text-white">Technology</label>
+                                                    <select name="technology" class="form-control custom-select" id="technology1">
+                                                        <option disabled>Select</option>
+                                                        <option>Artificial Intelligence</option>
+                                                        <option>Machine Learning</option>
+                                                        <option>Blockchain</option>
+                                                        <option>Internet of Things (IoT)</option>
+                                                        <option>Cloud Computing</option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="dealSize" class="form-label text-white">Deal Size</label>
