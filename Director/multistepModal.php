@@ -263,7 +263,7 @@
                                         </div>
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                             <div class="row mb-3">
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <label for="engagement" class="form-label text-white">Type of Engagement</label>
                                                 </div>
                                                 <div class="col-md-2">
@@ -272,17 +272,17 @@
                                                 <div class="col-md-5">
                                                     <label for="engagement" class="form-label text-white">Remarks</label>
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-1">
                                                     <!-- Add Another Button -->
                                                     <a href="#" id="addEngagement" class="form-label text-white" style="font-size:10px; cursor: pointer;">
-                                                        <i class="fas fa-plus"></i> Add Another
+                                                        <i class="fas fa-plus"></i> Add
                                                     </a>
                                                 </div>
                                             </div>
                                             <!-- Container for Engagement Fields -->
                                             <div id="engagement-fields-container">
                                                 <div class="row engagement-fields mb-3">
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-4">
                                                         <input name="engagement_type[]" type="text" id="engtype2" class="form-control" placeholder="e.g. Sample Engagement">
                                                     </div>
                                                     <div class="col-md-2">
@@ -291,7 +291,7 @@
                                                     <div class="col-md-5">
                                                         <input name="engagement_remarks[]" type="text" id="engremarks2" class="form-control" placeholder="e.g. Sample Remarks">
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-1">
                                                         <!-- Remove Button -->
                                                         <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
                                                             <i class="fas fa-minus"></i>
@@ -321,7 +321,7 @@
                                                 <div class="col-md-1">
                                                     <!-- Add Another Button -->
                                                     <a href="#" id="addReq" class="form-label text-white" style="font-size:10px; cursor: pointer;">
-                                                        <i class="fas fa-plus"></i> Add Another
+                                                        <i class="fas fa-plus"></i> Add
                                                     </a>
                                                 </div>
                                             </div>
