@@ -571,7 +571,7 @@
                                                     <label for="requirement" class="form-label text-white">End Date</label>
                                                     <input type="text" class="form-control" id="stage-four-end"  readonly>
                                                 </div>
-                                                <div class="col-md-2x">
+                                                <div class="col-md-2">
                                                     <label for="status" class="form-label text-white">Status</label>
                                                     <input type="text" class="form-control" id="stage-four-status"  readonly>
                                                 </div>
