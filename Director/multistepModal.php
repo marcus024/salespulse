@@ -1034,7 +1034,7 @@
             </div>
 
     <!-- javascript -->
-    <!-- <script src="modal_req/duplicate_req_one.js"></script> -->
+    <script src="modal_req/duplicate_req_one.js"></script>
     
                 
     <script>
