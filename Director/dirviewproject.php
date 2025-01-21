@@ -802,6 +802,8 @@ include_once('dirback/dirviewback.php');
     <script src="navStage.js"></script>
     <script src="current_year.js"></script>
     <script src="insert_fetch_distributor.js"></script>
+    <script src="insert_fetch_product.js"></script>
+    <script src="insert_fetch_technology.js"></script>
     
     <script>
         // Export to PDF

@@ -1878,8 +1878,11 @@ include("../auth/db.php");
     <script src="dirback/to-do/load_task.js"></script>
     <script src="alerts/notif.js"></script>
     <script src="current_year.js"></script>
+    <script src="insert_fetch_distributor.js"></script>
     <script src="insert_fetch_client.js"></script>
     <script src="insert_fetch_source.js"></script>
+    <script src="insert_fetch_product.js"></script>
+    <script src="insert_fetch_technology.js"></script>
     <!-- <script src="idle.js"></script> -->
     
     <!-- Table Export -->
