@@ -155,10 +155,10 @@
                                                     <!-- Clickable label for adding another field -->
                                                     
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-3">
                                                    <label for="product" class="form-label text-white">Product</label>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-3">
                                                    <label for="distributor" class="form-label text-white">Distributor</label>
                                                 </div>
                                                 <a href="#" id="addRequiremen" class="form-label text-white" style="font-size:10px; cursor: pointer;">
@@ -166,10 +166,10 @@
                                                 </a>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                      <input  name="requirement_one[]" style="width: 100%;" type="text" class="form-control" id="requirement1" placeholder="e.g. Sample Requirement">
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-3">
                                                    <input name="product" id="product1" type="text" class="form-control" placeholder="e.g. Cisco" >
                                                 </div>
                                                 <div class="col-md-3">
@@ -180,7 +180,6 @@
                                                         <option value="add_new">+ Add New Distributor...</option>
                                                     </select>
                                                 </div>
-                                                
                                                 <div class="col-md-2">
                                                     <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;" id="deleteRequirement">
                                                         <i class="fas fa-minus"></i>
