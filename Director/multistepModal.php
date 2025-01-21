@@ -461,7 +461,7 @@
                                                 <div class="col-md-1">
                                                     <label for="requirement" class="form-label text-white">Requirement</label>
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-1">
                                                    <label for="requirement" class="form-label text-white">Product</label>
                                                 </div>
                                                 <div class="col-md-2">
