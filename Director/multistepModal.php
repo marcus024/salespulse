@@ -736,15 +736,10 @@
                                                 </div>
                                             </div>
                                              <div class="row mb-3">
-                                                <div class="col-md-3">
-                                                    <label for="product" class="form-label text-white">Product</label>
-                                                    <input name="product" id="product5" type="text" class="form-control">
-                                                </div>
-                                                
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <label for="status" class="form-label text-white">Solution</label>
-                                                   <textarea name="solution" class="form-control" id="solution5" placeholder="e.g. Sample Solution" 
-                                                        style="height:50px;"></textarea>
+                                                    <textarea name="solution" class="form-control" id="solution5" placeholder="e.g. Sample Solution" 
+                                                    style="height:100px;"></textarea>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
@@ -772,31 +767,31 @@
                                                 </div>
                                             </div>
                                             <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
-                                                <!-- Fixed Labels Row -->
+                                                <!-- Header Row -->
                                                 <div class="row mb-1">
                                                     <div class="col-md-3">
                                                         <label for="requirement" class="form-label text-white">Requirement</label>
                                                     </div>
-                                                    <div class="col-md-2">
-                                                        <label for="quantity" class="form-label text-white">Quantity</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label for="bills_materials" class="form-label text-white">Bill of Materials</label>
+                                                    <div class="col-md-3">
+                                                    <label for="requirement" class="form-label text-white">Product</label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <label for="remarks" class="form-label text-white">Remarks</label>
+                                                    <label for="distributor" class="form-label text-white">Distributor</label>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <a href="#" id="addRequirement5" class="form-label text-white" style="font-size:10px; cursor: pointer;">
-                                                            <i class="fas fa-plus"></i> Add Another
+                                                        <label for="requirement" class="form-label text-white">Date Required</label>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <!-- Add Another Button -->
+                                                        <a href="#" id="addReq_3" class="form-label text-white" style="font-size:10px; cursor: pointer;">
+                                                            <i class="fas fa-plus"></i> Add 
                                                         </a>
                                                     </div>
                                                 </div>
-
-                                                <!-- Container for Input Rows -->
-                                                <div id="requirement-fields-container5">
-                                                    <!-- Initial Input Row -->
-                                                    <div class="row mb-3 requirement-fields">
+                                                <!-- Container for Requirement Fields -->
+                                                <div id="requirement-fields-container-3">
+                                                    <!-- Initial Requirement Row -->
+                                                    <div class="row requirement-fields mb-3">
                                                         <div class="col-md-3">
                                                             <select name="req_five[]" class="form-control">
                                                                 <option  disabled selected >Select Requirement</option>
@@ -807,19 +802,57 @@
                                                                 <option value="software-development">Software Development</option>
                                                             </select>
                                                         </div>
+                                                        <div class="col-md-3">
+                                                            <input name="product" id="product4" type="text" class="form-control">
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
+                                                                <option disabled selected>Select</option>
+                                                                <!-- Existing options can be removed or loaded dynamically -->
+                                                                <!-- Special option for adding new distributor -->
+                                                                <option value="add_new">+ Add New Distributor...</option>
+                                                            </select>
+                                                        </div>
                                                         <div class="col-md-2">
+                                                            <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <!-- Remove Button -->
+                                                            <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
+                                                                <i class="fas fa-minus"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-1">
+                                                    <div class="col-md-3">
+                                                        <label for="requirement" class="form-label text-white">Quantity</label>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="requirement" class="form-label text-white">BOM</label>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="requirement" class="form-label text-white">Pricing</label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label for="requirement" class="form-label text-white">Remarks</label>
+                                                    </div>
+                                                </div>
+                                                <!-- Container for Requirement Fields -->
+                                                <div id="requirement-fields-container-3">
+                                                    <!-- Initial Requirement Row -->
+                                                    <div class="row requirement-fields mb-3">
+                                                        <div class="col-md-3">
                                                             <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <input name="bills_materials_req[]" type="number" class="form-control" placeholder="e.g. 5000">
                                                         </div>
-                                                        <div class="col-md-3">
-                                                            <input name="remarks_req[]" type="text" class="form-control" placeholder="e.g. Sample Requirement Remarks">
-                                                        </div>
                                                         <div class="col-md-2">
-                                                            <button type="button" class="btn btn-danger btn-sm deleteRequirement">
-                                                                <i class="fas fa-minus"></i>
-                                                            </button>
+                                                            <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 2000">
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <input name="remarks_req[]" type="text" class="form-control" placeholder="e.g. Sample Requirement Remarks">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -836,13 +869,13 @@
                                                     <div class="col-md-2">
                                                         <label for="quantity" class="form-label text-white">Quantity</label>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-3">
                                                         <label for="remarks" class="form-label text-white">Remarks</label>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <label for="amount" class="form-label text-white">Amount</label>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-1">
                                                         <a href="#" id="addUpsellRow" class="form-label text-white" style="font-size:10px; cursor: pointer;">
                                                             <i class="fas fa-plus"></i> Add Another
                                                         </a>
@@ -862,13 +895,13 @@
                                                         <div class="col-md-2">
                                                             <input name="quantity_upsell[]" type="number" class="form-control" placeholder="e.g 50">
                                                         </div>
-                                                        <div class="col-md-2">
+                                                        <div class="col-md-3">
                                                             <input name="remarks_upsell[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <input name="amount_upsell[]" type="number" class="form-control" placeholder="e.g. 6000">
                                                         </div>
-                                                        <div class="col-md-2">
+                                                        <div class="col-md-1">
                                                             <button type="button" class="btn btn-danger btn-sm deleteUpsellRow">
                                                                 <i class="fas fa-minus"></i>
                                                             </button>
@@ -881,7 +914,8 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label for="requirement" class="form-label text-white">Stage Remarks</label>
-                                                    <input name="remarks_stage_five" type="textarea" class="form-control" id="stageremarks5" style="height: 50px;">
+                                                    <textarea name="remarks_stage_five" class="form-control" id="stageremarks5" placeholder="e.g. Sample Remarks" 
+                                                    style="height:100px;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
