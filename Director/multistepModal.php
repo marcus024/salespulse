@@ -182,43 +182,19 @@
                                                 <div class="col-md-2">
                                                    <input name="product" id="product1" type="text" class="form-control" placeholder="e.g. Cisco" >
                                                 </div>
+                                                <div class="col-md-2">
+                                                    <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;" id="deleteRequirement">
+                                                        <i class="fas fa-minus"></i>
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="mb-2">
-                                                        <!-- Container for the Label and Add Requirement Button -->
-                                                        <div class="d-flex justify-content-between align-items-center mb-2">
-                                                            
-                                                        </div>
-                                                        <!-- Requirement Field with Delete Button -->
-                                                        <div class="row align-items-center requirement-field" id="requirement-container" style="margin-top:5px; margin-bottom: 5px;">
-                                                            <div class="col-9 d-flex align-items-center">
-                                                                <!-- Input field for Requirement -->
-                                                               
-                                                            </div>
-                                                            <div class="col-9 d-flex align-items-center">
-                                                                
-                                                                
-                                                            </div>
-                                                            <div class="col-9 d-flex align-items-center">
-                                                                
-                                                                
-                                                            </div>
-                                                            <div class="col-2 d-flex justify-content-end align-items-center">
-                                                                <!-- Delete Button -->
-                                                                <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;" id="deleteRequirement">
-                                                                    <i class="fas fa-minus"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-3">
-                                                        <div class="mb-6">
-                                                            <label for="remarks" class="form-label text-white">Stage Remarks</label>
-                                                            <textarea name="stage_one_remarks" class="form-control" id="stageremarks1" placeholder="e.g. Sample Remarks" 
-                                                            style="height: 300px;"></textarea>
-                                                        </div>
-                                                     </div>
+                                            <div class="row mb-3">
+                                                <div class="mb-6">
+                                                    <label for="remarks" class="form-label text-white">Stage Remarks</label>
+                                                    <textarea name="stage_one_remarks" class="form-control" id="stageremarks1" placeholder="e.g. Sample Remarks" 
+                                                    style="height: 300px;"></textarea>
+                                                </div>
+                                            </div>
                                                     
                                                     <style>
                                                         .custom-select {
@@ -238,11 +214,7 @@
                                                         }
                                                     </style>
                                                     
-                                                   
-                                                </div>
-                                                
-                                                
-                                            </div>
+                                               
                                         </div>
                                     </div>
                                 </div>
