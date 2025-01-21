@@ -1035,6 +1035,9 @@
 
     <!-- javascript -->
     <script src="modal_req/duplicate_req_one.js"></script>
+    <script src="insert_fetch_distributor.js"></script>
+    <script src="insert_fetch_product.js"></script>
+    <script src="insert_fetch_technology.js"></script>
                 
     <script>
         let currentStep = 1;
