@@ -38,7 +38,7 @@ $(document).ready(function () {
             const newTechnology = prompt('Enter the new Technology:');
             if (newTechnology && newTechnology.trim() !== '') {
                 $.ajax({
-                    url: './dirback/insert_technology.php',  // Your PHP script to insert
+                    url: './dirback/insert_fetch_technology.php',  // Your PHP script to insert
                     type: 'POST',
                     dataType: 'json',
                     data: { added_technology: newTechnology.trim() },
