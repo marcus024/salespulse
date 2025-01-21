@@ -13,7 +13,16 @@ if (empty($currentCompany)) {
 
 try {
     // Retrieve technology list for the current company
-    $sql = "SELECT technology FROM technology_tb WHERE company = :company ORDER BY technology ASC";
+    $sql = "
+    SELECT 
+        CONCAT(
+        UCASE(LEFT(technology, 1)), 
+        LOWER(SUBSTRING(technology, 2))
+        ) AS technology
+    FROM technology_tb
+    WHERE company = :company
+    ORDER BY technology ASC
+    ";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':company', $currentCompany, PDO::PARAM_STR);
     $stmt->execute();
