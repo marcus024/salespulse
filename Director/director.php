@@ -1689,7 +1689,7 @@ include("../auth/db.php");
                                 <div class="row">
                                     <!-- Client/Company -->
                                     <div class="col-md-6 mb-2">
-                                        <label for="clientCompany" class="form-label" style="font-size: 10px; color: #000;">Client/Company</label>
+                                        <label for="clientCompany" class="form-label" style="font-size: 10px; color: #000;">Client</label>
                                         <input name="company_name" type="text" class="form-control input-sm" id="clientCompany" placeholder="Enter client or company name" style="font-size: 10px; color: #000; padding: 5px;" required>
                                     </div>
                                     <!-- Account Manager -->
@@ -1728,7 +1728,7 @@ include("../auth/db.php");
                                         </select>
                                     </div>
                                     <div class="col-md-4 mb-2">
-                                        <label for="clientType" class="form-label" style="font-size: 10px; color: #000;">Client Type</label>
+                                        <label for="clientType" class="form-label" style="font-size: 10px; color: #000;">Industry</label>
                                         <select name="client_type" id="clientTypeSelect" class="form-select" style="font-size: 10px; color: #000; padding: 5px;" required>
                                             <option value="" disabled selected>Select</option>
                                             <!-- Special option for adding a new client type -->
