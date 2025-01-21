@@ -1881,6 +1881,7 @@ include("../auth/db.php");
     <script src="insert_fetch_distributor.js"></script>
     <script src="insert_fetch_client.js"></script>
     <script src="insert_fetch_source.js"></script>
+    <script src="insert_fetch_product.js"></script>
     <!-- <script src="idle.js"></script> -->
     
     <!-- Table Export -->
