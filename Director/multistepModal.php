@@ -597,7 +597,7 @@
                                                 <div class="col-md-6">
                                                     <label for="status" class="form-label text-white">Solution</label>
                                                     <textarea name="solution" class="form-control" id="solution4" placeholder="e.g. Sample Solution" 
-                                                    style="height:50px;"></textarea>
+                                                    style="height:100px;"></textarea>
                                                 </div>
                                                 
                                             </div>
@@ -672,7 +672,7 @@
                                                 <!-- Initial Requirement Row -->
                                                 <div class="row requirement-fields mb-3">
                                                     <div class="col-md-3">
-                                                        <input name="quantity[]" type="text" class="form-control" placeholder="e.g. 50">
+                                                        <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
                                                     </div>
                                                     <div class="col-md-2">
                                                         <input name="bill_of_materials[]" type="text" class="form-control" placeholder="e.g. 5000">
@@ -690,7 +690,8 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label for="requirement" class="form-label text-white">Stage Remarks</label>
-                                                    <input name="stage_four_remarks" type="textarea" class="form-control" id="stageremarks4" style="height: 50px;">
+                                                    <textarea name="stage_four_remarks" class="form-control" id="stageremarks4" placeholder="e.g. Sample Remarks" 
+                                                    style="height:100px;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
