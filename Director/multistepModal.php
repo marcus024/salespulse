@@ -510,10 +510,10 @@
                                                 <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Quantity</label>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <label for="requirement" class="form-label text-white">BOM</label>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <label for="requirement" class="form-label text-white">Pricing</label>
                                                 </div>
                                                 <div class="col-md-3">
@@ -527,10 +527,10 @@
                                                     <div class="col-md-3">
                                                         <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-2">
                                                         <input name="bill_of_materials[]" type="text" class="form-control" placeholder="e.g. 5000">
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-2">
                                                         <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 5000">
                                                     </div>
                                                     <div class="col-md-3">
