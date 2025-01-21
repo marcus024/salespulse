@@ -869,15 +869,15 @@
                                                     <div class="col-md-2">
                                                         <label for="quantity" class="form-label text-white">Quantity</label>
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <label for="remarks" class="form-label text-white">Remarks</label>
-                                                    </div>
                                                     <div class="col-md-2">
                                                         <label for="amount" class="form-label text-white">Amount</label>
                                                     </div>
+                                                    <div class="col-md-3">
+                                                        <label for="remarks" class="form-label text-white">Remarks</label>
+                                                    </div>
                                                     <div class="col-md-1">
                                                         <a href="#" id="addUpsellRow" class="form-label text-white" style="font-size:10px; cursor: pointer;">
-                                                            <i class="fas fa-plus"></i> Add Another
+                                                            <i class="fas fa-plus"></i> Add
                                                         </a>
                                                     </div>
                                                 </div>
@@ -895,11 +895,11 @@
                                                         <div class="col-md-2">
                                                             <input name="quantity_upsell[]" type="number" class="form-control" placeholder="e.g 50">
                                                         </div>
-                                                        <div class="col-md-3">
-                                                            <input name="remarks_upsell[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
-                                                        </div>
                                                         <div class="col-md-2">
                                                             <input name="amount_upsell[]" type="number" class="form-control" placeholder="e.g. 6000">
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <input name="remarks_upsell[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
                                                         </div>
                                                         <div class="col-md-1">
                                                             <button type="button" class="btn btn-danger btn-sm deleteUpsellRow">
