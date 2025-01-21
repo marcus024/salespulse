@@ -167,10 +167,10 @@
                                                      <input  name="requirement_one[]" style="width: 100%;" type="text" class="form-control" id="requirement1" placeholder="e.g. Sample Requirement">
                                                 </div>
                                                 <div class="col-md-3">
-                                                   <input name="product" id="product1" type="text" class="form-control" placeholder="e.g. Cisco" >
+                                                   <input name="product[]" id="product1" type="text" class="form-control" placeholder="e.g. Cisco" >
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <select name="distributor" id="distributorSelect" class="form-control custom-select">
+                                                    <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
                                                         <option disabled selected>Select</option>
                                                         <!-- Existing options can be removed or loaded dynamically -->
                                                         <!-- Special option for adding new distributor -->
@@ -190,26 +190,23 @@
                                                     style="height: 100px;"></textarea>
                                                 </div>
                                             </div>
-                                                    
-                                                    <style>
-                                                        .custom-select {
-                                                            appearance: none; 
-                                                            -moz-appearance: none;
-                                                            -webkit-appearance: none;
-                                                            background: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23555555"%3E%3Cpath d="M7 10l5 5 5-5z"/%3E%3C/svg%3E') no-repeat right 10px center;
-                                                            background-color: #fff;
-                                                            background-size: 12px 12px;
-                                                            padding-right: 30px; 
-                                                        }
-                                                        .custom-select-dark {
-                                                            background: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff"%3E%3Cpath d="M7 10l5 5 5-5z"/%3E%3C/svg%3E') no-repeat right 10px center;
-                                                            background-color: #343a40;
-                                                            color: white;
-                                                            padding-right: 30px;
-                                                        }
-                                                    </style>
-                                                    
-                                               
+                                            <style>
+                                                .custom-select {
+                                                    appearance: none; 
+                                                    -moz-appearance: none;
+                                                    -webkit-appearance: none;
+                                                    background: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23555555"%3E%3Cpath d="M7 10l5 5 5-5z"/%3E%3C/svg%3E') no-repeat right 10px center;
+                                                    background-color: #fff;
+                                                    background-size: 12px 12px;
+                                                    padding-right: 30px; 
+                                                }
+                                                .custom-select-dark {
+                                                    background: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff"%3E%3Cpath d="M7 10l5 5 5-5z"/%3E%3C/svg%3E') no-repeat right 10px center;
+                                                    background-color: #343a40;
+                                                    color: white;
+                                                    padding-right: 30px;
+                                                }
+                                            </style>
                                         </div>
                                     </div>
                                 </div>
@@ -226,17 +223,17 @@
                                     <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                             <div class="row mb-3">
-                                                <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Start Date</label>
-                                                    <input type="text" class="form-control" id="stage-two-start" readonly>
+                                                <div class="col-md-2">
+                                                    <label for="requirement" class="form-label text-white">Status</label>
+                                                    <input type="text" class="form-control" id="stage-two-status"   readonly>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <label for="requirement" class="form-label text-white">End Date</label>
                                                     <input type="text" class="form-control" id="stage-two-end"   readonly>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Status</label>
-                                                    <input type="text" class="form-control" id="stage-two-status"   readonly>
+                                                <div class="col-md-2">
+                                                    <label for="requirement" class="form-label text-white">Start Date</label>
+                                                    <input type="text" class="form-control" id="stage-two-start" readonly>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="technology" class="form-label text-white">Technology</label>
@@ -249,12 +246,13 @@
                                                         <option value="Cloud Computing" >Cloud Computing</option>
                                                     </select>
                                                 </div>
-                                            </div>
-                                            <div class="row mb-3">
                                                 <div class="col-md-3">
                                                     <label for="dealSize" class="form-label text-white">Deal Size</label>
                                                     <input name="deal_size" type="number" class="form-control" id="deal_size2" placeholder="e.g. 5000">
                                                 </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                
                                                 <div class="col-md-3">
                                                     <label for="product" class="form-label text-white">Product</label>
                                                     <input name="product" id="product2" type="text" class="form-control" placeholder="e.g. Router">
