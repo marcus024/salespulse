@@ -458,29 +458,17 @@
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                             <!-- Header Row -->
                                             <div class="row mb-1">
-                                                <div class="col-md-1">
+                                                <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Requirement</label>
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-3">
                                                    <label for="requirement" class="form-label text-white">Product</label>
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-3">
                                                    <label for="distributor" class="form-label text-white">Distributor</label>
                                                 </div>
-                                                <div class="col-md-1">
+                                                <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Date</label>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <label for="requirement" class="form-label text-white">Quantity</label>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <label for="requirement" class="form-label text-white">BOM</label>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <label for="requirement" class="form-label text-white">Pricing</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Remarks</label>
                                                 </div>
                                                 <div class="col-md-1">
                                                     <!-- Add Another Button -->
@@ -493,13 +481,13 @@
                                             <div id="requirement-fields-container-3">
                                                 <!-- Initial Requirement Row -->
                                                 <div class="row requirement-fields mb-3">
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-3">
                                                         <input name="requirement_three[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
                                                     </div>
-                                                    <div class="col-md-1">
+                                                    <div class="col-md-3">
                                                         <input name="product" id="product3" type="text" class="form-control">
                                                     </div>
-                                                    <div class="col-md-1">
+                                                    <div class="col-md-3">
                                                         <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
                                                             <option disabled selected>Select</option>
                                                             <!-- Existing options can be removed or loaded dynamically -->
@@ -507,26 +495,46 @@
                                                             <option value="add_new">+ Add New Distributor...</option>
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-1">
-                                                        <input name="requirement_date[]" type="date" id="reqdate2" class="form-control" style="font-size:10px;">
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <input name="bill_of_materials[]" type="text" class="form-control" placeholder="e.g. 5000">
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 5000">
-                                                    </div>
                                                     <div class="col-md-2">
-                                                        <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+                                                        <input name="requirement_date[]" type="date" id="reqdate2" class="form-control" style="font-size:10px;">
                                                     </div>
                                                     <div class="col-md-1">
                                                         <!-- Remove Button -->
                                                         <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
                                                             <i class="fas fa-minus"></i>
                                                         </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-1">
+                                                <div class="col-md-3">
+                                                    <label for="requirement" class="form-label text-white">Quantity</label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="requirement" class="form-label text-white">BOM</label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="requirement" class="form-label text-white">Pricing</label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="requirement" class="form-label text-white">Remarks</label>
+                                                </div>
+                                            </div>
+                                            <!-- Container for Requirement Fields -->
+                                            <div id="requirement-fields-container-3">
+                                                <!-- Initial Requirement Row -->
+                                                <div class="row requirement-fields mb-3">
+                                                    <div class="col-md-3">
+                                                        <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input name="bill_of_materials[]" type="text" class="form-control" placeholder="e.g. 5000">
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 5000">
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
                                                     </div>
                                                 </div>
                                             </div>
