@@ -766,6 +766,7 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            <div style="border-top: 1px solid white; margin: 20px 0;"></div>
                                             <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                                 <!-- Header Row -->
                                                 <div class="row mb-1">
@@ -911,6 +912,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div style="border-top: 1px solid white; margin: 20px 0;"></div>
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
                                             <div class="row">
                                                 <div class="col-md-12">
