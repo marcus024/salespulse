@@ -491,7 +491,7 @@
                                             </div>
 
                                             <!-- Container for Requirement Fields -->
-                                            <div id="requirement-fields-container3">
+                                            <div id="requirement-fields-container-3">
                                                 <!-- Initial Requirement Row -->
                                                 <div class="row requirement-fields mb-3">
                                                     <div class="col-md-2">
