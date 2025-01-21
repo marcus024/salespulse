@@ -474,7 +474,7 @@
                                                     <label for="requirement" class="form-label text-white">Quantity</label>
                                                 </div>
                                                 <div class="col-md-1">
-                                                    <label for="requirement" class="form-label text-white">Bill of Materials</label>
+                                                    <label for="requirement" class="form-label text-white">BOM</label>
                                                 </div>
                                                 <div class="col-md-1">
                                                     <label for="requirement" class="form-label text-white">Pricing</label>
