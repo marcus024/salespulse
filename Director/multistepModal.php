@@ -155,7 +155,7 @@
                                                    <label for="distributor" class="form-label text-white">Distributor</label>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <button type="button" class="btn btn-primary btn-sm" style="width:90px;" id="addRequirement">
+                                                    <button type="button" class="btn btn-primary btn-sm" style="width:70px;" id="addRequirement">
                                                         <i class="fas fa-plus"></i> Add
                                                     </button>
                                                 </div>
