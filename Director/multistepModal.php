@@ -318,7 +318,7 @@
                                                 <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Requirement Remarks</label>
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-1">
                                                     <!-- Add Another Button -->
                                                     <a href="#" id="addReq" class="form-label text-white" style="font-size:10px; cursor: pointer;">
                                                         <i class="fas fa-plus"></i> Add Another
