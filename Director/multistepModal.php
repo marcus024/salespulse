@@ -157,7 +157,7 @@
                                                 <div class="col-md-2">
                                                     <button type="button"
                                                             class="btn btn-primary btn-sm"
-                                                            style="width:100px; display:inline-flex; align-items:center; justify-content:center;"
+                                                            style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
                                                             id="addRequirement">
                                                         <i class="fas fa-plus"></i>&nbsp;Add
                                                     </button>
@@ -184,7 +184,7 @@
                                                 <div class="col-md-2">
                                                     <button type="button"
                                                             class="btn btn-danger btn-sm deleteRequirement"
-                                                            style="width:100px; display:inline-flex; align-items:center; justify-content:center;">
+                                                            style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
                                                         <i class="fas fa-minus"></i>&nbsp;Remove
                                                     </button>
                                                 </div>
