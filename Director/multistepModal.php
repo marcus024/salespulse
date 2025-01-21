@@ -124,13 +124,9 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="technology" class="form-label text-white">Technology</label>
-                                                    <select name="technology" class="form-control custom-select" id="technology1">
-                                                        <option disabled>Select</option>
-                                                        <option>Artificial Intelligence</option>
-                                                        <option>Machine Learning</option>
-                                                        <option>Blockchain</option>
-                                                        <option>Internet of Things (IoT)</option>
-                                                        <option>Cloud Computing</option>
+                                                    <select name="technology" id="technologySelect" class="form-control custom-select" style="font-size: 10px; color: #000; padding: 5px;" required>
+                                                        <option disabled selected>Select technology</option>
+                                                        <option value="add_new_technology">+ Add New Technology...</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
@@ -188,7 +184,6 @@
                                                 </div>
                                             </div>
                                             <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
-
                                             <div class="row mb-3">
                                                 <div class="mb-6">
                                                     <label for="remarks" class="form-label text-white">Stage Remarks</label>
