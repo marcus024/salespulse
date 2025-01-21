@@ -168,10 +168,10 @@
                                                      <input  name="requirement_one[]" style="width: 100%;" type="text" class="form-control" id="requirement1" placeholder="e.g. Sample Requirement">
                                                 </div>
                                                 <div class="col-md-3">
-                                                   <input name="product[]" id="product1" type="text" class="form-control" placeholder="e.g. Cisco" >
+                                                   <input name="product_one[]" id="product1" type="text" class="form-control" placeholder="e.g. Cisco" >
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
+                                                    <select name="distributor_one[]" id="distributorSelect" class="form-control custom-select">
                                                         <option disabled selected>Select</option>
                                                         <!-- Existing options can be removed or loaded dynamically -->
                                                         <!-- Special option for adding new distributor -->
