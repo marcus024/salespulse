@@ -489,18 +489,17 @@
                                                     </a>
                                                 </div>
                                             </div>
-
                                             <!-- Container for Requirement Fields -->
                                             <div id="requirement-fields-container-3">
                                                 <!-- Initial Requirement Row -->
                                                 <div class="row requirement-fields mb-3">
-                                                    <div class="col-md-1">
+                                                    <div class="col-md-2">
                                                         <input name="requirement_three[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-1">
                                                         <input name="product" id="product3" type="text" class="form-control">
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-1">
                                                         <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
                                                             <option disabled selected>Select</option>
                                                             <!-- Existing options can be removed or loaded dynamically -->
