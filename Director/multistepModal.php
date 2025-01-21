@@ -256,8 +256,8 @@
                                                 
                                                 <div class="col-md-6">
                                                    <label for="solution" class="form-label text-white">Solution</label>
-                                                        <textarea name="solution" class="form-control" id="solution2" placeholder="e.g. Sample Solution" 
-                                                        style="height:50px;"></textarea>
+                                                    <textarea name="solution" class="form-control" id="solution2" placeholder="e.g. Sample Solution" 
+                                                    style="height:100px;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -363,7 +363,8 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label for="requirement" class="form-label text-white">Stage Remarks</label>
-                                                    <input name="stage_two_remarks" type="textarea" class="form-control" id="stageremarks2" style="height: 50px;">
+                                                    <textarea name="stage_two_remarks" class="form-control" id="stageremarks2" placeholder="e.g. Sample Solution" 
+                                                    style="height:100px;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
