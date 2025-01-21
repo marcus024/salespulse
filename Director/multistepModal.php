@@ -533,7 +533,7 @@
                                                     <div class="col-md-2">
                                                         <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 5000">
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-4">
                                                         <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
                                                     </div>
                                                 </div>
