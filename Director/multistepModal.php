@@ -140,7 +140,7 @@
                                             </div>
                                             <input name="project_unique_id" id="project-unique-id" type="hidden" value="<?php echo $projectId; ?>" class="form-control" readonly>
                                             <div class="row mb-3">
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <label for="solution" class="form-label text-white">Solution</label>
                                                     <textarea name="solution" class="form-control" id="solution1" placeholder="e.g. Sample Solution" 
                                                     style="height:100px;"></textarea>
