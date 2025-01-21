@@ -186,13 +186,13 @@
                                                             placeholder="e.g. Sample Requirement">
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <select name="product_one[]" class="form-control custom-select">
+                                                        <select name="product_one[]" class="form-control custom-select" id="productSelect">
                                                         <option disabled selected>Select</option>
                                                         <option value="add_new_product">+ Add New Product...</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <select name="distributor_one[]" class="form-control custom-select">
+                                                        <select name="distributor_one[]" class="form-control custom-select" id="distributorSelect" >
                                                         <option disabled selected>Select</option>
                                                         <option value="add_new">+ Add New Distributor...</option>
                                                         </select>
