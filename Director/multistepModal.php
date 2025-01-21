@@ -146,8 +146,7 @@
                                                     style="height:100px;"></textarea>
                                                 </div>
                                             </div>
-                                            <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
-
+                                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
                                             <div class="row mb-3">
                                                 <div class="col-md-4">
                                                     <label for="requirement" class="form-label text-white">Requirement</label>
@@ -185,7 +184,7 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                            <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+                                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                             <div class="row mb-3">
                                                 <div class="mb-6">
@@ -263,7 +262,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                             <div class="row mb-3">
@@ -304,7 +303,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                             <!-- Header Row -->
@@ -364,7 +363,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
                                             <div class="row">
@@ -426,7 +425,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                             <div class="row mb-1">
@@ -467,7 +466,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                             <!-- Header Row -->
@@ -553,7 +552,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
                                             <div class="row">
@@ -615,7 +614,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                             <!-- Header Row -->
@@ -701,7 +700,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
                                             <div class="row">
@@ -786,7 +785,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+                                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                             <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                                 <!-- Header Row -->
@@ -879,7 +878,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+                                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                             <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                                 <!-- Fixed Labels Row -->
@@ -934,7 +933,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 2px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
                                             <div class="row">
