@@ -421,13 +421,13 @@
                                                 <div class="col-md-3">
                                                     <label for="engagement" class="form-label text-white">Type of Engagement</label>
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-3">
                                                     <label for="engagement" class="form-label text-white">Date</label>
                                                 </div>
                                                 <div class="col-md-5">
                                                     <label for="engagement" class="form-label text-white">Remarks</label>
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-1">
                                                     <!-- Add Another Button -->
                                                     <a href="#" id="addEngagement3" class="form-label text-white" style="font-size:10px; cursor: pointer;">
                                                         <i class="fas fa-plus"></i> Add
@@ -440,13 +440,13 @@
                                                     <div class="col-md-3">
                                                         <input name="engagement_three[]" type="text" class="form-control" placeholder="e.g. Sample Engagement">
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-3">
                                                         <input name="engagement_date[]" type="date" class="form-control" style="font-size:10px;">
                                                     </div>
                                                     <div class="col-md-5">
                                                         <input name="engagement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-1">
                                                         <!-- Remove Button -->
                                                         <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
                                                             <i class="fas fa-minus"></i>
