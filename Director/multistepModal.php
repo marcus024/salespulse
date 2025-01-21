@@ -161,9 +161,11 @@
                                                 <div class="col-md-3">
                                                    <label for="distributor" class="form-label text-white">Distributor</label>
                                                 </div>
-                                                <a href="#" id="addRequiremen" class="form-label text-white" style="font-size:10px; cursor: pointer;">
-                                                    <i class="fas fa-plus"></i> Add Another
-                                                </a>
+                                                <div class="col-md-2">
+                                                    <a href="#" id="addRequiremen" class="form-label text-white" style="font-size:10px; cursor: pointer;">
+                                                        <i class="fas fa-plus"></i> Add Another
+                                                    </a>
+                                                </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-4">
