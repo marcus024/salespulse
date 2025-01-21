@@ -155,7 +155,7 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <button type="button" class="btn btn-primary btn-sm" id="addRequirement">
-                                                        <i class="fas fa-plus"></i> Add Another
+                                                        <i class="fas fa-plus"></i> Add
                                                     </button>
                                                 </div>
                                             </div>
