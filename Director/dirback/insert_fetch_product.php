@@ -35,10 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Insert new product
-        $sql = "INSERT INTO product_tb (product, created_at, user_id, company) VALUES (:product, NOW(), NULL, :company)";
+        $sql = "INSERT INTO product_tb (product, created_at, user_id, company) VALUES (:product, NOW(), userID, :company)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':product', $newProduct, PDO::PARAM_STR);
         $stmt->bindParam(':company', $currentCompany, PDO::PARAM_STR);
+        $stmt->bindParam(':userID', $currentUserId, PDO::PARAM_STR);
 
         if ($stmt->execute()) {
             echo json_encode(['status' => 'success', 'message' => 'Product added successfully.', 'product' => $newProduct]);
