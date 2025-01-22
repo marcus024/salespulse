@@ -1317,7 +1317,7 @@ include("../auth/db.php");
                                                 }
 
                                                 .scheduleScroll::-webkit-scrollbar-thumb {
-                                                    background-color: #36b9cc;
+                                                    background-color: #f9ce45;
                                                     border-radius: 10px;
                                                     height: 20px;
                                                 }
@@ -1327,12 +1327,12 @@ include("../auth/db.php");
                                                 }
                                                 .view-schedule-btn i {
                                                     font-size: 10px;
-                                                    color: #36b9cc;
+                                                    color: #f9ce45;
                                                     transition: color 0.3s ease, transform 0.3s ease;
                                                 }
 
                                                 .view-schedule-btn:hover i {
-                                                    color: #009394; /* Change to desired hover color */
+                                                    color: #f9ce45; /* Change to desired hover color */
                                                     transform: scale(1.2); /* Slightly enlarge the icon */
                                                 }
                                             
@@ -1373,28 +1373,46 @@ include("../auth/db.php");
                                                         $eventTime   = $schedule['time']   ?? 'No Time';
                                                         ?>
                                                     
-                                                    <div class="p-2 rounded border d-flex flex-column" style="position: relative; min-height: 120px;">
+                                                   <div class="p-2 rounded shadow-widget d-flex flex-column" style="position: relative; min-height: 120px;">
                                                         <!-- Event Details -->
                                                         <div class="mb-auto">
                                                             <strong style="font-size: 10px;"><?php echo htmlspecialchars($eventName); ?></strong>
                                                             <br>
-                                                            <span style="font-size: 10px; color: #555;">Date: <?php echo htmlspecialchars($eventDate); ?></span>
+                                                            <span style="font-size: 10px; color: #bbb;">Date: <?php echo htmlspecialchars($eventDate); ?></span>
                                                             <br>
-                                                            <span style="font-size: 10px; color: #555;">Time: <?php echo htmlspecialchars($eventTime); ?></span>
+                                                            <span style="font-size: 10px; color: #bbb;">Time: <?php echo htmlspecialchars($eventTime); ?></span>
                                                         </div>
                                                         <!-- Action Buttons -->
                                                         <div class="d-flex justify-content-end" style="position: absolute; bottom: 10px; right: 10px;">
-                                                            <a href="" class="view-schedule-btn" data-bs-toggle="modal"
-                                                            data-bs-target="#schedModal" data-sched-id="<?php echo $scheduleId; ?>">
-                                                                <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
+                                                            <a href="" class="view-schedule-btn" data-bs-toggle="modal" data-bs-target="#schedModal" data-sched-id="<?php echo $scheduleId; ?>">
+                                                                <i class="fas fa-eye" style="font-size: 12px; color: #f9ce45;"></i>
                                                             </a>
-                                                          <!-- Delete Button -->
+                                                            <!-- Delete Button -->
                                                             <a href="javascript:void(0)" class="delete-schedule-btn" data-bs-toggle="modal" 
                                                             data-bs-target="#schedDel" onclick="setDeleteScheduleId('<?php echo $scheduleId; ?>')">
                                                                 <i class="fas fa-trash" style="font-size: 12px; color: red; margin-left: 10px;"></i>
                                                             </a>
                                                         </div>
                                                     </div>
+                                                    <style>
+                                                        .shadow-widget {
+                                                            background-color: #2a2925; /* Set background color */
+                                                            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow for elevation */
+                                                            color: white; /* Ensure text is visible on dark background */
+                                                            border: none; /* Remove any borders */
+                                                            border-radius: 10px; /* Keep the rounded corners */
+                                                        }
+
+                                                        /* Button hover effects */
+                                                        .view-schedule-btn:hover i {
+                                                            color: #009394; /* Slightly different hover color */
+                                                        }
+
+                                                        .delete-schedule-btn:hover i {
+                                                            color: darkred; /* Darker red on hover */
+                                                        }
+                                                    </style>
+
                                                     <?php
                                                     }
                                                 }
