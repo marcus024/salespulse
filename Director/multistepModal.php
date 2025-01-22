@@ -109,6 +109,9 @@
                                     </div>
                                     <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
+                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                            Project Profile
+                                            </p>
                                             <div class="row mb-3">
                                                 <div class="col-md-2">
                                                     <label for="startDate" class="form-label">Status</label>

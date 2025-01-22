@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
         Requirement ${requirementCount}
       </p>
       <input type="hidden" name="requirement_id_1[]" value="${newReqId}">
-
       <div class="row mb-2">
         <div class="col-md-4">
           <label class="form-label text-white">Requirement</label>
