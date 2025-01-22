@@ -1039,7 +1039,7 @@ include("../auth/db.php");
     }
 </style>
 
-                                            <div class="table-responsive" style="max-height: 250px; overflow-y: auto; background-color:#2a2925; color:white;">
+                                            <div class="table-responsive" style="max-height: 250px; overflow-y: auto; >
                                                 <?php
                                                 // Fetch the current user's ID from the session
                                                 $user_id = $_SESSION['user_id_c'] ?? null;
