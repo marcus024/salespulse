@@ -952,26 +952,88 @@ include("../auth/db.php");
                                             </div>
                                         </div>
                                         <div class="card-body" style="padding-top: 0.5rem; background-color:#2a2925; padding-bottom: 0.5rem;">
-                                            <style>
-                                                 .table-responsive::-webkit-scrollbar {
-                                                    width: 4px;
-                                                    height: 4px;
-                                                }
+                                             <style>
+        /* Table Styling */
+        #projectTable {
+            width: 100%;
+            background-color: #2a2925;
+            color: white;
+            border-collapse: collapse; /* Remove solid borders */
+        }
 
-                                                .table-responsive::-webkit-scrollbar-thumb {
-                                                    background-color: #36b9cc;
-                                                    border-radius: 10px;
-                                                    height: 10px;
-                                                }
+        /* Header Styling */
+        #projectTable thead {
+            background-color: #2a2925;
+            color: white;
+            font-weight: bold;
+        }
 
-                                                .table-responsive::-webkit-scrollbar-thumb:hover {
-                                                    background-color: #555;
-                                                }
-                                                #projectTable {
-                                                    background-color: #2a2925;
-                                                    color: white;
-                                                }
-                                            </style>
+        #projectTable thead th {
+            padding: 10px;
+            text-align: left;
+        }
+
+        /* Row Styling */
+        #projectTable tbody tr:nth-child(odd) {
+            background-color: #3a3935; /* Dark gray for odd rows */
+        }
+
+        #projectTable tbody tr:nth-child(even) {
+            background-color: #4b4a48; /* Light gray for even rows */
+        }
+
+        #projectTable tbody td {
+            padding: 10px;
+        }
+
+        /* Status-Specific Backgrounds */
+        #projectTable tbody td[data-status="Cancelled"] {
+            background-color: red !important;
+            color: white;
+        }
+
+        #projectTable tbody td[data-status="Ongoing"] {
+            background-color: #3393ff !important;
+            color: white;
+        }
+
+        #projectTable tbody td[data-status="Completed"] {
+            background-color: green !important;
+            color: white;
+        }
+
+        /* Remove hover styles from specific cells with status coloring */
+        #projectTable tbody tr:hover {
+            background-color: #565554; /* Slightly darker on hover */
+        }
+
+        /* Responsive Scrollbar */
+        .table-responsive::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+
+        .table-responsive::-webkit-scrollbar-thumb {
+            background-color: #36b9cc;
+            border-radius: 10px;
+        }
+
+        .table-responsive::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+
+        /* View Button Styling */
+        .view-btn i {
+            font-size: 12px;
+            color: #36b9cc;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .view-btn:hover i {
+            color: #009394;
+            transform: scale(1.2);
+        }
+    </style>
                                             <div class="table-responsive" style="max-height: 250px; overflow-y: auto; background-color:#2a2925; color:white;">
                                                 <?php
                                                 // Fetch the current user's ID from the session
