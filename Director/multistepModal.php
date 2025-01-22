@@ -203,8 +203,11 @@
                                             </div> 
                                             <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
                                             <div class="row mb-3">
+                                                <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                                Stage Remarks
+                                                </p>
                                                 <div class="mb-6">
-                                                    <label for="remarks" class="form-label text-white">Stage Remarks</label>
+                                                    
                                                     <textarea name="stage_one_remarks" class="form-control" id="stageremarks1" placeholder="e.g. Sample Remarks" 
                                                     style="height: 100px;"></textarea>
                                                 </div>
