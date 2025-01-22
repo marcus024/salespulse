@@ -191,7 +191,7 @@ include("../auth/db.php");
 
     .card-icon {
         font-size: 40px;
-        color: #17a2b8;
+        color: black;
         margin-right: 10px;
     }
     .card-content {
