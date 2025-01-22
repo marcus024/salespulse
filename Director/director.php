@@ -405,7 +405,7 @@ include("../auth/db.php");
             <!-- Main Content -->
             <div id="content" style="background-color:white;">
                <!-- Fixed Topbar -->
-                <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:white; padding-right:30px; padding-left:220px; z-index: 300;">
+                <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:#151515; padding-right:30px; padding-left:220px; z-index: 300;">
                     <!-- Left Section: Home and Welcome Message -->
                     <div class="d-flex align-items-center" style="margin-top: 10px;"> <!-- Added margin-top to lower the left section -->
                         <div>
