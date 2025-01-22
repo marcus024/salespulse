@@ -1106,7 +1106,7 @@ include("../auth/db.php");
                                                                     <td style="padding-left:5px; background-color:#1f2024; color:white;"><?php echo htmlspecialchars($project['account_manager']); ?></td>
                                                                     <td style="padding-left:5px; background-color:#1f2024; color:white;"><?php echo htmlspecialchars($project['start_date']); ?></td>
                                                                     <td style="padding-left:5px; background-color:#1f2024; color:white;"><?php echo htmlspecialchars($project['end_date']); ?></td>
-                                                                    <td style=" padding-left:5px; color: <?php 
+                                                                    <td style=" background-color:transparent; padding-left:5px; color: <?php 
                                                                         if ($project['pstatus'] == 'Cancelled') {
                                                                             echo 'red'; 
                                                                         } elseif ($project['pstatus'] == 'Ongoing') {
