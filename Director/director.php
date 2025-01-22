@@ -738,7 +738,7 @@ include("../auth/db.php");
                                                 transition: width 0.3s ease;
                                             }
                                         </style>
-                                        <nav id="project-collapse">
+                                        <nav id="project-collapse" style="background-color:black;">
                                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                                 <button class="project-nav-link active ongoing" id="nav-ongoing-tab" data-bs-toggle="tab" data-bs-target="#nav-ongoing" type="button" role="tab" aria-controls="nav-ongoing" aria-selected="true">On Going</button>
                                                 <button class="project-nav-link completed" id="nav-completed-tab" data-bs-toggle="tab" data-bs-target="#nav-completed" type="button" role="tab" aria-controls="nav-completed" aria-selected="false">Completed</button>
