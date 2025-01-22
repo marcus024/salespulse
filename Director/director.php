@@ -674,7 +674,7 @@ include("../auth/db.php");
                                                 margin-bottom: 8px; 
                                                 margin-right: 8px;/* Even spacing between list items */
                                                 list-style: none;
-                                                background-color: white; /* Light background */
+                                                background-color: #2a2925; /* Light background */
                                                 border: none; /* Removed border for cleaner look */
                                                 box-sizing: border-box; /* Include border in element size */
                                                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Elevation effect */
@@ -738,7 +738,7 @@ include("../auth/db.php");
                                                 transition: width 0.3s ease;
                                             }
                                         </style>
-                                        <nav id="project-collapse" style="background-color:black;">
+                                        <nav id="project-collapse">
                                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                                 <button class="project-nav-link active ongoing" id="nav-ongoing-tab" data-bs-toggle="tab" data-bs-target="#nav-ongoing" type="button" role="tab" aria-controls="nav-ongoing" aria-selected="true">On Going</button>
                                                 <button class="project-nav-link completed" id="nav-completed-tab" data-bs-toggle="tab" data-bs-target="#nav-completed" type="button" role="tab" aria-controls="nav-completed" aria-selected="false">Completed</button>
