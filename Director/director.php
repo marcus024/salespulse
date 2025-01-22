@@ -1297,7 +1297,7 @@ include("../auth/db.php");
 
                                 <div class="col-md-14 mb-1 ">
                                     <div class="row mt-0 " style=" margin-top: 0.25rem">
-                                        <div class="card col-md-5 shadow mb-1 mx-3 p-0" style="box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);">
+                                        <div class="card col-md-5 shadow mb-1 mx-3 p-0" style="background-color: #2a2925; box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);">
                                             <div class="card-header py-1" style="background:white">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <!-- Left-aligned text -->
