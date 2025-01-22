@@ -691,7 +691,7 @@ include("../auth/db.php");
                                                 content: counter(project-count) ". "; /* Space added after the period */
                                                 counter-increment: project-count;
                                                 font-weight: bold;
-                                                color: #555555;
+                                                color: white;
                                             }
 
                                             /* Tab-specific hover styles */
