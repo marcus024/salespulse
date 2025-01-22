@@ -423,7 +423,7 @@ include("../auth/db.php");
                     <div class="d-flex align-items-center" style="margin-top: 10px;"> <!-- Added margin-top to lower the left section -->
                         <div>
                             <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Home</h1> <!-- Reduced spacing -->
-                            <p style="font-size:15px; color: #555; font-family:'Poppins'; margin: 0px;">
+                            <p style="font-size:15px; color: white; font-family:'Poppins'; margin: 0px;">
                                 Welcome Back, 
                                 <span style="font-weight: 800;">
                                     <?php echo $_SESSION['user_name']; ?>!
