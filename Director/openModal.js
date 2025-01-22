@@ -184,7 +184,7 @@
       <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
         Requirement ${blockIndex}
       </p>
-      <input type="hidden" name="requirement_id_1[]" value="${reqItem.requirement_id_one || ''}">
+      <input type="hidden" name="requirement_id_1[]" value="${reqItem.requirement_id_1 || ''}">
 
       <div class="row mb-2">
         <div class="col-md-4">
