@@ -3,27 +3,23 @@ document.addEventListener('DOMContentLoaded', function() {
   /***************************************************************
    * 1) Parse existing requirement_id_1[] to find max "st1rqX"
    ***************************************************************/
-  function getMaxSt1rq() {
-    let maxNum = 0;
-    // Grab all hidden inputs with name="requirement_id_1[]"
-    const existingInputs = document.querySelectorAll('input[name="requirement_id_1[]"]');
-    existingInputs.forEach(input => {
-      const val = input.value.trim(); // e.g. "st1rq3"
-      if (val.startsWith('st1rq')) {
-        const numStr = val.slice(5); // substring after "st1rq", e.g. "3"
-        const num = parseInt(numStr, 10);
-        if (!isNaN(num) && num > maxNum) {
-          maxNum = num;
+   // Function to get the highest "st1rqX" value
+    function getMaxSt1rq() {
+      let maxNum = 0;
+      const inputs = document.querySelectorAll('input[name="requirement_id_1[]"]');
+      inputs.forEach(input => {
+        const match = input.value.match(/st1rq(\d+)/);
+        if (match) {
+          maxNum = Math.max(maxNum, parseInt(match[1], 10));
         }
-      }
-    });
-    return maxNum; // 0 if none found
-  }
+      });
+      return maxNum;
+    }
 
   /***************************************************************
    * 2) Determine the initial block's ID
    ***************************************************************/
-  let requirementCount = 1;
+  let requirementCount = Math.max(getMaxSt1rq(), 1);
   
   // Find the largest existing ID
   const maxFound = getMaxSt1rq();
@@ -89,9 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Next ID
     requirementCount++; 
-    const newReqId = 'st1rq' + requirementCount;
-    
-    // Create new .requirement-block
+    const newReqId = `st1rq${requirementCount}`;
     const newBlock = document.createElement('div');
     newBlock.classList.add('requirement-block');
     newBlock.dataset.index = requirementCount;
