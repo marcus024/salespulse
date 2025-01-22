@@ -109,122 +109,152 @@
         });
     }
 
-    function fetchStageOne(data) {
-    // 1) Stage One basic fields
-    document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
-    document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || 'No Data';
-    document.getElementById('status-placeholder').value     = data.stages.stage_one.status     || 'No Data';
-    document.getElementById('solution1').value              = data.stages.stage_one.solution   || 'No Data';
-    document.getElementById('dealSize1').value              = data.stages.stage_one.deal_size  || 'No Data';
-    document.getElementById('stageremarks1').value          = data.stages.stage_one.remarks    || 'No Data';
+  async function fetchStageOne(data) {
+  // 1) Basic Stage One fields
+  document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
+  document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || 'No Data';
+  document.getElementById('status-placeholder').value     = data.stages.stage_one.status     || 'No Data';
+  document.getElementById('solution1').value              = data.stages.stage_one.solution   || 'No Data';
+  document.getElementById('dealSize1').value              = data.stages.stage_one.deal_size  || 'No Data';
+  document.getElementById('stageremarks1').value          = data.stages.stage_one.remarks    || 'No Data';
 
-    const technology1 = document.getElementById('technologySelect');
-    const techValue   = data.stages.stage_one.technology || 'Select';
+  // 2) If there's a technology select
+  const technology1 = document.getElementById('technologySelect');
+  const techValue   = data.stages.stage_one.technology || 'Select';
+  if (technology1) {
     Array.from(technology1.options).forEach(option => {
-        if (option.value === techValue) {
+      if (option.value === techValue) {
         option.selected = true;
-        }
+      }
+    });
+  }
+
+  // 3) We'll fetch the product_list and distributor_list from data
+  const productList     = data.product_list     || [];
+  const distributorList = data.distributor_list || [];
+
+  // 4) Requirements array
+  const requirements = (data.stages.stage_one && data.stages.stage_one.requirements) || [];
+
+  // 5) Container for requirements
+  const requirementsContainer = document.getElementById("requirementsContainer");
+  if (!requirementsContainer) {
+    console.error("#requirementsContainer not found in DOM!");
+    return;
+  }
+
+  // Clear out existing blocks (or keep if you want the first as template)
+  requirementsContainer.innerHTML = "";
+
+  // 6) Create a function to fill <select> with productList or distributorList
+  function populateSelect($select, dataList, selectedValue) {
+    // First, remove old dynamic <option>s (except the "add_new_product" line, if you want)
+    // Or just do $select.innerHTML = "" if you prefer. We'll be partial:
+    // for demonstration, let's do a minimal approach:
+    // We'll keep the default "Select" and "add_new..." options
+    const keepOptions = Array.from($select.querySelectorAll('option[value="add_new_product"],option[value="add_new"]'));
+    $select.innerHTML = "";
+    keepOptions.forEach(opt => $select.appendChild(opt));
+
+    // Then insert the items from dataList
+    dataList.forEach(item => {
+      const option = document.createElement('option');
+      option.value = item;
+      option.textContent = item;
+      $select.insertBefore(option, $select.querySelector('option[value="add_new_product"],option[value="add_new"]'));
     });
 
-    // 2) Fetch the requirements array
-    const requirements = (data.stages.stage_one && data.stages.stage_one.requirements) || [];
-
-    // 3) Reference to the container
-    const requirementsContainer = document.getElementById("requirementsContainer");
-    if (!requirementsContainer) {
-        console.error("#requirementsContainer not found in DOM!");
-        return;
+    // Finally, set the selected option if it matches
+    if (selectedValue) {
+      $select.value = selectedValue;
     }
+  }
 
-    // Option A: Clear out any existing blocks (except if you want to keep the first “template”)
-   
+  // 7) For each requirement, build a block
+  requirements.forEach((reqItem, index) => {
+    const blockIndex = index + 1;
 
-    // If you prefer to keep the *initial block* as a template, do something like:
-    // const firstBlock = requirementsContainer.querySelector('.requirement-block[data-index="1"]');
-    // then re-use or clone it. (But the code below fully regenerates everything.)
+    // Create new block
+    const newBlock = document.createElement("div");
+    newBlock.classList.add("requirement-block");
+    newBlock.dataset.index = blockIndex;
 
-    // 4) Loop over each requirement from the backend
-    requirements.forEach((item, index) => {
-        const blockIndex = index + 1;  // for display: “Requirement #1, #2, etc.”
-        // Create a new wrapper DIV
-        const newBlock = document.createElement('div');
-        newBlock.classList.add('requirement-block');
-        newBlock.dataset.index = blockIndex;
+    // Fill the same structure, but KEEP the Add button
+    newBlock.innerHTML = `
+      <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+        Requirement ${blockIndex}
+      </p>
+      <input type="hidden" name="requirement_id_1[]" value="${reqItem.requirement_id_one || ''}">
 
-        // Fill in the same structure as your existing HTML
-        newBlock.innerHTML = `
-        <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
-            Requirement ${blockIndex}
-        </p>
-        <input type="hidden" name="requirement_id_1[]" value="${item.requirement_id_one || ''}">
-
-        <div class="row mb-2">
-            <div class="col-md-4">
-            <label class="form-label text-white">Requirement</label>
-            </div>
-            <div class="col-md-3">
-            <label class="form-label text-white">Product</label>
-            </div>
-            <div class="col-md-3">
-            <label class="form-label text-white">Distributor</label>
-            </div>
-            <div class="col-md-2">
-            <!-- For now, no "Add" button here. Usually only in the first block. -->
-            </div>
+      <div class="row mb-2">
+        <div class="col-md-4">
+          <label class="form-label text-white">Requirement</label>
         </div>
-
-        <div class="row mb-3">
-            <div class="col-md-4">
-            <input name="requirement_one[]" 
-                    style="width: 100%;" 
-                    type="text" 
-                    class="form-control" 
-                    placeholder="e.g. Sample Requirement"
-                    value="${item.requirement_one || ''}">
-            </div>
-            <div class="col-md-3">
-            <select name="product_one[]" class="form-control custom-select productFetch">
-                <option disabled>Select</option>
-                <option value="add_new_product">+ Add New Product...</option>
-            </select>
-            </div>
-            <div class="col-md-3">
-            <select name="distributor_one[]" class="form-control custom-select distributorFetch">
-                <option disabled>Select</option>
-                <option value="add_new">+ Add New Distributor...</option>
-            </select>
-            </div>
-            <div class="col-md-2">
-            <button type="button"
-                    class="btn btn-danger btn-sm removeRequirement"
-                    style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
-                <i class="fas fa-minus"></i>&nbsp;Remove
-            </button>
-            </div>
+        <div class="col-md-3">
+          <label class="form-label text-white">Product</label>
         </div>
-        `;
+        <div class="col-md-3">
+          <label class="form-label text-white">Distributor</label>
+        </div>
+        <div class="col-md-2">
+          <!-- Keep the Add button here: -->
+          <button type="button"
+                  class="btn btn-primary btn-sm"
+                  style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                  id="addRequirementBtn">
+            <i class="fas fa-plus"></i>&nbsp;Add
+          </button>
+        </div>
+      </div>
 
-        // Append the new block
-        requirementsContainer.appendChild(newBlock);
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <input name="requirement_one[]"
+                 style="width: 100%;"
+                 type="text"
+                 class="form-control"
+                 placeholder="e.g. Sample Requirement"
+                 value="${reqItem.requirement_one || ''}">
+        </div>
+        <div class="col-md-3">
+          <select name="product_one[]" class="form-control custom-select productFetch">
+            <option disabled selected>Select</option>
+            <option value="add_new_product">+ Add New Product...</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <select name="distributor_one[]" class="form-control custom-select distributorFetch">
+            <option disabled selected>Select</option>
+            <option value="add_new">+ Add New Distributor...</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <button type="button"
+                  class="btn btn-danger btn-sm removeRequirement"
+                  style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
+            <i class="fas fa-minus"></i>&nbsp;Remove
+          </button>
+        </div>
+      </div>
+    `;
 
-        // 5) Set the selected product & distributor if needed
-        const productSelect     = newBlock.querySelector('.productFetch');
-        const distributorSelect = newBlock.querySelector('.distributorFetch');
+    // Append to container
+    requirementsContainer.appendChild(newBlock);
 
-        // If you have a function fillOneProductSelect(...) that populates from a cached list:
-        // fillOneProductSelect($(productSelect));
-        // Then set productSelect.value = item.product_one;
+    // 8) Now fill the .productFetch and .distributorFetch
+    const productSelect     = newBlock.querySelector('.productFetch');
+    const distributorSelect = newBlock.querySelector('.distributorFetch');
 
-        if (productSelect && item.product_one) {
-        productSelect.value = item.product_one;
-        }
-        if (distributorSelect && item.distributor_one) {
-        distributorSelect.value = item.distributor_one;
-        }
-    });
-
-    console.log("Requirements populated:", requirements);
+    if (productSelect) {
+      populateSelect(productSelect, productList, reqItem.product_one);
     }
+    if (distributorSelect) {
+      populateSelect(distributorSelect, distributorList, reqItem.distributor_one);
+    }
+  });
+
+  console.log("Stage One + requirements populated:", requirements);
+}
 
 
     function fetchStageTwo(data,projectId){
