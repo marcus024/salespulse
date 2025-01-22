@@ -292,14 +292,14 @@ include("../auth/db.php");
         }
         .nav-item.active .nav-link {
             background-color: #fff100; 
-            color: black; 
+            color: #2a2925; 
             font-weight: bold;
             border-radius:10px;
             margin-bottom:5px;
         }
         .nav-item .nav-link:hover {
             background-color:  #fff100; 
-            color: black; 
+            color:#2a2925; 
             border-radius:10px;
             margin-bottom:5px;
         }
@@ -355,7 +355,7 @@ include("../auth/db.php");
                     style="cursor: pointer; width: 24px; height: 24px; margin-right: 10px;"
                 />
                 <!-- The text -->
-                <span>SALES PULSE</span>
+                <span style="color:white;">SALES PULSE</span>
             </div>
             <!-- <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div style="color:white; font-weight:bold; font-family:'Poppins'; font-size:20px">
