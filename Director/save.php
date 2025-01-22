@@ -74,54 +74,73 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
             solution = ?, 
             technology = ?, 
             deal_size = ?, 
-            distributor = ?, 
-            stage_one_remarks = ?, 
-            product = ? 
+            stage_one_remarks = ?
             WHERE project_unique_id = ?";
         $stmt = $conn->prepare($query);
         $stmt->execute([
             $inputData['solution'] ?? null,
             $inputData['technology'] ?? null,
             $inputData['deal_size'] ?? null,
-            $inputData['distributor'] ?? null,
             $inputData['stage_one_remarks'] ?? null,
-            $inputData['product'] ?? null,
             $projectUniqueId
         ]);
 
         // Handle requirements (update or insert based on presence of requirement_id_one)
         if (!empty($inputData['requirement_one'])) {
-            $reqStmt = $conn->prepare("
-                INSERT INTO requirementone_tb (project_unique_id, requirement_one) 
-                VALUES (?, ?)
-            ");
-            
-            // Loop through requirements and check for existing IDs
-            foreach ($inputData['requirement_one'] as $index => $requirement) {
-                // Check if there's a requirement_id for update
-                if (isset($inputData['requirement_ids'][$index])) {
-                    $requirementId = $inputData['requirement_ids'][$index];
-                    // Update existing requirement
-                    $updateQuery = "
-                        UPDATE requirementone_tb 
-                        SET requirement_one = ? 
-                        WHERE requirement_id_one = ? AND project_unique_id = ?
-                    ";
-                    $updateStmt = $conn->prepare($updateQuery);
-                    $updateStmt->execute([
-                        htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8'),
-                        $requirementId,
-                        $projectUniqueId
-                    ]);
-                } else {
-                    // Insert new requirement if no ID exists
-                    $reqStmt->execute([
-                        $projectUniqueId,
-                        htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8')
-                    ]);
-                }
-            }
+    // Prepare your Insert statement (for rows with NO existing requirement_id)
+    $insertStmt = $conn->prepare("
+        INSERT INTO requirementone_tb 
+            (project_unique_id, requirement_id_1, requirement_one, product_one, distributor_one)
+        VALUES 
+            (?, ?, ?, ?, ?)
+    ");
+
+    // Prepare your Update statement (for rows WITH an existing requirement_id)
+    $updateStmt = $conn->prepare("
+        UPDATE requirementone_tb
+        SET requirement_one = ?, product_one = ?, distributor_one = ?
+        WHERE requirement_id_1 = ? 
+          AND project_unique_id = ?
+    ");
+
+    // Loop through each row by index
+    foreach ($inputData['requirement_one'] as $index => $reqValue) {
+        // Sanitize inputs
+        $requirementOne = htmlspecialchars($reqValue, ENT_QUOTES, 'UTF-8');
+        $productOne     = htmlspecialchars($inputData['product_one'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+        $distributorOne = htmlspecialchars($inputData['distributor_one'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+
+        // If the user supplied an ID for updating:
+        if (!empty($inputData['requirement_id_1'][$index])) {
+            $requirementIdOne = $inputData['requirement_id_1'][$index];
+
+            // -- Perform UPDATE --
+            $updateStmt->execute([
+                $requirementOne,
+                $productOne,
+                $distributorOne,
+                $requirementIdOne,
+                $projectUniqueId
+            ]);
+        } else {
+            // We generate a new requirement_id_one or use the hidden field if you prefer
+            // But typically you'd let the DB auto-increment OR pass the hidden "st1rqX" 
+            // from the front-end. Example:
+            $requirementIdOne = $inputData['requirement_id_1'][$index] 
+                ?? uniqid('req'); // Fallback if needed
+
+            // -- Perform INSERT --
+            $insertStmt->execute([
+                $projectUniqueId,
+                $requirementIdOne,
+                $requirementOne,
+                $productOne,
+                $distributorOne
+            ]);
         }
+    }
+}
+
         
         return "Stage One updated successfully.";
     } catch (Exception $e) {
