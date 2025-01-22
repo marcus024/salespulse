@@ -1188,19 +1188,19 @@ document.getElementById('saveButton').addEventListener('click', async () => {
   currentStepFields.forEach(field => {
   const name = field.name || field.id;
 
-  // If name ends with [] (e.g. "requirement_one[]", "product_one[]", "requirement_id_1[]", etc.)
-  if (name.endsWith('[]')) {
-    const key = name.replace('[]', '');  // e.g. "requirement_one[]"=> "requirement_one"
-    if (!inputValues[key]) {
-      inputValues[key] = [];
+    // If name ends with [] (e.g. "requirement_one[]", "product_one[]", "requirement_id_1[]", etc.)
+    if (name.endsWith('[]')) {
+        const key = name.replace('[]', '');  // e.g. "requirement_one[]"=> "requirement_one"
+        if (!inputValues[key]) {
+        inputValues[key] = [];
+        }
+        inputValues[key].push(field.value.trim());
+        
+    } else {
+        // Single-value field
+        inputValues[name] = field.value.trim();
     }
-    inputValues[key].push(field.value.trim());
-    
-  } else {
-    // Single-value field
-    inputValues[name] = field.value.trim();
-  }
-});
+    });
 
 
     console.log("Collected input values:", inputValues);

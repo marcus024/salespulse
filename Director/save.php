@@ -85,57 +85,65 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        // Handle requirements (update or insert based on presence of requirement_id_one)
-        if (!empty($inputData['requirement_one'])) {
-    // Prepare your Insert statement (for rows with NO existing requirement_id)
+        /***************************************************
+ * Handle requirements (insert or update)
+ **************************************************/
+if (!empty($inputData['requirement_one'])) {
+
+    // Prepare INSERT (for rows with NO existing requirement_id_1):
     $insertStmt = $conn->prepare("
         INSERT INTO requirementone_tb 
-            (project_unique_id, requirement_id_1, requirement_one, product_one, distributor_one)
+            (requirement_one, project_unique_id, distributor_one, product_one, requirement_id_1)
         VALUES 
             (?, ?, ?, ?, ?)
     ");
 
-    // Prepare your Update statement (for rows WITH an existing requirement_id)
+    // Prepare UPDATE (for rows WITH an existing requirement_id_1):
     $updateStmt = $conn->prepare("
         UPDATE requirementone_tb
-        SET requirement_one = ?, product_one = ?, distributor_one = ?
-        WHERE requirement_id_1 = ? 
-          AND project_unique_id = ?
+           SET requirement_one = ?, 
+               distributor_one = ?, 
+               product_one    = ?
+         WHERE requirement_id_1 = ?
+           AND project_unique_id = ?
     ");
 
     // Loop through each row by index
     foreach ($inputData['requirement_one'] as $index => $reqValue) {
-        // Sanitize inputs
-        $requirementOne = htmlspecialchars($reqValue, ENT_QUOTES, 'UTF-8');
-        $productOne     = htmlspecialchars($inputData['product_one'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+        // 1) Sanitize inputs
+        $requirementOne = htmlspecialchars($reqValue ?? '', ENT_QUOTES, 'UTF-8');
+        $productOne     = htmlspecialchars($inputData['product_one'][$index]     ?? '', ENT_QUOTES, 'UTF-8');
         $distributorOne = htmlspecialchars($inputData['distributor_one'][$index] ?? '', ENT_QUOTES, 'UTF-8');
-
-        // If the user supplied an ID for updating:
-        if (!empty($inputData['requirement_id_1'][$index])) {
-            $requirementIdOne = $inputData['requirement_id_1'][$index];
-
+        $requirementId  = $inputData['requirement_id_1'][$index]                ?? '';
+        
+        // 2) If user supplied an ID => we do an UPDATE, else => INSERT
+        if (!empty($requirementId)) {
             // -- Perform UPDATE --
             $updateStmt->execute([
                 $requirementOne,
-                $productOne,
                 $distributorOne,
-                $requirementIdOne,
+                $productOne,
+                $requirementId,
                 $projectUniqueId
             ]);
+            
+            // Optionally check rowCount() if you want to see whether it actually updated a row:
+            // $updatedRows = $updateStmt->rowCount();
+            // if ($updatedRows === 0) { /* No row found or data unchanged */ }
+
         } else {
-            // We generate a new requirement_id_one or use the hidden field if you prefer
-            // But typically you'd let the DB auto-increment OR pass the hidden "st1rqX" 
-            // from the front-end. Example:
-            $requirementIdOne = $inputData['requirement_id_1'][$index] 
-                ?? uniqid('req'); // Fallback if needed
+            // 3) If there's no ID, we generate or keep the empty string
+            //    - If your DB has auto-increment or uses a hidden "st1rqX" from the front-end,
+            //      you can do something like:
+            // $requirementId = $inputData['requirement_id_1'][$index] ?? uniqid('req');
 
             // -- Perform INSERT --
             $insertStmt->execute([
-                $projectUniqueId,
-                $requirementIdOne,
                 $requirementOne,
+                $projectUniqueId,
+                $distributorOne,
                 $productOne,
-                $distributorOne
+                $requirementId  // can be empty or "st1rqX" if you track custom IDs
             ]);
         }
     }
