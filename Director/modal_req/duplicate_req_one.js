@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-
   /***************************************************************
    * 1) Parse existing requirement_id_1[] to find max "st1rqX"
    ***************************************************************/
@@ -39,17 +38,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /***************************************************************
-   * 3) Initialize requirement count
+   * 3) Initialize requirement count and update initial block
    ***************************************************************/
-  let requirementCount = getMaxSt1rq() || 1; // Default to 1 if no requirements are found
-
-  /***************************************************************
-   * 4) Update the initial block dynamically
-   ***************************************************************/
-  const initialTitle = document.getElementById('requirementTitle');
-  const initialInput = document.querySelector('input[name="requirement_id_1[]"]');
   const requirementsContainer = document.getElementById('requirementsContainer');
   const addBtn = document.getElementById('addRequirementBtn');
+  const initialTitle = document.getElementById('requirementTitle');
+  const initialInput = document.querySelector('input[name="requirement_id_1[]"]');
+  let requirementCount = getMaxSt1rq() || 1; // Default to 1 if no requirements are found
 
   if (!requirementsContainer) {
     console.error("#requirementsContainer not found in DOM.");
@@ -60,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
+  // Update the initial block dynamically
   if (initialTitle) {
     initialTitle.textContent = `Requirement ${requirementCount}`;
   }
@@ -68,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /***************************************************************
-   * 5) Initialize product and distributor logic
+   * 4) Initialize product and distributor logic
    ***************************************************************/
   initProductChangeHandler();
   initDistributorChangeHandler();
@@ -81,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /***************************************************************
-   * 6) Add Requirement Button Handler
+   * 5) Add Requirement Button Handler
    ***************************************************************/
   addBtn.addEventListener('click', function (e) {
     e.preventDefault();
@@ -158,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /***************************************************************
-   * 7) Remove Requirement Button Handler
+   * 6) Remove Requirement Button Handler
    ***************************************************************/
   requirementsContainer.addEventListener('click', function (e) {
     if (e.target.closest('.removeRequirement')) {
