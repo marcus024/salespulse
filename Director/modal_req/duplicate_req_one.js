@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <select name="distributor_one[]" class="form-control custom-select distributorFetch" id="distributorSelect">
+                    <select name="distributor_one[]" class="form-control custom-select distributorFetch">
                         <option disabled selected>Select</option>
                         <option value="add_new">+ Add New Distributor...</option>
                     </select>

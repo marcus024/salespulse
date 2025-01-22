@@ -192,11 +192,10 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-md-3">
-                                                       <select class="form-control custom-select distributorFetch">
-  <option disabled selected>Select</option>
-  <option value="add_new">+ Add New Distributor...</option>
-</select>
-
+                                                        <select name="distributor_one[]" class="form-control custom-select distributorFetch" >
+                                                        <option disabled selected>Select</option>
+                                                        <option value="add_new">+ Add New Distributor...</option>
+                                                        </select>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <button type="button"
