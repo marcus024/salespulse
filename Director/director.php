@@ -293,14 +293,14 @@ include("../auth/db.php");
             margin-bottom:5px;
         }
         .nav-item.active .nav-link {
-            background-color:#2a2925; 
+            background-color: var(--accent-color);
             color: white; 
             font-weight: bold;
             border-radius:10px;
             margin-bottom:5px;
         }
         .nav-item .nav-link:hover {
-            background-color: #2a2925; 
+            background-color: var(--accent-color); 
             color:white; 
             border-radius:10px;
             margin-bottom:5px;
