@@ -597,6 +597,7 @@ include("../auth/db.php");
                                                 max-width: 520px;
                                                 margin: 0 auto; /* Center the tabs */
                                                 align-items: center; /* Align items vertically */
+                                                border:none;
                                             }
 
                                             .nav-tabs .project-nav-link {
