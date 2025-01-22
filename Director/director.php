@@ -283,29 +283,40 @@ include("../auth/db.php");
     </style>
     <!-- navbarstyle -->
     <style>
-        :root {
-        --accent-color: #f9ce45; /* Change this to your desired accent color */
+    :root {
+        --accent-color: #f9ce45; /* Accent color */
     }
-        .nav-item{
-            color: #76777a; 
-            font-weight: bold;
-            border-radius:10px;
-            margin-bottom:5px;
-        }
-        .nav-item.active .nav-link {
-            background-color: var(--accent-color);
-            color: white; 
-            font-weight: bold;
-            border-radius:10px;
-            margin-bottom:5px;
-        }
-        .nav-item .nav-link:hover {
-            background-color: var(--accent-color); 
-            color:white; 
-            border-radius:10px;
-            margin-bottom:5px;
-        }
-    </style>
+
+    /* General nav-item styling */
+    .nav-item {
+        color: #76777a; 
+        font-weight: bold;
+        border-radius: 10px;
+        margin-bottom: 5px;
+    }
+
+    /* Active nav-item */
+    .nav-item.active .nav-link {
+        background-color: #2a2925; 
+        color: white; 
+        font-weight: bold;
+        border-radius: 10px;
+        margin-bottom: 5px;
+        border-left: 5px solid var(--accent-color); /* Accent color on the left */
+        padding-left: 15px; /* Adjust padding to align with the border */
+    }
+
+    /* Hover state for nav-link */
+    .nav-item .nav-link:hover {
+        background-color: #2a2925; 
+        color: white;
+        border-left: 5px solid var(--accent-color); /* Accent color on hover */
+        border-radius: 10px;
+        margin-bottom: 5px;
+        padding-left: 15px; /* Adjust padding for alignment */
+    }
+</style>
+
     <style>
         /* Footer Styles */
         .footer {
@@ -368,30 +379,33 @@ include("../auth/db.php");
             <!-- Divider -->
             <hr class="sidebar-divider my-2">
             <!-- Nav Items -->
-            <li class="nav-item active" >
-                <a class="nav-link selected" href="" style="border-radius:10px; padding-left:10px;">
-                    <i class="fas fa-fw fa-home"></i>
-                    <span style="font-size:13px; font-family:'Poppins'">Home</span>
-                </a>
-            </li>
-            <li class="nav-item" >
-                <a class="nav-link" href="calendar.php" style="border-radius:10px; padding-left:10px;">
-                    <i class="fas fa-fw fa-calendar-alt"></i>
-                    <span style="font-size:13px; font-family:'Poppins'">Calendar</span>
-                </a>
-            </li>
-            <li class="nav-item" >
-                <a class="nav-link" href="contacts.php" style="border-radius:10px; padding-left:10px;">
-                    <i class="fas fa-fw fa-address-book"></i>
-                    <span style="font-size:13px; font-family:'Poppins'">Contacts</span>
-                </a>
-            </li>
-            <li class="nav-item" >
-                <a class="nav-link" href="team.php" style="border-radius:10px; padding-left:10px;">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span style="font-size:13px; font-family:'Poppins'">Team Members</span>
-                </a>
-            </li>
+            <ul class="navbar-nav">
+    <li class="nav-item active">
+        <a class="nav-link selected" href="" style="border-radius:10px;">
+            <i class="fas fa-fw fa-home"></i>
+            <span style="font-size:13px; font-family:'Poppins'">Home</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="calendar.php" style="border-radius:10px;">
+            <i class="fas fa-fw fa-calendar-alt"></i>
+            <span style="font-size:13px; font-family:'Poppins'">Calendar</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="contacts.php" style="border-radius:10px;">
+            <i class="fas fa-fw fa-address-book"></i>
+            <span style="font-size:13px; font-family:'Poppins'">Contacts</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="team.php" style="border-radius:10px;">
+            <i class="fas fa-fw fa-users"></i>
+            <span style="font-size:13px; font-family:'Poppins'">Team Members</span>
+        </a>
+    </li>
+</ul>
+
             <!-- Spacer to Push Footer to Bottom -->
             <li style="flex-grow: 1;"></li>
             
