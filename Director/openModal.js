@@ -4,6 +4,7 @@
             console.error("No project ID provided.");
             return;
         }
+        
         document.getElementById('project-id-placeholder').textContent = projectId;
         const projectIdPlaceholder = document.getElementById('project-id-placeholder');
         if (projectIdPlaceholder) {
@@ -32,6 +33,24 @@
                     // fetchStageThree(data);
                     // fetchStageFour(data);
                     // fetchStageFive(data);
+
+                    initProductChangeHandler();
+                    initDistributorChangeHandler();
+
+                    $.when( loadProducts(), loadDistributors() ).done(function() {
+                        // If needed, do something after both are loaded
+                    });
+
+                    const newProductSelect = newBlock.querySelector('.productFetch');
+                    if (newProductSelect) {
+                    fillOneProductSelect($(newProductSelect));
+                    }
+
+                    // 2) Fill *this* new distributor select from cached array
+                    const newDistributorSelect = newBlock.querySelector('.distributorFetch');
+                    if (newDistributorSelect) {
+                    fillOneDistributorSelect($(newDistributorSelect));
+                    }
 
                     //Navigate to the current stage
                     const currentStage = data.current_stage;
@@ -108,6 +127,8 @@
             el.textContent = projectId || "[Project ID]";
         });
     }
+
+
 
   async function fetchStageOne(data) {
   // 1) Basic Stage One fields
