@@ -1033,12 +1033,12 @@ include("../auth/db.php");
                                                         </thead>
                                                         <tbody style="background-color:#2a2925; color:white;">
                                                             <?php foreach ($projects as $project): ?>
-                                                                <tr data-status="<?php echo htmlspecialchars($project['pstatus']); ?>">
-                                                                    <td style="padding-left:5px; padding-right:5px;"><?php echo htmlspecialchars($project['project_unique_id']); ?></td>
-                                                                    <td style="padding-left:5px;"><?php echo htmlspecialchars($project['company_name']); ?></td>
-                                                                    <td style="padding-left:5px;"><?php echo htmlspecialchars($project['account_manager']); ?></td>
-                                                                    <td style="padding-left:5px;"><?php echo htmlspecialchars($project['start_date']); ?></td>
-                                                                    <td style="padding-left:5px;"><?php echo htmlspecialchars($project['end_date']); ?></td>
+                                                                <tr data-status="<?php echo htmlspecialchars($project['pstatus']); ?>" style="background-color:#2a2925; color:white;">
+                                                                    <td style="padding-left:5px; padding-right:5px; background-color:#2a2925; color:white;"><?php echo htmlspecialchars($project['project_unique_id']); ?></td>
+                                                                    <td style="padding-left:5px; background-color:#2a2925; color:white;"><?php echo htmlspecialchars($project['company_name']); ?></td>
+                                                                    <td style="padding-left:5px; background-color:#2a2925; color:white;"><?php echo htmlspecialchars($project['account_manager']); ?></td>
+                                                                    <td style="padding-left:5px; background-color:#2a2925; color:white;"><?php echo htmlspecialchars($project['start_date']); ?></td>
+                                                                    <td style="padding-left:5px; background-color:#2a2925; color:white;"><?php echo htmlspecialchars($project['end_date']); ?></td>
                                                                     <td style=" color: white; padding-left:5px; background-color: <?php 
                                                                         if ($project['pstatus'] == 'Cancelled') {
                                                                             echo 'red'; 
