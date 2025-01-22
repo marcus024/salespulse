@@ -570,11 +570,11 @@ include("../auth/db.php");
                                             margin: 0;
                                             box-shadow: none;
                                             display: inline-block;
-                                            color: inherit;
+                                            color: black;
                                             font-size: 15px;
                                             }
                                         </style>
-                                        <span id="addProjectBtnText" class="text" style="font-family: 'Poppins'; font-size: 15px;">
+                                        <span id="addProjectBtnText" class="text" style="color: black; font-family: 'Poppins'; font-size: 15px;">
                                             Add Project
                                         </span>
                                         </a>
