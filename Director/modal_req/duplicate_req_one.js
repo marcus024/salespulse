@@ -1,100 +1,37 @@
-document.addEventListener('DOMContentLoaded', function () {
-  /***************************************************************
-   * 1) Parse existing requirement_id_1[] to find max "st1rqX"
-   ***************************************************************/
-  function getMaxSt1rq() {
-    let maxNum = 0;
-    const inputs = document.querySelectorAll('input[name="requirement_id_1[]"]');
-    inputs.forEach(input => {
-      const match = input.value.match(/st1rq(\d+)/);
-      if (match) {
-        maxNum = Math.max(maxNum, parseInt(match[1], 10));
-      }
-    });
-    return maxNum;
-  }
 
-  /***************************************************************
-   * 2) Renumber all requirement blocks dynamically
-   ***************************************************************/
-  function renumberRequirements() {
-    const blocks = document.querySelectorAll('.requirement-block');
-    blocks.forEach((block, index) => {
-      const newNumber = index + 1; // Sequential numbering starts from 1
-      block.dataset.index = newNumber;
-
-      // Update the title
-      const title = block.querySelector('p');
-      if (title) {
-        title.textContent = `Requirement ${newNumber}`;
-      }
-
-      // Update the hidden input value
-      const hiddenInput = block.querySelector('input[name="requirement_id_1[]"]');
-      if (hiddenInput) {
-        hiddenInput.value = `st1rq${newNumber}`;
-      }
-    });
-  }
-
-  /***************************************************************
-   * 3) Initialize requirement count and update initial block
-   ***************************************************************/
+document.addEventListener('DOMContentLoaded', function() {
+  let requirementCount = 1;
   const requirementsContainer = document.getElementById('requirementsContainer');
   const addBtn = document.getElementById('addRequirementBtn');
-  const initialTitle = document.getElementById('requirementTitle');
-  const initialInput = document.querySelector('input[name="requirement_id_1[]"]');
-  let requirementCount = getMaxSt1rq() || 1; // Default to 1 if no requirements are found
 
-  if (!requirementsContainer) {
-    console.error("#requirementsContainer not found in DOM.");
-    return;
-  }
-  if (!addBtn) {
-    console.error("#addRequirementBtn not found in DOM.");
-    return;
-  }
-
-  // Update the initial block dynamically
-  if (initialTitle) {
-    initialTitle.textContent = `Requirement ${requirementCount}`;
-  }
-  if (initialInput) {
-    initialInput.value = `st1rq${requirementCount}`;
-  }
-
-  /***************************************************************
-   * 4) Initialize product and distributor logic
-   ***************************************************************/
+  // Initialize the "Add New" logic for both product & distributor
   initProductChangeHandler();
   initDistributorChangeHandler();
 
-  // Load products and distributors
-  $.when(loadProducts(), loadDistributors()).done(function () {
-    console.log("Products & Distributors loaded.");
-    fillOneProductSelect($('.productFetch'));
-    fillOneDistributorSelect($('.distributorFetch'));
+  // Load both sets once. 
+  // We can chain them or run in parallel
+  // so that the initial .productFetch & .distributorFetch gets filled
+  $.when( loadProducts(), loadDistributors() ).done(function() {
+    // If needed, do something after both are loaded
   });
 
-  /***************************************************************
-   * 5) Add Requirement Button Handler
-   ***************************************************************/
-  addBtn.addEventListener('click', function (e) {
+  // "Add" button to clone a new requirement block
+  addBtn.addEventListener('click', function(e) {
     e.preventDefault();
-
-    // Increment the requirement count
     requirementCount++;
-    const newReqId = `st1rq${requirementCount}`;
+
     const newBlock = document.createElement('div');
     newBlock.classList.add('requirement-block');
     newBlock.dataset.index = requirementCount;
+
+    const newReqId = 'st1rq' + requirementCount;
 
     newBlock.innerHTML = `
       <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
         Requirement ${requirementCount}
       </p>
       <input type="hidden" name="requirement_id_1[]" value="${newReqId}">
-      
+
       <div class="row mb-2">
         <div class="col-md-4">
           <label class="form-label text-white">Requirement</label>
@@ -107,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
         <div class="col-md-2"></div>
       </div>
-      
+
       <div class="row mb-3">
         <div class="col-md-4">
           <input name="requirement_one[]" 
@@ -138,32 +75,29 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
     `;
 
-    // Append the new block to the container
+    // Append the new block
     requirementsContainer.appendChild(newBlock);
 
-    // Fill product and distributor dropdowns for the new block
+    // 1) Fill *this* new product select from cached array
     const newProductSelect = newBlock.querySelector('.productFetch');
-    const newDistributorSelect = newBlock.querySelector('.distributorFetch');
-
     if (newProductSelect) {
       fillOneProductSelect($(newProductSelect));
     }
+
+    // 2) Fill *this* new distributor select from cached array
+    const newDistributorSelect = newBlock.querySelector('.distributorFetch');
     if (newDistributorSelect) {
       fillOneDistributorSelect($(newDistributorSelect));
     }
   });
 
-  /***************************************************************
-   * 6) Remove Requirement Button Handler
-   ***************************************************************/
-  requirementsContainer.addEventListener('click', function (e) {
+  // Delegate remove button
+  requirementsContainer.addEventListener('click', function(e) {
     if (e.target.closest('.removeRequirement')) {
       e.preventDefault();
       const blockToRemove = e.target.closest('.requirement-block');
       if (blockToRemove) {
         blockToRemove.remove();
-        renumberRequirements(); // Recalculate numbering after removal
-        requirementCount = document.querySelectorAll('.requirement-block').length;
       }
     }
   });
