@@ -333,7 +333,7 @@ include("../auth/db.php");
     <div id="wrapper" >
         <!-- Sidebar -->
         <!-- Sidebar -->
-        <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#d1d1d1; width: 200px; transition: all 0.3s; padding-left: 20px;">
+        <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#000000; width: 200px; transition: all 0.3s; padding-left: 20px;">
             <!-- Sidebar - Brand -->
             <!-- <i 
                 id="sidebarToggleIcon" 
