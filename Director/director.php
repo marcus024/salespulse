@@ -939,7 +939,7 @@ include("../auth/db.php");
                                                 <div class="btn-group" role="group">
                                                     <!-- Export Dropdown -->
                                                     <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
-                                                            style="font-size: 10px; height: 30px; margin: 0; border:none; background-color:#f9ce45">
+                                                            style="color:black; font-size: 10px; height: 30px; margin: 0; border:none; background-color:#f9ce45">
                                                         Export
                                                     </button>
                                                     <ul class="dropdown-menu">
