@@ -1185,29 +1185,23 @@ document.getElementById('saveButton').addEventListener('click', async () => {
 
     const inputValues = {};
 
-    currentStepFields.forEach(field => {
-        const name = field.name || field.id;
-        
-        // Handle array-like names (e.g., requirement_one[])
-        if (name.endsWith('[]')) {
-            const key = name.replace('[]', '');
-            if (!inputValues[key]) {
-                inputValues[key] = [];
-            }
-            inputValues[key].push(field.value.trim());
+  currentStepFields.forEach(field => {
+  const name = field.name || field.id;
 
-            // Also capture the requirement_id_one from the data-id attribute
-            const requirementId = field.getAttribute('data-id');
-            if (requirementId) {
-                if (!inputValues['requirement_id_1']) {
-                    inputValues['requirement_id_1'] = [];
-                }
-                inputValues['requirement_id_1'].push(requirementId); // Store requirement ID
-            }
-        } else {
-            inputValues[name] = field.value.trim();
-        }
-    });
+  // If name ends with [] (e.g. "requirement_one[]", "product_one[]", "requirement_id_1[]", etc.)
+  if (name.endsWith('[]')) {
+    const key = name.replace('[]', '');  // e.g. "requirement_one[]"=> "requirement_one"
+    if (!inputValues[key]) {
+      inputValues[key] = [];
+    }
+    inputValues[key].push(field.value.trim());
+    
+  } else {
+    // Single-value field
+    inputValues[name] = field.value.trim();
+  }
+});
+
 
     console.log("Collected input values:", inputValues);
 
