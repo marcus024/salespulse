@@ -880,7 +880,7 @@ include("../auth/db.php");
                         </div>
                     <!-- Blank Column -->
                     <div class="col" id="table-card-collapse" style="transition: width 0.3s ease; width: 690px;">
-                        <div class="card shadow-sm"  style="background-color:#1f2024;" >
+                        <div class="card shadow-sm"  style="background-color:#1f2024; border:none;">
                             <div class="card-body" style="margin-top: 0.25rem; margin-bottom: 0.5rem; ">
                                 <!-- Start of Cards -->
                                  <?php include('dirback/cardsStatus.php'); ?>
