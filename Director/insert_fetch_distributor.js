@@ -1,7 +1,7 @@
-// A global array to store the list of distributors
-let allDistrubutors = [];  // spelled "distrubutor" per your code
 
-// 1. Load the distributor list ONCE, store in array
+let allDistrubutors = [];  
+
+
 function loadDistributors() {
   return $.ajax({
     url: './dirback/fetchAll_distributor.php',
@@ -9,11 +9,8 @@ function loadDistributors() {
     dataType: 'json',
     success: function(response) {
       if (response.status === 'success') {
-        // store them in the array
-        // e.g. response.data = [ {distrubutor: "ABC"}, {distrubutor: "XYZ"} ... ]
         allDistrubutors = response.data.map(item => item.distrubutor);
 
-        // Fill the existing .distributorFetch elements (the initial ones in HTML)
         fillExistingDistributorSelects();
       } else {
         alert("Error: " + response.message);
@@ -26,14 +23,12 @@ function loadDistributors() {
   });
 }
 
-// Fill any existing .distributorFetch with the cached array
 function fillExistingDistributorSelects() {
-  // For each .distributorFetch, remove old dynamic options EXCEPT "add_new"
   $('.distributorFetch')
     .find('option:not([value="add_new"]):not(:disabled)')
     .remove();
 
-  // Then re-insert from allDistrubutors
+ 
   $('.distributorFetch').each(function() {
     const $thisSelect = $(this);
     allDistrubutors.forEach(d => {
@@ -44,12 +39,10 @@ function fillExistingDistributorSelects() {
   });
 }
 
-// Fill a SINGLE new <select> with the same data, without touching existing ones
+
 function fillOneDistributorSelect($select) {
-  // Remove old dynamic options from just this one
   $select.find('option:not([value="add_new"]):not(:disabled)').remove();
 
-  // Insert the cached data
   allDistrubutors.forEach(d => {
     $select.find('option[value="add_new"]').before(
       `<option value="${escapeHtml(d)}">${escapeHtml(d)}</option>`
@@ -57,7 +50,6 @@ function fillOneDistributorSelect($select) {
   });
 }
 
-// Reusable function to escape HTML
 function escapeHtml(str) {
   if (!str) return '';
   return String(str)
@@ -67,9 +59,7 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
-// 2. Insert logic for "Add New" distributor
 function initDistributorChangeHandler() {
-  // Use delegated event so newly created selects also trigger
   $(document).on('change', '.distributorFetch', function() {
     if ($(this).val() === 'add_new') {
       const newDistributor = prompt("Enter the new distributor:");
@@ -81,21 +71,18 @@ function initDistributorChangeHandler() {
           data: { distributor: newDistributor.trim() },
           success: (response) => {
             if (response.status === 'success') {
-              // Add the new distributor to our cache array
               allDistrubutors.push(response.distributor);
 
-              // Insert it right before "add_new" in THIS specific select
               $(this).find('option[value="add_new"]').before(
                 `<option value="${escapeHtml(response.distributor)}">
                    ${escapeHtml(response.distributor)}
                  </option>`
               );
-              // Select the newly inserted option
               $(this).val(response.distributor);
               alert(response.message);
             } else {
               alert("Error: " + response.message);
-              $(this).val(""); // Reset selection
+              $(this).val(""); 
             }
           },
           error: function(xhr, status, error) {
@@ -104,7 +91,6 @@ function initDistributorChangeHandler() {
           }
         });
       } else {
-        // If user canceled or typed empty, reset
         $(this).val("");
       }
     }

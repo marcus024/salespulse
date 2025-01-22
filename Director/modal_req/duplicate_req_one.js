@@ -1,18 +1,21 @@
+
 document.addEventListener('DOMContentLoaded', function() {
-  // Start at 1 because the initial block is "Requirement 1"
   let requirementCount = 1;
   const requirementsContainer = document.getElementById('requirementsContainer');
   const addBtn = document.getElementById('addRequirementBtn');
 
-  // Initialize the "Add New" logic once
+  // Initialize the "Add New" logic for both product & distributor
+  initProductChangeHandler();
   initDistributorChangeHandler();
 
-  // Load distributors once, fill the initial
-  loadDistributors().then(() => {
-    // the initial .distributorFetch is now populated
+  // Load both sets once. 
+  // We can chain them or run in parallel
+  // so that the initial .productFetch & .distributorFetch gets filled
+  $.when( loadProducts(), loadDistributors() ).done(function() {
+    // If needed, do something after both are loaded
   });
 
-  // ADD functionality
+  // "Add" button to clone a new requirement block
   addBtn.addEventListener('click', function(e) {
     e.preventDefault();
     requirementCount++;
@@ -39,9 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="col-md-3">
           <label class="form-label text-white">Distributor</label>
         </div>
-        <div class="col-md-2">
-          <!-- no Add button here -->
-        </div>
+        <div class="col-md-2"></div>
       </div>
 
       <div class="row mb-3">
@@ -74,20 +75,23 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
     `;
 
+    // Append the new block
     requirementsContainer.appendChild(newBlock);
 
-    // Now fill ONLY this new .distributorFetch from the cached array
+    // 1) Fill *this* new product select from cached array
+    const newProductSelect = newBlock.querySelector('.productFetch');
+    if (newProductSelect) {
+      fillOneProductSelect($(newProductSelect));
+    }
+
+    // 2) Fill *this* new distributor select from cached array
     const newDistributorSelect = newBlock.querySelector('.distributorFetch');
     if (newDistributorSelect) {
       fillOneDistributorSelect($(newDistributorSelect));
     }
-
-    // If you have a separate approach for product, do similarly for .productFetch
-    // const newProductSelect = newBlock.querySelector('.productFetch');
-    // fillOneProductSelect($(newProductSelect));
   });
 
-  // REMOVE event (delegated)
+  // Delegate remove button
   requirementsContainer.addEventListener('click', function(e) {
     if (e.target.closest('.removeRequirement')) {
       e.preventDefault();
