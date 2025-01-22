@@ -144,7 +144,7 @@
   }
 
   // Clear out existing blocks (or keep if you want the first as template)
-  requirementsContainer.innerHTML = "";
+//   requirementsContainer.innerHTML = "";
 
   // 6) Create a function to fill <select> with productList or distributorList
   function populateSelect($select, dataList, selectedValue) {
