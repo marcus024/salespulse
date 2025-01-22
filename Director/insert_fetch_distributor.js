@@ -1,4 +1,3 @@
-
 // Function to escape HTML
 function escapeHtml(str) {
   if (!str) return '';
@@ -17,18 +16,22 @@ function loadDistributors() {
     dataType: 'json',
     success: function(response) {
       if (response.status === 'success') {
-        // Get the select element and clear all dynamic options (but keep the default and special option)
-        const $select = $('#distributorSelect');
-        // Remove any dynamically added options that are not the special ones
-        $select.find('option:not([value="add_new"]):not(:disabled)').remove();
-        
-        // Loop through each distributor and add as an option before the "add_new" option
+        // For each .distributorFetch select, remove old dynamic options
+        $('.distributorFetch')
+          .find('option:not([value="add_new"]):not(:disabled)')
+          .remove();
+
+        // Insert new distributor options
         response.data.forEach(function(item) {
-          // item.distrubutor is expected from the query
-          const distributor = item.distrubutor;
-          $select.find('option[value="add_new"]').before(
-            `<option value="${escapeHtml(distributor)}">${escapeHtml(distributor)}</option>`
-          );
+          // Use item.distributor (correct spelling) from your PHP
+          const distributor = item.distributor;
+
+          // Insert this option before the "add_new" option for each .distributorFetch
+          $('.distributorFetch').each(function() {
+            $(this).find('option[value="add_new"]').before(
+              `<option value="${escapeHtml(distributor)}">${escapeHtml(distributor)}</option>`
+            );
+          });
         });
       } else {
         alert("Error: " + response.message);
@@ -44,29 +47,32 @@ function loadDistributors() {
 // Call loadDistributors() when the document is ready
 $(document).ready(function() {
   loadDistributors();
-  
-  // When the select element changes, check if the "add_new" option was selected
-  $('#distributorSelect').on('change', function() {
+
+  // Delegate change event to any .distributorFetch (including newly cloned selects)
+  $(document).on('change', '.distributorFetch', function() {
     if ($(this).val() === 'add_new') {
-      let newDistributor = prompt("Enter the new distributor:");
+      const newDistributor = prompt("Enter the new distributor:");
       if (newDistributor && newDistributor.trim() !== "") {
         $.ajax({
           url: './dirback/insert_fetch_distributor.php',
           type: 'POST',
           dataType: 'json',
           data: { distributor: newDistributor.trim() },
-          success: function(response) {
+          success: (response) => {
             if (response.status === 'success') {
-              // Add the new distributor option before the special "add_new" option
-              $('#distributorSelect').find('option[value="add_new"]').before(
-                `<option value="${escapeHtml(response.distributor)}">${escapeHtml(response.distributor)}</option>`
+              // Add the new distributor option before the "add_new" option
+              // in THIS specific select that triggered the event
+              $(this).find('option[value="add_new"]').before(
+                `<option value="${escapeHtml(response.distributor)}">
+                   ${escapeHtml(response.distributor)}
+                 </option>`
               );
-              // Set the new option as selected
-              $('#distributorSelect').val(response.distributor);
+              // Select the newly inserted option
+              $(this).val(response.distributor);
               alert(response.message);
             } else {
               alert("Error: " + response.message);
-              $('#distributorSelect').val(""); // Reset selection if needed
+              $(this).val(""); // Reset selection on error
             }
           },
           error: function(xhr, status, error) {
@@ -75,7 +81,8 @@ $(document).ready(function() {
           }
         });
       } else {
-        $(this).val(""); // Reset if nothing valid is provided
+        // If user canceled or provided empty input, reset select
+        $(this).val("");
       }
     }
   });
