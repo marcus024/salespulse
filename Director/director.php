@@ -259,7 +259,7 @@ include("../auth/db.php");
             padding-left:200px;
             padding-bottom:30px;
             padding-top:50px;
-            color:white;
+            color:black;
         }
     </style>
     <style>
