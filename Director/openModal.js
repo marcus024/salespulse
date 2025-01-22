@@ -36,23 +36,7 @@
 
                     // fetch products and distributors
 
-                    initProductChangeHandler();
-                    initDistributorChangeHandler();
-
-                    $.when( loadProducts(), loadDistributors() ).done(function() {
-                        // If needed, do something after both are loaded
-                    });
-
-                    const newProductSelect = newBlock.querySelector('.productFetch');
-                    if (newProductSelect) {
-                    fillOneProductSelect($(newProductSelect));
-                    }
-
-                    // 2) Fill *this* new distributor select from cached array
-                    const newDistributorSelect = newBlock.querySelector('.distributorFetch');
-                    if (newDistributorSelect) {
-                    fillOneDistributorSelect($(newDistributorSelect));
-                    }
+                    
 
                     //Navigate to the current stage
                     const currentStage = data.current_stage;
@@ -151,6 +135,23 @@
       }
     });
   }
+    initProductChangeHandler();
+    initDistributorChangeHandler();
+
+    $.when( loadProducts(), loadDistributors() ).done(function() {
+        // If needed, do something after both are loaded
+    });
+
+    const newProductSelect = newBlock.querySelector('.productFetch');
+    if (newProductSelect) {
+    fillOneProductSelect($(newProductSelect));
+    }
+
+    // 2) Fill *this* new distributor select from cached array
+    const newDistributorSelect = newBlock.querySelector('.distributorFetch');
+    if (newDistributorSelect) {
+    fillOneDistributorSelect($(newDistributorSelect));
+    }
 
   // 3) We'll fetch the product_list and distributor_list from data
   const productList     = data.stages.stage_one.product_one     || [];
