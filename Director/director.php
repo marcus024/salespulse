@@ -668,6 +668,7 @@ include("../auth/db.php");
                                                 background-color: #555;
                                             }
                                             .list-group-item {
+                                                
                                                 color:white;
                                                 font-size: 12px;
                                                 padding: 12px; /* Consistent padding inside list items */
@@ -684,8 +685,11 @@ include("../auth/db.php");
                                                 display: flex; /* Ensure consistent alignment for content */
                                                 align-items: center; /* Align items vertically */
                                             }
-
+                                            :root {
+                                                    --accent-color: #f9ce45; /* Accent color */
+                                                }
                                             .list-group-item:hover {
+                                                border-left: 5px solid var(--accent-color);
                                                 box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow on hover */
                                                 background-color: #e0e0e0; /* Optional hover background color */
                                             }
