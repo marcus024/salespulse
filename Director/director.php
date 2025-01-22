@@ -924,8 +924,8 @@ include("../auth/db.php");
                                 </div>
                                 <!-- End of Cards -->
                                 <div class="col-md-14 mb-3">
-                                    <div class="card shadow mb-4" style="box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); margin-bottom: 0.2rem; background-color:black; border:none;">
-                                        <div class="card-header py-3 d-flex justify-content-between align-items-center" style="background-color: black;  height: auto; border:none;">
+                                    <div class="card shadow mb-4" style="box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); margin-bottom: 0.2rem; background-color:#15151a; border:none;">
+                                        <div class="card-header py-3 d-flex justify-content-between align-items-center" style="background-color: #15151a;  height: auto; border:none;">
                                             <!-- Title -->
                                             <h6 class="m-0 font-weight-bold" style="color: white; line-height: 1;">Project Lists</h6>
                                             
@@ -933,7 +933,7 @@ include("../auth/db.php");
                                             <div class="d-flex align-items-center" style="gap: 10px;">
                                                 <!-- Search Bar -->
                                                 <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search..." 
-                                                    style="background-color:#2a2925; color:white; font-size: 10px; border: 1px solid white; border-radius: 4px; outline: white; width: 200px; height: 30px; margin: 0;">
+                                                    style="background-color:#15151a; color:white; font-size: 10px; border: 1px solid white; border-radius: 4px; outline: white; width: 200px; height: 30px; margin: 0;">
                                                 
                                                 <!-- Dropdown for Export Options -->
                                                 <div class="btn-group" role="group">
@@ -951,7 +951,7 @@ include("../auth/db.php");
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-body" style="padding-top: 0.5rem; background-color:#2a2925; padding-bottom: 0.5rem;">
+                                        <div class="card-body" style="padding-top: 0.5rem; background-color:#15151a; padding-bottom: 0.5rem;">
                                              <style>
                                                 /* Table Styling */
                                                 #projectTable {
