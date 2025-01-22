@@ -136,7 +136,6 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                             ))
                             : [],
 
-
                     ],
                     'stage_two' => [
                     'start_date' => $result['start_date_stage_two'],
