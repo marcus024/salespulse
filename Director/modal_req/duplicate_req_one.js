@@ -1,6 +1,22 @@
 document.addEventListener('DOMContentLoaded', function () {
+
   /***************************************************************
-   * 1) Parse existing requirement_id_1[] and renumber requirements
+   * 1) Parse existing requirement_id_1[] to find max "st1rqX"
+   ***************************************************************/
+  function getMaxSt1rq() {
+    let maxNum = 0;
+    const inputs = document.querySelectorAll('input[name="requirement_id_1[]"]');
+    inputs.forEach(input => {
+      const match = input.value.match(/st1rq(\d+)/);
+      if (match) {
+        maxNum = Math.max(maxNum, parseInt(match[1], 10));
+      }
+    });
+    return maxNum;
+  }
+
+  /***************************************************************
+   * 2) Renumber all requirement blocks dynamically
    ***************************************************************/
   function renumberRequirements() {
     const blocks = document.querySelectorAll('.requirement-block');
@@ -23,13 +39,15 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /***************************************************************
-   * 2) Initialize requirement count
+   * 3) Initialize requirement count
    ***************************************************************/
-  let requirementCount = document.querySelectorAll('.requirement-block').length;
+  let requirementCount = getMaxSt1rq() || 1; // Default to 1 if no requirements are found
 
   /***************************************************************
-   * 3) Update the initial block (title and hidden input)
+   * 4) Update the initial block dynamically
    ***************************************************************/
+  const initialTitle = document.getElementById('requirementTitle');
+  const initialInput = document.querySelector('input[name="requirement_id_1[]"]');
   const requirementsContainer = document.getElementById('requirementsContainer');
   const addBtn = document.getElementById('addRequirementBtn');
 
@@ -42,8 +60,15 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
+  if (initialTitle) {
+    initialTitle.textContent = `Requirement ${requirementCount}`;
+  }
+  if (initialInput) {
+    initialInput.value = `st1rq${requirementCount}`;
+  }
+
   /***************************************************************
-   * 4) Initialize product and distributor logic
+   * 5) Initialize product and distributor logic
    ***************************************************************/
   initProductChangeHandler();
   initDistributorChangeHandler();
@@ -56,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /***************************************************************
-   * 5) Add Requirement Button Handler
+   * 6) Add Requirement Button Handler
    ***************************************************************/
   addBtn.addEventListener('click', function (e) {
     e.preventDefault();
@@ -133,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /***************************************************************
-   * 6) Remove Requirement Button Handler
+   * 7) Remove Requirement Button Handler
    ***************************************************************/
   requirementsContainer.addEventListener('click', function (e) {
     if (e.target.closest('.removeRequirement')) {
