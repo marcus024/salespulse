@@ -1524,7 +1524,7 @@ include("../auth/db.php");
                                             <div class="card-header py-2" style="background-color: #1f2024; border:none;">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <!-- Left-aligned text -->
-                                                    <p class="m-0 font-weight-bold" style="color:#36b9cc;">To-Do Lists</p>
+                                                    <p class="m-0 font-weight-bold" style="color:white;">To-Do Lists</p>
                                                     <!-- Right-aligned icon -->
                                                     <a href="#" data-bs-toggle="modal" data-bs-target="#addTask">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-plus-circle" viewBox="0 0 16 16">
