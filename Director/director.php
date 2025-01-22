@@ -1027,7 +1027,7 @@ include("../auth/db.php");
                                                                 <th>Actions</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody style="background-color:#2a2925; color:white;">
                                                             <?php foreach ($projects as $project): ?>
                                                                 <tr data-status="<?php echo htmlspecialchars($project['pstatus']); ?>">
                                                                     <td style="padding-left:5px; padding-right:5px;"><?php echo htmlspecialchars($project['project_unique_id']); ?></td>
