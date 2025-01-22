@@ -109,106 +109,123 @@
         });
     }
 
-    function fetchStageOne(data){
+    function fetchStageOne(data) {
+    // 1) Stage One basic fields
+    document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
+    document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || 'No Data';
+    document.getElementById('status-placeholder').value     = data.stages.stage_one.status     || 'No Data';
+    document.getElementById('solution1').value              = data.stages.stage_one.solution   || 'No Data';
+    document.getElementById('dealSize1').value              = data.stages.stage_one.deal_size  || 'No Data';
+    document.getElementById('stageremarks1').value          = data.stages.stage_one.remarks    || 'No Data';
 
-        document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
-        document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || 'No Data';
-        document.getElementById('status-placeholder').value     = data.stages.stage_one.status     || 'No Data';
-        document.getElementById('solution1').value = data.stages.stage_one.solution || 'No Data';
-        document.getElementById('dealSize1').value = data.stages.stage_one.deal_size || 'No Data';
-        document.getElementById('stageremarks1').value = data.stages.stage_one.remarks || 'No Data';
-        // document.getElementById('distributorSelect').value = data.stages.stage_one.distributor || 'Select';
-        // document.getElementById('product1').value = data.stages.stage_one.product || 'No Data';
-        // const distributorSelect = document.getElementById('distributorSelect');
-        // const distributorValue = data.stages.stage_one.distributor || 'Select';
-        // Array.from(distributorSelect.options).forEach(option => {
-        //     if (option.value === distributorValue) {
-        //         option.selected = true;
-        //     }
-        // });
-        const technology1 = document.getElementById('technologySelect');
-        const techValue = data.stages.stage_one.technology || 'Select';
-        Array.from(technology1.options).forEach(option => {
-            if (option.value === techValue) {
-                option.selected = true;
-            }
-        });
-        
-        // // Get the container for requirements
-        // const requirementContainer = document.getElementById('requirement-container');
+    const technology1 = document.getElementById('technologySelect');
+    const techValue   = data.stages.stage_one.technology || 'Select';
+    Array.from(technology1.options).forEach(option => {
+        if (option.value === techValue) {
+        option.selected = true;
+        }
+    });
 
-        // // Clear only if no existing fields are present
-        // if (!requirementContainer.querySelector('.requirement-field')) {
-        //     const requirements = data.stages.stage_one.requirements || []; // Fetch requirements from data
+    // 2) Fetch the requirements array
+    const requirements = (data.stages.stage_one && data.stages.stage_one.requirements) || [];
 
-        //     requirements.forEach((requirement) => {
-        //         // Create a row for each requirement
-        //         const requirementRow = document.createElement('div');
-        //         requirementRow.className = 'row align-items-center requirement-field';
-        //         requirementRow.style.margin = '5px 0 0 0';
-
-        //         // Set the HTML content of the row
-        //         requirementRow.innerHTML = `
-        //             <div class="col-10 d-flex align-items-center">
-        //                 <!-- Input field for Requirement -->
-        //                 <input 
-        //                     value="${requirement.requirement_one}" 
-        //                     name="requirement_one[]" 
-        //                     style="width: 100%;" 
-        //                     type="text" 
-        //                     class="form-control" 
-        //                     data-id="${requirement.requirement_id_one}" 
-        //                     placeholder="e.g. Sample Requirement"
-        //                 >
-        //             </div>
-        //             <div class="col-2 d-flex justify-content-end align-items-center">
-        //                 <!-- Delete Button -->
-        //                 <button type="button" class="btn btn-danger btn-sm" style="margin-left: 5px;">
-        //                     <i class="fas fa-minus"></i>
-        //                 </button>
-        //             </div>
-        //         `;
-
-        //         // Append the row to the container
-        //         requirementContainer.appendChild(requirementRow);
-
-        //         // Add delete functionality to the button
-        //         const deleteButton = requirementRow.querySelector('button');
-        //         deleteButton.addEventListener('click', () => {
-        //             fetch('./dirback/delete_req1.php', {
-        //                 method: 'POST',
-        //                 headers: {
-        //                     'Content-Type': 'application/json',
-        //                 },
-        //                 body: JSON.stringify({
-        //                     requirement_id: requirement.requirement_id_one, // Use the requirement ID for deletion
-        //                     project_id: projectId // Project ID for context
-        //                 }),
-        //             })
-        //                 .then((response) => response.json())
-        //                 .then((data) => {
-        //                     if (data.status === 'success') {
-        //                         // Remove the row from the DOM
-        //                         requirementRow.remove();
-
-        //                         // Optionally update the requirements array
-        //                         const index = requirements.findIndex(req => req.requirement_id_one === requirement.requirement_id_one);
-        //                         if (index > -1) {
-        //                             requirements.splice(index, 1);
-        //                         }
-        //                     } else {
-        //                         alert('Error: ' + data.message);
-        //                     }
-        //                 })
-        //                 .catch((error) => {
-        //                     console.error('Error deleting requirement:', error);
-        //                     alert('Failed to delete requirement. Please try again.');
-        //                 });
-        //         });
-        //     });
-        // }
-
+    // 3) Reference to the container
+    const requirementsContainer = document.getElementById("requirementsContainer");
+    if (!requirementsContainer) {
+        console.error("#requirementsContainer not found in DOM!");
+        return;
     }
+
+    // Option A: Clear out any existing blocks (except if you want to keep the first “template”)
+    requirementsContainer.innerHTML = "";
+
+    // If you prefer to keep the *initial block* as a template, do something like:
+    // const firstBlock = requirementsContainer.querySelector('.requirement-block[data-index="1"]');
+    // then re-use or clone it. (But the code below fully regenerates everything.)
+
+    // 4) Loop over each requirement from the backend
+    requirements.forEach((item, index) => {
+        const blockIndex = index + 1;  // for display: “Requirement #1, #2, etc.”
+        // Create a new wrapper DIV
+        const newBlock = document.createElement('div');
+        newBlock.classList.add('requirement-block');
+        newBlock.dataset.index = blockIndex;
+
+        // Fill in the same structure as your existing HTML
+        newBlock.innerHTML = `
+        <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+            Requirement ${blockIndex}
+        </p>
+        <input type="hidden" name="requirement_id_1[]" value="${item.requirement_id_one || ''}">
+
+        <div class="row mb-2">
+            <div class="col-md-4">
+            <label class="form-label text-white">Requirement</label>
+            </div>
+            <div class="col-md-3">
+            <label class="form-label text-white">Product</label>
+            </div>
+            <div class="col-md-3">
+            <label class="form-label text-white">Distributor</label>
+            </div>
+            <div class="col-md-2">
+            <!-- For now, no "Add" button here. Usually only in the first block. -->
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+            <input name="requirement_one[]" 
+                    style="width: 100%;" 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="e.g. Sample Requirement"
+                    value="${item.requirement_one || ''}">
+            </div>
+            <div class="col-md-3">
+            <select name="product_one[]" class="form-control custom-select productFetch">
+                <option disabled>Select</option>
+                <option value="add_new_product">+ Add New Product...</option>
+            </select>
+            </div>
+            <div class="col-md-3">
+            <select name="distributor_one[]" class="form-control custom-select distributorFetch">
+                <option disabled>Select</option>
+                <option value="add_new">+ Add New Distributor...</option>
+            </select>
+            </div>
+            <div class="col-md-2">
+            <button type="button"
+                    class="btn btn-danger btn-sm removeRequirement"
+                    style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
+                <i class="fas fa-minus"></i>&nbsp;Remove
+            </button>
+            </div>
+        </div>
+        `;
+
+        // Append the new block
+        requirementsContainer.appendChild(newBlock);
+
+        // 5) Set the selected product & distributor if needed
+        const productSelect     = newBlock.querySelector('.productFetch');
+        const distributorSelect = newBlock.querySelector('.distributorFetch');
+
+        // If you have a function fillOneProductSelect(...) that populates from a cached list:
+        // fillOneProductSelect($(productSelect));
+        // Then set productSelect.value = item.product_one;
+
+        if (productSelect && item.product_one) {
+        productSelect.value = item.product_one;
+        }
+        if (distributorSelect && item.distributor_one) {
+        distributorSelect.value = item.distributor_one;
+        }
+    });
+
+    console.log("Requirements populated:", requirements);
+    }
+
 
     function fetchStageTwo(data,projectId){
         document.getElementById('stage-two-start').value = data.stages.stage_two.start_date || 'No Data';
