@@ -24,7 +24,7 @@ function loadDistributors() {
         // Insert new distributor options
         response.data.forEach(function(item) {
           // Use item.distributor (correct spelling) from your PHP
-          const distributor = item.distributor;
+          const distributor = item.distrubutor;
 
           // Insert this option before the "add_new" option for each .distributorFetch
           $('.distributorFetch').each(function() {
