@@ -529,7 +529,7 @@ include("../auth/db.php");
                 </div>
                 <!-- End of Topbar -->
                 <!-- Home Content -->
-                <div class="container-fluid" style="padding-top: 50px;">
+                <div class="container-fluid" style="padding-top: 50px; background-color:#15151a;">
                     <div class="d-flex" style="width: 100%;">
 
                     <div class="row g-0">
