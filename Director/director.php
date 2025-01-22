@@ -165,7 +165,7 @@ include("../auth/db.php");
     .rectangle-card {
         width: calc(25% - 4px); 
         height: 90px;
-        background-color:#36b9cc;
+        background-color:#f9ce45;
         box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
         border-radius: 8px;
         padding: 10px;
@@ -178,7 +178,7 @@ include("../auth/db.php");
     .card-title {
         font-size: 12px;
         font-weight: bold;
-        color:white;
+        color:black;
         text-transform: uppercase;
         margin-bottom: 3px;
     }
@@ -186,7 +186,7 @@ include("../auth/db.php");
     .card-number {
         font-size: 40px;
         font-weight: bold;
-        color:white;
+        color:black;
     }
 
     .card-icon {
