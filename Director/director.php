@@ -951,7 +951,7 @@ include("../auth/db.php");
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-body" style="padding-top: 0.5rem; padding-bottom: 0.5rem;">
+                                        <div class="card-body" style="padding-top: 0.5rem; background-color:#2a2925; padding-bottom: 0.5rem;">
                                             <style>
                                                  .table-responsive::-webkit-scrollbar {
                                                     width: 4px;
