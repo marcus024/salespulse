@@ -328,7 +328,7 @@ include("../auth/db.php");
         }
     </style>
 </head>
-<body id="page-top" >
+<body id="page-top" style="color:#15151a">
     <!-- Page Wrapper -->
     <div id="wrapper" >
         <!-- Sidebar -->
