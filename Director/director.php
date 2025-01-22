@@ -1019,9 +1019,9 @@ include("../auth/db.php");
 
                                                 <!-- HTML Table to Display Project Data -->
                                                 <?php if (!empty($projects)): ?>
-                                                    <table id="projectTable" class="table table-bordered" >
-                                                        <thead>
-                                                            <tr>
+                                                    <table id="projectTable" class="table" >
+                                                        <thead style="background-color:#2a2925; color:white;">
+                                                            <tr style="background-color:#2a2925; color:white;">
                                                                 <th>Project ID</th>
                                                                 <th>Company Name</th>
                                                                 <th>Account Manager</th>
