@@ -23,7 +23,15 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stageone.distributor, 'No Data') AS distributor,
                     COALESCE(stageone.product, 'No Data') AS product,
                     COALESCE(stageone.technology, 'No Data') AS technology,
-                    GROUP_CONCAT(DISTINCT CONCAT(requirementone_tb.requirement_id_one, ':', requirementone_tb.requirement_one) SEPARATOR ',') AS requirements,
+                    GROUP_CONCAT(
+                    DISTINCT CONCAT(
+                        requirementone_tb.requirement_id_one, ':',
+                        requirementone_tb.requirement_one, ':',
+                        requirementone_tb.product_one, ':',
+                        requirementone_tb.distributor_one
+                    )
+                    SEPARATOR '|'
+                    ) AS requirements
                     COALESCE(stagetwo.start_date_stage_two, 'No Data') AS start_date_stage_two,
                     COALESCE(stagetwo.end_date_stage_two, 'No Data') AS end_date_stage_two,
                     COALESCE(stagetwo.status_stage_two, 'No Data') AS status_stage_two,
@@ -104,21 +112,44 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'remarks' => $result['stage_one_remarks'],
                         'technology' => $result['technology'],
                         'requirements' => isset($result['requirements'])
-                        ? array_values(array_reduce(explode(',', $result['requirements']), function ($carry, $requirement) {
-                            $parts = explode(':', $requirement);
-                            $normalizedRequirementOne = strtolower(trim($parts[1] ?? ''));
+                        ? array_values(array_reduce(
+                            explode('|', $result['requirements']),  // each row is "id:req:prod:dist"
+                            function ($carry, $row) {
+                                $parts = explode(':', $row);  // [0]=id, [1]=reqOne, [2]=prodOne, [3]=distOne
 
-                            // Skip empty requirement_one
-                            if (!empty($normalizedRequirementOne) && !in_array($normalizedRequirementOne, array_column($carry, 'requirement_one'))) {
-                                $carry[] = [
-                                    'requirement_id_one' => $parts[0] ?? null,
-                                    'requirement_one' => $normalizedRequirementOne,
-                                ];
-                            }
+                                // Basic checks
+                                $reqId     = trim($parts[0] ?? '');
+                                $reqOne    = trim($parts[1] ?? '');
+                                $prodOne   = trim($parts[2] ?? '');
+                                $distOne   = trim($parts[3] ?? '');
 
-                            return $carry;
-                        }, []))
+                                // Skip if requirement_one is empty (or skip if ID empty, etc.)
+                                if (!empty($reqOne)) {
+                                    // If you want to ensure no duplicates, check carry
+                                    // e.g. skip if this requirement_id_one already in the array
+                                    $alreadyExists = false;
+                                    foreach ($carry as $c) {
+                                        if ($c['requirement_id_one'] === $reqId) {
+                                            $alreadyExists = true;
+                                            break;
+                                        }
+                                    }
+
+                                    if (!$alreadyExists) {
+                                        $carry[] = [
+                                            'requirement_id_one' => $reqId,
+                                            'requirement_one'    => $reqOne,
+                                            'product_one'        => $prodOne,
+                                            'distributor_one'    => $distOne,
+                                        ];
+                                    }
+                                }
+                                return $carry;
+                            },
+                            []
+                        ))
                         : [],
+
 
                     ],
                     'stage_two' => [
