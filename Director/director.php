@@ -1360,7 +1360,7 @@ include("../auth/db.php");
                                                         $schedules = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                                                         if (empty($schedules)) {
-                                                            echo '<div class="p-2 rounded border" style="font-size: 10px; background-color: #2a2925; color: white;">
+                                                            echo '<div class="p-2 rounded border" style="font-size: 10px; background-color: #2a2925; color: white; border-color:grey;">
                                                                     There is no schedule today.
                                                                 </div>';
                                                         } else{
