@@ -290,14 +290,14 @@ include("../auth/db.php");
             margin-bottom:5px;
         }
         .nav-item.active .nav-link {
-            background-color: black; 
-            color: #36b9cc; 
+            background-color: #fff100; 
+            color: black; 
             font-weight: bold;
             border-radius:10px;
             margin-bottom:5px;
         }
         .nav-item .nav-link:hover {
-            background-color: black; 
+            background-color:  #fff100; 
             color: #36b9cc; 
             border-radius:10px;
             margin-bottom:5px;
