@@ -298,7 +298,7 @@ include("../auth/db.php");
         }
         .nav-item .nav-link:hover {
             background-color:  #fff100; 
-            color: #36b9cc; 
+            color: black; 
             border-radius:10px;
             margin-bottom:5px;
         }
