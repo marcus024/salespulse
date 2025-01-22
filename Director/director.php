@@ -924,8 +924,8 @@ include("../auth/db.php");
                                 </div>
                                 <!-- End of Cards -->
                                 <div class="col-md-14 mb-3">
-                                    <div class="card shadow mb-4" style="box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); margin-bottom: 0.2rem; background-color:#1f2024; border:none;">
-                                        <div class="card-header py-3 d-flex justify-content-between align-items-center" style="background-color: #f8f9fa; border-bottom: 1px solid #ddd; height: auto;">
+                                    <div class="card shadow mb-4" style="box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); margin-bottom: 0.2rem; background-color:black; border:none;">
+                                        <div class="card-header py-3 d-flex justify-content-between align-items-center" style=" border-bottom: 1px solid #ddd; height: auto;">
                                             <!-- Title -->
                                             <h6 class="m-0 font-weight-bold" style="color: #36b9cc; line-height: 1;">Project Lists</h6>
                                             
