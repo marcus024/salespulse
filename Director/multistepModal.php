@@ -143,19 +143,12 @@
                                                 </div>
                                             </div>
                                             <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
-                                            <!-- Container that holds ALL requirement blocks -->
                                             <div id="requirementsContainer">
-                                                <!-- The initial requirement block (Requirement #1) -->
                                                 <div class="requirement-block" data-index="1">
-                                                    <!-- Title -->
                                                     <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
                                                     Requirement 1
                                                     </p>
-
-                                                    <!-- Unique ID hidden field (first block => st1rq1) -->
                                                     <input type="hidden" name="requirement_id_1[]" value="st1rq1">
-
-                                                    <!-- First row: Labels + "Add" button -->
                                                     <div class="row mb-2">
                                                     <div class="col-md-4">
                                                         <label class="form-label text-white">Requirement</label>
@@ -175,8 +168,6 @@
                                                         </button>
                                                     </div>
                                                     </div>
-
-                                                    <!-- Second row: Input fields + Remove button -->
                                                     <div class="row mb-3">
                                                     <div class="col-md-4">
                                                         <input name="requirement_one[]"
@@ -205,8 +196,8 @@
                                                         </button>
                                                     </div>
                                                     </div>
-                                                </div> <!-- /.requirement-block -->
-                                            </div> <!-- /#requirementsContainer -->
+                                                </div> 
+                                            </div> 
                                             <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
                                             <div class="row mb-3">
                                                 <div class="mb-6">
@@ -298,13 +289,11 @@
                                                     <label for="engagement" class="form-label text-white">Remarks</label>
                                                 </div>
                                                 <div class="col-md-1">
-                                                    <!-- Add Another Button -->
                                                     <a href="#" id="addEngagement" class="form-label text-white" style="font-size:10px; cursor: pointer;">
                                                         <i class="fas fa-plus"></i> Add
                                                     </a>
                                                 </div>
                                             </div>
-                                            <!-- Container for Engagement Fields -->
                                             <div id="engagement-fields-container">
                                                 <div class="row engagement-fields mb-3">
                                                     <div class="col-md-4">
@@ -317,7 +306,6 @@
                                                         <input name="engagement_remarks[]" type="text" id="engremarks2" class="form-control" placeholder="e.g. Sample Remarks">
                                                     </div>
                                                     <div class="col-md-1">
-                                                        <!-- Remove Button -->
                                                         <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
                                                             <i class="fas fa-minus"></i>
                                                         </button>
@@ -328,7 +316,6 @@
                                         <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
-                                            <!-- Header Row -->
                                             <div class="row mb-3">
                                                 <div class="col-md-2">
                                                     <label for="requirement" class="form-label text-white">Requirement</label>
@@ -346,15 +333,12 @@
                                                     <label for="requirement" class="form-label text-white">Requirement Remarks</label>
                                                 </div>
                                                 <div class="col-md-1">
-                                                    <!-- Add Another Button -->
                                                     <a href="#" id="addReq" class="form-label text-white" style="font-size:10px; cursor: pointer;">
                                                         <i class="fas fa-plus"></i> Add
                                                     </a>
                                                 </div>
                                             </div>
-                                            <!-- Container for Requirement Fields -->
                                             <div id="requirement-fields-container">
-                                                <!-- Initial Requirement Row -->
                                                 <div class="row requirement-fields mb-3">
                                                     <div class="col-md-2">
                                                         <input name="requirement_two[]" type="text" id="req2" class="form-control" placeholder="e.g. Sample Requirement">
@@ -365,8 +349,6 @@
                                                     <div class="col-md-2">
                                                         <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
                                                             <option disabled selected>Select</option>
-                                                            <!-- Existing options can be removed or loaded dynamically -->
-                                                            <!-- Special option for adding new distributor -->
                                                             <option value="add_new">+ Add New Distributor...</option>
                                                         </select>
                                                     </div>
@@ -377,7 +359,6 @@
                                                         <input name="requirement_remarks[]" type="text" id="reqremarks2"class="form-control" placeholder="e.g. Sample Remarks">
                                                     </div>
                                                     <div class="col-md-1">
-                                                        <!-- Remove Button -->
                                                         <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
                                                             <i class="fas fa-minus"></i>
                                                         </button>
@@ -461,13 +442,11 @@
                                                     <label for="engagement" class="form-label text-white">Remarks</label>
                                                 </div>
                                                 <div class="col-md-1">
-                                                    <!-- Add Another Button -->
                                                     <a href="#" id="addEngagement3" class="form-label text-white" style="font-size:10px; cursor: pointer;">
                                                         <i class="fas fa-plus"></i> Add
                                                     </a>
                                                 </div>
                                             </div>
-                                            <!-- Container for Engagement Fields -->
                                             <div id="engagement-fields-container3">
                                                 <div class="row engagement-fields mb-3">
                                                     <div class="col-md-3">
@@ -480,7 +459,6 @@
                                                         <input name="engagement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
                                                     </div>
                                                     <div class="col-md-1">
-                                                        <!-- Remove Button -->
                                                         <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
                                                             <i class="fas fa-minus"></i>
                                                         </button>
@@ -491,7 +469,6 @@
                                         <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
-                                            <!-- Header Row -->
                                             <div class="row mb-1">
                                                 <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Requirement</label>
@@ -506,15 +483,12 @@
                                                     <label for="requirement" class="form-label text-white">Date</label>
                                                 </div>
                                                 <div class="col-md-1">
-                                                    <!-- Add Another Button -->
                                                     <a href="#" id="addReq_3" class="form-label text-white" style="font-size:10px; cursor: pointer;">
                                                         <i class="fas fa-plus"></i> Add 
                                                     </a>
                                                 </div>
                                             </div>
-                                            <!-- Container for Requirement Fields -->
                                             <div id="requirement-fields-container-3">
-                                                <!-- Initial Requirement Row -->
                                                 <div class="row requirement-fields mb-3">
                                                     <div class="col-md-3">
                                                         <input name="requirement_three[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
@@ -525,8 +499,6 @@
                                                     <div class="col-md-3">
                                                         <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
                                                             <option disabled selected>Select</option>
-                                                            <!-- Existing options can be removed or loaded dynamically -->
-                                                            <!-- Special option for adding new distributor -->
                                                             <option value="add_new">+ Add New Distributor...</option>
                                                         </select>
                                                     </div>
@@ -534,7 +506,6 @@
                                                         <input name="requirement_date[]" type="date" id="reqdate2" class="form-control" style="font-size:10px;">
                                                     </div>
                                                     <div class="col-md-1">
-                                                        <!-- Remove Button -->
                                                         <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
                                                             <i class="fas fa-minus"></i>
                                                         </button>
@@ -555,9 +526,7 @@
                                                     <label for="requirement" class="form-label text-white">Remarks</label>
                                                 </div>
                                             </div>
-                                            <!-- Container for Requirement Fields -->
                                             <div id="requirement-fields-container-3">
-                                                <!-- Initial Requirement Row -->
                                                 <div class="row requirement-fields mb-3">
                                                     <div class="col-md-3">
                                                         <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
@@ -639,7 +608,6 @@
                                         <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
-                                            <!-- Header Row -->
                                             <div class="row mb-1">
                                                 <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Requirement</label>
@@ -654,15 +622,12 @@
                                                     <label for="requirement" class="form-label text-white">Date Required</label>
                                                 </div>
                                                 <div class="col-md-1">
-                                                    <!-- Add Another Button -->
                                                     <a href="#" id="addReq_3" class="form-label text-white" style="font-size:10px; cursor: pointer;">
                                                         <i class="fas fa-plus"></i> Add 
                                                     </a>
                                                 </div>
                                             </div>
-                                            <!-- Container for Requirement Fields -->
                                             <div id="requirement-fields-container-3">
-                                                <!-- Initial Requirement Row -->
                                                 <div class="row requirement-fields mb-3">
                                                     <div class="col-md-3">
                                                         <input name="requirement_four[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
@@ -673,8 +638,6 @@
                                                     <div class="col-md-3">
                                                         <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
                                                             <option disabled selected>Select</option>
-                                                            <!-- Existing options can be removed or loaded dynamically -->
-                                                            <!-- Special option for adding new distributor -->
                                                             <option value="add_new">+ Add New Distributor...</option>
                                                         </select>
                                                     </div>
@@ -682,7 +645,6 @@
                                                         <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
                                                     </div>
                                                     <div class="col-md-1">
-                                                        <!-- Remove Button -->
                                                         <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
                                                             <i class="fas fa-minus"></i>
                                                         </button>
@@ -703,9 +665,7 @@
                                                     <label for="requirement" class="form-label text-white">Remarks</label>
                                                 </div>
                                             </div>
-                                            <!-- Container for Requirement Fields -->
                                             <div id="requirement-fields-container-3">
-                                                <!-- Initial Requirement Row -->
                                                 <div class="row requirement-fields mb-3">
                                                     <div class="col-md-3">
                                                         <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
