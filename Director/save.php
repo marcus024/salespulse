@@ -64,11 +64,9 @@ try {
     echo json_encode(["message" => "Error occurred", "error" => $e->getMessage()]);
 }
 
-// Helper functions for different stages
-
 function updateStageOne($conn, $projectUniqueId, $inputData) {
     try {
-        // 1) Update main stageone table fields (solution, technology, deal_size, stage_one_remarks)
+        // 1) Update main stageone table
         $query = "UPDATE stageone 
                      SET solution = ?, 
                          technology = ?, 
@@ -84,11 +82,10 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        // 2) Handle requirement items in requirementone_tb (insert or update)
+        // 2) Handle requirement items in requirementone_tb
         $insertedCount = 0;
         $updatedCount  = 0;
 
-        // Check if we have at least one requirement row
         if (!empty($inputData['requirement_one'])) {
             // Prepare statements
             $insertStmt = $conn->prepare("
@@ -106,16 +103,25 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
                    AND project_unique_id = ?
             ");
 
+            // We'll also need a check statement to see if the row truly exists
+            $checkStmt = $conn->prepare("
+                SELECT 1 
+                  FROM requirementone_tb
+                 WHERE requirement_id_1 = ? 
+                   AND project_unique_id = ?
+                LIMIT 1
+            ");
+
+            // Loop each row by index
             foreach ($inputData['requirement_one'] as $index => $reqValue) {
-                // Sanitize user input
+                // Sanitize
                 $requirementOne = htmlspecialchars($reqValue ?? '', ENT_QUOTES, 'UTF-8');
                 $productOne     = htmlspecialchars($inputData['product_one'][$index]     ?? '', ENT_QUOTES, 'UTF-8');
                 $distributorOne = htmlspecialchars($inputData['distributor_one'][$index] ?? '', ENT_QUOTES, 'UTF-8');
                 $requirementId  = $inputData['requirement_id_1'][$index]                ?? '';
 
-                // If the user supplied an ID => attempt UPDATE, else => INSERT new
                 if (!empty($requirementId)) {
-                    // Attempt UPDATE
+                    // Attempt UPDATE first
                     $updateStmt->execute([
                         $requirementOne,
                         $distributorOne,
@@ -126,22 +132,28 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
 
                     $updatedRows = $updateStmt->rowCount();
                     if ($updatedRows > 0) {
-                        // Successfully updated
+                        // Data was actually changed
                         $updatedCount += $updatedRows;
                     } else {
-                        // No matching row => fallback to INSERT
-                        $insertStmt->execute([
-                            $requirementOne,
-                            $projectUniqueId,
-                            $distributorOne,
-                            $productOne,
-                            $requirementId
-                        ]);
-                        // In MySQL, rowCount() for INSERT is often 0, so manually increment
-                        $insertedCount++;
+                        // rowCount=0 => either row not found OR data unchanged
+                        // Let's check if the row truly exists
+                        $checkStmt->execute([$requirementId, $projectUniqueId]);
+                        if ($checkStmt->rowCount() === 0) {
+                            // No row => do Insert
+                            $insertStmt->execute([
+                                $requirementOne,
+                                $projectUniqueId,
+                                $distributorOne,
+                                $productOne,
+                                $requirementId
+                            ]);
+                            // MySQL often returns 0 for rowCount on INSERT, so manually increment
+                            $insertedCount++;
+                        } 
+                        // else row found, but data is unchanged => do nothing
                     }
                 } else {
-                    // No requirementId => new row => INSERT
+                    // No requirementId => new row => always INSERT
                     $insertStmt->execute([
                         $requirementOne,
                         $projectUniqueId,
@@ -155,7 +167,7 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
             }
         }
 
-        // 3) Build final success message
+        // 3) Build a final success message
         $message = "Stage One updated successfully.";
         if ($insertedCount > 0 || $updatedCount > 0) {
             $message .= " (Inserted $insertedCount, Updated $updatedCount requirements)";
@@ -167,6 +179,7 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
         throw $e;
     }
 }
+
 
 
 
