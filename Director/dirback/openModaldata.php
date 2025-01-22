@@ -25,7 +25,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stageone.technology, 'No Data') AS technology,
                     GROUP_CONCAT(
                     DISTINCT CONCAT(
-                        requirementone_tb.requirement_id_one, ':',
+                        requirementone_tb.requirement_id_1, ':',
                         requirementone_tb.requirement_one, ':',
                         requirementone_tb.product_one, ':',
                         requirementone_tb.distributor_one
@@ -129,7 +129,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                                     // e.g. skip if this requirement_id_one already in the array
                                     $alreadyExists = false;
                                     foreach ($carry as $c) {
-                                        if ($c['requirement_id_one'] === $reqId) {
+                                        if ($c['requirement_id_1'] === $reqId) {
                                             $alreadyExists = true;
                                             break;
                                         }
@@ -137,7 +137,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
 
                                     if (!$alreadyExists) {
                                         $carry[] = [
-                                            'requirement_id_one' => $reqId,
+                                            'requirement_id_1' => $reqId,
                                             'requirement_one'    => $reqOne,
                                             'product_one'        => $prodOne,
                                             'distributor_one'    => $distOne,
