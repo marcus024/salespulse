@@ -1014,7 +1014,7 @@ include("../auth/db.php");
         }
 
         .table-responsive::-webkit-scrollbar-thumb {
-            background-color: #36b9cc;
+            background-color: #f9ce45;
             border-radius: 10px;
         }
 
@@ -1025,12 +1025,12 @@ include("../auth/db.php");
         /* View Button Styling */
         .view-btn i {
             font-size: 12px;
-            color: #36b9cc;
+            color: #f9ce45;
             transition: color 0.3s ease, transform 0.3s ease;
         }
 
         .view-btn:hover i {
-            color: #009394;
+            color: #f9ce45;
             transform: scale(1.2);
         }
     </style>
