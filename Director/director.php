@@ -287,7 +287,7 @@ include("../auth/db.php");
         --accent-color: #f9ce45; /* Change this to your desired accent color */
     }
         .nav-item{
-            color: white; 
+            color: #76777a; 
             font-weight: bold;
             border-radius:10px;
             margin-bottom:5px;
