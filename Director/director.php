@@ -330,7 +330,7 @@ include("../auth/db.php");
 </head>
 <body id="page-top" style="color:#15151a">
     <!-- Page Wrapper -->
-    <div id="wrapper" >
+    <div id="wrapper" style="color:#15151a">
         <!-- Sidebar -->
         <!-- Sidebar -->
         <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#000000; width: 200px; transition: all 0.3s; padding-left: 20px;">
