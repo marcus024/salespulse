@@ -137,7 +137,7 @@
     }
 
     // Option A: Clear out any existing blocks (except if you want to keep the first “template”)
-    requirementsContainer.innerHTML = "";
+   
 
     // If you prefer to keep the *initial block* as a template, do something like:
     // const firstBlock = requirementsContainer.querySelector('.requirement-block[data-index="1"]');
