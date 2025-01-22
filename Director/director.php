@@ -558,7 +558,7 @@ include("../auth/db.php");
                                         <!-- LEFT END: Add Project Button (opens modal) -->
                                         <a href="#" class="btn btn-info btn-icon-split w-70 add-btn-p"
                                         data-bs-toggle="modal"
-                                        data-bs-target="#addProjectModal" id="addProjectBtn" style="background-color: #f9ce45">
+                                        data-bs-target="#addProjectModal" id="addProjectBtn" style="border:none; background-color: #f9ce45">
                                         <span class="icon text-white-0" id="icon-col">
                                             <i class="fas fa-plus"></i>
                                         </span>
