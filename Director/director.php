@@ -967,6 +967,10 @@ include("../auth/db.php");
                                                 .table-responsive::-webkit-scrollbar-thumb:hover {
                                                     background-color: #555;
                                                 }
+                                                #projectTable {
+                                                    background-color: #2a2925;
+                                                    color: white;
+                                                }
                                             </style>
                                             <div class="table-responsive" style="max-height: 250px; overflow-y: auto; background-color:#2a2925; color:white;">
                                                 <?php
@@ -1015,7 +1019,7 @@ include("../auth/db.php");
 
                                                 <!-- HTML Table to Display Project Data -->
                                                 <?php if (!empty($projects)): ?>
-                                                    <table id="projectTable" class="table table-bordered" style="background-color:#2a2925; color:white;">
+                                                    <table id="projectTable" class="table table-bordered" >
                                                         <thead>
                                                             <tr>
                                                                 <th>Project ID</th>
