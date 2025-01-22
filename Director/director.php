@@ -958,7 +958,7 @@ include("../auth/db.php");
                                                     width: 100%;
                                                     background-color: #2a2925;
                                                     color: white;
-                                                    border-collapse: collapse; /* Remove solid borders */
+                                                    border:none; /* Remove solid borders */
                                                 }
 
                                                 /* Header Styling */
