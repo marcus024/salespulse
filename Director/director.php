@@ -303,7 +303,7 @@ include("../auth/db.php");
         border-radius: 10px;
         margin-bottom: 5px;
         border-left: 5px solid var(--accent-color); /* Accent color on the left */
-        /* padding-left: 15px;  */
+        padding-left: 10px; 
     }
 
     /* Hover state for nav-link */
@@ -313,7 +313,7 @@ include("../auth/db.php");
         border-left: 5px solid var(--accent-color); /* Accent color on hover */
         border-radius: 10px;
         margin-bottom: 5px;
-        /* padding-left: 15px;  */
+        padding-left: 10px; 
     }
 </style>
 
@@ -380,25 +380,25 @@ include("../auth/db.php");
             <hr class="sidebar-divider my-2">
             <!-- Nav Items -->
             <li class="nav-item active" >
-                <a class="nav-link selected" href="" style="border-radius:10px; ">
+                <a class="nav-link selected" href="" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-home"></i>
                     <span style="font-size:13px; font-family:'Poppins'">Home</span>
                 </a>
             </li>
             <li class="nav-item" >
-                <a class="nav-link" href="calendar.php" style="border-radius:10px; ">
+                <a class="nav-link" href="calendar.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-calendar-alt"></i>
                     <span style="font-size:13px; font-family:'Poppins'">Calendar</span>
                 </a>
             </li>
             <li class="nav-item" >
-                <a class="nav-link" href="contacts.php" style="border-radius:10px; ">
+                <a class="nav-link" href="contacts.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-address-book"></i>
                     <span style="font-size:13px; font-family:'Poppins'">Contacts</span>
                 </a>
             </li>
             <li class="nav-item" >
-                <a class="nav-link" href="team.php" style="border-radius:10px; ">
+                <a class="nav-link" href="team.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-users"></i>
                     <span style="font-size:13px; font-family:'Poppins'">Team Members</span>
                 </a>
