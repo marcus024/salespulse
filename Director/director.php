@@ -1372,7 +1372,7 @@ include("../auth/db.php");
                                                         $eventDate   = $schedule['start']  ?? 'No Date';
                                                         $eventTime   = $schedule['time']   ?? 'No Time';
                                                         ?>
-                                                    <div class="p-2 rounded shadow-widget d-flex flex-column" style="position: relative; min-height: 120px;">
+                                                    <div class="p-2 rounded shadow-widget d-flex flex-column" style="position: relative; min-height: 70px;">
                                                         <!-- Event Details -->
                                                         <div class="mb-auto event-details">
                                                             <strong><?php echo htmlspecialchars($eventName); ?></strong>
