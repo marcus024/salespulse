@@ -1,6 +1,12 @@
 
 document.addEventListener('DOMContentLoaded', function() {
   let requirementCount = 1;
+
+   const titleEl = document.getElementById('requirementTitle');
+  if (titleEl) {
+    titleEl.textContent = `Requirement ${requirementCount}`;
+  }
+  
   const requirementsContainer = document.getElementById('requirementsContainer');
   const addBtn = document.getElementById('addRequirementBtn');
 
