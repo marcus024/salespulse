@@ -1019,16 +1019,16 @@ include("../auth/db.php");
 
                                                 <!-- HTML Table to Display Project Data -->
                                                 <?php if (!empty($projects)): ?>
-                                                    <table id="projectTable" class="table" >
+                                                    <table id="projectTable" class="table" background-color:#2a2925; color:white;>
                                                         <thead style="background-color:#2a2925; color:white;">
                                                             <tr style="background-color:#2a2925; color:white;">
-                                                                <th>Project ID</th>
-                                                                <th>Company Name</th>
-                                                                <th>Account Manager</th>
-                                                                <th>Start Date</th>
-                                                                <th>End Date</th>
-                                                                <th>Status</th>
-                                                                <th>Actions</th>
+                                                                <th style="background-color:#2a2925; color:white;">Project ID</th>
+                                                                <th style="background-color:#2a2925; color:white;">Company Name</th>
+                                                                <th style="background-color:#2a2925; color:white;">Account Manager</th>
+                                                                <th style="background-color:#2a2925; color:white;">Start Date</th>
+                                                                <th style="background-color:#2a2925; color:white;">End Date</th>
+                                                                <th style="background-color:#2a2925; color:white;">Status</th>
+                                                                <th style="background-color:#2a2925; color:white;">Actions</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody style="background-color:#2a2925; color:white;">
