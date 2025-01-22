@@ -126,7 +126,7 @@
         //         option.selected = true;
         //     }
         // });
-        const technology1 = document.getElementById('technology1');
+        const technology1 = document.getElementById('technologySelect');
         const techValue = data.stages.stage_one.technology || 'Select';
         Array.from(technology1.options).forEach(option => {
             if (option.value === techValue) {
