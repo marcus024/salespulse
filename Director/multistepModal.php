@@ -146,7 +146,7 @@
                                             <div id="requirementsContainer">
                                                 <div class="requirement-block" data-index="1">
                                                     <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
-                                                    Requirement ${requirementCount}
+                                                    Requirement 
                                                     </p>
                                                     <input type="hidden" name="requirement_id_1[]" value="st1rq1">
                                                     <div class="row mb-2">
