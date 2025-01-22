@@ -588,7 +588,7 @@ include("../auth/db.php");
                                         <!-- Dynamic Navbar -->
                                         <style>
                                             .nav-tabs {
-                                                background-color: #E0F7F6;
+                                                background-color:black;
                                                 transition: background-color 0.3s ease;
                                                 border-radius: 10px;
                                                 padding: 8px; /* Adjusted for consistent spacing */
