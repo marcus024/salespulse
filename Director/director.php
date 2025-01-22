@@ -603,7 +603,8 @@ include("../auth/db.php");
                                             .nav-tabs .project-nav-link {
                                                 border: none;
                                                 padding: 5px 5px; /* Symmetrical padding for a balanced look */
-                                                color: black;
+                                                color: white;
+                                                background-color:black;
                                                 font-weight: 500;
                                                 font-family: 'Poppins';
                                                 font-size: 12px; /* Slightly larger for readability */
