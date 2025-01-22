@@ -27,7 +27,7 @@
                     document.getElementById('project-unique-id').value = data.project_id || 'No Data';
                     document.getElementById('client-name').textContent = data.company_name || 'No Data';
                     
-                    // fetchStageOne(data);
+                    fetchStageOne(data);
                     // fetchStageTwo(data);
                     // fetchStageThree(data);
                     // fetchStageFour(data);
@@ -40,21 +40,21 @@
                         currentStep = stageNumber;
                         markCompletedSteps(stageNumber); // Mark previous steps as completed
                         showStep(stageNumber); // Show the current step
-                         if (stageNumber === 1) {
-                            fetchStageOne(data);
-                        } else if (stageNumber === 2) {
-                            // fetchStageOne(data,projectId);
-                            // fetchStageTwo(data,projectId);
-                        } else if (stageNumber === 3) {
-                            // fetchStageTwo(data,projectId);
-                            // fetchStageThree(data,projectId);
-                        } else if (stageNumber === 4) {
-                            // fetchStageThree(data,projectId);
-                            // fetchStageFour(data,projectId);
-                        } else if (stageNumber === 5) {
-                            // fetchStageFour(data,projectId);
-                            // fetchStageFive(data,projectId);
-                        }
+                        //  if (stageNumber === 1) {
+                        //     fetchStageOne(data);
+                        // } else if (stageNumber === 2) {
+                        //     // fetchStageOne(data,projectId);
+                        //     // fetchStageTwo(data,projectId);
+                        // } else if (stageNumber === 3) {
+                        //     // fetchStageTwo(data,projectId);
+                        //     // fetchStageThree(data,projectId);
+                        // } else if (stageNumber === 4) {
+                        //     // fetchStageThree(data,projectId);
+                        //     // fetchStageFour(data,projectId);
+                        // } else if (stageNumber === 5) {
+                        //     // fetchStageFour(data,projectId);
+                        //     // fetchStageFive(data,projectId);
+                        // }
                     } else {
                         console.warn("No current stage data found.");
                     }
