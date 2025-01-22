@@ -147,28 +147,27 @@
 //   requirementsContainer.innerHTML = "";
 
   // 6) Create a function to fill <select> with productList or distributorList
-  function populateSelect($select, dataList, selectedValue) {
-    // First, remove old dynamic <option>s (except the "add_new_product" line, if you want)
-    // Or just do $select.innerHTML = "" if you prefer. We'll be partial:
-    // for demonstration, let's do a minimal approach:
-    // We'll keep the default "Select" and "add_new..." options
-    const keepOptions = Array.from($select.querySelectorAll('option[value="add_new_product"],option[value="add_new"]'));
-    $select.innerHTML = "";
-    keepOptions.forEach(opt => $select.appendChild(opt));
+ function populateSelect($select, dataList, selectedValue) {
+  // Clear all options, preserving only the "Select" and "add_new" options
+  const preservedOptions = Array.from($select.querySelectorAll('option[value="add_new_product"],option[value="add_new"]'));
+  $select.innerHTML = ""; // Clear all current options
+  preservedOptions.forEach(opt => $select.appendChild(opt)); // Re-add preserved options
 
-    // Then insert the items from dataList
-    dataList.forEach(item => {
-      const option = document.createElement('option');
-      option.value = item;
-      option.textContent = item;
-      $select.insertBefore(option, $select.querySelector('option[value="add_new_product"],option[value="add_new"]'));
-    });
+  // Add items from the dataList
+  dataList.forEach(item => {
+    const option = document.createElement('option');
+    option.value = item;
+    option.textContent = item;
+    $select.insertBefore(option, $select.querySelector('option[value="add_new_product"],option[value="add_new"]'));
+  });
 
-    // Finally, set the selected option if it matches
-    if (selectedValue) {
-      $select.value = selectedValue;
-    }
+  // Set the selected option if it matches
+  if (selectedValue && dataList.includes(selectedValue)) {
+    $select.value = selectedValue;
+  } else if (selectedValue) {
+    console.warn(`Selected value "${selectedValue}" not found in dataList for`, $select);
   }
+}
 
   // 7) For each requirement, build a block
   requirements.forEach((reqItem, index) => {
