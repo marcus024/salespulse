@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Append the new block
         requirementsContainer.appendChild(newBlock);
+        loadDistributors();
     });
 
     // REMOVE functionality with event delegation
