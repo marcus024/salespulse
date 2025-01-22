@@ -1412,7 +1412,6 @@ include("../auth/db.php");
                                                             color: darkred; /* Darker red on hover */
                                                         }
                                                     </style>
-
                                                     <?php
                                                     }
                                                 }
