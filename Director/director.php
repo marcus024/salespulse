@@ -548,7 +548,7 @@ include("../auth/db.php");
                     <div class="row g-0">
                         <!-- Column for Add Project -->
                         <div class="col-auto" >
-                            <div class="card shadow-sm" id="collapsible-card" style="background-color:#1f2024; width: 330px; transition: width 0.3s ease;">
+                            <div class="card shadow-sm" id="collapsible-card" style="background-color:#1f2024; width: 330px; transition: width 0.3s ease; border:none;">
                                 <div class="card-body">
                                     <div  class="d-flex justify-content-between align-items-center">
                                         <p id="project-collapse" style="font-family: 'Poppins'; color: #555; font-size: 15px; font-weight: 700;">Projects</p>
