@@ -1114,7 +1114,7 @@ include("../auth/db.php");
                                                                     ?>;"><?php echo htmlspecialchars($project['pstatus']); ?></td>
                                                                     <td class="action-buttons" style="background-color:#2a2925; color:white;">
                                                                         <a href="dirviewproject.php?project_id=<?php echo $project['project_unique_id']; ?>" class="view-btn">
-                                                                            <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i> 
+                                                                            <i class="fas fa-eye" style="font-size: 12px; color:  #f9ce45;"></i> 
                                                                         </a>
                                                                         <!-- <button type="button" class="edit-btn" data-bs-toggle="modal" data-bs-target="#editProjectModal" data-project-id="<?php echo $project['project_unique_id']; ?>">
                                                                             <i class="fas fa-pencil-alt" style="font-size: 10px; color: #36b9cc;"></i>
