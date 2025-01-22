@@ -659,7 +659,7 @@ include("../auth/db.php");
                                             }
 
                                             .list-group::-webkit-scrollbar-thumb {
-                                                background-color: #36b9cc;
+                                                background-color: #f9ce45 ;
                                                 border-radius: 10px;
                                                 height: 40px;
                                             }
