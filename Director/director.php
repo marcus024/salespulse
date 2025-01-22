@@ -581,7 +581,7 @@ include("../auth/db.php");
                                         
                                         <!-- RIGHT END: Toggle Arrow Button -->
                                         <button onclick="toggleCardWidth()" class="btn" type="button">
-                                        <i id="toggle-icon" class="fas fa-chevron-left" style="color: #36b9cc"></i>
+                                        <i id="toggle-icon" class="fas fa-chevron-left" style="color: #f9ce45"></i>
                                         </button>
                                     </div>
                                         <hr class="sidebar-divider my-3">
