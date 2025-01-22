@@ -924,8 +924,8 @@ include("../auth/db.php");
                                 </div>
                                 <!-- End of Cards -->
                                 <div class="col-md-14 mb-3">
-                                    <div class="card shadow mb-4" style="box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); margin-bottom: 0.2rem; background-color:#2a2925; border:none;">
-                                        <div class="card-header py-3 d-flex justify-content-between align-items-center" style="background-color: #2a2925;  height: auto; border:none;">
+                                    <div class="card shadow mb-4" style="box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); margin-bottom: 0.2rem; background-color:black; border:none;">
+                                        <div class="card-header py-3 d-flex justify-content-between align-items-center" style="background-color: black;  height: auto; border:none;">
                                             <!-- Title -->
                                             <h6 class="m-0 font-weight-bold" style="color: white; line-height: 1;">Project Lists</h6>
                                             
@@ -953,87 +953,87 @@ include("../auth/db.php");
                                         </div>
                                         <div class="card-body" style="padding-top: 0.5rem; background-color:#2a2925; padding-bottom: 0.5rem;">
                                              <style>
-        /* Table Styling */
-        #projectTable {
-            width: 100%;
-            background-color: #2a2925;
-            color: white;
-            border-collapse: collapse; /* Remove solid borders */
-        }
+                                                /* Table Styling */
+                                                #projectTable {
+                                                    width: 100%;
+                                                    background-color: #2a2925;
+                                                    color: white;
+                                                    border-collapse: collapse; /* Remove solid borders */
+                                                }
 
-        /* Header Styling */
-        #projectTable thead {
-            background-color: #2a2925;
-            color: white;
-            font-weight: bold;
-        }
+                                                /* Header Styling */
+                                                #projectTable thead {
+                                                    background-color: #2a2925;
+                                                    color: white;
+                                                    font-weight: bold;
+                                                }
 
-        #projectTable thead th {
-            padding: 10px;
-            text-align: left;
-        }
+                                                #projectTable thead th {
+                                                    padding: 10px;
+                                                    text-align: left;
+                                                }
 
-        /* Row Styling */
-        #projectTable tbody tr:nth-child(odd) {
-            background-color: #3a3935; /* Dark gray for odd rows */
-        }
+                                                /* Row Styling */
+                                                #projectTable tbody tr:nth-child(odd) {
+                                                    background-color: #3a3935; /* Dark gray for odd rows */
+                                                }
 
-        #projectTable tbody tr:nth-child(even) {
-            background-color: #4b4a48; /* Light gray for even rows */
-        }
+                                                #projectTable tbody tr:nth-child(even) {
+                                                    background-color: #4b4a48; /* Light gray for even rows */
+                                                }
 
-        #projectTable tbody td {
-            padding: 10px;
-        }
+                                                #projectTable tbody td {
+                                                    padding: 10px;
+                                                }
 
-        /* Status-Specific Backgrounds */
-        #projectTable tbody td[data-status="Cancelled"] {
-            background-color: red !important;
-            color: white;
-        }
+                                                /* Status-Specific Backgrounds */
+                                                #projectTable tbody td[data-status="Cancelled"] {
+                                                    background-color: red !important;
+                                                    color: white;
+                                                }
 
-        #projectTable tbody td[data-status="Ongoing"] {
-            background-color: #3393ff !important;
-            color: white;
-        }
+                                                #projectTable tbody td[data-status="Ongoing"] {
+                                                    background-color: #3393ff !important;
+                                                    color: white;
+                                                }
 
-        #projectTable tbody td[data-status="Completed"] {
-            background-color: green !important;
-            color: white;
-        }
+                                                #projectTable tbody td[data-status="Completed"] {
+                                                    background-color: green !important;
+                                                    color: white;
+                                                }
 
-        /* Remove hover styles from specific cells with status coloring */
-        #projectTable tbody tr:hover {
-            background-color: #565554; /* Slightly darker on hover */
-        }
+                                                /* Remove hover styles from specific cells with status coloring */
+                                                #projectTable tbody tr:hover {
+                                                    background-color: #565554; /* Slightly darker on hover */
+                                                }
 
-        /* Responsive Scrollbar */
-        .table-responsive::-webkit-scrollbar {
-            width: 4px;
-            height: 4px;
-        }
+                                                /* Responsive Scrollbar */
+                                                .table-responsive::-webkit-scrollbar {
+                                                    width: 4px;
+                                                    height: 4px;
+                                                }
 
-        .table-responsive::-webkit-scrollbar-thumb {
-            background-color: #f9ce45;
-            border-radius: 10px;
-        }
+                                                .table-responsive::-webkit-scrollbar-thumb {
+                                                    background-color: #f9ce45;
+                                                    border-radius: 10px;
+                                                }
 
-        .table-responsive::-webkit-scrollbar-thumb:hover {
-            background-color: #555;
-        }
+                                                .table-responsive::-webkit-scrollbar-thumb:hover {
+                                                    background-color: #555;
+                                                }
 
-        /* View Button Styling */
-        .view-btn i {
-            font-size: 12px;
-            color: #f9ce45;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
+                                                /* View Button Styling */
+                                                .view-btn i {
+                                                    font-size: 12px;
+                                                    color: #f9ce45;
+                                                    transition: color 0.3s ease, transform 0.3s ease;
+                                                }
 
-        .view-btn:hover i {
-            color: #f9ce45;
-            transform: scale(1.2);
-        }
-    </style>
+                                                .view-btn:hover i {
+                                                    color: #f9ce45;
+                                                    transform: scale(1.2);
+                                                }
+                                            </style>
                                             <div class="table-responsive" style="max-height: 250px; overflow-y: auto; background-color:#2a2925; color:white;">
                                                 <?php
                                                 // Fetch the current user's ID from the session
