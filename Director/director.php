@@ -927,13 +927,13 @@ include("../auth/db.php");
                                     <div class="card shadow mb-4" style="box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); margin-bottom: 0.2rem; background-color:#2a2925; border:none;">
                                         <div class="card-header py-3 d-flex justify-content-between align-items-center" style="background-color: #2a2925; border-bottom: 1px solid #ddd; height: auto;">
                                             <!-- Title -->
-                                            <h6 class="m-0 font-weight-bold" style="color: #36b9cc; line-height: 1;">Project Lists</h6>
+                                            <h6 class="m-0 font-weight-bold" style="color: white; line-height: 1;">Project Lists</h6>
                                             
                                             <!-- Row to hold the search bar and dropdowns -->
                                             <div class="d-flex align-items-center" style="gap: 10px;">
                                                 <!-- Search Bar -->
                                                 <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search..." 
-                                                    style="font-size: 10px; border: 1px solid #36b9cc; border-radius: 4px; outline: none; width: 200px; height: 30px; margin: 0;">
+                                                    style="background-color:#2a2925; color:white; font-size: 10px; border: 1px solid #36b9cc; border-radius: 4px; outline: white; width: 200px; height: 30px; margin: 0;">
                                                 
                                                 <!-- Dropdown for Export Options -->
                                                 <div class="btn-group" role="group">
