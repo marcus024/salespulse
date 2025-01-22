@@ -195,15 +195,6 @@
         <div class="col-md-3">
           <label class="form-label text-white">Distributor</label>
         </div>
-        <div class="col-md-2">
-          <!-- Keep the Add button here: -->
-          <button type="button"
-                  class="btn btn-primary btn-sm"
-                  style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                  id="addRequirementBtn">
-            <i class="fas fa-plus"></i>&nbsp;Add
-          </button>
-        </div>
       </div>
 
       <div class="row mb-3">
