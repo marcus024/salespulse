@@ -130,8 +130,8 @@
   }
 
   // 3) We'll fetch the product_list and distributor_list from data
-  const productList     = data.product_list     || [];
-  const distributorList = data.distributor_list || [];
+  const productList     = data.stages.stage_one.product_one     || [];
+  const distributorList = data.stages.stage_one.distributor_one || [];
 
   // 4) Requirements array
   const requirements = (data.stages.stage_one && data.stages.stage_one.requirements) || [];
