@@ -303,7 +303,7 @@ include("../auth/db.php");
         border-radius: 10px;
         margin-bottom: 5px;
         border-left: 5px solid var(--accent-color); /* Accent color on the left */
-        padding-left: 15px; /* Adjust padding to align with the border */
+        /* padding-left: 15px;  */
     }
 
     /* Hover state for nav-link */
@@ -313,7 +313,7 @@ include("../auth/db.php");
         border-left: 5px solid var(--accent-color); /* Accent color on hover */
         border-radius: 10px;
         margin-bottom: 5px;
-        padding-left: 15px; /* Adjust padding for alignment */
+        /* padding-left: 15px;  */
     }
 </style>
 
