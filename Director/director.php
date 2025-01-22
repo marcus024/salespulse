@@ -1086,26 +1086,26 @@ include("../auth/db.php");
 
                                                 <!-- HTML Table to Display Project Data -->
                                                 <?php if (!empty($projects)): ?>
-                                                    <table id="projectTable" class="table" background-color:#1f2024; color:white;>
-                                                        <thead style="background-color:#1f2024; color:white;">
-                                                            <tr style="background-color:#1f2024; color:white;">
-                                                                <th style="background-color:#1f2024; color:white;">Project ID</th>
-                                                                <th style="background-color:#1f2024; color:white;">Company Name</th>
-                                                                <th style="background-color:#1f2024; color:white;">Account Manager</th>
-                                                                <th style="background-color:#1f2024; color:white;">Start Date</th>
-                                                                <th style="background-color:#1f2024; color:white;">End Date</th>
-                                                                <th style="background-color:#1f2024; color:white;">Status</th>
-                                                                <th style="background-color:#1f2024; color:white;">Actions</th>
+                                                    <table id="projectTable" class="table" background-color:#2a2925; color:white;>
+                                                        <thead style="background-color:#2a2925; color:white;">
+                                                            <tr style="background-color:#2a2925; color:white;">
+                                                                <th style="background-color:#2a2925; color:white;">Project ID</th>
+                                                                <th style="background-color:#2a2925; color:white;">Company Name</th>
+                                                                <th style="background-color:#2a2925; color:white;">Account Manager</th>
+                                                                <th style="background-color:#2a2925; color:white;">Start Date</th>
+                                                                <th style="background-color:#2a2925; color:white;">End Date</th>
+                                                                <th style="background-color:#2a2925; color:white;">Status</th>
+                                                                <th style="background-color:#2a2925; color:white;">Actions</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody style="background-color:#1f2024; color:white;">
+                                                        <tbody style="background-color:#2a2925; color:white;">
                                                             <?php foreach ($projects as $project): ?>
-                                                                <tr data-status="<?php echo htmlspecialchars($project['pstatus']); ?>" style="background-color:#1f2024; color:white;">
-                                                                    <td style="padding-left:5px; padding-right:5px; background-color:#1f2024; color:white;"><?php echo htmlspecialchars($project['project_unique_id']); ?></td>
-                                                                    <td style="padding-left:5px; background-color:#1f2024; color:white;"><?php echo htmlspecialchars($project['company_name']); ?></td>
-                                                                    <td style="padding-left:5px; background-color:#1f2024; color:white;"><?php echo htmlspecialchars($project['account_manager']); ?></td>
-                                                                    <td style="padding-left:5px; background-color:#1f2024; color:white;"><?php echo htmlspecialchars($project['start_date']); ?></td>
-                                                                    <td style="padding-left:5px; background-color:#1f2024; color:white;"><?php echo htmlspecialchars($project['end_date']); ?></td>
+                                                                <tr data-status="<?php echo htmlspecialchars($project['pstatus']); ?>" style="background-color:#2a2925; color:white;">
+                                                                    <td style="padding-left:5px; padding-right:5px; background-color:#2a2925; color:white;"><?php echo htmlspecialchars($project['project_unique_id']); ?></td>
+                                                                    <td style="padding-left:5px; background-color:#2a2925; color:white;"><?php echo htmlspecialchars($project['company_name']); ?></td>
+                                                                    <td style="padding-left:5px; background-color:#2a2925; color:white;"><?php echo htmlspecialchars($project['account_manager']); ?></td>
+                                                                    <td style="padding-left:5px; background-color:#2a2925; color:white;"><?php echo htmlspecialchars($project['start_date']); ?></td>
+                                                                    <td style="padding-left:5px; background-color:#2a2925; color:white;"><?php echo htmlspecialchars($project['end_date']); ?></td>
                                                                     <td style=" color: white; padding-left:5px; background-color: <?php 
                                                                         if ($project['pstatus'] == 'Cancelled') {
                                                                             echo 'red'; 
@@ -1117,7 +1117,7 @@ include("../auth/db.php");
                                                                             echo 'grey'; // Default background color if status doesn't match
                                                                         }
                                                                     ?>;"><?php echo htmlspecialchars($project['pstatus']); ?></td>
-                                                                    <td class="action-buttons" style="background-color:#1f2024; color:white;">
+                                                                    <td class="action-buttons" style="background-color:#2a2925; color:white;">
                                                                         <a href="dirviewproject.php?project_id=<?php echo $project['project_unique_id']; ?>" class="view-btn">
                                                                             <i class="fas fa-eye" style="font-size: 12px; color:  #f9ce45;"></i> 
                                                                         </a>
