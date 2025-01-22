@@ -31,7 +31,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         requirementone_tb.distributor_one
                     )
                     SEPARATOR '|'
-                    ) AS requirements
+                    ) AS requirements,
                     COALESCE(stagetwo.start_date_stage_two, 'No Data') AS start_date_stage_two,
                     COALESCE(stagetwo.end_date_stage_two, 'No Data') AS end_date_stage_two,
                     COALESCE(stagetwo.status_stage_two, 'No Data') AS status_stage_two,
