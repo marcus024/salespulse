@@ -43,17 +43,17 @@
                          if (stageNumber === 1) {
                             fetchStageOne(data,projectId);
                         } else if (stageNumber === 2) {
-                            fetchStageOne(data,projectId);
-                            fetchStageTwo(data,projectId);
+                            // fetchStageOne(data,projectId);
+                            // fetchStageTwo(data,projectId);
                         } else if (stageNumber === 3) {
-                            fetchStageTwo(data,projectId);
-                            fetchStageThree(data,projectId);
+                            // fetchStageTwo(data,projectId);
+                            // fetchStageThree(data,projectId);
                         } else if (stageNumber === 4) {
-                            fetchStageThree(data,projectId);
-                            fetchStageFour(data,projectId);
+                            // fetchStageThree(data,projectId);
+                            // fetchStageFour(data,projectId);
                         } else if (stageNumber === 5) {
-                            fetchStageFour(data,projectId);
-                            fetchStageFive(data,projectId);
+                            // fetchStageFour(data,projectId);
+                            // fetchStageFive(data,projectId);
                         }
                     } else {
                         console.warn("No current stage data found.");
