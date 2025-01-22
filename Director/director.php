@@ -666,6 +666,7 @@ include("../auth/db.php");
                                                 background-color: #555;
                                             }
                                             .list-group-item {
+                                                color:white;
                                                 font-size: 12px;
                                                 padding: 12px; /* Consistent padding inside list items */
                                                 border-radius: 10px;
