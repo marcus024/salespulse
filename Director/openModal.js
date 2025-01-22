@@ -34,6 +34,8 @@
                     // fetchStageFour(data);
                     // fetchStageFive(data);
 
+                    // fetch products and distributors
+
                     initProductChangeHandler();
                     initDistributorChangeHandler();
 
