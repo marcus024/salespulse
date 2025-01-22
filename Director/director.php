@@ -1050,7 +1050,7 @@ include("../auth/db.php");
                                                                             echo 'grey'; // Default background color if status doesn't match
                                                                         }
                                                                     ?>;"><?php echo htmlspecialchars($project['pstatus']); ?></td>
-                                                                    <td class="action-buttons">
+                                                                    <td class="action-buttons" background-color:#2a2925; color:white;>
                                                                         <a href="dirviewproject.php?project_id=<?php echo $project['project_unique_id']; ?>" class="view-btn">
                                                                             <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i> 
                                                                         </a>
