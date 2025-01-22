@@ -1372,44 +1372,61 @@ include("../auth/db.php");
                                                         $eventDate   = $schedule['start']  ?? 'No Date';
                                                         $eventTime   = $schedule['time']   ?? 'No Time';
                                                         ?>
-                                                    
-                                                   <div class="p-2 rounded shadow-widget d-flex flex-column" style="position: relative; min-height: 120px;">
+                                                    <div class="p-2 rounded shadow-widget d-flex flex-column" style="position: relative; min-height: 120px;">
                                                         <!-- Event Details -->
-                                                        <div class="mb-auto">
-                                                            <strong style="font-size: 10px;"><?php echo htmlspecialchars($eventName); ?></strong>
-                                                            <br>
-                                                            <span style="font-size: 10px; color: #bbb;">Date: <?php echo htmlspecialchars($eventDate); ?></span>
-                                                            <br>
-                                                            <span style="font-size: 10px; color: #bbb;">Time: <?php echo htmlspecialchars($eventTime); ?></span>
+                                                        <div class="mb-auto event-details">
+                                                            <strong><?php echo htmlspecialchars($eventName); ?></strong>
+                                                            <span>Date: <?php echo htmlspecialchars($eventDate); ?></span>
+                                                            <span>Time: <?php echo htmlspecialchars($eventTime); ?></span>
                                                         </div>
                                                         <!-- Action Buttons -->
                                                         <div class="d-flex justify-content-end" style="position: absolute; bottom: 10px; right: 10px;">
                                                             <a href="" class="view-schedule-btn" data-bs-toggle="modal" data-bs-target="#schedModal" data-sched-id="<?php echo $scheduleId; ?>">
-                                                                <i class="fas fa-eye" style="font-size: 12px; color: #f9ce45;"></i>
+                                                                <i class="fas fa-eye"></i>
                                                             </a>
                                                             <!-- Delete Button -->
                                                             <a href="javascript:void(0)" class="delete-schedule-btn" data-bs-toggle="modal" 
                                                             data-bs-target="#schedDel" onclick="setDeleteScheduleId('<?php echo $scheduleId; ?>')">
-                                                                <i class="fas fa-trash" style="font-size: 12px; color: red; margin-left: 10px;"></i>
+                                                                <i class="fas fa-trash"></i>
                                                             </a>
                                                         </div>
                                                     </div>
                                                     <style>
+                                                        /* Widget styling */
                                                         .shadow-widget {
-                                                            background-color: #2a2925; /* Set background color */
-                                                            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow for elevation */
-                                                            color: white; /* Ensure text is visible on dark background */
-                                                            border: none; /* Remove any borders */
-                                                            border-radius: 10px; /* Keep the rounded corners */
+                                                            background-color: #2a2925; /* Dark background */
+                                                            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Shadow for elevation */
+                                                            color: white; /* Text color */
+                                                            border: none; /* Remove border */
+                                                            border-radius: 10px; /* Rounded corners */
+                                                        }
+
+                                                        /* Event Details Text */
+                                                        .event-details strong,
+                                                        .event-details span {
+                                                            display: block; /* Ensure each text element is on a new line */
+                                                            margin: 0; /* Remove default margin */
+                                                            line-height: 1.2; /* Reduce line height for tighter spacing */
+                                                            font-size: 10px; /* Keep text size small */
+                                                            color: #bbb; /* Slightly lighter text color */
+                                                        }
+
+                                                        .event-details strong {
+                                                            color: white; /* Keep strong text in white */
                                                         }
 
                                                         /* Button hover effects */
+                                                        .view-schedule-btn i, .delete-schedule-btn i {
+                                                            font-size: 12px; /* Icon size */
+                                                            transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+                                                        }
+
                                                         .view-schedule-btn:hover i {
-                                                            color: #009394; /* Slightly different hover color */
+                                                            color: #009394; /* Hover color for view icon */
                                                         }
 
                                                         .delete-schedule-btn:hover i {
-                                                            color: darkred; /* Darker red on hover */
+                                                            color: darkred; /* Hover color for delete icon */
                                                         }
                                                     </style>
                                                     <?php
