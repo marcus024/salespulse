@@ -67,9 +67,8 @@ try {
 // Helper functions for different stages
 
 function updateStageOne($conn, $projectUniqueId, $inputData) {
-    // Implementation for other stage one data
     try {
-        // Update other fields as before
+        // 1) Update the main "stageone" table
         $query = "UPDATE stageone SET 
             solution = ?, 
             technology = ?, 
@@ -85,77 +84,70 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        /***************************************************
- * Handle requirements (insert or update)
- **************************************************/
-if (!empty($inputData['requirement_one'])) {
+        // 2) Handle the requirement items in "requirementone_tb"
+        if (!empty($inputData['requirement_one'])) {
 
-    // Prepare INSERT (for rows with NO existing requirement_id_1):
-    $insertStmt = $conn->prepare("
-        INSERT INTO requirementone_tb 
-            (requirement_one, project_unique_id, distributor_one, product_one, requirement_id_1)
-        VALUES 
-            (?, ?, ?, ?, ?)
-    ");
+            // Prepare INSERT (no existing requirement_id_1)
+            $insertStmt = $conn->prepare("
+                INSERT INTO requirementone_tb 
+                    (requirement_one, project_unique_id, distributor_one, product_one, requirement_id_1)
+                VALUES 
+                    (?, ?, ?, ?, ?)
+            ");
 
-    // Prepare UPDATE (for rows WITH an existing requirement_id_1):
-    $updateStmt = $conn->prepare("
-        UPDATE requirementone_tb
-           SET requirement_one = ?, 
-               distributor_one = ?, 
-               product_one    = ?
-         WHERE requirement_id_1 = ?
-           AND project_unique_id = ?
-    ");
+            // Prepare UPDATE (row has existing requirement_id_1)
+            $updateStmt = $conn->prepare("
+                UPDATE requirementone_tb
+                   SET requirement_one = ?, 
+                       distributor_one = ?, 
+                       product_one    = ?
+                 WHERE requirement_id_1 = ?
+                   AND project_unique_id = ?
+            ");
 
-    // Loop through each row by index
-    foreach ($inputData['requirement_one'] as $index => $reqValue) {
-        // 1) Sanitize inputs
-        $requirementOne = htmlspecialchars($reqValue ?? '', ENT_QUOTES, 'UTF-8');
-        $productOne     = htmlspecialchars($inputData['product_one'][$index]     ?? '', ENT_QUOTES, 'UTF-8');
-        $distributorOne = htmlspecialchars($inputData['distributor_one'][$index] ?? '', ENT_QUOTES, 'UTF-8');
-        $requirementId  = $inputData['requirement_id_1'][$index]                ?? '';
-        
-        // 2) If user supplied an ID => we do an UPDATE, else => INSERT
-        if (!empty($requirementId)) {
-            // -- Perform UPDATE --
-            $updateStmt->execute([
-                $requirementOne,
-                $distributorOne,
-                $productOne,
-                $requirementId,
-                $projectUniqueId
-            ]);
-            
-            // Optionally check rowCount() if you want to see whether it actually updated a row:
-            // $updatedRows = $updateStmt->rowCount();
-            // if ($updatedRows === 0) { /* No row found or data unchanged */ }
+            // Loop through each row (by index)
+            foreach ($inputData['requirement_one'] as $index => $reqValue) {
+                // 1) Sanitize inputs
+                $requirementOne = htmlspecialchars($reqValue ?? '', ENT_QUOTES, 'UTF-8');
+                $productOne     = htmlspecialchars($inputData['product_one'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $distributorOne = htmlspecialchars($inputData['distributor_one'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $requirementId  = $inputData['requirement_id_1'][$index] ?? '';
 
-        } else {
-            // 3) If there's no ID, we generate or keep the empty string
-            //    - If your DB has auto-increment or uses a hidden "st1rqX" from the front-end,
-            //      you can do something like:
-            // $requirementId = $inputData['requirement_id_1'][$index] ?? uniqid('req');
+                // 2) If user supplied an ID => UPDATE, else => INSERT
+                if (!empty($requirementId)) {
+                    // Perform UPDATE
+                    $updateStmt->execute([
+                        $requirementOne,
+                        $distributorOne,
+                        $productOne,
+                        $requirementId,
+                        $projectUniqueId
+                    ]);
 
-            // -- Perform INSERT --
-            $insertStmt->execute([
-                $requirementOne,
-                $projectUniqueId,
-                $distributorOne,
-                $productOne,
-                $requirementId  // can be empty or "st1rqX" if you track custom IDs
-            ]);
+                    // Optional: check $updateStmt->rowCount() to see if row was found
+                } else {
+                    // If no ID, either generate or keep empty
+                    // $requirementId = $inputData['requirement_id_1'][$index] ?? uniqid('req');
+
+                    // Perform INSERT
+                    $insertStmt->execute([
+                        $requirementOne,
+                        $projectUniqueId,
+                        $distributorOne,
+                        $productOne,
+                        $requirementId
+                    ]);
+                }
+            }
         }
-    }
-}
 
-        
         return "Stage One updated successfully.";
     } catch (Exception $e) {
         error_log("Error in Stage One: " . $e->getMessage());
         throw $e;
     }
 }
+
 
 function updateStageTwo($conn, $projectUniqueId, $inputData) {
     try {
