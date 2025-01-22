@@ -1163,14 +1163,12 @@
     });
 
 document.getElementById('saveButton').addEventListener('click', async () => {
-    // Confirm with the user
     const userConfirmed = confirm(`Are you sure you want to save the current data of Step ${currentStep}?`);
     if (!userConfirmed) {
         console.log("Save canceled by user.");
         return;
     }
 
-    // Make sure we have a Project ID
     const projectIdInput = document.getElementById('project-unique-id');
     const projectId = projectIdInput ? projectIdInput.value.trim() : null;
 
@@ -1180,34 +1178,39 @@ document.getElementById('saveButton').addEventListener('click', async () => {
         return;
     }
 
-    // Grab all fields within the current step container (#stepX)
+    // Get all fields for the current step (inputs, textareas, selects)
     const currentStepFields = document.querySelectorAll(
         `#step${currentStep} input, #step${currentStep} textarea, #step${currentStep} select`
     );
 
     const inputValues = {};
 
-    // Loop each field to build an object of data
     currentStepFields.forEach(field => {
-        const name = field.name || field.id;  // fallback to 'id' if no 'name'
-
-        // If it's an array-like field name (e.g. requirement_one[], product_one[], etc.)
+        const name = field.name || field.id;
+        
+        // Handle array-like names (e.g., requirement_one[])
         if (name.endsWith('[]')) {
-            // Convert "product_one[]" => "product_one"
             const key = name.replace('[]', '');
             if (!inputValues[key]) {
                 inputValues[key] = [];
             }
             inputValues[key].push(field.value.trim());
+
+            // Also capture the requirement_id_one from the data-id attribute
+            const requirementId = field.getAttribute('data-id');
+            if (requirementId) {
+                if (!inputValues['requirement_id_1']) {
+                    inputValues['requirement_id_1'] = [];
+                }
+                inputValues['requirement_id_1'].push(requirementId); // Store requirement ID
+            }
         } else {
-            // Single-value field
             inputValues[name] = field.value.trim();
         }
     });
 
     console.log("Collected input values:", inputValues);
 
-    // Prepare data to send
     const dataToSend = {
         step: currentStep,
         project_unique_id: projectId,
@@ -1217,7 +1220,6 @@ document.getElementById('saveButton').addEventListener('click', async () => {
     console.log("Data to send:", dataToSend);
 
     try {
-        // Send via fetch to save.php
         const response = await fetch('save.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -1242,7 +1244,6 @@ document.getElementById('saveButton').addEventListener('click', async () => {
 
         if (result.message === `Step ${currentStep} data processed successfully`) {
             alert(`Step ${currentStep} saved successfully!`);
-            // Optionally show a custom notification instead
             // showNotification('Data saved successfully!', true);
         } else {
             alert(`Unexpected response: ${result.message}`);
@@ -1252,6 +1253,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
         alert(`An error occurred while saving Step ${currentStep}: ${error.message}`);
     }
 });
+
 
 
 
