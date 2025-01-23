@@ -1596,7 +1596,7 @@ include("../auth/db.php");
                                                 }
 
                                                 .taskDesign .deletetask i:hover {
-                                                    color: darkred; /* Hover color for delete icon */
+                                                    color: darkblue; /* Hover color for delete icon */
                                                 }
 
                                                 /* Scrollbar Styling */
