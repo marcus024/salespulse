@@ -1285,7 +1285,6 @@ document.getElementById('saveButton').addEventListener('click', async () => {
             console.error("Error parsing JSON:", jsonError, "Raw Response:", responseText);
             throw new Error("The server returned an invalid JSON response.");
         }
-
         console.log("Backend response:", result);
 
         if (result.message === `Step ${currentStep} data processed successfully`) {
