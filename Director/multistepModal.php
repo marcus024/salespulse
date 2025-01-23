@@ -993,7 +993,7 @@
                                     <div id="salesPulse">Sales Pulse</div>
                                 </div>
                                 <!-- Notification Bar -->
-                                <div id="notificationBar" style="
+                                <div id="notif_bar_r" style="
                                     display: none;
                                     position: absolute;
                                     left: 10px;
@@ -1030,21 +1030,21 @@
     <script>
         // Global function to display the notification bar
         function showNotification(message = "Operation completed successfully!", duration = 3000) {
-            const notificationBar = document.getElementById('notificationBar');
+            const notif_bar_r = document.getElementById('notif_bar_r');
             const notificationMessage = document.getElementById('notificationMessage');
 
-            if (!notificationBar || !notificationMessage) {
+            if (!notif_bar_r || !notificationMessage) {
                 console.error("Notification bar elements are missing in the DOM.");
                 return;
             }
 
             // Set the message and show the notification
             notificationMessage.textContent = message;
-            notificationBar.style.display = 'flex';
+            notif_bar_r.style.display = 'flex';
 
             // Hide the notification after the specified duration
             setTimeout(() => {
-                notificationBar.style.display = 'none';
+                notif_bar_r.style.display = 'none';
             }, duration);
         }
 
