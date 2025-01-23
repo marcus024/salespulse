@@ -171,7 +171,7 @@
         requirementsContainer.appendChild(newBlock);
       }
 
-      console.log('Stage One + requirements populated:', requirements);
+      console.log('Stage Osne + requirements populated:', requirements);
     })
     .catch(error => {
       console.error("Error fetching Products or Distributors:", error);
