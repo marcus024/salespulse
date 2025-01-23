@@ -8,9 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initProductChangeHandler();
   initDistributorChangeHandler();
 
-  // Load both sets once. 
-  // We can chain them or run in parallel
-  // so that the initial .productFetch & .distributorFetch gets filled
+  
   $.when( loadProducts(), loadDistributors() ).done(function() {
     // If needed, do something after both are loaded
   });
