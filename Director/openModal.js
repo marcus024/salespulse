@@ -156,7 +156,7 @@
       }
 
       // Clear any existing content
-      requirementsContainer.innerHTML = '';
+    //   requirementsContainer.innerHTML = '';
 
       // Step 4: Populate requirements dynamically
       if (requirements.length > 0) {
