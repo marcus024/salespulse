@@ -265,11 +265,13 @@ function createRequirementBlock(blockIndex, reqItem, productList=[], distributor
             <option value="add_new">+ Add New Distributor...</option>
         </select>
     </div>
-      <div class="col-md-2 text-end">
-        <button type="button" class="btn btn-danger btn-sm removeRequirement" onclick="deleteRequirement('${requirementId}', this)">
-          <i class="fas fa-minus"></i> Remove
-        </button>
-      </div>
+        <div class="col-md-2">
+            <button type="button"
+                    class="btn btn-danger btn-sm removeRequirement"
+                    style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
+            <i class="fas fa-minus"></i>&nbsp;Remove
+            </button>
+        </div>
     </div>
   `;
 
