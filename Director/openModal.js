@@ -168,7 +168,7 @@
       } else {
         // If no requirements exist, add a default requirement block
         const newBlock = createRequirementBlock(1, {}, productList, distributorList);
-        requirementsContainer.appendChild(newBlock);
+        // requirementsContainer.appendChild(newBlock);
       }
 
       console.log('Stage Osne + requirements populated:', requirements);
