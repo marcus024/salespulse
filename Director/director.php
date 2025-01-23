@@ -1535,7 +1535,7 @@ include("../auth/db.php");
                                                 }
 
                                                 .todo-scroll::-webkit-scrollbar-thumb {
-                                                    background-color: #36b9cc;
+                                                    background-color: #f9ce45;
                                                     border-radius: 10px;
                                                     height: 20px;
                                                 }
