@@ -230,7 +230,7 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
           <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
           ${productList.map(product => `
             <option value="${escapeHtml(product)}" ${product.trim() === selectedProduct.trim() ? 'selected' : ''}>
-              ${escapeHtml(product)}
+              ${product}
             </option>
           `).join('')}
           <option value="add_new_product">+ Add New Product...</option>
