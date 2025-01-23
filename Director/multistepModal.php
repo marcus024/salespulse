@@ -993,7 +993,7 @@
                                     <div id="salesPulse">Sales Pulse</div>
                                 </div>
                                 <!-- Notification Bar -->
-                                <div id="notif_bar_r" style="
+                                <!-- <div id="notif_bar_r" style="
                                     display: flex;
                                     position: absolute;
                                     left: 10px;
@@ -1010,7 +1010,7 @@
                                 ">
                                     <i class="fas fa-check-circle" style="color: #28a745; font-size: 16px;"></i>
                                     <span id="notificationMessage"></span>
-                                </div>
+                                </div> -->
                                 <button type="button" class="btn btn-danger " id="deleteButton" style="border-color: red; background-color: #fff; color: red; font-size: 12px;">
                                     <i class="fas fa-trash-alt"></i> Delete
                                 </button>
