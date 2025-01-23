@@ -28,7 +28,7 @@
                     document.getElementById('project-unique-id').value = data.project_id || 'No Data';
                     document.getElementById('client-name').textContent = data.company_name || 'No Data';
                     
-                    fetchStageOne(data);
+                    fetchStageOne(data,projectId);
                     // fetchStageTwo(data);
                     // fetchStageThree(data);
                     // fetchStageFour(data);
@@ -114,7 +114,7 @@
         });
     }
 
- function fetchStageOne(data) {
+ function fetchStageOne(data,projectId) {
   // Basic Stage One fields
   document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
   document.getElementById('end-date-placeholder').value = data.stages.stage_one.end_date || 'No Data';
@@ -162,7 +162,7 @@
       if (requirements.length > 0) {
         requirements.forEach((reqItem, index) => {
           const blockIndex = index + 1;
-          const newBlock = createRequirementBlock(blockIndex, reqItem, productList, distributorList);
+          const newBlock = createRequirementBlock(blockIndex, reqItem, productList, distributorList,projectId);
           requirementsContainer.appendChild(newBlock);
         });
       } else {
@@ -188,7 +188,7 @@ function escapeHtml(text) {
   };
   return text.replace(/[&<>"']/g, m => map[m]);
 }
-function createRequirementBlock(blockIndex, reqItem, productList=[], distributorList=[]) {
+function createRequirementBlock(blockIndex, reqItem, productList=[], distributorList=[],projectId) {
   const requirementId = reqItem.requirement_id_1 || `st1rq${blockIndex}`;
   const requirementText = reqItem.requirement_one || '';
   const selectedProduct = reqItem.product_one || '';
@@ -268,7 +268,8 @@ function createRequirementBlock(blockIndex, reqItem, productList=[], distributor
         <div class="col-md-2">
             <button type="button"
                     class="btn btn-danger btn-sm removeRequirement"
-                    style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
+                    style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                    onclick="deleteRequirement('${requirementId}', this,'${projectId}')">
             <i class="fas fa-minus"></i>&nbsp;Remove
             </button>
         </div>
@@ -278,57 +279,37 @@ function createRequirementBlock(blockIndex, reqItem, productList=[], distributor
   return newBlock;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Add event listener for the delete buttons
-  const requirementsContainer = document.getElementById('requirementsContainer');
-  if (requirementsContainer) {
-    requirementsContainer.addEventListener('click', event => {
-      if (event.target.classList.contains('removeRequirement') || event.target.closest('.removeRequirement')) {
-        const button = event.target.closest('.removeRequirement'); // Ensure we get the button element
-        const requirementBlock = button.closest('.requirement-block'); // Find the parent block
-
-        if (!requirementBlock) {
-          console.warn('Requirement block not found.');
-          return;
-        }
-
-        // Confirm before deletion
-        if (!confirm('Are you sure you want to delete this requirement?')) {
-          return;
-        }
-
-        // Extract the requirement ID from the block
-        const requirementId = requirementBlock.dataset.requirementId;
-        if (!requirementId) {
-          console.warn('Requirement ID not found for the block.');
-          return;
-        }
-
-        // Remove the requirement block from the DOM
-        requirementBlock.remove();
-
-        // Send delete request to the backend
-        fetch('/api/delete-requirement', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ requirementId }),
-        })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Failed to delete requirement.');
-            }
-            return response.json();
-          })
-          .then(data => {
-            console.log('Requirement deleted successfully:', data);
-          })
-          .catch(error => {
-            console.error('Error deleting requirement:', error);
-          });
-      }
-    });
+// Function to delete a requirement
+function deleteRequirement(requirementId, button, projectId) {
+  // Confirm before deletion
+  if (!confirm('Are you sure you want to delete this requirement?')) {
+    return;
   }
-});
+
+  const requirementBlock = button.closest('.requirement-block');
+
+
+  // Send delete request to the backend
+  fetch('./dirback/delete_req1.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ requirementId, project_id: projectId }),
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to delete requirement.');
+      }
+      return response.json();
+    })
+    .then(data => { 
+      requirementBlock.remove();
+      console.log('Requirement deleted successfully:', data);
+    })
+    .catch(error => {
+      console.error('Error deleting requirement:', error);
+    });
+}
+
 
 
 
