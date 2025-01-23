@@ -141,8 +141,8 @@
   await Promise.all([loadProducts(), loadDistributors()]);
 
   // 3) Fetch product and distributor lists
-  const productList = data.stages.stage_one.product_one || [];
-  const distributorList = data.stages.stage_one.distributor_one || [];
+  const productList = data.stages.stage_one.requirements.product_one || [];
+  const distributorList = data.stages.stage_one.requirements.distributor_one || [];
 
   // 4) Fetch requirements array
   const requirements = (data.stages.stage_one && data.stages.stage_one.requirements) || [];
