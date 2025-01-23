@@ -431,7 +431,7 @@ include("../auth/db.php");
                             </p>
                         </div>
                     </div>
-                    <!-- Right Section: Notification and Profile -->
+                   
                     <div class="d-flex align-items-center">
                         <!-- Notification Button -->
                         <div class="mr-2" style="position: relative;">
