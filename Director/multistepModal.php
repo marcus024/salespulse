@@ -1514,7 +1514,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
                 });
             });
         </script>
-        <script>
+        <!-- <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const addRequirementBtn = document.getElementById('addRequiremen');
                 const requirementContainer = document.getElementById('requirement-container').parentNode;
@@ -1555,7 +1555,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
                     });
                 }
             });
-        </script>
+        </script> -->
          <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const engagementFieldsContainer = document.getElementById('engagement-fields-container3');
