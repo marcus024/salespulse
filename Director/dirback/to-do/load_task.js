@@ -40,7 +40,36 @@ $(document).ready(function () {
                                         <i class="fas fa-trash" style="font-size: 12px; color: red;"></i>
                                     </a>
                                 </div>
-                            </div>`;
+                            </div>
+                            <style>
+                                /* Task Widget Styling */
+                                .task-widget {
+                                    background-color: #2a2925; /* Dark background */
+                                    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Elevation shadow */
+                                    color: white; /* Text color */
+                                    border: none; /* Remove borders */
+                                    border-radius: 10px; /* Rounded corners */
+                                    padding: 10px; /* Compact padding */
+                                    line-height: 1.2; /* Reduce spacing between text */
+                                }
+                                /* Task Details Text */
+                                .task-widget label {
+                                    font-size: 12px; /* Compact text size */
+                                    color: #bbb; /* Slightly lighter text */
+                                }
+                                /* Action Buttons */
+                                .task-widget .edittask i, .task-widget .deletetask i {
+                                    font-size: 14px; /* Icon size */
+                                    transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+                                }
+                                .task-widget .edittask i:hover {
+                                    color: #009394; /* Hover color for edit icon */
+                                }
+                                .task-widget .deletetask i:hover {
+                                    color: darkred; /* Hover color for delete icon */
+                                }
+                            </style>
+                            `;
                         taskList.append(taskHtml); 
                     });
                 } else {
