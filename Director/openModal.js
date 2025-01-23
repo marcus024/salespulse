@@ -133,12 +133,6 @@
     });
   }
 
-  // Initialize product and distributor handlers
-  initProductChangeHandler();
-  initDistributorChangeHandler();
-
-  // Wait for products and distributors to load
-  await Promise.all([loadProducts(), loadDistributors()]);
 
   // 3) Fetch product and distributor lists
   const productList = data.stages.stage_one.requirements.product_one || [];
@@ -168,9 +162,6 @@
     const newBlock = createRequirementBlock(1, {}, productList, distributorList);
     requirementsContainer.appendChild(newBlock);
   }
-
-  // 7) Add "Add Requirement" button at the bottom
-  addAddRequirementButton(requirementsContainer, productList, distributorList);
 
   console.log('Stage One + requirements populated:', requirements);
 }
@@ -231,32 +222,6 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
   `;
 
   return newBlock;
-}
-
-/**
- * Adds an "Add Requirement" Button
- * @param {HTMLElement} container - The requirements container
- * @param {array} productList - List of products
- * @param {array} distributorList - List of distributors
- */
-function addAddRequirementButton(container, productList, distributorList) {
-  const addBtnContainer = document.createElement('div');
-  addBtnContainer.classList.add('text-center', 'mt-3');
-
-  const addBtn = document.createElement('button');
-  addBtn.type = 'button';
-  addBtn.classList.add('btn', 'btn-primary');
-  addBtn.textContent = 'Add Requirement';
-
-  // Add logic for adding new requirement blocks
-  addBtn.addEventListener('click', function () {
-    const blockIndex = container.querySelectorAll('.requirement-block').length + 1;
-    const newBlock = createRequirementBlock(blockIndex, {}, productList, distributorList);
-    container.appendChild(newBlock);
-  });
-
-  addBtnContainer.appendChild(addBtn);
-  container.appendChild(addBtnContainer);
 }
 
 
