@@ -1549,6 +1549,77 @@ include("../auth/db.php");
                                                     background-color: #555;
                                                 }
                                             </style>
+                                            <style>
+                                                /* Task List Scrollable Container */
+                                                .taskScroll {
+                                                    background-color: #2a2925; /* Dark background for the container */
+                                                    max-height: 180px; /* Limit the height for scrollable area */
+                                                    overflow-y: auto; /* Enable vertical scrolling */
+                                                    padding-top: 0.5rem;
+                                                    padding-bottom: 0.5rem;
+                                                }
+
+                                                /* Widget Styling for Individual Tasks */
+                                                .shadow-widget {
+                                                    background-color: #2a2925; /* Dark background */
+                                                    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Shadow for elevation */
+                                                    color: white; /* Text color */
+                                                    border: none; /* Remove border */
+                                                    border-radius: 10px; /* Rounded corners */
+                                                    padding: 10px; /* Compact padding */
+                                                    min-height: 70px; /* Ensure a consistent height */
+                                                    position: relative; /* Required for absolutely positioned elements */
+                                                }
+
+                                                /* Task Details Text */
+                                                .shadow-widget label,
+                                                .shadow-widget span {
+                                                    display: block; /* Ensure text elements appear in new lines */
+                                                    margin: 0; /* Remove default margin */
+                                                    line-height: 1.2; /* Reduce line spacing */
+                                                    font-size: 10px; /* Compact text size */
+                                                    color: #bbb; /* Slightly lighter text for additional details */
+                                                }
+
+                                                /* Task Title */
+                                                .shadow-widget strong {
+                                                    display: block;
+                                                    font-size: 12px; /* Slightly larger font for task name */
+                                                    color: white; /* Keep task title in white */
+                                                    margin-bottom: 5px; /* Space below the title */
+                                                }
+
+                                                /* Hover Effects for Icons */
+                                                .shadow-widget .edittask i,
+                                                .shadow-widget .deletetask i {
+                                                    font-size: 12px; /* Icon size */
+                                                    transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+                                                }
+
+                                                .shadow-widget .edittask i:hover {
+                                                    color: #009394; /* Hover color for edit icon */
+                                                }
+
+                                                .shadow-widget .deletetask i:hover {
+                                                    color: darkred; /* Hover color for delete icon */
+                                                }
+
+                                                /* Scrollbar Styling */
+                                                .taskScroll::-webkit-scrollbar {
+                                                    width: 4px;
+                                                    height: 4px;
+                                                }
+
+                                                .taskScroll::-webkit-scrollbar-thumb {
+                                                    background-color: #f9ce45;
+                                                    border-radius: 10px;
+                                                }
+
+                                                .taskScroll::-webkit-scrollbar-thumb:hover {
+                                                    background-color: #555;
+                                                }
+                                            </style>
+
                                             
                                             <div class="card-body todo-scroll" style="height: 120px; overflow-y: auto; background-color: #1f2024;">
                                                 <!-- To-Do List Widget -->
