@@ -114,7 +114,7 @@
         });
     }
 
- function fetchStageOne(data) {
+function fetchStageOne(data) {
   // Basic Stage One fields
   document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
   document.getElementById('end-date-placeholder').value = data.stages.stage_one.end_date || 'No Data';
@@ -138,8 +138,9 @@
 
   Promise.all([loadProducts(), loadDistributors()])
     .then(([products, distributors]) => {
-      productList = products; // Store fetched product list
-      distributorList = distributors; // Store fetched distributor list
+      // Handle non-array formats
+      productList = formatList(products, 'Product List');
+      distributorList = formatList(distributors, 'Distributor List');
 
       console.log("Products and Distributors fetched successfully.");
       console.log("Product List:", productList);
@@ -156,7 +157,7 @@
       }
 
       // Clear any existing content
-    //   requirementsContainer.innerHTML = '';
+      // requirementsContainer.innerHTML = '';
 
       // Step 4: Populate requirements dynamically
       if (requirements.length > 0) {
@@ -171,24 +172,30 @@
         requirementsContainer.appendChild(newBlock);
       }
 
-      console.log('Stage Osne + requirements populated:', requirements);
+      console.log('Stage One + requirements populated:', requirements);
     })
     .catch(error => {
       console.error("Error fetching Products or Distributors:", error);
     });
 }
 
-function escapeHtml(text) {
-  const map = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;',
-  };
-  return text.replace(/[&<>"']/g, m => map[m]);
+// Helper function to handle and format non-array lists
+function formatList(list, listName) {
+  if (Array.isArray(list)) {
+    return list;
+  } else if (typeof list === 'object' && list !== null) {
+    console.warn(`${listName} is an object, converting to an array.`);
+    return Object.values(list); // Convert object to an array of values
+  } else if (typeof list === 'string') {
+    console.warn(`${listName} is a string, converting to a single-item array.`);
+    return [list]; // Convert string to an array with one element
+  } else {
+    console.warn(`${listName} is invalid, defaulting to an empty array.`);
+    return [];
+  }
 }
-function createRequirementBlock(blockIndex, reqItem, productList=[], distributorList=[]) {
+
+function createRequirementBlock(blockIndex, reqItem, productList = [], distributorList = []) {
   const requirementId = reqItem.requirement_id_1 || `st1rq${blockIndex}`;
   const requirementText = reqItem.requirement_one || '';
   const selectedProduct = reqItem.product_one || '';
@@ -199,17 +206,6 @@ function createRequirementBlock(blockIndex, reqItem, productList=[], distributor
   console.log('Distributor List:', distributorList);
   console.log('Product Selected:', selectedProduct);
   console.log('Distributor Selected:', selectedDistributor);
-
-  // Ensure productList and distributorList are arrays
-  if (!Array.isArray(productList)) {
-    console.warn('Invalid product list format, defaulting to empty array.');
-    productList = [];
-  }
-
-  if (!Array.isArray(distributorList)) {
-    console.warn('Invalid distributor list format, defaulting to empty array.');
-    distributorList = [];
-  }
 
   const newBlock = document.createElement('div');
   newBlock.classList.add('requirement-block', 'p-2', 'rounded', 'shadow-widget');
@@ -235,7 +231,7 @@ function createRequirementBlock(blockIndex, reqItem, productList=[], distributor
     </div>
     <div class="row mb-3">
     <div class="col-md-4">
-        <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${selectedDistributor}">
+        <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${escapeHtml(requirementText)}">
     </div>
     <div class="col-md-3">
     <select name="product_one[]" class="form-control custom-select productFetch" onchange="console.log('Selected Product:', this.value)">
@@ -275,6 +271,7 @@ function createRequirementBlock(blockIndex, reqItem, productList=[], distributor
 
   return newBlock;
 }
+
 
     function fetchStageTwo(data,projectId){
         document.getElementById('stage-two-start').value = data.stages.stage_two.start_date || 'No Data';
