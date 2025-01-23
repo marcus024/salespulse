@@ -1337,7 +1337,7 @@ include("../auth/db.php");
                                                 }
                                             
                                             </style>
-                                            <div class="card-body scheduleScroll" style="height: 180px; overflow-y: auto; padding-top: 0.5rem; padding-bottom: 0.5rem;">
+                                            <div class="card-body scheduleScroll" style="height: 180px; overflow-y: auto; padding-top: 0.5rem; padding-bottom: 5px;">
                                                 <!-- Schedule Widget -->
                                                  <div class="d-flex flex-column gap-3">
                                                     <div id="scheduleContainer"></div>
@@ -1372,7 +1372,7 @@ include("../auth/db.php");
                                                         $eventDate   = $schedule['start']  ?? 'No Date';
                                                         $eventTime   = $schedule['time']   ?? 'No Time';
                                                         ?>
-                                                    <div class="p-1 rounded shadow-widget d-flex flex-column" style="position: relative; min-height: 70px;">
+                                                    <div class="p-2 rounded shadow-widget d-flex flex-column" style="position: relative; min-height: 70px;">
                                                         <!-- Event Details -->
                                                         <div class="mb-auto event-details">
                                                             <strong><?php echo htmlspecialchars($eventName); ?></strong>
