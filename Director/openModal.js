@@ -229,7 +229,7 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
         <select name="product_one[]" class="form-control custom-select productFetch">
           <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
           ${productList.map(product => `
-            <option value="${escapeHtml(product)}" ${product === selectedProduct ? 'selected' : ''}>
+            <option value="${escapeHtml(product)}" ${product.trim() === selectedProduct.trim() ? 'selected' : ''}>
               ${escapeHtml(product)}
             </option>
           `).join('')}
