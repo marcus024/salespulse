@@ -226,21 +226,21 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
         <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
       </div>
       <div class="col-md-3">
-        <select name="distributor_one[]" class="form-control custom-select distributorFetch">
-          <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
-          ${distributorList.map(distributor => `
-            <option value="${escapeHtml(distributor)}" ${distributor.trim() === selectedDistributor.trim() ? 'selected' : ''}>
-              ${escapeHtml(distributor)}
+        <select name="product_one[]" class="form-control custom-select productFetch">
+          <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
+          ${productList.map(product => `
+            <option value="${escapeHtml(product)}" ${product.trim() === selectedProduct.trim() ? 'selected' : ''}>
+              ${product}
             </option>
           `).join('')}
-          <option value="add_new">+ Add New Distributor...</option>
+          <option value="add_new_product">+ Add New Product...</option>
         </select>
       </div>
       <div class="col-md-3">
         <select name="distributor_one[]" class="form-control custom-select distributorFetch">
           <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
           ${distributorList.map(distributor => `
-            <option value="${escapeHtml(distributor)}" ${distributor === selectedDistributor ? 'selected' : ''}>
+            <option value="${escapeHtml(distributor)}" ${distributor.trim() === selectedDistributor.trim() ? 'selected' : ''}>
               ${escapeHtml(distributor)}
             </option>
           `).join('')}
