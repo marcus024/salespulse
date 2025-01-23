@@ -1112,7 +1112,7 @@ include("../auth/db.php");
                                                                         } elseif ($project['pstatus'] == 'Ongoing') {
                                                                             echo '#3393ff'; 
                                                                         } elseif ($project['pstatus'] == 'Completed') {
-                                                                            echo 'green'; 
+                                                                            echo 'lightgreen'; 
                                                                         } else {
                                                                             echo 'grey'; // Default background color if status doesn't match
                                                                         }
@@ -1319,7 +1319,7 @@ include("../auth/db.php");
                                                 .scheduleScroll::-webkit-scrollbar-thumb {
                                                     background-color: #f9ce45;
                                                     border-radius: 10px;
-                                                    height: 20px;
+                                                    height: 4px;
                                                 }
 
                                                 .scheduleScroll::-webkit-scrollbar-thumb:hover {
