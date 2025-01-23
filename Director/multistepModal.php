@@ -1009,7 +1009,7 @@
                                     gap: 8px;
                                 ">
                                     <i class="fas fa-check-circle" style="color: #28a745; font-size: 16px;"></i>
-                                    <span id="notificationMessage">Saved successfully!</span>
+                                    <span id="notificationMessage"></span>
                                 </div>
                                 <button type="button" class="btn btn-danger " id="deleteButton" style="border-color: red; background-color: #fff; color: red; font-size: 12px;">
                                     <i class="fas fa-trash-alt"></i> Delete
