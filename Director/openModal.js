@@ -139,15 +139,7 @@
     // If needed, do something after both are loaded
   });
   // Fetch product lists
-  const productList = newBlock.querySelector('.productFetch');
-  if (newProductSelect) {
-      fillOneProductSelect($(newProductSelect));
-    }
-  //Fetch distributor lists
-  const distributorList = newBlock.querySelector('.distributorFetch');
-  if (newDistributorSelect) {
-      fillOneDistributorSelect($(newDistributorSelect));
-    }
+
 
 
   //Function to fetch Product and Distributor list
@@ -230,6 +222,16 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
       </div>
     </div>
   `;
+
+    const productList = newBlock.querySelector('.productFetch');
+  if (newProductSelect) {
+      fillOneProductSelect($(newProductSelect));
+    }
+  //Fetch distributor lists
+  const distributorList = newBlock.querySelector('.distributorFetch');
+  if (newDistributorSelect) {
+      fillOneDistributorSelect($(newDistributorSelect));
+    }
 
   return newBlock;
 }
