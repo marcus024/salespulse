@@ -422,7 +422,7 @@ include("../auth/db.php");
                     <!-- Left Section: Home and Welcome Message -->
                     <div class="d-flex align-items-center" style="margin-top: 10px;"> <!-- Added margin-top to lower the left section -->
                         <div>
-                            <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Home</h1> <!-- Reduced spacing -->
+                            <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Home-Test</h1> <!-- Reduced spacing -->
                             <p style="font-size:15px; color: white; font-family:'Poppins'; margin: 0px;">
                                 Welcome back, 
                                 <span style="font-weight: 800;">
@@ -1520,7 +1520,7 @@ include("../auth/db.php");
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card col-md-6 shadow mb-1 mr-0 p-0" style=" background-color: #1f2024; box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);"> 
+                                        <div class="card col-md-6 shadow mb-1 mr-0 p-0" style="border:none; background-color: #1f2024; box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);"> 
                                             <div class="card-header py-2" style="background-color: #1f2024; border:none;">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <!-- Left-aligned text -->
