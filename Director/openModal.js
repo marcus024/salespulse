@@ -114,7 +114,7 @@
         });
     }
 
- async function fetchStageOne(data) {
+ function fetchStageOne(data) {
   // Basic Stage One fields
   document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
   document.getElementById('end-date-placeholder').value = data.stages.stage_one.end_date || 'No Data';
@@ -132,49 +132,52 @@
     });
   }
 
-  // Step 1: Fetch the product and distributor lists
+  // Step 1: Fetch the product and distributor lists using Promise.all
   let productList = [];
   let distributorList = [];
-  await $.when(
-    loadProducts().then(products => {
+
+  Promise.all([loadProducts(), loadDistributors()])
+    .then(([products, distributors]) => {
       productList = products; // Store fetched product list
-    }),
-    loadDistributors().then(distributors => {
       distributorList = distributors; // Store fetched distributor list
+
+      console.log("Products and Distributors fetched successfully.");
+      console.log("Product List:", productList);
+      console.log("Distributor List:", distributorList);
+
+      // Step 2: Fetch requirements array
+      const requirements = (data.stages.stage_one && data.stages.stage_one.requirements) || [];
+
+      // Step 3: Get the container for requirements
+      const requirementsContainer = document.getElementById('requirementsContainer');
+      if (!requirementsContainer) {
+        console.error('#requirementsContainer not found in DOM!');
+        return;
+      }
+
+      // Clear any existing content
+      requirementsContainer.innerHTML = '';
+
+      // Step 4: Populate requirements dynamically
+      if (requirements.length > 0) {
+        requirements.forEach((reqItem, index) => {
+          const blockIndex = index + 1;
+          const newBlock = createRequirementBlock(blockIndex, reqItem, productList, distributorList);
+          requirementsContainer.appendChild(newBlock);
+        });
+      } else {
+        // If no requirements exist, add a default requirement block
+        const newBlock = createRequirementBlock(1, {}, productList, distributorList);
+        requirementsContainer.appendChild(newBlock);
+      }
+
+      console.log('Stage One + requirements populated:', requirements);
     })
-  ).done(() => {
-    console.log("Products and Distributors fetched successfully.");
-  }).fail(() => {
-    console.error("Error fetching Products or Distributors.");
-  });
-
-  // Step 2: Fetch requirements array
-  const requirements = (data.stages.stage_one && data.stages.stage_one.requirements) || [];
-
-  // Step 3: Get the container for requirements
-  const requirementsContainer = document.getElementById('requirementsContainer');
-  if (!requirementsContainer) {
-    console.error('#requirementsContainer not found in DOM!');
-    return;
-  }
-
-//   requirementsContainer.innerHTML = ''; 
-
-  // Step 4: Populate requirements dynamically
-  if (requirements.length > 0) {
-    requirements.forEach((reqItem, index) => {
-      const blockIndex = index + 1;
-      const newBlock = createRequirementBlock(blockIndex, reqItem, productList, distributorList);
-      requirementsContainer.appendChild(newBlock);
+    .catch(error => {
+      console.error("Error fetching Products or Distributors:", error);
     });
-  } else {
-    // If no requirements exist, add a default requirement block
-    const newBlock = createRequirementBlock(1, {}, productList, distributorList);
-    requirementsContainer.appendChild(newBlock);
-  }
-
-  console.log('Stage Onxe + requirements populated:', requirements);
 }
+
 function escapeHtml(text) {
   const map = {
     '&': '&amp;',
