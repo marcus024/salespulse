@@ -1552,7 +1552,7 @@ include("../auth/db.php");
                                             <style>
                                                 /* Task List Scrollable Container */
                                                 .taskScroll {
-                                                    background-color: #2a2925; /* Dark background for the container */
+                                                    background-color:#1f2024; /* Dark background for the container */
                                                     max-height: 180px; /* Limit the height for scrollable area */
                                                     overflow-y: auto; /* Enable vertical scrolling */
                                                     padding-top: 0.5rem;
@@ -1561,7 +1561,7 @@ include("../auth/db.php");
 
                                                 /* Widget Styling for Individual Tasks */
                                                 .shadow-widget {
-                                                    background-color: #2a2925; /* Dark background */
+                                                    background-color: #1f2024; /* Dark background */
                                                     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Shadow for elevation */
                                                     color: white; /* Text color */
                                                     border: none; /* Remove border */

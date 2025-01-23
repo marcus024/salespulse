@@ -18,7 +18,7 @@ $(document).ready(function () {
                     }
                     response.tasks.forEach(task => {
                         const taskHtml = `
-                            <div class="d-flex flex-column p-2 border rounded taskScroll" style="height: auto; min-height: 40px;">
+                            <div class="d-flex flex-column p-2 border rounded taskDesign" style="height: auto; min-height: 40px;">
                                 <div>
                                     <input type="checkbox" id="task${task.todo_id}" style="margin-right: 10px;">
                                     <label for="task${task.todo_id}" style="font-size: 10px;">${task.taskname}</label>
