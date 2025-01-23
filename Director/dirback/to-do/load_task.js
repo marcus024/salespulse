@@ -18,10 +18,10 @@ $(document).ready(function () {
                     }
                     response.tasks.forEach(task => {
                         const taskHtml = `
-                            <div class="d-flex flex-column p-2 border rounded" style="height: auto; min-height: 40px;">
+                            <div class="d-flex flex-column p-2 rounded taskDesign" style="background-color:#2a2925; border:none; height: 70x; min-height: 40px;">
                                 <div>
                                     <input type="checkbox" id="task${task.todo_id}" style="margin-right: 10px;">
-                                    <label for="task${task.todo_id}" style="font-size: 10px;">${task.taskname}</label>
+                                    <label for="task${task.todo_id}" style="color:white; font-size: 10px;">${task.taskname}</label>
                                 </div>
                                 <div class="d-flex gap-1 justify-content-end mt-1">
                                     <a href="#" class="edittask" 
@@ -32,7 +32,7 @@ $(document).ready(function () {
                                     data-assigned="${task.assigned}" 
                                     data-start="${task.starttask}" 
                                     data-end="${task.endtask}">
-                                        <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
+                                        <i class="fas fa-eye" style="font-size: 12px; color:#f9ce45;"></i>
                                     </a>
                                     <!-- Delete Icon -->
                                     <a href="#" class="deletetask" data-bs-toggle="modal" data-bs-target="#deleteTaskModal" 

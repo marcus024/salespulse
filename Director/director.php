@@ -887,7 +887,7 @@ include("../auth/db.php");
                                 <div class="row" style="padding: 10px; gap: 4px; margin-top: -0.5rem;"> <!-- Reduced margin above cards -->
                                     <div class="rectangle-card" onclick="filterTable('Completed')">
                                         <i class="card-icon">
-                                            <img src="../images/comP.png" alt="icon" width="30" height="30">
+                                            <img src="../images/completed_i.png" alt="icon" width="30" height="30">
                                         </i>
                                         <div class="card-content">
                                             <div class="card-title" style="font-family:'Poppins'">Completed</div>
@@ -896,7 +896,7 @@ include("../auth/db.php");
                                     </div>
                                     <div class="rectangle-card" onclick="filterTable('Ongoing')">
                                         <i class="card-icon">
-                                            <img src="../images/ongoingP.png" alt="icon" width="30" height="30">
+                                            <img src="../images/ongoing_i.png" alt="icon" width="30" height="30">
                                         </i>
                                         <div class="card-content">
                                             <div class="card-title" style="font-family:'Poppins'">On Going</div>
@@ -905,7 +905,7 @@ include("../auth/db.php");
                                     </div>
                                     <div class="rectangle-card" onclick="filterTable('Cancelled')">
                                         <i class="card-icon">
-                                            <img src="../images/cancelP.png" alt="icon" width="30" height="30">
+                                            <img src="../images/cancelled_i.png" alt="icon" width="30" height="30">
                                         </i>
                                         <div class="card-content">
                                             <div class="card-title" style="font-family:'Poppins'">Cancelled</div>
@@ -914,7 +914,7 @@ include("../auth/db.php");
                                     </div>
                                     <div class="rectangle-card" onclick="filterTable('All')">
                                         <i class="card-icon">
-                                            <img src="../images/durationP.png" alt="icon" width="30" height="30">
+                                            <img src="../images/duration_i.png" alt="icon" width="30" height="30">
                                         </i>
                                         <div class="card-content">
                                             <div class="card-title" style="font-family:'Poppins'">Duration</div>
@@ -1106,13 +1106,13 @@ include("../auth/db.php");
                                                                     <td style="padding-left:5px; background-color:#1f2024; color:white;"><?php echo htmlspecialchars($project['account_manager']); ?></td>
                                                                     <td style="padding-left:5px; background-color:#1f2024; color:white;"><?php echo htmlspecialchars($project['start_date']); ?></td>
                                                                     <td style="padding-left:5px; background-color:#1f2024; color:white;"><?php echo htmlspecialchars($project['end_date']); ?></td>
-                                                                    <td style=" background-color:#1f2024; padding-left:5px; color: <?php 
+                                                                    <td style=" background-color:#1f2024; padding-left:5px; font-weight:bold; color: <?php 
                                                                         if ($project['pstatus'] == 'Cancelled') {
                                                                             echo 'red'; 
                                                                         } elseif ($project['pstatus'] == 'Ongoing') {
                                                                             echo '#3393ff'; 
                                                                         } elseif ($project['pstatus'] == 'Completed') {
-                                                                            echo 'green'; 
+                                                                            echo 'lightgreen'; 
                                                                         } else {
                                                                             echo 'grey'; // Default background color if status doesn't match
                                                                         }
@@ -1314,12 +1314,13 @@ include("../auth/db.php");
                                             <style>
                                                 .scheduleScroll::-webkit-scrollbar {
                                                     width: 4px;
+                                                    height: 4px;
                                                 }
 
                                                 .scheduleScroll::-webkit-scrollbar-thumb {
                                                     background-color: #f9ce45;
                                                     border-radius: 10px;
-                                                    height: 20px;
+                                                    height: 4px;
                                                 }
 
                                                 .scheduleScroll::-webkit-scrollbar-thumb:hover {
@@ -1337,9 +1338,9 @@ include("../auth/db.php");
                                                 }
                                             
                                             </style>
-                                            <div class="card-body scheduleScroll" style="height: 180px; overflow-y: auto; padding-top: 0.5rem; padding-bottom: 0.5rem;">
+                                            <div class="card-body scheduleScroll" style="height: 180px; overflow-y: auto; padding-top: 0.5rem; padding-bottom: 5px;">
                                                 <!-- Schedule Widget -->
-                                                 <div class="d-flex flex-column gap-3">
+                                                 <div class="d-flex flex-column gap-2">
                                                     <div id="scheduleContainer"></div>
                                                     <?php
                                                 
@@ -1390,7 +1391,7 @@ include("../auth/db.php");
                                                             <!-- Delete Button -->
                                                             <a href="javascript:void(0)" class="delete-schedule-btn" data-bs-toggle="modal" 
                                                             data-bs-target="#schedDel" onclick="setDeleteScheduleId('<?php echo $scheduleId; ?>')">
-                                                                <i class="fas fa-trash"></i>
+                                                                <i class="fas fa-trash" style="color:red;"></i>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -1424,13 +1425,8 @@ include("../auth/db.php");
                                                             transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
                                                         }
 
-                                                        .view-schedule-btn:hover i {
-                                                            color: #009394; /* Hover color for view icon */
-                                                        }
+                                                        
 
-                                                        .delete-schedule-btn:hover i {
-                                                            color: darkred; /* Hover color for delete icon */
-                                                        }
                                                     </style>
                                                     <?php
                                                     }
@@ -1520,7 +1516,7 @@ include("../auth/db.php");
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card col-md-6 shadow mb-1 mr-0 p-0" style=" background-color: #1f2024; box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);"> 
+                                        <div class="card col-md-6 shadow mb-1 mr-0 p-0" style="border:none; background-color: #1f2024; box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);"> 
                                             <div class="card-header py-2" style="background-color: #1f2024; border:none;">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <!-- Left-aligned text -->
@@ -1540,7 +1536,7 @@ include("../auth/db.php");
                                                 }
 
                                                 .todo-scroll::-webkit-scrollbar-thumb {
-                                                    background-color: #36b9cc;
+                                                    background-color: #f9ce45;
                                                     border-radius: 10px;
                                                     height: 20px;
                                                 }
@@ -1549,13 +1545,125 @@ include("../auth/db.php");
                                                     background-color: #555;
                                                 }
                                             </style>
+                                            <style>
+                                                /* Task List Scrollable Container */
+                                                .taskScroll {
+                                                    background-color:#1f2024; /* Dark background for the container */
+                                                    max-height: 180px; /* Limit the height for scrollable area */
+                                                    overflow-y: auto; /* Enable vertical scrolling */
+                                                    padding-top: 0.5rem;
+                                                    padding-bottom: 0.5rem;
+                                                }
+
+                                                /* Widget Styling for Individual Tasks */
+                                                .taskDesign {
+                                                    background-color: #1f2024; /* Dark background */
+                                                    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Shadow for elevation */
+                                                    color: white; /* Text color */
+                                                    border: none; /* Remove border */
+                                                    border-radius: 10px; /* Rounded corners */
+                                                    padding: 10px; /* Compact padding */
+                                                    min-height: 70px; /* Ensure a consistent height */
+                                                    position: relative; /* Required for absolutely positioned elements */
+                                                }
+
+                                                /* Task Details Text */
+                                                .taskDesign label,
+                                                .taskDesign span {
+                                                    display: block; /* Ensure text elements appear in new lines */
+                                                    margin: 0; /* Remove default margin */
+                                                    line-height: 1.2; /* Reduce line spacing */
+                                                    font-size: 10px; /* Compact text size */
+                                                    color: #bbb; /* Slightly lighter text for additional details */
+                                                }
+
+                                                /* Task Title */
+                                                .taskDesign strong {
+                                                    display: block;
+                                                    font-size: 12px; /* Slightly larger font for task name */
+                                                    color: white; /* Keep task title in white */
+                                                    margin-bottom: 5px; /* Space below the title */
+                                                }
+
+                                                /* Hover Effects for Icons */
+                                                .taskDesign .edittask i,
+                                                .taskDesign .deletetask i {
+                                                    font-size: 12px; /* Icon size */
+                                                    transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+                                                }
+
+                                                .taskDesign .edittask i:hover {
+                                                    color: #009394; /* Hover color for edit icon */
+                                                }
+
+                                                .taskDesign .deletetask i:hover {
+                                                    color: darkblue; /* Hover color for delete icon */
+                                                }
+
+                                                /* Scrollbar Styling */
+                                                .taskScroll::-webkit-scrollbar {
+                                                    width: 4px;
+                                                    height: 4px;
+                                                }
+
+                                                .taskScroll::-webkit-scrollbar-thumb {
+                                                    background-color: #f9ce45;
+                                                    border-radius: 10px;
+                                                }
+
+                                                .taskScroll::-webkit-scrollbar-thumb:hover {
+                                                    background-color: #555;
+                                                }
+                                            </style>
+
+                                            
                                             <div class="card-body todo-scroll" style="height: 120px; overflow-y: auto; background-color: #1f2024;">
                                                 <!-- To-Do List Widget -->
                                                 <div class="d-flex flex-column gap-2">
-
-                                                    <div id="taskList" class="d-flex flex-column gap-2 p-2 border rounded" style="height: auto; min-height: 40px;">
-                                                    <!-- Tasks will be dynamically appended here -->
+                                                    <div id="taskList" class="d-flex flex-column gap-2 p-2 rounded " style="height: auto; min-height: 40px; border: none; margin-bottom:5px;">
+                                                        <!-- Tasks will be dynamically appended here -->
                                                     </div>
+
+                                                    <style>
+                                                        /* Task Widget Styling */
+                                                        .task-widget {
+                                                            background-color: #1f2024; /* Dark background */
+                                                            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Elevation shadow */
+                                                            color: white; /* Text color */
+                                                            border: none; /* Remove borders */
+                                                            border-radius: 10px; /* Rounded corners */
+                                                            padding: 10px; /* Compact padding */
+                                                            line-height: 1.2; /* Reduce spacing between text */
+                                                            font-size: 12px; /* Compact font size */
+                                                        }
+
+                                                        /* Task Details Text */
+                                                        .task-widget label {
+                                                            font-size: 12px; /* Compact text size */
+                                                            color: #bbb; /* Slightly lighter text */
+                                                        }
+
+                                                        /* Action Buttons */
+                                                        .task-widget .edittask i, .task-widget .deletetask i {
+                                                            font-size: 14px; /* Icon size */
+                                                            transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+                                                        }
+
+                                                        .task-widget .edittask i:hover {
+                                                            color: #f9ce45; /* Hover color for edit icon */
+                                                        }
+
+                                                        .task-widget .deletetask i:hover {
+                                                            color: darkred; /* Hover color for delete icon */
+                                                        }
+
+                                                        /* No Task Message */
+                                                        #taskList .text-center p {
+                                                            color: #999;
+                                                            font-size: 12px;
+                                                        }
+                                                    </style>
+
                                                     <!-- Edit Task Modal -->
                                                     <div class="modal fade" id="editTaskModal" tabindex="-1" aria-labelledby="editTaskModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
