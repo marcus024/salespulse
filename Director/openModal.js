@@ -235,7 +235,7 @@ function createRequirementBlock(blockIndex, reqItem, productList=[], distributor
     </div>
     <div class="row mb-3">
     <div class="col-md-4">
-        <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${selectedDistributor}">
+        <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
     </div>
     <div class="col-md-3">
     <select name="product_one[]" class="form-control custom-select productFetch" onchange="console.log('Selected Product:', this.value)">
