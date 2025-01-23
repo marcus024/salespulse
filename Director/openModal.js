@@ -115,7 +115,7 @@
     }
 
 
- async function fetchStageOne(data) {
+async function fetchStageOne(data) {
   // Basic Stage One fields
   document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
   document.getElementById('end-date-placeholder').value = data.stages.stage_one.end_date || 'No Data';
@@ -136,18 +136,19 @@
   // Step 1: Fetch the product and distributor lists
   let productList = [];
   let distributorList = [];
-  await $.when(
-    loadProducts().then(products => {
-      productList = products; // Store fetched product list
-    }),
-    loadDistributors().then(distributors => {
-      distributorList = distributors; // Store fetched distributor list
-    })
-  ).done(() => {
+  try {
+    await $.when(
+      loadProducts().then(products => {
+        productList = Array.isArray(products) ? products : []; // Ensure it's an array
+      }),
+      loadDistributors().then(distributors => {
+        distributorList = Array.isArray(distributors) ? distributors : []; // Ensure it's an array
+      })
+    );
     console.log("Products and Distributors fetched successfully.");
-  }).fail(() => {
-    console.error("Error fetching Products or Distributors.");
-  });
+  } catch (error) {
+    console.error("Error fetching Products or Distributors:", error);
+  }
 
   // Step 2: Fetch requirements array
   const requirements = (data.stages.stage_one && data.stages.stage_one.requirements) || [];
@@ -158,8 +159,6 @@
     console.error('#requirementsContainer not found in DOM!');
     return;
   }
-
-//   requirementsContainer.innerHTML = ''; 
 
   // Step 4: Populate requirements dynamically
   if (requirements.length > 0) {
@@ -177,7 +176,8 @@
   console.log('Stage One + requirements populated:', requirements);
 }
 
-function createRequirementBlock(blockIndex, reqItem, productList, distributorList) {
+
+function createRequirementBlock(blockIndex, reqItem, productList = [], distributorList = []) {
   const requirementId = reqItem.requirement_id_1 || `st1rq${blockIndex}`;
   const requirementText = reqItem.requirement_one || '';
   const selectedProduct = reqItem.product_one || '';
@@ -186,8 +186,6 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
   console.log(`Creating Requirement Block ${blockIndex}`);
   console.log('Product List:', productList);
   console.log('Distributor List:', distributorList);
-  console.log('Selected Product:', selectedProduct);
-  console.log('Selected Distributor:', selectedDistributor);
 
   const newBlock = document.createElement('div');
   newBlock.classList.add('requirement-block', 'p-2', 'rounded', 'shadow-widget');
@@ -207,18 +205,18 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
       <div class="col-md-3">
         <select name="product_one[]" class="form-control custom-select productFetch">
           <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
-          ${productList.map(product => `
+          ${Array.isArray(productList) ? productList.map(product => `
             <option value="${product}" ${product === selectedProduct ? 'selected' : ''}>${product}</option>
-          `).join('')}
+          `).join('') : ''}
           <option value="add_new_product">+ Add New Product...</option>
         </select>
       </div>
       <div class="col-md-3">
         <select name="distributor_one[]" class="form-control custom-select distributorFetch">
           <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
-          ${distributorList.map(distributor => `
+          ${Array.isArray(distributorList) ? distributorList.map(distributor => `
             <option value="${distributor}" ${distributor === selectedDistributor ? 'selected' : ''}>${distributor}</option>
-          `).join('')}
+          `).join('') : ''}
           <option value="add_new">+ Add New Distributor...</option>
         </select>
       </div>
