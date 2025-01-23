@@ -206,7 +206,9 @@ function createRequirementBlock(blockIndex, reqItem, productList = [], distribut
         <select name="product_one[]" class="form-control custom-select productFetch">
           <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
           ${Array.isArray(productList) ? productList.map(product => `
-            <option value="${product}" ${product === selectedProduct ? 'selected' : ''}>${product}</option>
+            <option value="${escapeHtml(product)}" ${product === selectedProduct ? 'selected' : ''}>
+              ${escapeHtml(product)}
+            </option>
           `).join('') : ''}
           <option value="add_new_product">+ Add New Product...</option>
         </select>
