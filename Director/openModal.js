@@ -138,7 +138,7 @@ function fetchStageOne(data) {
 
   Promise.all([loadProducts(), loadDistributors()])
     .then(([products, distributors]) => {
-      // Handle non-array formats
+      // Handle and validate list data
       productList = formatList(products, 'Product List');
       distributorList = formatList(distributors, 'Distributor List');
 
@@ -157,7 +157,7 @@ function fetchStageOne(data) {
       }
 
       // Clear any existing content
-      // requirementsContainer.innerHTML = '';
+      requirementsContainer.innerHTML = '';
 
       // Step 4: Populate requirements dynamically
       if (requirements.length > 0) {
@@ -179,16 +179,16 @@ function fetchStageOne(data) {
     });
 }
 
-// Helper function to handle and format non-array lists
+// Helper function to handle and validate lists
 function formatList(list, listName) {
   if (Array.isArray(list)) {
-    return list;
+    return list.filter(item => typeof item === 'string' || item !== null).map(item => String(item).trim());
   } else if (typeof list === 'object' && list !== null) {
     console.warn(`${listName} is an object, converting to an array.`);
-    return Object.values(list); // Convert object to an array of values
+    return Object.values(list).filter(item => typeof item === 'string' || item !== null).map(item => String(item).trim());
   } else if (typeof list === 'string') {
     console.warn(`${listName} is a string, converting to a single-item array.`);
-    return [list]; // Convert string to an array with one element
+    return [list.trim()];
   } else {
     console.warn(`${listName} is invalid, defaulting to an empty array.`);
     return [];
@@ -240,7 +240,7 @@ function createRequirementBlock(blockIndex, reqItem, productList = [], distribut
                 <option value="${escapeHtml(product)}" ${product.trim().toLowerCase() === selectedProduct.trim().toLowerCase() ? 'selected' : ''}>
                     ${escapeHtml(product)}
                 </option>
-            `).join('')}
+            `).join('') || ''}
             ${!productList.some(product => product.trim().toLowerCase() === selectedProduct.trim().toLowerCase()) && selectedProduct
                 ? `<option value="${escapeHtml(selectedProduct)}" selected>${escapeHtml(selectedProduct)}</option>`
                 : ''}
@@ -254,7 +254,7 @@ function createRequirementBlock(blockIndex, reqItem, productList = [], distribut
                 <option value="${escapeHtml(distributor)}" ${distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase() ? 'selected' : ''}>
                 ${escapeHtml(distributor)}
                 </option>
-            `).join('')}
+            `).join('') || ''}
             ${!distributorList.some(distributor => distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase()) && selectedDistributor
                 ? `<option value="${escapeHtml(selectedDistributor)}" selected>${escapeHtml(selectedDistributor)}</option>`
                 : ''}
