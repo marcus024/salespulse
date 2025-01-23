@@ -173,9 +173,18 @@
     requirementsContainer.appendChild(newBlock);
   }
 
-  console.log('Stage asxz + requirements populated:', requirements);
+  console.log('Stage One + requirements populated:', requirements);
 }
-
+function escapeHtml(text) {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+  };
+  return text.replace(/[&<>"']/g, m => map[m]);
+}
 function createRequirementBlock(blockIndex, reqItem, productList, distributorList) {
   const requirementId = reqItem.requirement_id_1 || `st1rq${blockIndex}`;
   const requirementText = reqItem.requirement_one || '';
