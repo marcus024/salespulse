@@ -1556,6 +1556,46 @@ include("../auth/db.php");
                                                     <div id="taskList" class="d-flex flex-column gap-2 p-2 border rounded" style="height: auto; min-height: 40px;">
                                                     <!-- Tasks will be dynamically appended here -->
                                                     </div>
+                                                    <style>
+                                                        /* Task Widget Styling */
+                                                        .task-widget {
+                                                            background-color: #2a2925; /* Dark background */
+                                                            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Elevation shadow */
+                                                            color: white; /* Text color */
+                                                            border: none; /* Remove borders */
+                                                            border-radius: 10px; /* Rounded corners */
+                                                            padding: 10px; /* Compact padding */
+                                                            line-height: 1.2; /* Reduce spacing between text */
+                                                            font-size: 12px; /* Compact font size */
+                                                        }
+
+                                                        /* Task Details Text */
+                                                        .task-widget label {
+                                                            font-size: 12px; /* Compact text size */
+                                                            color: #bbb; /* Slightly lighter text */
+                                                        }
+
+                                                        /* Action Buttons */
+                                                        .task-widget .edittask i, .task-widget .deletetask i {
+                                                            font-size: 14px; /* Icon size */
+                                                            transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+                                                        }
+
+                                                        .task-widget .edittask i:hover {
+                                                            color: #009394; /* Hover color for edit icon */
+                                                        }
+
+                                                        .task-widget .deletetask i:hover {
+                                                            color: darkred; /* Hover color for delete icon */
+                                                        }
+
+                                                        /* No Task Message */
+                                                        #taskList .text-center p {
+                                                            color: #999;
+                                                            font-size: 12px;
+                                                        }
+                                                    </style>
+
                                                     <!-- Edit Task Modal -->
                                                     <div class="modal fade" id="editTaskModal" tabindex="-1" aria-labelledby="editTaskModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
