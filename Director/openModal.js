@@ -173,7 +173,7 @@
     requirementsContainer.appendChild(newBlock);
   }
 
-  console.log('Stage One + requirements populated:', requirements);
+  console.log('Stage Onxe + requirements populated:', requirements);
 }
 function escapeHtml(text) {
   const map = {
