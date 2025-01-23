@@ -887,7 +887,7 @@ include("../auth/db.php");
                                 <div class="row" style="padding: 10px; gap: 4px; margin-top: -0.5rem;"> <!-- Reduced margin above cards -->
                                     <div class="rectangle-card" onclick="filterTable('Completed')">
                                         <i class="card-icon">
-                                            <img src="../images/comP.png" alt="icon" width="30" height="30">
+                                            <img src="../images/completed_i.png" alt="icon" width="30" height="30">
                                         </i>
                                         <div class="card-content">
                                             <div class="card-title" style="font-family:'Poppins'">Completed</div>
@@ -896,7 +896,7 @@ include("../auth/db.php");
                                     </div>
                                     <div class="rectangle-card" onclick="filterTable('Ongoing')">
                                         <i class="card-icon">
-                                            <img src="../images/ongoingP.png" alt="icon" width="30" height="30">
+                                            <img src="../images/ongoing_i.png" alt="icon" width="30" height="30">
                                         </i>
                                         <div class="card-content">
                                             <div class="card-title" style="font-family:'Poppins'">On Going</div>
@@ -905,7 +905,7 @@ include("../auth/db.php");
                                     </div>
                                     <div class="rectangle-card" onclick="filterTable('Cancelled')">
                                         <i class="card-icon">
-                                            <img src="../images/cancelP.png" alt="icon" width="30" height="30">
+                                            <img src="../images/cancelled_i.png" alt="icon" width="30" height="30">
                                         </i>
                                         <div class="card-content">
                                             <div class="card-title" style="font-family:'Poppins'">Cancelled</div>
@@ -914,7 +914,7 @@ include("../auth/db.php");
                                     </div>
                                     <div class="rectangle-card" onclick="filterTable('All')">
                                         <i class="card-icon">
-                                            <img src="../images/durationP.png" alt="icon" width="30" height="30">
+                                            <img src="../images/duration_i.png" alt="icon" width="30" height="30">
                                         </i>
                                         <div class="card-content">
                                             <div class="card-title" style="font-family:'Poppins'">Duration</div>
