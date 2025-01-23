@@ -207,18 +207,13 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
       <div class="col-md-3">
         <select name="product_one[]" class="form-control custom-select productFetch">
           <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
-          ${productList.map(product => `
-            <option value="${product}" ${product === selectedProduct ? 'selected' : ''}>${product}</option>
-          `).join('')}
+          
           <option value="add_new_product">+ Add New Product...</option>
         </select>
       </div>
       <div class="col-md-3">
         <select name="distributor_one[]" class="form-control custom-select distributorFetch">
           <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
-          ${distributorList.map(distributor => `
-            <option value="${distributor}" ${distributor === selectedDistributor ? 'selected' : ''}>${distributor}</option>
-          `).join('')}
           <option value="add_new">+ Add New Distributor...</option>
         </select>
       </div>
