@@ -266,7 +266,7 @@ function createRequirementBlock(blockIndex, reqItem, productList=[], distributor
         </select>
     </div>
       <div class="col-md-2 text-end">
-        <button type="button" class="btn btn-danger btn-sm removeRequirement">
+        <button type="button" class="btn btn-danger btn-sm removeRequirement" onclick="deleteRequirement('${requirementId}', this)">
           <i class="fas fa-minus"></i> Remove
         </button>
       </div>
@@ -275,6 +275,41 @@ function createRequirementBlock(blockIndex, reqItem, productList=[], distributor
 
   return newBlock;
 }
+
+// Function to delete a requirement
+function deleteRequirement(requirementId, button) {
+  // Confirm before deletion
+  if (!confirm('Are you sure you want to delete this requirement?')) {
+    return;
+  }
+
+  const requirementBlock = button.closest('.requirement-block');
+
+  // Remove the requirement block from the DOM
+  requirementBlock.remove();
+
+  // Send delete request to the backend
+  fetch('/api/delete-requirement', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ requirementId }),
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to delete requirement.');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Requirement deleted successfully:', data);
+    })
+    .catch(error => {
+      console.error('Error deleting requirement:', error);
+    });
+}
+
+
+
 
     function fetchStageTwo(data,projectId){
         document.getElementById('stage-two-start').value = data.stages.stage_two.start_date || 'No Data';
