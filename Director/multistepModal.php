@@ -1673,7 +1673,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
                 });
             });
         </script> -->
-        <script>
+        <!-- <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const requirementFieldsContainer = document.getElementById('requirement-fields-container5');
                 const addRequirementButton = document.getElementById('addRequirement5');
@@ -1716,7 +1716,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
                     }
                 });
             });
-        </script>
+        </script> -->
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const upsellFieldsContainer = document.getElementById('upsell-fields-container');
