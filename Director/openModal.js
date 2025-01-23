@@ -207,7 +207,18 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
       Requirement ${blockIndex}
     </p>
     <input type="hidden" name="requirement_id_1[]" value="${requirementId}">
-
+    <div class="row mb-2">
+        <div class="col-md-4">
+            <label class="form-label text-white">Requirement</label>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label text-white">Product</label>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label text-white">Distributor</label>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
     <div class="row mb-3">
       <div class="col-md-4">
         <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
