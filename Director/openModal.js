@@ -173,7 +173,7 @@
     requirementsContainer.appendChild(newBlock);
   }
 
-  console.log('Stage Oxxnxe + requirements populated:', requirements);
+  console.log('Stage Onxe + requirements populated:', requirements);
 }
 function escapeHtml(text) {
   const map = {
@@ -234,12 +234,12 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
       <div class="col-md-4">
         <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
       </div>
-       <div class="col-md-3">
+      <div class="col-md-3">
         <select name="product_one[]" class="form-control custom-select productFetch">
           <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
           ${productList.map(product => `
             <option value="${escapeHtml(product)}" ${product.trim() === selectedProduct.trim() ? 'selected' : ''}>
-              ${escapeHtml(product)}
+              ${product}
             </option>
           `).join('')}
           <option value="add_new_product">+ Add New Product...</option>
