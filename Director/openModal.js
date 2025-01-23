@@ -172,13 +172,7 @@
   console.log('Stage One + requirements populated:', requirements);
 }
 
-/**
- * Create a new requirement block dynamically
- * @param {number} blockIndex - The requirement number
- * @param {object} reqItem - The requirement data from the backend
- * @param {array} productList - List of available products
- * @param {array} distributorList - List of available distributors
- */
+
 function createRequirementBlock(blockIndex, reqItem, productList, distributorList) {
   const requirementId = reqItem.requirement_id_1 || `st1rq${blockIndex}`;
   const requirementText = reqItem.requirement_one || '';
