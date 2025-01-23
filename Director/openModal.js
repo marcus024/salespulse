@@ -173,7 +173,7 @@ async function fetchStageOne(data) {
     requirementsContainer.appendChild(newBlock);
   }
 
-  console.log('Stage One + requirements populated:', requirements);
+  console.log('Stage 1ne + requirements populated:', requirements);
 }
 
 
