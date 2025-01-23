@@ -187,6 +187,17 @@ function createRequirementBlock(blockIndex, reqItem, productList = [], distribut
   console.log('Product List:', productList);
   console.log('Distributor List:', distributorList);
 
+  // Ensure productList and distributorList are arrays
+  if (!Array.isArray(productList)) {
+    console.warn('Invalid product list format, defaulting to empty array.');
+    productList = [];
+  }
+
+  if (!Array.isArray(distributorList)) {
+    console.warn('Invalid distributor list format, defaulting to empty array.');
+    distributorList = [];
+  }
+
   const newBlock = document.createElement('div');
   newBlock.classList.add('requirement-block', 'p-2', 'rounded', 'shadow-widget');
   newBlock.dataset.index = blockIndex;
@@ -205,20 +216,22 @@ function createRequirementBlock(blockIndex, reqItem, productList = [], distribut
       <div class="col-md-3">
         <select name="product_one[]" class="form-control custom-select productFetch">
           <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
-          ${Array.isArray(productList) ? productList.map(product => `
+          ${productList.map(product => `
             <option value="${escapeHtml(product)}" ${product === selectedProduct ? 'selected' : ''}>
               ${escapeHtml(product)}
             </option>
-          `).join('') : ''}
+          `).join('')}
           <option value="add_new_product">+ Add New Product...</option>
         </select>
       </div>
       <div class="col-md-3">
         <select name="distributor_one[]" class="form-control custom-select distributorFetch">
           <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
-          ${Array.isArray(distributorList) ? distributorList.map(distributor => `
-            <option value="${distributor}" ${distributor === selectedDistributor ? 'selected' : ''}>${distributor}</option>
-          `).join('') : ''}
+          ${distributorList.map(distributor => `
+            <option value="${escapeHtml(distributor)}" ${distributor === selectedDistributor ? 'selected' : ''}>
+              ${escapeHtml(distributor)}
+            </option>
+          `).join('')}
           <option value="add_new">+ Add New Distributor...</option>
         </select>
       </div>
@@ -232,7 +245,6 @@ function createRequirementBlock(blockIndex, reqItem, productList = [], distribut
 
   return newBlock;
 }
-
 
     function fetchStageTwo(data,projectId){
         document.getElementById('stage-two-start').value = data.stages.stage_two.start_date || 'No Data';
