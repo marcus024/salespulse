@@ -1582,7 +1582,7 @@ include("../auth/db.php");
                                                         }
 
                                                         .task-widget .edittask i:hover {
-                                                            color: #009394; /* Hover color for edit icon */
+                                                            color: #f9ce45; /* Hover color for edit icon */
                                                         }
 
                                                         .task-widget .deletetask i:hover {
