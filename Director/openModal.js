@@ -232,7 +232,7 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
     </div>
     <div class="row mb-3">
       <div class="col-md-4">
-        <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
+        <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${selectedProduct}">
       </div>
        <div class="col-md-3">
         <select name="product_one[]" class="form-control custom-select productFetch">
