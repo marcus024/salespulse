@@ -1630,7 +1630,7 @@ include("../auth/db.php");
 
                                                     <style>
                                                         /* Task Widget Styling */
-                                                        .task-widget {
+                                                        .taskScroll {
                                                             background-color: #1f2024; /* Dark background */
                                                             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Elevation shadow */
                                                             color: white; /* Text color */
@@ -1642,22 +1642,22 @@ include("../auth/db.php");
                                                         }
 
                                                         /* Task Details Text */
-                                                        .task-widget label {
+                                                        .taskScroll label {
                                                             font-size: 12px; /* Compact text size */
                                                             color: #bbb; /* Slightly lighter text */
                                                         }
 
                                                         /* Action Buttons */
-                                                        .task-widget .edittask i, .task-widget .deletetask i {
+                                                        .taskScroll .edittask i, .taskScroll .deletetask i {
                                                             font-size: 14px; /* Icon size */
                                                             transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
                                                         }
 
-                                                        .task-widget .edittask i:hover {
+                                                        .taskScroll .edittask i:hover {
                                                             color: #f9ce45; /* Hover color for edit icon */
                                                         }
 
-                                                        .task-widget .deletetask i:hover {
+                                                        .taskScroll .deletetask i:hover {
                                                             color: darkred; /* Hover color for delete icon */
                                                         }
 
