@@ -412,7 +412,7 @@ include("../auth/db.php");
                 <span>&copy; <span id="current-year"></span></span>
             </li>
         </ul>
-        <!-- End of Sidebar -->
+        
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
            
