@@ -1290,7 +1290,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
         console.log("Backend response:", result);
 
         if (result.message === `Step ${currentStep} data processed successfully`) {
-            // alert(`Step ${currentStep} saved successfully!`);
+            alert(`Step ${currentStep} saved successfully!`);
             // showNotification('Data saved successfully!', true);
             showNotification("Stage ${currentStep} saved successfully!"); 
         } else {
