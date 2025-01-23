@@ -1029,7 +1029,7 @@
     <script src="modal_req/duplicate_req_one.js"></script>
     <script>
         // Global function to display the notification bar
-        function showNotification(message = "Operation completed successfully!", duration = 3000) {
+        function show_n(message = "Operation completed successfully!", duration = 3000) {
             const notif_bar_r = document.getElementById('notif_bar_r');
             const notificationMessage = document.getElementById('notificationMessage');
 
