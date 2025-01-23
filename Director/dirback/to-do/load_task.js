@@ -18,7 +18,7 @@ $(document).ready(function () {
                     }
                     response.tasks.forEach(task => {
                         const taskHtml = `
-                            <div class="d-flex flex-column p-2 border rounded" style="height: auto; min-height: 40px;">
+                            
                                 <div>
                                     <input type="checkbox" id="task${task.todo_id}" style="margin-right: 10px;">
                                     <label for="task${task.todo_id}" style="font-size: 10px;">${task.taskname}</label>
@@ -40,7 +40,6 @@ $(document).ready(function () {
                                         <i class="fas fa-trash" style="font-size: 12px; color: red;"></i>
                                     </a>
                                 </div>
-                            </div>
                             
                             `;
                         taskList.append(taskHtml); 
