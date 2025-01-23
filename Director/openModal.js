@@ -233,7 +233,7 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
               ${product}
             </option>
           `).join('')}
-          <option value="add_new_product">+ Add New Product...</option>
+        //   <option value="add_new_product">+ Add New Product...</option>
         </select>
       </div>
       <div class="col-md-3">
