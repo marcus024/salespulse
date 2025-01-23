@@ -1028,25 +1028,29 @@
     <!-- javascript -->
     <script src="modal_req/duplicate_req_one.js"></script>
     <script>
-        // Global function to display the notification bar
-        function show_n(message = "Operation completed successfully!", duration = 3000) {
-            const notif_bar_r = document.getElementById('notif_bar_r');
-            const notificationMessage = document.getElementById('notificationMessage');
+      function showNotification(message = "Operation completed successfully!", duration = 3000) {
+    const notif_bar_r = document.getElementById('notif_bar_r');
+    const notificationMessage = document.getElementById('notificationMessage');
 
-            if (!notif_bar_r || !notificationMessage) {
-                console.error("Notification bar elements are missing in the DOM.");
-                return;
-            }
+    if (!notif_bar_r || !notificationMessage) {
+        console.error("Notification bar elements are missing in the DOM.");
+        return;
+    }
 
-            // Set the message and show the notification
-            notificationMessage.textContent = message;
-            notif_bar_r.style.display = 'flex';
+    // Debug: Ensure the notification is starting hidden
+    console.log("Notification bar initial display:", window.getComputedStyle(notif_bar_r).display);
 
-            // Hide the notification after the specified duration
-            setTimeout(() => {
-                notif_bar_r.style.display = 'none';
-            }, duration);
-        }
+    // Set the message and show the notification
+    notificationMessage.textContent = message;
+    notif_bar_r.style.display = 'flex';
+
+    // Hide the notification after the specified duration
+    setTimeout(() => {
+        console.log("Hiding notification bar after duration.");
+        notif_bar_r.style.display = 'none';
+    }, duration);
+}
+
 
     </script>
                 
