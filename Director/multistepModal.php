@@ -994,7 +994,7 @@
                                 </div>
                                 <!-- Notification Bar -->
                                 <div id="notif_bar_r" style="
-                                    display: flex;
+                                    display: none;
                                     position: absolute;
                                     left: 10px;
                                     bottom: 10px;
