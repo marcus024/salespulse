@@ -1560,23 +1560,19 @@ include("../auth/db.php");
                                                     padding: 10px; /* Compact padding */
                                                     line-height: 1.2; /* Reduce spacing between text */
                                                 }
-
                                                 /* Task Details Text */
                                                 .task-widget label {
                                                     font-size: 12px; /* Compact text size */
                                                     color: #bbb; /* Slightly lighter text */
                                                 }
-
                                                 /* Action Buttons */
                                                 .task-widget .edittask i, .task-widget .deletetask i {
                                                     font-size: 14px; /* Icon size */
                                                     transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
                                                 }
-
                                                 .task-widget .edittask i:hover {
                                                     color: #009394; /* Hover color for edit icon */
                                                 }
-
                                                 .task-widget .deletetask i:hover {
                                                     color: darkred; /* Hover color for delete icon */
                                                 }
