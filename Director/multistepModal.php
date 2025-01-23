@@ -1616,7 +1616,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
                         <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
                     </div>
                     <div class="col-md-2">
-                        <!-- Remove Button -->
+                     
                         <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
                             <i class="fas fa-minus"></i>
                         </button>
@@ -1633,7 +1633,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
                 });
             });
         </script> -->
-        <script>
+        <!-- <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const requirementFieldsContainer = document.getElementById('requirement-fields-container4');
                 const addRequirementButton = document.getElementById('addRequirement4');
@@ -1672,7 +1672,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
                     }
                 });
             });
-        </script>
+        </script> -->
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const requirementFieldsContainer = document.getElementById('requirement-fields-container5');
