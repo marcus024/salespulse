@@ -10,7 +10,7 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
-async function loadProducts() {
+function loadProducts() {
   return $.ajax({
     url: './dirback/fetchAll_product.php', 
     type: 'GET',
@@ -30,7 +30,7 @@ async function loadProducts() {
   });
 }
 
-async function fillExistingProductSelects() {
+function fillExistingProductSelects() {
   $('.productFetch')
     .find('option:not([value="add_new_product"]):not(:disabled)')
     .remove();
@@ -45,7 +45,7 @@ async function fillExistingProductSelects() {
   });
 }
 
-async function fillOneProductSelect($select) {
+function fillOneProductSelect($select) {
   $select.find('option:not([value="add_new_product"]):not(:disabled)').remove();
 
   allProducts.forEach(prod => {
@@ -55,7 +55,7 @@ async function fillOneProductSelect($select) {
   });
 }
 
-async function initProductChangeHandler() {
+function initProductChangeHandler() {
   $(document).on('change', '.productFetch', function() {
     if ($(this).val() === 'add_new_product') {
       const newProduct = prompt("Enter the new product name:");
