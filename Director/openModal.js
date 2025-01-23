@@ -114,8 +114,7 @@
         });
     }
 
-
- async function fetchStageOne(data) {
+ function fetchStageOne(data) {
   // Basic Stage One fields
   document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
   document.getElementById('end-date-placeholder').value = data.stages.stage_one.end_date || 'No Data';
@@ -136,7 +135,7 @@
   // Step 1: Fetch the product and distributor lists
   let productList = [];
   let distributorList = [];
-  await $.when(
+  $.when(
     loadProducts().then(products => {
       productList = products; // Store fetched product list
     }),
