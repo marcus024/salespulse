@@ -1339,7 +1339,7 @@ include("../auth/db.php");
                                             </style>
                                             <div class="card-body scheduleScroll" style="height: 180px; overflow-y: auto; padding-top: 0.5rem; padding-bottom: 5px;">
                                                 <!-- Schedule Widget -->
-                                                 <div class="d-flex flex-column gap-3">
+                                                 <div class="d-flex flex-column gap-2">
                                                     <div id="scheduleContainer"></div>
                                                     <?php
                                                 
