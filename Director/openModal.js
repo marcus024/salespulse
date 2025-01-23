@@ -235,27 +235,33 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
         <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${selectedDistributor}">
       </div>
       <div class="col-md-3">
-        <select name="product_one[]" class="form-control custom-select productFetch">
-          <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
-          ${productList.map(product => `
-            <option value="${escapeHtml(product)}" ${product.trim() === selectedProduct.trim() ? 'selected' : ''}>
-              ${product}
-            </option>
-          `).join('')}
-          <option value="add_new_product">+ Add New Product...</option>
-        </select>
-      </div>
-      <div class="col-md-3">
-        <select name="distributor_one[]" class="form-control custom-select distributorFetch">
-          <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
-          ${distributorList.map(distributor => `
-            <option value="${escapeHtml(distributor)}" ${distributor === selectedDistributor ? 'selected' : ''}>
-              ${escapeHtml(distributor)}
-            </option>
-          `).join('')}
-          <option value="add_new">+ Add New Distributor...</option>
-        </select>
-      </div>
+    <select name="product_one[]" class="form-control custom-select productFetch">
+      <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
+      ${productList.map(product => `
+        <option value="${escapeHtml(product)}" ${product.trim().toLowerCase() === selectedProduct.trim().toLowerCase() ? 'selected' : ''}>
+          ${escapeHtml(product)}
+        </option>
+      `).join('')}
+      ${!productList.some(product => product.trim().toLowerCase() === selectedProduct.trim().toLowerCase()) && selectedProduct
+        ? `<option value="${escapeHtml(selectedProduct)}" selected>${escapeHtml(selectedProduct)}</option>`
+        : ''}
+      <option value="add_new_product">+ Add New Product...</option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <select name="distributor_one[]" class="form-control custom-select distributorFetch">
+      <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
+      ${distributorList.map(distributor => `
+        <option value="${escapeHtml(distributor)}" ${distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase() ? 'selected' : ''}>
+          ${escapeHtml(distributor)}
+        </option>
+      `).join('')}
+      ${!distributorList.some(distributor => distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase()) && selectedDistributor
+        ? `<option value="${escapeHtml(selectedDistributor)}" selected>${escapeHtml(selectedDistributor)}</option>`
+        : ''}
+      <option value="add_new">+ Add New Distributor...</option>
+    </select>
+  </div>
       <div class="col-md-2 text-end">
         <button type="button" class="btn btn-danger btn-sm removeRequirement">
           <i class="fas fa-minus"></i> Remove
