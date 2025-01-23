@@ -132,21 +132,18 @@
     });
   }
 
-  // Step 1: Fetch the product and distributor lists
+  // Step 1: Fetch the product and distributor lists using Promise.all
   let productList = [];
   let distributorList = [];
 
   Promise.all([loadProducts(), loadDistributors()])
     .then(([products, distributors]) => {
-      // Validate the fetched data
-      productList = Array.isArray(products) ? products : [];
-      distributorList = Array.isArray(distributors) ? distributors : [];
+      productList = products; // Store fetched product list
+      distributorList = distributors; // Store fetched distributor list
 
-      if (!productList.length) console.warn('Product list is empty or invalid.');
-      if (!distributorList.length) console.warn('Distributor list is empty or invalid.');
-
-      console.log("Fetched Product List:", productList);
-      console.log("Fetched Distributor List:", distributorList);
+      console.log("Products and Distributors fetched successfully.");
+      console.log("Product List:", productList);
+      console.log("Distributor List:", distributorList);
 
       // Step 2: Fetch requirements array
       const requirements = (data.stages.stage_one && data.stages.stage_one.requirements) || [];
@@ -159,7 +156,7 @@
       }
 
       // Clear any existing content
-      requirementsContainer.innerHTML = '';
+    //   requirementsContainer.innerHTML = '';
 
       // Step 4: Populate requirements dynamically
       if (requirements.length > 0) {
@@ -174,13 +171,12 @@
         requirementsContainer.appendChild(newBlock);
       }
 
-      console.log('Stage One + requirements populated:', requirements);
+      console.log('Stage Osne + requirements populated:', requirements);
     })
     .catch(error => {
       console.error("Error fetching Products or Distributors:", error);
     });
 }
-
 
 function escapeHtml(text) {
   const map = {
