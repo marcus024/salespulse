@@ -1314,6 +1314,7 @@ include("../auth/db.php");
                                             <style>
                                                 .scheduleScroll::-webkit-scrollbar {
                                                     width: 4px;
+                                                    height: 4px;
                                                 }
 
                                                 .scheduleScroll::-webkit-scrollbar-thumb {
