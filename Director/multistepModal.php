@@ -992,6 +992,25 @@
                                     </div>
                                     <div id="salesPulse">Sales Pulse</div>
                                 </div>
+                                <!-- Notification Bar -->
+                                <div id="notificationBar" style="
+                                    display: none;
+                                    position: absolute;
+                                    left: 10px;
+                                    bottom: 10px;
+                                    background-color: #d4edda;
+                                    color: #155724;
+                                    padding: 10px 15px;
+                                    border-radius: 5px;
+                                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                                    font-size: 14px;
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 8px;
+                                ">
+                                    <i class="fas fa-check-circle" style="color: #28a745; font-size: 16px;"></i>
+                                    <span id="notificationMessage">Saved successfully!</span>
+                                </div>
                                 <button type="button" class="btn btn-danger " id="deleteButton" style="border-color: red; background-color: #fff; color: red; font-size: 12px;">
                                     <i class="fas fa-trash-alt"></i> Delete
                                 </button>
@@ -1008,7 +1027,28 @@
 
     <!-- javascript -->
     <script src="modal_req/duplicate_req_one.js"></script>
-    
+    <script>
+        // Global function to display the notification bar
+        function showNotification(message = "Operation completed successfully!", duration = 3000) {
+            const notificationBar = document.getElementById('notificationBar');
+            const notificationMessage = document.getElementById('notificationMessage');
+
+            if (!notificationBar || !notificationMessage) {
+                console.error("Notification bar elements are missing in the DOM.");
+                return;
+            }
+
+            // Set the message and show the notification
+            notificationMessage.textContent = message;
+            notificationBar.style.display = 'flex';
+
+            // Hide the notification after the specified duration
+            setTimeout(() => {
+                notificationBar.style.display = 'none';
+            }, duration);
+        }
+
+    </script>
                 
     <script>
         let currentStep = 1;
@@ -1252,6 +1292,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
         if (result.message === `Step ${currentStep} data processed successfully`) {
             alert(`Step ${currentStep} saved successfully!`);
             // showNotification('Data saved successfully!', true);
+            showNotification("Step data saved successfully!"); 
         } else {
             alert(`Unexpected response: ${result.message}`);
         }
