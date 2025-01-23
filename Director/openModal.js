@@ -173,7 +173,7 @@
     requirementsContainer.appendChild(newBlock);
   }
 
-  console.log('Stage asz + requirements populated:', requirements);
+  console.log('Stage aasz + requirements populated:', requirements);
 }
 
 function createRequirementBlock(blockIndex, reqItem, productList, distributorList) {
@@ -233,7 +233,7 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
               ${product}
             </option>
           `).join('')}
-        //   <option value="add_new_product">+ Add New Product...</option>
+      
         </select>
       </div>
       <div class="col-md-3">
