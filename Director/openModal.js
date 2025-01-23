@@ -173,7 +173,7 @@
     requirementsContainer.appendChild(newBlock);
   }
 
-  console.log('Stage Oxxnxxe + requirements populated:', requirements);
+  console.log('Stage Oxxnxe + requirements populated:', requirements);
 }
 function escapeHtml(text) {
   const map = {
@@ -232,20 +232,17 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
     </div>
     <div class="row mb-3">
       <div class="col-md-4">
-        <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${selectedProduct}">
+        <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
       </div>
        <div class="col-md-3">
         <select name="product_one[]" class="form-control custom-select productFetch">
-            <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
-            ${productList.map(product => `
-            <option value="${escapeHtml(product)}" ${product.trim().toLowerCase() === selectedProduct.trim().toLowerCase() ? 'selected' : ''}>
-                ${escapeHtml(product)}
+          <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
+          ${productList.map(product => `
+            <option value="${escapeHtml(product)}" ${product.trim() === selectedProduct.trim() ? 'selected' : ''}>
+              ${escapeHtml(product)}
             </option>
-            `).join('')}
-            ${!productList.some(product => product.trim().toLowerCase() === selectedProduct.trim().toLowerCase()) && selectedProduct
-            ? `<option value="${escapeHtml(selectedProduct)}" selected>${escapeHtml(selectedProduct)}</option>`
-            : ''}
-            <option value="${escapeHtml(product)}">${escapeHtml(product)}</option>
+          `).join('')}
+          <option value="add_new_product">+ Add New Product...</option>
         </select>
       </div>
       <div class="col-md-3">
