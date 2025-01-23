@@ -135,8 +135,8 @@
 
 
   // 3) Fetch product and distributor lists
-  const productList = data.stages.stage_one.requirements.product_one || [];
-  const distributorList = data.stages.stage_one.requirements.distributor_one || [];
+  const productList = data.stages.stage_one.product_one || [];
+  const distributorList = data.stages.stage_one.distributor_one || [];
 
   // 4) Fetch requirements array
   const requirements = (data.stages.stage_one && data.stages.stage_one.requirements) || [];
@@ -166,14 +166,6 @@
   console.log('Stage One + requirements populated:', requirements);
 }
 
-/**
- * Create a new Requirement Block Dynamically
- * @param {number} blockIndex - The requirement number
- * @param {object} reqItem - The requirement data from the backend
- * @param {array} productList - List of available products
- * @param {array} distributorList - List of available distributors
- * @returns {HTMLElement} - The created requirement block
- */
 function createRequirementBlock(blockIndex, reqItem, productList, distributorList) {
   const requirementId = reqItem.requirement_id_1 || `st1rq${blockIndex}`;
   const requirementText = reqItem.requirement_one || '';
@@ -181,7 +173,7 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
   const selectedDistributor = reqItem.distributor_one || '';
 
   const newBlock = document.createElement('div');
-  newBlock.classList.add('requirement-block', 'p-3', 'rounded', 'shadow-widget');
+  newBlock.classList.add('requirement-block', 'p-2', 'rounded', 'shadow-widget');
   newBlock.dataset.index = blockIndex;
 
   // Populate the block content
@@ -223,8 +215,6 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
 
   return newBlock;
 }
-
-
 
     function fetchStageTwo(data,projectId){
         document.getElementById('stage-two-start').value = data.stages.stage_two.start_date || 'No Data';
