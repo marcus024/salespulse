@@ -2,7 +2,7 @@
 let allDistrubutors = [];  
 
 
-function loadDistributors() {
+async function loadDistributors() {
   return $.ajax({
     url: './dirback/fetchAll_distributor.php',
     type: 'GET',

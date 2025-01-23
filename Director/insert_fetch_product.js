@@ -10,7 +10,7 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
-function loadProducts() {
+async function loadProducts() {
   return $.ajax({
     url: './dirback/fetchAll_product.php', 
     type: 'GET',
