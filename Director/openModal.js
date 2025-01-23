@@ -115,7 +115,7 @@
     }
 
 
-async function fetchStageOne(data) {
+ async function fetchStageOne(data) {
   // Basic Stage One fields
   document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
   document.getElementById('end-date-placeholder').value = data.stages.stage_one.end_date || 'No Data';
@@ -136,19 +136,18 @@ async function fetchStageOne(data) {
   // Step 1: Fetch the product and distributor lists
   let productList = [];
   let distributorList = [];
-  try {
-    await $.when(
-      loadProducts().then(products => {
-        productList = Array.isArray(products) ? products : []; // Ensure it's an array
-      }),
-      loadDistributors().then(distributors => {
-        distributorList = Array.isArray(distributors) ? distributors : []; // Ensure it's an array
-      })
-    );
+  await $.when(
+    loadProducts().then(products => {
+      productList = products; // Store fetched product list
+    }),
+    loadDistributors().then(distributors => {
+      distributorList = distributors; // Store fetched distributor list
+    })
+  ).done(() => {
     console.log("Products and Distributors fetched successfully.");
-  } catch (error) {
-    console.error("Error fetching Products or Distributors:", error);
-  }
+  }).fail(() => {
+    console.error("Error fetching Products or Distributors.");
+  });
 
   // Step 2: Fetch requirements array
   const requirements = (data.stages.stage_one && data.stages.stage_one.requirements) || [];
@@ -159,6 +158,8 @@ async function fetchStageOne(data) {
     console.error('#requirementsContainer not found in DOM!');
     return;
   }
+
+//   requirementsContainer.innerHTML = ''; 
 
   // Step 4: Populate requirements dynamically
   if (requirements.length > 0) {
@@ -173,9 +174,8 @@ async function fetchStageOne(data) {
     requirementsContainer.appendChild(newBlock);
   }
 
-  console.log('Stage 1ne + requirements populated:', requirements);
+  console.log('Stage 1 + requirements populated:', requirements);
 }
-
 
 function createRequirementBlock(blockIndex, reqItem, productList = [], distributorList = []) {
   const requirementId = reqItem.requirement_id_1 || `st1rq${blockIndex}`;
