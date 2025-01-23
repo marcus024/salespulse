@@ -1631,7 +1631,7 @@ include("../auth/db.php");
                                                     <style>
                                                         /* Task Widget Styling */
                                                         .task-widget {
-                                                            background-color: #2a2925; /* Dark background */
+                                                            background-color: #1f2024; /* Dark background */
                                                             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Elevation shadow */
                                                             color: white; /* Text color */
                                                             border: none; /* Remove borders */
