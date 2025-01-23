@@ -1624,9 +1624,10 @@ include("../auth/db.php");
                                             <div class="card-body todo-scroll" style="height: 120px; overflow-y: auto; background-color: #1f2024;">
                                                 <!-- To-Do List Widget -->
                                                 <div class="d-flex flex-column gap-2">
-                                                    <div id="taskList" class="d-flex flex-column gap-2 p-2  rounded" style="height: auto; min-height: 40px; border:none">
-                                                    <!-- Tasks will be dynamically appended here -->
+                                                    <div id="taskList" class="d-flex flex-column gap-2 p-2 rounded taskScroll" style="height: auto; min-height: 40px; border: none;">
+                                                        <!-- Tasks will be dynamically appended here -->
                                                     </div>
+
                                                     <style>
                                                         /* Task Widget Styling */
                                                         .task-widget {
