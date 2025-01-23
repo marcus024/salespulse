@@ -124,7 +124,7 @@
   document.getElementById('dealSize1').value = data.stages.stage_one.deal_size || 'No Data';
   document.getElementById('stageremarks1').value = data.stages.stage_one.remarks || 'No Data';
 
-  // 2) Technology fetch logic
+  // 2) Fetch Technology Select
   const technology1 = document.getElementById('technologySelect');
   const techValue = data.stages.stage_one.technology || 'Select';
   if (technology1) {
@@ -133,18 +133,18 @@
     });
   }
 
-  // Initialize handlers for product and distributor dropdowns
+  // Initialize product and distributor handlers
   initProductChangeHandler();
   initDistributorChangeHandler();
 
   // Wait for products and distributors to load
   await Promise.all([loadProducts(), loadDistributors()]);
 
-  // 3) Product and distributor lists
+  // 3) Fetch product and distributor lists
   const productList = data.stages.stage_one.product_one || [];
   const distributorList = data.stages.stage_one.distributor_one || [];
 
-  // 4) Requirements array
+  // 4) Fetch requirements array
   const requirements = (data.stages.stage_one && data.stages.stage_one.requirements) || [];
 
   // 5) Container for requirements
@@ -154,9 +154,9 @@
     return;
   }
 
-//   requirementsContainer.innerHTML = '';
+  requirementsContainer.innerHTML = ''; // Clear existing blocks
 
-  // 6) Populate requirements dynamically
+  // 6) Populate existing requirements
   if (requirements.length > 0) {
     requirements.forEach((reqItem, index) => {
       const blockIndex = index + 1;
@@ -164,15 +164,25 @@
       requirementsContainer.appendChild(newBlock);
     });
   } else {
-    // Default block if no requirements exist
+    // If no requirements exist, add a default requirement block
     const newBlock = createRequirementBlock(1, {}, productList, distributorList);
     requirementsContainer.appendChild(newBlock);
   }
 
+  // 7) Add "Add Requirement" button at the bottom
+  addAddRequirementButton(requirementsContainer, productList, distributorList);
+
   console.log('Stage One + requirements populated:', requirements);
 }
 
-
+/**
+ * Create a new Requirement Block Dynamically
+ * @param {number} blockIndex - The requirement number
+ * @param {object} reqItem - The requirement data from the backend
+ * @param {array} productList - List of available products
+ * @param {array} distributorList - List of available distributors
+ * @returns {HTMLElement} - The created requirement block
+ */
 function createRequirementBlock(blockIndex, reqItem, productList, distributorList) {
   const requirementId = reqItem.requirement_id_1 || `st1rq${blockIndex}`;
   const requirementText = reqItem.requirement_one || '';
@@ -183,7 +193,7 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
   newBlock.classList.add('requirement-block', 'p-3', 'rounded', 'shadow-widget');
   newBlock.dataset.index = blockIndex;
 
-  // Set up the block content
+  // Populate the block content
   newBlock.innerHTML = `
     <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
       Requirement ${blockIndex}
@@ -191,11 +201,9 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
     <input type="hidden" name="requirement_id_1[]" value="${requirementId}">
 
     <div class="row mb-3">
-      <!-- Requirement Input -->
       <div class="col-md-4">
         <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
       </div>
-      <!-- Product Dropdown -->
       <div class="col-md-3">
         <select name="product_one[]" class="form-control custom-select productFetch">
           <option disabled>Select</option>
@@ -205,7 +213,6 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
           <option value="add_new_product">+ Add New Product...</option>
         </select>
       </div>
-      <!-- Distributor Dropdown -->
       <div class="col-md-3">
         <select name="distributor_one[]" class="form-control custom-select distributorFetch">
           <option disabled>Select</option>
@@ -215,7 +222,6 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
           <option value="add_new">+ Add New Distributor...</option>
         </select>
       </div>
-      <!-- Remove Button -->
       <div class="col-md-2 text-end">
         <button type="button" class="btn btn-danger btn-sm removeRequirement">
           <i class="fas fa-minus"></i> Remove
@@ -225,6 +231,32 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
   `;
 
   return newBlock;
+}
+
+/**
+ * Adds an "Add Requirement" Button
+ * @param {HTMLElement} container - The requirements container
+ * @param {array} productList - List of products
+ * @param {array} distributorList - List of distributors
+ */
+function addAddRequirementButton(container, productList, distributorList) {
+  const addBtnContainer = document.createElement('div');
+  addBtnContainer.classList.add('text-center', 'mt-3');
+
+  const addBtn = document.createElement('button');
+  addBtn.type = 'button';
+  addBtn.classList.add('btn', 'btn-primary');
+  addBtn.textContent = 'Add Requirement';
+
+  // Add logic for adding new requirement blocks
+  addBtn.addEventListener('click', function () {
+    const blockIndex = container.querySelectorAll('.requirement-block').length + 1;
+    const newBlock = createRequirementBlock(blockIndex, {}, productList, distributorList);
+    container.appendChild(newBlock);
+  });
+
+  addBtnContainer.appendChild(addBtn);
+  container.appendChild(addBtnContainer);
 }
 
 
