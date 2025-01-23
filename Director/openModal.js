@@ -133,24 +133,35 @@
     });
   }
 
-  // Fetch product and distributor lists
-  const productList = data.stages.stage_one.product_one || [];
-  const distributorList = data.stages.stage_one.distributor_one || [];
+  // Step 1: Fetch the product and distributor lists
+  let productList = [];
+  let distributorList = [];
+  await $.when(
+    loadProducts().then(products => {
+      productList = products; // Store fetched product list
+    }),
+    loadDistributors().then(distributors => {
+      distributorList = distributors; // Store fetched distributor list
+    })
+  ).done(() => {
+    console.log("Products and Distributors fetched successfully.");
+  }).fail(() => {
+    console.error("Error fetching Products or Distributors.");
+  });
 
-
-  //Function to fetch Product and Distributor list
-
-  // Fetch requirements array
+  // Step 2: Fetch requirements array
   const requirements = (data.stages.stage_one && data.stages.stage_one.requirements) || [];
 
-  //  Container for requirements
+  // Step 3: Get the container for requirements
   const requirementsContainer = document.getElementById('requirementsContainer');
   if (!requirementsContainer) {
     console.error('#requirementsContainer not found in DOM!');
     return;
   }
 
-  // 6) Populate existing requirements
+//   requirementsContainer.innerHTML = ''; 
+
+  // Step 4: Populate requirements dynamically
   if (requirements.length > 0) {
     requirements.forEach((reqItem, index) => {
       const blockIndex = index + 1;
