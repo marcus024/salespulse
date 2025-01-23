@@ -222,11 +222,11 @@
       <div class="row mb-3">
         <div class="col-md-4">
           <input name="requirement_one[]"
-                 style="width: 100%;"
-                 type="text"
-                 class="form-control"
-                 placeholder="e.g. Sample Requirement"
-                 value="${reqItem.requirement_one || ''}">
+            style="width: 100%;"
+            type="text"
+            class="form-control"
+            placeholder="e.g. Sample Requirement"
+            value="${reqItem.requirement_one || ''}">
         </div>
         <div class="col-md-3">
           <select name="product_one[]" class="form-control custom-select productFetch">
