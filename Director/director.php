@@ -1624,13 +1624,13 @@ include("../auth/db.php");
                                             <div class="card-body todo-scroll" style="height: 120px; overflow-y: auto; background-color: #1f2024;">
                                                 <!-- To-Do List Widget -->
                                                 <div class="d-flex flex-column gap-2">
-                                                    <div id="taskList" class="d-flex flex-column gap-2 p-2 rounded " style="height: auto; min-height: 40px; border: none; margin-bottom:5px;">
+                                                    <div id="taskList" class="d-flex flex-column gap-2 p-2 rounded taskScroll" style="height: auto; min-height: 40px; border: none; margin-bottom:5px;">
                                                         <!-- Tasks will be dynamically appended here -->
                                                     </div>
 
                                                     <style>
                                                         /* Task Widget Styling */
-                                                        .taskScroll {
+                                                        .task-widget {
                                                             background-color: #1f2024; /* Dark background */
                                                             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Elevation shadow */
                                                             color: white; /* Text color */
@@ -1642,22 +1642,22 @@ include("../auth/db.php");
                                                         }
 
                                                         /* Task Details Text */
-                                                        .taskScroll label {
+                                                        .task-widget label {
                                                             font-size: 12px; /* Compact text size */
                                                             color: #bbb; /* Slightly lighter text */
                                                         }
 
                                                         /* Action Buttons */
-                                                        .taskScroll .edittask i, .taskScroll .deletetask i {
+                                                        .task-widget .edittask i, .task-widget .deletetask i {
                                                             font-size: 14px; /* Icon size */
                                                             transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
                                                         }
 
-                                                        .taskScroll .edittask i:hover {
+                                                        .task-widget .edittask i:hover {
                                                             color: #f9ce45; /* Hover color for edit icon */
                                                         }
 
-                                                        .taskScroll .deletetask i:hover {
+                                                        .task-widget .deletetask i:hover {
                                                             color: darkred; /* Hover color for delete icon */
                                                         }
 
