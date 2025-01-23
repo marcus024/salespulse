@@ -1066,7 +1066,6 @@
             document.getElementById(`step${step}`).classList.remove('d-none');
         }
 
-        
         function updateProjectId() {
             if (currentStep === 1) {
                 const projectIdElement = document.getElementById('project-id-placeholder');
@@ -1189,7 +1188,6 @@
                 console.error("Error: Project ID not found.");
                 return;
             }
-
             try {
                 const response = await fetch('delete.php', {
                     method: 'POST',
@@ -1257,8 +1255,6 @@ document.getElementById('saveButton').addEventListener('click', async () => {
         inputValues[name] = field.value.trim();
     }
     });
-
-
     console.log("Collected input values:", inputValues);
 
     const dataToSend = {
@@ -1294,8 +1290,6 @@ document.getElementById('saveButton').addEventListener('click', async () => {
 
         if (result.message === `Step ${currentStep} data processed successfully`) {
             alert(`Step ${currentStep} saved successfully!`);
-            // showNotification('Data saved successfully!', true);
-            // showNotification("Stage ${currentStep} saved successfully!"); 
             showNotif_bar(`Step ${currentStep} saved successfully!`);
         } else {
             alert(`Unexpected response: ${result.message}`);
