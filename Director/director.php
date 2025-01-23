@@ -420,7 +420,7 @@ include("../auth/db.php");
                <!-- Fixed Topbar -->
                 <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:#15151a; padding-right:30px; padding-left:220px; z-index: 300;">
                     <!-- Left Section: Home and Welcome Message -->
-                    <div class="d-flex align-items-center" style="margin-top: 10px;"> <!-- Added margin-top to lower the left section -->
+                    <div class="d-flex align-items-center" style="margin-top: 10px;"> 
                         <div>
                             <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Home</h1> 
                             <p style="font-size:15px; color: white; font-family:'Poppins'; margin: 0px;">
