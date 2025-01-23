@@ -18,10 +18,9 @@ $(document).ready(function () {
                     }
                     response.tasks.forEach(task => {
                         const taskHtml = `
-                            
                                 <div>
                                     <input type="checkbox" id="task${task.todo_id}" style="margin-right: 10px;">
-                                    <label for="task${task.todo_id}" style="font-size: 10px;">${task.taskname}</label>
+                                    <label for="task${task.todo_id}" style="color:white; font-size: 10px;">${task.taskname}</label>
                                 </div>
                                 <div class="d-flex gap-1 justify-content-end mt-1">
                                     <a href="#" class="edittask" 
