@@ -115,7 +115,6 @@
     }
 
 
-
   async function fetchStageOne(data) {
   // 1) Basic Stage One fields
   document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
