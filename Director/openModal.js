@@ -188,7 +188,7 @@ function escapeHtml(text) {
   };
   return text.replace(/[&<>"']/g, m => map[m]);
 }
-function createRequirementBlock(blockIndex, reqItem, productList, distributorList) {
+function createRequirementBlock(blockIndex, reqItem, productList=[], distributorList=[]) {
   const requirementId = reqItem.requirement_id_1 || `st1rq${blockIndex}`;
   const requirementText = reqItem.requirement_one || '';
   const selectedProduct = reqItem.product_one || '';
