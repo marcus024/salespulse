@@ -133,13 +133,9 @@
     });
   }
 
-  initProductChangeHandler();
-  initDistributorChangeHandler();
-   $.when( loadProducts(), loadDistributors() ).done(function() {
-    // If needed, do something after both are loaded
-  });
-  // Fetch product lists
-
+  // Fetch product and distributor lists
+  const productList = data.stages.stage_one.product_one || [];
+  const distributorList = data.stages.stage_one.distributor_one || [];
 
 
   //Function to fetch Product and Distributor list
@@ -200,12 +196,18 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
       <div class="col-md-3">
         <select name="product_one[]" class="form-control custom-select productFetch">
           <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
+          ${productList.map(product => `
+            <option value="${product}" ${product === selectedProduct ? 'selected' : ''}>${product}</option>
+          `).join('')}
           <option value="add_new_product">+ Add New Product...</option>
         </select>
       </div>
       <div class="col-md-3">
         <select name="distributor_one[]" class="form-control custom-select distributorFetch">
           <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
+          ${distributorList.map(distributor => `
+            <option value="${distributor}" ${distributor === selectedDistributor ? 'selected' : ''}>${distributor}</option>
+          `).join('')}
           <option value="add_new">+ Add New Distributor...</option>
         </select>
       </div>
@@ -216,16 +218,6 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
       </div>
     </div>
   `;
-
-    const productList = newBlock.querySelector('.productFetch');
-  if (newProductSelect) {
-      fillOneProductSelect($(newProductSelect));
-    }
-  //Fetch distributor lists
-  const distributorList = newBlock.querySelector('.distributorFetch');
-  if (newDistributorSelect) {
-      fillOneDistributorSelect($(newDistributorSelect));
-    }
 
   return newBlock;
 }
