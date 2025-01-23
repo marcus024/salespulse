@@ -115,158 +115,124 @@
     }
 
 
-  async function fetchStageOne(data) {
+ async function fetchStageOne(data) {
   // 1) Basic Stage One fields
   document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
-  document.getElementById('end-date-placeholder').value   = data.stages.stage_one.end_date   || 'No Data';
-  document.getElementById('status-placeholder').value     = data.stages.stage_one.status     || 'No Data';
-  document.getElementById('solution1').value              = data.stages.stage_one.solution   || 'No Data';
-  document.getElementById('dealSize1').value              = data.stages.stage_one.deal_size  || 'No Data';
-  document.getElementById('stageremarks1').value          = data.stages.stage_one.remarks    || 'No Data';
+  document.getElementById('end-date-placeholder').value = data.stages.stage_one.end_date || 'No Data';
+  document.getElementById('status-placeholder').value = data.stages.stage_one.status || 'No Data';
+  document.getElementById('solution1').value = data.stages.stage_one.solution || 'No Data';
+  document.getElementById('dealSize1').value = data.stages.stage_one.deal_size || 'No Data';
+  document.getElementById('stageremarks1').value = data.stages.stage_one.remarks || 'No Data';
 
-  // 2) If there's a technology select
+  // 2) Technology fetch logic
   const technology1 = document.getElementById('technologySelect');
-  const techValue   = data.stages.stage_one.technology || 'Select';
+  const techValue = data.stages.stage_one.technology || 'Select';
   if (technology1) {
     Array.from(technology1.options).forEach(option => {
-      if (option.value === techValue) {
-        option.selected = true;
-      }
+      option.selected = option.value === techValue;
     });
   }
-    initProductChangeHandler();
-    initDistributorChangeHandler();
 
-    $.when( loadProducts(), loadDistributors() ).done(function() {
-        // If needed, do something after both are loaded
-    });
+  // Initialize handlers for product and distributor dropdowns
+  initProductChangeHandler();
+  initDistributorChangeHandler();
 
-    const newProductSelect = newBlock.querySelector('.productFetch');
-    if (newProductSelect) {
-    fillOneProductSelect($(newProductSelect));
-    }
+  // Wait for products and distributors to load
+  await Promise.all([loadProducts(), loadDistributors()]);
 
-    // 2) Fill *this* new distributor select from cached array
-    const newDistributorSelect = newBlock.querySelector('.distributorFetch');
-    if (newDistributorSelect) {
-    fillOneDistributorSelect($(newDistributorSelect));
-    }
-
-  // 3) We'll fetch the product_list and distributor_list from data
-  const productList     = data.stages.stage_one.product_one     || [];
+  // 3) Product and distributor lists
+  const productList = data.stages.stage_one.product_one || [];
   const distributorList = data.stages.stage_one.distributor_one || [];
 
   // 4) Requirements array
   const requirements = (data.stages.stage_one && data.stages.stage_one.requirements) || [];
 
   // 5) Container for requirements
-  const requirementsContainer = document.getElementById("requirementsContainer");
+  const requirementsContainer = document.getElementById('requirementsContainer');
   if (!requirementsContainer) {
-    console.error("#requirementsContainer not found in DOM!");
+    console.error('#requirementsContainer not found in DOM!');
     return;
   }
 
-  // Clear out existing blocks (or keep if you want the first as template)
-//   requirementsContainer.innerHTML = "";
+  requirementsContainer.innerHTML = ''; // Clear existing blocks
 
-  // 6) Create a function to fill <select> with productList or distributorList
- function populateSelect($select, dataList, selectedValue) {
-  // Clear all options, preserving only the "Select" and "add_new" options
-  const preservedOptions = Array.from($select.querySelectorAll('option[value="add_new_product"],option[value="add_new"]'));
-  $select.innerHTML = ""; // Clear all current options
-  preservedOptions.forEach(opt => $select.appendChild(opt)); // Re-add preserved options
-
-  // Add items from the dataList
-  dataList.forEach(item => {
-    const option = document.createElement('option');
-    option.value = item;
-    option.textContent = item;
-    $select.insertBefore(option, $select.querySelector('option[value="add_new_product"],option[value="add_new"]'));
-  });
-
-  // Set the selected option if it matches
-  if (selectedValue && dataList.includes(selectedValue)) {
-    $select.value = selectedValue;
-  } else if (selectedValue) {
-    console.warn(`Selected value "${selectedValue}" not found in dataList for`, $select);
-  }
-}
-
-  // 7) For each requirement, build a block
-  requirements.forEach((reqItem, index) => {
-    const blockIndex = index + 1;
-
-    // Create new block
-    const newBlock = document.createElement("div");
-    newBlock.classList.add("requirement-block");
-    newBlock.dataset.index = blockIndex;
-
-    // Fill the same structure, but KEEP the Add button
-    newBlock.innerHTML = `
-      <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
-        Requirement ${blockIndex}
-      </p>
-      <input type="hidden" name="requirement_id_1[]" value="${reqItem.requirement_id_1 || ''}">
-
-      <div class="row mb-2">
-        <div class="col-md-4">
-          <label class="form-label text-white">Requirement</label>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label text-white">Product</label>
-        </div>
-        <div class="col-md-3">
-          <label class="form-label text-white">Distributor</label>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-4">
-          <input name="requirement_one[]"
-            style="width: 100%;"
-            type="text"
-            class="form-control"
-            placeholder="e.g. Sample Requirement"
-            value="${reqItem.requirement_one || ''}">
-        </div>
-        <div class="col-md-3">
-          <select name="product_one[]" class="form-control custom-select productFetch">
-            <option disabled selected>Select</option>
-            <option value="add_new_product">+ Add New Product...</option>
-          </select>
-        </div>
-        <div class="col-md-3">
-          <select name="distributor_one[]" class="form-control custom-select distributorFetch">
-            <option disabled selected>Select</option>
-            <option value="add_new">+ Add New Distributor...</option>
-          </select>
-        </div>
-        <div class="col-md-2">
-          <button type="button"
-                  class="btn btn-danger btn-sm removeRequirement"
-                  style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
-            <i class="fas fa-minus"></i>&nbsp;Remove
-          </button>
-        </div>
-      </div>
-    `;
-
-    // Append to container
+  // 6) Populate requirements dynamically
+  if (requirements.length > 0) {
+    requirements.forEach((reqItem, index) => {
+      const blockIndex = index + 1;
+      const newBlock = createRequirementBlock(blockIndex, reqItem, productList, distributorList);
+      requirementsContainer.appendChild(newBlock);
+    });
+  } else {
+    // Default block if no requirements exist
+    const newBlock = createRequirementBlock(1, {}, productList, distributorList);
     requirementsContainer.appendChild(newBlock);
+  }
 
-    // 8) Now fill the .productFetch and .distributorFetch
-    const productSelect     = newBlock.querySelector('.productFetch');
-    const distributorSelect = newBlock.querySelector('.distributorFetch');
-
-    if (productSelect) {
-      populateSelect(productSelect, productList, reqItem.product_one);
-    }
-    if (distributorSelect) {
-      populateSelect(distributorSelect, distributorList, reqItem.distributor_one);
-    }
-  });
-
-  console.log("Stage One + requirements populated:", requirements);
+  console.log('Stage One + requirements populated:', requirements);
 }
+
+/**
+ * Create a new requirement block dynamically
+ * @param {number} blockIndex - The requirement number
+ * @param {object} reqItem - The requirement data from the backend
+ * @param {array} productList - List of available products
+ * @param {array} distributorList - List of available distributors
+ */
+function createRequirementBlock(blockIndex, reqItem, productList, distributorList) {
+  const requirementId = reqItem.requirement_id_1 || `st1rq${blockIndex}`;
+  const requirementText = reqItem.requirement_one || '';
+  const selectedProduct = reqItem.product_one || '';
+  const selectedDistributor = reqItem.distributor_one || '';
+
+  const newBlock = document.createElement('div');
+  newBlock.classList.add('requirement-block', 'p-3', 'rounded', 'shadow-widget');
+  newBlock.dataset.index = blockIndex;
+
+  // Set up the block content
+  newBlock.innerHTML = `
+    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+      Requirement ${blockIndex}
+    </p>
+    <input type="hidden" name="requirement_id_1[]" value="${requirementId}">
+
+    <div class="row mb-3">
+      <!-- Requirement Input -->
+      <div class="col-md-4">
+        <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
+      </div>
+      <!-- Product Dropdown -->
+      <div class="col-md-3">
+        <select name="product_one[]" class="form-control custom-select productFetch">
+          <option disabled>Select</option>
+          ${productList.map(product => `
+            <option value="${product}" ${product === selectedProduct ? 'selected' : ''}>${product}</option>
+          `).join('')}
+          <option value="add_new_product">+ Add New Product...</option>
+        </select>
+      </div>
+      <!-- Distributor Dropdown -->
+      <div class="col-md-3">
+        <select name="distributor_one[]" class="form-control custom-select distributorFetch">
+          <option disabled>Select</option>
+          ${distributorList.map(distributor => `
+            <option value="${distributor}" ${distributor === selectedDistributor ? 'selected' : ''}>${distributor}</option>
+          `).join('')}
+          <option value="add_new">+ Add New Distributor...</option>
+        </select>
+      </div>
+      <!-- Remove Button -->
+      <div class="col-md-2 text-end">
+        <button type="button" class="btn btn-danger btn-sm removeRequirement">
+          <i class="fas fa-minus"></i> Remove
+        </button>
+      </div>
+    </div>
+  `;
+
+  return newBlock;
+}
+
 
 
     function fetchStageTwo(data,projectId){
