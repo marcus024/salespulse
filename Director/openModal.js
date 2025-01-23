@@ -116,7 +116,7 @@
 
 
  async function fetchStageOne(data) {
-  // 1) Basic Stage One fields
+  // Basic Stage One fields
   document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
   document.getElementById('end-date-placeholder').value = data.stages.stage_one.end_date || 'No Data';
   document.getElementById('status-placeholder').value = data.stages.stage_one.status || 'No Data';
@@ -124,7 +124,7 @@
   document.getElementById('dealSize1').value = data.stages.stage_one.deal_size || 'No Data';
   document.getElementById('stageremarks1').value = data.stages.stage_one.remarks || 'No Data';
 
-  // 2) Fetch Technology Select
+  // Fetch Technology Select
   const technology1 = document.getElementById('technologySelect');
   const techValue = data.stages.stage_one.technology || 'Select';
   if (technology1) {
@@ -133,22 +133,19 @@
     });
   }
 
-
-  // 3) Fetch product and distributor lists
+  // Fetch product and distributor lists
   const productList = data.stages.stage_one.product_one || [];
   const distributorList = data.stages.stage_one.distributor_one || [];
 
-  // 4) Fetch requirements array
+  // Fetch requirements array
   const requirements = (data.stages.stage_one && data.stages.stage_one.requirements) || [];
 
-  // 5) Container for requirements
+  //  Container for requirements
   const requirementsContainer = document.getElementById('requirementsContainer');
   if (!requirementsContainer) {
     console.error('#requirementsContainer not found in DOM!');
     return;
   }
-
-//   requirementsContainer.innerHTML = ''; 
 
   // 6) Populate existing requirements
   if (requirements.length > 0) {
@@ -172,6 +169,12 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
   const selectedProduct = reqItem.product_one || '';
   const selectedDistributor = reqItem.distributor_one || '';
 
+  console.log(`Creating Requirement Block ${blockIndex}`);
+  console.log('Product List:', productList);
+  console.log('Distributor List:', distributorList);
+  console.log('Selected Product:', selectedProduct);
+  console.log('Selected Distributor:', selectedDistributor);
+
   const newBlock = document.createElement('div');
   newBlock.classList.add('requirement-block', 'p-2', 'rounded', 'shadow-widget');
   newBlock.dataset.index = blockIndex;
@@ -189,7 +192,7 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
       </div>
       <div class="col-md-3">
         <select name="product_one[]" class="form-control custom-select productFetch">
-          <option disabled>Select</option>
+          <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
           ${productList.map(product => `
             <option value="${product}" ${product === selectedProduct ? 'selected' : ''}>${product}</option>
           `).join('')}
@@ -198,7 +201,7 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
       </div>
       <div class="col-md-3">
         <select name="distributor_one[]" class="form-control custom-select distributorFetch">
-          <option disabled>Select</option>
+          <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
           ${distributorList.map(distributor => `
             <option value="${distributor}" ${distributor === selectedDistributor ? 'selected' : ''}>${distributor}</option>
           `).join('')}
@@ -215,6 +218,7 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
 
   return newBlock;
 }
+
 
     function fetchStageTwo(data,projectId){
         document.getElementById('stage-two-start').value = data.stages.stage_two.start_date || 'No Data';
