@@ -114,7 +114,7 @@
         });
     }
 
- function fetchStageOne(data) {
+ async function fetchStageOne(data) {
   // Basic Stage One fields
   document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
   document.getElementById('end-date-placeholder').value = data.stages.stage_one.end_date || 'No Data';
@@ -135,7 +135,7 @@
   // Step 1: Fetch the product and distributor lists
   let productList = [];
   let distributorList = [];
-  $.when(
+  await $.when(
     loadProducts().then(products => {
       productList = products; // Store fetched product list
     }),
@@ -236,19 +236,18 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
     </div>
     <div class="col-md-3">
     <select name="product_one[]" class="form-control custom-select productFetch" onchange="console.log('Selected Product:', this.value)">
-        <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
-        ${productList.map(product => `
-            <option value="${escapeHtml(product)}" ${product.trim().toLowerCase() === selectedProduct.trim().toLowerCase() ? 'selected' : ''}>
-                ${escapeHtml(product)}
-            </option>
-        `).join('')}
-        ${!productList.some(product => product.trim().toLowerCase() === selectedProduct.trim().toLowerCase()) && selectedProduct
-            ? `<option value="${escapeHtml(selectedProduct)}" selected>${escapeHtml(selectedProduct)}</option>`
-            : ''}
-        <option value="add_new_product">+ Add New Product...</option>
-    </select>
-</div>
-
+            <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
+            ${productList.map(product => `
+                <option value="${escapeHtml(product)}" ${product.trim().toLowerCase() === selectedProduct.trim().toLowerCase() ? 'selected' : ''}>
+                    ${escapeHtml(product)}
+                </option>
+            `).join('')}
+            ${!productList.some(product => product.trim().toLowerCase() === selectedProduct.trim().toLowerCase()) && selectedProduct
+                ? `<option value="${escapeHtml(selectedProduct)}" selected>${escapeHtml(selectedProduct)}</option>`
+                : ''}
+            <option value="add_new_product">+ Add New Product...</option>
+        </select>
+    </div>
     <div class="col-md-3">
         <select name="distributor_one[]" class="form-control custom-select distributorFetch">
             <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
