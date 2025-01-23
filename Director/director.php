@@ -1390,7 +1390,7 @@ include("../auth/db.php");
                                                             <!-- Delete Button -->
                                                             <a href="javascript:void(0)" class="delete-schedule-btn" data-bs-toggle="modal" 
                                                             data-bs-target="#schedDel" onclick="setDeleteScheduleId('<?php echo $scheduleId; ?>')">
-                                                                <i class="fas fa-trash"></i>
+                                                                <i class="fas fa-trash" style="color:red;"></i>
                                                             </a>
                                                         </div>
                                                     </div>

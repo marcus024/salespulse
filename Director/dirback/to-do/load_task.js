@@ -37,7 +37,7 @@ $(document).ready(function () {
                                     <!-- Delete Icon -->
                                     <a href="#" class="deletetask" data-bs-toggle="modal" data-bs-target="#deleteTaskModal" 
                                         data-id="${task.todo_id}">
-                                        <i class="fas fa-trash" style="font-size: 12px; color: darkblue;"></i>
+                                        <i class="fas fa-trash" style="font-size: 12px; color: red;"></i>
                                     </a>
                                 </div>
                             </div>`;
