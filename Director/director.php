@@ -419,7 +419,7 @@ include("../auth/db.php");
             <div id="content" style="background-color:white;">
                <!-- Fixed Topbar -->
                 <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:#15151a; padding-right:30px; padding-left:220px; z-index: 300;">
-                    <!-- Left Section: Home and Welcome Message -->
+                   
                     <div class="d-flex align-items-center" style="margin-top: 10px;"> 
                         <div>
                             <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Home</h1> 
