@@ -1424,13 +1424,8 @@ include("../auth/db.php");
                                                             transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
                                                         }
 
-                                                        .view-schedule-btn:hover i {
-                                                            color: #009394; /* Hover color for view icon */
-                                                        }
+                                                        
 
-                                                        .delete-schedule-btn:hover i {
-                                                            color: darkred; /* Hover color for delete icon */
-                                                        }
                                                     </style>
                                                     <?php
                                                     }
