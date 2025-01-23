@@ -154,7 +154,7 @@
     return;
   }
 
-  requirementsContainer.innerHTML = ''; // Clear existing blocks
+//   requirementsContainer.innerHTML = ''; 
 
   // 6) Populate existing requirements
   if (requirements.length > 0) {
