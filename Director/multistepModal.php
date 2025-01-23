@@ -162,14 +162,14 @@
                                                     <div class="col-md-3">
                                                         <label class="form-label text-white">Distributor</label>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <!-- <div class="col-md-2">
                                                         <button type="button"
                                                                 class="btn btn-primary btn-sm"
                                                                 style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
                                                                 id="addRequirementBtn">
                                                         <i class="fas fa-plus"></i>&nbsp;Add
                                                         </button>
-                                                    </div>
+                                                    </div> -->
                                                     </div>
                                                     <div class="row mb-3">
                                                     <div class="col-md-4">
@@ -193,11 +193,19 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <button type="button"
+                                                                class="btn btn-primary btn-sm"
+                                                                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                                                id="addRequirementBtn">
+                                                        <i class="fas fa-plus"></i>&nbsp;Add
+                                                        </button>
+                                                    </div>
+                                                    <!-- <div class="col-md-2">
+                                                        <button type="button"
                                                                 class="btn btn-danger btn-sm removeRequirement"
                                                                 style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
                                                         <i class="fas fa-minus"></i>&nbsp;Remove
                                                         </button>
-                                                    </div>
+                                                    </div> -->
                                                     </div>
                                                 </div> 
                                             </div> 
