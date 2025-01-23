@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
         <div class="col-md-2"></div>
       </div>
-
       <div class="row mb-3">
         <div class="col-md-4">
           <input name="requirement_one[]" 

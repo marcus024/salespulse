@@ -185,6 +185,8 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
   console.log(`Creating Requirement Block ${blockIndex}`);
   console.log('Product List:', productList);
   console.log('Distributor List:', distributorList);
+  console.log('Product Selected:', selectedProduct);
+  console.log('Distributor Selected:', selectedDistributor);
 
   // Ensure productList and distributorList are arrays
   if (!Array.isArray(productList)) {
