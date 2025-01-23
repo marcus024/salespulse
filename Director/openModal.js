@@ -278,37 +278,57 @@ function createRequirementBlock(blockIndex, reqItem, productList=[], distributor
   return newBlock;
 }
 
-// Function to delete a requirement
-function deleteRequirement(requirementId, button) {
-  // Confirm before deletion
-  if (!confirm('Are you sure you want to delete this requirement?')) {
-    return;
-  }
+document.addEventListener('DOMContentLoaded', () => {
+  // Add event listener for the delete buttons
+  const requirementsContainer = document.getElementById('requirementsContainer');
+  if (requirementsContainer) {
+    requirementsContainer.addEventListener('click', event => {
+      if (event.target.classList.contains('removeRequirement') || event.target.closest('.removeRequirement')) {
+        const button = event.target.closest('.removeRequirement'); // Ensure we get the button element
+        const requirementBlock = button.closest('.requirement-block'); // Find the parent block
 
-  const requirementBlock = button.closest('.requirement-block');
+        if (!requirementBlock) {
+          console.warn('Requirement block not found.');
+          return;
+        }
 
-  // Remove the requirement block from the DOM
-  requirementBlock.remove();
+        // Confirm before deletion
+        if (!confirm('Are you sure you want to delete this requirement?')) {
+          return;
+        }
 
-  // Send delete request to the backend
-  fetch('/api/delete-requirement', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ requirementId }),
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to delete requirement.');
+        // Extract the requirement ID from the block
+        const requirementId = requirementBlock.dataset.requirementId;
+        if (!requirementId) {
+          console.warn('Requirement ID not found for the block.');
+          return;
+        }
+
+        // Remove the requirement block from the DOM
+        requirementBlock.remove();
+
+        // Send delete request to the backend
+        fetch('/api/delete-requirement', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ requirementId }),
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Failed to delete requirement.');
+            }
+            return response.json();
+          })
+          .then(data => {
+            console.log('Requirement deleted successfully:', data);
+          })
+          .catch(error => {
+            console.error('Error deleting requirement:', error);
+          });
       }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Requirement deleted successfully:', data);
-    })
-    .catch(error => {
-      console.error('Error deleting requirement:', error);
     });
-}
+  }
+});
 
 
 
