@@ -173,7 +173,7 @@
     requirementsContainer.appendChild(newBlock);
   }
 
-  console.log('Stage asz + requirements populated:', requirements);
+  console.log('Stage asz x+ requirements populated:', requirements);
 }
 
 function createRequirementBlock(blockIndex, reqItem, productList, distributorList) {
@@ -203,8 +203,8 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
   newBlock.classList.add('requirement-block', 'p-2', 'rounded', 'shadow-widget');
   newBlock.dataset.index = blockIndex;
 
-  // Populate the block content
-  newBlock.innerHTML = `
+  // Populate the block content using createElement for select options
+  const requirementBlockContent = `
     <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
       Requirement ${blockIndex}
     </p>
@@ -228,23 +228,13 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
       <div class="col-md-3">
         <select name="product_one[]" class="form-control custom-select productFetch">
           <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
-          ${productList.map(product => `
-            <option value="${escapeHtml(product)}" ${product.trim() === selectedProduct.trim() ? 'selected' : ''}>
-              ${product}
-            </option>
-          `).join('')}
-          <option value="add_new_product">+ Add New Product...</option>
+          <!-- Product options will be added dynamically -->
         </select>
       </div>
       <div class="col-md-3">
         <select name="distributor_one[]" class="form-control custom-select distributorFetch">
           <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
-          ${distributorList.map(distributor => `
-            <option value="${escapeHtml(distributor)}" ${distributor.trim() === selectedDistributor.trim() ? 'selected' : ''}>
-              ${escapeHtml(distributor)}
-            </option>
-          `).join('')}
-          <option value="add_new">+ Add New Distributor...</option>
+          <!-- Distributor options will be added dynamically -->
         </select>
       </div>
       <div class="col-md-2 text-end">
@@ -255,8 +245,47 @@ function createRequirementBlock(blockIndex, reqItem, productList, distributorLis
     </div>
   `;
 
+  newBlock.innerHTML = requirementBlockContent;
+
+  // Manually populate product options
+  const productSelect = newBlock.querySelector('select[name="product_one[]"]');
+  productList.forEach(product => {
+    const option = document.createElement('option');
+    option.value = escapeHtml(product);
+    option.textContent = product;
+    if (product.trim() === selectedProduct.trim()) {
+      option.selected = true;
+    }
+    productSelect.appendChild(option);
+  });
+
+  // Add the "Add New Product" option
+  const addProductOption = document.createElement('option');
+  addProductOption.value = "add_new_product";
+  addProductOption.textContent = "+ Add New Product...";
+  productSelect.appendChild(addProductOption);
+
+  // Manually populate distributor options
+  const distributorSelect = newBlock.querySelector('select[name="distributor_one[]"]');
+  distributorList.forEach(distributor => {
+    const option = document.createElement('option');
+    option.value = escapeHtml(distributor);
+    option.textContent = distributor;
+    if (distributor.trim() === selectedDistributor.trim()) {
+      option.selected = true;
+    }
+    distributorSelect.appendChild(option);
+  });
+
+  // Add the "Add New Distributor" option
+  const addDistributorOption = document.createElement('option');
+  addDistributorOption.value = "add_new";
+  addDistributorOption.textContent = "+ Add New Distributor...";
+  distributorSelect.appendChild(addDistributorOption);
+
   return newBlock;
 }
+
 
     function fetchStageTwo(data,projectId){
         document.getElementById('stage-two-start').value = data.stages.stage_two.start_date || 'No Data';
