@@ -1004,7 +1004,6 @@
                                     border-radius: 5px;
                                     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
                                     font-size: 14px;
-                                    display: flex;
                                     align-items: center;
                                     gap: 8px;
                                 ">
