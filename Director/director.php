@@ -1555,7 +1555,7 @@ include("../auth/db.php");
                                                 }
 
                                                 /* Widget Styling for Individual Tasks */
-                                                .shadow-widget {
+                                                .taskDesign {
                                                     background-color: #1f2024; /* Dark background */
                                                     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Shadow for elevation */
                                                     color: white; /* Text color */
@@ -1567,8 +1567,8 @@ include("../auth/db.php");
                                                 }
 
                                                 /* Task Details Text */
-                                                .shadow-widget label,
-                                                .shadow-widget span {
+                                                .taskDesign label,
+                                                .taskDesign span {
                                                     display: block; /* Ensure text elements appear in new lines */
                                                     margin: 0; /* Remove default margin */
                                                     line-height: 1.2; /* Reduce line spacing */
@@ -1577,7 +1577,7 @@ include("../auth/db.php");
                                                 }
 
                                                 /* Task Title */
-                                                .shadow-widget strong {
+                                                .taskDesign strong {
                                                     display: block;
                                                     font-size: 12px; /* Slightly larger font for task name */
                                                     color: white; /* Keep task title in white */
@@ -1585,17 +1585,17 @@ include("../auth/db.php");
                                                 }
 
                                                 /* Hover Effects for Icons */
-                                                .shadow-widget .edittask i,
-                                                .shadow-widget .deletetask i {
+                                                .taskDesign .edittask i,
+                                                .taskDesign .deletetask i {
                                                     font-size: 12px; /* Icon size */
                                                     transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
                                                 }
 
-                                                .shadow-widget .edittask i:hover {
+                                                .taskDesign .edittask i:hover {
                                                     color: #009394; /* Hover color for edit icon */
                                                 }
 
-                                                .shadow-widget .deletetask i:hover {
+                                                .taskDesign .deletetask i:hover {
                                                     color: darkred; /* Hover color for delete icon */
                                                 }
 
