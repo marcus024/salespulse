@@ -424,7 +424,7 @@ include("../auth/db.php");
                         <div>
                             <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Home</h1> 
                             <p style="font-size:15px; color: white; font-family:'Poppins'; margin: 0px;">
-                                Welcome x, 
+                                Welcome back, 
                                 <span style="font-weight: 800;">
                                     <?php echo $_SESSION['user_name']; ?>!
                                 </span>
