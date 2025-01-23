@@ -993,7 +993,7 @@
                                     <div id="salesPulse">Sales Pulse</div>
                                 </div>
                                 <!-- Notification Bar -->
-                                <!-- <div id="notif_bar_r" style="
+                                <div id="notif_bar_r" style="
                                     display: flex;
                                     position: absolute;
                                     left: 10px;
@@ -1010,7 +1010,7 @@
                                 ">
                                     <i class="fas fa-check-circle" style="color: #28a745; font-size: 16px;"></i>
                                     <span id="notificationMessage"></span>
-                                </div> -->
+                                </div>
                                 <button type="button" class="btn btn-danger " id="deleteButton" style="border-color: red; background-color: #fff; color: red; font-size: 12px;">
                                     <i class="fas fa-trash-alt"></i> Delete
                                 </button>
@@ -1028,7 +1028,7 @@
     <!-- javascript -->
     <script src="modal_req/duplicate_req_one.js"></script>
     <script>
-      function showNotification(message = "Operation completed successfully!", duration = 3000) {
+      function showNotif_bar(message = "Operation completed successfully!", duration = 3000) {
     const notif_bar_r = document.getElementById('notif_bar_r');
     const notificationMessage = document.getElementById('notificationMessage');
 
@@ -1297,6 +1297,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
             alert(`Step ${currentStep} saved successfully!`);
             // showNotification('Data saved successfully!', true);
             // showNotification("Stage ${currentStep} saved successfully!"); 
+            showNotif_bar(`Step ${currentStep} saved successfully!`);
         } else {
             alert(`Unexpected response: ${result.message}`);
         }
