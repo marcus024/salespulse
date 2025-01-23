@@ -1292,7 +1292,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
         if (result.message === `Step ${currentStep} data processed successfully`) {
             alert(`Step ${currentStep} saved successfully!`);
             // showNotification('Data saved successfully!', true);
-            showNotification("Stage ${currentStep} saved successfully!"); 
+            // showNotification("Stage ${currentStep} saved successfully!"); 
         } else {
             alert(`Unexpected response: ${result.message}`);
         }
