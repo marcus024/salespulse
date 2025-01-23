@@ -174,7 +174,7 @@
     requirementsContainer.appendChild(newBlock);
   }
 
-  console.log('Stage s + requirements populated:', requirements);
+  console.log('Stage ss + requirements populated:', requirements);
 }
 
 function createRequirementBlock(blockIndex, reqItem, productList = [], distributorList = []) {
