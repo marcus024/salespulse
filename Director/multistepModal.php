@@ -1590,7 +1590,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
                 });
             });
         </script>
-        <script>
+        <!-- <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const requirementFieldsContainer = document.getElementById('requirement-fields-container3');
                 const addRequirementButton = document.getElementById('addReq_3');
@@ -1632,7 +1632,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
                     }
                 });
             });
-        </script>
+        </script> -->
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const requirementFieldsContainer = document.getElementById('requirement-fields-container4');
