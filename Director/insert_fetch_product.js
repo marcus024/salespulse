@@ -30,7 +30,7 @@ async function loadProducts() {
   });
 }
 
-function fillExistingProductSelects() {
+async function fillExistingProductSelects() {
   $('.productFetch')
     .find('option:not([value="add_new_product"]):not(:disabled)')
     .remove();
@@ -45,7 +45,7 @@ function fillExistingProductSelects() {
   });
 }
 
-function fillOneProductSelect($select) {
+async function fillOneProductSelect($select) {
   $select.find('option:not([value="add_new_product"]):not(:disabled)').remove();
 
   allProducts.forEach(prod => {
@@ -55,7 +55,7 @@ function fillOneProductSelect($select) {
   });
 }
 
-function initProductChangeHandler() {
+async function initProductChangeHandler() {
   $(document).on('change', '.productFetch', function() {
     if ($(this).val() === 'add_new_product') {
       const newProduct = prompt("Enter the new product name:");
