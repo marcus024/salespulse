@@ -442,7 +442,7 @@ function deleteRequirement(requirementId, button, projectId) {
         const engagementBlock = button.closest('.engagement-block');
 
         // Send delete request to the backend
-        fetch('./dirback/delete_engagement.php', {
+        fetch('./dirback/delete_eng2.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ engagementId, project_id: projectId }),
