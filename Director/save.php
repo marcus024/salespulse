@@ -264,39 +264,40 @@ if (!empty($inputData['engagement_type'])) {
         $engagementRemarks = htmlspecialchars($inputData['engagement_remarks'][$index] ?? '', ENT_QUOTES, 'UTF-8');
         $engagementId = $inputData['engagement_id_2'][$index] ?? ''; // Using engagement ID from input
 
-        if (!empty($engagementId)) {
-            // Attempt to UPDATE the record
-            $updateStmt->execute([
-                $sanitizedEngagementType,
-                $engagementDate,
-                $engagementRemarks,
-                $engagementId,
-                $projectUniqueId
-            ]);
+        // Skip blanks or incomplete records
+        if (empty($sanitizedEngagementType) || empty($engagementDate) || empty($engagementRemarks) || empty($engagementId)) {
+            error_log("Skipping blank or incomplete engagement entry for project ID: $projectUniqueId.");
+            continue;
+        }
 
-            $updatedRows = $updateStmt->rowCount();
-            if ($updatedRows > 0) {
-                // Record updated successfully
-                $updatedEngagementCount += $updatedRows;
-            } else {
-                // Check if the record exists
-                $checkStmt->execute([$engagementId, $projectUniqueId]);
-                if ($checkStmt->rowCount() === 0) {
-                    // Record does not exist, INSERT it
-                    $insertStmt->execute([
-                        $sanitizedEngagementType,
-                        $engagementDate,
-                        $engagementRemarks,
-                        $projectUniqueId,
-                        $engagementId
-                    ]);
-                    $insertedEngagementCount++;
-                }
-                // Else: Record exists but no changes, do nothing
-            }
+        // Attempt to UPDATE the record
+        $updateStmt->execute([
+            $sanitizedEngagementType,
+            $engagementDate,
+            $engagementRemarks,
+            $engagementId,
+            $projectUniqueId
+        ]);
+
+        $updatedRows = $updateStmt->rowCount();
+        if ($updatedRows > 0) {
+            // Record updated successfully
+            $updatedEngagementCount += $updatedRows;
         } else {
-            // No engagement ID provided, log an error and skip this entry
-            error_log("Missing engagement_id_2 for project ID: $projectUniqueId. Skipping entry.");
+            // Check if the record exists
+            $checkStmt->execute([$engagementId, $projectUniqueId]);
+            if ($checkStmt->rowCount() === 0) {
+                // Record does not exist, INSERT it
+                $insertStmt->execute([
+                    $sanitizedEngagementType,
+                    $engagementDate,
+                    $engagementRemarks,
+                    $projectUniqueId,
+                    $engagementId
+                ]);
+                $insertedEngagementCount++;
+            }
+            // Else: Record exists but no changes, do nothing
         }
     }
 }
