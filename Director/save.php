@@ -83,93 +83,95 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
         ]);
 
         // Handle engagement items in engagement_twotb
-        $insertedEngagementCount = 0;
-        $updatedEngagementCount = 0;
+$insertedEngagementCount = 0;
+$updatedEngagementCount = 0;
 
-        if (!empty($inputData['engagement_type'])) {
-            // Prepare statements
-            $insertEngStmt = $conn->prepare("
-                INSERT INTO engagement_twotb
-                    (engagement_type, engagement_date, engagement_remarks, project_unique_id, engagement_id_2)
-                VALUES (?, ?, ?, ?, ?)
-            ");
+if (!empty($inputData['engagement_type'])) {
+    // Prepare statements
+    $insertEngStmt = $conn->prepare("
+        INSERT INTO engagement_twotb
+            (engagement_type, engagement_date, engagement_remarks, project_unique_id, engagement_id_2)
+        VALUES (?, ?, ?, ?, ?)
+    ");
 
-            $updateEngStmt = $conn->prepare("
-                UPDATE engagement_twotb
-                SET engagement_type = ?,
-                    engagement_date = ?,
-                    engagement_remarks = ?
-                WHERE engagement_id_2 = ?
-                AND project_unique_id = ?
-            ");
+    $updateEngStmt = $conn->prepare("
+        UPDATE engagement_twotb
+        SET engagement_type = ?,
+            engagement_date = ?,
+            engagement_remarks = ?
+        WHERE engagement_id_2 = ?
+        AND project_unique_id = ?
+    ");
 
-            // Check if row exists
-            $checkEngStmt = $conn->prepare("
-                SELECT 1 
-                FROM engagement_twotb
-                WHERE engagement_id_2 = ?
-                AND project_unique_id = ?
-                LIMIT 1
-            ");
+    // Check if row exists
+    $checkEngStmt = $conn->prepare("
+        SELECT 1 
+        FROM engagement_twotb
+        WHERE engagement_id_2 = ?
+        AND project_unique_id = ?
+        LIMIT 1
+    ");
 
-            // Loop through each engagement entry
-            foreach ($inputData['engagement_type'] as $index => $engagementType) {
-                // Sanitize input
-                $sanitizedEngagementType = htmlspecialchars($engagementType ?? '', ENT_QUOTES, 'UTF-8');
-                $engagementDate = htmlspecialchars($inputData['engagement_date'][$index] ?? '', ENT_QUOTES, 'UTF-8');
-                $engagementRemarks = htmlspecialchars($inputData['engagement_remarks'][$index] ?? '', ENT_QUOTES, 'UTF-8');
-                $engagementId = $inputData['engagement_id_2'][$index] ?? ''; // Using engagement ID from input
+    // Loop through each engagement entry
+    foreach ($inputData['engagement_type'] as $index => $engagementType) {
+        // Sanitize input
+        $sanitizedEngagementType = htmlspecialchars($engagementType ?? '', ENT_QUOTES, 'UTF-8');
+        $engagementDate = htmlspecialchars($inputData['engagement_date'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+        $engagementRemarks = htmlspecialchars($inputData['engagement_remarks'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+        $engagementId = $inputData['engagement_id_2'][$index] ?? ''; // Using engagement ID from input
 
-                if (!empty($engagementId)) {
-                    // Attempt UPDATE first
-                    $updateEngStmt->execute([
-                        $sanitizedEngagementType,
-                        $engagementDate,
-                        $engagementRemarks,
-                        $engagementId,
-                        $projectUniqueId
-                    ]);
+        if (!empty($engagementId)) {
+            // Attempt UPDATE first
+            $updateEngStmt->execute([
+                $sanitizedEngagementType,
+                $engagementDate,
+                $engagementRemarks,
+                $engagementId,
+                $projectUniqueId
+            ]);
 
-                    $updatedRows = $updateEngStmt->rowCount();
-                    if ($updatedRows > 0) {
-                        // Data was successfully updated
-                        $updatedEngagementCount += $updatedRows;
-                    } else {
-                        // No rows updated, check if the record exists
-                        $checkEngStmt->execute([$engagementId, $projectUniqueId]);
-                        if ($checkEngStmt->rowCount() === 0) {
-                            // Record does not exist, insert a new row
-                            $insertEngStmt->execute([
-                                $sanitizedEngagementType,
-                                $engagementDate,
-                                $engagementRemarks,
-                                $projectUniqueId,
-                                $engagementId
-                            ]);
-                            $insertedEngagementCount++;
-                        }
-                        // Else: Record exists, but no changes made, so no action needed
-                    }
-                } else {
-                    // No engagement ID provided, treat as a new row and INSERT
+            $updatedRows = $updateEngStmt->rowCount();
+            if ($updatedRows > 0) {
+                // Data was successfully updated
+                $updatedEngagementCount += $updatedRows;
+            } else {
+                // No rows updated, check if the record exists
+                $checkEngStmt->execute([$engagementId, $projectUniqueId]);
+                if ($checkEngStmt->rowCount() === 0) {
+                    // Record does not exist, insert a new row
                     $insertEngStmt->execute([
                         $sanitizedEngagementType,
                         $engagementDate,
                         $engagementRemarks,
                         $projectUniqueId,
-                        '' // Or generate a unique ID if required
+                        $engagementId
                     ]);
                     $insertedEngagementCount++;
                 }
+                // Else: Record exists, but no changes made, so no action needed
             }
+        } else {
+            // No engagement ID provided, generate a new ID for INSERT
+            $generatedEngagementId = 'st2eng' . uniqid(); // Example of generating a unique ID
+            $insertEngStmt->execute([
+                $sanitizedEngagementType,
+                $engagementDate,
+                $engagementRemarks,
+                $projectUniqueId,
+                $generatedEngagementId
+            ]);
+            $insertedEngagementCount++;
         }
+    }
+}
 
-        // Build final success message for engagements
-        $engagementMessage = "Engagements updated successfully.";
-        if ($insertedEngagementCount > 0 || $updatedEngagementCount > 0) {
-            $engagementMessage .= " (Inserted $insertedEngagementCount, Updated $updatedEngagementCount engagements)";
-        }
-        return $engagementMessage;
+// Build final success message for engagements
+$engagementMessage = "Engagements updated successfully.";
+if ($insertedEngagementCount > 0 || $updatedEngagementCount > 0) {
+    $engagementMessage .= " (Inserted $insertedEngagementCount, Updated $updatedEngagementCount engagements)";
+}
+return $engagementMessage;
+
     } catch (Exception $e) {
         error_log("Error in Stage One: " . $e->getMessage());
         throw $e;
