@@ -332,8 +332,137 @@ function deleteRequirement(requirementId, button, projectId) {
             }
         });
 
-       
+        // Step 1: Fetch engagement array
+        const engagements = (data.stages.stage_two && data.stages.stage_two.engagement_stage_two) || [];
+        const engagementContainer = document.getElementById('engagement1Container');
+
+        if (!engagementContainer) {
+            console.error('#engagement1Container not found in DOM!');
+            return;
+        }
+
+        // Clear existing content (optional, if engagements should replace the existing blocks)
+        // engagementContainer.innerHTML = '';
+
+        // Step 2: Populate engagements dynamically
+        let highestBlockIndex = 0;
+
+        if (engagements.length > 0) {
+            engagements.forEach((engagementItem, index) => {
+            const blockIndex = index + 1;
+            highestBlockIndex = Math.max(highestBlockIndex, blockIndex);
+
+            const newEngagementBlock = createEngagementBlock(blockIndex, engagementItem, projectId);
+            engagementContainer.appendChild(newEngagementBlock);
+            });
+        }
+
+        // Step 3: Update the existing initial engagement field dynamically
+        const nextBlockIndex = highestBlockIndex + 1;
+        const initialEngagementTitle = document.getElementById('engagement1');
+        const initialHiddenInput = document.getElementById('eng_1_id');
+
+        if (initialEngagementTitle && initialHiddenInput) {
+            initialEngagementTitle.textContent = `Engagement ${nextBlockIndex}`;
+            initialHiddenInput.value = `st2eng${nextBlockIndex}`;
+        } else {
+            console.warn('Initial engagement field not found in the DOM.');
+        }
+
+        console.log('Stage Two + engagements populated:', engagements);
+
     }
+
+    function createEngagementBlock(blockIndex, engagementItem, projectId) {
+        const engagementId = engagementItem.engagement_id_two || `st2eng${blockIndex}`;
+        const engagementType = engagementItem.engagement_type || '';
+        const engagementDate = engagementItem.engagement_date || '';
+        const engagementRemarks = engagementItem.engagement_remarks || '';
+
+        console.log(`Creating Engagement Block ${blockIndex}`);
+
+        const newBlock = document.createElement('div');
+        newBlock.classList.add('engagement-block', 'p-2', 'rounded', 'shadow-widget');
+        newBlock.dataset.index = blockIndex;
+
+        newBlock.innerHTML = `
+            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement${blockIndex}">
+            Engagement ${blockIndex}
+            </p>
+            <input type="hidden" name="engagement_id_2[]" value="${engagementId}" id="eng_${blockIndex}_id">
+            <div class="row mb-1">
+            <div class="col-md-4">
+                <label for="engagement" class="form-label text-white">Type of Engagement</label>
+            </div>
+            <div class="col-md-2">
+                <label for="engagement" class="form-label text-white">Date</label>
+            </div>
+            <div class="col-md-5">
+                <label for="engagement" class="form-label text-white">Remarks</label>
+            </div>
+            </div>
+            <div id="engagement-fields-container">
+            <div class="row engagement-fields mb-3">
+                <div class="col-md-4">
+                <input name="engagement_type[]" type="text" class="form-control" placeholder="e.g. Sample Engagement" value="${engagementType}">
+                </div>
+                <div class="col-md-2">
+                <input name="engagement_date[]" type="date" class="form-control" style="font-size:10px;" value="${engagementDate}">
+                </div>
+                <div class="col-md-4">
+                <input name="engagement_remarks[]" type="text" class="form-control" placeholder="e.g. Sample Remarks" value="${engagementRemarks}">
+                </div>
+                <div class="col-md-2">
+                <button type="button"
+                        class="btn btn-danger btn-sm removeEngagement"
+                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                        onclick="deleteEngagement('${engagementId}', this, '${projectId}')">
+                    <i class="fas fa-minus"></i>&nbsp;Remove
+                </button>
+                </div>
+            </div>
+            </div>
+        `;
+
+        return newBlock;
+        }
+
+        /**
+         * Function to delete an engagement block
+         * @param {string} engagementId The engagement ID
+         * @param {HTMLElement} button The delete button element
+         * @param {string} projectId The project ID
+         */
+        function deleteEngagement(engagementId, button, projectId) {
+        // Confirm before deletion
+        if (!confirm('Are you sure you want to delete this engagement?')) {
+            return;
+        }
+
+        const engagementBlock = button.closest('.engagement-block');
+
+        // Send delete request to the backend
+        fetch('./dirback/delete_engagement.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ engagementId, project_id: projectId }),
+        })
+            .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to delete engagement.');
+            }
+            return response.json();
+            })
+            .then(data => {
+            engagementBlock.remove();
+            console.log('Engagement deleted successfully:', data);
+            })
+            .catch(error => {
+            console.error('Error deleting engagement:', error);
+            });
+        }
+
+
 
     function fetchStageThree(data,projectId){
         document.getElementById('stage-three-start').value  = data.stages.stage_three.start_date || 'No Data';
