@@ -385,8 +385,10 @@ function deleteRequirement(requirementId, button, projectId) {
             console.log("Distributor List:", distributorList);
 
             // Step 2: Fetch requirements array for Stage Two
-            const requirementsStageTwo = (data.stages.stage_two && data.stages.stage_two.requirement_stage_two) || data.stages.stage_one.requirements;
-
+             const requirementsStageTwo =
+        (data.stages.stage_two && data.stages.stage_two.requirement_stage_two) ||
+        data.stages.stage_one.requirements;
+        
             // Get the container for Stage Two requirements
             const requirementsTwoContainer = document.getElementById('requirementtwoContainer');
             if (!requirementsTwoContainer) {
