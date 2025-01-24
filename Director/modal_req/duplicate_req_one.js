@@ -6,9 +6,13 @@ document.addEventListener('DOMContentLoaded', function () {
   initProductChangeHandler();
   initDistributorChangeHandler();
 
+
    $.when( loadProducts(), loadDistributors() ).done(function() {
   
   });
+
+  
+
 
   /**
    * Calculate the highest block index dynamically from the current requirements

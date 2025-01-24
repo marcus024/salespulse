@@ -412,17 +412,17 @@ include("../auth/db.php");
                 <span>&copy; <span id="current-year"></span></span>
             </li>
         </ul>
-        <!-- End of Sidebar -->
+        
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-            <!-- Main Content -->
+           
             <div id="content" style="background-color:white;">
                <!-- Fixed Topbar -->
                 <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:#15151a; padding-right:30px; padding-left:220px; z-index: 300;">
-                    <!-- Left Section: Home and Welcome Message -->
-                    <div class="d-flex align-items-center" style="margin-top: 10px;"> <!-- Added margin-top to lower the left section -->
+                   
+                    <div class="d-flex align-items-center" style="margin-top: 10px;"> 
                         <div>
-                            <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Home</h1> <!-- Reduced spacing -->
+                            <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Home</h1> 
                             <p style="font-size:15px; color: white; font-family:'Poppins'; margin: 0px;">
                                 Welcome back, 
                                 <span style="font-weight: 800;">
@@ -431,7 +431,7 @@ include("../auth/db.php");
                             </p>
                         </div>
                     </div>
-                    <!-- Right Section: Notification and Profile -->
+                   
                     <div class="d-flex align-items-center">
                         <!-- Notification Button -->
                         <div class="mr-2" style="position: relative;">
