@@ -17,34 +17,30 @@ document.addEventListener('DOMContentLoaded', function () {
    */
   function getNextBlockIndex() {
     const allRequirements = requirementsContainer.querySelectorAll('input[name="requirement_id_1[]"]');
-    let highestIndex = 0;
-
-    allRequirements.forEach(input => {
+    const indices = Array.from(allRequirements).map(input => {
       const value = input.value; // e.g., "st1rq3"
       const match = value.match(/st1rq(\d+)/); // Extract number after "st1rq"
-      if (match) {
-        const index = parseInt(match[1], 10); // Convert to integer
-        highestIndex = Math.max(highestIndex, index); // Update the highest index
-      }
+      return match ? parseInt(match[1], 10) : 0; // Convert to integer or default to 0
     });
 
-    return highestIndex + 1; // Return the next available block index
+    // Return the next available block index
+    return indices.length > 0 ? Math.max(...indices) + 1 : 1;
   }
 
   /**
    * Update the initial requirement block (requirement1)
+   * to match the correct numbering dynamically
    */
   function updateInitialRequirementBlock() {
     const requirementTitle = document.getElementById('requirement1');
     const requirementHiddenInput = document.getElementById('req_1_id');
 
     if (requirementTitle && requirementHiddenInput) {
-      const nextBlockIndex = getNextBlockIndex();
+      const currentIndex = requirementHiddenInput.value.match(/st1rq(\d+)/)?.[1] || 1;
 
-      // Update the title and hidden input value
-      requirementTitle.textContent = `Requirement ${nextBlockIndex}`;
-      requirementHiddenInput.value = `st1rq${nextBlockIndex}`;
-      console.log(`Updated initial requirement block to: Requirement ${nextBlockIndex} (st1rq${nextBlockIndex})`);
+      // Ensure the title and hidden input value match
+      requirementTitle.textContent = `Requirement ${currentIndex}`;
+      requirementHiddenInput.value = `st1rq${currentIndex}`;
     } else {
       console.warn('Initial requirement block elements not found in the DOM.');
     }
@@ -67,10 +63,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const newReqId = `st1rq${nextBlockIndex}`;
 
     newBlock.innerHTML = `
-      <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirement1">
+      <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
         Requirement ${nextBlockIndex}
       </p>
-      <input type="hidden" name="requirement_id_1[]" value="${newReqId}" id="req_1_id">
+      <input type="hidden" name="requirement_id_1[]" value="${newReqId}">
       <div class="row mb-2">
         <div class="col-md-4">
           <label class="form-label text-white">Requirement</label>
@@ -127,8 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
       fillOneDistributorSelect($(newDistributorSelect));
     }
 
-    // Update the initial requirement block after adding a new block
-    updateInitialRequirementBlock();
+    console.log(`Added new block: Requirement ${nextBlockIndex}`);
   });
 
   // Delegate remove button functionality
@@ -138,9 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const blockToRemove = e.target.closest('.requirement-block');
       if (blockToRemove) {
         blockToRemove.remove();
-
-        // Update the initial requirement block after removal
-        updateInitialRequirementBlock();
+        console.log('Removed a requirement block.');
       }
     }
   });
