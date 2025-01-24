@@ -155,20 +155,30 @@
         return;
       }
 
-      // Clear any existing content
-    //   requirementsContainer.innerHTML = '';
+    // Step 4: Populate requirements dynamically
+      let highestBlockIndex = 0;
 
-      // Step 4: Populate requirements dynamically
       if (requirements.length > 0) {
         requirements.forEach((reqItem, index) => {
           const blockIndex = index + 1;
-          const newBlock = createRequirementBlock(blockIndex, reqItem, productList, distributorList,projectId);
+          highestBlockIndex = Math.max(highestBlockIndex, blockIndex);
+          const newBlock = createRequirementBlock(blockIndex, reqItem, productList, distributorList, projectId);
           requirementsContainer.appendChild(newBlock);
         });
+      }
+
+      // Calculate the next block index for the existing initial field
+      const nextBlockIndex = highestBlockIndex + 1;
+
+      // Update the existing initial requirement field dynamically
+      const initialRequirementTitle = document.getElementById('requirement1');
+      const initialHiddenInput = document.getElementById('req_1_id');
+
+      if (initialRequirementTitle && initialHiddenInput) {
+        initialRequirementTitle.textContent = `Requirement ${nextBlockIndex}`;
+        initialHiddenInput.value = `st1rq${nextBlockIndex}`;
       } else {
-        // If no requirements exist, add a default requirement block
-        const newBlock = createRequirementBlock(1, {}, productList, distributorList);
-        // requirementsContainer.appendChild(newBlock);
+        console.warn("Initial requirement field not found in the DOM.");
       }
 
       console.log('Stage One + requirements populated:', requirements);
