@@ -40,8 +40,8 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stagetwo.deal_size, 'No Data') AS deal_size_stage_two,
                     COALESCE(stagetwo.product, 'No Data') AS product_stage_two,
                     COALESCE(stagetwo.solution, 'No Data') AS solution_stage_two,
-                    GROUP_CONCAT(DISTINCT CONCAT(engagement_twotb.engagement_id_two, ':', engagement_twotb.engagement_type, ':', engagement_twotb.engagement_date, ':', engagement_twotb.engagement_remarks) ORDER BY engagement_twotb.engagement_date) AS engagement_2,
-                    GROUP_CONCAT(DISTINCT CONCAT(requirement_twotb.requirement_id_two, ':', requirement_twotb.requirement_two, ':', requirement_twotb.requirement_date, ':', requirement_twotb.requirement_remarks) ORDER BY requirement_twotb.requirement_date) AS requirement_2,
+                    GROUP_CONCAT(DISTINCT CONCAT(engagement_twotb.engagement_id_2, ':', engagement_twotb.engagement_type, ':', engagement_twotb.engagement_date, ':', engagement_twotb.engagement_remarks) ORDER BY engagement_twotb.engagement_date) AS engagement_2,
+                    GROUP_CONCAT(DISTINCT CONCAT(requirement_twotb.requirement_id_2, ':', requirement_twotb.requirement_two, ':', requirement_twotb.requirement_date, ':', requirement_twotb.requirement_remarks, ':', requirement_twotb.product_two, ':', requirement_twotb.distributor_two) ORDER BY requirement_twotb.requirement_date) AS requirement_2,
                     COALESCE(stagethree.start_date_stage_three, 'No Data') AS start_date_stage_three,
                     COALESCE(stagethree.end_date_stage_three, 'No Data') AS end_date_stage_three,
                     COALESCE(stagethree.status_stage_three, 'No Data') AS status_stage_three,
@@ -157,7 +157,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                             $hash = md5(json_encode($normalized)); 
                             if (!isset($carry[$hash])) {
                                 $carry[$hash] = [
-                                    'engagement_id_two' => $parts[0] ?? null,
+                                    'engagement_id_2' => $parts[0] ?? null,
                                     'engagement_type' => $parts[1] ?? null,
                                     'engagement_date' => $parts[2] ?? null,
                                     'engagement_remarks' => $parts[3] ?? null
@@ -173,15 +173,19 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                             $normalized = [
                                 'requirement_two' => strtolower(trim($parts[1] ?? '')),
                                 'requirement_date' => trim($parts[2] ?? ''),
-                                'requirement_remarks' => strtolower(trim($parts[3] ?? ''))
+                                'requirement_remarks' => strtolower(trim($parts[3] ?? '')),
+                                'product_two' =>strtolower(trim($parts[4] ?? '')),
+                                'distributor_two' => strtolower(trim($parts[5] ?? ''))
                             ];
                             $hash = md5(json_encode($normalized)); // Generate a unique key for normalization
                             if (!isset($carry[$hash])) {
                                 $carry[$hash] = [
-                                    'requirement_id_two' => $parts[0] ?? null,
+                                    'requirement_id_2' => $parts[0] ?? null,
                                     'requirement_two' => $parts[1] ?? null,
                                     'requirement_date' => $parts[2] ?? null,
-                                    'requirement_remarks' => $parts[3] ?? null
+                                    'requirement_remarks' => $parts[3] ?? null,
+                                    'product_two' => $parts[4] ?? null,
+                                    'distributor_two' => $parts[5] ?? null
                                 ];
                             }
                             return $carry;

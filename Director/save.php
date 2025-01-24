@@ -181,16 +181,13 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
 }
 
 
-
-
 function updateStageTwo($conn, $projectUniqueId, $inputData) {
     try {
-        // Update main stage two data
+        // Update main stage two dat
         $query = "UPDATE stagetwo SET 
             stage_two_remarks = ?, 
             technology = ?, 
             deal_size = ?, 
-            product = ?, 
             solution = ? 
             WHERE project_unique_id = ?";
         $stmt = $conn->prepare($query);
@@ -198,68 +195,166 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
             $inputData['stage_two_remarks'] ?? null,
             $inputData['technology'] ?? null,
             $inputData['deal_size'] ?? null,
-            $inputData['product'] ?? null,
             $inputData['solution'] ?? null,
             $projectUniqueId
         ]);
 
-        // Insert or update requirements
+        // Handle requirement items in requirement_twotb
+        $insertedRequirementCount = 0;
+        $updatedRequirementCount = 0;
+
         if (!empty($inputData['requirement_two'])) {
-            $requirementQuery = "INSERT INTO requirement_twotb (project_unique_id, requirement_two, requirement_date, requirement_remarks) 
-                                 VALUES (?, ?, ?, ?) 
-                                 ON DUPLICATE KEY UPDATE 
-                                 requirement_two = VALUES(requirement_two), 
-                                 requirement_date = VALUES(requirement_date), 
-                                 requirement_remarks = VALUES(requirement_remarks)";
-            $reqStmt = $conn->prepare($requirementQuery);
+            // Prepare statements
+            $insertReqStmt = $conn->prepare("
+                INSERT INTO requirement_twotb
+                    (requirement_two, requirement_date, requirement_remarks, project_unique_id, requirement_id_2, product_two, distributor_two)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            ");
+
+            $updateReqStmt = $conn->prepare("
+                UPDATE requirement_twotb
+                SET requirement_two = ?,
+                    requirement_date = ?,
+                    requirement_remarks = ?,
+                    product_two = ?,
+                    distributor_two = ?
+                WHERE requirement_id_2 = ?
+                AND project_unique_id = ?
+            ");
+
+            $checkReqStmt = $conn->prepare("
+                SELECT 1 
+                FROM requirement_twotb
+                WHERE requirement_id_2 = ?
+                AND project_unique_id = ?
+                LIMIT 1
+            ");
 
             foreach ($inputData['requirement_two'] as $index => $requirement) {
-                $requirementDate = $inputData['requirement_date'][$index] ?? null;
-                $requirementRemarks = $inputData['requirement_remarks'][$index] ?? null;
+                // Sanitize input
+                $sanitizedRequirement = htmlspecialchars($requirement ?? '', ENT_QUOTES, 'UTF-8');
+                $requirementDate = htmlspecialchars($inputData['requirement_date'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $requirementRemarks = htmlspecialchars($inputData['requirement_remarks'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $productTwo = htmlspecialchars($inputData['product_two'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $distributorTwo = htmlspecialchars($inputData['distributor_two'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $requirementId = $inputData['requirement_id_2'][$index] ?? '';
 
-                if (empty($requirement)) {
-                    error_log("Empty requirement_two for Project ID {$projectUniqueId}. Skipping insert.");
+                if (empty($sanitizedRequirement) && empty($productTwo) && empty($distributorTwo)) {
+                    error_log("Skipping blank requirement entry for Project ID {$projectUniqueId}.");
                     continue;
                 }
 
-                $reqStmt->execute([
-                    $projectUniqueId,
-                    htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($requirementDate, ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($requirementRemarks, ENT_QUOTES, 'UTF-8')
-                ]);
+                if (!empty($requirementId)) {
+                    $updateReqStmt->execute([
+                        $sanitizedRequirement,
+                        $requirementDate,
+                        $requirementRemarks,
+                        $productTwo,
+                        $distributorTwo,
+                        $requirementId,
+                        $projectUniqueId
+                    ]);
+
+                    $updatedRows = $updateReqStmt->rowCount();
+                    if ($updatedRows > 0) {
+                        $updatedRequirementCount += $updatedRows;
+                    } else {
+                        $checkReqStmt->execute([$requirementId, $projectUniqueId]);
+                        if ($checkReqStmt->rowCount() === 0) {
+                            $insertReqStmt->execute([
+                                $sanitizedRequirement,
+                                $requirementDate,
+                                $requirementRemarks,
+                                $projectUniqueId,
+                                $requirementId,
+                                $productTwo,
+                                $distributorTwo
+                            ]);
+                            $insertedRequirementCount++;
+                        }
+                    }
+                } else {
+                    error_log("Empty requirement_id_2 for Project ID {$projectUniqueId}. Skipping insert.");
+                }
             }
         }
 
-        // Insert or update engagements
+        // Handle engagement items in engagement_twotb
+        $insertedEngagementCount = 0;
+        $updatedEngagementCount = 0;
+
         if (!empty($inputData['engagement_type'])) {
-            $engagementQuery = "INSERT INTO engagement_twotb (project_unique_id, engagement_type, engagement_date, engagement_remarks) 
-                                VALUES (?, ?, ?, ?) 
-                                ON DUPLICATE KEY UPDATE 
-                                engagement_type = VALUES(engagement_type), 
-                                engagement_date = VALUES(engagement_date), 
-                                engagement_remarks = VALUES(engagement_remarks)";
-            $engStmt = $conn->prepare($engagementQuery);
+            $insertEngStmt = $conn->prepare("
+                INSERT INTO engagement_twotb
+                    (engagement_type, engagement_date, engagement_remarks, project_unique_id, engagement_id_2)
+                VALUES (?, ?, ?, ?, ?)
+            ");
+
+            $updateEngStmt = $conn->prepare("
+                UPDATE engagement_twotb
+                SET engagement_type = ?,
+                    engagement_date = ?,
+                    engagement_remarks = ?
+                WHERE engagement_id_2 = ?
+                AND project_unique_id = ?
+            ");
+
+            $checkEngStmt = $conn->prepare("
+                SELECT 1 
+                FROM engagement_twotb
+                WHERE engagement_id_2 = ?
+                AND project_unique_id = ?
+                LIMIT 1
+            ");
 
             foreach ($inputData['engagement_type'] as $index => $engagementType) {
-                $engagementDate = $inputData['engagement_date'][$index] ?? null;
-                $engagementRemarks = $inputData['engagement_remarks'][$index] ?? null;
+                $sanitizedEngagementType = htmlspecialchars($engagementType ?? '', ENT_QUOTES, 'UTF-8');
+                $engagementDate = htmlspecialchars($inputData['engagement_date'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $engagementRemarks = htmlspecialchars($inputData['engagement_remarks'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $engagementId = htmlspecialchars($inputData['engagement_id_2'][$index] ?? '', ENT_QUOTES, 'UTF-8');
 
-                if (empty($engagementType)) {
-                    error_log("Empty engagement_type for Project ID {$projectUniqueId}. Skipping insert.");
+                if (empty($sanitizedEngagementType) || empty($engagementDate) || empty($engagementRemarks) || empty($engagementId)) {
+                    error_log("Skipping blank or incomplete engagement entry for project ID: $projectUniqueId.");
                     continue;
                 }
 
-                $engStmt->execute([
-                    $projectUniqueId,
-                    htmlspecialchars($engagementType, ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($engagementDate, ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($engagementRemarks, ENT_QUOTES, 'UTF-8')
+                $updateEngStmt->execute([
+                    $sanitizedEngagementType,
+                    $engagementDate,
+                    $engagementRemarks,
+                    $engagementId,
+                    $projectUniqueId
                 ]);
+
+                $updatedRows = $updateEngStmt->rowCount();
+                if ($updatedRows > 0) {
+                    $updatedEngagementCount += $updatedRows;
+                } else {
+                    $checkEngStmt->execute([$engagementId, $projectUniqueId]);
+                    if ($checkEngStmt->rowCount() === 0) {
+                        $insertEngStmt->execute([
+                            $sanitizedEngagementType,
+                            $engagementDate,
+                            $engagementRemarks,
+                            $projectUniqueId,
+                            $engagementId
+                        ]);
+                        $insertedEngagementCount++;
+                    }
+                }
             }
         }
 
-        return "Stage Two updated successfully.";
+        // Build final success message
+        $message = "Stage Two updated successfully.";
+        if ($insertedRequirementCount > 0 || $updatedRequirementCount > 0) {
+            $message .= " (Requirements: Inserted $insertedRequirementCount, Updated $updatedRequirementCount)";
+        }
+        if ($insertedEngagementCount > 0 || $updatedEngagementCount > 0) {
+            $message .= " (Engagements: Inserted $insertedEngagementCount, Updated $updatedEngagementCount)";
+        }
+        return $message;
+
     } catch (Exception $e) {
         error_log("Stage Two Update Failed for Project ID {$projectUniqueId}: " . $e->getMessage());
         throw new Exception("Stage Two Update Failed: " . $e->getMessage());

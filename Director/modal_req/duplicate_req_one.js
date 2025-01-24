@@ -11,8 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
   
   });
 
-  
-
 
   /**
    * Calculate the highest block index dynamically from the current requirements
