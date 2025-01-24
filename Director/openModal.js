@@ -322,7 +322,6 @@ function deleteRequirement(requirementId, button, projectId) {
         document.getElementById('deal_size2').value = Number(data.stages.stage_two.deal_size_two) || Number(data.stages.stage_one.deal_size) || 'No Data';
 
         document.getElementById('stageremarks2').value = data.stages.stage_two.remarks_two || data.stages.stage_one.remarks || 'No Data';
-        document.getElementById('product2').value = data.stages.stage_two.product_two || data.stages.stage_one.product || 'No Data';
 
         const technology2 = document.getElementById('technology2');
         const techValue2 = data.stages.stage_two.technology_two || data.stages.stage_one.technology || 'Select';
