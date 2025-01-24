@@ -427,6 +427,18 @@ function deleteRequirement(requirementId, button, projectId) {
             });
 
     }
+
+    function escapeHtml(text) {
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;',
+    };
+    return text.replace(/[&<>"']/g, m => map[m]);
+    }
+    
     //Require Stage Two Widget
     function createRequirementTwoBlock(blockIndex, reqItem, productList = [], distributorList = [], projectId) {
         const requirementId = reqItem.requirement_id_2 || `st2rq${blockIndex}`;
@@ -439,6 +451,17 @@ function deleteRequirement(requirementId, button, projectId) {
         console.log(`Creating Stage Two Requirement Block ${blockIndex}`);
         console.log('Product List:', productList);
         console.log('Distributor List:', distributorList);
+
+        // Ensure productList and distributorList are arrays
+        if (!Array.isArray(productList)) {
+            console.warn('Invalid product list format, defaulting to empty array.');
+            productList = [];
+        }
+
+        if (!Array.isArray(distributorList)) {
+            console.warn('Invalid distributor list format, defaulting to empty array.');
+            distributorList = [];
+        }
 
         const newBlock = document.createElement('div');
         newBlock.classList.add('requirementtwo-block', 'p-2', 'rounded', 'shadow-widget');
