@@ -374,7 +374,7 @@ function deleteRequirement(requirementId, button, projectId) {
     }
 
     function createEngagementBlock(blockIndex, engagementItem, projectId) {
-        const engagementId = engagementItem.engagement_id_two || `st2eng${blockIndex}`;
+        const engagementId = engagementItem.engagement_id_2 || `st2eng${blockIndex}`;
         const engagementType = engagementItem.engagement_type || '';
         const engagementDate = engagementItem.engagement_date || '';
         const engagementRemarks = engagementItem.engagement_remarks || '';
