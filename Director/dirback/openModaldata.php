@@ -183,7 +183,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                                     'requirement_id_2' => $parts[0] ?? null,
                                     'requirement_two' => $parts[1] ?? null,
                                     'requirement_date' => $parts[2] ?? null,
-                                    'requirement_remarks' => $parts[3] ?? null
+                                    'requirement_remarks' => $parts[3] ?? null,
                                     'product_two' => $parts[4] ?? null,
                                     'distributor_two' => $parts[5] ?? null
                                 ];
