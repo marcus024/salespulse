@@ -349,7 +349,7 @@
                                                     Requirement 1
                                                     </p>
                                                     <input type="hidden" name="requirement_id_2[]" value="st2rq1" id="rq_1_id">
-                                                    <div class="row mb-3">
+                                                    <div class="row mb-1">
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label text-white">Requirement</label>
                                                         </div>

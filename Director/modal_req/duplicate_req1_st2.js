@@ -58,40 +58,57 @@ document.addEventListener('DOMContentLoaded', function () {
     const newReqId = `st2rq${nextBlockIndex}`;
 
     newBlock.innerHTML = `
-      <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
-        Requirement ${nextBlockIndex}
-      </p>
-      <input type="hidden" name="requirement_id_2[]" value="${newReqId}">
-      <div class="row mb-3">
-        <div class="col-md-2">
-          <input name="requirement_two[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
+        <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+            Requirement ${nextBlockIndex}
+        </p>
+        <input type="hidden" name="requirement_id_2[]" value="${newReqId}">
+        <div class="row mb-1">
+            <div class="col-md-2">
+                <label for="requirement" class="form-label text-white">Requirement</label>
+            </div>
+            <div class="col-md-2">
+            <label for="product" class="form-label text-white">Product</label>
+            </div>
+            <div class="col-md-2">
+            <label for="distributor" class="form-label text-white">Distributor</label>
+            </div>
+            <div class="col-md-2">
+                <label for="requirement" class="form-label text-white">Date</label>
+            </div>
+            <div class="col-md-3">
+                <label for="requirement" class="form-label text-white">Requirement Remarks</label>
+            </div>
         </div>
-        <div class="col-md-2">
-          <select name="product_two[]" class="form-control custom-select productFetch">
-            <option disabled selected>Select</option>
-            <option value="add_new_product">+ Add New Product...</option>
-          </select>
+        <div class="row mb-3">
+            <div class="col-md-2">
+            <input name="requirement_two[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
+            </div>
+            <div class="col-md-2">
+            <select name="product_two[]" class="form-control custom-select productFetch">
+                <option disabled selected>Select</option>
+                <option value="add_new_product">+ Add New Product...</option>
+            </select>
+            </div>
+            <div class="col-md-2">
+            <select name="distributor_two[]" class="form-control custom-select distributorFetch">
+                <option disabled selected>Select</option>
+                <option value="add_new">+ Add New Distributor...</option>
+            </select>
+            </div>
+            <div class="col-md-2">
+            <input name="requirement_date[]" type="date" class="form-control" style="font-size:10px;">
+            </div>
+            <div class="col-md-2">
+            <input name="requirement_remarks[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+            </div>
+            <div class="col-md-2">
+            <button type="button"
+                    class="btn btn-danger btn-sm removeRequirementTwo"
+                    style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
+                <i class="fas fa-minus"></i>&nbsp;Remove
+            </button>
+            </div>
         </div>
-        <div class="col-md-2">
-          <select name="distributor_two[]" class="form-control custom-select distributorFetch">
-            <option disabled selected>Select</option>
-            <option value="add_new">+ Add New Distributor...</option>
-          </select>
-        </div>
-        <div class="col-md-2">
-          <input name="requirement_date[]" type="date" class="form-control" style="font-size:10px;">
-        </div>
-        <div class="col-md-2">
-          <input name="requirement_remarks[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
-        </div>
-        <div class="col-md-2">
-          <button type="button"
-                  class="btn btn-danger btn-sm removeRequirementTwo"
-                  style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
-            <i class="fas fa-minus"></i>&nbsp;Remove
-          </button>
-        </div>
-      </div>
     `;
 
     // Append the new block
