@@ -252,6 +252,9 @@
                                     </div>
                                     <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
+                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                            Project Profile
+                                            </p>
                                             <div class="row mb-3">
                                                 <div class="col-md-2">
                                                     <label for="requirement" class="form-label text-white">Status</label>
@@ -292,37 +295,48 @@
                                         <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
-                                            <div class="row mb-3">
-                                                <div class="col-md-4">
-                                                    <label for="engagement" class="form-label text-white">Type of Engagement</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label for="engagement" class="form-label text-white">Date</label>
-                                                </div>
-                                                <div class="col-md-5">
-                                                    <label for="engagement" class="form-label text-white">Remarks</label>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <a href="#" id="addEngagement" class="form-label text-white" style="font-size:10px; cursor: pointer;">
-                                                        <i class="fas fa-plus"></i> Add
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div id="engagement-fields-container">
-                                                <div class="row engagement-fields mb-3">
-                                                    <div class="col-md-4">
-                                                        <input name="engagement_type[]" type="text" id="engtype2" class="form-control" placeholder="e.g. Sample Engagement">
+                                            <div id="engagement1Container">
+                                                <div class="engagement-block" data-index="1">
+                                                   <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement1">
+                                                    Engagement 1
+                                                    </p>
+                                                    <input type="hidden" name="requirement_id_1[]" value="st2eng1" id="eng_1_id">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-4">
+                                                            <label for="engagement" class="form-label text-white">Type of Engagement</label>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label for="engagement" class="form-label text-white">Date</label>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <label for="engagement" class="form-label text-white">Remarks</label>
+                                                        </div>
+                                                        <!-- <div class="col-md-1">
+                                                            <a href="#" id="addEngagement" class="form-label text-white" style="font-size:10px; cursor: pointer;">
+                                                                <i class="fas fa-plus"></i> Add
+                                                            </a>
+                                                        </div> -->
                                                     </div>
-                                                    <div class="col-md-2">
-                                                        <input name="engagement_date[]" type="date" id="engdate2" class="form-control" style="font-size:10px;">
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <input name="engagement_remarks[]" type="text" id="engremarks2" class="form-control" placeholder="e.g. Sample Remarks">
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
-                                                            <i class="fas fa-minus"></i>
-                                                        </button>
+                                                    <div id="engagement-fields-container">
+                                                        <div class="row engagement-fields mb-3">
+                                                            <div class="col-md-4">
+                                                                <input name="engagement_type[]" type="text" id="engtype2" class="form-control" placeholder="e.g. Sample Engagement">
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <input name="engagement_date[]" type="date" id="engdate2" class="form-control" style="font-size:10px;">
+                                                            </div>
+                                                            <div class="col-md-5">
+                                                                <input name="engagement_remarks[]" type="text" id="engremarks2" class="form-control" placeholder="e.g. Sample Remarks">
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <button type="button"
+                                                                        class="btn btn-primary btn-sm"
+                                                                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                                                        id="addRequirementBtn">
+                                                                <i class="fas fa-plus"></i>&nbsp;Add
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
