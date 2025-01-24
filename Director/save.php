@@ -207,15 +207,17 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
             // Prepare statements
             $insertReqStmt = $conn->prepare("
                 INSERT INTO requirement_twotb
-                    (requirement_two, requirement_date, requirement_remarks, project_unique_id, requirement_id_2)
-                VALUES (?, ?, ?, ?, ?)
+                    (requirement_two, requirement_date, requirement_remarks, project_unique_id, requirement_id_2, product_two, distributor_two)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
             ");
 
             $updateReqStmt = $conn->prepare("
                 UPDATE requirement_twotb
                 SET requirement_two = ?,
                     requirement_date = ?,
-                    requirement_remarks = ?
+                    requirement_remarks = ?,
+                    product_two = ?,
+                    distributor_two = ?
                 WHERE requirement_id_2 = ?
                 AND project_unique_id = ?
             ");
@@ -235,6 +237,8 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
                 $sanitizedRequirement = htmlspecialchars($requirement ?? '', ENT_QUOTES, 'UTF-8');
                 $requirementDate = htmlspecialchars($inputData['requirement_date'][$index] ?? '', ENT_QUOTES, 'UTF-8');
                 $requirementRemarks = htmlspecialchars($inputData['requirement_remarks'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $productTwo = htmlspecialchars($inputData['product_two'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $distributorTwo = htmlspecialchars($inputData['distributor_two'][$index] ?? '', ENT_QUOTES, 'UTF-8');
                 $requirementId = $inputData['requirement_id_2'][$index] ?? ''; // Using requirement ID from input
 
                 if (!empty($requirementId)) {
@@ -243,6 +247,8 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
                         $sanitizedRequirement,
                         $requirementDate,
                         $requirementRemarks,
+                        $productTwo,
+                        $distributorTwo,
                         $requirementId,
                         $projectUniqueId
                     ]);
@@ -261,7 +267,9 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
                                 $requirementDate,
                                 $requirementRemarks,
                                 $projectUniqueId,
-                                $requirementId
+                                $requirementId,
+                                $productTwo,
+                                $distributorTwo
                             ]);
                             $insertedRequirementCount++;
                         }
@@ -280,6 +288,7 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
             $requirementMessage .= " (Inserted $insertedRequirementCount, Updated $updatedRequirementCount requirements)";
         }
         return $requirementMessage;
+
 
         // Handle engagement items in engagement_twotb
         $insertedEngagementCount = 0;
