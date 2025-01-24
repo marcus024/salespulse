@@ -82,105 +82,99 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        // 2) Handle requirement items in requirementone_tb
-        $insertedCount = 0;
-        $updatedCount  = 0;
+        // Handle engagement items in engagement_twotb
+        $insertedEngagementCount = 0;
+        $updatedEngagementCount = 0;
 
-        if (!empty($inputData['requirement_one'])) {
+        if (!empty($inputData['engagement_type'])) {
             // Prepare statements
-            $insertStmt = $conn->prepare("
-                INSERT INTO requirementone_tb
-                    (requirement_one, project_unique_id, distributor_one, product_one, requirement_id_1)
+            $insertEngStmt = $conn->prepare("
+                INSERT INTO engagement_twotb
+                    (engagement_type, engagement_date, engagement_remarks, project_unique_id, engagement_id_2)
                 VALUES (?, ?, ?, ?, ?)
             ");
 
-            $updateStmt = $conn->prepare("
-                UPDATE requirementone_tb
-                   SET requirement_one = ?,
-                       distributor_one = ?,
-                       product_one    = ?
-                 WHERE requirement_id_1 = ?
-                   AND project_unique_id = ?
+            $updateEngStmt = $conn->prepare("
+                UPDATE engagement_twotb
+                SET engagement_type = ?,
+                    engagement_date = ?,
+                    engagement_remarks = ?
+                WHERE engagement_id_2 = ?
+                AND project_unique_id = ?
             ");
 
-            // We'll also need a check statement to see if the row truly exists
-            $checkStmt = $conn->prepare("
+            // Check if row exists
+            $checkEngStmt = $conn->prepare("
                 SELECT 1 
-                  FROM requirementone_tb
-                 WHERE requirement_id_1 = ? 
-                   AND project_unique_id = ?
+                FROM engagement_twotb
+                WHERE engagement_id_2 = ?
+                AND project_unique_id = ?
                 LIMIT 1
             ");
 
-            // Loop each row by index
-            foreach ($inputData['requirement_one'] as $index => $reqValue) {
-                // Sanitize
-                $requirementOne = htmlspecialchars($reqValue ?? '', ENT_QUOTES, 'UTF-8');
-                $productOne     = htmlspecialchars($inputData['product_one'][$index]     ?? '', ENT_QUOTES, 'UTF-8');
-                $distributorOne = htmlspecialchars($inputData['distributor_one'][$index] ?? '', ENT_QUOTES, 'UTF-8');
-                $requirementId  = $inputData['requirement_id_1'][$index]                ?? '';
+            // Loop through each engagement entry
+            foreach ($inputData['engagement_type'] as $index => $engagementType) {
+                // Sanitize input
+                $sanitizedEngagementType = htmlspecialchars($engagementType ?? '', ENT_QUOTES, 'UTF-8');
+                $engagementDate = htmlspecialchars($inputData['engagement_date'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $engagementRemarks = htmlspecialchars($inputData['engagement_remarks'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $engagementId = $inputData['engagement_id_2'][$index] ?? ''; // Using engagement ID from input
 
-                if (!empty($requirementId)) {
+                if (!empty($engagementId)) {
                     // Attempt UPDATE first
-                    $updateStmt->execute([
-                        $requirementOne,
-                        $distributorOne,
-                        $productOne,
-                        $requirementId,
+                    $updateEngStmt->execute([
+                        $sanitizedEngagementType,
+                        $engagementDate,
+                        $engagementRemarks,
+                        $engagementId,
                         $projectUniqueId
                     ]);
 
-                    $updatedRows = $updateStmt->rowCount();
+                    $updatedRows = $updateEngStmt->rowCount();
                     if ($updatedRows > 0) {
-                        // Data was actually changed
-                        $updatedCount += $updatedRows;
+                        // Data was successfully updated
+                        $updatedEngagementCount += $updatedRows;
                     } else {
-                        // rowCount=0 => either row not found OR data unchanged
-                        // Let's check if the row truly exists
-                        $checkStmt->execute([$requirementId, $projectUniqueId]);
-                        if ($checkStmt->rowCount() === 0) {
-                            // No row => do Insert
-                            $insertStmt->execute([
-                                $requirementOne,
+                        // No rows updated, check if the record exists
+                        $checkEngStmt->execute([$engagementId, $projectUniqueId]);
+                        if ($checkEngStmt->rowCount() === 0) {
+                            // Record does not exist, insert a new row
+                            $insertEngStmt->execute([
+                                $sanitizedEngagementType,
+                                $engagementDate,
+                                $engagementRemarks,
                                 $projectUniqueId,
-                                $distributorOne,
-                                $productOne,
-                                $requirementId
+                                $engagementId
                             ]);
-                            // MySQL often returns 0 for rowCount on INSERT, so manually increment
-                            $insertedCount++;
-                        } 
-                        // else row found, but data is unchanged => do nothing
+                            $insertedEngagementCount++;
+                        }
+                        // Else: Record exists, but no changes made, so no action needed
                     }
                 } else {
-                    // No requirementId => new row => always INSERT
-                    $insertStmt->execute([
-                        $requirementOne,
+                    // No engagement ID provided, treat as a new row and INSERT
+                    $insertEngStmt->execute([
+                        $sanitizedEngagementType,
+                        $engagementDate,
+                        $engagementRemarks,
                         $projectUniqueId,
-                        $distributorOne,
-                        $productOne,
-                        '' // or generate an ID if you want
+                        '' // Or generate a unique ID if required
                     ]);
-                    // Manually increment for a successful insert
-                    $insertedCount++;
+                    $insertedEngagementCount++;
                 }
             }
         }
 
-        // 3) Build a final success message
-        $message = "Stage One updated successfully.";
-        if ($insertedCount > 0 || $updatedCount > 0) {
-            $message .= " (Inserted $insertedCount, Updated $updatedCount requirements)";
+        // Build final success message for engagements
+        $engagementMessage = "Engagements updated successfully.";
+        if ($insertedEngagementCount > 0 || $updatedEngagementCount > 0) {
+            $engagementMessage .= " (Inserted $insertedEngagementCount, Updated $updatedEngagementCount engagements)";
         }
-
-        return $message;
+        return $engagementMessage;
     } catch (Exception $e) {
         error_log("Error in Stage One: " . $e->getMessage());
         throw $e;
     }
 }
-
-
 
 
 function updateStageTwo($conn, $projectUniqueId, $inputData) {
@@ -190,7 +184,6 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
             stage_two_remarks = ?, 
             technology = ?, 
             deal_size = ?, 
-            product = ?, 
             solution = ? 
             WHERE project_unique_id = ?";
         $stmt = $conn->prepare($query);
@@ -198,7 +191,6 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
             $inputData['stage_two_remarks'] ?? null,
             $inputData['technology'] ?? null,
             $inputData['deal_size'] ?? null,
-            $inputData['product'] ?? null,
             $inputData['solution'] ?? null,
             $projectUniqueId
         ]);
