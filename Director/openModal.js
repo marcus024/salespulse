@@ -442,9 +442,9 @@ function deleteRequirement(requirementId, button, projectId) {
     //Require Stage Two Widget
     function createRequirementTwoBlock(blockIndex, reqItem, productList = [], distributorList = [], projectId) {
         const requirementId = reqItem.requirement_id_2 || `st2rq${blockIndex}`;
-        const requirementText = reqItem.requirement_two || reqItem.requirement_one;
-        const selectedProduct = reqItem.product_two || reqItem.product_one;
-        const selectedDistributor = reqItem.distributor_two || reqItem.distributor_one;
+        const requirementText = reqItem.requirement_two || reqItem.requirement_one || ''; // Reference Stage One
+        const selectedProduct = reqItem.product_two || reqItem.product_one || ''; // Reference Stage One
+        const selectedDistributor = reqItem.distributor_two || reqItem.distributor_one || ''; // Reference Stage One
         const requirementDate = reqItem.requirement_date || '';
         const requirementRemarks = reqItem.requirement_remarks || '';
 
