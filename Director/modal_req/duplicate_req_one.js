@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const requirementHiddenInput = document.getElementById('req_1_id');
 
     if (requirementTitle && requirementHiddenInput) {
-      const nextBlockIndex = highestIndex;
+      const nextBlockIndex = highestIndex + 1;
 
       // Update the title and hidden input value
       requirementTitle.textContent = `Requirement ${nextBlockIndex}`;
@@ -41,8 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Initialize the requirement count on page load
-  updateRequirementCount();
 
   // "Add" button to clone a new requirement block
   addBtn.addEventListener('click', function(e) {
@@ -134,6 +132,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update requirement count after adding
     updateRequirementCount();
   });
+
+
 
   // Delegate remove button functionality
   requirementsContainer.addEventListener('click', function(e) {
