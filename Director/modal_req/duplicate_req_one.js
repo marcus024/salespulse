@@ -11,45 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // If needed, do something after both are loaded
   });
 
-  // Function to calculate the highest block index dynamically
-  function updateRequirementCount() {
-    const allRequirements = requirementsContainer.querySelectorAll('input[name="requirement_id_1[]"]');
-    let highestIndex = 0;
-
-    allRequirements.forEach(input => {
-      const value = input.value; // e.g., "st1rq3"
-      const match = value.match(/st1rq(\d+)/); // Extract number after "st1rq"
-      if (match) {
-        const index = parseInt(match[1], 10); // Convert to integer
-        highestIndex = Math.max(highestIndex, index); // Update the highest index
-      }
-    });
-
-    // Update the initial requirement block (requirement1)
-    const requirementTitle = document.getElementById('requirement1');
-    const requirementHiddenInput = document.getElementById('req_1_id');
-
-    if (requirementTitle && requirementHiddenInput) {
-      const nextBlockIndex = highestIndex + 1;
-
-      // Update the title and hidden input value
-      requirementTitle.textContent = `Requirement ${nextBlockIndex}`;
-      requirementHiddenInput.value = `st1rq${nextBlockIndex}`;
-      console.log(`Updated initial requirement block to: Requirement ${nextBlockIndex} (st1rq${nextBlockIndex})`);
-    } else {
-      console.warn('Initial requirement block elements not found in the DOM.');
-    }
-  }
-
-  // Initialize the requirement count on page load
-  updateRequirementCount();
-
   // "Add" button to clone a new requirement block
   addBtn.addEventListener('click', function(e) {
     e.preventDefault();
-
-    // Ensure requirementCount is up-to-date
-    updateRequirementCount();
 
     // Get the next block index dynamically
     const allRequirements = requirementsContainer.querySelectorAll('input[name="requirement_id_1[]"]');
@@ -131,11 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (newDistributorSelect) {
       fillOneDistributorSelect($(newDistributorSelect));
     }
-    // Update requirement count after adding
-    updateRequirementCount();
   });
-
-
 
   // Delegate remove button functionality
   requirementsContainer.addEventListener('click', function(e) {
