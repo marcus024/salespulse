@@ -67,10 +67,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const newReqId = `st1rq${nextBlockIndex}`;
 
     newBlock.innerHTML = `
-      <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+      <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirement1">
         Requirement ${nextBlockIndex}
       </p>
-      <input type="hidden" name="requirement_id_1[]" value="${newReqId}">
+      <input type="hidden" name="requirement_id_1[]" value="${newReqId}" id="req_1_id">
       <div class="row mb-2">
         <div class="col-md-4">
           <label class="form-label text-white">Requirement</label>

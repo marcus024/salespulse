@@ -227,10 +227,10 @@ function createRequirementBlock(blockIndex, reqItem, productList=[], distributor
 
   // Populate the block content
   newBlock.innerHTML = `
-    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="req_1_id">
       Requirement ${blockIndex}
     </p>
-    <input type="hidden" name="requirement_id_1[]" value="${requirementId}">
+    <input type="hidden" name="requirement_id_1[]" value="${requirementId}" id="req_1_id">
     <div class="row mb-2">
         <div class="col-md-4">
             <label class="form-label text-white">Requirement</label>
