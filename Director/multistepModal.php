@@ -300,7 +300,7 @@
                                                    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement1">
                                                     Engagement 1
                                                     </p>
-                                                    <input type="hidden" name="requirement_id_1[]" value="st2eng1" id="eng_1_id">
+                                                    <input type="hidden" name="engagement_id_2[]" value="st2eng1" id="eng_1_id">
                                                     <div class="row mb-1">
                                                         <div class="col-md-4">
                                                             <label for="engagement" class="form-label text-white">Type of Engagement</label>
@@ -397,6 +397,9 @@
                                         <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
+                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement1">
+                                            Engagement 1
+                                            </p>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label for="requirement" class="form-label text-white">Stage Remarks</label>
