@@ -385,11 +385,19 @@ function deleteRequirement(requirementId, button, projectId) {
             console.log("Distributor List:", distributorList);
 
             // Step 2: Fetch requirements array for Stage Two
-             const requirementsStageTwo =
-        (data.stages.stage_two && data.stages.stage_two.requirement_stage_two) ||
-        data.stages.stage_one.requirements;
-        console.log('Fetched Stage One requirements:', data.stages.stage_one.requirements);
+            // Correctly fetch requirementsStageTwo with fallback logic
+            const requirementsStageTwo = 
+            Array.isArray(data.stages.stage_two?.requirement_stage_two) && 
+            data.stages.stage_two.requirement_stage_two.length > 0 
+                ? data.stages.stage_two.requirement_stage_two 
+                : data.stages.stage_one?.requirements || [];
+                
+            console.log('Fetched Stage One requirements:', data.stages.stage_one.requirements);
 
+            // Debugging: Verify the fetched requirements
+            console.log('Fetched requirements for Stage Two:', requirementsStageTwo);
+
+            
 
             // Get the container for Stage Two requirements
             const requirementsTwoContainer = document.getElementById('requirementtwoContainer');
