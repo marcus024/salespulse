@@ -151,13 +151,13 @@ if (!empty($inputData['engagement_type'])) {
             }
         } else {
             // No engagement ID provided, generate a new ID for INSERT
-            $generatedEngagementId = 'st2eng' . uniqid(); // Example of generating a unique ID
+           
             $insertEngStmt->execute([
                 $sanitizedEngagementType,
                 $engagementDate,
                 $engagementRemarks,
                 $projectUniqueId,
-                $generatedEngagementId
+                $engagementId
             ]);
             $insertedEngagementCount++;
         }
