@@ -188,6 +188,7 @@ function escapeHtml(text) {
   };
   return text.replace(/[&<>"']/g, m => map[m]);
 }
+
 function createRequirementBlock(blockIndex, reqItem, productList=[], distributorList=[],projectId) {
   const requirementId = reqItem.requirement_id_1 || `st1rq${blockIndex}`;
   const requirementText = reqItem.requirement_one || '';
@@ -311,9 +312,7 @@ function deleteRequirement(requirementId, button, projectId) {
 }
 
 
-
-
-
+    //Fetch Stage Two
     function fetchStageTwo(data,projectId){
         document.getElementById('stage-two-start').value = data.stages.stage_two.start_date || 'No Data';
         document.getElementById('stage-two-end').value = data.stages.stage_two.end_date ||  'No Data';
