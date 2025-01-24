@@ -12,28 +12,23 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /**
-   * Get the next available block index to avoid gaps in numbering
-   * @returns {number} The next available block index
+   * Calculate the highest block index dynamically from the current requirements
+   * @returns {number} The next block index
    */
   function getNextBlockIndex() {
     const allRequirements = requirementsContainer.querySelectorAll('input[name="requirement_id_1[]"]');
-    const existingIndices = Array.from(allRequirements).map(input => {
+    let highestIndex = 0;
+
+    allRequirements.forEach(input => {
       const value = input.value; // e.g., "st1rq3"
       const match = value.match(/st1rq(\d+)/); // Extract number after "st1rq"
-      return match ? parseInt(match[1], 10) : null;
-    }).filter(index => index !== null); // Filter out invalid values
-
-    if (existingIndices.length === 0) {
-      return 1; // Start with 1 if no requirements exist
-    }
-
-    // Sort indices and find the first missing number
-    existingIndices.sort((a, b) => a - b);
-    for (let i = 1; i <= existingIndices.length + 1; i++) {
-      if (!existingIndices.includes(i)) {
-        return i; // Return the first missing index
+      if (match) {
+        const index = parseInt(match[1], 10); // Convert to integer
+        highestIndex = Math.max(highestIndex, index); // Update the highest index
       }
-    }
+    });
+
+    return highestIndex + 1; // Return the next available block index
   }
 
   /**
