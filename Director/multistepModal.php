@@ -149,9 +149,9 @@
                                             <div id="requirementsContainer">
                                                 <div class="requirement-block" data-index="1">
                                                    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirement1">
-                                                    Requirement (blockIndex)
+                                                   
                                                     </p>
-                                                    <input type="hidden" name="requirement_id_1[]" value="st1rq(blockIndex)" id="req_1_id">
+                                                    <input type="hidden" name="requirement_id_1[]" id="req_1_id">
 
                                                     <div class="row mb-2">
                                                     <div class="col-md-4">
