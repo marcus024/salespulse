@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initDistributorChangeHandler();
 
    $.when( loadProducts(), loadDistributors() ).done(function() {
-    // If needed, do something after both are loaded
+  
   });
 
   /**
