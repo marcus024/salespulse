@@ -157,7 +157,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                             $hash = md5(json_encode($normalized)); 
                             if (!isset($carry[$hash])) {
                                 $carry[$hash] = [
-                                    'engagement_id_two' => $parts[0] ?? null,
+                                    'engagement_id_2' => $parts[0] ?? null,
                                     'engagement_type' => $parts[1] ?? null,
                                     'engagement_date' => $parts[2] ?? null,
                                     'engagement_remarks' => $parts[3] ?? null
