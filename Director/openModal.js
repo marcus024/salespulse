@@ -239,7 +239,7 @@ function createRequirementBlock(blockIndex, reqItem, productList=[], distributor
         <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
     </div>
     <div class="col-md-3">
-    <select name="product_one[]" class="form-control custom-select productFetch" onchange="console.log('Selected Product:', this.value)">
+        <select name="product_one[]" class="form-control custom-select productFetch" onchange="console.log('Selected Product:', this.value)">
             <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
             ${productList.map(product => `
                 <option value="${escapeHtml(product)}" ${product.trim().toLowerCase() === selectedProduct.trim().toLowerCase() ? 'selected' : ''}>
@@ -438,7 +438,7 @@ function deleteRequirement(requirementId, button, projectId) {
     };
     return text.replace(/[&<>"']/g, m => map[m]);
     }
-    
+
     //Require Stage Two Widget
     function createRequirementTwoBlock(blockIndex, reqItem, productList = [], distributorList = [], projectId) {
         const requirementId = reqItem.requirement_id_2 || `st2rq${blockIndex}`;
@@ -478,13 +478,16 @@ function deleteRequirement(requirementId, button, projectId) {
                     <input name="requirement_two[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
                 </div>
                 <div class="col-md-2">
-                    <select name="product_two[]" class="form-control custom-select productFetch">
+                    <select name="product_two[]" class="form-control custom-select productFetch" onchange="console.log('Selected Product:', this.value)">
                         <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
                         ${productList.map(product => `
                             <option value="${escapeHtml(product)}" ${product.trim().toLowerCase() === selectedProduct.trim().toLowerCase() ? 'selected' : ''}>
                                 ${escapeHtml(product)}
                             </option>
                         `).join('')}
+                        ${!productList.some(product => product.trim().toLowerCase() === selectedProduct.trim().toLowerCase()) && selectedProduct
+                            ? `<option value="${escapeHtml(selectedProduct)}" selected>${escapeHtml(selectedProduct)}</option>`
+                            : ''}
                         <option value="add_new_product">+ Add New Product...</option>
                     </select>
                 </div>
@@ -496,6 +499,9 @@ function deleteRequirement(requirementId, button, projectId) {
                             ${escapeHtml(distributor)}
                             </option>
                         `).join('')}
+                        ${!distributorList.some(distributor => distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase()) && selectedDistributor
+                            ? `<option value="${escapeHtml(selectedDistributor)}" selected>${escapeHtml(selectedDistributor)}</option>`
+                            : ''}
                         <option value="add_new">+ Add New Distributor...</option>
                     </select>
                 </div>
