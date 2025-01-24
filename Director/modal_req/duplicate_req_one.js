@@ -41,13 +41,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Initialize the requirement count on page load
-  updateRequirementCount();
 
   // "Add" button to clone a new requirement block
   addBtn.addEventListener('click', function(e) {
     e.preventDefault();
 
+    // Ensure requirementCount is up-to-date
+    updateRequirementCount();
 
     // Get the next block index dynamically
     const allRequirements = requirementsContainer.querySelectorAll('input[name="requirement_id_1[]"]');
