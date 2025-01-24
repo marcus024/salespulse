@@ -515,7 +515,7 @@ function deleteRequirement(requirementId, button, projectId) {
                     <button type="button"
                             class="btn btn-danger btn-sm"
                             style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                            onclick="deleteRequirement('${requirementId}', this, '${projectId}')">
+                            onclick="deleteRequirementtwo('${requirementId}', this, '${projectId}')">
                     <i class="fas fa-minus"></i>&nbsp;Remove
                     </button>
                 </div>
@@ -524,6 +524,44 @@ function deleteRequirement(requirementId, button, projectId) {
 
         return newBlock;
         }
+
+        // Function to delete a Stage Two requirement
+        function deleteRequirementTwo(requirementId, button, projectId) {
+        // Confirm deletion
+        if (!confirm('Are you sure you want to delete this requirement?')) {
+            return;
+        }
+
+        const requirementBlock = button.closest('.requirementtwo-block'); // Find the block to remove
+
+        // Send delete request to the backend
+        fetch('./dirback/delete_req2.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ requirementId, project_id: projectId }),
+        })
+            .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to delete requirement.');
+            }
+            return response.json();
+            })
+            .then(data => {
+            if (data.status === 'success') {
+                // Remove the block from the DOM if deletion is successful
+                requirementBlock.remove();
+                console.log('Requirement deleted successfully:', data);
+            } else {
+                alert(data.message || 'Error deleting requirement.');
+                console.error('Error:', data);
+            }
+            })
+            .catch(error => {
+            console.error('Error deleting requirement:', error);
+            alert('An error occurred while deleting the requirement. Please try again.');
+            });
+        }
+
 
     //Engagement Stage Two Widget
     function createEngagementBlock(blockIndex, engagementItem, projectId) {
