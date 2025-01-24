@@ -9,9 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
   initDistributorChangeHandler();
 
   
-  // Load products and distributors and cache them
-  $.when(loadProducts(), loadDistributors()).done(function () {
-    console.log("Products and distributors loaded.");
+  $.when( loadProducts(), loadDistributors() ).done(function() {
+    // If needed, do something after both are loaded
   });
 
   // "Add" button to clone a new requirement block
