@@ -9,9 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initDistributorChangeHandler();
 
   
-  $.when( loadProducts(), loadDistributors() ).done(function() {
-    
-  });
+  
 
   // "Add" button to clone a new requirement block
   addBtn.addEventListener('click', function(e) {
