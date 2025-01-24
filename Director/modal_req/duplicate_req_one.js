@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   
   $.when( loadProducts(), loadDistributors() ).done(function() {
-    // If needed, do something after both are loaded
+    
   });
 
   // "Add" button to clone a new requirement block
