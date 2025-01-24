@@ -372,10 +372,13 @@
                                                                 <input name="requirement_two[]" type="text" id="req2" class="form-control" placeholder="e.g. Sample Requirement">
                                                             </div>
                                                             <div class="col-md-2">
-                                                                <input name="product[]" id="product2" type="text" class="form-control" placeholder="e.g. Router">
+                                                                <select name="product_two[]" class="form-control custom-select productFetch" >
+                                                                    <option disabled selected>Select</option>
+                                                                    <option value="add_new_product">+ Add New Product...</option>
+                                                                </select>
                                                             </div>
                                                             <div class="col-md-2">
-                                                                <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
+                                                                <select name="distributor_two[]" id="distributorSelect" class="form-control custom-select">
                                                                     <option disabled selected>Select</option>
                                                                     <option value="add_new">+ Add New Distributor...</option>
                                                                 </select>
@@ -390,7 +393,7 @@
                                                                 <button type="button"
                                                                         class="btn btn-primary btn-sm"
                                                                         style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                                                                        id="addEngagement1Btn">
+                                                                        id="addRequirement2Btn">
                                                                 <i class="fas fa-plus"></i>&nbsp;Add
                                                                 </button>
                                                             </div>
