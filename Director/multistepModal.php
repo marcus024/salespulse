@@ -301,7 +301,7 @@
                                                     Engagement 1
                                                     </p>
                                                     <input type="hidden" name="requirement_id_1[]" value="st2eng1" id="eng_1_id">
-                                                    <div class="row mb-3">
+                                                    <div class="row mb-1">
                                                         <div class="col-md-4">
                                                             <label for="engagement" class="form-label text-white">Type of Engagement</label>
                                                         </div>
