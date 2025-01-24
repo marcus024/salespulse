@@ -114,7 +114,7 @@
         });
     }
 
- function fetchStageOne(data, projectId) {
+ function fetchStageOne(data,projectId) {
   // Basic Stage One fields
   document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
   document.getElementById('end-date-placeholder').value = data.stages.stage_one.end_date || 'No Data';
@@ -156,42 +156,27 @@
       }
 
       // Clear any existing content
-      requirementsContainer.innerHTML = '';
+    //   requirementsContainer.innerHTML = '';
 
       // Step 4: Populate requirements dynamically
-      let highestBlockIndex = 0;
-
       if (requirements.length > 0) {
-        // Add all existing requirements with delete buttons
         requirements.forEach((reqItem, index) => {
           const blockIndex = index + 1;
-          highestBlockIndex = Math.max(highestBlockIndex, blockIndex);
-          const newBlock = createRequirementBlock(blockIndex, reqItem, productList, distributorList, projectId, false);
+          const newBlock = createRequirementBlock(blockIndex, reqItem, productList, distributorList,projectId);
           requirementsContainer.appendChild(newBlock);
         });
-      }
-
-      // Calculate the next block index for the initial UI
-      const nextBlockIndex = highestBlockIndex + 1;
-
-      // Update the initial UI block
-      const initialUIBlock = document.getElementById('requirement1'); // Update the requirement title
-      const initialHiddenInput = document.getElementById('req_1_id'); // Update the hidden input
-
-      if (initialUIBlock && initialHiddenInput) {
-        initialUIBlock.textContent = `Requirement (${nextBlockIndex})`;
-        initialHiddenInput.value = `st1rq${nextBlockIndex}`;
       } else {
-        console.warn("Initial UI block not found in the DOM.");
+        // If no requirements exist, add a default requirement block
+        const newBlock = createRequirementBlock(1, {}, productList, distributorList);
+        requirementsContainer.appendChild(newBlock);
       }
 
-      console.log('Stage One + requirements populated:', requirements);
+      console.log('Stage Osne + requirements populated:', requirements);
     })
     .catch(error => {
       console.error("Error fetching Products or Distributors:", error);
     });
 }
-
 
 function escapeHtml(text) {
   const map = {
