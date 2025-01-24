@@ -388,7 +388,9 @@ function deleteRequirement(requirementId, button, projectId) {
              const requirementsStageTwo =
         (data.stages.stage_two && data.stages.stage_two.requirement_stage_two) ||
         data.stages.stage_one.requirements;
-        
+        console.log('Fetched Stage One requirements:', data.stages.stage_one.requirements);
+
+
             // Get the container for Stage Two requirements
             const requirementsTwoContainer = document.getElementById('requirementtwoContainer');
             if (!requirementsTwoContainer) {
