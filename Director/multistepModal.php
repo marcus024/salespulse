@@ -378,7 +378,7 @@
                                                                 </select>
                                                             </div>
                                                             <div class="col-md-2">
-                                                                <select name="distributor_two[]" id="distributorSelect" class="form-control custom-select">
+                                                                <select name="distributor_two[]" class="form-control custom-select distributorFetch" >
                                                                     <option disabled selected>Select</option>
                                                                     <option value="add_new">+ Add New Distributor...</option>
                                                                 </select>
