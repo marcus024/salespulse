@@ -325,14 +325,14 @@
                                                             <div class="col-md-2">
                                                                 <input name="engagement_date[]" type="date" id="engdate2" class="form-control" style="font-size:10px;">
                                                             </div>
-                                                            <div class="col-md-5">
+                                                            <div class="col-md-4">
                                                                 <input name="engagement_remarks[]" type="text" id="engremarks2" class="form-control" placeholder="e.g. Sample Remarks">
                                                             </div>
                                                             <div class="col-md-2">
                                                                 <button type="button"
                                                                         class="btn btn-primary btn-sm"
                                                                         style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                                                                        id="addRequirementBtn">
+                                                                        id="addEngagement1Btn">
                                                                 <i class="fas fa-plus"></i>&nbsp;Add
                                                                 </button>
                                                             </div>
