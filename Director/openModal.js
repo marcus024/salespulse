@@ -265,22 +265,14 @@ function createRequirementBlock(blockIndex, reqItem, productList=[], distributor
             <option value="add_new">+ Add New Distributor...</option>
         </select>
     </div>
-    <div class="col-md-2">
-        <button type="button"
-                class="btn btn-primary btn-sm"
-                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                id="addRequirementBtn">
-        <i class="fas fa-plus"></i>&nbsp;Add
-        </button>
-    </div>
-    <div class="col-md-2">
-        <button type="button"
-                class="btn btn-danger btn-sm"
-                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                onclick="deleteRequirement('${requirementId}', this,'${projectId}')">
-        <i class="fas fa-minus"></i>&nbsp;Remove
-        </button>
-    </div>
+        <div class="col-md-2">
+            <button type="button"
+                    class="btn btn-danger btn-sm"
+                    style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                    onclick="deleteRequirement('${requirementId}', this,'${projectId}')">
+            <i class="fas fa-minus"></i>&nbsp;Remove
+            </button>
+        </div>
     </div>
   `;
 
