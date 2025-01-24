@@ -199,33 +199,87 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        // Insert or update requirements
+        // Handle requirement items in requirement_twotb
+        $insertedRequirementCount = 0;
+        $updatedRequirementCount = 0;
+
         if (!empty($inputData['requirement_two'])) {
-            $requirementQuery = "INSERT INTO requirement_twotb (project_unique_id, requirement_two, requirement_date, requirement_remarks) 
-                                 VALUES (?, ?, ?, ?) 
-                                 ON DUPLICATE KEY UPDATE 
-                                 requirement_two = VALUES(requirement_two), 
-                                 requirement_date = VALUES(requirement_date), 
-                                 requirement_remarks = VALUES(requirement_remarks)";
-            $reqStmt = $conn->prepare($requirementQuery);
+            // Prepare statements
+            $insertReqStmt = $conn->prepare("
+                INSERT INTO requirement_twotb
+                    (requirement_two, requirement_date, requirement_remarks, project_unique_id, requirement_id_2)
+                VALUES (?, ?, ?, ?, ?)
+            ");
 
+            $updateReqStmt = $conn->prepare("
+                UPDATE requirement_twotb
+                SET requirement_two = ?,
+                    requirement_date = ?,
+                    requirement_remarks = ?
+                WHERE requirement_id_2 = ?
+                AND project_unique_id = ?
+            ");
+
+            // Check if row exists
+            $checkReqStmt = $conn->prepare("
+                SELECT 1 
+                FROM requirement_twotb
+                WHERE requirement_id_2 = ?
+                AND project_unique_id = ?
+                LIMIT 1
+            ");
+
+            // Loop through each requirement entry
             foreach ($inputData['requirement_two'] as $index => $requirement) {
-                $requirementDate = $inputData['requirement_date'][$index] ?? null;
-                $requirementRemarks = $inputData['requirement_remarks'][$index] ?? null;
+                // Sanitize input
+                $sanitizedRequirement = htmlspecialchars($requirement ?? '', ENT_QUOTES, 'UTF-8');
+                $requirementDate = htmlspecialchars($inputData['requirement_date'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $requirementRemarks = htmlspecialchars($inputData['requirement_remarks'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $requirementId = $inputData['requirement_id_2'][$index] ?? ''; // Using requirement ID from input
 
-                if (empty($requirement)) {
-                    error_log("Empty requirement_two for Project ID {$projectUniqueId}. Skipping insert.");
-                    continue;
+                if (!empty($requirementId)) {
+                    // Attempt UPDATE first
+                    $updateReqStmt->execute([
+                        $sanitizedRequirement,
+                        $requirementDate,
+                        $requirementRemarks,
+                        $requirementId,
+                        $projectUniqueId
+                    ]);
+
+                    $updatedRows = $updateReqStmt->rowCount();
+                    if ($updatedRows > 0) {
+                        // Data was successfully updated
+                        $updatedRequirementCount += $updatedRows;
+                    } else {
+                        // No rows updated, check if the record exists
+                        $checkReqStmt->execute([$requirementId, $projectUniqueId]);
+                        if ($checkReqStmt->rowCount() === 0) {
+                            // Record does not exist, insert a new row
+                            $insertReqStmt->execute([
+                                $sanitizedRequirement,
+                                $requirementDate,
+                                $requirementRemarks,
+                                $projectUniqueId,
+                                $requirementId
+                            ]);
+                            $insertedRequirementCount++;
+                        }
+                        // Else: Record exists, but no changes made, so no action needed
+                    }
+                } else {
+                    // No requirement ID provided, skip the entry
+                    error_log("Empty requirement_id_2 for Project ID {$projectUniqueId}. Skipping insert.");
                 }
-
-                $reqStmt->execute([
-                    $projectUniqueId,
-                    htmlspecialchars($requirement, ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($requirementDate, ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($requirementRemarks, ENT_QUOTES, 'UTF-8')
-                ]);
             }
         }
+
+        // Build final success message for requirements
+        $requirementMessage = "Requirements updated successfully.";
+        if ($insertedRequirementCount > 0 || $updatedRequirementCount > 0) {
+            $requirementMessage .= " (Inserted $insertedRequirementCount, Updated $updatedRequirementCount requirements)";
+        }
+        return $requirementMessage;
 
         // Handle engagement items in engagement_twotb
         $insertedEngagementCount = 0;
