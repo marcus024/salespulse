@@ -314,151 +314,206 @@ function deleteRequirement(requirementId, button, projectId) {
 
 
 
-    function fetchStageTwo(data, projectId) {
-        // Basic Stage Two fields
-        document.getElementById('start-date-placeholder').value = data.stages.stage_two.start_date || 'No Data';
-        document.getElementById('end-date-placeholder').value = data.stages.stage_two.end_date || 'No Data';
-        document.getElementById('status-placeholder').value = data.stages.stage_two.status || 'No Data';
-        document.getElementById('solutionTwo').value = data.stages.stage_two.solution_two || 'No Data';
-        document.getElementById('dealSizeTwo').value = data.stages.stage_two.deal_size_two || 'No Data';
-        document.getElementById('stageremarksTwo').value = data.stages.stage_two.remarks_two || 'No Data';
+    function fetchStageTwo(data,projectId){
+        document.getElementById('stage-two-start').value = data.stages.stage_two.start_date || 'No Data';
+        document.getElementById('stage-two-end').value = data.stages.stage_two.end_date ||  'No Data';
+        document.getElementById('stage-two-status').value = data.stages.stage_two.status ||  'No Data';
+        document.getElementById('solution2').value = data.stages.stage_two.solution_two || data.stages.stage_one.solution || 'No Data';
+        document.getElementById('deal_size2').value = Number(data.stages.stage_two.deal_size_two) || Number(data.stages.stage_one.deal_size) || 'No Data';
 
-        // Step 1: Fetch engagement array
-        const engagements = (data.stages.stage_two && data.stages.stage_two.engagement_stage_two) || [];
-        const engagementContainer = document.getElementById('engagement1Container');
+        document.getElementById('stageremarks2').value = data.stages.stage_two.remarks_two || data.stages.stage_one.remarks || 'No Data';
+        document.getElementById('product2').value = data.stages.stage_two.product_two || data.stages.stage_one.product || 'No Data';
 
-        if (!engagementContainer) {
-            console.error('#engagement1Container not found in DOM!');
-            return;
-        }
-
-        // Clear existing content (optional, if engagements should replace the existing blocks)
-        // engagementContainer.innerHTML = '';
-
-        // Step 2: Populate engagements dynamically
-        let highestBlockIndex = 0;
-
-        if (engagements.length > 0) {
-            engagements.forEach((engagementItem, index) => {
-            const blockIndex = index + 1;
-            highestBlockIndex = Math.max(highestBlockIndex, blockIndex);
-
-            const newEngagementBlock = createEngagementBlock(blockIndex, engagementItem, projectId);
-            engagementContainer.appendChild(newEngagementBlock);
-            });
-        }
-
-        // Step 3: Update the existing initial engagement field dynamically
-        const nextBlockIndex = highestBlockIndex + 1;
-        const initialEngagementTitle = document.getElementById('engagement1');
-        const initialHiddenInput = document.getElementById('eng_1_id');
-
-        if (initialEngagementTitle && initialHiddenInput) {
-            initialEngagementTitle.textContent = `Engagement ${nextBlockIndex}`;
-            initialHiddenInput.value = `st2eng${nextBlockIndex}`;
-        } else {
-            console.warn('Initial engagement field not found in the DOM.');
-        }
-
-        console.log('Stage Two + engagements populated:', engagements);
-        }
-
-        /**
-         * Create an engagement block dynamically
-         * @param {number} blockIndex The block index of the engagement
-         * @param {Object} engagementItem The engagement item data
-         * @param {string} projectId The project ID
-         * @returns {HTMLElement} The created engagement block element
-         */
-    function createEngagementBlock(blockIndex, engagementItem, projectId) {
-        const engagementId = engagementItem.engagement_id_two || `st2eng${blockIndex}`;
-        const engagementType = engagementItem.engagement_type || '';
-        const engagementDate = engagementItem.engagement_date || '';
-        const engagementRemarks = engagementItem.engagement_remarks || '';
-
-        console.log(`Creating Engagement Block ${blockIndex}`);
-
-        const newBlock = document.createElement('div');
-        newBlock.classList.add('engagement-block', 'p-2', 'rounded', 'shadow-widget');
-        newBlock.dataset.index = blockIndex;
-
-        newBlock.innerHTML = `
-            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement${blockIndex}">
-            Engagement ${blockIndex}
-            </p>
-            <input type="hidden" name="engagement_id_2[]" value="${engagementId}" id="eng_${blockIndex}_id">
-            <div class="row mb-1">
-            <div class="col-md-4">
-                <label for="engagement" class="form-label text-white">Type of Engagement</label>
-            </div>
-            <div class="col-md-2">
-                <label for="engagement" class="form-label text-white">Date</label>
-            </div>
-            <div class="col-md-5">
-                <label for="engagement" class="form-label text-white">Remarks</label>
-            </div>
-            </div>
-            <div id="engagement-fields-container">
-            <div class="row engagement-fields mb-3">
-                <div class="col-md-4">
-                <input name="engagement_type[]" type="text" class="form-control" placeholder="e.g. Sample Engagement" value="${engagementType}">
-                </div>
-                <div class="col-md-2">
-                <input name="engagement_date[]" type="date" class="form-control" style="font-size:10px;" value="${engagementDate}">
-                </div>
-                <div class="col-md-4">
-                <input name="engagement_remarks[]" type="text" class="form-control" placeholder="e.g. Sample Remarks" value="${engagementRemarks}">
-                </div>
-                <div class="col-md-2">
-                <button type="button"
-                        class="btn btn-danger btn-sm "
-                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                        onclick="deleteEngagement('${engagementId}', this, '${projectId}')">
-                    <i class="fas fa-minus"></i>&nbsp;Remove
-                </button>
-                </div>
-            </div>
-            </div>
-        `;
-
-        return newBlock;
-        }
-
-        /**
-         * Function to delete an engagement block
-         * @param {string} engagementId The engagement ID
-         * @param {HTMLElement} button The delete button element
-         * @param {string} projectId The project ID
-         */
-        function deleteEngagement(engagementId, button, projectId) {
-        // Confirm before deletion
-        if (!confirm('Are you sure you want to delete this engagement?')) {
-            return;
-        }
-
-        const engagementBlock = button.closest('.engagement-block');
-
-        // Send delete request to the backend
-        fetch('./dirback/delete_engagement.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ engagementId, project_id: projectId }),
-        })
-            .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to delete engagement.');
+        const technology2 = document.getElementById('technology2');
+        const techValue2 = data.stages.stage_two.technology_two || data.stages.stage_one.technology || 'Select';
+        Array.from(technology2.options).forEach(option => {
+            if (option.value === techValue2) {
+                option.selected = true;
             }
-            return response.json();
-            })
-            .then(data => {
-            engagementBlock.remove();
-            console.log('Engagement deleted successfully:', data);
-            })
-            .catch(error => {
-            console.error('Error deleting engagement:', error);
-            });
-        }
+        });
 
+        // Get the container for requirements
+        const requirementTwoContainer = document.getElementById('requirement-fields-container');
+
+        // Clear the container before rendering
+        // requirementTwoContainer.innerHTML = '';
+
+        const requirementsTwo = data.stages.stage_two.requirement_stage_two || []; // Fetch requirements from data
+
+        requirementsTwo.forEach((requirement2) => {
+            // Create a row for each requirement
+            const requirementRow = document.createElement('div');
+            requirementRow.className = 'row align-items-center requirement-fields mb-3';
+
+            // Set the HTML content of the row
+            requirementRow.innerHTML = `
+                <div class="col-md-3">
+                    <input 
+                        value="${requirement2.requirement_two || ''}" 
+                        name="requirement_two[]" 
+                        type="text" 
+                        id="req2" 
+                        class="form-control" 
+                        placeholder="e.g. Sample Requirement"
+                    >
+                </div>
+                <div class="col-md-2">
+                    <input 
+                        value="${requirement2.requirement_date || ''}" 
+                        name="requirement_date[]" 
+                        type="date" 
+                        id="reqdate2" 
+                        class="form-control" 
+                        style="font-size:10px;"
+                    >
+                </div>
+                <div class="col-md-5">
+                    <input 
+                        value="${requirement2.requirement_remarks || ''}" 
+                        name="requirement_remarks[]" 
+                        type="text" 
+                        id="reqremarks2" 
+                        class="form-control" 
+                        placeholder="e.g. Sample Remarks"
+                    >
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            `;
+
+            // Append the row to the container
+            requirementTwoContainer.appendChild(requirementRow);
+
+            // Add delete functionality to the button
+            const deleteButton = requirementRow.querySelector('.deleteRequirement');
+            deleteButton.addEventListener('click', () => {
+                fetch('./dirback/delete_req2.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        requirement_id: requirement2.requirement_id_two, // Use the requirement ID for deletion
+                        project_id: projectId // Project ID for context
+                    }),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.status === 'success') {
+                            // Remove the row from the DOM
+                            requirementRow.remove();
+
+                            // Optionally update the requirements array
+                            const index = requirementsTwo.findIndex(req => req.requirement_id_two === requirement2.requirement_id_two);
+                            if (index > -1) {
+                                requirementsTwo.splice(index, 1);
+                            }
+                        } else {
+                            alert('Error: ' + data.message);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error deleting requirement:', error);
+                        alert('Failed to delete requirement. Please try again.');
+                    });
+            });
+        });
+
+        // Get the container for engagements
+        const engagementFieldsContainer = document.getElementById('engagement-fields-container');
+
+        // Clear the container before rendering
+        // engagementFieldsContainer.innerHTML = '';
+
+        // Fetch engagements from stage_two
+        const engagements = data.stages.stage_two.engagement_stage_two || [];
+
+        engagements.forEach((engagement) => {
+            // Create a row for each engagement
+            const engagementRow = document.createElement('div');
+            engagementRow.className = 'row align-items-center engagement-fields mb-3';
+
+            // Set the HTML content of the row
+            engagementRow.innerHTML = `
+                <div class="col-md-3">
+                    <input 
+                        value="${engagement.engagement_type || ''}" 
+                        name="engagement_type[]" 
+                        type="text" 
+                        id="engtype2" 
+                        class="form-control" 
+                        placeholder="e.g. Sample Engagement"
+                    >
+                </div>
+                <div class="col-md-2">
+                    <input 
+                        value="${engagement.engagement_date || ''}" 
+                        name="engagement_date[]" 
+                        type="date" 
+                        id="engdate2" 
+                        class="form-control" 
+                        style="font-size:10px;"
+                    >
+                </div>
+                <div class="col-md-5">
+                    <input 
+                        value="${engagement.engagement_remarks || ''}" 
+                        name="engagement_remarks[]" 
+                        type="text" 
+                        id="engremarks2" 
+                        class="form-control" 
+                        placeholder="e.g. Sample Remarks"
+                    >
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-danger btn-sm deleteEngagement" style="margin-left: 5px;">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            `;
+
+            // Append the row to the container
+            engagementFieldsContainer.appendChild(engagementRow);
+
+            // Add delete functionality to the button
+            const deleteButton = engagementRow.querySelector('.deleteEngagement');
+            deleteButton.addEventListener('click', () => {
+                fetch('./dirback/delete_eng2.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        engagement_id: engagement.engagement_id_two, // Use the engagement ID for deletion
+                        project_id: projectId // Project ID for context
+                    }),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.status === 'success') {
+                            // Remove the row from the DOM
+                            engagementRow.remove();
+
+                            // Optionally update the engagements array
+                            const index = engagements.findIndex(e => e.engagement_id_two === engagement.engagement_id_two);
+                            if (index > -1) {
+                                engagements.splice(index, 1);
+                            }
+                        } else {
+                            alert('Error: ' + data.message);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error deleting engagement:', error);
+                        alert('Failed to delete engagement. Please try again.');
+                    });
+            });
+        });
+
+    }
 
     function fetchStageThree(data,projectId){
         document.getElementById('stage-three-start').value  = data.stages.stage_three.start_date || 'No Data';
