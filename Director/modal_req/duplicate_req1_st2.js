@@ -2,46 +2,46 @@ document.addEventListener('DOMContentLoaded', function () {
   const requirementsContainer = document.getElementById('requirementtwoContainer');
   const addBtn = document.getElementById('addRequirement2Btn');
 
+  // Initialize the "Add New" logic for both product & distributor (if needed)
+  initProductChangeHandler();
+  initDistributorChangeHandler();
+
   /**
    * Calculate the highest block index dynamically from the current requirements
    * @returns {number} The next block index
    */
   function getNextBlockIndex() {
     const allRequirements = requirementsContainer.querySelectorAll('input[name="requirement_id_2[]"]');
-    let highestIndex = 0;
-
-    allRequirements.forEach(input => {
+    const indices = Array.from(allRequirements).map(input => {
       const value = input.value; // e.g., "st2rq3"
-      const match = value.match(/st2rq(\d+)/); // Extract the number after "st2rq"
-      if (match) {
-        const index = parseInt(match[1], 10); // Convert to integer
-        highestIndex = Math.max(highestIndex, index); // Update the highest index
-      }
+      const match = value.match(/st2rq(\d+)/); // Extract number after "st2rq"
+      return match ? parseInt(match[1], 10) : 0; // Convert to integer or default to 0
     });
 
-    return highestIndex + 1; // Return the next available block index
+    // Return the next available block index
+    return indices.length > 0 ? Math.max(...indices) + 1 : 1;
   }
 
   /**
-   * Update the initial requirement block dynamically
+   * Update the initial requirement block (requirementstagetwo)
+   * to match the correct numbering dynamically
    */
   function updateInitialRequirementBlock() {
-    const initialRequirementTitle = document.getElementById('requirementstagetwo');
-    const initialHiddenInput = document.getElementById('rq_1_id');
+    const requirementTitle = document.getElementById('requirementstagetwo');
+    const requirementHiddenInput = document.getElementById('rq_1_id');
 
-    if (initialRequirementTitle && initialHiddenInput) {
-      const nextBlockIndex = getNextBlockIndex();
+    if (requirementTitle && requirementHiddenInput) {
+      const currentIndex = requirementHiddenInput.value.match(/st2rq(\d+)/)?.[1] || 1;
 
-      // Update the title and hidden input value
-      initialRequirementTitle.textContent = `Requirement ${nextBlockIndex}`;
-      initialHiddenInput.value = `st2rq${nextBlockIndex}`;
-      console.log(`Updated initial requirement block to: Requirement ${nextBlockIndex} (st2rq${nextBlockIndex})`);
+      // Ensure the title and hidden input value match
+      requirementTitle.textContent = `Requirement ${currentIndex}`;
+      requirementHiddenInput.value = `st2rq${currentIndex}`;
     } else {
       console.warn('Initial requirement block elements not found in the DOM.');
     }
   }
 
-  // Initial update for the requirement block
+  // Run the initial update to synchronize the block index on page load
   updateInitialRequirementBlock();
 
   // "Add" button to clone a new requirement block
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
         <div class="col-md-2">
           <button type="button"
-                  class="btn btn-danger btn-sm removeRequirement2"
+                  class="btn btn-danger btn-sm removeRequirementTwo"
                   style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
             <i class="fas fa-minus"></i>&nbsp;Remove
           </button>
@@ -97,20 +97,28 @@ document.addEventListener('DOMContentLoaded', function () {
     // Append the new block
     requirementsContainer.appendChild(newBlock);
 
-    // Update the initial block after adding a new one
-    updateInitialRequirementBlock();
+    // Fill product and distributor selects for the new block
+    const newProductSelect = newBlock.querySelector('.productFetch');
+    if (newProductSelect) {
+      fillOneProductSelect($(newProductSelect));
+    }
+
+    const newDistributorSelect = newBlock.querySelector('.distributorFetch');
+    if (newDistributorSelect) {
+      fillOneDistributorSelect($(newDistributorSelect));
+    }
+
+    console.log(`Added new block: Requirement ${nextBlockIndex}`);
   });
 
   // Delegate remove button functionality
   requirementsContainer.addEventListener('click', function (e) {
-    if (e.target.closest('.removeRequirement2')) {
+    if (e.target.closest('.removeRequirementTwo')) {
       e.preventDefault();
       const blockToRemove = e.target.closest('.requirementtwo-block');
       if (blockToRemove) {
         blockToRemove.remove();
-
-        // Update the initial block after removing one
-        updateInitialRequirementBlock();
+        console.log('Removed a requirement block.');
       }
     }
   });
