@@ -1153,7 +1153,8 @@
             console.log("Backend response:", result);
 
             if (result.message === `Step ${currentStep} data processed successfully`) {
-                alert(`Step ${currentStep} completed successfully!`);
+                // alert(`Step ${currentStep} completed successfully!`);
+                showNotif_bar(`Step ${currentStep} completed successfully!`);
                 const currentStepCircle = document.getElementById(`step${currentStep}-circle`);
                 if (currentStepCircle) {
                     currentStepCircle.classList.add('completed');
@@ -1242,9 +1243,9 @@ document.getElementById('saveButton').addEventListener('click', async () => {
   currentStepFields.forEach(field => {
   const name = field.name || field.id;
 
-    // If name ends with [] (e.g. "requirement_one[]", "product_one[]", "requirement_id_1[]", etc.)
+    
     if (name.endsWith('[]')) {
-        const key = name.replace('[]', '');  // e.g. "requirement_one[]"=> "requirement_one"
+        const key = name.replace('[]', ''); 
         if (!inputValues[key]) {
         inputValues[key] = [];
         }
