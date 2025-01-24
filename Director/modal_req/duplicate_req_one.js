@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
 
+
   // "Add" button to clone a new requirement block
   addBtn.addEventListener('click', function(e) {
     e.preventDefault();
