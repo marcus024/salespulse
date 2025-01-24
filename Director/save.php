@@ -118,8 +118,7 @@ if (!empty($inputData['engagement_type'])) {
         $sanitizedEngagementType = htmlspecialchars($engagementType ?? '', ENT_QUOTES, 'UTF-8');
         $engagementDate = htmlspecialchars($inputData['engagement_date'][$index] ?? '', ENT_QUOTES, 'UTF-8');
         $engagementRemarks = htmlspecialchars($inputData['engagement_remarks'][$index] ?? '', ENT_QUOTES, 'UTF-8');
-        $engagementId = $inputData['engagement_id_2'][$index] ?? ''; // Using engagement ID from input
-
+        $engagementId =htmlspecialchars($inputData['engagement_id_2'][$index] ?? '', ENT_QUOTES, 'UTF-8');
         if (!empty($engagementId)) {
             // Attempt UPDATE first
             $updateEngStmt->execute([
