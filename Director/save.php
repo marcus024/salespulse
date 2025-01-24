@@ -222,7 +222,6 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
                 AND project_unique_id = ?
             ");
 
-            // Check if row exists
             $checkReqStmt = $conn->prepare("
                 SELECT 1 
                 FROM requirement_twotb
@@ -231,7 +230,6 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
                 LIMIT 1
             ");
 
-            // Loop through each requirement entry
             foreach ($inputData['requirement_two'] as $index => $requirement) {
                 // Sanitize input
                 $sanitizedRequirement = htmlspecialchars($requirement ?? '', ENT_QUOTES, 'UTF-8');
@@ -239,20 +237,14 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
                 $requirementRemarks = htmlspecialchars($inputData['requirement_remarks'][$index] ?? '', ENT_QUOTES, 'UTF-8');
                 $productTwo = htmlspecialchars($inputData['product_two'][$index] ?? '', ENT_QUOTES, 'UTF-8');
                 $distributorTwo = htmlspecialchars($inputData['distributor_two'][$index] ?? '', ENT_QUOTES, 'UTF-8');
-                $requirementId = $inputData['requirement_id_2'][$index] ?? ''; // Using requirement ID from input
+                $requirementId = $inputData['requirement_id_2'][$index] ?? '';
 
-                // Skip blank rows: At least one meaningful field must have a value
-                if (
-                    empty($sanitizedRequirement) &&
-                    empty($productTwo) &&
-                    empty($distributorTwo)
-                ) {
+                if (empty($sanitizedRequirement) && empty($productTwo) && empty($distributorTwo)) {
                     error_log("Skipping blank requirement entry for Project ID {$projectUniqueId}.");
                     continue;
                 }
 
                 if (!empty($requirementId)) {
-                    // Attempt UPDATE first
                     $updateReqStmt->execute([
                         $sanitizedRequirement,
                         $requirementDate,
@@ -265,13 +257,10 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
 
                     $updatedRows = $updateReqStmt->rowCount();
                     if ($updatedRows > 0) {
-                        // Data was successfully updated
                         $updatedRequirementCount += $updatedRows;
                     } else {
-                        // No rows updated, check if the record exists
                         $checkReqStmt->execute([$requirementId, $projectUniqueId]);
                         if ($checkReqStmt->rowCount() === 0) {
-                            // Record does not exist, insert a new row
                             $insertReqStmt->execute([
                                 $sanitizedRequirement,
                                 $requirementDate,
@@ -283,36 +272,25 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
                             ]);
                             $insertedRequirementCount++;
                         }
-                        // Else: Record exists, but no changes made, so no action needed
                     }
                 } else {
-                    // No requirement ID provided, skip the entry
                     error_log("Empty requirement_id_2 for Project ID {$projectUniqueId}. Skipping insert.");
                 }
             }
         }
-
-        // Build final success message for requirements
-        $requirementMessage = "Requirements updated successfully.";
-        if ($insertedRequirementCount > 0 || $updatedRequirementCount > 0) {
-            $requirementMessage .= " (Inserted $insertedRequirementCount, Updated $updatedRequirementCount requirements)";
-        }
-        return $requirementMessage;
-
 
         // Handle engagement items in engagement_twotb
         $insertedEngagementCount = 0;
         $updatedEngagementCount = 0;
 
         if (!empty($inputData['engagement_type'])) {
-            // Prepare SQL statements
-            $insertStmt = $conn->prepare("
+            $insertEngStmt = $conn->prepare("
                 INSERT INTO engagement_twotb
                     (engagement_type, engagement_date, engagement_remarks, project_unique_id, engagement_id_2)
                 VALUES (?, ?, ?, ?, ?)
             ");
 
-            $updateStmt = $conn->prepare("
+            $updateEngStmt = $conn->prepare("
                 UPDATE engagement_twotb
                 SET engagement_type = ?,
                     engagement_date = ?,
@@ -321,7 +299,7 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
                 AND project_unique_id = ?
             ");
 
-            $checkStmt = $conn->prepare("
+            $checkEngStmt = $conn->prepare("
                 SELECT 1 
                 FROM engagement_twotb
                 WHERE engagement_id_2 = ?
@@ -329,22 +307,18 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
                 LIMIT 1
             ");
 
-            // Loop through each engagement entry
             foreach ($inputData['engagement_type'] as $index => $engagementType) {
-                // Sanitize input values
                 $sanitizedEngagementType = htmlspecialchars($engagementType ?? '', ENT_QUOTES, 'UTF-8');
                 $engagementDate = htmlspecialchars($inputData['engagement_date'][$index] ?? '', ENT_QUOTES, 'UTF-8');
                 $engagementRemarks = htmlspecialchars($inputData['engagement_remarks'][$index] ?? '', ENT_QUOTES, 'UTF-8');
                 $engagementId = htmlspecialchars($inputData['engagement_id_2'][$index] ?? '', ENT_QUOTES, 'UTF-8');
 
-                // Skip blanks or incomplete records
                 if (empty($sanitizedEngagementType) || empty($engagementDate) || empty($engagementRemarks) || empty($engagementId)) {
                     error_log("Skipping blank or incomplete engagement entry for project ID: $projectUniqueId.");
                     continue;
                 }
 
-                // Attempt to UPDATE the record
-                $updateStmt->execute([
+                $updateEngStmt->execute([
                     $sanitizedEngagementType,
                     $engagementDate,
                     $engagementRemarks,
@@ -352,16 +326,13 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
                     $projectUniqueId
                 ]);
 
-                $updatedRows = $updateStmt->rowCount();
+                $updatedRows = $updateEngStmt->rowCount();
                 if ($updatedRows > 0) {
-                    // Record updated successfully
                     $updatedEngagementCount += $updatedRows;
                 } else {
-                    // Check if the record exists
-                    $checkStmt->execute([$engagementId, $projectUniqueId]);
-                    if ($checkStmt->rowCount() === 0) {
-                        // Record does not exist, INSERT it
-                        $insertStmt->execute([
+                    $checkEngStmt->execute([$engagementId, $projectUniqueId]);
+                    if ($checkEngStmt->rowCount() === 0) {
+                        $insertEngStmt->execute([
                             $sanitizedEngagementType,
                             $engagementDate,
                             $engagementRemarks,
@@ -370,21 +341,20 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
                         ]);
                         $insertedEngagementCount++;
                     }
-                    // Else: Record exists but no changes, do nothing
                 }
             }
         }
 
-        // Build final success message for engagements
-        $engagementMessage = "Engagements updated successfully.";
-        if ($insertedEngagementCount > 0 || $updatedEngagementCount > 0) {
-            $engagementMessage .= " (Inserted $insertedEngagementCount, Updated $updatedEngagementCount engagements)";
+        // Build final success message
+        $message = "Stage Two updated successfully.";
+        if ($insertedRequirementCount > 0 || $updatedRequirementCount > 0) {
+            $message .= " (Requirements: Inserted $insertedRequirementCount, Updated $updatedRequirementCount)";
         }
-        return $engagementMessage;
+        if ($insertedEngagementCount > 0 || $updatedEngagementCount > 0) {
+            $message .= " (Engagements: Inserted $insertedEngagementCount, Updated $updatedEngagementCount)";
+        }
+        return $message;
 
-
-
-        return "Stage Two updated successfully.";
     } catch (Exception $e) {
         error_log("Stage Two Update Failed for Project ID {$projectUniqueId}: " . $e->getMessage());
         throw new Exception("Stage Two Update Failed: " . $e->getMessage());
