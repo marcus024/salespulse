@@ -344,7 +344,7 @@
                                         <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                             <div id="requirementtwoContainer">
-                                                <div class="engagement-block" data-index="1">
+                                                <div class="requirementtwo-block" data-index="1">
                                                     <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagetwo">
                                                     Requirement 1
                                                     </p>
@@ -366,7 +366,7 @@
                                                             <label for="requirement" class="form-label text-white">Requirement Remarks</label>
                                                         </div>
                                                     </div>
-                                                    <div id="requirement-fields-container">
+                                                    <div >
                                                         <div class="row requirement-fields mb-3">
                                                             <div class="col-md-2">
                                                                 <input name="requirement_two[]" type="text" id="req2" class="form-control" placeholder="e.g. Sample Requirement">
