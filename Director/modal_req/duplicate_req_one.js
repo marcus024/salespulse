@@ -41,6 +41,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+  // Initialize the requirement count on page load
+  updateRequirementCount();
+
   // "Add" button to clone a new requirement block
   addBtn.addEventListener('click', function(e) {
     e.preventDefault();
