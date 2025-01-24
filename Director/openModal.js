@@ -369,9 +369,135 @@ function deleteRequirement(requirementId, button, projectId) {
         }
 
         console.log('Stage Two + engagements populated:', engagements);
+        
+
+        //Fetching of Requirement Stage Two
+        // Fetch product and distributor lists
+        let productList = [];
+        let distributorList = [];
+
+        Promise.all([loadProducts(), loadDistributors()])
+            .then(([products, distributors]) => {
+            productList = products;
+            distributorList = distributors;
+
+            console.log("Products and Distributors fetched successfully for Stage Two.");
+            console.log("Product List:", productList);
+            console.log("Distributor List:", distributorList);
+
+            // Step 2: Fetch requirements array for Stage Two
+            const requirementsStageTwo = (data.stages.stage_two && data.stages.stage_two.requirement_stage_two) || [];
+
+            // Get the container for Stage Two requirements
+            const requirementsTwoContainer = document.getElementById('requirementtwoContainer');
+            if (!requirementsTwoContainer) {
+                console.error('#requirementtwoContainer not found in DOM!');
+                return;
+            }
+
+            // Step 3: Populate requirements dynamically
+            let highestBlockIndex = 0;
+
+            if (requirementsStageTwo.length > 0) {
+                requirementsStageTwo.forEach((reqItem, index) => {
+                const blockIndex = index + 1;
+                highestBlockIndex = Math.max(highestBlockIndex, blockIndex);
+                const newBlock = createRequirementTwoBlock(blockIndex, reqItem, productList, distributorList, projectId);
+                requirementsTwoContainer.appendChild(newBlock);
+                });
+            }
+
+            // Calculate the next block index for the existing initial field
+            const nextBlockIndex = highestBlockIndex + 1;
+
+            // Update the existing initial requirement field dynamically
+            const initialRequirementTitle = document.getElementById('requirementstagetwo');
+            const initialHiddenInput = document.getElementById('rq_1_id');
+
+            if (initialRequirementTitle && initialHiddenInput) {
+                initialRequirementTitle.textContent = `Requirement ${nextBlockIndex}`;
+                initialHiddenInput.value = `st2rq${nextBlockIndex}`;
+            } else {
+                console.warn("Initial requirement field for Stage Two not found in the DOM.");
+            }
+
+            console.log('Stage Two requirements populated:', requirementsStageTwo);
+            })
+            .catch(error => {
+            console.error("Error fetching Products or Distributors for Stage Two:", error);
+            });
 
     }
+    //Require Stage Two Widget
+    function createRequirementTwoBlock(blockIndex, reqItem, productList = [], distributorList = [], projectId) {
+        const requirementId = reqItem.requirement_id_2 || `st2rq${blockIndex}`;
+        const requirementText = reqItem.requirement_two || '';
+        const selectedProduct = reqItem.product_two || '';
+        const selectedDistributor = reqItem.distributor_two || '';
+        const requirementDate = reqItem.requirement_date || '';
+        const requirementRemarks = reqItem.requirement_remarks || '';
 
+        console.log(`Creating Stage Two Requirement Block ${blockIndex}`);
+        console.log('Product List:', productList);
+        console.log('Distributor List:', distributorList);
+
+        const newBlock = document.createElement('div');
+        newBlock.classList.add('requirementtwo-block', 'p-2', 'rounded', 'shadow-widget');
+        newBlock.dataset.index = blockIndex;
+
+        // Populate the block content
+        newBlock.innerHTML = `
+            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="rq_2_id">
+            Requirement ${blockIndex}
+            </p>
+            <input type="hidden" name="requirement_id_2[]" value="${requirementId}" id="rq_2_id">
+            <div class="row mb-1">
+                <div class="col-md-2">
+                    <input name="requirement_two[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
+                </div>
+                <div class="col-md-2">
+                    <select name="product_two[]" class="form-control custom-select productFetch">
+                        <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
+                        ${productList.map(product => `
+                            <option value="${escapeHtml(product)}" ${product.trim().toLowerCase() === selectedProduct.trim().toLowerCase() ? 'selected' : ''}>
+                                ${escapeHtml(product)}
+                            </option>
+                        `).join('')}
+                        <option value="add_new_product">+ Add New Product...</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <select name="distributor_two[]" class="form-control custom-select distributorFetch">
+                        <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
+                        ${distributorList.map(distributor => `
+                            <option value="${escapeHtml(distributor)}" ${distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase() ? 'selected' : ''}>
+                            ${escapeHtml(distributor)}
+                            </option>
+                        `).join('')}
+                        <option value="add_new">+ Add New Distributor...</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <input name="requirement_date[]" type="date" class="form-control" value="${requirementDate}">
+                </div>
+                <div class="col-md-2">
+                    <input name="requirement_remarks[]" type="text" class="form-control" placeholder="e.g. Remarks" value="${requirementRemarks}">
+                </div>
+                <div class="col-md-2">
+                    <button type="button"
+                            class="btn btn-danger btn-sm"
+                            style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                            onclick="deleteRequirement('${requirementId}', this, '${projectId}')">
+                    <i class="fas fa-minus"></i>&nbsp;Remove
+                    </button>
+                </div>
+            </div>
+        `;
+
+        return newBlock;
+        }
+
+    //Engagement Stage Two Widget
     function createEngagementBlock(blockIndex, engagementItem, projectId) {
         const engagementId = engagementItem.engagement_id_2 || `st2eng${blockIndex}`;
         const engagementType = engagementItem.engagement_type || '';
