@@ -526,7 +526,7 @@ function deleteRequirement(requirementId, button, projectId) {
         }
 
         // Function to delete a Stage Two requirement
-        function deleteRequirementTwo(requirementId, button, projectId) {
+        function deleteRequirementtwo(requirementId, button, projectId) {
         // Confirm deletion
         if (!confirm('Are you sure you want to delete this requirement?')) {
             return;
