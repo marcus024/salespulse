@@ -1,6 +1,26 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-  let requirementCount = 1;
+let requirementCount;
+
+const requirementHiddenInput = document.getElementById('req_1_id');
+if (requirementHiddenInput) {
+  // Extract the block index from the hidden input value (e.g., "st1rq3")
+  const hiddenValue = requirementHiddenInput.value; // Example: "st1rq3"
+  const match = hiddenValue.match(/st1rq(\d+)/); // Extract the number after "st1rq"
+  
+  if (match) {
+    requirementCount = parseInt(match[1], 10); // Dynamically set requirementCount to the extracted block index
+  } else {
+    console.warn('Unable to extract block index from hidden input value:', hiddenValue);
+    requirementCount = null; // Set to null if block index can't be determined
+  }
+} else {
+  console.warn('Hidden input with id="req_1_id" not found.');
+  requirementCount = null; // Set to null if the hidden input is not found
+}
+
+console.log('Current Requirement Count:', requirementCount);
+
   const requirementsContainer = document.getElementById('requirementsContainer');
   const addBtn = document.getElementById('addRequirementBtn');
 
