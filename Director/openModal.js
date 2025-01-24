@@ -385,7 +385,7 @@ function deleteRequirement(requirementId, button, projectId) {
             console.log("Distributor List:", distributorList);
 
             // Step 2: Fetch requirements array for Stage Two
-            const requirementsStageTwo = (data.stages.stage_two && data.stages.stage_two.requirement_stage_two) || [];
+            const requirementsStageTwo = (data.stages.stage_two && data.stages.stage_two.requirement_stage_two) || data.stages.stage_one.requirements;
 
             // Get the container for Stage Two requirements
             const requirementsTwoContainer = document.getElementById('requirementtwoContainer');
@@ -442,9 +442,9 @@ function deleteRequirement(requirementId, button, projectId) {
     //Require Stage Two Widget
     function createRequirementTwoBlock(blockIndex, reqItem, productList = [], distributorList = [], projectId) {
         const requirementId = reqItem.requirement_id_2 || `st2rq${blockIndex}`;
-        const requirementText = reqItem.requirement_two || '';
-        const selectedProduct = reqItem.product_two || '';
-        const selectedDistributor = reqItem.distributor_two || '';
+        const requirementText = reqItem.requirement_two || reqItem.requirement_one;
+        const selectedProduct = reqItem.product_two || reqItem.product_one;
+        const selectedDistributor = reqItem.distributor_two || reqItem.distributor_one;
         const requirementDate = reqItem.requirement_date || '';
         const requirementRemarks = reqItem.requirement_remarks || '';
 
