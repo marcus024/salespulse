@@ -148,10 +148,11 @@
                                             <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
                                             <div id="requirementsContainer">
                                                 <div class="requirement-block" data-index="1">
-                                                    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                                   <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirement1">
                                                     Requirement 1
                                                     </p>
-                                                    <input type="hidden" name="requirement_id_1[]" value="st1rq1">
+                                                    <input type="hidden" name="requirement_id_1[]" value="st1rq1" id="req_1_id">
+
                                                     <div class="row mb-2">
                                                     <div class="col-md-4">
                                                         <label class="form-label text-white">Requirement</label>
@@ -162,14 +163,14 @@
                                                     <div class="col-md-3">
                                                         <label class="form-label text-white">Distributor</label>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <!-- <div class="col-md-2">
                                                         <button type="button"
                                                                 class="btn btn-primary btn-sm"
                                                                 style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
                                                                 id="addRequirementBtn">
                                                         <i class="fas fa-plus"></i>&nbsp;Add
                                                         </button>
-                                                    </div>
+                                                    </div> -->
                                                     </div>
                                                     <div class="row mb-3">
                                                     <div class="col-md-4">
@@ -193,11 +194,19 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <button type="button"
+                                                                class="btn btn-primary btn-sm"
+                                                                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                                                id="addRequirementBtn">
+                                                        <i class="fas fa-plus"></i>&nbsp;Add
+                                                        </button>
+                                                    </div>
+                                                    <!-- <div class="col-md-2">
+                                                        <button type="button"
                                                                 class="btn btn-danger btn-sm removeRequirement"
                                                                 style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
                                                         <i class="fas fa-minus"></i>&nbsp;Remove
                                                         </button>
-                                                    </div>
+                                                    </div> -->
                                                     </div>
                                                 </div> 
                                             </div> 
@@ -984,6 +993,24 @@
                                     </div>
                                     <div id="salesPulse">Sales Pulse</div>
                                 </div>
+                                <!-- Notification Bar -->
+                                <div id="notif_bar_r" style="
+                                    display: none;
+                                    position: absolute;
+                                    left: 10px;
+                                    bottom: 10px;
+                                    background-color: #d4edda;
+                                    color: #155724;
+                                    padding: 10px 15px;
+                                    border-radius: 5px;
+                                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                                    font-size: 14px;
+                                    align-items: center;
+                                    gap: 8px;
+                                ">
+                                    <i class="fas fa-check-circle" style="color: #28a745; font-size: 16px;"></i>
+                                    <span id="notificationMessage"></span>
+                                </div>
                                 <button type="button" class="btn btn-danger " id="deleteButton" style="border-color: red; background-color: #fff; color: red; font-size: 12px;">
                                     <i class="fas fa-trash-alt"></i> Delete
                                 </button>
@@ -1000,7 +1027,32 @@
 
     <!-- javascript -->
     <script src="modal_req/duplicate_req_one.js"></script>
-    
+    <script>
+      function showNotif_bar(message = "Operation completed successfully!", duration = 3000) {
+    const notif_bar_r = document.getElementById('notif_bar_r');
+    const notificationMessage = document.getElementById('notificationMessage');
+
+    if (!notif_bar_r || !notificationMessage) {
+        console.error("Notification bar elements are missing in the DOM.");
+        return;
+    }
+
+    // Debug: Ensure the notification is starting hidden
+    console.log("Notification bar initial display:", window.getComputedStyle(notif_bar_r).display);
+
+    // Set the message and show the notification
+    notificationMessage.textContent = message;
+    notif_bar_r.style.display = 'flex';
+
+    // Hide the notification after the specified duration
+    setTimeout(() => {
+        console.log("Hiding notification bar after duration.");
+        notif_bar_r.style.display = 'none';
+    }, duration);
+}
+
+
+    </script>
                 
     <script>
         let currentStep = 1;
@@ -1015,7 +1067,6 @@
             document.getElementById(`step${step}`).classList.remove('d-none');
         }
 
-        
         function updateProjectId() {
             if (currentStep === 1) {
                 const projectIdElement = document.getElementById('project-id-placeholder');
@@ -1032,102 +1083,103 @@
 
         
         document.getElementById('completeButton').addEventListener('click', async () => {
-            if (!confirm(`Are you sure you want to complete Step ${currentStep}?`)) {
-                return;
-            }
-            const projectIdInput = document.getElementById('project-unique-id');
-            const projectIdValue = projectIdInput ? projectIdInput.value.trim() : null;
-            if (!projectIdValue) {
-                alert("Project ID is missing. Cannot proceed.");
-                console.error("Error: Project ID not found.");
-                return;
-            }
-            const currentStepFields = document.querySelectorAll(
-                `#step${currentStep} input, #step${currentStep} textarea, #step${currentStep} select`
-            );
-            const inputValues = {};
-             currentStepFields.forEach(field => {
-        const name = field.name || field.id;
-        
-        // Handle array-like names (e.g., requirement_one[])
-        if (name.endsWith('[]')) {
-            const key = name.replace('[]', '');
-            if (!inputValues[key]) {
-                inputValues[key] = [];
-            }
-            inputValues[key].push(field.value.trim());
-
-            // Also capture the requirement_id_one from the data-id attribute
-            const requirementId = field.getAttribute('data-id');
-            if (requirementId) {
-                if (!inputValues['requirement_ids']) {
-                    inputValues['requirement_ids'] = [];
-                }
-                inputValues['requirement_ids'].push(requirementId); // Store requirement ID
-            }
-        } else {
-            inputValues[name] = field.value.trim();
+        const userConfirmed = confirm(`Are you sure you want to complete Step ${currentStep}?`);
+        if (!userConfirmed) {
+            console.log("Completion canceled by user.");
+            return;
         }
-    });
-            const dataToSend = {
-                step: currentStep,
-                project_unique_id: projectIdValue,
-                data: inputValues,
-            };
-            console.log("Data to send:", dataToSend);
-            try {
-                const response = await fetch('complete.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(dataToSend),
-                });
-                if (!response.ok) {
-                    const errorText = await response.text(); 
-                    console.error("HTTP Error:", response.status, errorText);
-                    alert(`Failed to complete Step ${currentStep}: ${response.statusText}`);
-                    return;
+
+        const projectIdInput = document.getElementById('project-unique-id');
+        const projectId = projectIdInput ? projectIdInput.value.trim() : null;
+
+        if (!projectId) {
+            alert("Project ID is missing. Cannot complete step.");
+            console.error("Error: Project ID not found.");
+            return;
+        }
+
+        // Collect all fields for the current step
+        const currentStepFields = document.querySelectorAll(
+            `#step${currentStep} input, #step${currentStep} textarea, #step${currentStep} select`
+        );
+
+        const inputValues = {};
+
+        currentStepFields.forEach(field => {
+            const name = field.name || field.id;
+
+            // Handle fields with array-like names (e.g., "requirement_one[]")
+            if (name.endsWith('[]')) {
+                const key = name.replace('[]', '');
+                if (!inputValues[key]) {
+                    inputValues[key] = [];
                 }
-                let result;
-                try {
-                    result = await response.json();
-                } catch (jsonError) {
-                    const rawResponse = await response.text();
-                    console.error("Error parsing JSON:", jsonError, "Raw Response:", rawResponse);
-                    throw new Error("The server returned an invalid JSON response.");
-                }
-                console.log("Backend response:", result);
-                if (result.message === `Step ${currentStep} data processed successfully`) {
-                    alert(`Step ${currentStep} completed successfully!`);
-                    const currentStepCircle = document.getElementById(`step${currentStep}-circle`);
-                    if (currentStepCircle) {
-                        currentStepCircle.classList.add('completed');
-                        currentStepCircle.textContent = '✔';
-                    }
-                    if (currentStep < totalSteps) {
-                        currentStep++;
-                        showStep(currentStep);  
-                        updateProjectId();      
-                    } else {
-                        alert('All steps completed!');
-                    }
-                    if (currentStep !== 5) {
-                    openModal(projectIdValue);
-                }
-                } else {
-                    alert(`Unexpected response: ${result.message}`);
-                }
-            } catch (error) {
-                console.error("Error in fetch operation:", error);
-                alert(`An error occurred while completing Step ${currentStep}: ${error.message}`);
+                inputValues[key].push(field.value.trim());
+            } else {
+                inputValues[name] = field.value.trim(); // Single-value field
             }
         });
 
-        function refreshModal() {
-        const modal = document.getElementById('multiStepModal');
-        const modalContent = document.querySelector('#multiStepModal .modal-content');
-        modalContent.innerHTML = modalContent.innerHTML; 
-    
-    }
+        console.log("Collected input values:", inputValues);
+
+        const dataToSend = {
+            step: currentStep,
+            project_unique_id: projectId,
+            data: inputValues,
+        };
+
+        console.log("Data to send:", dataToSend);
+
+        try {
+            const response = await fetch('complete.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dataToSend),
+            });
+
+            const responseText = await response.text();
+            if (!response.ok) {
+                console.error("HTTP Error:", response.status, responseText);
+                throw new Error(`HTTP Error ${response.status}: ${response.statusText}`);
+            }
+
+            let result;
+            try {
+                result = JSON.parse(responseText);
+            } catch (jsonError) {
+                console.error("Error parsing JSON:", jsonError, "Raw Response:", responseText);
+                throw new Error("The server returned an invalid JSON response.");
+            }
+
+            console.log("Backend response:", result);
+
+            if (result.message === `Step ${currentStep} data processed successfully`) {
+                // alert(`Step ${currentStep} completed successfully!`);
+                showNotif_bar(`Step ${currentStep} completed successfully!`);
+                const currentStepCircle = document.getElementById(`step${currentStep}-circle`);
+                if (currentStepCircle) {
+                    currentStepCircle.classList.add('completed');
+                    currentStepCircle.textContent = '✔';
+                }
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    showStep(currentStep);  
+                    updateProjectId();
+                } else {
+                    alert('All steps completed!');
+                }
+                if (currentStep !== 5) {
+                    openModal(projectId);
+                }
+            } else {
+                alert(`Unexpected response: ${result.message}`);
+            }
+        } catch (error) {
+            console.error("Error in fetch operation:", error);
+            alert(`An error occurred while completing Step ${currentStep}: ${error.message}`);
+        }
+    });
+
     document.getElementById('deleteButton').addEventListener('click', async () => {
         if (confirm('Are you sure you want to cancel this process? This action cannot be undone.')) {
             const projectIdInput = document.getElementById('project-unique-id');
@@ -1138,7 +1190,6 @@
                 console.error("Error: Project ID not found.");
                 return;
             }
-
             try {
                 const response = await fetch('delete.php', {
                     method: 'POST',
@@ -1193,9 +1244,9 @@ document.getElementById('saveButton').addEventListener('click', async () => {
   currentStepFields.forEach(field => {
   const name = field.name || field.id;
 
-    // If name ends with [] (e.g. "requirement_one[]", "product_one[]", "requirement_id_1[]", etc.)
+    
     if (name.endsWith('[]')) {
-        const key = name.replace('[]', '');  // e.g. "requirement_one[]"=> "requirement_one"
+        const key = name.replace('[]', ''); 
         if (!inputValues[key]) {
         inputValues[key] = [];
         }
@@ -1206,8 +1257,6 @@ document.getElementById('saveButton').addEventListener('click', async () => {
         inputValues[name] = field.value.trim();
     }
     });
-
-
     console.log("Collected input values:", inputValues);
 
     const dataToSend = {
@@ -1238,12 +1287,11 @@ document.getElementById('saveButton').addEventListener('click', async () => {
             console.error("Error parsing JSON:", jsonError, "Raw Response:", responseText);
             throw new Error("The server returned an invalid JSON response.");
         }
-
         console.log("Backend response:", result);
 
         if (result.message === `Step ${currentStep} data processed successfully`) {
-            alert(`Step ${currentStep} saved successfully!`);
-            // showNotification('Data saved successfully!', true);
+            // alert(`Step ${currentStep} saved successfully!`);
+            showNotif_bar(`Step ${currentStep} saved successfully!`);
         } else {
             alert(`Unexpected response: ${result.message}`);
         }
@@ -1514,7 +1562,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
                 });
             });
         </script>
-        <script>
+        <!-- <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const addRequirementBtn = document.getElementById('addRequiremen');
                 const requirementContainer = document.getElementById('requirement-container').parentNode;
@@ -1555,7 +1603,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
                     });
                 }
             });
-        </script>
+        </script> -->
          <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const engagementFieldsContainer = document.getElementById('engagement-fields-container3');
@@ -1590,7 +1638,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
                 });
             });
         </script>
-        <script>
+        <!-- <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const requirementFieldsContainer = document.getElementById('requirement-fields-container3');
                 const addRequirementButton = document.getElementById('addReq_3');
@@ -1616,7 +1664,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
                         <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
                     </div>
                     <div class="col-md-2">
-                        <!-- Remove Button -->
+                     
                         <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
                             <i class="fas fa-minus"></i>
                         </button>
@@ -1632,8 +1680,8 @@ document.getElementById('saveButton').addEventListener('click', async () => {
                     }
                 });
             });
-        </script>
-        <script>
+        </script> -->
+        <!-- <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const requirementFieldsContainer = document.getElementById('requirement-fields-container4');
                 const addRequirementButton = document.getElementById('addRequirement4');
@@ -1672,8 +1720,8 @@ document.getElementById('saveButton').addEventListener('click', async () => {
                     }
                 });
             });
-        </script>
-        <script>
+        </script> -->
+        <!-- <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const requirementFieldsContainer = document.getElementById('requirement-fields-container5');
                 const addRequirementButton = document.getElementById('addRequirement5');
@@ -1716,7 +1764,7 @@ document.getElementById('saveButton').addEventListener('click', async () => {
                     }
                 });
             });
-        </script>
+        </script> -->
         <script>
             document.addEventListener('DOMContentLoaded', () => {
                 const upsellFieldsContainer = document.getElementById('upsell-fields-container');

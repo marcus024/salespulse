@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', function () {
+
+document.addEventListener('DOMContentLoaded', function() {
   const requirementsContainer = document.getElementById('requirementsContainer');
   const addBtn = document.getElementById('addRequirementBtn');
 
@@ -6,68 +7,29 @@ document.addEventListener('DOMContentLoaded', function () {
   initProductChangeHandler();
   initDistributorChangeHandler();
 
-
-   $.when( loadProducts(), loadDistributors() ).done(function() {
-  
+  // Load both sets once. 
+  // We can chain them or run in parallel
+  // so that the initial .productFetch & .distributorFetch gets filled
+  $.when( loadProducts(), loadDistributors() ).done(function() {
+    // If needed, do something after both are loaded
   });
 
   
 
-
-  /**
-   * Calculate the highest block index dynamically from the current requirements
-   * @returns {number} The next block index
-   */
-  function getNextBlockIndex() {
-    const allRequirements = requirementsContainer.querySelectorAll('input[name="requirement_id_1[]"]');
-    const indices = Array.from(allRequirements).map(input => {
-      const value = input.value; // e.g., "st1rq3"
-      const match = value.match(/st1rq(\d+)/); // Extract number after "st1rq"
-      return match ? parseInt(match[1], 10) : 0; // Convert to integer or default to 0
-    });
-
-    // Return the next available block index
-    return indices.length > 0 ? Math.max(...indices) + 1 : 1;
-  }
-
-  /**
-   * Update the initial requirement block (requirement1)
-   * to match the correct numbering dynamically
-   */
-  function updateInitialRequirementBlock() {
-    const requirementTitle = document.getElementById('requirement1');
-    const requirementHiddenInput = document.getElementById('req_1_id');
-
-    if (requirementTitle && requirementHiddenInput) {
-      const currentIndex = requirementHiddenInput.value.match(/st1rq(\d+)/)?.[1] || 1;
-
-      // Ensure the title and hidden input value match
-      requirementTitle.textContent = `Requirement ${currentIndex}`;
-      requirementHiddenInput.value = `st1rq${currentIndex}`;
-    } else {
-      console.warn('Initial requirement block elements not found in the DOM.');
-    }
-  }
-
-  // Run the initial update to synchronize the block index on page load
-  updateInitialRequirementBlock();
-
   // "Add" button to clone a new requirement block
-  addBtn.addEventListener('click', function (e) {
+  addBtn.addEventListener('click', function(e) {
     e.preventDefault();
-
-    // Get the next block index
-    const nextBlockIndex = getNextBlockIndex();
+    requirementCount++;
 
     const newBlock = document.createElement('div');
     newBlock.classList.add('requirement-block');
-    newBlock.dataset.index = nextBlockIndex;
+    newBlock.dataset.index = requirementCount;
 
-    const newReqId = `st1rq${nextBlockIndex}`;
+    const newReqId = 'st1rq' + requirementCount;
 
     newBlock.innerHTML = `
       <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
-        Requirement ${nextBlockIndex}
+        Requirement ${requirementCount}
       </p>
       <input type="hidden" name="requirement_id_1[]" value="${newReqId}">
       <div class="row mb-2">
@@ -115,29 +77,28 @@ document.addEventListener('DOMContentLoaded', function () {
     // Append the new block
     requirementsContainer.appendChild(newBlock);
 
-    // Fill product and distributor selects for the new block
+    // 1) Fill *this* new product select from cached array
     const newProductSelect = newBlock.querySelector('.productFetch');
     if (newProductSelect) {
       fillOneProductSelect($(newProductSelect));
     }
 
+    // 2) Fill *this* new distributor select from cached array
     const newDistributorSelect = newBlock.querySelector('.distributorFetch');
     if (newDistributorSelect) {
       fillOneDistributorSelect($(newDistributorSelect));
     }
-
-    console.log(`Added new block: Requirement ${nextBlockIndex}`);
   });
 
-  // Delegate remove button functionality
-  requirementsContainer.addEventListener('click', function (e) {
+  // Delegate remove button
+  requirementsContainer.addEventListener('click', function(e) {
     if (e.target.closest('.removeRequirement')) {
       e.preventDefault();
       const blockToRemove = e.target.closest('.requirement-block');
       if (blockToRemove) {
         blockToRemove.remove();
-        console.log('Removed a requirement block.');
       }
     }
   });
 });
+
