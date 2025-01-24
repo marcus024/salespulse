@@ -46,9 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
   addBtn.addEventListener('click', function(e) {
     e.preventDefault();
 
-    // Ensure requirementCount is up-to-date
-    updateRequirementCount();
-
     // Get the next block index dynamically
     const allRequirements = requirementsContainer.querySelectorAll('input[name="requirement_id_1[]"]');
     let highestIndex = 0;
