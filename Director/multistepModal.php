@@ -149,7 +149,7 @@
                                             <div id="requirementsContainer">
                                                 <div class="requirement-block" data-index="1">
                                                    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirement1">
-                                                    Requirement 1
+                                                    Requirement (1)
                                                     </p>
                                                     <input type="hidden" name="requirement_id_1[]" value="st1rq1" id="req_1_id">
 
