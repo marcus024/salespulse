@@ -414,7 +414,7 @@ function deleteRequirement(requirementId, button, projectId) {
                 </div>
                 <div class="col-md-2">
                 <button type="button"
-                        class="btn btn-danger btn-sm removeEngagement"
+                        class="btn btn-danger btn-sm "
                         style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
                         onclick="deleteEngagement('${engagementId}', this, '${projectId}')">
                     <i class="fas fa-minus"></i>&nbsp;Remove
