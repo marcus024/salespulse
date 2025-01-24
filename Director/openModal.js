@@ -114,7 +114,7 @@
         });
     }
 
- function fetchStageOne(data,projectId) {
+ function fetchStageOne(data, projectId) {
   // Basic Stage One fields
   document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
   document.getElementById('end-date-placeholder').value = data.stages.stage_one.end_date || 'No Data';
@@ -156,27 +156,33 @@
       }
 
       // Clear any existing content
-    //   requirementsContainer.innerHTML = '';
+      requirementsContainer.innerHTML = '';
 
       // Step 4: Populate requirements dynamically
       if (requirements.length > 0) {
+        // Add all existing requirements with delete buttons
         requirements.forEach((reqItem, index) => {
           const blockIndex = index + 1;
-          const newBlock = createRequirementBlock(blockIndex, reqItem, productList, distributorList,projectId);
+          const newBlock = createRequirementBlock(blockIndex, reqItem, productList, distributorList, projectId, false);
           requirementsContainer.appendChild(newBlock);
         });
+
+        // Add a single blank requirement block with the Add button
+        const newBlock = createRequirementBlock(requirements.length + 1, {}, productList, distributorList, projectId, true);
+        requirementsContainer.appendChild(newBlock);
       } else {
-        // If no requirements exist, add a default requirement block
-        const newBlock = createRequirementBlock(1, {}, productList, distributorList);
-        // requirementsContainer.appendChild(newBlock);
+        // If no requirements exist, add a single blank requirement block with Add button only
+        const newBlock = createRequirementBlock(1, {}, productList, distributorList, projectId, true);
+        requirementsContainer.appendChild(newBlock);
       }
 
-      console.log('Stage Osne + requirements populated:', requirements);
+      console.log('Stage One + requirements populated:', requirements);
     })
     .catch(error => {
       console.error("Error fetching Products or Distributors:", error);
     });
 }
+
 
 function escapeHtml(text) {
   const map = {
@@ -188,7 +194,7 @@ function escapeHtml(text) {
   };
   return text.replace(/[&<>"']/g, m => map[m]);
 }
-function createRequirementBlock(blockIndex, reqItem, productList=[], distributorList=[],projectId) {
+function createRequirementBlock(blockIndex, reqItem, productList = [], distributorList = [], projectId, isBlank = false) {
   const requirementId = reqItem.requirement_id_1 || `st1rq${blockIndex}`;
   const requirementText = reqItem.requirement_one || '';
   const selectedProduct = reqItem.product_one || '';
@@ -199,17 +205,6 @@ function createRequirementBlock(blockIndex, reqItem, productList=[], distributor
   console.log('Distributor List:', distributorList);
   console.log('Product Selected:', selectedProduct);
   console.log('Distributor Selected:', selectedDistributor);
-
-  // Ensure productList and distributorList are arrays
-  if (!Array.isArray(productList)) {
-    console.warn('Invalid product list format, defaulting to empty array.');
-    productList = [];
-  }
-
-  if (!Array.isArray(distributorList)) {
-    console.warn('Invalid distributor list format, defaulting to empty array.');
-    distributorList = [];
-  }
 
   const newBlock = document.createElement('div');
   newBlock.classList.add('requirement-block', 'p-2', 'rounded', 'shadow-widget');
@@ -234,50 +229,53 @@ function createRequirementBlock(blockIndex, reqItem, productList=[], distributor
         <div class="col-md-2"></div>
     </div>
     <div class="row mb-3">
-    <div class="col-md-4">
-        <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
-    </div>
-    <div class="col-md-3">
-    <select name="product_one[]" class="form-control custom-select productFetch" onchange="console.log('Selected Product:', this.value)">
-            <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
-            ${productList.map(product => `
-                <option value="${escapeHtml(product)}" ${product.trim().toLowerCase() === selectedProduct.trim().toLowerCase() ? 'selected' : ''}>
-                    ${escapeHtml(product)}
-                </option>
-            `).join('')}
-            ${!productList.some(product => product.trim().toLowerCase() === selectedProduct.trim().toLowerCase()) && selectedProduct
-                ? `<option value="${escapeHtml(selectedProduct)}" selected>${escapeHtml(selectedProduct)}</option>`
-                : ''}
-            <option value="add_new_product">+ Add New Product...</option>
-        </select>
-    </div>
-    <div class="col-md-3">
-        <select name="distributor_one[]" class="form-control custom-select distributorFetch">
-            <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
-            ${distributorList.map(distributor => `
-                <option value="${escapeHtml(distributor)}" ${distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase() ? 'selected' : ''}>
-                ${escapeHtml(distributor)}
-                </option>
-            `).join('')}
-            ${!distributorList.some(distributor => distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase()) && selectedDistributor
-                ? `<option value="${escapeHtml(selectedDistributor)}" selected>${escapeHtml(selectedDistributor)}</option>`
-                : ''}
-            <option value="add_new">+ Add New Distributor...</option>
-        </select>
-    </div>
-        <div class="col-md-2">
-            <button type="button"
-                    class="btn btn-danger btn-sm"
-                    style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                    onclick="deleteRequirement('${requirementId}', this,'${projectId}')">
-            <i class="fas fa-minus"></i>&nbsp;Remove
-            </button>
-        </div>
+      <div class="col-md-4">
+          <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
+      </div>
+      <div class="col-md-3">
+          <select name="product_one[]" class="form-control custom-select productFetch">
+              <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
+              ${productList.map(product => `
+                  <option value="${escapeHtml(product)}" ${product.trim().toLowerCase() === selectedProduct.trim().toLowerCase() ? 'selected' : ''}>
+                      ${escapeHtml(product)}
+                  </option>
+              `).join('')}
+              <option value="add_new_product">+ Add New Product...</option>
+          </select>
+      </div>
+      <div class="col-md-3">
+          <select name="distributor_one[]" class="form-control custom-select distributorFetch">
+              <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
+              ${distributorList.map(distributor => `
+                  <option value="${escapeHtml(distributor)}" ${distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase() ? 'selected' : ''}>
+                      ${escapeHtml(distributor)}
+                  </option>
+              `).join('')}
+              <option value="add_new">+ Add New Distributor...</option>
+          </select>
+      </div>
+      <div class="col-md-2">
+          ${isBlank
+            ? `<button type="button"
+                       class="btn btn-primary btn-sm"
+                       style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                       id="addRequirementBtn">
+                   <i class="fas fa-plus"></i>&nbsp;Add
+               </button>`
+            : `<button type="button"
+                       class="btn btn-danger btn-sm"
+                       style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                       onclick="deleteRequirement('${requirementId}', this, '${projectId}')">
+                   <i class="fas fa-minus"></i>&nbsp;Remove
+               </button>`
+          }
+      </div>
     </div>
   `;
 
   return newBlock;
 }
+
 
 // Function to delete a requirement
 function deleteRequirement(requirementId, button, projectId) {

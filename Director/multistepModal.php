@@ -148,10 +148,10 @@
                                             <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
                                             <div id="requirementsContainer">
                                                 <div class="requirement-block" data-index="1">
-                                                    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
-                                                    Requirement 1
+                                                    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirement1">
+                                                    Requirement (blockIndex)
                                                     </p>
-                                                    <input type="hidden" name="requirement_id_1[]" value="st1rq1">
+                                                    <input type="hidden" name="requirement_id_1[]" value="st1rq(blockIndex)" id="req_1_id">
                                                     <div class="row mb-2">
                                                     <div class="col-md-4">
                                                         <label class="form-label text-white">Requirement</label>
