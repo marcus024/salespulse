@@ -183,7 +183,7 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
 
 function updateStageTwo($conn, $projectUniqueId, $inputData) {
     try {
-        // Update main stage two data
+        // Update main stage two dat
         $query = "UPDATE stagetwo SET 
             stage_two_remarks = ?, 
             technology = ?, 
