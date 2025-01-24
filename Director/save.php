@@ -241,6 +241,16 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
                 $distributorTwo = htmlspecialchars($inputData['distributor_two'][$index] ?? '', ENT_QUOTES, 'UTF-8');
                 $requirementId = $inputData['requirement_id_2'][$index] ?? ''; // Using requirement ID from input
 
+                // Skip blank rows: At least one meaningful field must have a value
+                if (
+                    empty($sanitizedRequirement) &&
+                    empty($productTwo) &&
+                    empty($distributorTwo)
+                ) {
+                    error_log("Skipping blank requirement entry for Project ID {$projectUniqueId}.");
+                    continue;
+                }
+
                 if (!empty($requirementId)) {
                     // Attempt UPDATE first
                     $updateReqStmt->execute([
