@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Load products and distributors and cache them
   $.when(loadProducts(), loadDistributors()).done(function () {
-    console.log("Products and distributors loaded.");
+    
   });
 
   /**
