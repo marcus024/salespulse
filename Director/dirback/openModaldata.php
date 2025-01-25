@@ -41,7 +41,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stagetwo.deal_size, 'No Data') AS deal_size_stage_two,
                     COALESCE(stagetwo.product, 'No Data') AS product_stage_two,
                     COALESCE(stagetwo.solution, 'No Data') AS solution_stage_two,
-                    GROUP_CONCAT(DISTINCT CONCAT(engagement_twotb.engagement_id_2, ':', engagement_twotb.engagement_type, ':', engagement_twotb.engagement_date, ':', engagement_twotb.engagement_remarks) ORDER BY engagement_twotb.engagement_date) AS engagement_2,
+                    GROUP_CONCAT(DISTINCT CONCAT(engagement_twotb.engagement_id_2, ':', engagement_twotb.engagement_type, ':', engagement_twotb.engagement_date, ':', engagement_twotb.engagement_remarks, ':', engagement_twotb.eng2FetchStatus) ORDER BY engagement_twotb.engagement_date) AS engagement_2,
                     GROUP_CONCAT(DISTINCT CONCAT(requirement_twotb.requirement_id_2, ':', requirement_twotb.requirement_two, ':', requirement_twotb.requirement_date, ':', requirement_twotb.requirement_remarks, ':', requirement_twotb.product_two, ':', requirement_twotb.distributor_two) ORDER BY requirement_twotb.requirement_date) AS requirement_2,
                     COALESCE(stagethree.start_date_stage_three, 'No Data') AS start_date_stage_three,
                     COALESCE(stagethree.end_date_stage_three, 'No Data') AS end_date_stage_three,
@@ -156,6 +156,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                                 'engagement_type' => strtolower(trim($parts[1] ?? '')),
                                 'engagement_date' => trim($parts[2] ?? ''),
                                 'engagement_remarks' => strtolower(trim($parts[3] ?? ''))
+                                'eng2FetchStatus' => strtolower(trim($parts[4] ?? ''))
                             ];
                             $hash = md5(json_encode($normalized)); 
                             if (!isset($carry[$hash])) {
@@ -163,7 +164,8 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                                     'engagement_id_2' => $parts[0] ?? null,
                                     'engagement_type' => $parts[1] ?? null,
                                     'engagement_date' => $parts[2] ?? null,
-                                    'engagement_remarks' => $parts[3] ?? null
+                                    'engagement_remarks' => $parts[3] ?? null,
+                                    'eng2FetchStatus' => $parts[4] ?? null
                                 ];
                             }
                             return $carry;
