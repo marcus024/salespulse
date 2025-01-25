@@ -436,11 +436,22 @@
     //Require Stage Two Widget
     function createRequirementTwoBlock(blockIndex, reqItem, productList = [], distributorList = [], projectId) {
         const requirementId = reqItem.requirement_id_2 || `st2rq${blockIndex}`;
-        const requirementText = reqItem.requirement_two || reqItem.requirement_one || ''; // Reference Stage One
-        const selectedProduct = reqItem.product_two || reqItem.product_one || ''; // Reference Stage One
-        const selectedDistributor = reqItem.distributor_two || reqItem.distributor_one || ''; // Reference Stage One
-        const requirementDate = reqItem.requirement_date || '';
-        const requirementRemarks = reqItem.requirement_remarks || '';
+        // Check if fetchStatus is 0, then prioritize requirement_one
+        const fetchStatus = reqItem.fetchStatus || 1;
+        const requirementText =
+            fetchStatus === 0
+                ? reqItem.requirement_one || ''
+                : reqItem.requirement_two || reqItem.requirement_one || '';
+        const selectedProduct =
+            fetchStatus === 0
+                ? reqItem.product_one || ''
+                : reqItem.product_two || reqItem.product_one || '';
+        const selectedDistributor =
+            fetchStatus === 0
+                ? reqItem.distributor_one || ''
+                : reqItem.distributor_two || reqItem.distributor_one || '';
+            const requirementDate = reqItem.requirement_date || '';
+            const requirementRemarks = reqItem.requirement_remarks || '';
 
         console.log(`Creating Stage Two Requirement Block ${blockIndex}`);
         console.log('Product List:', productList);
