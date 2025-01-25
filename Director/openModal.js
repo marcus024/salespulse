@@ -525,7 +525,7 @@
                 </div>
                 <div class="col-md-2">
                     <button type="button"
-                            class="btn btn-danger btn-sm"
+                            class="btn btn-danger btn-sm removeRequirementTwo"
                             style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
                             onclick="deleteRequirementtwo('${requirementId}', this, '${projectId}')">
                     <i class="fas fa-minus"></i>&nbsp;Remove
