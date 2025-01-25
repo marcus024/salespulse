@@ -751,6 +751,124 @@
 
     }
 
+    // Helper function to create a requirement block for Stage Three
+    function createRequirementThreeBlock(blockIndex, reqItem, productList = [], distributorList = [], projectId) {
+        const requirementId = reqItem.requirement_id_3 || `st3req${blockIndex}`;
+        const requirementText = reqItem.requirement_three || ''; 
+        const selectedProduct = reqItem.product_three || ''; 
+        const selectedDistributor = reqItem.distributor_three || ''; 
+        const quantity = reqItem.quantity || '';
+        const pricing = reqItem.pricing || '';
+        const requirementDate = reqItem.requirement_date || '';
+        const requirementRemarks = reqItem.requirement_remarks_three || '';
+
+        console.log(`Creating Stage Three Requirement Block ${blockIndex}`);
+        console.log('Product List:', productList);
+        console.log('Distributor List:', distributorList);
+
+        const newBlock = document.createElement('div');
+        newBlock.classList.add('requirementthree-block', 'p-2', 'rounded', 'shadow-widget');
+        newBlock.dataset.index = blockIndex;
+
+        // Populate the block content
+        newBlock.innerHTML = `
+            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagethree">
+                Requirement ${blockIndex}
+            </p>
+            <input type="hidden" name="requirement_id_3[]" value="${requirementId}" id="req_3_id">
+            <div class="row mb-1">
+                <div class="col-md-4">
+                    <input name="requirement_three[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
+                </div>
+                <div class="col-md-3">
+                    <select name="product_three[]" class="form-control custom-select productFetch">
+                        <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
+                        ${productList.map(product => `
+                            <option value="${escapeHtml(product)}" ${product.trim().toLowerCase() === selectedProduct.trim().toLowerCase() ? 'selected' : ''}>
+                                ${escapeHtml(product)}
+                            </option>
+                        `).join('')}
+                        ${!productList.some(product => product.trim().toLowerCase() === selectedProduct.trim().toLowerCase()) && selectedProduct
+                            ? `<option value="${escapeHtml(selectedProduct)}" selected>${escapeHtml(selectedProduct)}</option>`
+                            : ''}
+                        <option value="add_new_product">+ Add New Product...</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select name="distributor_three[]" class="form-control custom-select distributorFetch">
+                        <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
+                        ${distributorList.map(distributor => `
+                            <option value="${escapeHtml(distributor)}" ${distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase() ? 'selected' : ''}>
+                                ${escapeHtml(distributor)}
+                            </option>
+                        `).join('')}
+                        ${!distributorList.some(distributor => distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase()) && selectedDistributor
+                            ? `<option value="${escapeHtml(selectedDistributor)}" selected>${escapeHtml(selectedDistributor)}</option>`
+                            : ''}
+                        <option value="add_new">+ Add New Distributor...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-md-3">
+                    <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50" value="${quantity}">
+                </div>
+                <div class="col-md-2">
+                    <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 5000" value="${pricing}">
+                </div>
+                <div class="col-md-2">
+                    <input name="requirement_date[]" type="date" class="form-control" value="${requirementDate}">
+                </div>
+                <div class="col-md-4">
+                    <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks" value="${requirementRemarks}">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button type="button"
+                        class="btn btn-danger btn-sm"
+                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                        onclick="deleteRequirementthree('${requirementId}', this, '${projectId}')">
+                    <i class="fas fa-minus"></i>&nbsp;Remove
+                </button>
+            </div>
+        `;
+
+        return newBlock;
+    }
+
+    // Helper function to delete a requirement for Stage Three
+    function deleteRequirementthree(requirementId, button, projectId) {
+        if (!confirm('Are you sure you want to delete this requirement?')) {
+            return;
+        }
+
+        const requirementBlock = button.closest('.requirementthree-block');
+
+        fetch('./dirback/delete_req3.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ requirementId, project_id: projectId }),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to delete requirement.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.status === 'success') {
+                    requirementBlock.remove();
+                    console.log('Requirement deleted successfully:', data);
+                } else {
+                    alert(data.message || 'Error deleting requirement.');
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting requirement:', error);
+                alert('An error occurred while deleting the requirement.');
+            });
+    }
+
     // Function to create a new engagement block for Stage Three
     function createEngagementThreeBlock(blockIndex, engagementItem, projectId) {
         const engagementId = engagementItem.engagement_id_3 || `st3eng${blockIndex}`;
