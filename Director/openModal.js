@@ -700,9 +700,9 @@
         const engagementType = engagementItem.engagement_three || '';
         const engagementDate = engagementItem.engagement_date || '';
         const engagementRemarks = engagementItem.engagement_remarks_three || '';
-        
+
          // Extract the number from engagementId (e.g., "st2eng3" -> 3)
-        const engagementNumberMatch = engagementId.match(/\d+/); // Match the numeric part of the ID
+        const engagementNumberMatch = engagementId.match(/st3eng(\d+)/); // Match the numeric part of the ID
         const engagementNumber = engagementNumberMatch ? engagementNumberMatch[0] : blockIndex; // Fallback to blockIndex if no match
 
         console.log(`Creating Engagement Block for Engagement ${engagementNumber}`);
