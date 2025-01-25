@@ -914,9 +914,9 @@
     // Function to create a new engagement block for Stage Three
     function createEngagementThreeBlock(blockIndex, engagementItem, projectId) {
         const engagementId = engagementItem.engagement_id_3 || `st3eng${blockIndex}`;
-        const engagementType = engagementItem.engagement_three || '';
-        const engagementDate = engagementItem.engagement_date || '';
-        const engagementRemarks = engagementItem.engagement_remarks_three || '';
+        const engagementType = engagementItem.engagement_three || engagementItem.engagement_type || '';
+        const engagementDate = engagementItem.engagement_date || engagementItem.engagement_date || '';
+        const engagementRemarks = engagementItem.engagement_remarks_three || engagementItem.engagement_remarks || '';
 
         console.log(`Creating Engagement Block ${blockIndex}`);
 
