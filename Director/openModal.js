@@ -451,6 +451,8 @@
                 ? reqItem.distributor_one || ''
                 : (fetchStatus === 1 ? '' : reqItem.distributor_two || reqItem.distributor_one || '');
 
+        const requirementDate = reqItem.requirement_date || '';
+        const requirementRemarks = reqItem.requirement_remarks || '';
 
         // Debugging
         console.log('Fetch Status:', fetchStatus);
