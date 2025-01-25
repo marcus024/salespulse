@@ -443,7 +443,7 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
             ");
 
             $updateEngStmt = $conn->prepare("
-                UPDATE engagement_threetb
+                UPDATE enagement_threetb
                 SET enagement_three = ?,
                     engagement_date = ?,
                     engagement_remarks = ?,
