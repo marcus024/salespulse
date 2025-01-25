@@ -503,31 +503,6 @@ include_once('../auth/db.php');
         window.onload = function() {
             checkProjectStatus();
         };
-        function checkProjectStatus() {
-            var projectId = document.querySelector("#project-id-placeholder strong").textContent.trim();
-            
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "check_project_status.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-            xhr.send("project_id=" + encodeURIComponent(projectId));
-
-            xhr.onload = function() {
-                if (xhr.status == 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    
-                    if (response.status === 'success') {
-                        var button = document.querySelector(".play-button");
-
-                        if (response.project_status === 'Ongoing') {
-                            button.innerHTML = '<i class="fas fa-play"></i> Continue Journey'; 
-                        } else {
-                            button.innerHTML = '<i class="fas fa-play"></i> Start Journey';
-                        }
-                    }
-                }
-            };
-        }
     </script>
     <script>
         function togglePopup() {
