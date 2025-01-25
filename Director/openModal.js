@@ -656,9 +656,12 @@
             }
         });
 
-    
-        // Step 1: Fetch engagement data for Stage Three
-        const engagements = data.stages.stage_three?.engagement_stage_three || [];
+        const engagements = 
+            Array.isArray(data.stages.stage_three?.engagement_stage_three) && 
+            data.stages.stage_three.engagement_stage_three.length > 0 
+                ? data.stages.stage_three.engagement_stage_three 
+                : data.stages.stage_two?.engagement_stage_two || [];
+                
         const engagementContainer = document.getElementById('engagementthreeContainer');
 
         if (!engagementContainer) {
