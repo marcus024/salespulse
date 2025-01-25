@@ -788,7 +788,18 @@
             </p>
             <input type="hidden" name="requirement_id_3[]" value="${requirementId}" id="req_3_id">
             <div class="row mb-1">
+                <div class="col-md-4">
+                    <label for="requirement" class="form-label text-white">Requirement</label>
+                </div>
                 <div class="col-md-3">
+                    <label for="product" class="form-label text-white">Product</label>
+                </div>
+                <div class="col-md-3">
+                    <label for="distributor" class="form-label text-white">Distributor</label>
+                </div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-md-4">
                     <input name="requirement_three[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
                 </div>
                 <div class="col-md-3">
@@ -820,13 +831,27 @@
                     </select>
                 </div>
                 <div class="col-md-2">
-                <button type="button"
-                        class="btn btn-danger btn-sm"
-                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                        onclick="deleteRequirementthree('${requirementId}', this, '${projectId}')">
-                    <i class="fas fa-minus"></i>&nbsp;Remove
-                </button>
+                    <button type="button"
+                            class="btn btn-danger btn-sm"
+                            style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                            onclick="deleteRequirementthree('${requirementId}', this, '${projectId}')">
+                        <i class="fas fa-minus"></i>&nbsp;Remove
+                    </button>
+                </div>
             </div>
+            <div class="row mb-1">
+                <div class="col-md-3">
+                    <label for="requirement" class="form-label text-white">Quantity</label>
+                </div>
+                <div class="col-md-2">
+                    <label for="requirement" class="form-label text-white">Pricing</label>
+                </div>
+                <div class="col-md-2">
+                    <label for="requirement" class="form-label text-white">Date</label>
+                </div>
+                <div class="col-md-3">
+                    <label for="requirement" class="form-label text-white">Remarks</label>
+                </div>
             </div>
             <div class="row mb-1">
                 <div class="col-md-3">
