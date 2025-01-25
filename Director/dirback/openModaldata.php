@@ -28,7 +28,8 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         requirementone_tb.requirement_id_1, ':',
                         requirementone_tb.requirement_one, ':',
                         requirementone_tb.product_one, ':',
-                        requirementone_tb.distributor_one
+                        requirementone_tb.distributor_one, ':',
+                        requirementone_tb.fetchStatus
                     )
                     SEPARATOR '|'
                     ) AS requirements,
@@ -121,6 +122,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                                     $reqOne = trim($parts[1] ?? '');
                                     $prodOne = trim($parts[2] ?? '');
                                     $distOne = trim($parts[3] ?? '');
+                                    $fetchStatus = trim($parts[4] ?? '');
 
                                     if (!empty($reqOne)) {
                                         $carry[] = [
@@ -128,6 +130,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                                             'requirement_one' => $reqOne,
                                             'product_one' => $prodOne,
                                             'distributor_one' => $distOne,
+                                            'fetchStatus' => $fetchStatus
                                         ];
                                     }
                                     return $carry;
