@@ -437,19 +437,32 @@
     function createRequirementTwoBlock(blockIndex, reqItem, productList = [], distributorList = [], projectId) {
         const requirementId = reqItem.requirement_id_2 || `st2rq${blockIndex}`;
         // Check if fetchStatus is 0, then prioritize requirement_one
-        const fetchStatus = reqItem.fetchStatus; // Ensure fetchStatus is received correctly
-        const requirementText =
-            fetchStatus === 0
-                ? reqItem.requirement_one || ''
-                : (fetchStatus === 1 ? '' : reqItem.requirement_two || reqItem.requirement_one || '');
-        const selectedProduct =
-            fetchStatus === 0
-                ? reqItem.product_one || ''
-                : (fetchStatus === 1 ? '' : reqItem.product_two || reqItem.product_one || '');
-        const selectedDistributor =
-            fetchStatus === 0
-                ? reqItem.distributor_one || ''
-                : (fetchStatus === 1 ? '' : reqItem.distributor_two || reqItem.distributor_one || '');
+      const fetchStatus = reqItem.fetchStatus; // Ensure fetchStatus is received correctly
+
+        let requirementText = '';
+        let selectedProduct = '';
+        let selectedDistributor = '';
+
+        // Check if fetchStatus is 0 and Stage Two has no values
+        if (fetchStatus === 0) {
+            // Only display Stage One values if Stage Two has no values
+            if (!reqItem.requirement_two && !reqItem.product_two && !reqItem.distributor_two) {
+                requirementText = reqItem.requirement_one || '';
+                selectedProduct = reqItem.product_one || '';
+                selectedDistributor = reqItem.distributor_one || '';
+            }
+        } else {
+            // If fetchStatus is not 0, show Stage Two values
+            requirementText = reqItem.requirement_two || reqItem.requirement_one || '';
+            selectedProduct = reqItem.product_two || reqItem.product_one || '';
+            selectedDistributor = reqItem.distributor_two || reqItem.distributor_one || '';
+        }
+
+        console.log('Fetch Status:', fetchStatus);
+        console.log('Requirement Text:', requirementText);
+        console.log('Selected Product:', selectedProduct);
+        console.log('Selected Distributor:', selectedDistributor);
+
 
         const requirementDate = reqItem.requirement_date || '';
         const requirementRemarks = reqItem.requirement_remarks || '';
