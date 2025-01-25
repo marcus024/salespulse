@@ -441,17 +441,16 @@
         const requirementText =
             fetchStatus === 0
                 ? reqItem.requirement_one || ''
-                : reqItem.requirement_two || reqItem.requirement_one || '';
+                : (fetchStatus === 1 ? '' : reqItem.requirement_two || reqItem.requirement_one || '');
         const selectedProduct =
             fetchStatus === 0
                 ? reqItem.product_one || ''
-                : reqItem.product_two || reqItem.product_one || '';
+                : (fetchStatus === 1 ? '' : reqItem.product_two || reqItem.product_one || '');
         const selectedDistributor =
             fetchStatus === 0
                 ? reqItem.distributor_one || ''
-                : reqItem.distributor_two || reqItem.distributor_one || '';
-        const requirementDate = reqItem.requirement_date || '';
-        const requirementRemarks = reqItem.requirement_remarks || '';
+                : (fetchStatus === 1 ? '' : reqItem.distributor_two || reqItem.distributor_one || '');
+
 
         // Debugging
         console.log('Fetch Status:', fetchStatus);
