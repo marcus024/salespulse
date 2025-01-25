@@ -2756,65 +2756,65 @@ include("../auth/db.php");
         }
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const table = $('#projectTable').DataTable({
-                dom: 'Bfrtip',
-                buttons: [
-                    {
-                        extend: 'print',
-                        text: 'Print',
-                        title: 'Project Data',
-                        className: 'btn btn-light btn-sm'
-                    },
-                    {
-                        extend: 'csvHtml5',
-                        text: 'CSV',
-                        title: 'Project Data',
-                        className: 'btn btn-light btn-sm'
-                    },
-                    {
-                        extend: 'excelHtml5',
-                        text: 'Excel',
-                        title: 'Project Data',
-                        className: 'btn btn-light btn-sm'
-                    },
-                    {
-                        extend: 'pdfHtml5',
-                        text: 'PDF',
-                        title: 'Project Data',
-                        className: 'btn btn-light btn-sm',
-                        orientation: 'landscape',
-                        pageSize: 'A4'
-                    }
-                ],
-                scrollX: true,
-                paging: true,
-                searching: true,
-                ordering: true
-            });
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     const table = $('#projectTable').DataTable({
+        //         dom: 'Bfrtip',
+        //         buttons: [
+        //             {
+        //                 extend: 'print',
+        //                 text: 'Print',
+        //                 title: 'Project Data',
+        //                 className: 'btn btn-light btn-sm'
+        //             },
+        //             {
+        //                 extend: 'csvHtml5',
+        //                 text: 'CSV',
+        //                 title: 'Project Data',
+        //                 className: 'btn btn-light btn-sm'
+        //             },
+        //             {
+        //                 extend: 'excelHtml5',
+        //                 text: 'Excel',
+        //                 title: 'Project Data',
+        //                 className: 'btn btn-light btn-sm'
+        //             },
+        //             {
+        //                 extend: 'pdfHtml5',
+        //                 text: 'PDF',
+        //                 title: 'Project Data',
+        //                 className: 'btn btn-light btn-sm',
+        //                 orientation: 'landscape',
+        //                 pageSize: 'A4'
+        //             }
+        //         ],
+        //         scrollX: true,
+        //         paging: true,
+        //         searching: true,
+        //         ordering: true
+        //     });
 
-            // Attach search functionality
-            $('#searchTable').on('keyup', function () {
-                table.search(this.value).draw();
-            });
+        //     // Attach search functionality
+        //     $('#searchTable').on('keyup', function () {
+        //         table.search(this.value).draw();
+        //     });
 
-            // Attach button click handlers for dropdown
-            $('#exportPrint').on('click', function () {
-                table.button('.buttons-print').trigger();
-            });
+        //     // Attach button click handlers for dropdown
+        //     $('#exportPrint').on('click', function () {
+        //         table.button('.buttons-print').trigger();
+        //     });
 
-            $('#exportCSV').on('click', function () {
-                table.button('.buttons-csv').trigger();
-            });
+        //     $('#exportCSV').on('click', function () {
+        //         table.button('.buttons-csv').trigger();
+        //     });
 
-            $('#exportExcel').on('click', function () {
-                table.button('.buttons-excel').trigger();
-            });
+        //     $('#exportExcel').on('click', function () {
+        //         table.button('.buttons-excel').trigger();
+        //     });
 
-            $('#exportPDF').on('click', function () {
-                table.button('.buttons-pdf').trigger();
-            });
-        });
+        //     $('#exportPDF').on('click', function () {
+        //         table.button('.buttons-pdf').trigger();
+        //     });
+        // });
 
     </script>
 
