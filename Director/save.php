@@ -446,9 +446,9 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
                 UPDATE enagement_threetb
                 SET engagement_three = ?,
                     engagement_date = ?,
-                    engagement_remarks_three = ?,
-                    project_unique_id = ?
-                WHERE engagement_id_3 = ?
+                    engagement_remarks_three = ?
+                    
+                WHERE project_unique_id = ? AND  engagement_id_3 = ?
             ");
 
             $checkEngStmt = $conn->prepare("
