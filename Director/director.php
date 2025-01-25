@@ -2225,7 +2225,7 @@ include("../auth/db.php");
     }
 </script>
 
-   <script>
+   <!-- <script>
         let currentStep = 1;
         const totalSteps = 5;
 
@@ -2401,7 +2401,7 @@ include("../auth/db.php");
             showStep(currentStep); 
         }
 
-   </script>
+   </script> -->
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {

@@ -1053,30 +1053,28 @@
     <script src="modal_req/duplicate_eng_two.js"></script>
     <script src="modal_req/duplicate_req1_st2.js"></script>
     <script>
-      function showNotif_bar(message = "Operation completed successfully!", duration = 3000) {
-    const notif_bar_r = document.getElementById('notif_bar_r');
-    const notificationMessage = document.getElementById('notificationMessage');
+        function showNotif_bar(message = "Operation completed successfully!", duration = 3000) {
+            const notif_bar_r = document.getElementById('notif_bar_r');
+            const notificationMessage = document.getElementById('notificationMessage');
 
-    if (!notif_bar_r || !notificationMessage) {
-        console.error("Notification bar elements are missing in the DOM.");
-        return;
-    }
+            if (!notif_bar_r || !notificationMessage) {
+                console.error("Notification bar elements are missing in the DOM.");
+                return;
+            }
 
-    // Debug: Ensure the notification is starting hidden
-    console.log("Notification bar initial display:", window.getComputedStyle(notif_bar_r).display);
+            // Debug: Ensure the notification is starting hidden
+            console.log("Notification bar initial display:", window.getComputedStyle(notif_bar_r).display);
 
-    // Set the message and show the notification
-    notificationMessage.textContent = message;
-    notif_bar_r.style.display = 'flex';
+            // Set the message and show the notification
+            notificationMessage.textContent = message;
+            notif_bar_r.style.display = 'flex';
 
-    // Hide the notification after the specified duration
-    setTimeout(() => {
-        console.log("Hiding notification bar after duration.");
-        notif_bar_r.style.display = 'none';
-    }, duration);
-}
-
-
+            // Hide the notification after the specified duration
+            setTimeout(() => {
+                console.log("Hiding notification bar after duration.");
+                notif_bar_r.style.display = 'none';
+            }, duration);
+        }
     </script>
                 
     <script>
