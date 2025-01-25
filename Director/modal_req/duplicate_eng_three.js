@@ -79,13 +79,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 <input name="engagement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
             </div>
             <div class="col-md-2">
-                <button type="button"
-                        class="btn btn-primary btn-sm"
-                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                        id="addEngagement3Btn">
-                    <i class="fas fa-plus"></i>&nbsp;Add
-                </button>
-            </div>
+            <button type="button"
+                    class="btn btn-danger btn-sm removeEngagementThree"
+                    style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
+              <i class="fas fa-minus"></i>&nbsp;Remove
+            </button>
+          </div>
         </div>
     `;
 
