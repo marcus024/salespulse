@@ -441,15 +441,15 @@
         const requirementText =
             fetchStatus === 0
                 ? reqItem.requirement_one || ''
-                : (fetchStatus === 1 ? '' : reqItem.requirement_two || reqItem.requirement_one || '');
+                : (fetchStatus === 1 ? '' : reqItem.requirement_two || '');
         const selectedProduct =
             fetchStatus === 0
                 ? reqItem.product_one || ''
-                : (fetchStatus === 1 ? '' : reqItem.product_two || reqItem.product_one || '');
+                : (fetchStatus === 1 ? '' : reqItem.product_two || '');
         const selectedDistributor =
             fetchStatus === 0
                 ? reqItem.distributor_one || ''
-                : (fetchStatus === 1 ? '' : reqItem.distributor_two || reqItem.distributor_one || '');
+                : (fetchStatus === 1 ? '' : reqItem.distributor_two || '');
 
         const requirementDate = reqItem.requirement_date || '';
         const requirementRemarks = reqItem.requirement_remarks || '';
