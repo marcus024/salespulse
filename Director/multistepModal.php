@@ -535,16 +535,16 @@
                                                             <div class="col-md-3">
                                                                 <input name="requirement_three[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
                                                             </div>
-                                                            <div class="col-md-2">
+                                                            <div class="col-md-3">
                                                                 <input name="product" id="product3" type="text" class="form-control">
                                                             </div>
-                                                            <div class="col-md-2">
+                                                            <div class="col-md-3">
                                                                 <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
                                                                     <option disabled selected>Select</option>
                                                                     <option value="add_new">+ Add New Distributor...</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-md-2">
+                                                            <div class="col-md-1">
                                                                 <input name="requirement_date[]" type="date" id="reqdate2" class="form-control" style="font-size:10px;">
                                                             </div>
                                                             <div class="col-md-2">
