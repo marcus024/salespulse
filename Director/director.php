@@ -2099,8 +2099,8 @@ include("../auth/db.php");
     <script src="../js/sb-admin-2.min.js"></script>
 
     <!-- DataTables JavaScript -->
-    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script> -->
     <script src="notif.js"></script>
     <!-- Page level custom scripts -->
     <script src="../js/demo/datatables-demo.js"></script>
