@@ -453,9 +453,9 @@
             }
         } else {
             // If fetchStatus is not 0, show Stage Two values
-            requirementText = reqItem.requirement_two || reqItem.requirement_one || '';
-            selectedProduct = reqItem.product_two || reqItem.product_one || '';
-            selectedDistributor = reqItem.distributor_two || reqItem.distributor_one || '';
+            requirementText = reqItem.requirement_two || '';
+            selectedProduct = reqItem.product_two ||'';
+            selectedDistributor = reqItem.distributor_two ||'';
         }
 
         console.log('Fetch Status:', fetchStatus);
