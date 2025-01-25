@@ -51,7 +51,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stagethree.technology, 'No Data') AS technology_3,
                     COALESCE(stagethree.deal_size, 'No Data') AS deal_3,
                     COALESCE(stagethree.solution, 'No Data') AS solution_3,
-                    GROUP_CONCAT(DISTINCT CONCAT(enagement_threetb.engagement_id_three, ':', enagement_threetb.engagement_three, ':', enagement_threetb.engagement_date, ':', enagement_threetb.engagement_remarks_three) ORDER BY enagement_threetb.engagement_date) AS engagement_3,
+                    GROUP_CONCAT(DISTINCT CONCAT(enagement_threetb.engagement_id_3, ':', enagement_threetb.engagement_three, ':', enagement_threetb.engagement_date, ':', enagement_threetb.engagement_remarks_three) ORDER BY enagement_threetb.engagement_date) AS engagement_3,
                     GROUP_CONCAT(DISTINCT CONCAT(requirement_threetb.requirement_id_three, ':', requirement_threetb.requirement_three, ':', requirement_threetb.quantity, ':', requirement_threetb.bill_of_materials, ':', requirement_threetb.requirement_remarks_three, ':', requirement_threetb.pricing) ORDER BY requirement_threetb.requirement_three) AS requirement_3,
                     COALESCE(stagefour.start_date_stage_four, 'No Data') AS start_date_stage_four,
                     COALESCE(stagefour.end_date_stage_four, 'No Data') AS end_date_stage_four,
@@ -215,7 +215,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                                 // Avoid duplicates by checking the normalized engagement value
                                 if (!in_array($normalizedEngagement, array_column($carry, 'engagement_three'))) {
                                     $carry[] = [
-                                        'engagement_id_three' => $parts[0] ?? null,
+                                        'engagement_id_3' => $parts[0] ?? null,
                                         'engagement_three' => $parts[1] ?? null,
                                         'engagement_date' => $parts[2] ?? null,
                                         'engagement_remarks_three' => $parts[3] ?? null
