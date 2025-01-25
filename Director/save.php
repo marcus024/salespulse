@@ -199,66 +199,72 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        // Handle requirement items in requirement_twotb
+        // Handle requirement items in requirement_threetb
         $insertedRequirementCount = 0;
         $updatedRequirementCount = 0;
 
-        if (!empty($inputData['requirement_two'])) {
+        if (!empty($inputData['requirement_three'])) {
             // Prepare statements
             $insertReqStmt = $conn->prepare("
-                INSERT INTO requirement_twotb
-                    (requirement_two, requirement_date, requirement_remarks, project_unique_id, requirement_id_2, product_two, distributor_two)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
+                INSERT INTO requirement_threetb
+                    (requirement_three, product_three, distributor_three, quantity, pricing, requirement_date, requirement_remarks_three, project_unique_id, requirement_id_3)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             ");
 
             $updateReqStmt = $conn->prepare("
-                UPDATE requirement_twotb
-                SET requirement_two = ?,
+                UPDATE requirement_threetb
+                SET requirement_three = ?,
+                    product_three = ?,
+                    distributor_three = ?,
+                    quantity = ?,
+                    pricing = ?,
                     requirement_date = ?,
-                    requirement_remarks = ?,
-                    product_two = ?,
-                    distributor_two = ?
-                WHERE requirement_id_2 = ?
+                    requirement_remarks_three = ?
+                WHERE requirement_id_3 = ?
                 AND project_unique_id = ?
             ");
 
             $checkReqStmt = $conn->prepare("
                 SELECT 1 
-                FROM requirement_twotb
-                WHERE requirement_id_2 = ?
+                FROM requirement_threetb
+                WHERE requirement_id_3 = ?
                 AND project_unique_id = ?
                 LIMIT 1
             ");
 
-            foreach ($inputData['requirement_two'] as $index => $requirement) {
-                // Sanitize input
+            foreach ($inputData['requirement_three'] as $index => $requirement) {
+                // Sanitize inputs
                 $sanitizedRequirement = htmlspecialchars($requirement ?? '', ENT_QUOTES, 'UTF-8');
+                $productThree = htmlspecialchars($inputData['product_three'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $distributorThree = htmlspecialchars($inputData['distributor_three'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $quantity = htmlspecialchars($inputData['quantity'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $pricing = htmlspecialchars($inputData['pricing'][$index] ?? '', ENT_QUOTES, 'UTF-8');
                 $requirementDate = htmlspecialchars($inputData['requirement_date'][$index] ?? '', ENT_QUOTES, 'UTF-8');
-                $requirementRemarks = htmlspecialchars($inputData['requirement_remarks'][$index] ?? '', ENT_QUOTES, 'UTF-8');
-                $productTwo = htmlspecialchars($inputData['product_two'][$index] ?? '', ENT_QUOTES, 'UTF-8');
-                $distributorTwo = htmlspecialchars($inputData['distributor_two'][$index] ?? '', ENT_QUOTES, 'UTF-8');
-                $requirementId = $inputData['requirement_id_2'][$index] ?? '';
+                $requirementRemarks = htmlspecialchars($inputData['requirement_remarks_three'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $requirementId = htmlspecialchars($inputData['requirement_id_3'][$index] ?? '', ENT_QUOTES, 'UTF-8');
 
-                // Skip insert if either product_two or distributor_two is 'Select'
-                if ($productTwo === 'Select' || $distributorTwo === 'Select') {
+                // Skip insert if either product_three or distributor_three is 'Select'
+                if ($productThree === 'Select' || $distributorThree === 'Select') {
                     error_log("Skipping insert for Project ID {$projectUniqueId} because product or distributor is 'Select'.");
                     continue;
                 }
 
-                // Only proceed if at least one field (requirement_two, product_two, distributor_two) is not empty
-                if (empty($sanitizedRequirement) && empty($productTwo) && empty($distributorTwo)) {
+                // Only proceed if at least one field (requirement_three, product_three, distributor_three) is not empty
+                if (empty($sanitizedRequirement) && empty($productThree) && empty($distributorThree)) {
                     error_log("Skipping blank requirement entry for Project ID {$projectUniqueId}. All fields are empty.");
                     continue;
                 }
 
-                // If requirement_id_2 exists and at least one field is not empty, proceed with the update or insert
+                // If requirement_id_3 exists and at least one field is not empty, proceed with the update or insert
                 if (!empty($requirementId)) {
                     $updateReqStmt->execute([
                         $sanitizedRequirement,
+                        $productThree,
+                        $distributorThree,
+                        $quantity,
+                        $pricing,
                         $requirementDate,
                         $requirementRemarks,
-                        $productTwo,
-                        $distributorTwo,
                         $requirementId,
                         $projectUniqueId
                     ]);
@@ -267,24 +273,26 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
                     if ($updatedRows > 0) {
                         $updatedRequirementCount += $updatedRows;
                     } else {
-                        // Check if requirement_id_2 exists, then insert if it doesn't
+                        // Check if requirement_id_3 exists, then insert if it doesn't
                         $checkReqStmt->execute([$requirementId, $projectUniqueId]);
                         if ($checkReqStmt->rowCount() === 0) {
                             // Insert the new requirement
                             $insertReqStmt->execute([
                                 $sanitizedRequirement,
+                                $productThree,
+                                $distributorThree,
+                                $quantity,
+                                $pricing,
                                 $requirementDate,
                                 $requirementRemarks,
                                 $projectUniqueId,
-                                $requirementId,
-                                $productTwo,
-                                $distributorTwo
+                                $requirementId
                             ]);
                             $insertedRequirementCount++;
                         }
                     }
                 } else {
-                    error_log("Empty requirement_id_2 for Project ID {$projectUniqueId}. Skipping insert.");
+                    error_log("Empty requirement_id_3 for Project ID {$projectUniqueId}. Skipping insert.");
                 }
             }
         }
