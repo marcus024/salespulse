@@ -6,12 +6,12 @@ header('Content-Type: application/json');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
 
-    if (isset($data['engagement_id']) && isset($data['project_id'])) {
-        $engagement = $data['engagement_id'];
+    if (isset($data['engagementId']) && isset($data['project_id'])) {
+        $engagement = $data['engagementId'];
         $project_id = $data['project_id'];
 
         try {
-            $sql = "DELETE FROM enagement_threetb WHERE engagement_id_three = :engagement_id AND project_unique_id = :project_id";
+            $sql = "DELETE FROM enagement_threetb WHERE engagement_id_3 = :engagement_id AND project_unique_id = :project_id";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':engagement_id', $engagement, PDO::PARAM_STR);
             $stmt->bindParam(':project_id', $project_id, PDO::PARAM_STR);
