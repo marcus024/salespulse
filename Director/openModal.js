@@ -544,6 +544,7 @@
             if (data.status === 'success') {
                 requirementBlock.remove();
                 console.log('Requirement deleted successfully:', data);
+                showNotif_bar(`Requirement deleted successfully!`);
             } else {
                 alert(data.message || 'Error deleting requirement.');
                 console.error('Error:', data);
