@@ -529,14 +529,6 @@
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label text-white">Date</label>
                                                         </div>
-                                                        <div class="col-md-2">
-                                                            <button type="button"
-                                                                    class="btn btn-primary btn-sm"
-                                                                    style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                                                                    id="addRequirement3Btn">
-                                                            <i class="fas fa-plus"></i>&nbsp;Add
-                                                            </button>
-                                                        </div>
                                                     </div>
                                                     <div id="requirement-fields-container-3">
                                                         <div class="row requirement-fields mb-3">
@@ -555,9 +547,12 @@
                                                             <div class="col-md-2">
                                                                 <input name="requirement_date[]" type="date" id="reqdate2" class="form-control" style="font-size:10px;">
                                                             </div>
-                                                            <div class="col-md-1">
-                                                                <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
-                                                                    <i class="fas fa-minus"></i>
+                                                            <div class="col-md-2">
+                                                                <button type="button"
+                                                                        class="btn btn-primary btn-sm"
+                                                                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                                                        id="addRequirement3Btn">
+                                                                <i class="fas fa-plus"></i>&nbsp;Add
                                                                 </button>
                                                             </div>
                                                         </div>
