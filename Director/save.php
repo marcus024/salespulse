@@ -437,14 +437,14 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
         if (!empty($inputData['engagement_three'])) {
             // Prepare statements for insert, update, and check
             $insertEngStmt = $conn->prepare("
-                INSERT INTO engagement_three_twotb
+                INSERT INTO enagement_threetb
                     (engagement_three, engagement_date, engagement_remarks, project_unique_id, engagement_id_3, product_three, distributor_three)
                 VALUES (?, ?, ?, ?, ?, ?, ?)
             ");
 
             $updateEngStmt = $conn->prepare("
-                UPDATE engagement_three_twotb
-                SET engagement_three = ?,
+                UPDATE engagement_threetb
+                SET enagement_three = ?,
                     engagement_date = ?,
                     engagement_remarks = ?,
                     product_three = ?,
@@ -455,7 +455,7 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
 
             $checkEngStmt = $conn->prepare("
                 SELECT 1 
-                FROM engagement_three_twotb
+                FROM enagement_threetb
                 WHERE engagement_id_3 = ?
                 AND project_unique_id = ?
                 LIMIT 1
