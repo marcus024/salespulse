@@ -21,7 +21,7 @@ include("../auth/db.php");
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- <link href="../css/sb-admin-2.min.css" rel="stylesheet"> -->
 
     <!-- Custom styles for this page -->
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -2001,16 +2001,6 @@ include("../auth/db.php");
             <!-- End of Home Content -->
             </div>
             <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <!-- <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Powered by Workforce Management Team 2024</span>
-                    </div>
-                </div>
-            </footer> -->
-            <!-- End of Footer -->
         </div>
         <!-- End of Content Wrapper -->
     </div>
@@ -2043,10 +2033,6 @@ include("../auth/db.php");
         data-bs-target="#multistepModal">
         
     </button>
-    
-    
-   
-
     <script>
         function showNotification(message, redirectUrl = null, isError = false) {
             const notification = document.getElementById('notification');
@@ -2068,8 +2054,6 @@ include("../auth/db.php");
             }, 4000);
         }
         </script>
-
-
     <!-- Notification bar -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -2088,22 +2072,14 @@ include("../auth/db.php");
     </script>
         <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
-
     <!-- Bootstrap core JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
     <!-- Core plugin JavaScript -->
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-
     <!-- Custom scripts for all pages -->
     <script src="../js/sb-admin-2.min.js"></script>
-
-    <!-- DataTables JavaScript -->
-    <!-- <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script> -->
     <script src="notif.js"></script>
     <!-- Page level custom scripts -->
-    <!-- <script src="../js/demo/datatables-demo.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./openModal.js"></script>
     <script src="toogleNav.js"></script>
@@ -2121,7 +2097,6 @@ include("../auth/db.php");
     <script src="insert_fetch_product.js"></script>
     <script src="insert_fetch_technology.js"></script>
     <!-- <script src="idle.js"></script> -->
-    
     <!-- Table Export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
@@ -2247,10 +2222,6 @@ include("../auth/db.php");
             });
         });
     </script>
-    <!-- Stage 2 -->
-    
-    <!-- Stage 2 -->
-    
     <!-- View Project Profile -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -2280,8 +2251,6 @@ include("../auth/db.php");
     });
     </script>
     <!-- stage project unique id fetcher -->
-  
-
     <script>
         function toggleIcon() {
         var icon = document.getElementById("toggle-icon");
