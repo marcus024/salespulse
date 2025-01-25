@@ -2251,25 +2251,6 @@ include("../auth/db.php");
     
     <!-- Stage 2 -->
     
-    <script>
-            // Get elements
-            const sidebar = document.getElementById("accordionSidebar");
-            const toggleButton = document.getElementById("sidebarToggleBtn");
-            const toggleIcon = document.getElementById("sidebarToggleIcon");
-
-            // Function to toggle sidebar visibility
-            toggleButton.onclick = function() {
-                sidebar.classList.toggle("collapsed"); // Add or remove collapsed class to sidebar
-                // Change icon on toggle
-                if (sidebar.classList.contains("collapsed")) {
-                    toggleIcon.classList.remove("fa-chevron-left");
-                    toggleIcon.classList.add("fa-chevron-right");
-                } else {
-                    toggleIcon.classList.remove("fa-chevron-right");
-                    toggleIcon.classList.add("fa-chevron-left");
-                }
-            };
-    </script>
     <!-- View Project Profile -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
