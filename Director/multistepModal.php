@@ -582,7 +582,7 @@
                                                             <div class="col-md-2">
                                                                 <input name="requirement_date[]" type="date" id="reqdate2" class="form-control" style="font-size:10px;">
                                                             </div>
-                                                            <div class="col-md-5">
+                                                            <div class="col-md-4">
                                                                 <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
                                                             </div>
                                                         </div>
