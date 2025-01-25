@@ -438,18 +438,19 @@
         const requirementId = reqItem.requirement_id_2 || `st2rq${blockIndex}`;
         // Check if fetchStatus is 0, then prioritize requirement_one
         const fetchStatus = reqItem.fetchStatus; // Ensure fetchStatus is received correctly
-        const requirementText =
-            fetchStatus === 0
-                ? reqItem.requirement_one || ''
-                : (fetchStatus === 1 ? '' : reqItem.requirement_two || '');
-        const selectedProduct =
-            fetchStatus === 0
-                ? reqItem.product_one || ''
-                : (fetchStatus === 1 ? '' : reqItem.product_two || '');
-        const selectedDistributor =
-            fetchStatus === 0
-                ? reqItem.distributor_one || ''
-                : (fetchStatus === 1 ? '' : reqItem.distributor_two || '');
+
+        // Only display values when fetchStatus is 0
+        const requirementText = fetchStatus === 0
+            ? reqItem.requirement_one || '' // Show Stage One value
+            : ''; // Show nothing if fetchStatus is not 0
+
+        const selectedProduct = fetchStatus === 0
+            ? reqItem.product_one || '' // Show Stage One value
+            : ''; // Show nothing if fetchStatus is not 0
+
+        const selectedDistributor = fetchStatus === 0
+            ? reqItem.distributor_one || '' // Show Stage One value
+            : ''; // Show nothing if fetchStatus is not 0
 
         const requirementDate = reqItem.requirement_date || '';
         const requirementRemarks = reqItem.requirement_remarks || '';
