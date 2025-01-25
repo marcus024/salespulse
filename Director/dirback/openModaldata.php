@@ -155,7 +155,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                             $normalized = [
                                 'engagement_type' => strtolower(trim($parts[1] ?? '')),
                                 'engagement_date' => trim($parts[2] ?? ''),
-                                'engagement_remarks' => strtolower(trim($parts[3] ?? ''))
+                                'engagement_remarks' => strtolower(trim($parts[3] ?? '')),
                                 'eng2FetchStatus' => strtolower(trim($parts[4] ?? ''))
                             ];
                             $hash = md5(json_encode($normalized)); 
