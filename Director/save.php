@@ -199,7 +199,7 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        // Handle requirement items in requirement_threetb
+        // Handle requirement items in requiremen_threetb
         $insertedRequirementCount = 0;
         $updatedRequirementCount = 0;
 
