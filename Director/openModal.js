@@ -434,10 +434,35 @@
 
     //Require Stage Two Widget
     function createRequirementTwoBlock(blockIndex, reqItem, productList = [], distributorList = [], projectId) {
+        getRequirements(reqItem);
+        function getRequirements(reqItem) {
+            if (reqItem.fetchStatus === 0) {
+                // Fetch values from Stage Two or fallback to Stage One
+                const requirementText = reqItem.requirement_two || reqItem.requirement_one || '';
+                const selectedProduct = reqItem.product_two || reqItem.product_one || '';
+                const selectedDistributor = reqItem.distributor_two || reqItem.distributor_one || '';
+
+                return {
+                    requirementText,
+                    selectedProduct,
+                    selectedDistributor,
+                };
+            } else {
+                // Fetch only Stage Two values (no fallback to Stage One)
+                const requirementText = reqItem.requirement_two || '';
+                const selectedProduct = reqItem.product_two || '';
+                const selectedDistributor = reqItem.distributor_two || '';
+
+                return {
+                    requirementText,
+                    selectedProduct,
+                    selectedDistributor,
+                };
+            }
+        }
+
         const requirementId = reqItem.requirement_id_2 || `st2rq${blockIndex}`;
-        const requirementText = reqItem.requirement_two || reqItem.requirement_one || ''; // Reference Stage One
-        const selectedProduct = reqItem.product_two || reqItem.product_one || ''; // Reference Stage One
-        const selectedDistributor = reqItem.distributor_two || reqItem.distributor_one || ''; // Reference Stage One
+       
         const requirementDate = reqItem.requirement_date || '';
         const requirementRemarks = reqItem.requirement_remarks || '';
 
@@ -652,7 +677,7 @@
                 option.selected = true;
             }
         });
-        
+
     }
 
     function fetchStageFour(data,projectId){
