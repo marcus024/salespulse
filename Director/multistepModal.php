@@ -517,7 +517,7 @@
                                                     </p>
                                                     <input type="hidden" name="requirement_id_3[]" value="st3req1" id="req_3_id">    
                                                     <div class="row mb-1">
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-4">
                                                             <label for="requirement" class="form-label text-white">Requirement</label>
                                                         </div>
                                                         <div class="col-md-3">
@@ -532,7 +532,7 @@
                                                     </div>
                                                     <div id="requirement-fields-container-3">
                                                         <div class="row requirement-fields mb-3">
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-4">
                                                                 <input name="requirement_three[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
                                                             </div>
                                                             <div class="col-md-3">
@@ -541,14 +541,11 @@
                                                                     <option value="add_new_product">+ Add New Product...</option>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-md-2">
+                                                            <div class="col-md-3">
                                                                 <select name="distributor_three[]" class="form-control custom-select distributorFetch" >
                                                                     <option disabled selected>Select</option>
                                                                     <option value="add_new">+ Add New Distributor...</option>
                                                                 </select>
-                                                            </div>
-                                                            <div class="col-md-1">
-                                                                <input name="requirement_date[]" type="date" id="reqdate2" class="form-control" style="font-size:10px;">
                                                             </div>
                                                             <div class="col-md-2">
                                                                 <button type="button"
@@ -579,13 +576,16 @@
                                                             <div class="col-md-3">
                                                                 <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
                                                             </div>
-                                                            <div class="col-md-2">
+                                                            <!-- <div class="col-md-2">
                                                                 <input name="bill_of_materials[]" type="text" class="form-control" placeholder="e.g. 5000">
-                                                            </div>
+                                                            </div> -->
                                                             <div class="col-md-2">
                                                                 <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 5000">
                                                             </div>
-                                                            <div class="col-md-4">
+                                                            <div class="col-md-2">
+                                                                <input name="requirement_date[]" type="date" id="reqdate2" class="form-control" style="font-size:10px;">
+                                                            </div>
+                                                            <div class="col-md-5">
                                                                 <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
                                                             </div>
                                                         </div>
