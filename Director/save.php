@@ -439,7 +439,7 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
             $insertEngStmt = $conn->prepare("
                 INSERT INTO enagement_threetb
                     (engagement_three, engagement_date, engagement_remarks_three, project_unique_id, engagement_id_3)
-                VALUES (?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?)
             ");
 
             $updateEngStmt = $conn->prepare("
