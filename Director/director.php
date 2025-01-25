@@ -2127,282 +2127,103 @@ include("../auth/db.php");
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script>
-    // Export to PDF
-    async function exportToPDF() {
-        const { jsPDF } = window.jspdf; // Get jsPDF
-        const doc = new jsPDF();
+        // Export to PDF
+        async function exportToPDF() {
+            const { jsPDF } = window.jspdf; // Get jsPDF
+            const doc = new jsPDF();
 
-        // Add title to the PDF
-        doc.setFontSize(16);
-        doc.text("Project Lists", 14, 20);
+            // Add title to the PDF
+            doc.setFontSize(16);
+            doc.text("Project Lists", 14, 20);
 
-        // Fetch the table
-        const table = document.getElementById("projectTable");
+            // Fetch the table
+            const table = document.getElementById("projectTable");
 
-        // Parse table data for autoTable
-        const data = [];
-        const rows = table.querySelectorAll("tr");
-        rows.forEach((row, rowIndex) => {
-            const rowData = [];
-            const cells = row.querySelectorAll("th, td");
-            cells.forEach(cell => {
-                rowData.push(cell.innerText);
-            });
-            data.push(rowData);
-        });
-
-        // AutoTable options
-        doc.autoTable({
-            head: [data[0]], // First row is the table header
-            body: data.slice(1), // Remaining rows are the body
-            startY: 30, // Start after title
-            styles: {
-                fontSize: 9, // Font size for table
-            },
-            headStyles: {
-                fillColor: [54, 185, 204], // Header color matching your theme
-                textColor: 255, // White text
-                halign: "center" // Center align header text
-            },
-        });
-
-        // Save the PDF
-        doc.save("ProjectLists.pdf");
-    }
-
-    // Export to CSV
-    function exportToCSV() {
-        const table = document.getElementById("projectTable");
-        const rows = Array.from(table.rows).map(row =>
-            Array.from(row.cells).map(cell => cell.innerText)
-        );
-
-        let csvContent = "data:text/csv;charset=utf-8,";
-
-        rows.forEach(row => {
-            const rowData = row.join(",");
-            csvContent += rowData + "\r\n";
-        });
-
-        const encodedUri = encodeURI(csvContent);
-        const link = document.createElement("a");
-        link.setAttribute("href", encodedUri);
-        link.setAttribute("download", "ProjectLists.csv");
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-
-    // Export to Excel
-    function exportToExcel() {
-        const table = document.getElementById("projectTable");
-
-        // Convert HTML table to an array of arrays
-        const rows = Array.from(table.rows).map(row =>
-            Array.from(row.cells).map(cell => cell.innerText)
-        );
-
-        // Create a new workbook and worksheet
-        const workbook = XLSX.utils.book_new();
-        const worksheet = XLSX.utils.aoa_to_sheet(rows); // Convert array of arrays to a sheet
-
-        // Append worksheet to workbook
-        XLSX.utils.book_append_sheet(workbook, worksheet, "Project Lists");
-
-        // Write file
-        XLSX.writeFile(workbook, "ProjectLists.xlsx");
-    }
-
-    // Print Table
-    function printTable() {
-        const printContent = document.getElementById("projectTable").outerHTML;
-        const newWindow = window.open("", "", "width=800,height=600");
-        newWindow.document.write("<html><head><title>Project Lists</title></head><body>");
-        newWindow.document.write(printContent);
-        newWindow.document.write("</body></html>");
-        newWindow.document.close();
-        newWindow.print();
-    }
-</script>
-
-   <!-- <script>
-        let currentStep = 1;
-        const totalSteps = 5;
-
-        // Save Button Logic
-        document.getElementById('saveButton').addEventListener('click', () => {
-            const projectId = document.getElementById('project-unique-id').value;
-
-            if (projectId) {
-                alert(`Project ID fetched: ${projectId}`); 
-
-                if (confirm('Do you want to save changes?')) {
-                    let formData = new FormData();
-                    formData.append('project_id', projectId);
-                    formData.append('current_step', currentStep);
-
-                    // Get form fields specific to the current step
-                    const currentStepFields = document.querySelectorAll(`#step${currentStep} input`);
-                    currentStepFields.forEach(field => {
-                        formData.append(field.name, field.value);
-                    });
-
-                    const saveUrl = `dirback/save/save_stage${currentStep}.php`; 
-                    fetch(saveUrl, {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => response.json()) 
-                    .then(data => {
-                        if (data.success) {
-                            alert('Data saved successfully! Your changes have been applied.');
-                        } else {
-                            alert('Error: ' + data.message);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error during fetch:', error);
-                        alert('An error occurred while saving. Please try again.');
-                    });
-                }
-            } else {
-                alert('Error: Project ID is missing.');
-            }
-        });
-
-        // Complete Button Logic
-        document.getElementById('completeButton').addEventListener('click', () => {
-            const projectId = document.getElementById('project-unique-id').value;
-
-            if (projectId) {
-                const stages = document.querySelectorAll('[id^="project-id-placeholder-stage"]');
-                stages.forEach((stage) => {
-                    stage.textContent = projectId;
+            // Parse table data for autoTable
+            const data = [];
+            const rows = table.querySelectorAll("tr");
+            rows.forEach((row, rowIndex) => {
+                const rowData = [];
+                const cells = row.querySelectorAll("th, td");
+                cells.forEach(cell => {
+                    rowData.push(cell.innerText);
                 });
-
-                alert(`Project ID fetched and displayed across all stages: ${projectId}`);
-
-                passProjectToNextStage(projectId, currentStep);
-            } else {
-                alert('Error: Project ID is missing.');
-            }
-        });
-
-        // Function to handle the transition between stages
-        function passProjectToNextStage(projectId, currentStep) {
-            if (!projectId) {
-                alert('Error: Project ID is missing.');
-                return;
-            }
-
-            // Confirm the transition
-            if (!confirm(`Do you want to complete stage ${currentStep} and proceed to stage ${currentStep + 1}?`)) {
-                return;
-            }
-
-            let formData = new FormData();
-            formData.append('project_id', projectId);
-            formData.append('current_step', currentStep);
-
-            // Get form fields specific to the current step
-            const currentStepFields = document.querySelectorAll(`#step${currentStep} input`);
-            currentStepFields.forEach(field => {
-                formData.append(field.name, field.value);
+                data.push(rowData);
             });
 
-            const saveUrl = `dirback/complete/complete_stage${currentStep}.php`;
-
-            fetch(saveUrl, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert(`Stage ${currentStep} completed. Moving to stage ${currentStep + 1}.`);
-
-                    // Update UI for stage completion
-                    document.getElementById(`step${currentStep}-circle`).classList.add('completed');
-                    document.getElementById(`step${currentStep}-circle`).textContent = '✔';
-                    document.getElementById(`line${currentStep}`).classList.add('active');
-
-                    // Populate the next stage details
-                    if (data.next_stage_details) {
-                        const nextStep = currentStep + 1;
-                        document.getElementById(`requirementStartDate${nextStep}`).value = data.next_stage_details.start_date;
-                        document.getElementById(`requirementEndDate${nextStep}`).value = data.next_stage_details.end_date;
-                        document.getElementById(`requirementStatus${nextStep}`).value = data.next_stage_details.status;
-                    }
-
-                    // Proceed to the next step
-                    currentStep++;
-                    if (currentStep <= totalSteps) {
-                        showStep(currentStep);
-                    } else {
-                        alert('All stages completed!');
-                    }
-                } else {
-                    alert('Error: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error during fetch:', error);
-                alert('An error occurred while completing the stage. Please try again.');
+            // AutoTable options
+            doc.autoTable({
+                head: [data[0]], // First row is the table header
+                body: data.slice(1), // Remaining rows are the body
+                startY: 30, // Start after title
+                styles: {
+                    fontSize: 9, // Font size for table
+                },
+                headStyles: {
+                    fillColor: [54, 185, 204], // Header color matching your theme
+                    textColor: 255, // White text
+                    halign: "center" // Center align header text
+                },
             });
+
+            // Save the PDF
+            doc.save("ProjectLists.pdf");
         }
 
-        // Delete Button Logic
-        document.getElementById('deleteButton').addEventListener('click', () => {
-            const projectId = document.getElementById('project-unique-id').value;
-            if (!projectId) {
-                alert('Project ID is missing. Please try again.');
-                return;
-            }
-            if (confirm('Are you sure you want to cancel this project? This action cannot be undone.')) {
-                const deleteUrl = `dirback/delete/delete_stage1.php`; 
-                const formData = new FormData();
-                formData.append('project_id', projectId); 
-                fetch(deleteUrl, {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json()) 
-                .then(data => {
-                    if (data.success) {
-                        alert('Project and stage statuses updated to "Cancelled" successfully.');
-                        window.location.reload(); 
-                    } else {
-                        alert('Error: ' + data.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error during cancellation:', error);
-                    alert('An error occurred while cancelling the project. Please try again.');
-                });
-            }
-        });
+        // Export to CSV
+        function exportToCSV() {
+            const table = document.getElementById("projectTable");
+            const rows = Array.from(table.rows).map(row =>
+                Array.from(row.cells).map(cell => cell.innerText)
+            );
 
-        // Show the current step and hide others
-        function showStep(step) {
-            for (let i = 1; i <= totalSteps; i++) {
-                document.getElementById(`step${i}`).classList.add('d-none');
-            }
-            document.getElementById(`step${step}`).classList.remove('d-none');
+            let csvContent = "data:text/csv;charset=utf-8,";
+
+            rows.forEach(row => {
+                const rowData = row.join(",");
+                csvContent += rowData + "\r\n";
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "ProjectLists.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
-        // Reset steps if the form is deleted or reset
-        function resetSteps() {
-            for (let i = 1; i <= totalSteps; i++) {
-                document.getElementById(`step${i}-circle`).classList.remove('active', 'completed');
-                document.getElementById(`step${i}-circle`).textContent = i;
-                document.getElementById(`line${i}`).classList.remove('active');
-            }
-            currentStep = 1;
-            showStep(currentStep); 
+        // Export to Excel
+        function exportToExcel() {
+            const table = document.getElementById("projectTable");
+
+            // Convert HTML table to an array of arrays
+            const rows = Array.from(table.rows).map(row =>
+                Array.from(row.cells).map(cell => cell.innerText)
+            );
+
+            // Create a new workbook and worksheet
+            const workbook = XLSX.utils.book_new();
+            const worksheet = XLSX.utils.aoa_to_sheet(rows); // Convert array of arrays to a sheet
+
+            // Append worksheet to workbook
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Project Lists");
+
+            // Write file
+            XLSX.writeFile(workbook, "ProjectLists.xlsx");
         }
 
-   </script> -->
-
+        // Print Table
+        function printTable() {
+            const printContent = document.getElementById("projectTable").outerHTML;
+            const newWindow = window.open("", "", "width=800,height=600");
+            newWindow.document.write("<html><head><title>Project Lists</title></head><body>");
+            newWindow.document.write(printContent);
+            newWindow.document.write("</body></html>");
+            newWindow.document.close();
+            newWindow.print();
+        }
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
         const navLinks = document.querySelectorAll('.project-nav-link');
@@ -2424,56 +2245,6 @@ include("../auth/db.php");
                     }
                 });
             });
-        });
-    </script>
-    <script>
-        document.getElementById("addRequirement").addEventListener("click", function() {
-            const container = document.getElementById("requirement-container");
-            const newField = document.createElement("div");
-
-            newField.classList.add("row", "align-items-center", "requirement-field");
-            newField.style.marginBottom = "10px"; 
-            newField.style.marginTop = "10px";
-
-            const inputField = document.createElement("input");
-            inputField.type = "text";
-            inputField.classList.add("form-control");
-            inputField.placeholder = "e.g. Sample Requirement";
-            inputField.name = "requirements"; // Set the name to 'requirement_one'
-            inputField.style.width = "100%";  
-
-            const buttonContainer = document.createElement("div");
-            buttonContainer.classList.add("col-2", "d-flex", "justify-content-end");
-            buttonContainer.style.display = "flex"; 
-
-            const deleteButton = document.createElement("button");
-            deleteButton.type = "button";
-            deleteButton.classList.add("btn", "btn-danger", "btn-sm");
-            deleteButton.style.marginLeft = "5px";
-            deleteButton.innerHTML = "<i class='fas fa-minus'></i>";
-
-            buttonContainer.appendChild(deleteButton);
-
-            const inputContainer = document.createElement("div");
-            inputContainer.classList.add("col-9");
-            inputContainer.style.display = "flex";
-            inputContainer.style.alignItems = "center";
-            inputContainer.appendChild(inputField);
-
-            newField.appendChild(inputContainer);
-            newField.appendChild(buttonContainer);
-            container.appendChild(newField);
-
-            deleteButton.addEventListener("click", function() {
-                newField.remove();
-            });
-        });
-
-        document.getElementById("deleteRequirement").addEventListener("click", function() {
-            const fields = document.getElementsByClassName("requirement-field");
-            if (fields.length > 0) {
-                fields[fields.length - 1].remove();
-            }
         });
     </script>
     <!-- Stage 2 -->
