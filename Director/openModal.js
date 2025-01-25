@@ -656,6 +656,7 @@
             }
         });
 
+    
         // Step 1: Fetch engagement data for Stage Three
         const engagements = data.stages.stage_three?.engagement_stage_three || [];
         const engagementContainer = document.getElementById('engagementthreeContainer');
@@ -691,6 +692,62 @@
         }
 
         console.log('Stage Three + engagements populated:', engagements);
+
+
+
+        // Step 1: Extract requirement array for Stage Three
+        const requirementsStageThree = Array.isArray(data.stages.stage_three?.requirement_stage_three) 
+            ? data.stages.stage_three.requirement_stage_three 
+            : [];
+
+        const requirementsThreeContainer = document.getElementById('requirementthreeContainer');
+
+        if (!requirementsThreeContainer) {
+            console.error('#requirementthreeContainer not found in DOM!');
+            return;
+        }
+
+
+        // Fetch product and distributor lists
+        let productList = [];
+        let distributorList = [];
+
+        Promise.all([loadProducts(), loadDistributors()])
+            .then(([products, distributors]) => {
+                productList = products;
+                distributorList = distributors;
+
+                console.log('Products and Distributors fetched successfully for Stage Three.');
+                console.log('Product List:', productList);
+                console.log('Distributor List:', distributorList);
+
+                if (requirementsStageThree.length > 0) {
+                    requirementsStageThree.forEach((reqItem, index) => {
+                        const blockIndex = index + 1;
+                        highestBlockIndex = Math.max(highestBlockIndex, blockIndex);
+
+                        const newBlock = createRequirementThreeBlock(blockIndex, reqItem, productList, distributorList, projectId);
+                        requirementsThreeContainer.appendChild(newBlock);
+                    });
+                }
+
+                // Step 3: Update the existing initial requirement field dynamically
+                const nextBlockIndex = highestBlockIndex + 1;
+                const initialRequirementTitle = document.getElementById('requirementstagethree');
+                const initialHiddenInput = document.getElementById('req_3_id');
+
+                if (initialRequirementTitle && initialHiddenInput) {
+                    initialRequirementTitle.textContent = `Requirement ${nextBlockIndex}`;
+                    initialHiddenInput.value = `st3req${nextBlockIndex}`;
+                } else {
+                    console.warn("Initial requirement field for Stage Three not found in the DOM.");
+                }
+
+                console.log('Stage Three requirements populated:', requirementsStageThree);
+            })
+            .catch(error => {
+                console.error("Error fetching Products or Distributors for Stage Three:", error);
+            });
 
     }
 
