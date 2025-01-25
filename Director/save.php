@@ -384,8 +384,8 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
         $stmt = $conn->prepare($query);
         $stmt->execute([
             $inputData['stage_three_remarks'] ?? null,
-            $inputData['product'] ?? null,
             $inputData['deal_size'] ?? null,
+            $inputData['technology'] ?? null,
             $inputData['solution'] ?? null,
             $projectUniqueId
         ]);
@@ -430,80 +430,39 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
             }
         }
 
-        // Handle engagement items in engagement_twotb
-        $insertedEngagementCount = 0;
-        $updatedEngagementCount = 0;
-
+        // Handle engagements for engagement_three
         if (!empty($inputData['engagement_three'])) {
-            $insertEngStmt = $conn->prepare("
-                INSERT INTO enagement_threetb
-                    (engagement_three, engagement_date, engagement_remarks_three, project_unique_id, engagement_id_3)
-                VALUES (?, ?, ?, ?, ?)
-            ");
+            $engagementQuery = "INSERT INTO enagement_threetb (
+                                    project_unique_id, 
+                                    engagement_three, 
+                                    engagement_date, 
+                                    engagement_remarks_three
+                                 ) VALUES (?, ?, ?, ?) 
+                                 ON DUPLICATE KEY UPDATE 
+                                    engagement_three = VALUES(engagement_three), 
+                                    engagement_date = VALUES(engagement_date), 
+                                    engagement_remarks_three = VALUES(engagement_remarks_three)";
+            $engStmt = $conn->prepare($engagementQuery);
 
-            $updateEngStmt = $conn->prepare("
-                UPDATE enagement_threetb
-                SET engagement_three = ?,
-                    engagement_date = ?,
-                    engagement_remarks_three = ?
-                WHERE engagement_id_3 = ?
-                AND project_unique_id = ?
-            ");
+            foreach ($inputData['engagement_three'] as $index => $engagement) {
+                $engagementDate = $inputData['engagement_date'][$index] ?? null;
+                $engagementRemarks = $inputData['engagement_remarks_three'][$index] ?? null;
 
-            $checkEngStmt = $conn->prepare("
-                SELECT 1 
-                FROM enagement_threetb
-                WHERE engagement_id_3 = ?
-                AND project_unique_id = ?
-                LIMIT 1
-            ");
-
-            foreach ($inputData['engagement_three'] as $index => $engagementType) {
-                $sanitizedEngagementType = htmlspecialchars($engagementType ?? '', ENT_QUOTES, 'UTF-8');
-                $engagementDate = htmlspecialchars($inputData['engagement_date'][$index] ?? '', ENT_QUOTES, 'UTF-8');
-                $engagementRemarks = htmlspecialchars($inputData['engagement_remarks_three'][$index] ?? '', ENT_QUOTES, 'UTF-8');
-                $engagementId = htmlspecialchars($inputData['engagement_id_3'][$index] ?? '', ENT_QUOTES, 'UTF-8');
-
-                if (empty($sanitizedEngagementType) || empty($engagementDate) || empty($engagementRemarks) || empty($engagementId)) {
-                    error_log("Skipping blank or incomplete engagement entry for project ID: $projectUniqueId.");
+                if (empty($engagement)) {
+                    error_log("Empty engagement_three for Project ID {$projectUniqueId}. Skipping insert.");
                     continue;
                 }
 
-                $updateEngStmt->execute([
-                    $sanitizedEngagementType,
-                    $engagementDate,
-                    $engagementRemarks,
-                    $engagementId,
-                    $projectUniqueId
+                $engStmt->execute([
+                    $projectUniqueId,
+                    htmlspecialchars($engagement, ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($engagementDate ?? '', ENT_QUOTES, 'UTF-8'),
+                    htmlspecialchars($engagementRemarks ?? '', ENT_QUOTES, 'UTF-8')
                 ]);
-
-                $updatedRows = $updateEngStmt->rowCount();
-                if ($updatedRows > 0) {
-                    $updatedEngagementCount += $updatedRows;
-                } else {
-                    $checkEngStmt->execute([$engagementId, $projectUniqueId]);
-                    if ($checkEngStmt->rowCount() === 0) {
-                        $insertEngStmt->execute([
-                            $sanitizedEngagementType,
-                            $engagementDate,
-                            $engagementRemarks,
-                            $projectUniqueId,
-                            $engagementId
-                        ]);
-                        $insertedEngagementCount++;
-                    }
-                }
             }
         }
-        // Build final success message
-        $message = "Stage Three updated successfully.";
-        if ($insertedRequirementCount > 0 || $updatedRequirementCount > 0) {
-            $message .= " (Requirements: Inserted $insertedRequirementCount, Updated $updatedRequirementCount)";
-        }
-        if ($insertedEngagementCount > 0 || $updatedEngagementCount > 0) {
-            $message .= " (Engagements: Inserted $insertedEngagementCount, Updated $updatedEngagementCount)";
-        }
-        return $message;
+
+        return "Stage Three updated successfully.";
     } catch (Exception $e) {
         error_log("Stage Three Update Failed for Project ID {$projectUniqueId}: " . $e->getMessage());
         throw new Exception("Stage Three Update Failed: " . $e->getMessage());
