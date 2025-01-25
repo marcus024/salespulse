@@ -1330,129 +1330,61 @@ document.getElementById('saveButton').addEventListener('click', async () => {
     });
 </script>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const engagementFieldsContainer = document.getElementById('engagement-fields-container');
-                const addEngagementButton = document.getElementById('addEngagement');
-                addEngagementButton.addEventListener('click', (event) => {
-                    event.preventDefault(); 
-                    const newRow = document.createElement('div');
-                    newRow.classList.add('row', 'engagement-fields', 'mb-3');
-                    newRow.innerHTML = `
-                        <div class="col-md-3">
-                            <input name="engagement_type[]" type="text" class="form-control" placeholder="e.g. Sample Engagement">
-                        </div>
-                        <div class="col-md-2">
-                            <input name="engagement_date[]" type="date" class="form-control" style="font-size:10px;">
-                        </div>
-                        <div class="col-md-5">
-                            <input name="engagement_remarks[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                    `;
-                    engagementFieldsContainer.appendChild(newRow);
-                });
-                engagementFieldsContainer.addEventListener('click', (event) => {
-                    if (event.target.closest('.deleteRequirement')) {
-                        const rowToDelete = event.target.closest('.row');
-                        engagementFieldsContainer.removeChild(rowToDelete);
-                    }
-                });
-            });
-        </script>
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const requirementFieldsContainer = document.getElementById('requirement-fields-container');
-                const addRequirementButton = document.getElementById('addReq');
-                addRequirementButton.addEventListener('click', (event) => {
-                    event.preventDefault(); 
-                    const newRow = document.createElement('div');
-                    newRow.classList.add('row', 'requirement-fields', 'mb-3');
-                    newRow.innerHTML = `
-                        <div class="col-md-3">
-                            <input name="requirement_two[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
-                        </div>
-                        <div class="col-md-2">
-                            <input name="requirement_date[]" type="date" class="form-control" style="font-size:10px;">
-                        </div>
-                        <div class="col-md-5">
-                            <input name="requirement_remarks[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                    `;
-                    requirementFieldsContainer.appendChild(newRow);
-                });
-                requirementFieldsContainer.addEventListener('click', (event) => {
-                    if (event.target.closest('.deleteRequirement')) {
-                        const rowToDelete = event.target.closest('.row');
-                        requirementFieldsContainer.removeChild(rowToDelete);
-                    }
-                });
-            });
-        </script>
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const upsellFieldsContainer = document.getElementById('upsell-fields-container');
-                const addUpsellRowButton = document.getElementById('addUpsellRow');
-                addUpsellRowButton.addEventListener('click', (event) => {
-                    event.preventDefault(); 
-                    const newRow = document.createElement('div');
-                    newRow.classList.add('row', 'mb-3', 'upsell-fields');
-                    newRow.innerHTML = `
-                        <div class="col-md-2">
-                            <input type="text" class="form-control" name="upsell[]" placeholder="e.g Router 2000">
-                        </div>
-                        <div class="col-md-2">
-                            <input name="bills_materials_upsell[]" type="number" class="form-control" placeholder="e.g 5000">
-                        </div>
-                        <div class="col-md-2">
-                            <input name="quantity_upsell[]" type="number" class="form-control" placeholder="e.g 50">
-                        </div>
-                        <div class="col-md-2">
-                            <input name="remarks_upsell[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
-                        </div>
-                        <div class="col-md-2">
-                            <input name="amount_upsell[]" type="number" class="form-control" placeholder="e.g. 6000">
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-danger btn-sm deleteUpsellRow">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                    `;
-                    upsellFieldsContainer.appendChild(newRow);
-                });
-                upsellFieldsContainer.addEventListener('click', (event) => {
-                    if (event.target.closest('.deleteUpsellRow')) {
-                        const rowToDelete = event.target.closest('.row');
-                        upsellFieldsContainer.removeChild(rowToDelete);
-                    }
-                });
-            });
-        </script>
-        <script>
-            // Function to refresh the page when the modal is closed
-            function refreshPage() {
-                location.reload(); // Reload the current page
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const upsellFieldsContainer = document.getElementById('upsell-fields-container');
+        const addUpsellRowButton = document.getElementById('addUpsellRow');
+        addUpsellRowButton.addEventListener('click', (event) => {
+            event.preventDefault(); 
+            const newRow = document.createElement('div');
+            newRow.classList.add('row', 'mb-3', 'upsell-fields');
+            newRow.innerHTML = `
+                <div class="col-md-2">
+                    <input type="text" class="form-control" name="upsell[]" placeholder="e.g Router 2000">
+                </div>
+                <div class="col-md-2">
+                    <input name="bills_materials_upsell[]" type="number" class="form-control" placeholder="e.g 5000">
+                </div>
+                <div class="col-md-2">
+                    <input name="quantity_upsell[]" type="number" class="form-control" placeholder="e.g 50">
+                </div>
+                <div class="col-md-2">
+                    <input name="remarks_upsell[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+                </div>
+                <div class="col-md-2">
+                    <input name="amount_upsell[]" type="number" class="form-control" placeholder="e.g. 6000">
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-danger btn-sm deleteUpsellRow">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            `;
+            upsellFieldsContainer.appendChild(newRow);
+        });
+        upsellFieldsContainer.addEventListener('click', (event) => {
+            if (event.target.closest('.deleteUpsellRow')) {
+                const rowToDelete = event.target.closest('.row');
+                upsellFieldsContainer.removeChild(rowToDelete);
             }
+        });
+    });
+</script>
+<script>
+    // Function to refresh the page when the modal is closed
+    function refreshPage() {
+        location.reload(); // Reload the current page
+    }
 
-            // Attach the refresh function to the modal close event
-            const modalCloseButton = document.getElementById('modalCloseButton');
-            if (modalCloseButton) {
-                modalCloseButton.addEventListener('click', function() {
-                    refreshPage(); // Refresh the page when the modal is closed
-                });
-            }
+    // Attach the refresh function to the modal close event
+    const modalCloseButton = document.getElementById('modalCloseButton');
+    if (modalCloseButton) {
+        modalCloseButton.addEventListener('click', function() {
+            refreshPage(); // Refresh the page when the modal is closed
+        });
+    }
 
-        </script>
+</script>
         
  
 
