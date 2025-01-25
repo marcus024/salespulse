@@ -467,7 +467,7 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
                 $engagementId = htmlspecialchars($inputData['engagement_id_3'][$index] ?? '', ENT_QUOTES, 'UTF-8');
 
                 // Skip if any required fields are empty or invalid
-                if (empty($sanitizedEngagementType) || empty($engagementDate) || empty($engagementRemarks) || empty($engagementId) || empty($projectUniqueId)) {
+                if (empty($sanitizedEngagementType) || empty($engagementDate) || empty($engagementRemarks) || empty($engagementId)) {
                     error_log("Skipping incomplete engagement entry for project ID: $projectUniqueId.");
                     continue;
                 }
