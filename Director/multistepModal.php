@@ -535,10 +535,10 @@
                                                             <div class="col-md-3">
                                                                 <input name="requirement_three[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
                                                             </div>
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-2">
                                                                 <input name="product" id="product3" type="text" class="form-control">
                                                             </div>
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-2">
                                                                 <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
                                                                     <option disabled selected>Select</option>
                                                                     <option value="add_new">+ Add New Distributor...</option>
