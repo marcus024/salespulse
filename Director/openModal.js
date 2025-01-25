@@ -36,13 +36,11 @@
                         markCompletedSteps(stageNumber); // Mark previous steps as completed
                         showStep(stageNumber); // Show the current step
                          if (stageNumber === 1) {
-                            fetchStageOne(data);
-                        } else if (stageNumber === 2) {
                             fetchStageOne(data,projectId);
+                        } else if (stageNumber === 2) {
                             fetchStageTwo(data,projectId);
                         } else if (stageNumber === 3) {
-                            // fetchStageTwo(data,projectId);
-                            // fetchStageThree(data,projectId);
+                            fetchStageThree(data,projectId);
                         } else if (stageNumber === 4) {
                             // fetchStageThree(data,projectId);
                             // fetchStageFour(data,projectId);
