@@ -1063,6 +1063,7 @@
     <script src="modal_req/duplicate_eng_two.js"></script>
     <script src="modal_req/duplicate_req1_st2.js"></script>
     <script src="modal_req/duplicate_eng_three.js"></script>
+    <script src="modal_req/duplicate_req_three.js"></script>
     <script>
         function showNotif_bar(message = "Operation completed successfully!", duration = 3000) {
             const notif_bar_r = document.getElementById('notif_bar_r');
