@@ -694,11 +694,16 @@
         console.log('Stage Three + engagements populated:', engagements);
 
 
+        const requirementsStageThree = 
+            Array.isArray(data.stages.stage_three?.requirement_stage_three) && 
+            data.stages.stage_three.requirement_stage_three.length > 0 
+                ? data.stages.stage_three.requirement_stage_three 
+                : data.stages.stage_two?.requirement_stage_two || [];
+                
+            console.log('Fetched Stage One requirements:', data.stages.stage_two.requirement_stage_two);
 
-        // Step 1: Extract requirement array for Stage Three
-        const requirementsStageThree = Array.isArray(data.stages.stage_three?.requirement_stage_three) 
-            ? data.stages.stage_three.requirement_stage_three 
-            : [];
+            // Debugging: Verify the fetched requirements
+            console.log('Fetched requirements for Stage Two:', requirementsStageThree);
 
         const requirementsThreeContainer = document.getElementById('requirementthreeContainer');
 
@@ -754,13 +759,13 @@
     // Helper function to create a requirement block for Stage Three
     function createRequirementThreeBlock(blockIndex, reqItem, productList = [], distributorList = [], projectId) {
         const requirementId = reqItem.requirement_id_3 || `st3req${blockIndex}`;
-        const requirementText = reqItem.requirement_three || ''; 
-        const selectedProduct = reqItem.product_three || ''; 
-        const selectedDistributor = reqItem.distributor_three || ''; 
+        const requirementText = reqItem.requirement_three || reqItem.requirement_two || ''; 
+        const selectedProduct = reqItem.product_three ||reqItem.product_two || ''; 
+        const selectedDistributor = reqItem.distributor_three || reqItem.distributor_two || ''; 
         const quantity = reqItem.quantity || '';
         const pricing = reqItem.pricing || '';
-        const requirementDate = reqItem.requirement_date || '';
-        const requirementRemarks = reqItem.requirement_remarks_three || '';
+        const requirementDate = reqItem.requirement_date || reqItem.requirement_date || '';
+        const requirementRemarks = reqItem.requirement_remarks_three || reqItem.requirement_remarks || '';
 
         console.log(`Creating Stage Three Requirement Block ${blockIndex}`);
         console.log('Product List:', productList);
