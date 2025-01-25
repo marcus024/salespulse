@@ -765,6 +765,17 @@
         console.log(`Creating Stage Three Requirement Block ${blockIndex}`);
         console.log('Product List:', productList);
         console.log('Distributor List:', distributorList);
+        
+         // Ensure productList and distributorList are arrays
+        if (!Array.isArray(productList)) {
+            console.warn('Invalid product list format, defaulting to empty array.');
+            productList = [];
+        }
+
+        if (!Array.isArray(distributorList)) {
+            console.warn('Invalid distributor list format, defaulting to empty array.');
+            distributorList = [];
+        }
 
         const newBlock = document.createElement('div');
         newBlock.classList.add('requirementthree-block', 'p-2', 'rounded', 'shadow-widget');
@@ -781,7 +792,7 @@
                     <input name="requirement_three[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
                 </div>
                 <div class="col-md-3">
-                    <select name="product_three[]" class="form-control custom-select productFetch">
+                    <select name="product_three[]" class="form-control custom-select productFetch" onchange="console.log('Selected Product:', this.value)">
                         <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
                         ${productList.map(product => `
                             <option value="${escapeHtml(product)}" ${product.trim().toLowerCase() === selectedProduct.trim().toLowerCase() ? 'selected' : ''}>
@@ -799,7 +810,7 @@
                         <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
                         ${distributorList.map(distributor => `
                             <option value="${escapeHtml(distributor)}" ${distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase() ? 'selected' : ''}>
-                                ${escapeHtml(distributor)}
+                            ${escapeHtml(distributor)}
                             </option>
                         `).join('')}
                         ${!distributorList.some(distributor => distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase()) && selectedDistributor
