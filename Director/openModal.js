@@ -1,4 +1,4 @@
- async function openModal(projectId) {
+    async function openModal(projectId) {
         console.log("Received Project ID:", projectId);
         if (!projectId) {
             console.error("No project ID provided.");
@@ -31,10 +31,10 @@
                     //Navigate to the current stage
                     const currentStage = data.current_stage;
                     if (currentStage) {
-                        const stageNumber = parseInt(currentStage.split(' ')[1]); // Extract stage number
+                        const stageNumber = parseInt(currentStage.split(' ')[1]); 
                         currentStep = stageNumber;
-                        markCompletedSteps(stageNumber); // Mark previous steps as completed
-                        showStep(stageNumber); // Show the current step
+                        markCompletedSteps(stageNumber); 
+                        showStep(stageNumber); 
                          if (stageNumber === 1) {
                             fetchStageOne(data,projectId);
                         } else if (stageNumber === 2) {
@@ -62,17 +62,15 @@
                 alert('Project ID is Missing');
             });
     }
+
     // Function to mark completed steps
     function markCompletedSteps(currentStep) {
-        // Loop through all step circles
         document.querySelectorAll('.step-circle').forEach((circle, index) => {
-            const stepNumber = index + 1; // Step numbers are 1-based
+            const stepNumber = index + 1; 
             if (stepNumber < currentStep) {
-                // Mark previous steps as completed
                 circle.classList.add('completed');
                 circle.textContent = '✔';
             } else {
-                // Reset any future steps
                 circle.classList.remove('completed');
                 circle.textContent = stepNumber.toString();
             }
@@ -81,13 +79,8 @@
 
     // Function to show a specific step
     function showStep(stepNumber) {
-        // Hide all steps
         document.querySelectorAll('.form-step').forEach(step => step.classList.add('d-none'));
-
-        // Remove 'active' state from all step circles
         document.querySelectorAll('.step-circle').forEach(circle => circle.classList.remove('active'));
-
-        // Show the selected step and mark its circle as active
         const stepToShow = document.getElementById(`step${stepNumber}`);
         const circleToActivate = document.getElementById(`step${stepNumber}-circle`);
 
@@ -102,212 +95,209 @@
         });
     }
 
- function fetchStageOne(data,projectId) {
-  // Basic Stage One fields
-  document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
-  document.getElementById('end-date-placeholder').value = data.stages.stage_one.end_date || 'No Data';
-  document.getElementById('status-placeholder').value = data.stages.stage_one.status || 'No Data';
-  document.getElementById('solution1').value = data.stages.stage_one.solution || 'No Data';
-  document.getElementById('dealSize1').value = data.stages.stage_one.deal_size || 'No Data';
-  document.getElementById('stageremarks1').value = data.stages.stage_one.remarks || 'No Data';
+    function fetchStageOne(data,projectId) {
+    // Basic Stage One fields
+    document.getElementById('start-date-placeholder').value = data.stages.stage_one.start_date || 'No Data';
+    document.getElementById('end-date-placeholder').value = data.stages.stage_one.end_date || 'No Data';
+    document.getElementById('status-placeholder').value = data.stages.stage_one.status || 'No Data';
+    document.getElementById('solution1').value = data.stages.stage_one.solution || 'No Data';
+    document.getElementById('dealSize1').value = data.stages.stage_one.deal_size || 'No Data';
+    document.getElementById('stageremarks1').value = data.stages.stage_one.remarks || 'No Data';
 
-  // Fetch Technology Select
-  const technology1 = document.getElementById('technologySelect');
-  const techValue = data.stages.stage_one.technology || 'Select';
-  if (technology1) {
-    Array.from(technology1.options).forEach(option => {
-      option.selected = option.value === techValue;
-    });
-  }
-
-  // Step 1: Fetch the product and distributor lists using Promise.all
-  let productList = [];
-  let distributorList = [];
-
-  Promise.all([loadProducts(), loadDistributors()])
-    .then(([products, distributors]) => {
-      productList = products; // Store fetched product list
-      distributorList = distributors; // Store fetched distributor list
-
-      console.log("Products and Distributors fetched successfully.");
-      console.log("Product List:", productList);
-      console.log("Distributor List:", distributorList);
-
-      // Step 2: Fetch requirements array
-      const requirements = (data.stages.stage_one && data.stages.stage_one.requirements) || [];
-
-      // Step 3: Get the container for requirements
-      const requirementsContainer = document.getElementById('requirementsContainer');
-      if (!requirementsContainer) {
-        console.error('#requirementsContainer not found in DOM!');
-        return;
-      }
-
-    // Step 4: Populate requirements dynamically
-      let highestBlockIndex = 0;
-
-      if (requirements.length > 0) {
-        requirements.forEach((reqItem, index) => {
-          const blockIndex = index + 1;
-          highestBlockIndex = Math.max(highestBlockIndex, blockIndex);
-          const newBlock = createRequirementBlock(blockIndex, reqItem, productList, distributorList, projectId);
-          requirementsContainer.appendChild(newBlock);
+    // Fetch Technology Select
+    const technology1 = document.getElementById('technologySelect');
+    const techValue = data.stages.stage_one.technology || 'Select';
+    if (technology1) {
+        Array.from(technology1.options).forEach(option => {
+        option.selected = option.value === techValue;
         });
-      }
+    }
 
-      // Calculate the next block index for the existing initial field
-      const nextBlockIndex = highestBlockIndex + 1;
+    // Step 1: Fetch the product and distributor lists using Promise.all
+    let productList = [];
+    let distributorList = [];
 
-      // Update the existing initial requirement field dynamically
-      const initialRequirementTitle = document.getElementById('requirement1');
-      const initialHiddenInput = document.getElementById('req_1_id');
+    Promise.all([loadProducts(), loadDistributors()])
+        .then(([products, distributors]) => {
+        productList = products; // Store fetched product list
+        distributorList = distributors; // Store fetched distributor list
 
-      if (initialRequirementTitle && initialHiddenInput) {
-        initialRequirementTitle.textContent = `Requirement ${nextBlockIndex}`;
-        initialHiddenInput.value = `st1rq${nextBlockIndex}`;
-      } else {
-        console.warn("Initial requirement field not found in the DOM.");
-      }
+        console.log("Products and Distributors fetched successfully.");
+        console.log("Product List:", productList);
+        console.log("Distributor List:", distributorList);
 
-      console.log('Stage One + requirements populated:', requirements);
-    })
-    .catch(error => {
-      console.error("Error fetching Products or Distributors:", error);
-    });
-}
+        // Step 2: Fetch requirements array
+        const requirements = (data.stages.stage_one && data.stages.stage_one.requirements) || [];
 
-function escapeHtml(text) {
-  const map = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#039;',
-  };
-  return text.replace(/[&<>"']/g, m => map[m]);
-}
+        // Step 3: Get the container for requirements
+        const requirementsContainer = document.getElementById('requirementsContainer');
+        if (!requirementsContainer) {
+            console.error('#requirementsContainer not found in DOM!');
+            return;
+        }
 
-function createRequirementBlock(blockIndex, reqItem, productList=[], distributorList=[],projectId) {
-  const requirementId = reqItem.requirement_id_1 || `st1rq${blockIndex}`;
-  const requirementText = reqItem.requirement_one || '';
-  const selectedProduct = reqItem.product_one || '';
-  const selectedDistributor = reqItem.distributor_one || '';
+        // Step 4: Populate requirements dynamically
+        let highestBlockIndex = 0;
 
-  console.log(`Creating Requirement Block ${blockIndex}`);
-  console.log('Product List:', productList);
-  console.log('Distributor List:', distributorList);
-  console.log('Product Selected:', selectedProduct);
-  console.log('Distributor Selected:', selectedDistributor);
+        if (requirements.length > 0) {
+            requirements.forEach((reqItem, index) => {
+            const blockIndex = index + 1;
+            highestBlockIndex = Math.max(highestBlockIndex, blockIndex);
+            const newBlock = createRequirementBlock(blockIndex, reqItem, productList, distributorList, projectId);
+            requirementsContainer.appendChild(newBlock);
+            });
+        }
 
-  // Ensure productList and distributorList are arrays
-  if (!Array.isArray(productList)) {
-    console.warn('Invalid product list format, defaulting to empty array.');
-    productList = [];
-  }
+        // Calculate the next block index for the existing initial field
+        const nextBlockIndex = highestBlockIndex + 1;
 
-  if (!Array.isArray(distributorList)) {
-    console.warn('Invalid distributor list format, defaulting to empty array.');
-    distributorList = [];
-  }
+        // Update the existing initial requirement field dynamically
+        const initialRequirementTitle = document.getElementById('requirement1');
+        const initialHiddenInput = document.getElementById('req_1_id');
 
-  const newBlock = document.createElement('div');
-  newBlock.classList.add('requirement-block', 'p-2', 'rounded', 'shadow-widget');
-  newBlock.dataset.index = blockIndex;
+        if (initialRequirementTitle && initialHiddenInput) {
+            initialRequirementTitle.textContent = `Requirement ${nextBlockIndex}`;
+            initialHiddenInput.value = `st1rq${nextBlockIndex}`;
+        } else {
+            console.warn("Initial requirement field not found in the DOM.");
+        }
 
-  // Populate the block content
-  newBlock.innerHTML = `
-    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="req_1_id">
-      Requirement ${blockIndex}
-    </p>
-    <input type="hidden" name="requirement_id_1[]" value="${requirementId}" id="req_1_id">
-    <div class="row mb-2">
-        <div class="col-md-4">
-            <label class="form-label text-white">Requirement</label>
-        </div>
-        <div class="col-md-3">
-            <label class="form-label text-white">Product</label>
-        </div>
-        <div class="col-md-3">
-            <label class="form-label text-white">Distributor</label>
-        </div>
-        <div class="col-md-2"></div>
-    </div>
-    <div class="row mb-3">
-    <div class="col-md-4">
-        <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
-    </div>
-    <div class="col-md-3">
-        <select name="product_one[]" class="form-control custom-select productFetch" onchange="console.log('Selected Product:', this.value)">
-            <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
-            ${productList.map(product => `
-                <option value="${escapeHtml(product)}" ${product.trim().toLowerCase() === selectedProduct.trim().toLowerCase() ? 'selected' : ''}>
-                    ${escapeHtml(product)}
-                </option>
-            `).join('')}
-            ${!productList.some(product => product.trim().toLowerCase() === selectedProduct.trim().toLowerCase()) && selectedProduct
-                ? `<option value="${escapeHtml(selectedProduct)}" selected>${escapeHtml(selectedProduct)}</option>`
-                : ''}
-            <option value="add_new_product">+ Add New Product...</option>
-        </select>
-    </div>
-    <div class="col-md-3">
-        <select name="distributor_one[]" class="form-control custom-select distributorFetch">
-            <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
-            ${distributorList.map(distributor => `
-                <option value="${escapeHtml(distributor)}" ${distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase() ? 'selected' : ''}>
-                ${escapeHtml(distributor)}
-                </option>
-            `).join('')}
-            ${!distributorList.some(distributor => distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase()) && selectedDistributor
-                ? `<option value="${escapeHtml(selectedDistributor)}" selected>${escapeHtml(selectedDistributor)}</option>`
-                : ''}
-            <option value="add_new">+ Add New Distributor...</option>
-        </select>
-    </div>
-        <div class="col-md-2">
-            <button type="button"
-                    class="btn btn-danger btn-sm"
-                    style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                    onclick="deleteRequirement('${requirementId}', this,'${projectId}')">
-            <i class="fas fa-minus"></i>&nbsp;Remove
-            </button>
-        </div>
-    </div>
-  `;
+        console.log('Stage One + requirements populated:', requirements);
+        })
+        .catch(error => {
+        console.error("Error fetching Products or Distributors:", error);
+        });
+    }
 
-  return newBlock;
-}
+    function escapeHtml(text) {
+        const map = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#039;',
+        };
+        return text.replace(/[&<>"']/g, m => map[m]);
+    }
 
-// Function to delete a requirement
-function deleteRequirement(requirementId, button, projectId) {
-  // Confirm before deletion
-  if (!confirm('Are you sure you want to delete this requirement?')) {
-    return;
-  }
+    function createRequirementBlock(blockIndex, reqItem, productList=[], distributorList=[],projectId) {
+        const requirementId = reqItem.requirement_id_1 || `st1rq${blockIndex}`;
+        const requirementText = reqItem.requirement_one || '';
+        const selectedProduct = reqItem.product_one || '';
+        const selectedDistributor = reqItem.distributor_one || '';
 
-  const requirementBlock = button.closest('.requirement-block');
+        console.log(`Creating Requirement Block ${blockIndex}`);
+        console.log('Product List:', productList);
+        console.log('Distributor List:', distributorList);
+        console.log('Product Selected:', selectedProduct);
+        console.log('Distributor Selected:', selectedDistributor);
 
+        // Ensure productList and distributorList are arrays
+        if (!Array.isArray(productList)) {
+            console.warn('Invalid product list format, defaulting to empty array.');
+            productList = [];
+        }
 
-  // Send delete request to the backend
-  fetch('./dirback/delete_req1.php', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ requirementId, project_id: projectId }),
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to delete requirement.');
-      }
-      return response.json();
-    })
-    .then(data => { 
-      requirementBlock.remove();
-      console.log('Requirement deleted successfully:', data);
-    })
-    .catch(error => {
-      console.error('Error deleting requirement:', error);
-    });
-}
+        if (!Array.isArray(distributorList)) {
+            console.warn('Invalid distributor list format, defaulting to empty array.');
+            distributorList = [];
+        }
+
+        const newBlock = document.createElement('div');
+        newBlock.classList.add('requirement-block', 'p-2', 'rounded', 'shadow-widget');
+        newBlock.dataset.index = blockIndex;
+
+        // Populate the block content
+        newBlock.innerHTML = `
+            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="req_1_id">
+            Requirement ${blockIndex}
+            </p>
+            <input type="hidden" name="requirement_id_1[]" value="${requirementId}" id="req_1_id">
+            <div class="row mb-2">
+                <div class="col-md-4">
+                    <label class="form-label text-white">Requirement</label>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label text-white">Product</label>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label text-white">Distributor</label>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+            <div class="row mb-3">
+            <div class="col-md-4">
+                <input name="requirement_one[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
+            </div>
+            <div class="col-md-3">
+                <select name="product_one[]" class="form-control custom-select productFetch" onchange="console.log('Selected Product:', this.value)">
+                    <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
+                    ${productList.map(product => `
+                        <option value="${escapeHtml(product)}" ${product.trim().toLowerCase() === selectedProduct.trim().toLowerCase() ? 'selected' : ''}>
+                            ${escapeHtml(product)}
+                        </option>
+                    `).join('')}
+                    ${!productList.some(product => product.trim().toLowerCase() === selectedProduct.trim().toLowerCase()) && selectedProduct
+                        ? `<option value="${escapeHtml(selectedProduct)}" selected>${escapeHtml(selectedProduct)}</option>`
+                        : ''}
+                    <option value="add_new_product">+ Add New Product...</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select name="distributor_one[]" class="form-control custom-select distributorFetch">
+                    <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
+                    ${distributorList.map(distributor => `
+                        <option value="${escapeHtml(distributor)}" ${distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase() ? 'selected' : ''}>
+                        ${escapeHtml(distributor)}
+                        </option>
+                    `).join('')}
+                    ${!distributorList.some(distributor => distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase()) && selectedDistributor
+                        ? `<option value="${escapeHtml(selectedDistributor)}" selected>${escapeHtml(selectedDistributor)}</option>`
+                        : ''}
+                    <option value="add_new">+ Add New Distributor...</option>
+                </select>
+            </div>
+                <div class="col-md-2">
+                    <button type="button"
+                            class="btn btn-danger btn-sm"
+                            style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                            onclick="deleteRequirement('${requirementId}', this,'${projectId}')">
+                    <i class="fas fa-minus"></i>&nbsp;Remove
+                    </button>
+                </div>
+            </div>
+        `;
+
+        return newBlock;
+    }
+
+    // Function to delete a requirement
+    function deleteRequirement(requirementId, button, projectId) {
+        if (!confirm('Are you sure you want to delete this requirement?')) {
+            return;
+        }
+        const requirementBlock = button.closest('.requirement-block');
+
+        // Send delete request to the backend
+        fetch('./dirback/delete_req1.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ requirementId, project_id: projectId }),
+        })
+        .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to delete requirement.');
+        }
+        return response.json();
+        })
+        .then(data => { 
+            requirementBlock.remove();
+            console.log('Requirement deleted successfully:', data);
+        })
+        .catch(error => {
+            console.error('Error deleting requirement:', error);
+        });
+    }
 
 
     //Fetch Stage Two
@@ -317,7 +307,6 @@ function deleteRequirement(requirementId, button, projectId) {
         document.getElementById('stage-two-status').value = data.stages.stage_two.status ||  'No Data';
         document.getElementById('solution2').value = data.stages.stage_two.solution_two || data.stages.stage_one.solution || 'No Data';
         document.getElementById('deal_size2').value = Number(data.stages.stage_two.deal_size_two) || Number(data.stages.stage_one.deal_size) || 'No Data';
-
         document.getElementById('stageremarks2').value = data.stages.stage_two.remarks_two || data.stages.stage_one.remarks || 'No Data';
 
         const technology2 = document.getElementById('technology2');
@@ -336,9 +325,6 @@ function deleteRequirement(requirementId, button, projectId) {
             console.error('#engagement1Container not found in DOM!');
             return;
         }
-
-        // Clear existing content (optional, if engagements should replace the existing blocks)
-        // engagementContainer.innerHTML = '';
 
         // Step 2: Populate engagements dynamically
         let highestBlockIndex = 0;
@@ -395,8 +381,6 @@ function deleteRequirement(requirementId, button, projectId) {
             // Debugging: Verify the fetched requirements
             console.log('Fetched requirements for Stage Two:', requirementsStageTwo);
 
-            
-
             // Get the container for Stage Two requirements
             const requirementsTwoContainer = document.getElementById('requirementtwoContainer');
             if (!requirementsTwoContainer) {
@@ -429,24 +413,23 @@ function deleteRequirement(requirementId, button, projectId) {
             } else {
                 console.warn("Initial requirement field for Stage Two not found in the DOM.");
             }
-
-            console.log('Stage Two requirements populated:', requirementsStageTwo);
+                console.log('Stage Two requirements populated:', requirementsStageTwo);
             })
             .catch(error => {
-            console.error("Error fetching Products or Distributors for Stage Two:", error);
+                console.error("Error fetching Products or Distributors for Stage Two:", error);
             });
 
     }
 
     function escapeHtml(text) {
-    const map = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#039;',
-    };
-    return text.replace(/[&<>"']/g, m => map[m]);
+        const map = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#039;',
+        };
+        return text.replace(/[&<>"']/g, m => map[m]);
     }
 
     //Require Stage Two Widget
@@ -533,10 +516,10 @@ function deleteRequirement(requirementId, button, projectId) {
         `;
 
         return newBlock;
-        }
+    }
 
-        // Function to delete a Stage Two requirement
-        function deleteRequirementtwo(requirementId, button, projectId) {
+    // Function to delete a Stage Two requirement
+    function deleteRequirementtwo(requirementId, button, projectId) {
         // Confirm deletion
         if (!confirm('Are you sure you want to delete this requirement?')) {
             return;
@@ -550,27 +533,26 @@ function deleteRequirement(requirementId, button, projectId) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ requirementId, project_id: projectId }),
         })
-            .then(response => {
+        .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to delete requirement.');
             }
             return response.json();
-            })
-            .then(data => {
+        })
+        .then(data => {
             if (data.status === 'success') {
-                // Remove the block from the DOM if deletion is successful
                 requirementBlock.remove();
                 console.log('Requirement deleted successfully:', data);
             } else {
                 alert(data.message || 'Error deleting requirement.');
                 console.error('Error:', data);
             }
-            })
-            .catch(error => {
+        })
+        .catch(error => {
             console.error('Error deleting requirement:', error);
             alert('An error occurred while deleting the requirement. Please try again.');
-            });
-        }
+        });
+    }
 
 
     //Engagement Stage Two Widget
@@ -626,43 +608,35 @@ function deleteRequirement(requirementId, button, projectId) {
         `;
 
         return newBlock;
-        }
+    }
 
-        /**
-         * Function to delete an engagement block
-         * @param {string} engagementId The engagement ID
-         * @param {HTMLElement} button The delete button element
-         * @param {string} projectId The project ID
-         */
-        function deleteEngagement(engagementId, button, projectId) {
-        // Confirm before deletion
+    function deleteEngagement(engagementId, button, projectId) {
         if (!confirm('Are you sure you want to delete this engagement?')) {
             return;
         }
 
-        const engagementBlock = button.closest('.engagement-block');
+    const engagementBlock = button.closest('.engagement-block');
 
-        // Send delete request to the backend
-        fetch('./dirback/delete_eng2.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ engagementId, project_id: projectId }),
-        })
-            .then(response => {
+    // Send delete request to the backend
+    fetch('./dirback/delete_eng2.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ engagementId, project_id: projectId }),
+    })
+        .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to delete engagement.');
             }
             return response.json();
-            })
-            .then(data => {
+        })
+        .then(data => {
             engagementBlock.remove();
             console.log('Engagement deleted successfully:', data);
-            })
-            .catch(error => {
+        })
+        .catch(error => {
             console.error('Error deleting engagement:', error);
-            });
-        }
-
+        });
+    }
 
 
     function fetchStageThree(data,projectId){
@@ -682,9 +656,6 @@ function deleteRequirement(requirementId, button, projectId) {
         });
         // Get the container for engagement fields
         const engagementFieldsContainer3 = document.getElementById('engagement-fields-container3');
-
-        // Clear the container before rendering
-        // engagementFieldsContainer3.innerHTML = '';
 
         // Fetch engagement data from stage_three
         const engagements3 = data.stages.stage_three.engagement_stage_three || [];
