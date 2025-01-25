@@ -788,7 +788,7 @@
             </p>
             <input type="hidden" name="requirement_id_3[]" value="${requirementId}" id="req_3_id">
             <div class="row mb-1">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <input name="requirement_three[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
                 </div>
                 <div class="col-md-3">
@@ -819,6 +819,14 @@
                         <option value="add_new">+ Add New Distributor...</option>
                     </select>
                 </div>
+                <div class="col-md-2">
+                <button type="button"
+                        class="btn btn-danger btn-sm"
+                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                        onclick="deleteRequirementthree('${requirementId}', this, '${projectId}')">
+                    <i class="fas fa-minus"></i>&nbsp;Remove
+                </button>
+            </div>
             </div>
             <div class="row mb-1">
                 <div class="col-md-3">
@@ -834,14 +842,7 @@
                     <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks" value="${requirementRemarks}">
                 </div>
             </div>
-            <div class="col-md-2">
-                <button type="button"
-                        class="btn btn-danger btn-sm"
-                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                        onclick="deleteRequirementthree('${requirementId}', this, '${projectId}')">
-                    <i class="fas fa-minus"></i>&nbsp;Remove
-                </button>
-            </div>
+            
         `;
 
         return newBlock;
