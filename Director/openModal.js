@@ -654,7 +654,127 @@
                 option.selected = true;
             }
         });
-        
+
+        // Step 1: Fetch engagement data for Stage Three
+        const engagements = data.stages.stage_three?.engagement_stage_three || [];
+        const engagementContainer = document.getElementById('engagementthreeContainer');
+
+        if (!engagementContainer) {
+            console.error('#engagementthreeContainer not found in DOM!');
+            return;
+        }
+
+        // Step 2: Populate engagement blocks dynamically
+        let highestBlockIndex = 0;
+
+        if (engagements.length > 0) {
+            engagements.forEach((engagementItem, index) => {
+                const blockIndex = index + 1;
+                highestBlockIndex = Math.max(highestBlockIndex, blockIndex);
+
+                const newEngagementBlock = createEngagementThreeBlock(blockIndex, engagementItem, projectId);
+                engagementContainer.appendChild(newEngagementBlock);
+            });
+        }
+
+        // Step 3: Update the existing initial engagement field dynamically
+        const nextBlockIndex = highestBlockIndex + 1;
+        const initialEngagementTitle = document.getElementById('engagementstagethree');
+        const initialHiddenInput = document.getElementById('eng_3_id');
+
+        if (initialEngagementTitle && initialHiddenInput) {
+            initialEngagementTitle.textContent = `Engagement ${nextBlockIndex}`;
+            initialHiddenInput.value = `st3eng${nextBlockIndex}`;
+        } else {
+            console.warn('Initial engagement field for Stage Three not found in the DOM.');
+        }
+
+        console.log('Stage Three + engagements populated:', engagements);
+
+    }
+
+    // Function to create a new engagement block for Stage Three
+    function createEngagementThreeBlock(blockIndex, engagementItem, projectId) {
+        const engagementId = engagementItem.engagement_id_3 || `st3eng${blockIndex}`;
+        const engagementType = engagementItem.engagement_three || '';
+        const engagementDate = engagementItem.engagement_date || '';
+        const engagementRemarks = engagementItem.engagement_remarks_three || '';
+
+        console.log(`Creating Engagement Block ${blockIndex}`);
+
+        const newBlock = document.createElement('div');
+        newBlock.classList.add('engagementthree-block', 'p-2', 'rounded', 'shadow-widget');
+        newBlock.dataset.index = blockIndex;
+
+        newBlock.innerHTML = `
+            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagementstagethree">
+                Engagement ${blockIndex}
+            </p>
+            <input type="hidden" name="engagement_id_3[]" value="${engagementId}" id="eng_3_id_${blockIndex}">
+            <div class="row mb-1">
+                <div class="col-md-3">
+                    <label for="engagement" class="form-label text-white">Type of Engagement</label>
+                </div>
+                <div class="col-md-3">
+                    <label for="engagement" class="form-label text-white">Date</label>
+                </div>
+                <div class="col-md-4">
+                    <label for="engagement" class="form-label text-white">Remarks</label>
+                </div>
+            </div>
+            <div id="engagement-fields-container3">
+                <div class="row engagement-fields mb-3">
+                    <div class="col-md-3">
+                        <input name="engagement_three[]" type="text" class="form-control" placeholder="e.g. Sample Engagement" value="${engagementType}">
+                    </div>
+                    <div class="col-md-3">
+                        <input name="engagement_date[]" type="date" class="form-control" style="font-size:10px;" value="${engagementDate}">
+                    </div>
+                    <div class="col-md-4">
+                        <input name="engagement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks" value="${engagementRemarks}">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button"
+                                class="btn btn-danger btn-sm"
+                                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                onclick="deleteEngagementThree('${engagementId}', this, '${projectId}')">
+                            <i class="fas fa-minus"></i>&nbsp;Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        return newBlock;
+    }
+
+    // Function to delete an engagement block
+    function deleteEngagementThree(engagementId, button, projectId) {
+        if (!confirm('Are you sure you want to delete this engagement?')) {
+            return;
+        }
+
+        const engagementBlock = button.closest('.engagementthree-block');
+
+        // Send delete request to the backend
+        fetch('./dirback/delete_eng3.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ engagementId, project_id: projectId }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to delete engagement.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            engagementBlock.remove();
+            console.log('Engagement deleted successfully:', data);
+        })
+        .catch(error => {
+            console.error('Error deleting engagement:', error);
+        });
     }
 
     function fetchStageFour(data,projectId){
