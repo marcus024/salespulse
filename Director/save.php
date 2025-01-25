@@ -430,7 +430,7 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
             }
         }
 
-        // Handle engagement items in engagement_three_twotb
+        // Handle engagement items in engagement_threetb
         $insertedEngagementCount = 0;
         $updatedEngagementCount = 0;
 
@@ -438,19 +438,18 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
             // Prepare statements for insert, update, and check
             $insertEngStmt = $conn->prepare("
                 INSERT INTO enagement_threetb
-                    (engagement_three, engagement_date, engagement_remarks, project_unique_id, engagement_id_3, product_three, distributor_three)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
+                    (engagement_three, engagement_date, engagement_remarks_three, stagethree_id, project_unique_id, engagement_id_3)
+                VALUES (?, ?, ?, ?, ?, ?)
             ");
 
             $updateEngStmt = $conn->prepare("
                 UPDATE enagement_threetb
                 SET engagement_three = ?,
                     engagement_date = ?,
-                    engagement_remarks = ?,
-                    product_three = ?,
-                    distributor_three = ?
+                    engagement_remarks_three = ?,
+                    stagethree_id = ?,
+                    project_unique_id = ?
                 WHERE engagement_id_3 = ?
-                AND project_unique_id = ?
             ");
 
             $checkEngStmt = $conn->prepare("
@@ -466,12 +465,12 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
                 $sanitizedEngagementType = htmlspecialchars($engagementType ?? '', ENT_QUOTES, 'UTF-8');
                 $engagementDate = htmlspecialchars($inputData['engagement_date'][$index] ?? '', ENT_QUOTES, 'UTF-8');
                 $engagementRemarks = htmlspecialchars($inputData['engagement_remarks_three'][$index] ?? '', ENT_QUOTES, 'UTF-8');
-                $productThree = htmlspecialchars($inputData['product_three'][$index] ?? '', ENT_QUOTES, 'UTF-8');
-                $distributorThree = htmlspecialchars($inputData['distributor_three'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $stagethreeId = htmlspecialchars($inputData['stagethree_id'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $projectUniqueId = htmlspecialchars($inputData['project_unique_id'][$index] ?? '', ENT_QUOTES, 'UTF-8');
                 $engagementId = htmlspecialchars($inputData['engagement_id_3'][$index] ?? '', ENT_QUOTES, 'UTF-8');
 
                 // Skip if any required fields are empty
-                if (empty($sanitizedEngagementType) || empty($engagementDate) || empty($engagementRemarks) || empty($engagementId) || ($productThree === 'Select') || ($distributorThree === 'Select')) {
+                if (empty($sanitizedEngagementType) || empty($engagementDate) || empty($engagementRemarks) || empty($stagethreeId) || empty($engagementId) || ($productThree === 'Select') || ($distributorThree === 'Select')) {
                     error_log("Skipping incomplete engagement entry for project ID: $projectUniqueId.");
                     continue;
                 }
@@ -481,10 +480,9 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
                     $sanitizedEngagementType,
                     $engagementDate,
                     $engagementRemarks,
-                    $productThree,
-                    $distributorThree,
-                    $engagementId,
-                    $projectUniqueId
+                    $stagethreeId,
+                    $projectUniqueId,
+                    $engagementId
                 ]);
 
                 $updatedRows = $updateEngStmt->rowCount();
@@ -499,16 +497,16 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
                             $sanitizedEngagementType,
                             $engagementDate,
                             $engagementRemarks,
+                            $stagethreeId,
                             $projectUniqueId,
-                            $engagementId,
-                            $productThree,
-                            $distributorThree
+                            $engagementId
                         ]);
                         $insertedEngagementCount++;
                     }
                 }
             }
         }
+
         // Build final success message
         $message = "Stage Three updated successfully.";
         if ($insertedRequirementCount > 0 || $updatedRequirementCount > 0) {
