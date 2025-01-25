@@ -436,29 +436,11 @@
     //Require Stage Two Widget
     function createRequirementTwoBlock(blockIndex, reqItem, productList = [], distributorList = [], projectId) {
         const requirementId = reqItem.requirement_id_2 || `st2rq${blockIndex}`;
-        // Check if fetchStatus is 0, then prioritize requirement_one
-        const fetchStatus = reqItem.fetchStatus; // Ensure fetchStatus is received correctly
-        const requirementText =
-            fetchStatus === 0
-                ? reqItem.requirement_one || ''
-                : (fetchStatus === 1 ? '' : reqItem.requirement_two || '');
-        const selectedProduct =
-            fetchStatus === 0
-                ? reqItem.product_one || ''
-                : (fetchStatus === 1 ? '' : reqItem.product_two || '');
-        const selectedDistributor =
-            fetchStatus === 0
-                ? reqItem.distributor_one || ''
-                : (fetchStatus === 1 ? '' : reqItem.distributor_two || '');
-
+        const requirementText = reqItem.requirement_two || reqItem.requirement_one || ''; // Reference Stage One
+        const selectedProduct = reqItem.product_two || reqItem.product_one || ''; // Reference Stage One
+        const selectedDistributor = reqItem.distributor_two || reqItem.distributor_one || ''; // Reference Stage One
         const requirementDate = reqItem.requirement_date || '';
         const requirementRemarks = reqItem.requirement_remarks || '';
-
-        // Debugging
-        console.log('Fetch Status:', fetchStatus);
-        console.log('Requirement Text:', requirementText);
-        console.log('Selected Product:', selectedProduct);
-        console.log('Selected Distributor:', selectedDistributor);
 
         console.log(`Creating Stage Two Requirement Block ${blockIndex}`);
         console.log('Product List:', productList);
@@ -525,7 +507,7 @@
                 </div>
                 <div class="col-md-2">
                     <button type="button"
-                            class="btn btn-danger btn-sm removeRequirementTwo"
+                            class="btn btn-danger btn-sm"
                             style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
                             onclick="deleteRequirementtwo('${requirementId}', this, '${projectId}')">
                     <i class="fas fa-minus"></i>&nbsp;Remove
