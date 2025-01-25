@@ -437,23 +437,22 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
         if (!empty($inputData['engagement_three'])) {
             // Prepare statements for insert, update, and check
             $insertEngStmt = $conn->prepare("
-                INSERT INTO enagement_threetb
+                INSERT INTO engagement_threetb
                     (engagement_three, engagement_date, engagement_remarks_three, project_unique_id, engagement_id_3)
                 VALUES (?, ?, ?, ?, ?)
             ");
 
             $updateEngStmt = $conn->prepare("
-                UPDATE enagement_threetb
+                UPDATE engagement_threetb
                 SET engagement_three = ?,
                     engagement_date = ?,
                     engagement_remarks_three = ?
-                    
-                WHERE project_unique_id = ? AND  engagement_id_3 = ?
+                WHERE project_unique_id = ? AND engagement_id_3 = ?
             ");
 
             $checkEngStmt = $conn->prepare("
                 SELECT 1 
-                FROM enagement_threetb
+                FROM engagement_threetb
                 WHERE engagement_id_3 = ?
                 AND project_unique_id = ?
                 LIMIT 1
@@ -467,8 +466,8 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
                 $projectUniqueId = htmlspecialchars($inputData['project_unique_id'][$index] ?? '', ENT_QUOTES, 'UTF-8');
                 $engagementId = htmlspecialchars($inputData['engagement_id_3'][$index] ?? '', ENT_QUOTES, 'UTF-8');
 
-                // Skip if any required fields are empty
-                if (empty($sanitizedEngagementType) || empty($engagementDate) || empty($engagementRemarks) || empty($engagementId) || ($productThree === 'Select') || ($distributorThree === 'Select')) {
+                // Skip if any required fields are empty or invalid
+                if (empty($sanitizedEngagementType) || empty($engagementDate) || empty($engagementRemarks) || empty($engagementId) || empty($projectUniqueId)) {
                     error_log("Skipping incomplete engagement entry for project ID: $projectUniqueId.");
                     continue;
                 }
@@ -490,6 +489,7 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
                     // Check if the engagement already exists, and if not, insert
                     $checkEngStmt->execute([$engagementId, $projectUniqueId]);
                     if ($checkEngStmt->rowCount() === 0) {
+                        // Insert the engagement entry if not found
                         $insertEngStmt->execute([
                             $sanitizedEngagementType,
                             $engagementDate,
