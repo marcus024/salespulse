@@ -239,11 +239,13 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
                 $distributorTwo = htmlspecialchars($inputData['distributor_two'][$index] ?? '', ENT_QUOTES, 'UTF-8');
                 $requirementId = $inputData['requirement_id_2'][$index] ?? '';
 
+                // Only proceed if at least one of the fields is not empty (requirement_two, product_two, distributor_two)
                 if (empty($sanitizedRequirement) && empty($productTwo) && empty($distributorTwo)) {
-                    error_log("Skipping blank requirement entry for Project ID {$projectUniqueId}.");
+                    error_log("Skipping blank requirement entry for Project ID {$projectUniqueId}. All fields are empty.");
                     continue;
                 }
 
+                // If requirement_id_2 exists and at least one field is not empty, proceed with the update or insert
                 if (!empty($requirementId)) {
                     $updateReqStmt->execute([
                         $sanitizedRequirement,
@@ -259,8 +261,10 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
                     if ($updatedRows > 0) {
                         $updatedRequirementCount += $updatedRows;
                     } else {
+                        // Check if requirement_id_2 exists, then insert if it doesn't
                         $checkReqStmt->execute([$requirementId, $projectUniqueId]);
                         if ($checkReqStmt->rowCount() === 0) {
+                            // Insert the new requirement
                             $insertReqStmt->execute([
                                 $sanitizedRequirement,
                                 $requirementDate,
@@ -278,6 +282,7 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
                 }
             }
         }
+
 
         // Handle engagement items in engagement_twotb
         $insertedEngagementCount = 0;
