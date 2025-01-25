@@ -442,15 +442,15 @@
         // Only display values when fetchStatus is 0
         const requirementText = fetchStatus === 0
             ? reqItem.requirement_one || '' // Show Stage One value
-            : ''; // Show nothing if fetchStatus is not 0
+            : reqItem.requirement_two || ''; // Show nothing if fetchStatus is not 0
 
         const selectedProduct = fetchStatus === 0
             ? reqItem.product_one || '' // Show Stage One value
-            : ''; // Show nothing if fetchStatus is not 0
+            : reqItem.product_two|| ''; // Show nothing if fetchStatus is not 0
 
         const selectedDistributor = fetchStatus === 0
             ? reqItem.distributor_one || '' // Show Stage One value
-            : ''; // Show nothing if fetchStatus is not 0
+            : reqItem.distributor_two || ''; // Show nothing if fetchStatus is not 0
 
         const requirementDate = reqItem.requirement_date || '';
         const requirementRemarks = reqItem.requirement_remarks || '';
