@@ -526,9 +526,6 @@
                                                         <div class="col-md-3">
                                                         <label for="distributor" class="form-label text-white">Distributor</label>
                                                         </div>
-                                                        <div class="col-md-2">
-                                                            <label for="requirement" class="form-label text-white">Date</label>
-                                                        </div>
                                                     </div>
                                                     <div id="requirement-fields-container-3">
                                                         <div class="row requirement-fields mb-3">
@@ -562,10 +559,10 @@
                                                             <label for="requirement" class="form-label text-white">Quantity</label>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <label for="requirement" class="form-label text-white">BOM</label>
+                                                            <label for="requirement" class="form-label text-white">Pricing</label>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <label for="requirement" class="form-label text-white">Pricing</label>
+                                                            <label for="requirement" class="form-label text-white">Date</label>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="requirement" class="form-label text-white">Remarks</label>
