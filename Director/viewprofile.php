@@ -453,57 +453,6 @@ include_once('../auth/db.php');
     <script src="alerts/notifCount.js"></script>
     <script src="notif.js"></script>
     <script src="current_year.js"></script>
-    
-    <script>
-        function startPhase() {
-            // Fetch the project ID from the <strong> tag
-            var projectId = document.querySelector("#project-id-placeholder strong").textContent.trim();
-            console.log("Project ID from HTML: " + projectId); // Debugging line to confirm the project ID
-
-            // Get the current date in YYYY-MM-DD format
-            var currentDate = new Date().toISOString().slice(0, 10);
-
-            // Create an AJAX request
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "start_project.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-            // Send the start date and project ID to the server
-            xhr.send("start_date=" + encodeURIComponent(currentDate) + "&project_id=" + encodeURIComponent(projectId));
-
-            // Handle the response
-            xhr.onload = function() {
-                if (xhr.status == 200) {
-                    var response = JSON.parse(xhr.responseText); // Assuming the response is JSON
-                    
-                    // Debugging: Check the response status and message
-                    console.log(response);
-
-                    if (response.status === 'error') {
-                        // Handle error (project not found or access denied)
-                        alert(response.message); // Display the error message
-                    } else {
-                        // Update the button text based on the project status
-                        var button = document.querySelector(".play-button");
-
-                        if (response.project_status === 'Ongoing') {
-                            button.innerHTML = '<i class="fas fa-play"></i> Continue Journey'; // Change text to Continue Journey
-                        } else {
-                            button.innerHTML = '<i class="fas fa-play"></i> Start Journey'; // Default text
-                        }
-
-                        alert(response.message);
-                    }
-                } else {
-                    alert("Failed to update start date.");
-                }
-            };
-        }
-
-        window.onload = function() {
-            checkProjectStatus();
-        };
-    </script>
     <script>
         function togglePopup() {
             const popup = document.getElementById('popup-container');
