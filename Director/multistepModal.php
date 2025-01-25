@@ -428,85 +428,82 @@
                                     </div>
                                     <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
-                                            <div id="requirementtwoContainer">
-                                                <div class="requirementtwo-block" data-index="1">
-                                                    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagetwo">
-                                                    Requirement 1
-                                                    </p>
-                                                    <input type="hidden" name="requirement_id_2[]" value="st2rq1" id="rq_1_id">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-2">
-                                                                <label for="status" class="form-label text-white">Status</label>
-                                                                <input name="" type="text" class="form-control" id="stage-three-status"  readonly>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <label for="requirement" class="form-label text-white">End Date</label>
-                                                                <input name="" type="text" class="form-control" id="stage-three-end"  readonly>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <label for="requirement" class="form-label text-white">Start Date</label>
-                                                                <input name="" type="text" class="form-control" id="stage-three-start"  readonly>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <label for="requirement" class="form-label text-white">Technology</label>
-                                                                <select name="technology" class="form-control custom-select" id="technology3">
-                                                                    <option disabled >Select</option>
-                                                                    <option value="Artificial Intelligence">Artificial Intelligence</option>
-                                                                    <option value="Machine Learning" >Machine Learning</option>
-                                                                    <option value="Blockchain">Blockchain</option>
-                                                                    <option value="Internet of Things (IoT)">Internet of Things (IoT)</option>
-                                                                    <option value="Cloud Computing">Cloud Computing</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <label for="status" class="form-label text-white">Deal Size(Amount)</label>
-                                                            <input name="deal_size" type="number" class="form-control" id="deal_size3" placeholder="e.g. 5000">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <label for="status" class="form-label text-white">Solution</label>
-                                                                <textarea name="solution" class="form-control" id="solution3" placeholder="e.g. Sample Solution" 
-                                                                style="height:100px;"></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-2">
+                                                    <label for="status" class="form-label text-white">Status</label>
+                                                    <input name="" type="text" class="form-control" id="stage-three-status"  readonly>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label for="requirement" class="form-label text-white">End Date</label>
+                                                    <input name="" type="text" class="form-control" id="stage-three-end"  readonly>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label for="requirement" class="form-label text-white">Start Date</label>
+                                                    <input name="" type="text" class="form-control" id="stage-three-start"  readonly>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="requirement" class="form-label text-white">Technology</label>
+                                                    <select name="technology" class="form-control custom-select" id="technology3">
+                                                        <option disabled >Select</option>
+                                                        <option value="Artificial Intelligence">Artificial Intelligence</option>
+                                                        <option value="Machine Learning" >Machine Learning</option>
+                                                        <option value="Blockchain">Blockchain</option>
+                                                        <option value="Internet of Things (IoT)">Internet of Things (IoT)</option>
+                                                        <option value="Cloud Computing">Cloud Computing</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="status" class="form-label text-white">Deal Size(Amount)</label>
+                                                   <input name="deal_size" type="number" class="form-control" id="deal_size3" placeholder="e.g. 5000">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <label for="status" class="form-label text-white">Solution</label>
+                                                    <textarea name="solution" class="form-control" id="solution3" placeholder="e.g. Sample Solution" 
+                                                    style="height:100px;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                         <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
-                                            <div class="row mb-1">
-                                                <div class="col-md-3">
-                                                    <label for="engagement" class="form-label text-white">Type of Engagement</label>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label for="engagement" class="form-label text-white">Date</label>
-                                                </div>
-                                                <div class="col-md-5">
-                                                    <label for="engagement" class="form-label text-white">Remarks</label>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <a href="#" id="addEngagement3" class="form-label text-white" style="font-size:10px; cursor: pointer;">
-                                                        <i class="fas fa-plus"></i> Add
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div id="engagement-fields-container3">
-                                                <div class="row engagement-fields mb-3">
-                                                    <div class="col-md-3">
-                                                        <input name="engagement_three[]" type="text" class="form-control" placeholder="e.g. Sample Engagement">
+                                            <div id="engagementthreeContainer">
+                                                <div class="engagementthree-block" data-index="1">
+                                                    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagementstagethree">
+                                                    Engagement 1
+                                                    </p>
+                                                    <input type="hidden" name="engagement_id_3[]" value="st3eng1" id="eng_3_id">
+                                                    <div class="row mb-1">
+                                                        <div class="col-md-3">
+                                                            <label for="engagement" class="form-label text-white">Type of Engagement</label>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label for="engagement" class="form-label text-white">Date</label>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <label for="engagement" class="form-label text-white">Remarks</label>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <input name="engagement_date[]" type="date" class="form-control" style="font-size:10px;">
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <input name="engagement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
-                                                            <i class="fas fa-minus"></i>
-                                                        </button>
+                                                    <div id="engagement-fields-container3">
+                                                        <div class="row engagement-fields mb-3">
+                                                            <div class="col-md-3">
+                                                                <input name="engagement_three[]" type="text" class="form-control" placeholder="e.g. Sample Engagement">
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <input name="engagement_date[]" type="date" class="form-control" style="font-size:10px;">
+                                                            </div>
+                                                            <div class="col-md-5">
+                                                                <input name="engagement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <button type="button"
+                                                                        class="btn btn-primary btn-sm"
+                                                                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                                                        id="addEngagement3Btn">
+                                                                <i class="fas fa-plus"></i>&nbsp;Add
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
