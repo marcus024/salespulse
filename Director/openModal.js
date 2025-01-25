@@ -563,12 +563,6 @@
         const engagementType = engagementItem.engagement_type || '';
         const engagementDate = engagementItem.engagement_date || '';
         const engagementRemarks = engagementItem.engagement_remarks || '';
-        
-        // Extract the number from engagementId (e.g., "st2eng3" -> 3)
-        const engagementNumberMatch = engagementId.match(/\d+/); // Match the numeric part of the ID
-        const engagementNumber = engagementNumberMatch ? engagementNumberMatch[0] : blockIndex; // Fallback to blockIndex if no match
-
-        console.log(`Creating Engagement Block for Engagement ${engagementNumber}`);
 
         console.log(`Creating Engagement Block ${blockIndex}`);
 
@@ -578,7 +572,7 @@
 
         newBlock.innerHTML = `
             <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement${blockIndex}">
-            Engagement ${engagementNumber}
+            Engagement ${blockIndex}
             </p>
             <input type="hidden" name="engagement_id_2[]" value="${engagementId}" id="eng_${blockIndex}_id">
             <div class="row mb-1">
@@ -706,7 +700,12 @@
         const engagementType = engagementItem.engagement_three || '';
         const engagementDate = engagementItem.engagement_date || '';
         const engagementRemarks = engagementItem.engagement_remarks_three || '';
+        
+         // Extract the number from engagementId (e.g., "st2eng3" -> 3)
+        const engagementNumberMatch = engagementId.match(/\d+/); // Match the numeric part of the ID
+        const engagementNumber = engagementNumberMatch ? engagementNumberMatch[0] : blockIndex; // Fallback to blockIndex if no match
 
+        console.log(`Creating Engagement Block for Engagement ${engagementNumber}`);
         console.log(`Creating Engagement Block ${blockIndex}`);
 
         const newBlock = document.createElement('div');
@@ -715,7 +714,7 @@
 
         newBlock.innerHTML = `
             <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagementstagethree">
-                Engagement ${blockIndex}
+                Engagement  ${engagementNumber}
             </p>
             <input type="hidden" name="engagement_id_3[]" value="${engagementId}" id="eng_3_id_${blockIndex}">
             <div class="row mb-1">
