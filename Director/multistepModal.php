@@ -480,7 +480,7 @@
                                                         <div class="col-md-3">
                                                             <label for="engagement" class="form-label text-white">Date</label>
                                                         </div>
-                                                        <div class="col-md-5">
+                                                        <div class="col-md-4">
                                                             <label for="engagement" class="form-label text-white">Remarks</label>
                                                         </div>
                                                     </div>
@@ -492,7 +492,7 @@
                                                             <div class="col-md-3">
                                                                 <input name="engagement_date[]" type="date" class="form-control" style="font-size:10px;">
                                                             </div>
-                                                            <div class="col-md-5">
+                                                            <div class="col-md-4">
                                                                 <input name="engagement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
                                                             </div>
                                                             <div class="col-md-2">
