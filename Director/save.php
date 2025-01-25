@@ -239,7 +239,13 @@ function updateStageTwo($conn, $projectUniqueId, $inputData) {
                 $distributorTwo = htmlspecialchars($inputData['distributor_two'][$index] ?? '', ENT_QUOTES, 'UTF-8');
                 $requirementId = $inputData['requirement_id_2'][$index] ?? '';
 
-                // Only proceed if at least one of the fields is not empty (requirement_two, product_two, distributor_two)
+                // Skip insert if either product_two or distributor_two is 'Select'
+                if ($productTwo === 'Select' || $distributorTwo === 'Select') {
+                    error_log("Skipping insert for Project ID {$projectUniqueId} because product or distributor is 'Select'.");
+                    continue;
+                }
+
+                // Only proceed if at least one field (requirement_two, product_two, distributor_two) is not empty
                 if (empty($sanitizedRequirement) && empty($productTwo) && empty($distributorTwo)) {
                     error_log("Skipping blank requirement entry for Project ID {$projectUniqueId}. All fields are empty.");
                     continue;
