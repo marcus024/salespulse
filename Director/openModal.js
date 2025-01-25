@@ -437,7 +437,7 @@
     function createRequirementTwoBlock(blockIndex, reqItem, productList = [], distributorList = [], projectId) {
         const requirementId = reqItem.requirement_id_2 || `st2rq${blockIndex}`;
         // Check if fetchStatus is 0, then prioritize requirement_one
-        const fetchStatus = reqItem.fetchStatus || 1;
+        const fetchStatus = reqItem.fetchStatus; // Ensure fetchStatus is received correctly
         const requirementText =
             fetchStatus === 0
                 ? reqItem.requirement_one || ''
@@ -450,8 +450,14 @@
             fetchStatus === 0
                 ? reqItem.distributor_one || ''
                 : reqItem.distributor_two || reqItem.distributor_one || '';
-            const requirementDate = reqItem.requirement_date || '';
-            const requirementRemarks = reqItem.requirement_remarks || '';
+        const requirementDate = reqItem.requirement_date || '';
+        const requirementRemarks = reqItem.requirement_remarks || '';
+
+        // Debugging
+        console.log('Fetch Status:', fetchStatus);
+        console.log('Requirement Text:', requirementText);
+        console.log('Selected Product:', selectedProduct);
+        console.log('Selected Distributor:', selectedDistributor);
 
         console.log(`Creating Stage Two Requirement Block ${blockIndex}`);
         console.log('Product List:', productList);
