@@ -634,6 +634,7 @@
         .then(data => {
             engagementBlock.remove();
             console.log('Engagement deleted successfully:', data);
+            showNotif_bar(`Requirement deleted successfully!`);
         })
         .catch(error => {
             console.error('Error deleting engagement:', error);
@@ -771,6 +772,7 @@
         .then(data => {
             engagementBlock.remove();
             console.log('Engagement deleted successfully:', data);
+            showNotif_bar(`Requirement deleted successfully!`);
         })
         .catch(error => {
             console.error('Error deleting engagement:', error);
