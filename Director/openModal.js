@@ -1235,7 +1235,6 @@ function deleteRequirementFour(requirementId, button, projectId) {
     document.getElementById('stage-five-status').value = data.stages.stage_five.status || 'No Data';
     document.getElementById('stage-five-spr').value = data.stages.stage_five.spr || 'No Data';
     document.getElementById('billingType').value = data.stages.stage_five.billing_type || 'No Data';
-    document.getElementById('pricing').value = data.stages.stage_five.pricing || 'No Data';
     document.getElementById('solution5').value = data.stages.stage_five.solution_five || data.stages.stage_four.solution_four || 'No Data';
     document.getElementById('deal_size5').value = Number(data.stages.stage_five.deal_size_five) || Number(data.stages.stage_four.deal_size_four) || 'No Data';
     document.getElementById('stageremarks5').value = data.stages.stage_five.remarks_five || data.stages.stage_four.remarks_four || 'No Data';
