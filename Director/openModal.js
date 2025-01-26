@@ -1406,7 +1406,9 @@ function createUpsellBlock(blockIndex, upsellItem, projectId) {
                 <input name="remarks_upsell[]" type="text" class="form-control" placeholder="e.g. Sample Remarks" value="${remarks}">
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-danger btn-sm removeUpsellRow" style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
+                <button type="button" class="btn btn-danger btn-sm" 
+                onclick="deleteUpsell('${upsellId}', '${projectId}', this)">
+                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
                     <i class="fas fa-minus"></i>&nbsp;Remove
                 </button>
             </div>
@@ -1415,6 +1417,39 @@ function createUpsellBlock(blockIndex, upsellItem, projectId) {
 
     return newBlock;
 }
+
+function deleteUpsell(upsellId, projectId, button) {
+    if (!confirm('Are you sure you want to delete this upsell?')) {
+        return;
+    }
+
+    // Send the delete request to the backend
+    fetch('./dirback/delete_upsell.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ upsell_stage_5: upsellId, project_id: projectId }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                // Remove the upsell block from the DOM
+                const upsellBlock = button.closest('.upsell-block');
+                if (upsellBlock) {
+                    upsellBlock.remove();
+                }
+                alert(data.message);
+            } else {
+                alert(data.message || 'Error deleting upsell.');
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting upsell:', error);
+            alert('An error occurred while deleting the upsell. Please try again.');
+        });
+}
+
+
+
 
 // Create Requirement Block for Stage Five
 function createRequirementFiveBlock(blockIndex, reqItem, productList = [], distributorList = [], projectId) {

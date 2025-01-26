@@ -6,12 +6,12 @@ header('Content-Type: application/json');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
 
-    if (isset($data['upsell_id']) && isset($data['project_id'])) {
-        $upsell = $data['upsell_id'];
+    if (isset($data['upsell_stage_5']) && isset($data['project_id'])) {
+        $upsell = $data['upsell_stage_5'];
         $project_id = $data['project_id'];
 
         try {
-            $sql = "DELETE FROM upsell_tb WHERE upsell_id = :upsell_id AND project_unique_id = :project_id";
+            $sql = "DELETE FROM upsell_tb WHERE upsell_stage_5 = :upsell_id AND project_unique_id = :project_id";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':upsell_id', $upsell, PDO::PARAM_STR);
             $stmt->bindParam(':project_id', $project_id, PDO::PARAM_STR);
