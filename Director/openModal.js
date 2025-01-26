@@ -1464,39 +1464,6 @@ function deleteRequirementFive(requirementId, button, projectId) {
         });
 }
 
-// Function to handle the "Add Requirement" functionality for Stage Five
-document.addEventListener('DOMContentLoaded', function () {
-    const addBtn = document.getElementById('addRequirement5Btn');
-    const requirementsFiveContainer = document.getElementById('requirementfiveContainer');
-
-    if (!addBtn || !requirementsFiveContainer) return;
-
-    addBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        // Generate next block index
-        const nextBlockIndex = requirementsFiveContainer.querySelectorAll('.requirementfive-block').length + 1;
-
-        // Create a new block and append it to the container
-        const newBlock = createRequirementFiveBlock(nextBlockIndex, {}, [], [], projectId);
-        requirementsFiveContainer.appendChild(newBlock);
-
-        console.log(`Added new requirement block for Stage Five: Requirement ${nextBlockIndex}`);
-    });
-
-    // Delegate remove button functionality (to remove blocks dynamically)
-    requirementsFiveContainer.addEventListener('click', function (e) {
-        if (e.target.closest('.removeRequirementFive')) {
-            e.preventDefault();
-            const blockToRemove = e.target.closest('.requirementfive-block');
-            if (blockToRemove) {
-                blockToRemove.remove();
-                console.log('Removed a requirement block from Stage Five.');
-            }
-        }
-    });
-});
-
 
 /**
  * Function to calculate and update contract duration
