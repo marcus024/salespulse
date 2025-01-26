@@ -323,11 +323,12 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                                         'requirement_id_5' => $parts[0] ?? null,
                                         'req_five' => $parts[1] ?? null,
                                         'quantity' => $parts[2] ?? null,
-                                        'remarks_req' => $parts[3] ?? null,
-                                        'date_required' => $parts[4] ?? null,
+                                        'date_required' => $parts[3] ?? null,
+                                        'remarks_req' => $parts[4] ?? null,
                                         'pricing' => $parts[5] ?? null,
-                                        'product_five' => $parts[6] ?? null,
-                                        'distributor_five' => $parts[7] ?? null
+                                        'distributor_five' => $parts[6] ?? null,
+                                        'product_five' => $parts[7] ?? null
+                                        
                                     ];
                                 }
                                 return $carry;
