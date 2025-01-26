@@ -712,8 +712,9 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
     try {
         $query = "UPDATE stagefive SET 
             contract_duration = ?, 
+            startC = ?,
+            endC = ?,
             billing_type = ?, 
-            pricing = ?, 
             solution = ?, 
             technology = ?, 
             deal_size = ?, 
@@ -722,8 +723,9 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
         $stmt = $conn->prepare($query);
         $stmt->execute([
             $inputData['contract_duration'] ?? null,
+            $inputData['startC'] ?? null,
+            $inputData['endC'] ?? null,
             $inputData['billing_type'] ?? null,
-            $inputData['pricing'] ?? null,
             $inputData['solution'] ?? null,
             $inputData['technology'] ?? null,
             $inputData['deal_size'] ?? null,
