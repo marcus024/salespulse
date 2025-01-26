@@ -2096,6 +2096,10 @@ include("../auth/db.php");
     <script src="insert_fetch_source.js"></script>
     <script src="insert_fetch_product.js"></script>
     <script src="insert_fetch_technology.js"></script>
+    <script src="insert_fetch_tech2.js"></script>
+    <script src="insert_fetch_tech3.js"></script>
+    <script src="insert_fetch_tech4.js"></script>
+    <script src="insert_fetch_tech5.js"></script>
     <!-- <script src="idle.js"></script> -->
     <!-- Table Export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
