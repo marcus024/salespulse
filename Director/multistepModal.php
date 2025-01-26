@@ -822,7 +822,7 @@
                                             <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                                 <!-- Header Row -->
                                                 <div class="row mb-1">
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-4">
                                                         <label for="requirement" class="form-label text-white">Requirement</label>
                                                     </div>
                                                     <div class="col-md-3">
@@ -838,19 +838,20 @@
                                                     <!-- Initial Requirement Row -->
                                                     <div class="row requirement-fields mb-3">
                                                         <div class="col-md-4">
-                                                            <input name="req_five[]" id="req" type="text" class="form-control">
+                                                            <input name="req_five[]" id="req" type="text" class="form-control" placeholder="e.g. Sample Requirement">
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <input name="product[]" id="product4" type="text" class="form-control">
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
-                                                                <option disabled selected>Select</option>
-                                                                <!-- Existing options can be removed or loaded dynamically -->
-                                                                <!-- Special option for adding new distributor -->
-                                                                <option value="add_new">+ Add New Distributor...</option>
-                                                            </select>
-                                                        </div>
+                                                                <select name="product_five[]" class="form-control custom-select productFetch" >
+                                                                    <option disabled selected>Select</option>
+                                                                    <option value="add_new_product">+ Add New Product...</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <select name="distributor_five[]" class="form-control custom-select distributorFetch" >
+                                                                    <option disabled selected>Select</option>
+                                                                    <option value="add_new">+ Add New Distributor...</option>
+                                                                </select>
+                                                            </div>
                                                         <div class="col-md-2">
                                                             <button type="button"
                                                                     class="btn btn-primary btn-sm"
