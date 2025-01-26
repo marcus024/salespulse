@@ -309,7 +309,7 @@
         document.getElementById('deal_size2').value = Number(data.stages.stage_two.deal_size_two) || Number(data.stages.stage_one.deal_size) || 'No Data';
         document.getElementById('stageremarks2').value = data.stages.stage_two.remarks_two || data.stages.stage_one.remarks || 'No Data';
         // Determine selected technology, with fallback to Stage One
-        const selectedTechnology = data.stages.stage_two.technology || data.stages.stage_one.technology || 'Select';
+        const selectedTechnology = data.stages.stage_two.technology_two || data.stages.stage_one.technology || 'Select';
 
         // Fetch technologies and populate dropdowns
         loadTechnologies().then(() => {
@@ -652,7 +652,7 @@
         document.getElementById('deal_size3').value = Number(data.stages.stage_three.deal_size_three) || Number(data.stages.stage_two.deal_size_two) || 'No Data';
         document.getElementById('stageremarks3').value = data.stages.stage_three.remarks_three || data.stages.stage_two.remarks_two || 'No Data';
         // Determine selected technology, with fallback to Stage One
-        const selectedTechnology = data.stages.stage_three.technology || data.stages.stage_two.technology || 'Select';
+        const selectedTechnology = data.stages.stage_three.technology_three || data.stages.stage_two.technology_two || 'Select';
 
         // Fetch technologies and populate dropdowns
         loadTechnologies().then(() => {
@@ -1012,7 +1012,7 @@
         document.getElementById('deal_size4').value = Number(data.stages.stage_four.deal_size_four) || Number(data.stages.stage_three.deal_size_three) || 'No Data';
         document.getElementById('stageremarks4').value = data.stages.stage_four.remarks_four || data.stages.stage_three.remarks_three || 'No Data';
         // Determine selected technology, with fallback to Stage One
-        const selectedTechnology = data.stages.stage_four.technology || data.stages.stage_three.technology || 'Select';
+        const selectedTechnology = data.stages.stage_four.technology_four || data.stages.stage_three.technology_three || 'Select';
 
         // Fetch technologies and populate dropdowns
         loadTechnologies().then(() => {
@@ -1246,7 +1246,7 @@ function deleteRequirementFour(requirementId, button, projectId) {
     document.getElementById('stageremarks5').value = data.stages.stage_five.remarks_five || data.stages.stage_four.remarks_four || 'No Data';
 
     // Determine selected technology, with fallback to Stage One
-    const selectedTechnology = data.stages.stage_five.technology || data.stages.stage_four.technology || 'Select';
+    const selectedTechnology = data.stages.stage_five.technology_five || data.stages.stage_four.technology_four || 'Select';
 
     // Fetch technologies and populate dropdowns
     loadTechnologies().then(() => {
