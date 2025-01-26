@@ -428,6 +428,9 @@
                                     </div>
                                     <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
+                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                           Project Profile
+                                            </p>
                                             <div class="row mb-3">
                                                 <div class="col-md-2">
                                                     <label for="status" class="form-label text-white">Status</label>
@@ -593,6 +596,9 @@
                                         <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
+                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                           Stage Remarks
+                                            </p>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label for="requirement" class="form-label text-white">Stage Remarks</label>
@@ -615,6 +621,9 @@
                                     </div>
                                     <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
+                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                           Project Profile
+                                            </p>
                                             <div class="row mb-3">
                                                 <div class="col-md-2">
                                                     <label for="requirement" class="form-label text-white">Start Date</label>
@@ -655,68 +664,79 @@
                                         <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
-                                            <div class="row mb-1">
-                                                <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Requirement</label>
-                                                </div>
-                                                <div class="col-md-3">
-                                                   <label for="requirement" class="form-label text-white">Product</label>
-                                                </div>
-                                                <div class="col-md-3">
-                                                   <label for="distributor" class="form-label text-white">Distributor</label>
-                                                </div>
-                                            </div>
-                                            <div id="requirement-fields-container-3">
-                                                <div class="row requirement-fields mb-3">
-                                                    <div class="col-md-3">
-                                                        <input name="requirement_four[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
+                                            <div id="requirementfourContainer">
+                                                <div class="requirementfour-block" data-index="1">
+                                                    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefour">
+                                                    Requirement 1
+                                                    </p>
+                                                    <input type="hidden" name="requirement_id_4[]" value="st4req1" id="req_4_id">
+                                                    <div class="row mb-1">
+                                                        <div class="col-md-3">
+                                                            <label for="requirement" class="form-label text-white">Requirement</label>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                        <label for="requirement" class="form-label text-white">Product</label>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                        <label for="distributor" class="form-label text-white">Distributor</label>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <input name="product" id="product4" type="text" class="form-control">
+                                                    <div id="requirement-fields-container-3">
+                                                        <div class="row requirement-fields mb-3">
+                                                            <div class="col-md-3">
+                                                                <input name="requirement_four[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <select name="product_four[]" class="form-control custom-select productFetch" >
+                                                                    <option disabled selected>Select</option>
+                                                                    <option value="add_new_product">+ Add New Product...</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <select name="distributor_four[]" class="form-control custom-select distributorFetch" >
+                                                                    <option disabled selected>Select</option>
+                                                                    <option value="add_new">+ Add New Distributor...</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <button type="button"
+                                                                        class="btn btn-primary btn-sm"
+                                                                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                                                        id="addRequirement3Btn">
+                                                                <i class="fas fa-plus"></i>&nbsp;Add
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
-                                                            <option disabled selected>Select</option>
-                                                            <option value="add_new">+ Add New Distributor...</option>
-                                                        </select>
+                                                    <div class="row mb-1">
+                                                        <div class="col-md-3">
+                                                            <label for="requirement" class="form-label text-white">Quantity</label>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label for="requirement" class="form-label text-white">Pricing</label>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label for="requirement" class="form-label text-white">Date Required</label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label for="requirement" class="form-label text-white">Remarks</label>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-2">
-                                                        <button type="button"
-                                                                class="btn btn-primary btn-sm"
-                                                                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                                                                id="addRequirement3Btn">
-                                                        <i class="fas fa-plus"></i>&nbsp;Add
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-1">
-                                                <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Quantity</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Pricing</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Date Required</label>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label for="requirement" class="form-label text-white">Remarks</label>
-                                                </div>
-                                            </div>
-                                            <div id="requirement-fields-container-3">
-                                                <div class="row requirement-fields mb-3">
-                                                    <div class="col-md-3">
-                                                        <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 2000">
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+                                                    <div id="requirement-fields-container-3">
+                                                        <div class="row requirement-fields mb-3">
+                                                            <div class="col-md-3">
+                                                                <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 2000">
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -724,6 +744,9 @@
                                         <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
+                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                           Stage Remarks
+                                            </p>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label for="requirement" class="form-label text-white">Stage Remarks</label>
