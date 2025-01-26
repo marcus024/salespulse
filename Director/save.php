@@ -711,6 +711,7 @@ function updateStageFour($conn, $projectUniqueId, $inputData) {
 function updateStageFive($conn, $projectUniqueId, $inputData) {
     try {
         $query = "UPDATE stagefive SET 
+            SPR_number = ?,
             contract_duration = ?, 
             startC = ?,
             endC = ?,
@@ -722,6 +723,7 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
             WHERE project_unique_id = ?";
         $stmt = $conn->prepare($query);
         $stmt->execute([
+            $inputData['SPR_number'] ?? null,
             $inputData['contract_duration'] ?? null,
             $inputData['contractEnd'] ?? null,
             $inputData['contractStart'] ?? null,
