@@ -104,7 +104,7 @@
     document.getElementById('stageremarks1').value = data.stages.stage_one.remarks || 'No Data';
 
     // Determine selected technology, with fallback to Stage One
-    const selectedTechnology = data.stages.stage_two.technology || data.stages.stage_one.technology || 'Select';
+    const selectedTechnology = data.stages.stage_one.technology || 'Select';
 
     // Fetch technologies and populate dropdowns
     loadTechnologies().then(() => {
@@ -308,6 +308,7 @@
         document.getElementById('solution2').value = data.stages.stage_two.solution_two || data.stages.stage_one.solution || 'No Data';
         document.getElementById('deal_size2').value = Number(data.stages.stage_two.deal_size_two) || Number(data.stages.stage_one.deal_size) || 'No Data';
         document.getElementById('stageremarks2').value = data.stages.stage_two.remarks_two || data.stages.stage_one.remarks || 'No Data';
+        
         const selectedTechnology = data.stages.stage_two.technology_two || data.stages.stage_one.technology || 'Select';
 
         // Step 1: Load technologies and populate dropdown
