@@ -860,7 +860,7 @@
                                                             </select>
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <input name="product" id="product4" type="text" class="form-control">
+                                                            <input name="product[]" id="product4" type="text" class="form-control">
                                                         </div>
                                                         <div class="col-md-3">
                                                             <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
