@@ -1234,7 +1234,7 @@ function deleteRequirementFour(requirementId, button, projectId) {
     document.getElementById('stage-five-end').value = data.stages.stage_five.end_date || 'No Data';
     document.getElementById('stage-five-status').value = data.stages.stage_five.status || 'No Data';
     document.getElementById('stage-five-spr').value = data.stages.stage_five.spr || 'No Data';
-    document.getElementById('contractDuration').value = data.stages.stage_five.contract_duration || 'No Data';
+    // document.getElementById('contractDuration').value = data.stages.stage_five.contract_duration || 'No Data';
     // document.getElementById('startContract').value = data.stages.stage_five.contractStart || 'No Data';
     // document.getElementById('endContract').value = data.stages.stage_five.contractEnd || 'No Data';
     document.getElementById('billingType').value = data.stages.stage_five.billing_type || 'No Data';
