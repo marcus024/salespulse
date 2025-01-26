@@ -1087,6 +1087,17 @@
     const requirementDate = reqItem.date_required || reqItem.date_required || '';
     const requirementRemarks = reqItem.requirement_remarks_four || reqItem.requirement_remarks_three || '';
 
+     // Ensure productList and distributorList are arrays
+    if (!Array.isArray(productList)) {
+        console.warn('Invalid product list format, defaulting to empty array.');
+        productList = [];
+    }
+
+    if (!Array.isArray(distributorList)) {
+        console.warn('Invalid distributor list format, defaulting to empty array.');
+        distributorList = [];
+    }
+
     const newBlock = document.createElement('div');
     newBlock.classList.add('requirementfour-block', 'p-2', 'rounded', 'shadow-widget');
     newBlock.dataset.index = blockIndex;
