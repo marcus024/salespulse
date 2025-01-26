@@ -307,13 +307,17 @@
         document.getElementById('solution2').value = data.stages.stage_two.solution_two || data.stages.stage_one.solution || 'No Data';
         document.getElementById('deal_size2').value = Number(data.stages.stage_two.deal_size_two) || Number(data.stages.stage_one.deal_size) || 'No Data';
         document.getElementById('stageremarks2').value = data.stages.stage_two.remarks_two || data.stages.stage_one.remarks || 'No Data';
+        // Determine selected technology, with fallback to Stage One
+        const selectedTechnology = data.stages.stage_two.technology || data.stages.stage_one.technology || 'Select';
 
-        const technologyValue = data.stages.stage_one.technology || 'Select';
-
-        // Populate technologies and select the correct value
+        // Fetch technologies and populate dropdowns
         loadTechnologies().then(() => {
-            $('.technologyFetch').val(technologyValue);
+            $('.technologyFetch').each(function () {
+            $(this).val(selectedTechnology);
+            });
         });
+
+        
 
         // Step 1: Fetch engagement array
         const engagements = (data.stages.stage_two && data.stages.stage_two.engagement_stage_two) || [];
@@ -420,12 +424,6 @@
 
     }
     
-    $(document).ready(function () {
-        // Initialize handlers and load initial data
-        initTechnologyChangeHandler();
-        loadTechnologies();
-        });
-
     function escapeHtml(text) {
         const map = {
             '&': '&amp;',
