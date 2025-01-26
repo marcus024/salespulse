@@ -270,13 +270,9 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="technology" class="form-label text-white">Technology</label>
-                                                    <select name="technology" class="form-control custom-select" id="technology2">
-                                                        <option disabled>Select</option>
-                                                        <option value="Artificial Intelligence" >Artificial Intelligence</option>
-                                                        <option value="Machine Learning" >Machine Learning</option>
-                                                        <option value="Blockchain" >Blockchain</option>
-                                                        <option value="Internet of Things (IoT)" >Internet of Things (IoT)</option>
-                                                        <option value="Cloud Computing" >Cloud Computing</option>
+                                                    <select name="technology" id="technologySelect" class="form-control custom-select" >
+                                                        <option disabled selected>Select technology</option>
+                                                        <option value="add_new_technology">+ Add New Technology...</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
@@ -446,13 +442,9 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Technology</label>
-                                                    <select name="technology" class="form-control custom-select" id="technology3">
-                                                        <option disabled >Select</option>
-                                                        <option value="Artificial Intelligence">Artificial Intelligence</option>
-                                                        <option value="Machine Learning" >Machine Learning</option>
-                                                        <option value="Blockchain">Blockchain</option>
-                                                        <option value="Internet of Things (IoT)">Internet of Things (IoT)</option>
-                                                        <option value="Cloud Computing">Cloud Computing</option>
+                                                    <select name="technology" id="technologySelect" class="form-control custom-select" >
+                                                        <option disabled selected>Select technology</option>
+                                                        <option value="add_new_technology">+ Add New Technology...</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
@@ -639,13 +631,9 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Technology</label>
-                                                    <select name="technology" class="form-control custom-select" id="technology4">
-                                                        <option disabled selected>Select</option>
-                                                        <option>Artificial Intelligence</option>
-                                                        <option>Machine Learning</option>
-                                                        <option>Blockchain</option>
-                                                        <option>Internet of Things (IoT)</option>
-                                                        <option>Cloud Computing</option>
+                                                    <select name="technology" id="technologySelect" class="form-control custom-select" >
+                                                        <option disabled selected>Select technology</option>
+                                                        <option value="add_new_technology">+ Add New Technology...</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
@@ -784,13 +772,9 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Technology</label>
-                                                    <select name="technology" class="form-control custom-select" id="technology5">
-                                                        <option disabled selected>Select</option>
-                                                        <option>Artificial Intelligence</option>
-                                                        <option>Machine Learning</option>
-                                                        <option>Blockchain</option>
-                                                        <option>Internet of Things (IoT)</option>
-                                                        <option>Cloud Computing</option>
+                                                    <select name="technology" id="technologySelect" class="form-control custom-select" >
+                                                        <option disabled selected>Select technology</option>
+                                                        <option value="add_new_technology">+ Add New Technology...</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
