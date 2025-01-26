@@ -686,48 +686,105 @@ function updateStageFour($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        // Handle requirements for requirement_four
+        // Handle requirement items in requirement_fourtb
+        $insertedRequirementCount = 0;
+        $updatedRequirementCount = 0;
+
         if (!empty($inputData['requirement_four'])) {
-            $requirementQuery = "INSERT INTO requirement_fourtb (
-                                    project_unique_id, 
-                                    requirement_four, 
-                                    quantity, 
-                                    bill_of_materials, 
-                                    pricing, 
-                                    date_required
-                                ) VALUES (?, ?, ?, ?, ?, ?) 
-                                ON DUPLICATE KEY UPDATE 
-                                    requirement_four = VALUES(requirement_four), 
-                                    quantity = VALUES(quantity), 
-                                    bill_of_materials = VALUES(bill_of_materials), 
-                                    pricing = VALUES(pricing), 
-                                    date_required = VALUES(date_required)";
-            $stmt = $conn->prepare($requirementQuery);
+            // Prepare statements
+            $insertReqStmt = $conn->prepare("
+                INSERT INTO requirement_fourtb
+                    (requirement_four, product_four, distributor_four, quantity, pricing, date_required, requirement_remarks_four, project_unique_id, requirement_id_4)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ");
 
-            // Process parallel arrays
-            foreach ($inputData['requirement_four'] as $index => $requirementFour) {
-                $quantity = $inputData['quantity'][$index] ?? null;
-                $billOfMaterials = $inputData['bill_of_materials'][$index] ?? null;
-                $pricing = $inputData['pricing'][$index] ?? null;
-                $dateRequired = $inputData['date_required'][$index] ?? null;
+            $updateReqStmt = $conn->prepare("
+                UPDATE requirement_fourtb
+                SET requirement_four = ?,
+                    product_four = ?,
+                    distributor_four = ?,
+                    quantity = ?,
+                    pricing = ?,
+                    date_required = ?,
+                    requirement_remarks_four = ?
+                WHERE requirement_id_4 = ?
+                AND project_unique_id = ?
+            ");
 
-                if (empty($requirementFour)) {
-                    error_log("Empty requirement_four for Project ID {$projectUniqueId}. Skipping insert.");
+            $checkReqStmt = $conn->prepare("
+                SELECT 1 
+                FROM requirement_fourtb
+                WHERE requirement_id_4 = ?
+                AND project_unique_id = ?
+                LIMIT 1
+            ");
+
+            foreach ($inputData['requirement_four'] as $index => $requirement) {
+                // Sanitize inputs
+                $sanitizedRequirement = htmlspecialchars($requirement ?? '', ENT_QUOTES, 'UTF-8');
+                $productFour = htmlspecialchars($inputData['product_four'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $distributorFour = htmlspecialchars($inputData['distributor_four'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $quantity = htmlspecialchars($inputData['quantity'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $pricing = htmlspecialchars($inputData['pricing'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $dateRequired = htmlspecialchars($inputData['date_required'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $requirementRemarks = htmlspecialchars($inputData['requirement_remarks_four'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+                $requirementId = htmlspecialchars($inputData['requirement_id_4'][$index] ?? '', ENT_QUOTES, 'UTF-8');
+
+                // Skip insert if either product_four or distributor_four is 'Select'
+                if ($productFour === 'Select' || $distributorFour === 'Select') {
+                    error_log("Skipping insert for Project ID {$projectUniqueId} because product or distributor is 'Select'.");
                     continue;
                 }
 
-                $stmt->execute([
-                    htmlspecialchars($projectUniqueId, ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($requirementFour, ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($quantity ?? '', ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($billOfMaterials ?? '', ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($pricing ?? '', ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($dateRequired ?? '', ENT_QUOTES, 'UTF-8')
-                ]);
+                // Only proceed if at least one field (requirement_four, product_four, distributor_four) is not empty
+                if (empty($sanitizedRequirement) && empty($productFour) && empty($distributorFour)) {
+                    error_log("Skipping blank requirement entry for Project ID {$projectUniqueId}. All fields are empty.");
+                    continue;
+                }
+
+                // If requirement_id_4 exists and at least one field is not empty, proceed with the update or insert
+                if (!empty($requirementId)) {
+                    $updateReqStmt->execute([
+                        $sanitizedRequirement,
+                        $productFour,
+                        $distributorFour,
+                        $quantity,
+                        $pricing,
+                        $dateRequired,
+                        $requirementRemarks,
+                        $requirementId,
+                        $projectUniqueId
+                    ]);
+
+                    $updatedRows = $updateReqStmt->rowCount();
+                    if ($updatedRows > 0) {
+                        $updatedRequirementCount += $updatedRows;
+                    } else {
+                        // Check if requirement_id_4 exists, then insert if it doesn't
+                        $checkReqStmt->execute([$requirementId, $projectUniqueId]);
+                        if ($checkReqStmt->rowCount() === 0) {
+                            // Insert the new requirement
+                            $insertReqStmt->execute([
+                                $sanitizedRequirement,
+                                $productFour,
+                                $distributorFour,
+                                $quantity,
+                                $pricing,
+                                $dateRequired,
+                                $requirementRemarks,
+                                $projectUniqueId,
+                                $requirementId
+                            ]);
+                            $insertedRequirementCount++;
+                        }
+                    }
+                } else {
+                    error_log("Empty requirement_id_4 for Project ID {$projectUniqueId}. Skipping insert.");
+                }
             }
         }
 
-
+        
         // Insert into stagefive with automated SPR_number
         $stagefiveQuery = "INSERT INTO stagefive (start_date_stage_five, end_date_stage_five, status_stage_five, project_unique_id) 
                         VALUES ( ?, ?, ?, ?)";
@@ -758,7 +815,12 @@ function updateStageFour($conn, $projectUniqueId, $inputData) {
         $stmt = $conn->prepare($updateProjectStageQuery);
         $stmt->execute([$projectUniqueId]);
 
-
+        // Build final success message
+        $message = "Stage Four Completed successfully.";
+        if ($insertedRequirementCount > 0 || $updatedRequirementCount > 0) {
+            $message .= " (Requirements: Inserted $insertedRequirementCount, Updated $updatedRequirementCount)";
+        }
+        return $message;
     } catch (Exception $e) {
         throw new Exception("Stage Four Update Failed: " . $e->getMessage());
     }

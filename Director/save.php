@@ -595,7 +595,7 @@ function updateStageFour($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-           // Handle requirement items in requirement_fourtb
+        // Handle requirement items in requirement_fourtb
         $insertedRequirementCount = 0;
         $updatedRequirementCount = 0;
 
