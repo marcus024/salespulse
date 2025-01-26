@@ -822,7 +822,7 @@
                                             <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                                 <!-- Header Row -->
                                                 <div class="row mb-1">
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-5">
                                                         <label for="requirement" class="form-label text-white">Requirement</label>
                                                     </div>
                                                     <div class="col-md-3">
@@ -837,8 +837,8 @@
                                                 <div id="requirement-fields-container-3">
                                                     <!-- Initial Requirement Row -->
                                                     <div class="row requirement-fields mb-3">
-                                                        <div class="col-md-3">
-                                                            <input name="req_five[]" id="product4" type="text" class="form-control">
+                                                        <div class="col-md-4">
+                                                            <input name="req_five[]" id="req" type="text" class="form-control">
                                                         </div>
                                                         <div class="col-md-3">
                                                             <input name="product[]" id="product4" type="text" class="form-control">
@@ -851,7 +851,6 @@
                                                                 <option value="add_new">+ Add New Distributor...</option>
                                                             </select>
                                                         </div>
-                                                        
                                                         <div class="col-md-3">
                                                             <button type="button"
                                                                     class="btn btn-primary btn-sm"
