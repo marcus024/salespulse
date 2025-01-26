@@ -665,14 +665,6 @@
                                                 <div class="col-md-3">
                                                    <label for="distributor" class="form-label text-white">Distributor</label>
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Date Required</label>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <a href="#" id="addReq_3" class="form-label text-white" style="font-size:10px; cursor: pointer;">
-                                                        <i class="fas fa-plus"></i> Add 
-                                                    </a>
-                                                </div>
                                             </div>
                                             <div id="requirement-fields-container-3">
                                                 <div class="row requirement-fields mb-3">
@@ -689,11 +681,11 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
-                                                            <i class="fas fa-minus"></i>
+                                                        <button type="button"
+                                                                class="btn btn-primary btn-sm"
+                                                                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                                                id="addRequirement3Btn">
+                                                        <i class="fas fa-plus"></i>&nbsp;Add
                                                         </button>
                                                     </div>
                                                 </div>
@@ -703,12 +695,12 @@
                                                     <label for="requirement" class="form-label text-white">Quantity</label>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">BOM</label>
-                                                </div>
-                                                <div class="col-md-2">
                                                     <label for="requirement" class="form-label text-white">Pricing</label>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
+                                                    <label for="requirement" class="form-label text-white">Date Required</label>
+                                                </div>
+                                                <div class="col-md-4">
                                                     <label for="requirement" class="form-label text-white">Remarks</label>
                                                 </div>
                                             </div>
@@ -718,10 +710,10 @@
                                                         <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input name="bill_of_materials[]" type="text" class="form-control" placeholder="e.g. 5000">
+                                                        <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 2000">
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 2000">
+                                                        <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
                                                     </div>
                                                     <div class="col-md-4">
                                                         <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
