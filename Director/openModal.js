@@ -103,14 +103,15 @@
     document.getElementById('dealSize1').value = data.stages.stage_one.deal_size || 'No Data';
     document.getElementById('stageremarks1').value = data.stages.stage_one.remarks || 'No Data';
 
-    // Fetch Technology Select
-    const technology1 = document.getElementById('technologySelect');
-    const techValue = data.stages.stage_one.technology || 'Select';
-    if (technology1) {
-        Array.from(technology1.options).forEach(option => {
-        option.selected = option.value === techValue;
+    // Determine selected technology, with fallback to Stage One
+    const selectedTechnology = data.stages.stage_two.technology || data.stages.stage_one.technology || 'Select';
+
+    // Fetch technologies and populate dropdowns
+    loadTechnologies().then(() => {
+        $('.technologyFetch').each(function () {
+        $(this).val(selectedTechnology);
         });
-    }
+    });
 
     // Step 1: Fetch the product and distributor lists using Promise.all
     let productList = [];
@@ -650,14 +651,15 @@
         document.getElementById('stage-three-status').value = data.stages.stage_three.status     || 'No Data';
         document.getElementById('deal_size3').value = Number(data.stages.stage_three.deal_size_three) || Number(data.stages.stage_two.deal_size_two) || 'No Data';
         document.getElementById('stageremarks3').value = data.stages.stage_three.remarks_three || data.stages.stage_two.remarks_two || 'No Data';
-        // Fetch Technology Select
-        const technology3 = document.getElementById('technologySelect');
-        const techValue = data.stages.stage_one.technology || 'Select';
-        if (technology3) {
-            Array.from(technology3.options).forEach(option => {
-            option.selected = option.value === techValue;
+        // Determine selected technology, with fallback to Stage One
+        const selectedTechnology = data.stages.stage_three.technology || data.stages.stage_two.technology || 'Select';
+
+        // Fetch technologies and populate dropdowns
+        loadTechnologies().then(() => {
+            $('.technologyFetch').each(function () {
+            $(this).val(selectedTechnology);
             });
-        }
+        });
 
         const engagements = 
             Array.isArray(data.stages.stage_three?.engagement_stage_three) && 
@@ -1009,14 +1011,15 @@
         document.getElementById('solution4').value = data.stages.stage_four.solution_four || data.stages.stage_three.solution_three || 'No Data';
         document.getElementById('deal_size4').value = Number(data.stages.stage_four.deal_size_four) || Number(data.stages.stage_three.deal_size_three) || 'No Data';
         document.getElementById('stageremarks4').value = data.stages.stage_four.remarks_four || data.stages.stage_three.remarks_three || 'No Data';
-       // Fetch Technology Select
-        const technology4 = document.getElementById('technologySelect');
-        const techValue = data.stages.stage_one.technology || 'Select';
-        if (technology4) {
-            Array.from(technology4.options).forEach(option => {
-            option.selected = option.value === techValue;
+        // Determine selected technology, with fallback to Stage One
+        const selectedTechnology = data.stages.stage_four.technology || data.stages.stage_three.technology || 'Select';
+
+        // Fetch technologies and populate dropdowns
+        loadTechnologies().then(() => {
+            $('.technologyFetch').each(function () {
+            $(this).val(selectedTechnology);
             });
-        }
+        });
                 
 
         const requirementsStageFour = 
@@ -1242,14 +1245,15 @@ function deleteRequirementFour(requirementId, button, projectId) {
     document.getElementById('deal_size5').value = Number(data.stages.stage_five.deal_size_five) || Number(data.stages.stage_four.deal_size_four) || 'No Data';
     document.getElementById('stageremarks5').value = data.stages.stage_five.remarks_five || data.stages.stage_four.remarks_four || 'No Data';
 
-    // Fetch Technology Select
-    const technology5 = document.getElementById('technologySelect');
-    const techValue = data.stages.stage_one.technology || 'Select';
-    if (technology5) {
-        Array.from(technology5.options).forEach(option => {
-        option.selected = option.value === techValue;
+    // Determine selected technology, with fallback to Stage One
+    const selectedTechnology = data.stages.stage_five.technology || data.stages.stage_four.technology || 'Select';
+
+    // Fetch technologies and populate dropdowns
+    loadTechnologies().then(() => {
+        $('.technologyFetch').each(function () {
+        $(this).val(selectedTechnology);
         });
-    }
+    });
     // Set values for start and end dates
     const startContractInput = document.getElementById('startContract');
     const endContractInput = document.getElementById('endContract');
