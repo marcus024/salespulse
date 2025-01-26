@@ -313,9 +313,21 @@
 
         // Fetch technologies and populate dropdowns
         loadTechnologies().then(() => {
-            $('.technologyFetch').each(function () {
-            $(this).val(selectedTechnology);
-            });
+        $('.technologyFetch').each(function () {
+            // Populate options and set the selected value
+            const $dropdown = $(this);
+
+            // Check if the selected technology is already in the dropdown
+            const hasSelectedOption = $dropdown.find(`option[value="${selectedTechnology}"]`).length > 0;
+
+            if (!hasSelectedOption && selectedTechnology !== 'Select') {
+            // Add the selected technology if it doesn't exist in the options
+            $dropdown.append(`<option value="${selectedTechnology}" selected>${selectedTechnology}</option>`);
+            }
+
+            // Set the value to the selected technology
+            $dropdown.val(selectedTechnology);
+        });
         });
 
         
