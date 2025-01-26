@@ -820,77 +820,85 @@
                                             <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                             <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
-                                                <!-- Header Row -->
-                                                <div class="row mb-1">
-                                                    <div class="col-md-4">
-                                                        <label for="requirement" class="form-label text-white">Requirement</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Product</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                    <label for="distributor" class="form-label text-white">Distributor</label>
-                                                    </div>
-                                                    
-                                                </div>
-                                                <!-- Container for Requirement Fields -->
-                                                <div id="requirement-fields-container-3">
-                                                    <!-- Initial Requirement Row -->
-                                                    <div class="row requirement-fields mb-3">
-                                                        <div class="col-md-4">
-                                                            <input name="req_five[]" id="req" type="text" class="form-control" placeholder="e.g. Sample Requirement">
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                                <select name="product_five[]" class="form-control custom-select productFetch" >
-                                                                    <option disabled selected>Select</option>
-                                                                    <option value="add_new_product">+ Add New Product...</option>
-                                                                </select>
+                                                <div id="requirementfiveContainer">
+                                                    <div class="requirementfive-block" data-index="1">
+                                                        <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefive">
+                                                        Requirement 1
+                                                        </p>
+                                                        <input type="hidden" name="requirement_id_5[]" value="st5req1" id="req_5_id">
+                                                        <!-- Header Row -->
+                                                        <div class="row mb-1">
+                                                            <div class="col-md-4">
+                                                                <label for="requirement" class="form-label text-white">Requirement</label>
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <select name="distributor_five[]" class="form-control custom-select distributorFetch" >
-                                                                    <option disabled selected>Select</option>
-                                                                    <option value="add_new">+ Add New Distributor...</option>
-                                                                </select>
+                                                            <label for="requirement" class="form-label text-white">Product</label>
                                                             </div>
-                                                        <div class="col-md-2">
-                                                            <button type="button"
-                                                                    class="btn btn-primary btn-sm"
-                                                                    style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                                                                    id="addRequirement3Btn">
-                                                            <i class="fas fa-plus"></i>&nbsp;Add
-                                                            </button>
+                                                            <div class="col-md-3">
+                                                            <label for="distributor" class="form-label text-white">Distributor</label>
+                                                            </div>
+                                                            
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-1">
-                                                    <div class="col-md-3">
-                                                        <label for="requirement" class="form-label text-white">Quantity</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label for="requirement" class="form-label text-white">Pricing</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label for="requirement" class="form-label text-white">Date Required</label>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <label for="requirement" class="form-label text-white">Remarks</label>
-                                                    </div>
-                                                </div>
-                                                <!-- Container for Requirement Fields -->
-                                                <div id="requirement-fields-container-3">
-                                                    <!-- Initial Requirement Row -->
-                                                    <div class="row requirement-fields mb-3">
-                                                        <div class="col-md-3">
-                                                            <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
+                                                        <!-- Container for Requirement Fields -->
+                                                        <div id="requirement-fields-container-3">
+                                                            <!-- Initial Requirement Row -->
+                                                            <div class="row requirement-fields mb-3">
+                                                                <div class="col-md-4">
+                                                                    <input name="req_five[]" id="req" type="text" class="form-control" placeholder="e.g. Sample Requirement">
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                        <select name="product_five[]" class="form-control custom-select productFetch" >
+                                                                            <option disabled selected>Select</option>
+                                                                            <option value="add_new_product">+ Add New Product...</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <select name="distributor_five[]" class="form-control custom-select distributorFetch" >
+                                                                            <option disabled selected>Select</option>
+                                                                            <option value="add_new">+ Add New Distributor...</option>
+                                                                        </select>
+                                                                    </div>
+                                                                <div class="col-md-2">
+                                                                    <button type="button"
+                                                                            class="btn btn-primary btn-sm"
+                                                                            style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                                                            id="addRequirement5Btn">
+                                                                    <i class="fas fa-plus"></i>&nbsp;Add
+                                                                    </button>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-md-2">
-                                                            <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 2000">
+                                                        <div class="row mb-1">
+                                                            <div class="col-md-3">
+                                                                <label for="requirement" class="form-label text-white">Quantity</label>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <label for="requirement" class="form-label text-white">Pricing</label>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <label for="requirement" class="form-label text-white">Date Required</label>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label for="requirement" class="form-label text-white">Remarks</label>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-md-2">
-                                                            <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <input name="remarks_req[]" type="text" class="form-control" placeholder="e.g. Sample Requirement Remarks">
+                                                        <!-- Container for Requirement Fields -->
+                                                        <div id="requirement-fields-container-3">
+                                                            <!-- Initial Requirement Row -->
+                                                            <div class="row requirement-fields mb-3">
+                                                                <div class="col-md-3">
+                                                                    <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 2000">
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <input name="remarks_req[]" type="text" class="form-control" placeholder="e.g. Sample Requirement Remarks">
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1053,6 +1061,7 @@
     <script src="modal_req/duplicate_eng_three.js"></script>
     <script src="modal_req/duplicate_req_three.js"></script>
     <script src="modal_req/duplicate_req_four.js"></script>
+    <script src="modal_req/duplicate_req_five.js"></script>
     <script>
         function showNotif_bar(message = "Operation completed successfully!", duration = 3000) {
             const notif_bar_r = document.getElementById('notif_bar_r');
