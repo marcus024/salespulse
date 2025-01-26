@@ -270,13 +270,9 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="technology" class="form-label text-white">Technology</label>
-                                                    <select name="technology" class="form-control custom-select" id="technology2">
-                                                        <option disabled>Select</option>
-                                                        <option value="Artificial Intelligence" >Artificial Intelligence</option>
-                                                        <option value="Machine Learning" >Machine Learning</option>
-                                                        <option value="Blockchain" >Blockchain</option>
-                                                        <option value="Internet of Things (IoT)" >Internet of Things (IoT)</option>
-                                                        <option value="Cloud Computing" >Cloud Computing</option>
+                                                    <select name="technology" id="technologySelect2" class="form-control custom-select" >
+                                                        <option disabled selected>Select technology</option>
+                                                        <option value="add_new_technology">+ Add New Technology...</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
@@ -428,6 +424,9 @@
                                     </div>
                                     <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
+                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                           Project Profile
+                                            </p>
                                             <div class="row mb-3">
                                                 <div class="col-md-2">
                                                     <label for="status" class="form-label text-white">Status</label>
@@ -443,13 +442,9 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Technology</label>
-                                                    <select name="technology" class="form-control custom-select" id="technology3">
-                                                        <option disabled >Select</option>
-                                                        <option value="Artificial Intelligence">Artificial Intelligence</option>
-                                                        <option value="Machine Learning" >Machine Learning</option>
-                                                        <option value="Blockchain">Blockchain</option>
-                                                        <option value="Internet of Things (IoT)">Internet of Things (IoT)</option>
-                                                        <option value="Cloud Computing">Cloud Computing</option>
+                                                    <select name="technology" id="technologySelect3" class="form-control custom-select" >
+                                                        <option disabled selected>Select technology</option>
+                                                        <option value="add_new_technology">+ Add New Technology...</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
@@ -466,116 +461,126 @@
                                             </div>
                                         </div>
                                         <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
-
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
-                                            <div class="row mb-1">
-                                                <div class="col-md-3">
-                                                    <label for="engagement" class="form-label text-white">Type of Engagement</label>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label for="engagement" class="form-label text-white">Date</label>
-                                                </div>
-                                                <div class="col-md-5">
-                                                    <label for="engagement" class="form-label text-white">Remarks</label>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <a href="#" id="addEngagement3" class="form-label text-white" style="font-size:10px; cursor: pointer;">
-                                                        <i class="fas fa-plus"></i> Add
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div id="engagement-fields-container3">
-                                                <div class="row engagement-fields mb-3">
-                                                    <div class="col-md-3">
-                                                        <input name="engagement_three[]" type="text" class="form-control" placeholder="e.g. Sample Engagement">
+                                            <div id="engagementthreeContainer">
+                                                <div class="engagementthree-block" data-index="1">
+                                                    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagementstagethree">
+                                                    Engagement 1
+                                                    </p>
+                                                    <input type="hidden" name="engagement_id_3[]" value="st3eng1" id="eng_3_id">
+                                                    <div class="row mb-1">
+                                                        <div class="col-md-3">
+                                                            <label for="engagement" class="form-label text-white">Type of Engagement</label>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label for="engagement" class="form-label text-white">Date</label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label for="engagement" class="form-label text-white">Remarks</label>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <input name="engagement_date[]" type="date" class="form-control" style="font-size:10px;">
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <input name="engagement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
-                                                            <i class="fas fa-minus"></i>
-                                                        </button>
+                                                    <div id="engagement-fields-container3">
+                                                        <div class="row engagement-fields mb-3">
+                                                            <div class="col-md-3">
+                                                                <input name="engagement_three[]" type="text" class="form-control" placeholder="e.g. Sample Engagement">
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <input name="engagement_date[]" type="date" class="form-control" style="font-size:10px;">
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <input name="engagement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <button type="button"
+                                                                        class="btn btn-primary btn-sm"
+                                                                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                                                        id="addEngagement3Btn">
+                                                                <i class="fas fa-plus"></i>&nbsp;Add
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
-
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
-                                            <div class="row mb-1">
-                                                <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Requirement</label>
-                                                </div>
-                                                <div class="col-md-3">
-                                                   <label for="requirement" class="form-label text-white">Product</label>
-                                                </div>
-                                                <div class="col-md-3">
-                                                   <label for="distributor" class="form-label text-white">Distributor</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Date</label>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <a href="#" id="addReq_3" class="form-label text-white" style="font-size:10px; cursor: pointer;">
-                                                        <i class="fas fa-plus"></i> Add 
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div id="requirement-fields-container-3">
-                                                <div class="row requirement-fields mb-3">
-                                                    <div class="col-md-3">
-                                                        <input name="requirement_three[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
+                                            <div id="requirementthreeContainer">
+                                                <div class="requirementthree-block" data-index="1">
+                                                    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagethree">
+                                                    Requirement 1
+                                                    </p>
+                                                    <input type="hidden" name="requirement_id_3[]" value="st3req1" id="req_3_id">    
+                                                    <div class="row mb-1">
+                                                        <div class="col-md-4">
+                                                            <label for="requirement" class="form-label text-white">Requirement</label>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                        <label for="requirement" class="form-label text-white">Product</label>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                        <label for="distributor" class="form-label text-white">Distributor</label>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <input name="product" id="product3" type="text" class="form-control">
+                                                    <div id="requirement-fields-container-3">
+                                                        <div class="row requirement-fields mb-3">
+                                                            <div class="col-md-4">
+                                                                <input name="requirement_three[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <select name="product_three[]" class="form-control custom-select productFetch" >
+                                                                    <option disabled selected>Select</option>
+                                                                    <option value="add_new_product">+ Add New Product...</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <select name="distributor_three[]" class="form-control custom-select distributorFetch" >
+                                                                    <option disabled selected>Select</option>
+                                                                    <option value="add_new">+ Add New Distributor...</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <button type="button"
+                                                                        class="btn btn-primary btn-sm"
+                                                                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                                                        id="addRequirement3Btn">
+                                                                <i class="fas fa-plus"></i>&nbsp;Add
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
-                                                            <option disabled selected>Select</option>
-                                                            <option value="add_new">+ Add New Distributor...</option>
-                                                        </select>
+                                                    <div class="row mb-1">
+                                                        <div class="col-md-3">
+                                                            <label for="requirement" class="form-label text-white">Quantity</label>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label for="requirement" class="form-label text-white">Pricing</label>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label for="requirement" class="form-label text-white">Date</label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label for="requirement" class="form-label text-white">Remarks</label>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-2">
-                                                        <input name="requirement_date[]" type="date" id="reqdate2" class="form-control" style="font-size:10px;">
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
-                                                            <i class="fas fa-minus"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-1">
-                                                <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Quantity</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">BOM</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Pricing</label>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Remarks</label>
-                                                </div>
-                                            </div>
-                                            <div id="requirement-fields-container-3">
-                                                <div class="row requirement-fields mb-3">
-                                                    <div class="col-md-3">
-                                                        <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <input name="bill_of_materials[]" type="text" class="form-control" placeholder="e.g. 5000">
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 5000">
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+                                                    <div id="requirement-fields-container-3">
+                                                        <div class="row requirement-fields mb-3">
+                                                            <div class="col-md-3">
+                                                                <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
+                                                            </div>
+                                                            <!-- <div class="col-md-2">
+                                                                <input name="bill_of_materials[]" type="text" class="form-control" placeholder="e.g. 5000">
+                                                            </div> -->
+                                                            <div class="col-md-2">
+                                                                <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 5000">
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <input name="requirement_date[]" type="date" id="reqdate2" class="form-control" style="font-size:10px;">
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -583,6 +588,9 @@
                                         <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
+                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                           Stage Remarks
+                                            </p>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label for="requirement" class="form-label text-white">Stage Remarks</label>
@@ -605,6 +613,9 @@
                                     </div>
                                     <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
+                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                           Project Profile
+                                            </p>
                                             <div class="row mb-3">
                                                 <div class="col-md-2">
                                                     <label for="requirement" class="form-label text-white">Start Date</label>
@@ -620,13 +631,9 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Technology</label>
-                                                    <select name="technology" class="form-control custom-select" id="technology4">
-                                                        <option disabled selected>Select</option>
-                                                        <option>Artificial Intelligence</option>
-                                                        <option>Machine Learning</option>
-                                                        <option>Blockchain</option>
-                                                        <option>Internet of Things (IoT)</option>
-                                                        <option>Cloud Computing</option>
+                                                    <select name="technology" id="technologySelect4" class="form-control custom-select" >
+                                                        <option disabled selected>Select technology</option>
+                                                        <option value="add_new_technology">+ Add New Technology...</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
@@ -645,76 +652,79 @@
                                         <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
-                                            <div class="row mb-1">
-                                                <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Requirement</label>
-                                                </div>
-                                                <div class="col-md-3">
-                                                   <label for="requirement" class="form-label text-white">Product</label>
-                                                </div>
-                                                <div class="col-md-3">
-                                                   <label for="distributor" class="form-label text-white">Distributor</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Date Required</label>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <a href="#" id="addReq_3" class="form-label text-white" style="font-size:10px; cursor: pointer;">
-                                                        <i class="fas fa-plus"></i> Add 
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div id="requirement-fields-container-3">
-                                                <div class="row requirement-fields mb-3">
-                                                    <div class="col-md-3">
-                                                        <input name="requirement_four[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
+                                            <div id="requirementfourContainer">
+                                                <div class="requirementfour-block" data-index="1">
+                                                    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefour">
+                                                    Requirement 1
+                                                    </p>
+                                                    <input type="hidden" name="requirement_id_4[]" value="st4req1" id="req_4_id">
+                                                    <div class="row mb-1">
+                                                        <div class="col-md-3">
+                                                            <label for="requirement" class="form-label text-white">Requirement</label>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                        <label for="requirement" class="form-label text-white">Product</label>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                        <label for="distributor" class="form-label text-white">Distributor</label>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <input name="product" id="product4" type="text" class="form-control">
+                                                    <div id="requirement-fields-container-3">
+                                                        <div class="row requirement-fields mb-3">
+                                                            <div class="col-md-4">
+                                                                <input name="requirement_four[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <select name="product_four[]" class="form-control custom-select productFetch" >
+                                                                    <option disabled selected>Select</option>
+                                                                    <option value="add_new_product">+ Add New Product...</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <select name="distributor_four[]" class="form-control custom-select distributorFetch" >
+                                                                    <option disabled selected>Select</option>
+                                                                    <option value="add_new">+ Add New Distributor...</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <button type="button"
+                                                                        class="btn btn-primary btn-sm"
+                                                                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                                                        id="addRequirement4Btn">
+                                                                <i class="fas fa-plus"></i>&nbsp;Add
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
-                                                            <option disabled selected>Select</option>
-                                                            <option value="add_new">+ Add New Distributor...</option>
-                                                        </select>
+                                                    <div class="row mb-1">
+                                                        <div class="col-md-3">
+                                                            <label for="requirement" class="form-label text-white">Quantity</label>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label for="requirement" class="form-label text-white">Pricing</label>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label for="requirement" class="form-label text-white">Date Required</label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label for="requirement" class="form-label text-white">Remarks</label>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-2">
-                                                        <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
-                                                            <i class="fas fa-minus"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-1">
-                                                <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Quantity</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">BOM</label>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Pricing</label>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Remarks</label>
-                                                </div>
-                                            </div>
-                                            <div id="requirement-fields-container-3">
-                                                <div class="row requirement-fields mb-3">
-                                                    <div class="col-md-3">
-                                                        <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <input name="bill_of_materials[]" type="text" class="form-control" placeholder="e.g. 5000">
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 2000">
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+                                                    <div id="requirement-fields-container-3">
+                                                        <div class="row requirement-fields mb-3">
+                                                            <div class="col-md-3">
+                                                                <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 2000">
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <input name="requirement_remarks_four[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -722,6 +732,9 @@
                                         <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
+                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                           Stage Remarks
+                                            </p>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label for="requirement" class="form-label text-white">Stage Remarks</label>
@@ -759,13 +772,9 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Technology</label>
-                                                    <select name="technology" class="form-control custom-select" id="technology5">
-                                                        <option disabled selected>Select</option>
-                                                        <option>Artificial Intelligence</option>
-                                                        <option>Machine Learning</option>
-                                                        <option>Blockchain</option>
-                                                        <option>Internet of Things (IoT)</option>
-                                                        <option>Cloud Computing</option>
+                                                    <select name="technology" id="technologySelect5" class="form-control custom-select" >
+                                                        <option disabled selected>Select technology</option>
+                                                        <option value="add_new_technology">+ Add New Technology...</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
@@ -785,114 +794,109 @@
                                                     <label for="status" class="form-label text-white">SPR Number</label>
                                                     <input type="text" class="form-control" id="stage-five-spr"  name="SPR_number" placeholder="e.g. SPR1 ">
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Contract Duration</label>
-                                                    <input name="contract_duration" type="text" class="form-control" id="contract" placeholder="e.g. 6 days">
+                                                <div class="col-md-2">
+                                                    <label for="requirement" class="form-label text-white">Start Contracted Date</label>
+                                                    <input name="contractStart" type="date" class="form-control" id="startContract">
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Pricing</label>
-                                                    <input name="pricing" type="text" class="form-control" id="pricing" placeholder="e.g. 6 ">
+                                                <div class="col-md-2">
+                                                    <label for="requirement" class="form-label text-white">End Contracted Date</label>
+                                                    <input name="contractEnd" type="date" class="form-control" id="endContract" >
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label for="requirement" class="form-label text-white">Duration</label>
+                                                    <input name="contract_duration" type="text" class="form-control" id="contractDuration" placeholder="e.g. 6 days" readonly>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="billingType" class="form-label text-white">Billing Type</label>
                                                     <select name="billing_type" class="form-control custom-select" id="billingType">
                                                         <option   disabled selected>Select Billing Type</option>
-                                                        <option value="fixed">Fixed</option>
-                                                        <option value="hourly">Hourly</option>
-                                                        <option value="retainer">Retainer</option>
-                                                        <option value="milestone">Milestone</option>
+                                                        <option value="OPEX">OPEX</option>
+                                                        <option value="CAPEX">CAPEX</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                             <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
-                                                <!-- Header Row -->
-                                                <div class="row mb-1">
-                                                    <div class="col-md-3">
-                                                        <label for="requirement" class="form-label text-white">Requirement</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Product</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                    <label for="distributor" class="form-label text-white">Distributor</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label for="requirement" class="form-label text-white">Date Required</label>
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <!-- Add Another Button -->
-                                                        <a href="#" id="addReq_3" class="form-label text-white" style="font-size:10px; cursor: pointer;">
-                                                            <i class="fas fa-plus"></i> Add 
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <!-- Container for Requirement Fields -->
-                                                <div id="requirement-fields-container-3">
-                                                    <!-- Initial Requirement Row -->
-                                                    <div class="row requirement-fields mb-3">
-                                                        <div class="col-md-3">
-                                                            <select name="req_five[]" class="form-control">
-                                                                <option  disabled selected >Select Requirement</option>
-                                                                <option value="cisco-network">Cisco Network</option>
-                                                                <option value="cloud-computing">Cloud Computing</option>
-                                                                <option value="cybersecurity">Cybersecurity</option>
-                                                                <option value="database-management">Database Management</option>
-                                                                <option value="software-development">Software Development</option>
-                                                            </select>
+                                                <div id="requirementfiveContainer">
+                                                    <div class="requirementfive-block" data-index="1">
+                                                        <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefive">
+                                                        Requirement 1
+                                                        </p>
+                                                        <input type="hidden" name="requirement_id_5[]" value="st5req1" id="req_5_id">
+                                                        <!-- Header Row -->
+                                                        <div class="row mb-1">
+                                                            <div class="col-md-4">
+                                                                <label for="requirement" class="form-label text-white">Requirement</label>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                            <label for="requirement" class="form-label text-white">Product</label>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                            <label for="distributor" class="form-label text-white">Distributor</label>
+                                                            </div>
+                                                            
                                                         </div>
-                                                        <div class="col-md-3">
-                                                            <input name="product" id="product4" type="text" class="form-control">
+                                                        <!-- Container for Requirement Fields -->
+                                                        <div id="requirement-fields-container-3">
+                                                            <!-- Initial Requirement Row -->
+                                                            <div class="row requirement-fields mb-3">
+                                                                <div class="col-md-4">
+                                                                    <input name="req_five[]" id="req" type="text" class="form-control" placeholder="e.g. Sample Requirement">
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <select name="product_five[]" class="form-control custom-select productFetch" >
+                                                                        <option disabled selected>Select</option>
+                                                                        <option value="add_new_product">+ Add New Product...</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <select name="distributor_five[]" class="form-control custom-select distributorFetch" >
+                                                                        <option disabled selected>Select</option>
+                                                                        <option value="add_new">+ Add New Distributor...</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <button type="button"
+                                                                            class="btn btn-primary btn-sm"
+                                                                            style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                                                            id="addRequirement5Btn">
+                                                                    <i class="fas fa-plus"></i>&nbsp;Add
+                                                                    </button>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-md-3">
-                                                            <select name="distributor[]" id="distributorSelect" class="form-control custom-select">
-                                                                <option disabled selected>Select</option>
-                                                                <!-- Existing options can be removed or loaded dynamically -->
-                                                                <!-- Special option for adding new distributor -->
-                                                                <option value="add_new">+ Add New Distributor...</option>
-                                                            </select>
+                                                        <div class="row mb-1">
+                                                            <div class="col-md-3">
+                                                                <label for="requirement" class="form-label text-white">Quantity</label>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <label for="requirement" class="form-label text-white">Pricing</label>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <label for="requirement" class="form-label text-white">Date Required</label>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <label for="requirement" class="form-label text-white">Remarks</label>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-md-2">
-                                                            <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <!-- Remove Button -->
-                                                            <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
-                                                                <i class="fas fa-minus"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-1">
-                                                    <div class="col-md-3">
-                                                        <label for="requirement" class="form-label text-white">Quantity</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label for="requirement" class="form-label text-white">BOM</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label for="requirement" class="form-label text-white">Pricing</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <label for="requirement" class="form-label text-white">Remarks</label>
-                                                    </div>
-                                                </div>
-                                                <!-- Container for Requirement Fields -->
-                                                <div id="requirement-fields-container-3">
-                                                    <!-- Initial Requirement Row -->
-                                                    <div class="row requirement-fields mb-3">
-                                                        <div class="col-md-3">
-                                                            <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <input name="bills_materials_req[]" type="number" class="form-control" placeholder="e.g. 5000">
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 2000">
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <input name="remarks_req[]" type="text" class="form-control" placeholder="e.g. Sample Requirement Remarks">
+                                                        <!-- Container for Requirement Fields -->
+                                                        <div id="requirement-fields-container-3">
+                                                            <!-- Initial Requirement Row -->
+                                                            <div class="row requirement-fields mb-3">
+                                                                <div class="col-md-3">
+                                                                    <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 2000">
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <input name="remarks_req[]" type="text" class="form-control" placeholder="e.g. Sample Requirement Remarks">
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -900,53 +904,52 @@
                                             <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                             <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
-                                                <!-- Fixed Labels Row -->
-                                                <div class="row mb-1">
-                                                    <div class="col-md-2">
-                                                        <label for="requirement" class="form-label text-white">Upsell</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label for="bills_materials" class="form-label text-white">Bill of Materials</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label for="quantity" class="form-label text-white">Quantity</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label for="amount" class="form-label text-white">Amount</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <label for="remarks" class="form-label text-white">Remarks</label>
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <a href="#" id="addUpsellRow" class="form-label text-white" style="font-size:10px; cursor: pointer;">
-                                                            <i class="fas fa-plus"></i> Add
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Container for Input Rows -->
-                                                <div id="upsell-fields-container">
-                                                    <!-- Initial Input Row -->
-                                                    <div class="row mb-3 upsell-fields">
-                                                        <div class="col-md-2">
-                                                            <input type="text" class="form-control" name="upsell[]" placeholder="e.g Router 2000">
+                                                <div id="upsellContainer">
+                                                    <div class="upsell-block" data-index="1">
+                                                        <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="upsellCon">
+                                                        Upsell 1
+                                                        </p>
+                                                        <input type="hidden" name="upsell_stage_5[]" value="upsell1" id="upsell_id">
+                                                        <!-- Fixed Labels Row -->
+                                                        <div class="row mb-1">
+                                                            <div class="col-md-3">
+                                                                <label for="requirement" class="form-label text-white">Upsell</label>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <label for="quantity" class="form-label text-white">Quantity</label>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <label for="amount" class="form-label text-white">Amount</label>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <label for="remarks" class="form-label text-white">Remarks</label>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-md-2">
-                                                            <input name="bills_materials_upsell[]" type="number" class="form-control" placeholder="e.g 5000">
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <input name="quantity_upsell[]" type="number" class="form-control" placeholder="e.g 50">
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <input name="amount_upsell[]" type="number" class="form-control" placeholder="e.g. 6000">
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <input name="remarks_upsell[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <button type="button" class="btn btn-danger btn-sm deleteUpsellRow">
-                                                                <i class="fas fa-minus"></i>
-                                                            </button>
+                                                        <!-- Container for Input Rows -->
+                                                        <div id="upsell-fields-container">
+                                                            <!-- Initial Input Row -->
+                                                            <div class="row mb-3 upsell-fields">
+                                                                <div class="col-md-3">
+                                                                    <input type="text" class="form-control" name="upsell[]" placeholder="e.g Router 2000">
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <input name="quantity_upsell[]" type="number" class="form-control" placeholder="e.g 50">
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <input name="amount_upsell[]" type="number" class="form-control" placeholder="e.g. 6000">
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input name="remarks_upsell[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+                                                                </div>
+                                                            <div class="col-md-2">
+                                                                    <button type="button"
+                                                                            class="btn btn-primary btn-sm"
+                                                                            style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                                                            id="addUpsellBtn">
+                                                                    <i class="fas fa-plus"></i>&nbsp;Add
+                                                                    </button>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1052,31 +1055,34 @@
     <script src="modal_req/duplicate_req_one.js"></script>
     <script src="modal_req/duplicate_eng_two.js"></script>
     <script src="modal_req/duplicate_req1_st2.js"></script>
+    <script src="modal_req/duplicate_eng_three.js"></script>
+    <script src="modal_req/duplicate_req_three.js"></script>
+    <script src="modal_req/duplicate_req_four.js"></script>
+    <script src="modal_req/duplicate_req_five.js"></script>
+    <script src="modal_req/duplicate_upsell.js"></script>
     <script>
-      function showNotif_bar(message = "Operation completed successfully!", duration = 3000) {
-    const notif_bar_r = document.getElementById('notif_bar_r');
-    const notificationMessage = document.getElementById('notificationMessage');
+        function showNotif_bar(message = "Operation completed successfully!", duration = 3000) {
+            const notif_bar_r = document.getElementById('notif_bar_r');
+            const notificationMessage = document.getElementById('notificationMessage');
 
-    if (!notif_bar_r || !notificationMessage) {
-        console.error("Notification bar elements are missing in the DOM.");
-        return;
-    }
+            if (!notif_bar_r || !notificationMessage) {
+                console.error("Notification bar elements are missing in the DOM.");
+                return;
+            }
 
-    // Debug: Ensure the notification is starting hidden
-    console.log("Notification bar initial display:", window.getComputedStyle(notif_bar_r).display);
+            // Debug: Ensure the notification is starting hidden
+            console.log("Notification bar initial display:", window.getComputedStyle(notif_bar_r).display);
 
-    // Set the message and show the notification
-    notificationMessage.textContent = message;
-    notif_bar_r.style.display = 'flex';
+            // Set the message and show the notification
+            notificationMessage.textContent = message;
+            notif_bar_r.style.display = 'flex';
 
-    // Hide the notification after the specified duration
-    setTimeout(() => {
-        console.log("Hiding notification bar after duration.");
-        notif_bar_r.style.display = 'none';
-    }, duration);
-}
-
-
+            // Hide the notification after the specified duration
+            setTimeout(() => {
+                console.log("Hiding notification bar after duration.");
+                notif_bar_r.style.display = 'none';
+            }, duration);
+        }
     </script>
                 
     <script>
@@ -1326,525 +1332,67 @@ document.getElementById('saveButton').addEventListener('click', async () => {
     }
 });
 
-
-
-
     document.addEventListener('DOMContentLoaded', () => {
         showStep(currentStep);
         updateProjectId();
     });
-    document.getElementById('deleteButtons1').addEventListener('click', async () => {
-        if (confirm('Are you sure you want to cancel this process? This action cannot be undone.')) {
-            const projectId = document
-            .getElementById('deleteButtons1')
-            .getAttribute('data-project-id');
-            if (!projectId) {
-                alert("Project ID is missing. Cannot proceed with cancellation.");
-                console.error("Error: Project ID not found.");
-                return;
-            }
-            try {
-                const response = await fetch('delete.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ project_unique_id: projectId }),
-                });
-                if (!response.ok) {
-                    console.error("HTTP Error:", response.status, response.statusText);
-                    alert("Failed to cancel the project. Please try again.");
-                    return;
-                }
-                const result = await response.json();
-                console.log("Backend response:", result);
-                if (result.success) {
-                    alert("The project has been successfully canceled.");
-                    location.reload(); 
-                } else {
-                    alert(`Failed to cancel the project: ${result.message}`);
-                }
-            } catch (error) {
-                console.error("Error in fetch operation:", error);
-                alert(`An error occurred while canceling the project: ${error.message}`);
-            }
-        }
-    });
-
-    document.getElementById('deleteButtons2').addEventListener('click', async () => {
-        if (confirm('Are you sure you want to cancel this process? This action cannot be undone.')) {
-            const projectId = document
-            .getElementById('deleteButtons2')
-            .getAttribute('data-project-id');
-
-            if (!projectId) {
-                alert("Project ID is missing. Cannot proceed with cancellation.");
-                console.error("Error: Project ID not found.");
-                return;
-            }
-
-            try {
-                const response = await fetch('delete.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ project_unique_id: projectId }),
-                });
-                if (!response.ok) {
-                    console.error("HTTP Error:", response.status, response.statusText);
-                    alert("Failed to cancel the project. Please try again.");
-                    return;
-                }
-                const result = await response.json();
-                console.log("Backend response:", result);
-                if (result.success) {
-                    alert("The project has been successfully canceled.");
-                    location.reload(); 
-                } else {
-                    alert(`Failed to cancel the project: ${result.message}`);
-                }
-            } catch (error) {
-                console.error("Error in fetch operation:", error);
-                alert(`An error occurred while canceling the project: ${error.message}`);
-            }
-        }
-    });
-    document.getElementById('deleteButtons3').addEventListener('click', async () => {
-        if (confirm('Are you sure you want to cancel this process? This action cannot be undone.')) {
-            const projectId = document
-            .getElementById('deleteButtons3')
-            .getAttribute('data-project-id');
-
-            if (!projectId) {
-                alert("Project ID is missing. Cannot proceed with cancellation.");
-                console.error("Error: Project ID not found.");
-                return;
-            }
-
-            try {
-                const response = await fetch('delete.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ project_unique_id: projectId }),
-                });
-                if (!response.ok) {
-                    console.error("HTTP Error:", response.status, response.statusText);
-                    alert("Failed to cancel the project. Please try again.");
-                    return;
-                }
-                const result = await response.json();
-                console.log("Backend response:", result);
-                if (result.success) {
-                    alert("The project has been successfully canceled.");
-                    location.reload();
-                } else {
-                    alert(`Failed to cancel the project: ${result.message}`);
-                }
-            } catch (error) {
-                console.error("Error in fetch operation:", error);
-                alert(`An error occurred while canceling the project: ${error.message}`);
-            }
-        }
-    });
-    document.getElementById('deleteButtons4').addEventListener('click', async () => {
-        if (confirm('Are you sure you want to cancel this process? This action cannot be undone.')) {
-            const projectId = document
-            .getElementById('deleteButtons5')
-            .getAttribute('data-project-id');
-
-            if (!projectId) {
-                alert("Project ID is missing. Cannot proceed with cancellation.");
-                console.error("Error: Project ID not found.");
-                return;
-            }
-
-            try {
-                const response = await fetch('delete.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ project_unique_id: projectId }),
-                });
-
-                if (!response.ok) {
-                    console.error("HTTP Error:", response.status, response.statusText);
-                    alert("Failed to cancel the project. Please try again.");
-                    return;
-                }
-                const result = await response.json();
-                console.log("Backend response:", result);
-                if (result.success) {
-                    alert("The project has been successfully canceled.");
-                    location.reload(); 
-                } else {
-                    alert(`Failed to cancel the project: ${result.message}`);
-                }
-            } catch (error) {
-                console.error("Error in fetch operation:", error);
-                alert(`An error occurred while canceling the project: ${error.message}`);
-            }
-        }
-    });
-    document.getElementById('deleteButtons5').addEventListener('click', async () => {
-        if (confirm('Are you sure you want to cancel this process? This action cannot be undone.')) {
-            const projectId = document
-            .getElementById('deleteButtons5')
-            .getAttribute('data-project-id');
-
-            if (!projectId) {
-                alert("Project ID is missing. Cannot proceed with cancellation.");
-                console.error("Error: Project ID not found.");
-                return;
-            }
-            try {
-                const response = await fetch('delete.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ project_unique_id: projectId }),
-                });
-                if (!response.ok) {
-                    console.error("HTTP Error:", response.status, response.statusText);
-                    alert("Failed to cancel the project. Please try again.");
-                    return;
-                }
-                const result = await response.json();
-                console.log("Backend response:", result);
-                if (result.success) {
-                    alert("The project has been successfully canceled.");
-                    location.reload(); 
-                } else {
-                    alert(`Failed to cancel the project: ${result.message}`);
-                }
-            } catch (error) {
-                console.error("Error in fetch operation:", error);
-                alert(`An error occurred while canceling the project: ${error.message}`);
-            }
-        }
-    });
 </script>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const engagementFieldsContainer = document.getElementById('engagement-fields-container');
-                const addEngagementButton = document.getElementById('addEngagement');
-                addEngagementButton.addEventListener('click', (event) => {
-                    event.preventDefault(); 
-                    const newRow = document.createElement('div');
-                    newRow.classList.add('row', 'engagement-fields', 'mb-3');
-                    newRow.innerHTML = `
-                        <div class="col-md-3">
-                            <input name="engagement_type[]" type="text" class="form-control" placeholder="e.g. Sample Engagement">
-                        </div>
-                        <div class="col-md-2">
-                            <input name="engagement_date[]" type="date" class="form-control" style="font-size:10px;">
-                        </div>
-                        <div class="col-md-5">
-                            <input name="engagement_remarks[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                    `;
-                    engagementFieldsContainer.appendChild(newRow);
-                });
-                engagementFieldsContainer.addEventListener('click', (event) => {
-                    if (event.target.closest('.deleteRequirement')) {
-                        const rowToDelete = event.target.closest('.row');
-                        engagementFieldsContainer.removeChild(rowToDelete);
-                    }
-                });
-            });
-        </script>
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const requirementFieldsContainer = document.getElementById('requirement-fields-container');
-                const addRequirementButton = document.getElementById('addReq');
-                addRequirementButton.addEventListener('click', (event) => {
-                    event.preventDefault(); 
-                    const newRow = document.createElement('div');
-                    newRow.classList.add('row', 'requirement-fields', 'mb-3');
-                    newRow.innerHTML = `
-                        <div class="col-md-3">
-                            <input name="requirement_two[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
-                        </div>
-                        <div class="col-md-2">
-                            <input name="requirement_date[]" type="date" class="form-control" style="font-size:10px;">
-                        </div>
-                        <div class="col-md-5">
-                            <input name="requirement_remarks[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                    `;
-                    requirementFieldsContainer.appendChild(newRow);
-                });
-                requirementFieldsContainer.addEventListener('click', (event) => {
-                    if (event.target.closest('.deleteRequirement')) {
-                        const rowToDelete = event.target.closest('.row');
-                        requirementFieldsContainer.removeChild(rowToDelete);
-                    }
-                });
-            });
-        </script>
-        <!-- <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const addRequirementBtn = document.getElementById('addRequiremen');
-                const requirementContainer = document.getElementById('requirement-container').parentNode;
-                addRequirementBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const newFieldContainer = document.createElement('div');
-                    newFieldContainer.classList.add('row', 'align-items-center', 'requirement-field');
-                    newFieldContainer.style.marginTop = '5px';
-                    newFieldContainer.style.marginBottom = '5px';
-                    const inputFieldCol = document.createElement('div');
-                    inputFieldCol.classList.add('col-9', 'd-flex', 'align-items-center');
-                    const inputField = document.createElement('input');
-                    inputField.name = 'requirement_one[]';
-                    inputField.type = 'text';
-                    inputField.classList.add('form-control');
-                    inputField.placeholder = 'e.g. Sample Requirement';
-                    inputField.style.width = '100%';
-                    inputFieldCol.appendChild(inputField);
-                    const deleteButtonCol = document.createElement('div');
-                    deleteButtonCol.classList.add('col-2', 'd-flex', 'justify-content-end', 'align-items-center');
-                    const deleteButton = document.createElement('button');
-                    deleteButton.type = 'button';
-                    deleteButton.classList.add('btn', 'btn-danger', 'btn-sm');
-                    deleteButton.style.marginLeft = '5px';
-                    deleteButton.innerHTML = '<i class="fas fa-minus"></i>';
-                    deleteButton.addEventListener('click', () => {
-                        newFieldContainer.remove();
-                    });
-                    deleteButtonCol.appendChild(deleteButton);
-                    newFieldContainer.appendChild(inputFieldCol);
-                    newFieldContainer.appendChild(deleteButtonCol);
-                    requirementContainer.appendChild(newFieldContainer);
-                });
-                const initialDeleteBtn = document.getElementById('deleteRequirement');
-                if (initialDeleteBtn) {
-                    initialDeleteBtn.addEventListener('click', () => {
-                        initialDeleteBtn.closest('.requirement-field').remove();
-                    });
-                }
-            });
-        </script> -->
-         <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const engagementFieldsContainer = document.getElementById('engagement-fields-container3');
-                const addEngagementButton = document.getElementById('addEngagement3');
-                addEngagementButton.addEventListener('click', (event) => {
-                    event.preventDefault(); 
-                    const newRow = document.createElement('div');
-                    newRow.classList.add('row', 'engagement-fields', 'mb-3');
-                    newRow.innerHTML = `
-                        <div class="col-md-3">
-                            <input name="engagement_three[]" type="text" class="form-control" placeholder="e.g. Sample Engagement">
-                        </div>
-                        <div class="col-md-2">
-                            <input name="engagement_date[]" type="date" class="form-control" style="font-size:10px;">
-                        </div>
-                        <div class="col-md-5">
-                            <input name="engagement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                    `;
-                    engagementFieldsContainer.appendChild(newRow);
-                });
-                engagementFieldsContainer.addEventListener('click', (event) => {
-                    if (event.target.closest('.deleteRequirement')) {
-                        const rowToDelete = event.target.closest('.row');
-                        engagementFieldsContainer.removeChild(rowToDelete);
-                    }
-                });
-            });
-        </script>
-        <!-- <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const requirementFieldsContainer = document.getElementById('requirement-fields-container3');
-                const addRequirementButton = document.getElementById('addReq_3');
-                addRequirementButton.addEventListener('click', (event) => {
-                    event.preventDefault(); 
-                    const newRow = document.createElement('div');
-                    newRow.classList.add('row', 'requirement-fields', 'mb-3');
-                    newRow.innerHTML = `
-                       
-                    <div class="col-md-2">
-                        <input name="requirement_three[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
-                    </div>
-                    <div class="col-md-2">
-                        <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
-                    </div>
-                    <div class="col-md-2">
-                        <input name="bill_of_materials[]" type="text" class="form-control" placeholder="e.g. 5000">
-                    </div>
-                    <div class="col-md-2">
-                        <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 5000">
-                    </div>
-                    <div class="col-md-2">
-                        <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
-                    </div>
-                    <div class="col-md-2">
-                     
-                        <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                    </div>
-                                             
-                    `;
-                    requirementFieldsContainer.appendChild(newRow);
-                });
-                requirementFieldsContainer.addEventListener('click', (event) => {
-                    if (event.target.closest('.deleteRequirement')) {
-                        const rowToDelete = event.target.closest('.row');
-                        requirementFieldsContainer.removeChild(rowToDelete);
-                    }
-                });
-            });
-        </script> -->
-        <!-- <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const requirementFieldsContainer = document.getElementById('requirement-fields-container4');
-                const addRequirementButton = document.getElementById('addRequirement4');
-                addRequirementButton.addEventListener('click', (event) => {
-                    event.preventDefault(); 
-                    const newRow = document.createElement('div');
-                    newRow.classList.add('row', 'mb-3', 'requirement-fields');
-                    newRow.innerHTML = `
-                        <div class="col-md-2">
-                            <input name="requirement_four[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
-                        </div>
-                        <div class="col-md-2">
-                            <input name="quantity[]" type="text" class="form-control" placeholder="e.g. 50">
-                        </div>
-                        <div class="col-md-2">
-                            <input name="bill_of_materials[]" type="text" class="form-control" placeholder="e.g. 5000">
-                        </div>
-                        <div class="col-md-2">
-                            <input name="pricing[]" type="text" class="form-control" placeholder="e.g. 2000">
-                        </div>
-                        <div class="col-md-2">
-                            <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-danger btn-sm deleteRequirement">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                    `;
-                    requirementFieldsContainer.appendChild(newRow);
-                });
-                requirementFieldsContainer.addEventListener('click', (event) => {
-                    if (event.target.closest('.deleteRequirement')) {
-                        const rowToDelete = event.target.closest('.row');
-                        requirementFieldsContainer.removeChild(rowToDelete);
-                    }
-                });
-            });
-        </script> -->
-        <!-- <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const requirementFieldsContainer = document.getElementById('requirement-fields-container5');
-                const addRequirementButton = document.getElementById('addRequirement5');
-                addRequirementButton.addEventListener('click', (event) => {
-                    event.preventDefault(); 
-                    const newRow = document.createElement('div');
-                    newRow.classList.add('row', 'mb-3', 'requirement-fields');
-                    newRow.innerHTML = `
-                        <div class="col-md-3">
-                            <select name="req_five[]" class="form-control">
-                                <option value="" disabled selected>Select Requirement</option>
-                                <option value="cisco-network">Cisco Network</option>
-                                <option value="cloud-computing">Cloud Computing</option>
-                                <option value="cybersecurity">Cybersecurity</option>
-                                <option value="database-management">Database Management</option>
-                                <option value="software-development">Software Development</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
-                        </div>
-                        <div class="col-md-2">
-                            <input name="bills_materials_req[]" type="number" class="form-control" placeholder="e.g. 5000">
-                        </div>
-                        <div class="col-md-3">
-                            <input name="remarks_req[]" type="text" class="form-control" placeholder="e.g. 6">
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-danger btn-sm deleteRequirement">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                    `;
-                    requirementFieldsContainer.appendChild(newRow);
-                });
-                requirementFieldsContainer.addEventListener('click', (event) => {
-                    if (event.target.closest('.deleteRequirement')) {
-                        const rowToDelete = event.target.closest('.row');
-                        requirementFieldsContainer.removeChild(rowToDelete);
-                    }
-                });
-            });
-        </script> -->
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const upsellFieldsContainer = document.getElementById('upsell-fields-container');
-                const addUpsellRowButton = document.getElementById('addUpsellRow');
-                addUpsellRowButton.addEventListener('click', (event) => {
-                    event.preventDefault(); 
-                    const newRow = document.createElement('div');
-                    newRow.classList.add('row', 'mb-3', 'upsell-fields');
-                    newRow.innerHTML = `
-                        <div class="col-md-2">
-                            <input type="text" class="form-control" name="upsell[]" placeholder="e.g Router 2000">
-                        </div>
-                        <div class="col-md-2">
-                            <input name="bills_materials_upsell[]" type="number" class="form-control" placeholder="e.g 5000">
-                        </div>
-                        <div class="col-md-2">
-                            <input name="quantity_upsell[]" type="number" class="form-control" placeholder="e.g 50">
-                        </div>
-                        <div class="col-md-2">
-                            <input name="remarks_upsell[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
-                        </div>
-                        <div class="col-md-2">
-                            <input name="amount_upsell[]" type="number" class="form-control" placeholder="e.g. 6000">
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-danger btn-sm deleteUpsellRow">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                    `;
-                    upsellFieldsContainer.appendChild(newRow);
-                });
-                upsellFieldsContainer.addEventListener('click', (event) => {
-                    if (event.target.closest('.deleteUpsellRow')) {
-                        const rowToDelete = event.target.closest('.row');
-                        upsellFieldsContainer.removeChild(rowToDelete);
-                    }
-                });
-            });
-        </script>
-        <script>
-            // Function to refresh the page when the modal is closed
-            function refreshPage() {
-                location.reload(); // Reload the current page
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const upsellFieldsContainer = document.getElementById('upsell-fields-container');
+        const addUpsellRowButton = document.getElementById('addUpsellRow');
+        addUpsellRowButton.addEventListener('click', (event) => {
+            event.preventDefault(); 
+            const newRow = document.createElement('div');
+            newRow.classList.add('row', 'mb-3', 'upsell-fields');
+            newRow.innerHTML = `
+                <div class="col-md-2">
+                    <input type="text" class="form-control" name="upsell[]" placeholder="e.g Router 2000">
+                </div>
+                <div class="col-md-2">
+                    <input name="bills_materials_upsell[]" type="number" class="form-control" placeholder="e.g 5000">
+                </div>
+                <div class="col-md-2">
+                    <input name="quantity_upsell[]" type="number" class="form-control" placeholder="e.g 50">
+                </div>
+                <div class="col-md-2">
+                    <input name="remarks_upsell[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+                </div>
+                <div class="col-md-2">
+                    <input name="amount_upsell[]" type="number" class="form-control" placeholder="e.g. 6000">
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-danger btn-sm deleteUpsellRow">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            `;
+            upsellFieldsContainer.appendChild(newRow);
+        });
+        upsellFieldsContainer.addEventListener('click', (event) => {
+            if (event.target.closest('.deleteUpsellRow')) {
+                const rowToDelete = event.target.closest('.row');
+                upsellFieldsContainer.removeChild(rowToDelete);
             }
+        });
+    });
+</script>
+<script>
+    // Function to refresh the page when the modal is closed
+    function refreshPage() {
+        location.reload(); // Reload the current page
+    }
 
-            // Attach the refresh function to the modal close event
-            const modalCloseButton = document.getElementById('modalCloseButton');
-            if (modalCloseButton) {
-                modalCloseButton.addEventListener('click', function() {
-                    refreshPage(); // Refresh the page when the modal is closed
-                });
-            }
+    // Attach the refresh function to the modal close event
+    const modalCloseButton = document.getElementById('modalCloseButton');
+    if (modalCloseButton) {
+        modalCloseButton.addEventListener('click', function() {
+            refreshPage(); // Refresh the page when the modal is closed
+        });
+    }
 
-        </script>
+</script>
         
  
 

@@ -572,13 +572,13 @@ include("../auth/db.php");
     <script src="alerts/notif.js"></script>
     <script src="alerts/notifCount.js"></script>
     <script src="current_year.js"></script>
-    <script>
+    <!-- <script>
         // Toggle sidebar collapse
         document.getElementById('sidebarToggle').addEventListener('click', function () {
             const sidebar = document.getElementById('accordionSidebar');
             sidebar.classList.toggle('collapsed');
         });
-    </script>
+    </script> -->
     <script>
         function togglePopup() {
             const popup = document.getElementById('popup-container');

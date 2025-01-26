@@ -2001,16 +2001,6 @@ include("../auth/db.php");
             <!-- End of Home Content -->
             </div>
             <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <!-- <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Powered by Workforce Management Team 2024</span>
-                    </div>
-                </div>
-            </footer> -->
-            <!-- End of Footer -->
         </div>
         <!-- End of Content Wrapper -->
     </div>
@@ -2043,10 +2033,6 @@ include("../auth/db.php");
         data-bs-target="#multistepModal">
         
     </button>
-    
-    
-   
-
     <script>
         function showNotification(message, redirectUrl = null, isError = false) {
             const notification = document.getElementById('notification');
@@ -2068,8 +2054,6 @@ include("../auth/db.php");
             }, 4000);
         }
         </script>
-
-
     <!-- Notification bar -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -2088,22 +2072,14 @@ include("../auth/db.php");
     </script>
         <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
-
     <!-- Bootstrap core JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
     <!-- Core plugin JavaScript -->
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-
     <!-- Custom scripts for all pages -->
     <script src="../js/sb-admin-2.min.js"></script>
-
-    <!-- DataTables JavaScript -->
-    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <script src="notif.js"></script>
     <!-- Page level custom scripts -->
-    <script src="../js/demo/datatables-demo.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./openModal.js"></script>
     <script src="toogleNav.js"></script>
@@ -2120,289 +2096,113 @@ include("../auth/db.php");
     <script src="insert_fetch_source.js"></script>
     <script src="insert_fetch_product.js"></script>
     <script src="insert_fetch_technology.js"></script>
+    <script src="insert_fetch_tech2.js"></script>
+    <script src="insert_fetch_tech3.js"></script>
+    <script src="insert_fetch_tech4.js"></script>
+    <script src="insert_fetch_tech5.js"></script>
     <!-- <script src="idle.js"></script> -->
-    
     <!-- Table Export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script>
-    // Export to PDF
-    async function exportToPDF() {
-        const { jsPDF } = window.jspdf; // Get jsPDF
-        const doc = new jsPDF();
+        // Export to PDF
+        async function exportToPDF() {
+            const { jsPDF } = window.jspdf; // Get jsPDF
+            const doc = new jsPDF();
 
-        // Add title to the PDF
-        doc.setFontSize(16);
-        doc.text("Project Lists", 14, 20);
+            // Add title to the PDF
+            doc.setFontSize(16);
+            doc.text("Project Lists", 14, 20);
 
-        // Fetch the table
-        const table = document.getElementById("projectTable");
+            // Fetch the table
+            const table = document.getElementById("projectTable");
 
-        // Parse table data for autoTable
-        const data = [];
-        const rows = table.querySelectorAll("tr");
-        rows.forEach((row, rowIndex) => {
-            const rowData = [];
-            const cells = row.querySelectorAll("th, td");
-            cells.forEach(cell => {
-                rowData.push(cell.innerText);
-            });
-            data.push(rowData);
-        });
-
-        // AutoTable options
-        doc.autoTable({
-            head: [data[0]], // First row is the table header
-            body: data.slice(1), // Remaining rows are the body
-            startY: 30, // Start after title
-            styles: {
-                fontSize: 9, // Font size for table
-            },
-            headStyles: {
-                fillColor: [54, 185, 204], // Header color matching your theme
-                textColor: 255, // White text
-                halign: "center" // Center align header text
-            },
-        });
-
-        // Save the PDF
-        doc.save("ProjectLists.pdf");
-    }
-
-    // Export to CSV
-    function exportToCSV() {
-        const table = document.getElementById("projectTable");
-        const rows = Array.from(table.rows).map(row =>
-            Array.from(row.cells).map(cell => cell.innerText)
-        );
-
-        let csvContent = "data:text/csv;charset=utf-8,";
-
-        rows.forEach(row => {
-            const rowData = row.join(",");
-            csvContent += rowData + "\r\n";
-        });
-
-        const encodedUri = encodeURI(csvContent);
-        const link = document.createElement("a");
-        link.setAttribute("href", encodedUri);
-        link.setAttribute("download", "ProjectLists.csv");
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-
-    // Export to Excel
-    function exportToExcel() {
-        const table = document.getElementById("projectTable");
-
-        // Convert HTML table to an array of arrays
-        const rows = Array.from(table.rows).map(row =>
-            Array.from(row.cells).map(cell => cell.innerText)
-        );
-
-        // Create a new workbook and worksheet
-        const workbook = XLSX.utils.book_new();
-        const worksheet = XLSX.utils.aoa_to_sheet(rows); // Convert array of arrays to a sheet
-
-        // Append worksheet to workbook
-        XLSX.utils.book_append_sheet(workbook, worksheet, "Project Lists");
-
-        // Write file
-        XLSX.writeFile(workbook, "ProjectLists.xlsx");
-    }
-
-    // Print Table
-    function printTable() {
-        const printContent = document.getElementById("projectTable").outerHTML;
-        const newWindow = window.open("", "", "width=800,height=600");
-        newWindow.document.write("<html><head><title>Project Lists</title></head><body>");
-        newWindow.document.write(printContent);
-        newWindow.document.write("</body></html>");
-        newWindow.document.close();
-        newWindow.print();
-    }
-</script>
-
-   <script>
-        let currentStep = 1;
-        const totalSteps = 5;
-
-        // Save Button Logic
-        document.getElementById('saveButton').addEventListener('click', () => {
-            const projectId = document.getElementById('project-unique-id').value;
-
-            if (projectId) {
-                alert(`Project ID fetched: ${projectId}`); 
-
-                if (confirm('Do you want to save changes?')) {
-                    let formData = new FormData();
-                    formData.append('project_id', projectId);
-                    formData.append('current_step', currentStep);
-
-                    // Get form fields specific to the current step
-                    const currentStepFields = document.querySelectorAll(`#step${currentStep} input`);
-                    currentStepFields.forEach(field => {
-                        formData.append(field.name, field.value);
-                    });
-
-                    const saveUrl = `dirback/save/save_stage${currentStep}.php`; 
-                    fetch(saveUrl, {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => response.json()) 
-                    .then(data => {
-                        if (data.success) {
-                            alert('Data saved successfully! Your changes have been applied.');
-                        } else {
-                            alert('Error: ' + data.message);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error during fetch:', error);
-                        alert('An error occurred while saving. Please try again.');
-                    });
-                }
-            } else {
-                alert('Error: Project ID is missing.');
-            }
-        });
-
-        // Complete Button Logic
-        document.getElementById('completeButton').addEventListener('click', () => {
-            const projectId = document.getElementById('project-unique-id').value;
-
-            if (projectId) {
-                const stages = document.querySelectorAll('[id^="project-id-placeholder-stage"]');
-                stages.forEach((stage) => {
-                    stage.textContent = projectId;
+            // Parse table data for autoTable
+            const data = [];
+            const rows = table.querySelectorAll("tr");
+            rows.forEach((row, rowIndex) => {
+                const rowData = [];
+                const cells = row.querySelectorAll("th, td");
+                cells.forEach(cell => {
+                    rowData.push(cell.innerText);
                 });
-
-                alert(`Project ID fetched and displayed across all stages: ${projectId}`);
-
-                passProjectToNextStage(projectId, currentStep);
-            } else {
-                alert('Error: Project ID is missing.');
-            }
-        });
-
-        // Function to handle the transition between stages
-        function passProjectToNextStage(projectId, currentStep) {
-            if (!projectId) {
-                alert('Error: Project ID is missing.');
-                return;
-            }
-
-            // Confirm the transition
-            if (!confirm(`Do you want to complete stage ${currentStep} and proceed to stage ${currentStep + 1}?`)) {
-                return;
-            }
-
-            let formData = new FormData();
-            formData.append('project_id', projectId);
-            formData.append('current_step', currentStep);
-
-            // Get form fields specific to the current step
-            const currentStepFields = document.querySelectorAll(`#step${currentStep} input`);
-            currentStepFields.forEach(field => {
-                formData.append(field.name, field.value);
+                data.push(rowData);
             });
 
-            const saveUrl = `dirback/complete/complete_stage${currentStep}.php`;
-
-            fetch(saveUrl, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert(`Stage ${currentStep} completed. Moving to stage ${currentStep + 1}.`);
-
-                    // Update UI for stage completion
-                    document.getElementById(`step${currentStep}-circle`).classList.add('completed');
-                    document.getElementById(`step${currentStep}-circle`).textContent = '✔';
-                    document.getElementById(`line${currentStep}`).classList.add('active');
-
-                    // Populate the next stage details
-                    if (data.next_stage_details) {
-                        const nextStep = currentStep + 1;
-                        document.getElementById(`requirementStartDate${nextStep}`).value = data.next_stage_details.start_date;
-                        document.getElementById(`requirementEndDate${nextStep}`).value = data.next_stage_details.end_date;
-                        document.getElementById(`requirementStatus${nextStep}`).value = data.next_stage_details.status;
-                    }
-
-                    // Proceed to the next step
-                    currentStep++;
-                    if (currentStep <= totalSteps) {
-                        showStep(currentStep);
-                    } else {
-                        alert('All stages completed!');
-                    }
-                } else {
-                    alert('Error: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error during fetch:', error);
-                alert('An error occurred while completing the stage. Please try again.');
+            // AutoTable options
+            doc.autoTable({
+                head: [data[0]], // First row is the table header
+                body: data.slice(1), // Remaining rows are the body
+                startY: 30, // Start after title
+                styles: {
+                    fontSize: 9, // Font size for table
+                },
+                headStyles: {
+                    fillColor: [54, 185, 204], // Header color matching your theme
+                    textColor: 255, // White text
+                    halign: "center" // Center align header text
+                },
             });
+
+            // Save the PDF
+            doc.save("ProjectLists.pdf");
         }
 
-        // Delete Button Logic
-        document.getElementById('deleteButton').addEventListener('click', () => {
-            const projectId = document.getElementById('project-unique-id').value;
-            if (!projectId) {
-                alert('Project ID is missing. Please try again.');
-                return;
-            }
-            if (confirm('Are you sure you want to cancel this project? This action cannot be undone.')) {
-                const deleteUrl = `dirback/delete/delete_stage1.php`; 
-                const formData = new FormData();
-                formData.append('project_id', projectId); 
-                fetch(deleteUrl, {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json()) 
-                .then(data => {
-                    if (data.success) {
-                        alert('Project and stage statuses updated to "Cancelled" successfully.');
-                        window.location.reload(); 
-                    } else {
-                        alert('Error: ' + data.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error during cancellation:', error);
-                    alert('An error occurred while cancelling the project. Please try again.');
-                });
-            }
-        });
+        // Export to CSV
+        function exportToCSV() {
+            const table = document.getElementById("projectTable");
+            const rows = Array.from(table.rows).map(row =>
+                Array.from(row.cells).map(cell => cell.innerText)
+            );
 
-        // Show the current step and hide others
-        function showStep(step) {
-            for (let i = 1; i <= totalSteps; i++) {
-                document.getElementById(`step${i}`).classList.add('d-none');
-            }
-            document.getElementById(`step${step}`).classList.remove('d-none');
+            let csvContent = "data:text/csv;charset=utf-8,";
+
+            rows.forEach(row => {
+                const rowData = row.join(",");
+                csvContent += rowData + "\r\n";
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "ProjectLists.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
-        // Reset steps if the form is deleted or reset
-        function resetSteps() {
-            for (let i = 1; i <= totalSteps; i++) {
-                document.getElementById(`step${i}-circle`).classList.remove('active', 'completed');
-                document.getElementById(`step${i}-circle`).textContent = i;
-                document.getElementById(`line${i}`).classList.remove('active');
-            }
-            currentStep = 1;
-            showStep(currentStep); 
+        // Export to Excel
+        function exportToExcel() {
+            const table = document.getElementById("projectTable");
+
+            // Convert HTML table to an array of arrays
+            const rows = Array.from(table.rows).map(row =>
+                Array.from(row.cells).map(cell => cell.innerText)
+            );
+
+            // Create a new workbook and worksheet
+            const workbook = XLSX.utils.book_new();
+            const worksheet = XLSX.utils.aoa_to_sheet(rows); // Convert array of arrays to a sheet
+
+            // Append worksheet to workbook
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Project Lists");
+
+            // Write file
+            XLSX.writeFile(workbook, "ProjectLists.xlsx");
         }
 
-   </script>
-
+        // Print Table
+        function printTable() {
+            const printContent = document.getElementById("projectTable").outerHTML;
+            const newWindow = window.open("", "", "width=800,height=600");
+            newWindow.document.write("<html><head><title>Project Lists</title></head><body>");
+            newWindow.document.write(printContent);
+            newWindow.document.write("</body></html>");
+            newWindow.document.close();
+            newWindow.print();
+        }
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
         const navLinks = document.querySelectorAll('.project-nav-link');
@@ -2425,160 +2225,6 @@ include("../auth/db.php");
                 });
             });
         });
-    </script>
-    <script>
-        document.getElementById("addRequirement").addEventListener("click", function() {
-            const container = document.getElementById("requirement-container");
-            const newField = document.createElement("div");
-
-            newField.classList.add("row", "align-items-center", "requirement-field");
-            newField.style.marginBottom = "10px"; 
-            newField.style.marginTop = "10px";
-
-            const inputField = document.createElement("input");
-            inputField.type = "text";
-            inputField.classList.add("form-control");
-            inputField.placeholder = "e.g. Sample Requirement";
-            inputField.name = "requirements"; // Set the name to 'requirement_one'
-            inputField.style.width = "100%";  
-
-            const buttonContainer = document.createElement("div");
-            buttonContainer.classList.add("col-2", "d-flex", "justify-content-end");
-            buttonContainer.style.display = "flex"; 
-
-            const deleteButton = document.createElement("button");
-            deleteButton.type = "button";
-            deleteButton.classList.add("btn", "btn-danger", "btn-sm");
-            deleteButton.style.marginLeft = "5px";
-            deleteButton.innerHTML = "<i class='fas fa-minus'></i>";
-
-            buttonContainer.appendChild(deleteButton);
-
-            const inputContainer = document.createElement("div");
-            inputContainer.classList.add("col-9");
-            inputContainer.style.display = "flex";
-            inputContainer.style.alignItems = "center";
-            inputContainer.appendChild(inputField);
-
-            newField.appendChild(inputContainer);
-            newField.appendChild(buttonContainer);
-            container.appendChild(newField);
-
-            deleteButton.addEventListener("click", function() {
-                newField.remove();
-            });
-        });
-
-        document.getElementById("deleteRequirement").addEventListener("click", function() {
-            const fields = document.getElementsByClassName("requirement-field");
-            if (fields.length > 0) {
-                fields[fields.length - 1].remove();
-            }
-        });
-    </script>
-    <!-- Stage 2 -->
-    
-    <!-- Stage 2 -->
-    <script>
-        let currentPage = 1;
-        const rowsPerPage = 5; 
-        let totalRows = 0;
-
-        function generatePagination() {
-            const rows = document.getElementById("myTable").getElementsByTagName("tr");
-            totalRows = 0;
-            
-            for (let i = 1; i < rows.length; i++) {
-                if (rows[i].style.display !== "none") {
-                    totalRows++;
-                }
-            }
-            const totalPages = Math.ceil(totalRows / rowsPerPage);
-            const paginationContainer = document.querySelector(".pagination");
-            paginationContainer.innerHTML = "";
-
-            for (let page = 1; page <= totalPages; page++) {
-                const link = document.createElement("a");
-                link.href = "#";
-                link.innerText = page;
-                link.onclick = function() {
-                    changePage(page);
-                };
-                if (page === currentPage) {
-                    link.classList.add("active");
-                }
-                paginationContainer.appendChild(link);
-            }
-        }
-        function searchTable() {
-            const filter = document.getElementById("searchInput").value.toUpperCase();
-            const rows = document.getElementById("myTable").getElementsByTagName("tr");
-            
-            for (let i = 1; i < rows.length; i++) {
-                const cells = rows[i].getElementsByTagName("td");
-                let rowMatches = false;
-
-                for (let j = 0; j < cells.length - 1; j++) { 
-                    if (cells[j] && cells[j].innerText.toUpperCase().includes(filter)) {
-                        rowMatches = true;
-                    }
-                }
-
-                if (rowMatches) {
-                    rows[i].style.display = "";
-                } else {
-                    rows[i].style.display = "none";
-                }
-            }
-            generatePagination(); // Re-generate pagination after filtering
-            changePage(1); // Reset to first page after search
-        }
-
-        function changePage(pageNumber) {
-            currentPage = pageNumber;
-            const rows = document.getElementById("myTable").getElementsByTagName("tr");
-            const start = (currentPage - 1) * rowsPerPage + 1;
-            const end = start + rowsPerPage - 1;
-
-            let rowCount = 0;
-            for (let i = 1; i < rows.length; i++) {
-                if (rows[i].style.display !== "none") {
-                    rowCount++;
-                    rows[i].style.display = (rowCount >= start && rowCount <= end) ? "" : "none";
-                }
-            }
-            const paginationLinks = document.querySelectorAll(".pagination a");
-            paginationLinks.forEach(link => link.classList.remove("active"));
-            paginationLinks[pageNumber - 1].classList.add("active");
-        }
-        function addRow(rowData) {
-            const table = document.getElementById("myTable").getElementsByTagName('tbody')[0];
-            const row = table.insertRow();
-            row.innerHTML = `<td>${rowData.name}</td><td>${rowData.position}</td><td>${rowData.office}</td><td>${rowData.age}</td><td>${rowData.start}</td><td>${rowData.salary}</td><td class="action-buttons"><button>View</button><button>Edit</button></td>`;
-            generatePagination();
-            changePage(currentPage); 
-        }
-        generatePagination();
-        changePage(1);
-    </script>
-    <script>
-            // Get elements
-            const sidebar = document.getElementById("accordionSidebar");
-            const toggleButton = document.getElementById("sidebarToggleBtn");
-            const toggleIcon = document.getElementById("sidebarToggleIcon");
-
-            // Function to toggle sidebar visibility
-            toggleButton.onclick = function() {
-                sidebar.classList.toggle("collapsed"); // Add or remove collapsed class to sidebar
-                // Change icon on toggle
-                if (sidebar.classList.contains("collapsed")) {
-                    toggleIcon.classList.remove("fa-chevron-left");
-                    toggleIcon.classList.add("fa-chevron-right");
-                } else {
-                    toggleIcon.classList.remove("fa-chevron-right");
-                    toggleIcon.classList.add("fa-chevron-left");
-                }
-            };
     </script>
     <!-- View Project Profile -->
     <script>
@@ -2609,8 +2255,6 @@ include("../auth/db.php");
     });
     </script>
     <!-- stage project unique id fetcher -->
-  
-
     <script>
         function toggleIcon() {
         var icon = document.getElementById("toggle-icon");
@@ -2756,65 +2400,65 @@ include("../auth/db.php");
         }
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const table = $('#projectTable').DataTable({
-                dom: 'Bfrtip',
-                buttons: [
-                    {
-                        extend: 'print',
-                        text: 'Print',
-                        title: 'Project Data',
-                        className: 'btn btn-light btn-sm'
-                    },
-                    {
-                        extend: 'csvHtml5',
-                        text: 'CSV',
-                        title: 'Project Data',
-                        className: 'btn btn-light btn-sm'
-                    },
-                    {
-                        extend: 'excelHtml5',
-                        text: 'Excel',
-                        title: 'Project Data',
-                        className: 'btn btn-light btn-sm'
-                    },
-                    {
-                        extend: 'pdfHtml5',
-                        text: 'PDF',
-                        title: 'Project Data',
-                        className: 'btn btn-light btn-sm',
-                        orientation: 'landscape',
-                        pageSize: 'A4'
-                    }
-                ],
-                scrollX: true,
-                paging: true,
-                searching: true,
-                ordering: true
-            });
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     const table = $('#projectTable').DataTable({
+        //         dom: 'Bfrtip',
+        //         buttons: [
+        //             {
+        //                 extend: 'print',
+        //                 text: 'Print',
+        //                 title: 'Project Data',
+        //                 className: 'btn btn-light btn-sm'
+        //             },
+        //             {
+        //                 extend: 'csvHtml5',
+        //                 text: 'CSV',
+        //                 title: 'Project Data',
+        //                 className: 'btn btn-light btn-sm'
+        //             },
+        //             {
+        //                 extend: 'excelHtml5',
+        //                 text: 'Excel',
+        //                 title: 'Project Data',
+        //                 className: 'btn btn-light btn-sm'
+        //             },
+        //             {
+        //                 extend: 'pdfHtml5',
+        //                 text: 'PDF',
+        //                 title: 'Project Data',
+        //                 className: 'btn btn-light btn-sm',
+        //                 orientation: 'landscape',
+        //                 pageSize: 'A4'
+        //             }
+        //         ],
+        //         scrollX: true,
+        //         paging: true,
+        //         searching: true,
+        //         ordering: true
+        //     });
 
-            // Attach search functionality
-            $('#searchTable').on('keyup', function () {
-                table.search(this.value).draw();
-            });
+        //     // Attach search functionality
+        //     $('#searchTable').on('keyup', function () {
+        //         table.search(this.value).draw();
+        //     });
 
-            // Attach button click handlers for dropdown
-            $('#exportPrint').on('click', function () {
-                table.button('.buttons-print').trigger();
-            });
+        //     // Attach button click handlers for dropdown
+        //     $('#exportPrint').on('click', function () {
+        //         table.button('.buttons-print').trigger();
+        //     });
 
-            $('#exportCSV').on('click', function () {
-                table.button('.buttons-csv').trigger();
-            });
+        //     $('#exportCSV').on('click', function () {
+        //         table.button('.buttons-csv').trigger();
+        //     });
 
-            $('#exportExcel').on('click', function () {
-                table.button('.buttons-excel').trigger();
-            });
+        //     $('#exportExcel').on('click', function () {
+        //         table.button('.buttons-excel').trigger();
+        //     });
 
-            $('#exportPDF').on('click', function () {
-                table.button('.buttons-pdf').trigger();
-            });
-        });
+        //     $('#exportPDF').on('click', function () {
+        //         table.button('.buttons-pdf').trigger();
+        //     });
+        // });
 
     </script>
 
