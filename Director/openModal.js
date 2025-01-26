@@ -1407,7 +1407,7 @@ function createUpsellBlock(blockIndex, upsellItem, projectId) {
             </div>
             <div class="col-md-2">
                 <button type="button" class="btn btn-danger btn-sm" 
-                onclick="deleteUpsell('${upsellId}', '${projectId}', this)">
+                onclick="deleteUpsell('${upsellId}', '${projectId}', this)"
                 style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
                     <i class="fas fa-minus"></i>&nbsp;Remove
                 </button>
