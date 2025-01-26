@@ -837,7 +837,7 @@
                                                 <div id="requirement-fields-container-3">
                                                     <!-- Initial Requirement Row -->
                                                     <div class="row requirement-fields mb-3">
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-3">
                                                             <input name="req_five[]" id="req" type="text" class="form-control">
                                                         </div>
                                                         <div class="col-md-3">
