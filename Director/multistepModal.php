@@ -790,7 +790,7 @@
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <div class="col-md-2">
+                                                <div class="col-md-3">
                                                     <label for="status" class="form-label text-white">SPR Number</label>
                                                     <input type="text" class="form-control" id="stage-five-spr"  name="SPR_number" placeholder="e.g. SPR1 ">
                                                 </div>
@@ -806,11 +806,7 @@
                                                     <label for="requirement" class="form-label text-white">Duration</label>
                                                     <input name="contract_duration" type="text" class="form-control" id="contractDuration" placeholder="e.g. 6 days" readonly>
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Pricing</label>
-                                                    <input name="pricing" type="text" class="form-control" id="pricing" placeholder="e.g. 6 ">
-                                                </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-3">
                                                     <label for="billingType" class="form-label text-white">Billing Type</label>
                                                     <select name="billing_type" class="form-control custom-select" id="billingType">
                                                         <option   disabled selected>Select Billing Type</option>
