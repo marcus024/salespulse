@@ -308,26 +308,14 @@
         document.getElementById('solution2').value = data.stages.stage_two.solution_two || data.stages.stage_one.solution || 'No Data';
         document.getElementById('deal_size2').value = Number(data.stages.stage_two.deal_size_two) || Number(data.stages.stage_one.deal_size) || 'No Data';
         document.getElementById('stageremarks2').value = data.stages.stage_two.remarks_two || data.stages.stage_one.remarks || 'No Data';
-         // Determine the selected technology with fallback to Stage One
         const selectedTechnology = data.stages.stage_two.technology_two || data.stages.stage_one.technology || 'Select';
 
-        // Fetch technologies and populate dropdowns using Promise.all
-        Promise.all([loadTechnologies()])
-            .then(([technologies]) => {
-                // Fill technology dropdowns
-                $('.technologyFetch').each(function () {
-                    // Check if the technology exists in the list and set it as selected
-                    if (technologies.includes(selectedTechnology)) {
-                        $(this).val(selectedTechnology);
-                    } else {
-                        $(this).val('Select');
-                    }
-                });
-            })
-            .catch((error) => {
-                console.error('Error fetching technologies:', error);
-                alert('An error occurred while loading technologies.');
+        // Step 1: Load technologies and populate dropdown
+        loadTechnologies().then(() => {
+            $('.technologyFetch').each(function () {
+                $(this).val(selectedTechnology); // Set the value to the selected technology
             });
+        });
         
 
 
