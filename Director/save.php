@@ -717,7 +717,6 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
             solution = ?, 
             technology = ?, 
             deal_size = ?, 
-            product = ?, 
             remarks_stage_five = ? 
             WHERE project_unique_id = ?";
         $stmt = $conn->prepare($query);
@@ -728,7 +727,6 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
             $inputData['solution'] ?? null,
             $inputData['technology'] ?? null,
             $inputData['deal_size'] ?? null,
-            $inputData['product'] ?? null,
             $inputData['remarks_stage_five'] ?? null,
             $projectUniqueId
         ]);
