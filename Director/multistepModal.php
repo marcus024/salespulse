@@ -835,29 +835,14 @@
                                                     <div class="col-md-3">
                                                     <label for="distributor" class="form-label text-white">Distributor</label>
                                                     </div>
-                                                    <div class="col-md-2">
-                                                        <label for="requirement" class="form-label text-white">Date Required</label>
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <!-- Add Another Button -->
-                                                        <a href="#" id="addReq_3" class="form-label text-white" style="font-size:10px; cursor: pointer;">
-                                                            <i class="fas fa-plus"></i> Add 
-                                                        </a>
-                                                    </div>
+                                                    
                                                 </div>
                                                 <!-- Container for Requirement Fields -->
                                                 <div id="requirement-fields-container-3">
                                                     <!-- Initial Requirement Row -->
                                                     <div class="row requirement-fields mb-3">
                                                         <div class="col-md-3">
-                                                            <select name="req_five[]" class="form-control">
-                                                                <option  disabled selected >Select Requirement</option>
-                                                                <option value="cisco-network">Cisco Network</option>
-                                                                <option value="cloud-computing">Cloud Computing</option>
-                                                                <option value="cybersecurity">Cybersecurity</option>
-                                                                <option value="database-management">Database Management</option>
-                                                                <option value="software-development">Software Development</option>
-                                                            </select>
+                                                            <input name="req_five[]" id="product4" type="text" class="form-control">
                                                         </div>
                                                         <div class="col-md-3">
                                                             <input name="product[]" id="product4" type="text" class="form-control">
@@ -870,13 +855,13 @@
                                                                 <option value="add_new">+ Add New Distributor...</option>
                                                             </select>
                                                         </div>
-                                                        <div class="col-md-2">
-                                                            <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <!-- Remove Button -->
-                                                            <button type="button" class="btn btn-danger btn-sm deleteRequirement" style="margin-left: 5px;">
-                                                                <i class="fas fa-minus"></i>
+                                                        
+                                                        <div class="col-md-3">
+                                                            <button type="button"
+                                                                    class="btn btn-primary btn-sm"
+                                                                    style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                                                    id="addRequirement3Btn">
+                                                            <i class="fas fa-plus"></i>&nbsp;Add
                                                             </button>
                                                         </div>
                                                     </div>
@@ -886,12 +871,12 @@
                                                         <label for="requirement" class="form-label text-white">Quantity</label>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <label for="requirement" class="form-label text-white">BOM</label>
-                                                    </div>
-                                                    <div class="col-md-2">
                                                         <label for="requirement" class="form-label text-white">Pricing</label>
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-2">
+                                                        <label for="requirement" class="form-label text-white">Date Required</label>
+                                                    </div>
+                                                    <div class="col-md-4">
                                                         <label for="requirement" class="form-label text-white">Remarks</label>
                                                     </div>
                                                 </div>
@@ -903,10 +888,10 @@
                                                             <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <input name="bills_materials_req[]" type="number" class="form-control" placeholder="e.g. 5000">
+                                                            <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 2000">
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 2000">
+                                                            <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
                                                         </div>
                                                         <div class="col-md-4">
                                                             <input name="remarks_req[]" type="text" class="form-control" placeholder="e.g. Sample Requirement Remarks">
