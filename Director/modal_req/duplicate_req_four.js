@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     const requirementsContainer = document.getElementById('requirementfourContainer');
+    const addBtn = document.getElementById('addRequirement4Btn');
+
+    // Initialize the "Add New" logic for both product & distributor (if needed)
+    initProductChangeHandler();
+    initDistributorChangeHandler();
 
     /**
      * Calculate the highest block index dynamically from the current requirements
@@ -39,31 +44,22 @@ document.addEventListener('DOMContentLoaded', function () {
     // Run the initial update to synchronize the block index on page load
     updateInitialRequirementBlock();
 
-    // Function to remove a Stage Four requirement block
-    requirementsContainer.addEventListener('click', function (e) {
-        if (e.target.closest('.removeRequirementFour')) {
-            e.preventDefault();
-            const blockToRemove = e.target.closest('.requirementfour-block');
-            if (blockToRemove) {
-                blockToRemove.remove();
-                console.log('Removed a requirement block.');
-            }
-        }
-    });
+    // "Add" button to clone a new requirement block
+    addBtn.addEventListener('click', function (e) {
+        e.preventDefault();
 
-    /**
-     * Create a new requirement block dynamically for Stage Four
-     * @param {number} blockIndex - The index of the new block
-     */
-    function createRequirementFourBlock(blockIndex) {
-        const newReqId = `st4req${blockIndex}`;
+        // Get the next block index
+        const nextBlockIndex = getNextBlockIndex();
+
         const newBlock = document.createElement('div');
-        newBlock.classList.add('requirementfour-block', 'p-2', 'rounded', 'shadow-widget');
-        newBlock.dataset.index = blockIndex;
+        newBlock.classList.add('requirementfour-block');
+        newBlock.dataset.index = nextBlockIndex;
+
+        const newReqId = `st4req${nextBlockIndex}`;
 
         newBlock.innerHTML = `
             <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
-                Requirement ${blockIndex}
+                Requirement ${nextBlockIndex}
             </p>
             <input type="hidden" name="requirement_id_4[]" value="${newReqId}">
             <div class="row mb-1">
@@ -131,6 +127,32 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         `;
 
-        return newBlock;
-    }
+        // Append the new block
+        requirementsContainer.appendChild(newBlock);
+
+        // Fill product and distributor selects for the new block
+        const newProductSelect = newBlock.querySelector('.productFetch');
+        if (newProductSelect) {
+            fillOneProductSelect($(newProductSelect));
+        }
+
+        const newDistributorSelect = newBlock.querySelector('.distributorFetch');
+        if (newDistributorSelect) {
+            fillOneDistributorSelect($(newDistributorSelect));
+        }
+
+        console.log(`Added new block: Requirement ${nextBlockIndex}`);
+    });
+
+    // Delegate remove button functionality
+    requirementsContainer.addEventListener('click', function (e) {
+        if (e.target.closest('.removeRequirementFour')) {
+            e.preventDefault();
+            const blockToRemove = e.target.closest('.requirementfour-block');
+            if (blockToRemove) {
+                blockToRemove.remove();
+                console.log('Removed a requirement block.');
+            }
+        }
+    });
 });
