@@ -804,6 +804,10 @@ include_once('dirback/dirviewback.php');
     <script src="insert_fetch_distributor.js"></script>
     <script src="insert_fetch_product.js"></script>
     <script src="insert_fetch_technology.js"></script>
+    <script src="insert_fetch_tech2.js"></script>
+    <script src="insert_fetch_tech3.js"></script>
+    <script src="insert_fetch_tech4.js"></script>
+    <script src="insert_fetch_tech5.js"></script>
     
     <script>
         // Export to PDF

@@ -7,7 +7,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (response) {
                 if (response.status === 'success') {
-                    const $select = $('#technologySelect');
+                    const $select = $('#technologySelect3');
                     
                     $select.find('option:not([value="add_new_technology"]):not(:disabled)').remove();
 
@@ -30,7 +30,7 @@ $(document).ready(function () {
 
     loadTechnologies();
 
-    $('#technologySelect').on('change', function () {
+    $('#technologySelect3').on('change', function () {
         if ($(this).val() === 'add_new_technology') {
             const newTechnology = prompt('Enter the new Technology:');
             if (newTechnology && newTechnology.trim() !== '') {
@@ -42,16 +42,16 @@ $(document).ready(function () {
                     success: function (response) {
                         if (response.status === 'success') {
                             
-                            $('#technologySelect')
+                            $('#technologySelect3')
                                 .find('option[value="add_new_technology"]')
                                 .before(
                                     `<option style="color:black;" value="${escapeHtml(response.added_technology)}">${escapeHtml(response.added_technology)}</option>`
                                 );
-                            $('#technologySelect').val(response.added_technology);  
+                            $('#technologySelect3').val(response.added_technology);  
                             alert(response.message);
                         } else {
                             alert('Error: ' + response.message);
-                            $('#technologySelect').val(''); 
+                            $('#technologySelect3').val(''); 
                         }
                     },
                     error: function (xhr, status, error) {
