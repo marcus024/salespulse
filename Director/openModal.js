@@ -308,14 +308,12 @@
         document.getElementById('deal_size2').value = Number(data.stages.stage_two.deal_size_two) || Number(data.stages.stage_one.deal_size) || 'No Data';
         document.getElementById('stageremarks2').value = data.stages.stage_two.remarks_two || data.stages.stage_one.remarks || 'No Data';
 
-        // Fetch Technology Select
-        const tehnology2 = document.getElementById('technologySelect');
-        const techValue = data.stages.stage_one.technology || 'Select';
-        if (tehnology2) {
-            Array.from(tehnology2.options).forEach(option => {
-            option.selected = option.value === techValue;
-            });
-        }
+        const technologyValue = data.stages.stage_one.technology || 'Select';
+
+        // Populate technologies and select the correct value
+        loadTechnologies().then(() => {
+            $('.technologyFetch').val(technologyValue);
+        });
 
         // Step 1: Fetch engagement array
         const engagements = (data.stages.stage_two && data.stages.stage_two.engagement_stage_two) || [];
@@ -421,6 +419,12 @@
             });
 
     }
+    
+    $(document).ready(function () {
+        // Initialize handlers and load initial data
+        initTechnologyChangeHandler();
+        loadTechnologies();
+        });
 
     function escapeHtml(text) {
         const map = {
