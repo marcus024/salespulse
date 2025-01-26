@@ -723,8 +723,8 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
         $stmt = $conn->prepare($query);
         $stmt->execute([
             $inputData['contract_duration'] ?? null,
-            $inputData['startC'] ?? null,
-            $inputData['endC'] ?? null,
+            $inputData['contractEnd'] ?? null,
+            $inputData['contractStart'] ?? null,
             $inputData['billing_type'] ?? null,
             $inputData['solution'] ?? null,
             $inputData['technology'] ?? null,
