@@ -1263,7 +1263,7 @@ function deleteRequirementFour(requirementId, button, projectId) {
         ? data.stages.stage_five.requirement_stage_five
         : data.stages.stage_four?.requirement_stage_four || [];
     
-    console.log('Fetched Stage Four requirements:', data.stages.stage_three.requirement_stage_four);
+    console.log('Fetched Stage Four requirements:', data.stages.stage_four.requirement_stage_four);
 
     console.log('Fetched Stage Five requirements:', requirementsStageFive);
 
