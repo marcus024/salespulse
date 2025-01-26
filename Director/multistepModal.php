@@ -907,7 +907,7 @@
                                                 <div id="upsellContainer">
                                                     <div class="upsell-block" data-index="1">
                                                         <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="upsellCon">
-                                                        upsell 1
+                                                        Upsell 1
                                                         </p>
                                                         <input type="hidden" name="upsell_stage_5[]" value="upsell1" id="upsell_id">
                                                         <!-- Fixed Labels Row -->
