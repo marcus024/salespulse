@@ -845,17 +845,17 @@
                                                                     <input name="req_five[]" id="req" type="text" class="form-control" placeholder="e.g. Sample Requirement">
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                        <select name="product_five[]" class="form-control custom-select productFetch" >
-                                                                            <option disabled selected>Select</option>
-                                                                            <option value="add_new_product">+ Add New Product...</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <select name="distributor_five[]" class="form-control custom-select distributorFetch" >
-                                                                            <option disabled selected>Select</option>
-                                                                            <option value="add_new">+ Add New Distributor...</option>
-                                                                        </select>
-                                                                    </div>
+                                                                    <select name="product_five[]" class="form-control custom-select productFetch" >
+                                                                        <option disabled selected>Select</option>
+                                                                        <option value="add_new_product">+ Add New Product...</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <select name="distributor_five[]" class="form-control custom-select distributorFetch" >
+                                                                        <option disabled selected>Select</option>
+                                                                        <option value="add_new">+ Add New Distributor...</option>
+                                                                    </select>
+                                                                </div>
                                                                 <div class="col-md-2">
                                                                     <button type="button"
                                                                             class="btn btn-primary btn-sm"
@@ -904,53 +904,52 @@
                                             <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
 
                                             <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
-                                                <!-- Fixed Labels Row -->
-                                                <div class="row mb-1">
-                                                    <div class="col-md-2">
-                                                        <label for="requirement" class="form-label text-white">Upsell</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label for="bills_materials" class="form-label text-white">Bill of Materials</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label for="quantity" class="form-label text-white">Quantity</label>
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <label for="amount" class="form-label text-white">Amount</label>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <label for="remarks" class="form-label text-white">Remarks</label>
-                                                    </div>
-                                                    <div class="col-md-1">
-                                                        <a href="#" id="addUpsellRow" class="form-label text-white" style="font-size:10px; cursor: pointer;">
-                                                            <i class="fas fa-plus"></i> Add
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Container for Input Rows -->
-                                                <div id="upsell-fields-container">
-                                                    <!-- Initial Input Row -->
-                                                    <div class="row mb-3 upsell-fields">
-                                                        <div class="col-md-2">
-                                                            <input type="text" class="form-control" name="upsell[]" placeholder="e.g Router 2000">
+                                                <div id="upsellContainer">
+                                                    <div class="upsell-block" data-index="1">
+                                                        <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="upsellCon">
+                                                        upsell 1
+                                                        </p>
+                                                        <input type="hidden" name="upsell_stage_5[]" value="upsell1" id="upsell_id">
+                                                        <!-- Fixed Labels Row -->
+                                                        <div class="row mb-1">
+                                                            <div class="col-md-2">
+                                                                <label for="requirement" class="form-label text-white">Upsell</label>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <label for="quantity" class="form-label text-white">Quantity</label>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <label for="amount" class="form-label text-white">Amount</label>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <label for="remarks" class="form-label text-white">Remarks</label>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-md-2">
-                                                            <input name="bills_materials_upsell[]" type="number" class="form-control" placeholder="e.g 5000">
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <input name="quantity_upsell[]" type="number" class="form-control" placeholder="e.g 50">
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <input name="amount_upsell[]" type="number" class="form-control" placeholder="e.g. 6000">
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <input name="remarks_upsell[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
-                                                        </div>
-                                                        <div class="col-md-1">
-                                                            <button type="button" class="btn btn-danger btn-sm deleteUpsellRow">
-                                                                <i class="fas fa-minus"></i>
-                                                            </button>
+                                                        <!-- Container for Input Rows -->
+                                                        <div id="upsell-fields-container">
+                                                            <!-- Initial Input Row -->
+                                                            <div class="row mb-3 upsell-fields">
+                                                                <div class="col-md-3">
+                                                                    <input type="text" class="form-control" name="upsell[]" placeholder="e.g Router 2000">
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <input name="quantity_upsell[]" type="number" class="form-control" placeholder="e.g 50">
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <input name="amount_upsell[]" type="number" class="form-control" placeholder="e.g. 6000">
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input name="remarks_upsell[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+                                                                </div>
+                                                            <div class="col-md-2">
+                                                                    <button type="button"
+                                                                            class="btn btn-primary btn-sm"
+                                                                            style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                                                            id="addUpsellBtn">
+                                                                    <i class="fas fa-plus"></i>&nbsp;Add
+                                                                    </button>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1060,6 +1059,7 @@
     <script src="modal_req/duplicate_req_three.js"></script>
     <script src="modal_req/duplicate_req_four.js"></script>
     <script src="modal_req/duplicate_req_five.js"></script>
+    <script src="modal_req/duplicate_upsell.js"></script>
     <script>
         function showNotif_bar(message = "Operation completed successfully!", duration = 3000) {
             const notif_bar_r = document.getElementById('notif_bar_r');
