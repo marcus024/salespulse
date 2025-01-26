@@ -308,13 +308,14 @@
         document.getElementById('deal_size2').value = Number(data.stages.stage_two.deal_size_two) || Number(data.stages.stage_one.deal_size) || 'No Data';
         document.getElementById('stageremarks2').value = data.stages.stage_two.remarks_two || data.stages.stage_one.remarks || 'No Data';
 
-        const technology2 = document.getElementById('technology2');
-        const techValue2 = data.stages.stage_two.technology_two || data.stages.stage_one.technology || 'Select';
-        Array.from(technology2.options).forEach(option => {
-            if (option.value === techValue2) {
-                option.selected = true;
-            }
-        });
+        // Fetch Technology Select
+        const tehnology2 = document.getElementById('technologySelect');
+        const techValue = data.stages.stage_one.technology || 'Select';
+        if (tehnology2) {
+            Array.from(tehnology2.options).forEach(option => {
+            option.selected = option.value === techValue;
+            });
+        }
 
         // Step 1: Fetch engagement array
         const engagements = (data.stages.stage_two && data.stages.stage_two.engagement_stage_two) || [];
@@ -647,13 +648,14 @@
         document.getElementById('stage-three-status').value = data.stages.stage_three.status     || 'No Data';
         document.getElementById('deal_size3').value = Number(data.stages.stage_three.deal_size_three) || Number(data.stages.stage_two.deal_size_two) || 'No Data';
         document.getElementById('stageremarks3').value = data.stages.stage_three.remarks_three || data.stages.stage_two.remarks_two || 'No Data';
-        const technology3 = document.getElementById('technology3');
-        const techValue3 = data.stages.stage_three.technology_three || data.stages.stage_two.technology_two || 'Select';
-        Array.from(technology3.options).forEach(option => {
-            if (option.value === techValue3) {
-                option.selected = true;
-            }
-        });
+        // Fetch Technology Select
+        const technology3 = document.getElementById('technologySelect');
+        const techValue = data.stages.stage_one.technology || 'Select';
+        if (technology3) {
+            Array.from(technology3.options).forEach(option => {
+            option.selected = option.value === techValue;
+            });
+        }
 
         const engagements = 
             Array.isArray(data.stages.stage_three?.engagement_stage_three) && 
@@ -1005,13 +1007,14 @@
         document.getElementById('solution4').value = data.stages.stage_four.solution_four || data.stages.stage_three.solution_three || 'No Data';
         document.getElementById('deal_size4').value = Number(data.stages.stage_four.deal_size_four) || Number(data.stages.stage_three.deal_size_three) || 'No Data';
         document.getElementById('stageremarks4').value = data.stages.stage_four.remarks_four || data.stages.stage_three.remarks_three || 'No Data';
-        const technology4 = document.getElementById('technology4');
-        const techValue4 = data.stages.stage_four.technology_four || data.stages.stage_three.technology_three || 'Select';
-        Array.from(technology4.options).forEach(option => {
-            if (option.value === techValue4) {
-                option.selected = true;
-            }
-        });
+       // Fetch Technology Select
+        const technology4 = document.getElementById('technologySelect');
+        const techValue = data.stages.stage_one.technology || 'Select';
+        if (technology4) {
+            Array.from(technology4.options).forEach(option => {
+            option.selected = option.value === techValue;
+            });
+        }
                 
 
         const requirementsStageFour = 
@@ -1237,6 +1240,14 @@ function deleteRequirementFour(requirementId, button, projectId) {
     document.getElementById('deal_size5').value = Number(data.stages.stage_five.deal_size_five) || Number(data.stages.stage_four.deal_size_four) || 'No Data';
     document.getElementById('stageremarks5').value = data.stages.stage_five.remarks_five || data.stages.stage_four.remarks_four || 'No Data';
 
+    // Fetch Technology Select
+    const technology5 = document.getElementById('technologySelect');
+    const techValue = data.stages.stage_one.technology || 'Select';
+    if (technology5) {
+        Array.from(technology5.options).forEach(option => {
+        option.selected = option.value === techValue;
+        });
+    }
     // Set values for start and end dates
     const startContractInput = document.getElementById('startContract');
     const endContractInput = document.getElementById('endContract');
