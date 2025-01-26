@@ -1236,12 +1236,12 @@ function deleteRequirementFour(requirementId, button, projectId) {
         document.getElementById('solution5').value = data.stages.stage_five.solution_five || data.stages.stage_four.solution_four || 'No Data';
         document.getElementById('deal_size5').value = Number(data.stages.stage_five.deal_size_five) || Number(data.stages.stage_four.deal_size_four) || 'No Data';
         document.getElementById('stageremarks5').value = data.stages.stage_five.remarks_five || data.stages.stage_four.remarks_four || 'No Data';
-        const technology5 = document.getElementById('technology5');
-        const techValue5 = data.stages.stage_five.technology_five || data.stages.stage_four.technology_four || 'Select';
-        Array.from(technology5.options).forEach(option => {
-            if (option.value === techValue5) {
-                option.selected = true;
-            }
-        });
+        // const technology5 = document.getElementById('technology5');
+        // const techValue5 = data.stages.stage_five.technology_five || data.stages.stage_four.technology_four || 'Select';
+        // Array.from(technology5.options).forEach(option => {
+        //     if (option.value === techValue5) {
+        //         option.selected = true;
+        //     }
+        // });
 
     }
