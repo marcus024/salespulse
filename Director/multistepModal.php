@@ -683,7 +683,7 @@
                                                     </div>
                                                     <div id="requirement-fields-container-3">
                                                         <div class="row requirement-fields mb-3">
-                                                            <div class="col-md-3">
+                                                            <div class="col-md-4">
                                                                 <input name="requirement_four[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
                                                             </div>
                                                             <div class="col-md-3">
@@ -702,7 +702,7 @@
                                                                 <button type="button"
                                                                         class="btn btn-primary btn-sm"
                                                                         style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                                                                        id="addRequirement3Btn">
+                                                                        id="addRequirement4Btn">
                                                                 <i class="fas fa-plus"></i>&nbsp;Add
                                                                 </button>
                                                             </div>
