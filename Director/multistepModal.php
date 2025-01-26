@@ -912,7 +912,7 @@
                                                         <input type="hidden" name="upsell_stage_5[]" value="upsell1" id="upsell_id">
                                                         <!-- Fixed Labels Row -->
                                                         <div class="row mb-1">
-                                                            <div class="col-md-2">
+                                                            <div class="col-md-3">
                                                                 <label for="requirement" class="form-label text-white">Upsell</label>
                                                             </div>
                                                             <div class="col-md-2">
