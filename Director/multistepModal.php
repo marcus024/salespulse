@@ -796,11 +796,11 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label for="requirement" class="form-label text-white">Start Contracted Date</label>
-                                                    <input name="contract_duration" type="date" class="form-control" id="startContract">
+                                                    <input name="contractStart" type="date" class="form-control" id="startContract">
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label for="requirement" class="form-label text-white">End Contracted Date</label>
-                                                    <input name="contract_duration" type="date" class="form-control" id="endContract" >
+                                                    <input name="contractEnd" type="date" class="form-control" id="endContract" >
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label for="requirement" class="form-label text-white">Duration</label>
