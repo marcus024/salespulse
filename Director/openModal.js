@@ -1019,9 +1019,9 @@
         Array.isArray(data.stages.stage_four?.requirement_stage_four) && 
         data.stages.stage_four.requirement_stage_four.length > 0 
             ? data.stages.stage_four.requirement_stage_four 
-            : data.stages.stage_two?.requirement_stage_three || [];
+            : data.stages.stage_three?.requirement_stage_three || [];
 
-        console.log('Fetched Stage Three requirements:', data.stages.stage_two.requirement_stage_three);
+        console.log('Fetched Stage Three requirements:', data.stages.stage_three.requirement_stage_three);
 
         // Debugging: Verify the fetched requirements
         console.log('Fetched requirements for Stage Four:', requirementsStageFour);
