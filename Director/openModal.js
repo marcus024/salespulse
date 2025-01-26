@@ -1078,9 +1078,9 @@
 
     function createRequirementFourBlock(blockIndex, reqItem, productList = [], distributorList = [], projectId) {
     const requirementId = reqItem.requirement_id_4 || `st4req${blockIndex}`;
-    const requirementText = reqItem.requirement_four ||  reqItem.requirement_four || '';
-    const selectedProduct = reqItem.product_four || reqItem.product_four || reqItem.product_four || reqItem.product_four || '';
-    const selectedDistributor = reqItem.distributor_four || reqItem.distributor_four || '';
+    const requirementText = reqItem.requirement_four ||  reqItem.requirement_three || '';
+    const selectedProduct = reqItem.product_four || reqItem.product_three ||'';
+    const selectedDistributor = reqItem.distributor_four || reqItem.distributor_three || '';
     const quantity = reqItem.quantity || reqItem.quantity || '';
     const pricing = reqItem.pricing || reqItem.pricing || '';
     const requirementDate = reqItem.date_required || reqItem.date_required || '';
