@@ -1476,25 +1476,28 @@ function updateContractDuration() {
     const endContractInput = document.getElementById('endContract');
     const contractDurationInput = document.getElementById('contractDuration');
 
+    // Convert input values to Date objects
     const startDate = new Date(startContractInput.value);
     const endDate = new Date(endContractInput.value);
 
-    // Validate dates
-    if (isNaN(startDate) || isNaN(endDate)) {
+    // Validate if both start and end dates are valid dates
+    if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
         contractDurationInput.value = 'Invalid Dates';
         return;
     }
 
-    // Calculate duration in days
+    // Calculate the difference in time between the two dates
     const durationInMilliseconds = endDate - startDate;
-    const durationInDays = durationInMilliseconds / (1000 * 60 * 60 * 24);
+    const durationInDays = durationInMilliseconds / (1000 * 60 * 60 * 24); // Convert milliseconds to days
 
+    // Ensure duration is non-negative
     if (durationInDays >= 0) {
-        contractDurationInput.value = `${Math.ceil(durationInDays)} days`;
+        contractDurationInput.value = `${Math.ceil(durationInDays)} days`; // Round up if needed
     } else {
-        contractDurationInput.value = 'Invalid Range';
+        contractDurationInput.value = 'Invalid Range'; // If the end date is earlier than start date
     }
 }
+
 
 // Call the function from outside
 document.getElementById('startContract').addEventListener('change', updateContractDuration);
