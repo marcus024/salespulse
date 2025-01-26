@@ -308,34 +308,26 @@
         document.getElementById('solution2').value = data.stages.stage_two.solution_two || data.stages.stage_one.solution || 'No Data';
         document.getElementById('deal_size2').value = Number(data.stages.stage_two.deal_size_two) || Number(data.stages.stage_one.deal_size) || 'No Data';
         document.getElementById('stageremarks2').value = data.stages.stage_two.remarks_two || data.stages.stage_one.remarks || 'No Data';
-        // Determine selected technology, with fallback to Stage One
-        let selectedTechnology = data.stages.stage_two.technology_two || data.stages.stage_one.technology || 'Select';
+         // Determine the selected technology with fallback to Stage One
+        const selectedTechnology = data.stages.stage_two.technology_two || data.stages.stage_one.technology || 'Select';
 
-        // Check if `selectedTechnology` is an array, and use the first value if it is
-        if (Array.isArray(selectedTechnology)) {
-        selectedTechnology = selectedTechnology[0] || 'Select'; // Use the first element or default to 'Select'
-        }
-
-        // Fetch technologies and populate dropdowns
-        loadTechnologies().then(() => {
-        $('.technologyFetch').each(function () {
-            const $dropdown = $(this);
-
-            // Check if the selected technology exists in the dropdown
-            const hasSelectedOption = $dropdown.find(`option[value="${selectedTechnology}"]`).length > 0;
-
-            if (!hasSelectedOption && selectedTechnology !== 'Select') {
-            // Add the selected technology dynamically if it doesn't exist
-            $dropdown.append(`<option value="${selectedTechnology}" selected>${selectedTechnology}</option>`);
-            }
-
-            // Set the value to the selected technology
-            $dropdown.val(selectedTechnology);
-            console.log('Selected Technology:', selectedTechnology);
-
-        });
-        });
-
+        // Fetch technologies and populate dropdowns using Promise.all
+        Promise.all([loadTechnologies()])
+            .then(([technologies]) => {
+                // Fill technology dropdowns
+                $('.technologyFetch').each(function () {
+                    // Check if the technology exists in the list and set it as selected
+                    if (technologies.includes(selectedTechnology)) {
+                        $(this).val(selectedTechnology);
+                    } else {
+                        $(this).val('Select');
+                    }
+                });
+            })
+            .catch((error) => {
+                console.error('Error fetching technologies:', error);
+                alert('An error occurred while loading technologies.');
+            });
         
 
 
