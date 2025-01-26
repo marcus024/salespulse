@@ -836,7 +836,7 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
 
        if (!empty($inputData['upsell'])) {
             $insertUpsellStmt = $conn->prepare("
-                INSERT INTO upsell_tb (upsell, quantity_upsell, amount_upsell, remarks_upsell, project_id, upsell_stage_5)
+                INSERT INTO upsell_tb (upsell, quantity_upsell, amount_upsell, remarks_upsell, project_unique_id, upsell_stage_5)
                 VALUES (?, ?, ?, ?, ?, ?)
             ");
             $updateUpsellStmt = $conn->prepare("
@@ -846,7 +846,7 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
                     amount_upsell = ?, 
                     remarks_upsell = ?
                 WHERE upsell_stage_5 = ? 
-                AND project_id = ?
+                AND project_unique_id = ?
             ");
 
             $insertedUpsellCount = 0;
