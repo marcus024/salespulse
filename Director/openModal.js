@@ -329,6 +329,8 @@
             $dropdown.val(selectedTechnology);
         });
         });
+        console.log($('.technologyFetch').html());
+
 
         
 
