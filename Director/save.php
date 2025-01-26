@@ -741,13 +741,13 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
         if (!empty($inputData['req_five'])) {
             // Prepare statements
             $insertReqStmt = $conn->prepare("
-                INSERT INTO requirement_fivetb
+                INSERT INTO requirementfive_tb
                     (req_five, product_five, distributor_five, quantity, pricing, date_required, remarks_req, project_unique_id, requirement_id_5)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             ");
 
             $updateReqStmt = $conn->prepare("
-                UPDATE requirement_fivetb
+                UPDATE requirementfive_tb
                 SET req_five = ?,
                     product_five = ?,
                     distributor_five = ?,
@@ -761,7 +761,7 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
 
             $checkReqStmt = $conn->prepare("
                 SELECT 1 
-                FROM requirement_fivetb
+                FROM requirementfive_tb
                 WHERE requirement_id_5 = ?
                 AND project_unique_id = ?
                 LIMIT 1
