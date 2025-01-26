@@ -1261,7 +1261,7 @@ function deleteRequirementFour(requirementId, button, projectId) {
         Array.isArray(data.stages.stage_five?.requirement_stage_five) && 
         data.stages.stage_five.requirement_stage_five.length > 0
         ? data.stages.stage_five.requirement_stage_five
-        : data.stages.stage_three?.requirement_stage_four || [];
+        : data.stages.stage_four?.requirement_stage_four || [];
     
     console.log('Fetched Stage Four requirements:', data.stages.stage_three.requirement_stage_four);
 
