@@ -45,7 +45,7 @@
                             fetchStageFour(data,projectId);
                         } else if (stageNumber === 5) {
                             // fetchStageFour(data,projectId);
-                            // fetchStageFive(data,projectId);
+                            fetchStageFive(data,projectId);
                         }
                     } else {
                         console.warn("No current stage data found.");
