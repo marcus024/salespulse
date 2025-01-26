@@ -871,6 +871,11 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
                 $remarksUpsell = htmlspecialchars($inputData['remarks_upsell'][$index] ?? '', ENT_QUOTES, 'UTF-8');
                 $upsellId = htmlspecialchars($inputData['upsell_stage_5'][$index] ?? '', ENT_QUOTES, 'UTF-8');
 
+                if (empty($sanitizedUpsell) || empty($quantityUpsell) || empty($amountUpsell)) {
+                    error_log("Skipping blank upsell entry for Project ID {$projectUniqueId}.");
+                    continue;
+                }
+
                 if (!empty($upsellId)) {
                     $updateUpsellStmt->execute([
                         $sanitizedUpsell,
