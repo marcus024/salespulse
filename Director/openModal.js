@@ -309,27 +309,35 @@
         document.getElementById('deal_size2').value = Number(data.stages.stage_two.deal_size_two) || Number(data.stages.stage_one.deal_size) || 'No Data';
         document.getElementById('stageremarks2').value = data.stages.stage_two.remarks_two || data.stages.stage_one.remarks || 'No Data';
         // Determine selected technology, with fallback to Stage One
-        const selectedTechnology = data.stages.stage_two.technology_two || data.stages.stage_one.technology || 'Select';
+        let selectedTechnology = data.stages.stage_two.technology_two || data.stages.stage_one.technology || 'Select';
+
+        // Check if `selectedTechnology` is an array, and use the first value if it is
+        if (Array.isArray(selectedTechnology)) {
+        selectedTechnology = selectedTechnology[0] || 'Select'; // Use the first element or default to 'Select'
+        }
 
         // Fetch technologies and populate dropdowns
         loadTechnologies().then(() => {
         $('.technologyFetch').each(function () {
-            // Populate options and set the selected value
             const $dropdown = $(this);
 
-            // Check if the selected technology is already in the dropdown
+            // Check if the selected technology exists in the dropdown
             const hasSelectedOption = $dropdown.find(`option[value="${selectedTechnology}"]`).length > 0;
 
             if (!hasSelectedOption && selectedTechnology !== 'Select') {
-            // Add the selected technology if it doesn't exist in the options
+            // Add the selected technology dynamically if it doesn't exist
             $dropdown.append(`<option value="${selectedTechnology}" selected>${selectedTechnology}</option>`);
             }
 
             // Set the value to the selected technology
             $dropdown.val(selectedTechnology);
+            console.log('Selected Technology:', selectedTechnology);
+
         });
         });
-        console.log($('.technologyFetch').html());
+
+        
+
 
 
         
