@@ -837,7 +837,7 @@
                                                 <div id="requirement-fields-container-3">
                                                     <!-- Initial Requirement Row -->
                                                     <div class="row requirement-fields mb-3">
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-4">
                                                             <input name="req_five[]" id="req" type="text" class="form-control">
                                                         </div>
                                                         <div class="col-md-3">
@@ -851,7 +851,7 @@
                                                                 <option value="add_new">+ Add New Distributor...</option>
                                                             </select>
                                                         </div>
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-2">
                                                             <button type="button"
                                                                     class="btn btn-primary btn-sm"
                                                                     style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
