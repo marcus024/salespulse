@@ -71,11 +71,13 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stagefive.deal_size, 'No Data') AS deal_5,
                     COALESCE(stagefive.product, 'No Data') AS product_5,
                     COALESCE(stagefive.pricing, 'No Data') AS pricing,
+                    COALESCE(stagefive.startC, 'No Data') AS startC,
+                    COALESCE(stagefive.endC, 'No Data') AS endC,
                     COALESCE(stagefive.contract_duration, 'No Data') AS contract_duration,
                     COALESCE(stagefive.SPR_number, 'No Data') AS spr_number,
                     COALESCE(stagefive.billing_type, 'No Data') AS billing_type,
                     GROUP_CONCAT(DISTINCT CONCAT(upsell_tb.upsell_id, ':', upsell_tb.bills_materials_upsell, ':', upsell_tb.quantity_upsell, ':', upsell_tb.remarks_upsell, ':', upsell_tb.upsell, ':', upsell_tb.amount_upsell) ORDER BY upsell_tb.upsell) AS upsell_5,
-                    GROUP_CONCAT(DISTINCT CONCAT(requirementfive_tb.requirement_id_five, ':', requirementfive_tb.req_five, ':', requirementfive_tb.quantity, ':', requirementfive_tb.bills_materials_req, ':', requirementfive_tb.remarks_req) ORDER BY requirementfive_tb.req_five) AS requirement_5
+                    GROUP_CONCAT(DISTINCT CONCAT(requirementfive_tb.requirement_id_5, ':', requirementfive_tb.req_five, ':', requirementfive_tb.quantity, ':', requirementfive_tb.date_required, ':', requirementfive_tb.remarks_req, ':', requirementfive_tb.pricing, ':', requirementfive_tb.distributor_five, ':', requirementfive_tb.product_five) ORDER BY requirementfive_tb.req_five) AS requirement_5
                 FROM projecttb
                 LEFT JOIN requirementone_tb ON projecttb.project_unique_id = requirementone_tb.project_unique_id
                 LEFT JOIN engagement_twotb ON projecttb.project_unique_id = engagement_twotb.project_unique_id
@@ -280,13 +282,13 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                         'end_date' => $result['end_date_stage_five'],
                         'status' => $result['status_stage_five'],
                         'remarks_five' => $result['remarks_5'],
-                        'product_five' => $result['product_5'],
                         'solution_five' => $result['solution_5'],
                         'technology_five' => $result['technology_5'],
                         'deal_size_five' => $result['deal_5'],
                         'billing_type' => $result['billing_type'],
                         'contract_duration' => $result['contract_duration'],
-                        'pricing' => $result['pricing'],
+                        'contractStart' => $result['startC'],
+                        'contractEnd' => $result['endC'],
                         'spr' => $result['spr_number'],
                         // Process upsell data for stage five
                         'upsell_stage_five' => isset($result['upsell_5']) 
@@ -318,11 +320,14 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                                 // Avoid duplicates by checking the normalized requirement value
                                 if (!in_array($normalizedRequirement, array_column($carry, 'req_five'))) {
                                     $carry[] = [
-                                        'requirement_id_five' => $parts[0] ?? null,
+                                        'requirement_id_5' => $parts[0] ?? null,
                                         'req_five' => $parts[1] ?? null,
                                         'quantity' => $parts[2] ?? null,
-                                        'bills_materials_req' => $parts[3] ?? null,
-                                        'remarks_req' => $parts[4] ?? null
+                                        'remarks_req' => $parts[3] ?? null,
+                                        'date_required' => $parts[4] ?? null,
+                                        'pricing' => $parts[5] ?? null,
+                                        'product_five' => $parts[6] ?? null,
+                                        'distributor_five' => $parts[7] ?? null
                                     ];
                                 }
                                 return $carry;

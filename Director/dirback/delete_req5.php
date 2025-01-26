@@ -6,8 +6,8 @@ header('Content-Type: application/json');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
 
-    if (isset($data['requirement_id']) && isset($data['project_id'])) {
-        $requirement = $data['requirement_id'];
+    if (isset($data['requirementId']) && isset($data['project_id'])) {
+        $requirement = $data['requirementId'];
         $project_id = $data['project_id'];
 
         try {

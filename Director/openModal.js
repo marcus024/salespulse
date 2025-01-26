@@ -1255,7 +1255,249 @@ function deleteRequirementFour(requirementId, button, projectId) {
 
     // Call updateContractDuration from outside
     updateContractDuration();
+
+    // Fetch Stage Five requirements
+    const requirementsStageFive = 
+        Array.isArray(data.stages.stage_five?.requirement_stage_five) && 
+        data.stages.stage_five.requirement_stage_five.length > 0
+        ? data.stages.stage_five.requirement_stage_five
+        : data.stages.stage_three?.requirement_stage_four || [];
+    
+    console.log('Fetched Stage Four requirements:', data.stages.stage_three.requirement_stage_four);
+
+    console.log('Fetched Stage Five requirements:', requirementsStageFive);
+
+    const requirementsFiveContainer = document.getElementById('requirementfiveContainer');
+    if (!requirementsFiveContainer) {
+        console.error('#requirementfiveContainer not found in DOM!');
+        return;
+    }
+
+    // Fetch product and distributor lists
+    let productList = [];
+    let distributorList = [];
+
+    Promise.all([loadProducts(), loadDistributors()])
+        .then(([products, distributors]) => {
+            productList = products;
+            distributorList = distributors;
+
+            console.log('Products and Distributors fetched successfully for Stage Five.');
+            console.log('Product List:', productList);
+            console.log('Distributor List:', distributorList);
+
+            let highestBlockIndex = 0;
+
+            if (requirementsStageFive.length > 0) {
+                requirementsStageFive.forEach((reqItem, index) => {
+                    const blockIndex = index + 1;
+                    highestBlockIndex = Math.max(highestBlockIndex, blockIndex);
+
+                    const newBlock = createRequirementFiveBlock(blockIndex, reqItem, productList, distributorList, projectId);
+                    requirementsFiveContainer.appendChild(newBlock);
+                });
+            }
+
+            const nextBlockIndex = highestBlockIndex + 1;
+            const initialRequirementTitle = document.getElementById('requirementstagefive');
+            const initialHiddenInput = document.getElementById('req_5_id');
+
+            if (initialRequirementTitle && initialHiddenInput) {
+                initialRequirementTitle.textContent = `Requirement ${nextBlockIndex}`;
+                initialHiddenInput.value = `st5req${nextBlockIndex}`;
+            } else {
+                console.warn("Initial requirement field for Stage Five not found in the DOM.");
+            }
+
+            console.log('Stage Five requirements populated:', requirementsStageFive);
+        })
+        .catch(error => {
+            console.error("Error fetching Products or Distributors for Stage Five:", error);
+        });
 }
+
+// Create Requirement Block for Stage Five
+function createRequirementFiveBlock(blockIndex, reqItem, productList = [], distributorList = [], projectId) {
+    const requirementId = reqItem.requirement_id_5 || `st5req${blockIndex}`;
+    const requirementText = reqItem.req_five || reqItem.requirement_four || '';
+    const selectedProduct = reqItem.product_five || reqItem.product_four || '';
+    const selectedDistributor = reqItem.distributor_five || reqItem.distributor_four || '';
+    const quantity = reqItem.quantity || reqItem.quantity || '';
+    const pricing = reqItem.pricing || reqItem.pricing || '';
+    const requirementDate = reqItem.date_required || reqItem.date_required || '';
+    const requirementRemarks = reqItem.remarks_req || reqItem.requirement_remarks_four || '';
+
+    // Ensure productList and distributorList are arrays
+    if (!Array.isArray(productList)) {
+        console.warn('Invalid product list format, defaulting to empty array.');
+        productList = [];
+    }
+
+    if (!Array.isArray(distributorList)) {
+        console.warn('Invalid distributor list format, defaulting to empty array.');
+        distributorList = [];
+    }
+
+    const newBlock = document.createElement('div');
+    newBlock.classList.add('requirementfive-block', 'p-2', 'rounded', 'shadow-widget');
+    newBlock.dataset.index = blockIndex;
+
+    newBlock.innerHTML = `
+        <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefive">
+            Requirement ${blockIndex}
+        </p>
+        <input type="hidden" name="requirement_id_5[]" value="${requirementId}" id="req_5_id">
+        <div class="row mb-1">
+            <div class="col-md-3">
+                <label for="requirement" class="form-label text-white">Requirement</label>
+            </div>
+            <div class="col-md-3">
+                <label for="product" class="form-label text-white">Product</label>
+            </div>
+            <div class="col-md-3">
+                <label for="distributor" class="form-label text-white">Distributor</label>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <input name="req_five[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
+            </div>
+            <div class="col-md-3">
+                <select name="product_five[]" class="form-control custom-select productFetch">
+                    <option disabled ${!selectedProduct ? 'selected' : ''}>Select</option>
+                    ${productList.map(product => `
+                        <option value="${escapeHtml(product)}" ${product.trim().toLowerCase() === selectedProduct.trim().toLowerCase() ? 'selected' : ''}>
+                            ${escapeHtml(product)}
+                        </option>
+                    `).join('')}
+                    ${!productList.some(product => product.trim().toLowerCase() === selectedProduct.trim().toLowerCase()) && selectedProduct
+                        ? `<option value="${escapeHtml(selectedProduct)}" selected>${escapeHtml(selectedProduct)}</option>`
+                        : ''}
+                    <option value="add_new_product">+ Add New Product...</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select name="distributor_five[]" class="form-control custom-select distributorFetch">
+                    <option disabled ${!selectedDistributor ? 'selected' : ''}>Select</option>
+                    ${distributorList.map(distributor => `
+                        <option value="${escapeHtml(distributor)}" ${distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase() ? 'selected' : ''}>
+                            ${escapeHtml(distributor)}
+                        </option>
+                    `).join('')}
+                    ${!distributorList.some(distributor => distributor.trim().toLowerCase() === selectedDistributor.trim().toLowerCase()) && selectedDistributor
+                        ? `<option value="${escapeHtml(selectedDistributor)}" selected>${escapeHtml(selectedDistributor)}</option>`
+                        : ''}
+                    <option value="add_new">+ Add New Distributor...</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="button"
+                        class="btn btn-danger btn-sm"
+                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                        onclick="deleteRequirementFive('${requirementId}', this, '${projectId}')">
+                    <i class="fas fa-minus"></i>&nbsp;Remove
+                </button>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-md-3">
+                <label for="quantity" class="form-label text-white">Quantity</label>
+            </div>
+            <div class="col-md-2">
+                <label for="pricing" class="form-label text-white">Pricing</label>
+            </div>
+            <div class="col-md-2">
+                <label for="date_required" class="form-label text-white">Date Required</label>
+            </div>
+            <div class="col-md-4">
+                <label for="remarks" class="form-label text-white">Remarks</label>
+            </div>
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50" value="${quantity}">
+            </div>
+            <div class="col-md-2">
+                <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 2000" value="${pricing}">
+            </div>
+            <div class="col-md-2">
+                <input name="date_required[]" type="date" class="form-control" value="${requirementDate}">
+            </div>
+            <div class="col-md-4">
+                <input name="remarks_req[]" type="text" class="form-control" placeholder="e.g. Sample Remarks" value="${requirementRemarks}">
+            </div>
+        </div>
+    `;
+
+    return newBlock;
+}
+
+// Function to delete a requirement block for Stage Five
+function deleteRequirementFive(requirementId, button, projectId) {
+    if (!confirm('Are you sure you want to delete this requirement?')) {
+        return;
+    }
+
+    const requirementBlock = button.closest('.requirementfive-block');
+
+    // Send delete request to the backend
+    fetch('./dirback/delete_req5.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ requirementId, project_id: projectId }),
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to delete requirement.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.status === 'success') {
+                requirementBlock.remove();
+                console.log('Requirement deleted successfully:', data);
+            } else {
+                alert(data.message || 'Error deleting requirement.');
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting requirement:', error);
+            alert('An error occurred while deleting the requirement.');
+        });
+}
+
+// Function to handle the "Add Requirement" functionality for Stage Five
+document.addEventListener('DOMContentLoaded', function () {
+    const addBtn = document.getElementById('addRequirement5Btn');
+    const requirementsFiveContainer = document.getElementById('requirementfiveContainer');
+
+    if (!addBtn || !requirementsFiveContainer) return;
+
+    addBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Generate next block index
+        const nextBlockIndex = requirementsFiveContainer.querySelectorAll('.requirementfive-block').length + 1;
+
+        // Create a new block and append it to the container
+        const newBlock = createRequirementFiveBlock(nextBlockIndex, {}, [], [], projectId);
+        requirementsFiveContainer.appendChild(newBlock);
+
+        console.log(`Added new requirement block for Stage Five: Requirement ${nextBlockIndex}`);
+    });
+
+    // Delegate remove button functionality (to remove blocks dynamically)
+    requirementsFiveContainer.addEventListener('click', function (e) {
+        if (e.target.closest('.removeRequirementFive')) {
+            e.preventDefault();
+            const blockToRemove = e.target.closest('.requirementfive-block');
+            if (blockToRemove) {
+                blockToRemove.remove();
+                console.log('Removed a requirement block from Stage Five.');
+            }
+        }
+    });
+});
+
 
 /**
  * Function to calculate and update contract duration
