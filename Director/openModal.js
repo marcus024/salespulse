@@ -1013,7 +1013,6 @@
             }
         });
                 
-           
 
         const requirementsStageFour = 
         Array.isArray(data.stages.stage_four?.requirement_stage_four) && 
