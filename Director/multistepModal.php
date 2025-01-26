@@ -442,7 +442,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="requirement" class="form-label text-white">Technology</label>
-                                                    <select name="technology" id="technologySelect" class="form-control custom-select" >
+                                                    <select name="technology[]" class="form-control custom-select technologyFetch">
                                                         <option disabled selected>Select technology</option>
                                                         <option value="add_new_technology">+ Add New Technology...</option>
                                                     </select>
