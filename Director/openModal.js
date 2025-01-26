@@ -1363,7 +1363,7 @@ function deleteRequirementFour(requirementId, button, projectId) {
 
 // Function to create an upsell block (dynamically for Stage Five)
 function createUpsellBlock(blockIndex, upsellItem, projectId) {
-    const upsellId = upsellItem.upsell_id_5 || `upsell${blockIndex}`;
+    const upsellId = upsellItem.upsell_stage_5 || `upsell${blockIndex}`;
     const upsellText = upsellItem.upsell || '';
     const quantity = upsellItem.quantity_upsell || '';
     const amount = upsellItem.amount_upsell || '';
