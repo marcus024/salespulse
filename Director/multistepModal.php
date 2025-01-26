@@ -734,7 +734,7 @@
                                                                 <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <input name="requirement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+                                                                <input name="requirement_remarks_four[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
                                                             </div>
                                                         </div>
                                                     </div>
