@@ -810,10 +810,8 @@
                                                     <label for="billingType" class="form-label text-white">Billing Type</label>
                                                     <select name="billing_type" class="form-control custom-select" id="billingType">
                                                         <option   disabled selected>Select Billing Type</option>
-                                                        <option value="fixed">Fixed</option>
-                                                        <option value="hourly">Hourly</option>
-                                                        <option value="retainer">Retainer</option>
-                                                        <option value="milestone">Milestone</option>
+                                                        <option value="OPEX">OPEX</option>
+                                                        <option value="CAPEX">CAPEX</option>
                                                     </select>
                                                 </div>
                                             </div>
