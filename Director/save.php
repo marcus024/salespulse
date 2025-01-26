@@ -834,34 +834,65 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
             }
         }
 
-        // Handle upsells
-        if (!empty($inputData['upsell'])) {
-            $upsellQuery = "INSERT INTO upsell_tb (
-                                project_unique_id, 
-                                upsell, 
-                                bills_materials_upsell, 
-                                quantity_upsell, 
-                                remarks_upsell, 
-                                amount_upsell
-                            ) VALUES (?, ?, ?, ?, ?, ?) 
-                            ON DUPLICATE KEY UPDATE 
-                                upsell = VALUES(upsell), 
-                                bills_materials_upsell = VALUES(bills_materials_upsell), 
-                                quantity_upsell = VALUES(quantity_upsell), 
-                                remarks_upsell = VALUES(remarks_upsell), 
-                                amount_upsell = VALUES(amount_upsell)";
-            $upsellStmt = $conn->prepare($upsellQuery);
+       // Prepare for insert and update operations
+        $insertUpsellStmt = $conn->prepare("INSERT INTO upsell_tb (upsell, quantity_upsell, amount_upsell, remarks_upsell, project_id, upsell_id_5) VALUES (?, ?, ?, ?, ?, ?)");
+        $updateUpsellStmt = $conn->prepare("UPDATE upsell_tb SET upsell = ?, quantity_upsell = ?, amount_upsell = ?, remarks_upsell = ? WHERE upsell_id_5 = ? AND project_id = ?");
 
-            foreach ($inputData['upsell'] as $index => $upsell) {
-                $upsellStmt->execute([
-                    $projectUniqueId,
-                    htmlspecialchars($upsell, ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($inputData['bills_materials_upsell'][$index] ?? '', ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($inputData['quantity_upsell'][$index] ?? '', ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($inputData['remarks_upsell'][$index] ?? '', ENT_QUOTES, 'UTF-8'),
-                    htmlspecialchars($inputData['amount_upsell'][$index] ?? '', ENT_QUOTES, 'UTF-8')
-                ]);
+        // Process upsell entries (can be multiple)
+        $insertedUpsellCount = 0;
+        $updatedUpsellCount = 0;
+
+        // Loop through the upsell data provided in the POST request
+        if (isset($_POST['upsell'])) {
+            foreach ($_POST['upsell'] as $index => $upsell) {
+                // Sanitize inputs
+                $sanitizedUpsell = htmlspecialchars($upsell, ENT_QUOTES, 'UTF-8');
+                $quantity = isset($_POST['quantity_upsell'][$index]) ? htmlspecialchars($_POST['quantity_upsell'][$index], ENT_QUOTES, 'UTF-8') : null;
+                $amount = isset($_POST['amount_upsell'][$index]) ? htmlspecialchars($_POST['amount_upsell'][$index], ENT_QUOTES, 'UTF-8') : null;
+                $remarks = isset($_POST['remarks_upsell'][$index]) ? htmlspecialchars($_POST['remarks_upsell'][$index], ENT_QUOTES, 'UTF-8') : null;
+                $upsellId = isset($_POST['upsell_stage_5'][$index]) ? htmlspecialchars($_POST['upsell_stage_5'][$index], ENT_QUOTES, 'UTF-8') : null;
+
+                // Validate if at least one field is not empty before proceeding
+                if (empty($sanitizedUpsell) || empty($quantity) || empty($amount)) {
+                    continue; // Skip invalid entries
+                }
+
+                // Check if the upsell_id exists, if it does, update, otherwise insert
+                if ($upsellId) {
+                    // Update existing upsell record
+                    $updateUpsellStmt->execute([
+                        $sanitizedUpsell,
+                        $quantity,
+                        $amount,
+                        $remarks,
+                        $upsellId,
+                        $projectId
+                    ]);
+
+                    $updatedRows = $updateUpsellStmt->rowCount();
+                    if ($updatedRows > 0) {
+                        $updatedUpsellCount += $updatedRows;
+                    }
+                } else {
+                    // Insert new upsell record
+                    $newUpsellId = 'upsell' . uniqid(); // Generate unique upsell_id
+                    $insertUpsellStmt->execute([
+                        $sanitizedUpsell,
+                        $quantity,
+                        $amount,
+                        $remarks,
+                        $projectId,
+                        $newUpsellId
+                    ]);
+                    $insertedUpsellCount++;
+                }
             }
+        }
+
+        // Build the success message
+        $message = "Upsell records processed successfully.";
+        if ($insertedUpsellCount > 0 || $updatedUpsellCount > 0) {
+            $message .= " (Upsells: Inserted $insertedUpsellCount, Updated $updatedUpsellCount)";
         }
 
         // Build final success message

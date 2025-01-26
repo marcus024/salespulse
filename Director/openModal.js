@@ -1316,6 +1316,104 @@ function deleteRequirementFour(requirementId, button, projectId) {
         .catch(error => {
             console.error("Error fetching Products or Distributors for Stage Five:", error);
         });
+
+
+        const upsellStageFive = 
+        Array.isArray(data.stages.stage_five?.upsell_stage_five) && 
+        data.stages.stage_five.upsell_stage_five.length > 0
+        ? data.stages.stage_five.upsell_stage_five
+        : []; // Use an empty array if no upsell data is available
+
+        console.log('Fetched Upsell data for Stage Five:', upsellStageFive);
+
+        const upsellContainer = document.getElementById('upsellContainer');
+        if (!upsellContainer) {
+            console.error('#upsellContainer not found in DOM!');
+            return;
+        }
+
+        let highestBlockIndex = 0;
+
+        // Check if there is any existing upsell data
+        if (upsellStageFive.length > 0) {
+            upsellStageFive.forEach((upsellItem, index) => {
+                const blockIndex = index + 1; // Block index starts from 1
+                highestBlockIndex = Math.max(highestBlockIndex, blockIndex);
+
+                const newBlock = createUpsellBlock(blockIndex, upsellItem, projectId);
+                upsellContainer.appendChild(newBlock);
+            });
+        }
+
+        // Update the next upsell block index dynamically
+        const nextBlockIndex = highestBlockIndex + 1;
+
+        // Update initial upsell block content (if applicable)
+        const initialUpsellTitle = document.getElementById('upsellCon');
+        const initialHiddenInput = document.getElementById('upsell_id');
+        if (initialUpsellTitle && initialHiddenInput) {
+            initialUpsellTitle.textContent = `Upsell ${nextBlockIndex}`;
+            initialHiddenInput.value = `upsell${nextBlockIndex}`;
+        } else {
+            console.warn('Initial upsell block not found in the DOM.');
+        }
+
+        console.log('Upsell blocks populated for Stage Five:', upsellStageFive);
+}
+
+// Function to create an upsell block (dynamically for Stage Five)
+function createUpsellBlock(blockIndex, upsellItem, projectId) {
+    const upsellId = upsellItem.upsell_id_5 || `upsell${blockIndex}`;
+    const upsellText = upsellItem.upsell || '';
+    const quantity = upsellItem.quantity_upsell || '';
+    const amount = upsellItem.amount_upsell || '';
+    const remarks = upsellItem.remarks_upsell || '';
+
+    const newBlock = document.createElement('div');
+    newBlock.classList.add('upsell-block');
+    newBlock.dataset.index = blockIndex;
+
+    newBlock.innerHTML = `
+        <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="upsellCon">
+            Upsell ${blockIndex}
+        </p>
+        <input type="hidden" name="upsell_stage_5[]" value="${upsellId}" id="upsell_id">
+        <div class="row mb-1">
+            <div class="col-md-2">
+                <label for="requirement" class="form-label text-white">Upsell</label>
+            </div>
+            <div class="col-md-2">
+                <label for="quantity" class="form-label text-white">Quantity</label>
+            </div>
+            <div class="col-md-2">
+                <label for="amount" class="form-label text-white">Amount</label>
+            </div>
+            <div class="col-md-3">
+                <label for="remarks" class="form-label text-white">Remarks</label>
+            </div>
+        </div>
+        <div class="row mb-3 upsell-fields">
+            <div class="col-md-3">
+                <input type="text" class="form-control" name="upsell[]" placeholder="e.g Router 2000" value="${upsellText}">
+            </div>
+            <div class="col-md-2">
+                <input name="quantity_upsell[]" type="number" class="form-control" placeholder="e.g 50" value="${quantity}">
+            </div>
+            <div class="col-md-2">
+                <input name="amount_upsell[]" type="number" class="form-control" placeholder="e.g. 6000" value="${amount}">
+            </div>
+            <div class="col-md-3">
+                <input name="remarks_upsell[]" type="text" class="form-control" placeholder="e.g. Sample Remarks" value="${remarks}">
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-danger btn-sm removeUpsellRow" style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
+                    <i class="fas fa-minus"></i>&nbsp;Remove
+                </button>
+            </div>
+        </div>
+    `;
+
+    return newBlock;
 }
 
 // Create Requirement Block for Stage Five
