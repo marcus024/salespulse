@@ -812,15 +812,15 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label for="requirement" class="form-label text-white">Start Contracted Date</label>
-                                                    <input name="contract_duration" type="text" class="form-control" id="contract" placeholder="e.g. 6 days">
+                                                    <input name="contract_duration" type="text" class="form-control" id="startContract" placeholder="e.g. 6 days">
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label for="requirement" class="form-label text-white">End Contracted Date</label>
-                                                    <input name="contract_duration" type="text" class="form-control" id="contract" placeholder="e.g. 6 days">
+                                                    <input name="contract_duration" type="text" class="form-control" id="endContract" placeholder="e.g. 6 days">
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Contract Duration</label>
-                                                    <input name="contract_duration" type="text" class="form-control" id="contract" placeholder="e.g. 6 days">
+                                                    <label for="requirement" class="form-label text-white">Contract Duration(days)</label>
+                                                    <input name="contract_duration" type="text" class="form-control" id="contractDuration" placeholder="e.g. 6 days">
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label for="requirement" class="form-label text-white">Pricing</label>
