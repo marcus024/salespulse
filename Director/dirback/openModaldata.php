@@ -76,7 +76,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                     COALESCE(stagefive.contract_duration, 'No Data') AS contract_duration,
                     COALESCE(stagefive.SPR_number, 'No Data') AS spr_number,
                     COALESCE(stagefive.billing_type, 'No Data') AS billing_type,
-                    GROUP_CONCAT(DISTINCT CONCAT(upsell_tb.upsell_id, ':', upsell_tb.quantity_upsell, ':', upsell_tb.remarks_upsell, ':', upsell_tb.upsell, ':', upsell_tb.amount_upsell) ORDER BY upsell_tb.upsell) AS upsell_5,
+                    GROUP_CONCAT(DISTINCT CONCAT(upsell_tb.upsell_stage_5, ':', upsell_tb.quantity_upsell, ':', upsell_tb.remarks_upsell, ':', upsell_tb.upsell, ':', upsell_tb.amount_upsell) ORDER BY upsell_tb.upsell) AS upsell_5,
                     GROUP_CONCAT(DISTINCT CONCAT(requirementfive_tb.requirement_id_5, ':', requirementfive_tb.req_five, ':', requirementfive_tb.quantity, ':', requirementfive_tb.date_required, ':', requirementfive_tb.remarks_req, ':', requirementfive_tb.pricing, ':', requirementfive_tb.distributor_five, ':', requirementfive_tb.product_five) ORDER BY requirementfive_tb.req_five) AS requirement_5
                 FROM projecttb
                 LEFT JOIN requirementone_tb ON projecttb.project_unique_id = requirementone_tb.project_unique_id
@@ -299,7 +299,7 @@ if (isset($_GET['project_id']) && !empty($_GET['project_id'])) {
                                 // Avoid duplicates by checking the normalized upsell value
                                 if (!in_array($normalizedUpsell, array_column($carry, 'upsell'))) {
                                     $carry[] = [
-                                        'upsell_id_5' => $parts[0] ?? null,
+                                        'upsell_stage_5' => $parts[0] ?? null,
                                         'quantity_upsell' => $parts[1] ?? null,
                                         'remarks_upsell' => $parts[2] ?? null,
                                         'upsell' => $parts[3] ?? null,

@@ -835,8 +835,8 @@ function updateStageFive($conn, $projectUniqueId, $inputData) {
         }
 
        // Prepare for insert and update operations
-        $insertUpsellStmt = $conn->prepare("INSERT INTO upsell_tb (upsell, quantity_upsell, amount_upsell, remarks_upsell, project_id, upsell_id_5) VALUES (?, ?, ?, ?, ?, ?)");
-        $updateUpsellStmt = $conn->prepare("UPDATE upsell_tb SET upsell = ?, quantity_upsell = ?, amount_upsell = ?, remarks_upsell = ? WHERE upsell_id_5 = ? AND project_id = ?");
+        $insertUpsellStmt = $conn->prepare("INSERT INTO upsell_tb (upsell, quantity_upsell, amount_upsell, remarks_upsell, project_id, upsell_stage_5) VALUES (?, ?, ?, ?, ?, ?)");
+        $updateUpsellStmt = $conn->prepare("UPDATE upsell_tb SET upsell = ?, quantity_upsell = ?, amount_upsell = ?, remarks_upsell = ? WHERE upsell_stage_5 = ? AND project_id = ?");
 
         // Process upsell entries (can be multiple)
         $insertedUpsellCount = 0;
