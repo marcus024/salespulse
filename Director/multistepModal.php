@@ -803,7 +803,7 @@
                                                     <input name="contract_duration" type="date" class="form-control" id="endContract" placeholder="e.g. 6 days">
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Duration(days)</label>
+                                                    <label for="requirement" class="form-label text-white">Duration</label>
                                                     <input name="contract_duration" type="text" class="form-control" id="contractDuration" placeholder="e.g. 6 days">
                                                 </div>
                                                 <div class="col-md-2">
