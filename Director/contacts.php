@@ -365,7 +365,7 @@ include("../auth/db.php");
 
                         <!-- Wide Container for Calendar Content -->
                         <div class="col-md-9 mb-4">
-                            <div class="card shadow-sm" style="background-color:#f9ce45;">
+                            <div class="card shadow-sm" style="background-color:#f9ce45; border:none;">
                                 <div class="card-body" id="calendar-container" style="min-height: 400px; color: white;">
                                     <h1 class="h5 mb-4" style="font-family:'Poppins'; color:#1f2024; ">My Contacts</h1>
                                     <!-- Contact List Cards -->
