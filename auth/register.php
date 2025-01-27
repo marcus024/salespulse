@@ -327,8 +327,8 @@
                 <div class="input-group">
                     <label for="zipCode"></label>
                     <select name="role" class="form-select" id="roleSelect">
-                        <option value="" disabled selected>Select a Role</option> <!-- Visible text before selection -->
-                        <option value="salesdirector" style="color:#555">Sales and Marketing Director</option>
+                        <option value="" style="color:#555" disabled selected>Select a Role</option> <!-- Visible text before selection -->
+                        <option value="salesdirector" >Sales and Marketing Director</option>
                         <option value="unithead">Business Unit Head</option>
                         <option value="salesmanager">Sales Manager</option>
                         <option value="accountmanager">Account Manager</option>
