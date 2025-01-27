@@ -140,6 +140,7 @@
       margin-top: 1%;
       font-family:'Poppins';
       font-size:12px;
+      color:white;
      
     }
     .signup-link a {
