@@ -520,7 +520,7 @@ include("../auth/db.php");
                                         </div>
                                         <div class="col-md-6">
                                             <label for="position" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Gender</label>
-                                            <select name="gender" class="form-select" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px" required>
+                                            <select name="gender" class="form-select" style="color:#555; background:#1f2024;  font-family:'Poppins'; font-size:12px" required>
                                                 <option value="" selected disabled>Select gender</option>
                                                 <option value="Male">Male</option>
                                                 <option value="Female">Female</option>
