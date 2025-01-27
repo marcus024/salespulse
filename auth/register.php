@@ -144,8 +144,8 @@
     font-family: 'Poppins';
     border: 1px solid #555;
     border-radius: 10px;
-    background-color: white; /* Matches the input background */
-    color: #36b9cc;
+    background-color: #1f2024; /* Matches the input background */
+    color: white;
     width: 100%;
     height: 40px;
     }
@@ -153,7 +153,7 @@
     .input-group select:focus {
         border-color: white ;
         outline: none;
-        background-color: white; /* Slightly darker green for focus */
+        background-color: #1f2024; /* Slightly darker green for focus */
     }
 
     .input-group select option {
@@ -263,7 +263,7 @@
         <img src="../images/log_icon_x.png" alt="Logo" style="width: 45px; height: 40px; vertical-align: middle; margin-right: 10px;">
         Sales Pulse
       </h1>
-      <p class="loginP" style="font-size: 40px; font-family:'Poppins'; margin-top: 1%; margin-bottom: 10px; color: black;">Register</p>
+      <p class="loginP" style="font-size: 40px; font-family:'Poppins'; margin-top: 1%; margin-bottom: 10px; color: white;">Register</p>
         <form class="user" action="regBack.php" method="POST">
             <!-- First Row - Two Columns -->
             <div class="row">
@@ -336,7 +336,7 @@
                 </div>
             </div>
             <!-- Submit Button -->
-            <button type="submit" class="login-btn" style="color:white;">REGISTER</button>
+            <button type="submit" class="login-btn" >REGISTER</button>
         </form>
 
       <div class="signup-link">
