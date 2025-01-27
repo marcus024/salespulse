@@ -65,28 +65,35 @@ include("../auth/db.php");
         }
     </style>
     <style>
+        :root {
+            --accent-color: #f9ce45; /* Accent color */
+        }
+
         .nav-item{
-            color: white; /* Optional: Adjust text color when the item is active */
+            color: #76777a; /* Optional: Adjust text color when the item is active */
             font-weight: bold; /* Optional: Make the active menu text bold */
             border-radius:10px;
             margin-bottom:5px;
         }
         /* Active Nav Item Background Color */
         .nav-item.active .nav-link {
-            /* padding-left:10px; */
-            background-color: white; /* Change this color to your preferred background color */
-            color: #36b9cc; /* Optional: Adjust text color when the item is active */
+            padding-left:10px;
+             background-color: #2a2925; 
+            color: white; 
             font-weight: bold; /* Optional: Make the active menu text bold */
             border-radius:10px;
             margin-bottom:5px;
+            border-left: 5px solid var(--accent-color);
         }
         /* Hover Effect for Nav Items */
         .nav-item .nav-link:hover {
-            /* padding-left:10px; */
-            background-color: white; /* Same color for hover effect */
-            color: #36b9cc; /* Text color for hover */
+            padding-left:10px;
+            background-color: #2a2925; 
+            color: white;
+            border-left: 5px solid var(--accent-color);
             border-radius:10px;
             margin-bottom:5px;
+            
         }
     </style>
     <style>
@@ -114,11 +121,11 @@ include("../auth/db.php");
     </style>
 </head>
 
-<body id="page-top">
+<body id="page-top" style="background-color:#15151a;">
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" style="background-color:#15151a;">
         <!-- Sidebar -->
-        <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#36b9cc; width: 200px; transition: all 0.3s; padding-left: 20px;">
+        <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#1f2024; width: 200px; transition: all 0.3s; padding-left: 20px;">
             <!-- Sidebar - Brand -->
             <div 
                 class="d-flex align-items-center mx-1" 
@@ -183,11 +190,11 @@ include("../auth/db.php");
 
                 <!-- Topbar -->
                 <!-- Fixed Topbar -->
-                <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:white; padding-right:30px; padding-left:220px; z-index: 300;">
+                <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:#15151a; padding-right:30px; padding-left:220px; z-index: 300;">
                     <!-- Left Section: Home and Welcome Message -->
                     <div class="d-flex align-items-center" style="margin-top: 30px;"> <!-- Added margin-top to lower the left section -->
                         <div>
-                            <h1 style="color:#36b9cc; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Calendar</h1> <!-- Reduced spacing -->
+                            <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Calendar</h1> <!-- Reduced spacing -->
                             <!-- <p style="font-size:15px; color: #555; font-family:'Poppins'; margin: 0px;">Welcome Back <?php echo $_SESSION['user_name']; ?>!</p> -->
                         </div>
                     </div>
@@ -311,27 +318,27 @@ include("../auth/db.php");
                 </div>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" style=" background-color:#15151a;">
                     <div class="row">
                         <!-- Narrow Container for Add Calendar -->
                         <div class="col-md-3 mb-4">
-                            <div class="card shadow-sm">
+                            <div class="card shadow-sm" style="background-color:#1f2024; border:none;">
                                 <div class="card-body">
                                     <div class="col align-items-center" style="display: flex; justify-content: space-between;">
                                         <!-- Calendar Text -->
-                                        <p style="font-family:'Poppins'; font-size:15px; font-weight:700; color:#555; margin: 0;">Calendar</p>
+                                        <p style="font-family:'Poppins'; font-size:15px; font-weight:700; color:white; margin: 0;">Calendar</p>
                                         <!-- Edit Button -->
                                         <i class="fas fa-edit edit-icon"
-                                        style="font-size: 10px; color: #555; cursor: pointer;"
+                                        style="font-size: 10px; color: white; cursor: pointer;"
                                         data-bs-toggle="modal"
                                         data-bs-target="#exampleModal"></i>
                                     </div>
                                     <!-- Calendar Button -->
-                                    <a href="#" class="btn calendar-button w-90" id="calendarButton" style="display:none;">
+                                    <a href="#" class="btn calendar-button w-90" id="calendarButton" style="background-color:#f9ce45;">
                                         <span class="icon">
                                             <img src="../images/outlookcalendar.png" alt="Outlook Calendar Icon" style="width: 30px; height: 30px;">
                                         </span>
-                                        <p style="font-size:13px; font-family:'Poppins'; font-weight:bold; padding-left:5px; padding-top:10px">Outlook Calendar</p>
+                                        <p style="font-size:13px; font-family:'Poppins';color:#1f2024; font-weight:bold; padding-left:5px; padding-top:10px">Outlook Calendar</p>
                                     </a>
                                     <style>                   
                                         i {
@@ -354,8 +361,8 @@ include("../auth/db.php");
                                         <div class="modal-dialog" style="width: 420px;">
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
-                                                <div class="modal-header" style="background-color:#36b9cc">
-                                                <h5 class="modal-title" id="exampleModalLabel" style="color:white; font-family:'Poppins'; font-size:15px;">Edit Item</h5>
+                                                <div class="modal-header" style="background-color:#f9ce45; border:none">
+                                                <h5 class="modal-title" id="exampleModalLabel" style="color:#1f2024; font-family:'Poppins'; font-size:15px;">Edit Item</h5>
                                                 <button
                                                     type="button"
                                                     class="btn-close"
@@ -364,7 +371,7 @@ include("../auth/db.php");
                                                 ></button>
                                                 </div>
                                                 <!-- Modal Body with two fields + aligned save buttons -->
-                                                <div class="modal-body">
+                                                <div class="modal-body" style="background-color:#1f2024;">
                                                     <form id="modalForm">
                                                         <!-- Field One + Save -->
                                                         <div class="row mb-3">
@@ -374,7 +381,7 @@ include("../auth/db.php");
                                                                 type="text"
                                                                 class="form-control"
                                                                 id="fieldOne"
-                                                                placeholder="Enter first value" style="color:#555; font-family:'Poppins'; font-size:12px;"
+                                                                placeholder="Enter first value" style="color:white; background-color:#1f2024; font-family:'Poppins'; font-size:12px;"
                                                                 />
                                                             </div>
                                                             <div class="col-md-4 d-flex align-items-end">
@@ -393,7 +400,7 @@ include("../auth/db.php");
                                                             <div class="col-md-8">
                                                                 <label for="fieldTwo" class="form-label" style="color:#555; font-family:'Poppins'; font-size:12px; font-weight:bold;">Google Calendar Link</label>
                                                                 <input
-                                                                type="text" style="color:#555; font-family:'Poppins'; font-size:12px;"
+                                                                type="text" style="color:white; background-color:#1f2024; font-family:'Poppins'; font-size:12px;"
                                                                 class="form-control"
                                                                 id="fieldTwo"
                                                                 placeholder="Enter second value"
@@ -411,8 +418,8 @@ include("../auth/db.php");
                                                             <style>
                                                                 .button-cal{
                                                                 border: none; 
-                                                                color:white; 
-                                                                background-color: #36b9cc; 
+                                                                color:#1f2024; 
+                                                                background-color: #f9ce45; 
                                                                 font-family:'Poppins'; 
                                                                 font-size:12px;
                                                                 }
@@ -432,17 +439,17 @@ include("../auth/db.php");
                                     <div class="modal fade" id="addCalendarModal" tabindex="-1" aria-labelledby="addCalendarModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
-                                                <div class="modal-header" style="background:#36b9cc">
-                                                    <h5 class="modal-title" style="font-weight:bold; font-size:12px; font-family:'Poppins'; color:white;" id="addCalendarModalLabel">Add Calendar Link</h5>
+                                                <div class="modal-header" style="background:#f9ce45; border:none;">
+                                                    <h5 class="modal-title" style="font-weight:bold; font-size:12px; font-family:'Poppins'; color:#1f2024;" id="addCalendarModalLabel">Add Calendar Link</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div class="modal-body" style=" background:#1f2024;">
                                                     <form id="calendarForm">
                                                         <div class="mb-3">
-                                                            <label for="calendarLink" style="font-size:12px; font-weight:bold; font-family:'Poppins';" class="form-label">Calendar Link</label>
-                                                            <input type="url" class="form-control" id="calendarLink" required>
+                                                            <label for="calendarLink" style="font-size:12px; color:#555; font-weight:bold; font-family:'Poppins';" class="form-label">Calendar Link</label>
+                                                            <input type="url" class="form-control" style="background:#1f2024; color:white; " id="calendarLink" required>
                                                         </div>
-                                                        <button type="submit" class="btn" style="background:#36b9cc; color:white; font-family:'Poppins'; font-size:15px;">Save</button>
+                                                        <button type="submit" class="btn" style="background:#f9ce45; color:#1f2024; font-family:'Poppins'; font-size:15px;">Save</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -451,27 +458,27 @@ include("../auth/db.php");
 
                                     <hr class="my-2">
                                     <!-- Button for Google Calendar -->
-                                    <a href="#" class="btn calendar-button w-90" id="gCalButton" style="display:none;">
+                                    <a href="#" class="btn calendar-button w-90" id="gCalButton" style=" background-color:#f9ce45;">
                                         <span class="icon">
                                             <img src="../images/gcalendar.png" alt="Google Calendar Icon" style="width: 30px; height: 30px;">
                                         </span>
-                                        <p style="font-size:13px; font-family:'Poppins'; font-weight:bold; padding-left:5px; padding-top:10px;">Google Calendar</p>
+                                        <p style="font-size:13px; font-family:'Poppins'; color:#1f2024;  font-weight:bold; padding-left:5px; padding-top:10px;">Google Calendar</p>
                                     </a>
                                     <!-- Modal for Inputting Calendar Link -->
                                     <div class="modal fade" id="addGCal" tabindex="-1" aria-labelledby="addCalendarModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
-                                                <div class="modal-header" style="background:#36b9cc">
-                                                    <p class="modal-title" style="font-weight:bold; font-size:12px; font-family:'Poppins'; color:white;" id="addCalendarModalLabel">Add Calendar Link</p>
+                                                <div class="modal-header" style="background:#f9ce45; border:none;">
+                                                    <p class="modal-title" style="font-weight:bold; font-size:12px; font-family:'Poppins'; color:#1f2024;" id="addCalendarModalLabel">Add Calendar Link</p>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div class="modal-body" style=" background:#1f2024;">
                                                     <form id="gcalendarForm">
                                                         <div class="mb-3">
-                                                            <label for="calendarLink" style="font-size:12px; font-weight:bold; font-family:'Poppins';" class="form-label">Calendar Link</label>
-                                                            <input type="url" class="form-control" id="gcalendarLink" required>
+                                                            <label for="calendarLink" style="font-size:12px; color:#555; font-weight:bold; font-family:'Poppins';" class="form-label">Calendar Link</label>
+                                                            <input type="url" class="form-control" style="background:#1f2024; color:white;" id="gcalendarLink" required>
                                                         </div>
-                                                        <button type="submit" class="btn" style="background:#36b9cc; color:white; font-family:'Poppins'; font-size:15px;">Save</button>
+                                                        <button type="submit" class="btn" style="background:#f9ce45; color:#1f2024; font-family:'Poppins'; font-size:15px;">Save</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -482,7 +489,7 @@ include("../auth/db.php");
                                    <!-- Trigger Button -->
                                     <!-- Trigger Button -->
                                     <a href="#" class="btn calendar-button w-90 text-center" data-bs-toggle="modal" data-bs-target="#calendarGuideModal" 
-                                    style="font-size: 13px; font-family: 'Poppins'; font-weight: bold; text-decoration: none;">
+                                    style="font-size: 13px; font-family: 'Poppins'; background-color:#f9ce45; color:#1f2024;  font-weight: bold; text-decoration: none;">
                                         Guide to Add Calendar
                                     </a>
                                     <!-- Modal -->
@@ -490,26 +497,67 @@ include("../auth/db.php");
                                         <div class="modal-dialog modal-lg">
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="calendarGuideModalLabel" style="font-family:'Poppins'; color:#555; font-size:15px">User Guide to Add a Calendar</h5>
+                                                <div class="modal-header" style=" background:#f9ce45; border:none;">
+                                                    <h5 class="modal-title" id="calendarGuideModalLabel" style="font-family:'Poppins'; color:#1f2024; font-size:15px">User Guide to Add a Calendar</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
+                                                <style>
+                                                   .custom-nav-tabs {
+                                                        list-style-type: none;
+                                                        padding: 0;
+                                                        margin: 0;
+                                                        display: flex;
+                                                    }
+
+                                                    .custom-nav-link {
+                                                        font-size: 12px;
+                                                        font-family: 'Poppins', sans-serif;
+                                                        background: none;
+                                                        border-radius:10px;;
+                                                        padding: 10px 15px;
+                                                        color: white;
+                                                        cursor: pointer;
+                                                        transition: background-color 0.3s ease, color 0.3s ease;
+                                                    }
+
+                                                    .custom-nav-link:hover, 
+                                                    .custom-nav-link.active {
+                                                        background-color: #f9ce45;
+                                                        color: #1f2024;
+                                                        font-weight: bold;
+                                                    }
+
+
+                                                </style>
                                                 <!-- Modal Body -->
-                                                <div class="modal-body">
+                                                <div class="modal-body" style=" background:#1f2024;">
                                                     <!-- Tab Navigation -->
-                                                    <ul class="nav nav-tabs" id="calendarGuideTabs" role="tablist">
+                                                    <ul class="nav custom-nav-tabs" id="calendarGuideTabs" role="tablist">
                                                         <li class="nav-item">
-                                                            <button style ="font-size:12px; font-family:'Poppins'" class="nav-link active" id="google-tab" data-bs-toggle="tab" data-bs-target="#google" type="button" role="tab" aria-controls="google" aria-selected="true">
+                                                            <button class="custom-nav-link active" 
+                                                                    id="google-tab" 
+                                                                    data-bs-toggle="tab" 
+                                                                    data-bs-target="#google" 
+                                                                    type="button" 
+                                                                    role="tab" 
+                                                                    aria-controls="google" 
+                                                                    aria-selected="true">
                                                                 Google Calendar
                                                             </button>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <button style ="font-size:12px; font-family:'Poppins'" class="nav-link" id="outlook-tab" data-bs-toggle="tab" data-bs-target="#outlook" type="button" role="tab" aria-controls="outlook" aria-selected="false">
+                                                            <button class="custom-nav-link" 
+                                                                    id="outlook-tab" 
+                                                                    data-bs-toggle="tab" 
+                                                                    data-bs-target="#outlook" 
+                                                                    type="button" 
+                                                                    role="tab" 
+                                                                    aria-controls="outlook" 
+                                                                    aria-selected="false">
                                                                 Outlook Calendar
                                                             </button>
                                                         </li>
                                                     </ul>
-
                                                     <!-- Tab Content -->
                                                     <div class="tab-content mt-3" id="calendarGuideTabContent">
                                                         <!-- Google Calendar Tab -->
@@ -567,7 +615,7 @@ include("../auth/db.php");
                                                     </div>
                                                 </div>
                                                 <!-- Modal Footer -->
-                                                <div class="modal-footer">
+                                                <div class="modal-footer" style="background:#1f2024;">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                 </div>
                                             </div>
@@ -624,9 +672,9 @@ include("../auth/db.php");
                         </div>
                         <!-- Wide Container for Calendar Content -->
                         <div class="col-md-9 mb-4">
-                            <div class="card shadow-sm" style="background: #36b9cc">
+                            <div class="card shadow-sm" style="background: #f9ce45; border:none;">
                                 <div class="card-body" id="calendar-container" style="min-height: 400px; color: white;">
-                                    <h1 class="h5 mb-4">Calendar Content</h1>
+                                    <h1 class="h5 mb-4" style="color:#1f2024;">Calendar Content</h1>
                                     <!-- Calendars will be dynamically added here -->
                                 </div>
                             </div>
@@ -639,13 +687,7 @@ include("../auth/db.php");
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
-                    </div>
-                </div>
-            </footer>
+            
             <!-- End of Footer -->
 
         </div>
