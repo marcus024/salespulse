@@ -340,8 +340,8 @@ include_once('dirback/dirviewback.php');
                                             <img src="../images/projecticon.png" alt="Project Icon" style="width: 60px; height: 60px; vertical-align: middle;" />
                                         </div>
                                         <div class="col-md-12 mb-3">
-                                            <p style="color: #36b9cc; margin-top: 0; font-family: 'Poppins'; font-size:30px; font-weight:bold; display: inline;">PROJECT PROFILE</p>
-                                            <p id="projectUniqueId" style="color: #36b9cc; margin-top: 0; margin-bottom: 5px; font-family: 'Poppins'; font-size: 12px; font-weight: 500;">
+                                            <p style="color:white; margin-top: 0; font-family: 'Poppins'; font-size:30px; font-weight:bold; display: inline;">PROJECT PROFILE</p>
+                                            <p id="projectUniqueId" style="color: white; margin-top: 0; margin-bottom: 5px; font-family: 'Poppins'; font-size: 12px; font-weight: 500;">
                                                 Project ID: <span id="project-id-placeholder"><strong><?php echo htmlspecialchars($project['project_unique_id']); ?></strong></span>
                                             </p>
                                         </div>
@@ -352,8 +352,8 @@ include_once('dirback/dirviewback.php');
                                         </button>
                                     </div>
                                 </div>
-                                <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
-                                    <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
+                                <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px"> 
+                                    <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
                                         <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-md-4 mb-2">
