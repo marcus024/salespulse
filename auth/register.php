@@ -278,7 +278,7 @@
                 <div class="input-group">
                     <label for="gender">Gender</label>
                     <select required name="gender" id="gender" autocomplete="off">
-                        <option value="">Select your gender</option>
+                        <option value="" style="color:#555">Select your gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
@@ -320,15 +320,15 @@
                     <label for="dob">Company</label>
                     <input required name="company" type="text" placeholder="Enter your company" autocomplete="off" />
                 </div>
-                <div class="input-group">
+                <!-- <div class="input-group">
                     <label for="address">Position</label>
                     <input required name="position" type="text" placeholder="Enter your position" autocomplete="off" />
-                </div>
+                </div> -->
                 <div class="input-group">
-                    <label for="zipCode">Role</label>
+                    <label for="zipCode"></label>
                     <select name="role" class="form-select" id="roleSelect">
                         <option value="" disabled selected>Select a Role</option> <!-- Visible text before selection -->
-                        <option value="salesdirector">Sales and Marketing Director</option>
+                        <option value="salesdirector" style="color:#555">Sales and Marketing Director</option>
                         <option value="unithead">Business Unit Head</option>
                         <option value="salesmanager">Sales Manager</option>
                         <option value="accountmanager">Account Manager</option>
