@@ -336,7 +336,7 @@
                 </div>
             </div>
             <!-- Submit Button -->
-            <button type="submit" class="login-btn">REGISTER</button>
+            <button type="submit" class="login-btn" style="color:white;">REGISTER</button>
         </form>
 
       <div class="signup-link">
