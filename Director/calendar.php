@@ -362,7 +362,7 @@ include("../auth/db.php");
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header" style="background-color:#f9ce45">
-                                                <h5 class="modal-title" id="exampleModalLabel" style="color:white; font-family:'Poppins'; font-size:15px;">Edit Item</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel" style="color:#1f2024; font-family:'Poppins'; font-size:15px;">Edit Item</h5>
                                                 <button
                                                     type="button"
                                                     class="btn-close"
@@ -371,7 +371,7 @@ include("../auth/db.php");
                                                 ></button>
                                                 </div>
                                                 <!-- Modal Body with two fields + aligned save buttons -->
-                                                <div class="modal-body">
+                                                <div class="modal-body" style="background-color:#1f2024;">
                                                     <form id="modalForm">
                                                         <!-- Field One + Save -->
                                                         <div class="row mb-3">
