@@ -334,7 +334,7 @@ include("../auth/db.php");
                                         data-bs-target="#exampleModal"></i>
                                     </div>
                                     <!-- Calendar Button -->
-                                    <a href="#" class="btn calendar-button w-90" id="calendarButton" style="display:none;">
+                                    <a href="#" class="btn calendar-button w-90" id="calendarButton" style="background-color:#f9ce45;">
                                         <span class="icon">
                                             <img src="../images/outlookcalendar.png" alt="Outlook Calendar Icon" style="width: 30px; height: 30px;">
                                         </span>
