@@ -540,7 +540,7 @@ include("../auth/db.php");
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" style="font-family:'Poppins'; font-size: 12px;">Cancel</button>
-                                        <button type="submit"  class="btn btn-primary btn-sm" style="font-family:'Poppins'; font-size: 12px; background-color: #36b9cc; border: none;">Save Changes</button>
+                                        <button type="submit"  class="btn btn-primary btn-sm" style="font-family:'Poppins'; font-size: 12px;color:#1f2024; background-color: #f9ce45; border: none;">Save Changes</button>
                                     </div>
                                 </form>
                             </div>
