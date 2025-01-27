@@ -641,8 +641,8 @@ include_once('dirback/dirviewback.php');
                                                     <style>
                                                         .btn.play-btn {
                                                             background-color: white;
-                                                            border: 2px solid #36b9cc; /* Button border color */
-                                                            color: #36b9cc; /* Text color */
+                                                            border: 2px solid#1f2024; /* Button border color */
+                                                            color:#1f2024; /* Text color */
                                                             padding: 10px 20px;
                                                             font-size: 16px;
                                                             font-weight: bold;
@@ -655,13 +655,13 @@ include_once('dirback/dirviewback.php');
 
                                                         /* Style for the icon inside the button */
                                                         .btn.play-btn i {
-                                                            color: #36b9cc; /* Icon color */
+                                                            color: #1f2024; /* Icon color */
                                                             transition: color 0.3s ease; /* Smooth transition when changing color */
                                                         }
 
                                                         /* Button hover effect */
                                                         .btn.play-btn:hover {
-                                                            background-color: #36b9cc; /* Change background color on hover */
+                                                            background-color:#1f2024; /* Change background color on hover */
                                                             color: white; /* Change text color on hover */
                                                             border-color:white; /* Change border color on hover */
                                                             
