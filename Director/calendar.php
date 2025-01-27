@@ -219,8 +219,6 @@ include("../auth/db.php");
                                     
                                 </span>
                             </button>
-
-
                             <!-- Dropdown Container (Initially hidden) -->
                             <div id="notification-dropdown" 
                                 style="

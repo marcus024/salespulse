@@ -132,12 +132,12 @@ include_once('dirback/dirviewback.php');
         }
     </style>
 </head>
-<body id="page-top">
+<body id="page-top" style="background-color:#15151a;">
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" style="background-color:#15151a;">
         <!-- Sidebar -->
         <!-- Sidebar -->
-        <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#36b9cc; width: 200px; transition: all 0.3s; padding-left: 20px;">
+        <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#1f2024; width: 200px; transition: all 0.3s; padding-left: 20px;">
             <!-- Sidebar - Brand -->
             <div 
                 class="d-flex align-items-center mx-1" 
@@ -199,11 +199,11 @@ include_once('dirback/dirviewback.php');
             <!-- Main Content -->
             <div id="content" style="background-color:white;">
                 <!-- Topbar -->
-                <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:white; padding-right:30px; padding-left:220px; z-index: 300;">
+                <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:#15151a; padding-right:30px; padding-left:220px; z-index: 300;">
                     <!-- Left Section: Home and Welcome Message -->
                     <div class="d-flex align-items-center" style="margin-top: 10px;"> <!-- Added margin-top to lower the left section -->
                         <div>
-                            <h1 style="color:#36b9cc; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Home</h1> <!-- Reduced spacing -->
+                            <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Home</h1> <!-- Reduced spacing -->
                             <p style="font-size:15px; color: #555; font-family:'Poppins'; margin: 0px;">Welcome Back <?php echo $_SESSION['user_name']; ?>!</p>
                         </div>
                     </div>
@@ -214,7 +214,7 @@ include_once('dirback/dirviewback.php');
                         <div class="mr-2" style="position: relative;">
                             <!-- Notification Button -->
                             <button id="notification-button" style="color: #36b9cc; padding-right: 50px; position: relative; background: none; border: none; cursor: pointer;">
-                                <img src="../images/notif.png" alt="Notification" style="height: 20px; width: 20px;">
+                                <img src="../images/notif_yellow.png" alt="Notification" style="height: 20px; width: 20px;">
                                 <span id="notification-count" style="
                                     font-family: 'Poppins', sans-serif; 
                                     font-weight: bold; 
@@ -229,8 +229,6 @@ include_once('dirback/dirviewback.php');
                                     
                                 </span>
                             </button>
-
-
                             <!-- Dropdown Container (Initially hidden) -->
                             <div id="notification-dropdown" 
                                 style="
@@ -327,9 +325,9 @@ include_once('dirback/dirviewback.php');
                 </div>
                 <!-- End of Topbar -->
                 <!-- Home Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" style=" background-color:#15151a;">
                     <div class="col-md-12 mb-6">
-                        <div class="card shadow-sm">
+                        <div class="card shadow-sm" style="background-color:#1f2024; border:none;">
                             <div class="card-body">
                                     <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
                                     <div class="stage-title" style="width: 100%; text-align: left; margin-bottom: 0; padding-bottom: 0; display: flex; align-items: start;">
