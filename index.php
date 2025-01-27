@@ -30,7 +30,7 @@
       flex-wrap: wrap;
       margin: 0; /* Remove margin */
       padding: 0;
-      background-color: white;
+      background-color: #1f2024;
     }
     .left-section {
       flex: 1;
