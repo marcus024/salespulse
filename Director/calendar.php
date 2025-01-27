@@ -534,8 +534,7 @@ include("../auth/db.php");
                                                     <!-- Tab Navigation -->
                                                     <ul class="nav custom-nav-tabs" id="calendarGuideTabs" role="tablist">
     <li class="nav-item">
-        <button style="font-size:12px; font-family:'Poppins'; background:none; border:none;" 
-                class="custom-nav-link active" 
+        <button class="custom-nav-link active" 
                 id="google-tab" 
                 data-bs-toggle="tab" 
                 data-bs-target="#google" 
@@ -547,8 +546,7 @@ include("../auth/db.php");
         </button>
     </li>
     <li class="nav-item">
-        <button style="font-size:12px; font-family:'Poppins'; background:none; border:none;" 
-                class="custom-nav-link" 
+        <button class="custom-nav-link" 
                 id="outlook-tab" 
                 data-bs-toggle="tab" 
                 data-bs-target="#outlook" 
@@ -560,6 +558,7 @@ include("../auth/db.php");
         </button>
     </li>
 </ul>
+
 
 
                                                     <!-- Tab Content -->
