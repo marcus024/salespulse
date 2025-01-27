@@ -64,6 +64,10 @@ include_once('dirback/dirviewback.php');
         }
     </style>
     <style>
+        :root {
+            --accent-color: #f9ce45; /* Accent color */
+        }
+
         .nav-item{
             color: white; /* Optional: Adjust text color when the item is active */
             font-weight: bold; /* Optional: Make the active menu text bold */
@@ -72,18 +76,19 @@ include_once('dirback/dirviewback.php');
         }
         /* Active Nav Item Background Color */
         .nav-item.active .nav-link {
-            /* padding-left:10px; */
-            background-color: white; /* Change this color to your preferred background color */
-            color: #36b9cc; /* Optional: Adjust text color when the item is active */
+            padding-left:10px;
+            background-color: #2a2925; /* Change this color to your preferred background color */
+            color: white; /* Optional: Adjust text color when the item is active */
             font-weight: bold; /* Optional: Make the active menu text bold */
             border-radius:10px;
             margin-bottom:5px;
+            border-left: 5px solid var(--accent-color);
         }
         /* Hover Effect for Nav Items */
         .nav-item .nav-link:hover {
-            /* padding-left:10px; */
-            background-color: white; /* Same color for hover effect */
-            color: #36b9cc; /* Text color for hover */
+            padding-left:10px;
+            background-color: #2a2925; /* Same color for hover effect */
+            color:white; /* Text color for hover */
             border-radius:10px;
             margin-bottom:5px;
         }
