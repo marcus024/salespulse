@@ -119,8 +119,8 @@
       width: 130px;
       height: 40px;
       padding: 5px;
-      background: #17a2b8;
-      color: #ffffff;
+      background: #f9ce45;
+      color: #1f2024;
       font-size: 15px;
       border: none;
       border-radius: 20px;
