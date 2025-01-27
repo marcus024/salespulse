@@ -131,8 +131,7 @@ include("../auth/db.php");
             transition: all 0.3s; 
             padding-left: 20px; 
             display: flex; 
-            flex-direction: column; 
-            height: 100vh;">
+            ">
             
             <!-- Sidebar - Brand -->
             <div 
