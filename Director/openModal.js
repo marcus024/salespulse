@@ -469,6 +469,23 @@
             <input type="hidden" name="requirement_id_2[]" value="${requirementId}" id="rq_2_id">
             <div class="row mb-1">
                 <div class="col-md-2">
+                        <label for="requirement" class="form-label text-white">Requirement</label>
+                    </div>
+                    <div class="col-md-2">
+                    <label for="product" class="form-label text-white">Product</label>
+                    </div>
+                    <div class="col-md-2">
+                    <label for="distributor" class="form-label text-white">Distributor</label>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="requirement" class="form-label text-white">Date</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="requirement" class="form-label text-white">Requirement Remarks</label>
+                    </div>
+                </div>
+            <div class="row mb-1">
+                <div class="col-md-2">
                     <input name="requirement_two[]" type="text" class="form-control" placeholder="e.g. Sample Requirement" value="${requirementText}">
                 </div>
                 <div class="col-md-2">
