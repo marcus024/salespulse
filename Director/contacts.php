@@ -503,23 +503,23 @@ include("../auth/db.php");
                                     <div class="row mb-1">
                                         <div class="col-md-12">
                                             <label for="company" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Company</label>
-                                            <input name="companyContact" type="text" style="color:white; background:#1f2024; font-family:'Poppins'; font-size:12px" class="form-control form-control-sm" id="company" placeholder="Enter company name">
+                                            <input name="companyContact" type="text" style="color:white; background:#1f2024; font-family:'Poppins'; font-size:12px" class="form-control" id="company" placeholder="Enter company name">
                                         </div>
                                     </div>
                                     <div class="row mb-1">
                                         <div class="col-md-12">
                                             <label for="name" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Name</label>
-                                            <input name="nameContact" type="text" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px" class="form-control form-control-sm" id="name" placeholder="Enter name">
+                                            <input name="nameContact" type="text" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px" class="form-control" id="name" placeholder="Enter name">
                                         </div>
                                     </div>
                                     <div class="row mb-1">
                                         <div class="col-md-6">
                                             <label for="position" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Position</label>
-                                            <input name="position" type="text" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px" class="form-control form-control-sm" id="position" placeholder="Enter position">
+                                            <input name="position" type="text" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px" class="form-control" id="position" placeholder="Enter position">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="position" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Gender</label>
-                                            <select name="gender" class="form-select" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px" required>
+                                            <select name="gender" class="form-select" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px"  required>
                                                 <option value="" selected disabled style="color:#555;">Select gender</option>
                                                 <option value="Male">Male</option>
                                                 <option value="Female">Female</option>
@@ -530,11 +530,11 @@ include("../auth/db.php");
                                     <div class="row mb-3">
                                         <div class="col-md-6">
                                             <label for="number" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Number</label>
-                                            <input name="contactNum" type="number" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px" class="form-control form-control-sm" id="number" placeholder="Enter number">
+                                            <input name="contactNum" type="number" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px" class="form-control" id="number" placeholder="Enter number">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="email" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Email</label>
-                                            <input name="email" type="email" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px" class="form-control form-control-sm" id="email" placeholder="Enter email">
+                                            <input name="email" type="email" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px" class="form-control " id="email" placeholder="Enter email">
                                         </div>
                                     </div>
                                     <div class="modal-footer" style="border:none;">
