@@ -259,7 +259,7 @@
         Sales Pulse
       </h1>
       <p>Welcome back!</p>
-      <p class="loginP" style="font-size: 40px; font-family:'Poppins'; margin: 0; margin-bottom: 10px; color: black;">Log In</p>
+      <p class="loginP" style="font-size: 40px; font-family:'Poppins'; margin: 0; margin-bottom: 10px; color: white;">Log In</p>
       <div class="loading-overlay" id="loadingOverlay">
           <div class="spinner"></div>
           <div class="loading-text">Logging in, please wait...</div>
