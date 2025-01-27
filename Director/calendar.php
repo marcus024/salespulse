@@ -498,7 +498,7 @@ include("../auth/db.php");
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header" style=" background:#f9ce45; border:none;">
-                                                    <h5 class="modal-title" id="calendarGuideModalLabel" style="font-family:'Poppins'; color:#555; font-size:15px">User Guide to Add a Calendar</h5>
+                                                    <h5 class="modal-title" id="calendarGuideModalLabel" style="font-family:'Poppins'; color:#1f2024; font-size:15px">User Guide to Add a Calendar</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <!-- Modal Body -->
