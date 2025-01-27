@@ -117,7 +117,7 @@
       font-family:'Poppins'
     }
     .input-group input:focus::placeholder {
-    color: #555; /* Makes the placeholder invisible */
+    color: white; /* Makes the placeholder invisible */
     }
     .input-group input:focus {
       border-color: #555;
@@ -145,7 +145,7 @@
     border: 1px solid #555;
     border-radius: 10px;
     background-color: #1f2024; /* Matches the input background */
-    color: white;
+    color: #555;
     width: 100%;
     height: 40px;
     }
