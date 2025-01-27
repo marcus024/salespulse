@@ -501,6 +501,30 @@ include("../auth/db.php");
                                                     <h5 class="modal-title" id="calendarGuideModalLabel" style="font-family:'Poppins'; color:#1f2024; font-size:15px">User Guide to Add a Calendar</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
+                                                <style>
+                                                    .custom-nav-tabs {
+                                                        list-style-type: none;
+                                                        padding: 0;
+                                                        margin: 0;
+                                                        display: flex;
+                                                    }
+
+                                                    .custom-nav-link {
+                                                        font-size: 12px;
+                                                        font-family: 'Poppins', sans-serif;
+                                                        background: none;
+                                                        border: none;
+                                                        padding: 10px 15px;
+                                                        cursor: pointer;
+                                                    }
+
+                                                    .custom-nav-link.active {
+                                                        font-weight: bold;
+                                                        color:#1f2024; /* Adjust as needed */
+                                                        background:#f9ce45;
+                                                    }
+
+                                                </style>
                                                 <!-- Modal Body -->
                                                 <div class="modal-body" style=" background:#1f2024;">
                                                     <!-- Tab Navigation -->
