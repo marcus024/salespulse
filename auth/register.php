@@ -320,10 +320,10 @@
                     <label for="dob">Company</label>
                     <input required name="company" type="text" placeholder="Enter your company" autocomplete="off" />
                 </div>
-                <!-- <div class="input-group">
+                <div class="input-group">
                     <label for="address">Position</label>
                     <input required name="position" type="text" placeholder="Enter your position" autocomplete="off" />
-                </div> -->
+                </div>
                 <div class="input-group">
                     <label for="zipCode"></label>
                     <select name="role" class="form-select" id="roleSelect">
