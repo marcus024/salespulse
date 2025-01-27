@@ -1,7 +1,5 @@
 <?php 
 session_start();
-
-// Include database connection
 include_once('../auth/db.php');
 ?>
 <!DOCTYPE html>
@@ -43,6 +41,10 @@ include_once('../auth/db.php');
         }
     </style>
     <style>
+         :root {
+            --accent-color: #f9ce45; /* Accent color */
+        }
+
         .nav-item{
             color: white; /* Optional: Adjust text color when the item is active */
             font-weight: bold; /* Optional: Make the active menu text bold */
@@ -51,18 +53,19 @@ include_once('../auth/db.php');
         }
         /* Active Nav Item Background Color */
         .nav-item.active .nav-link {
-           
-            background-color: white; /* Change this color to your preferred background color */
-            color: #36b9cc; /* Optional: Adjust text color when the item is active */
+            padding-left:10px;
+            background-color: #2a2925; /* Change this color to your preferred background color */
+            color: white; /* Optional: Adjust text color when the item is active */
             font-weight: bold; /* Optional: Make the active menu text bold */
             border-radius:10px;
             margin-bottom:5px;
+            border-left: 5px solid var(--accent-color);
         }
         /* Hover Effect for Nav Items */
         .nav-item .nav-link:hover {
-            
-            background-color: white; /* Same color for hover effect */
-            color: #36b9cc; /* Text color for hover */
+            padding-left:10px;
+            background-color: #2a2925; /* Same color for hover effect */
+            color: white; /* Text color for hover */
             border-radius:10px;
             margin-bottom:5px;
         }
@@ -111,12 +114,12 @@ include_once('../auth/db.php');
         }
     </style>
 </head>
-<body id="page-top">
+<body id="page-top" style="background-color:#15151a;">
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" style="background-color:#15151a;">
         <!-- Sidebar -->
         <!-- Sidebar -->
-        <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#36b9cc; width: 200px; transition: all 0.3s; padding-left: 20px;">
+        <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#1f2024; width: 200px; transition: all 0.3s; padding-left: 20px;">
             <!-- Sidebar - Brand -->
             <div 
                 class="d-flex align-items-center mx-1" 
@@ -164,7 +167,6 @@ include_once('../auth/db.php');
             </li>
             <!-- Spacer to Push Footer to Bottom -->
             <li style="flex-grow: 1;"></li>
-            
             <li class="nav-item footer">
                 <span class="powered-by">Powered by</span>
                 <span class="company-name">WORKFORCE NEXTGEN</span><br>
@@ -177,11 +179,11 @@ include_once('../auth/db.php');
             <!-- Main Content -->
             <div id="content" style="background-color:white;">
                 <!-- Topbar -->
-                <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:white; padding-right:30px; padding-left:220px; z-index: 300;">
+                <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:#15151a; padding-right:30px; padding-left:220px; z-index: 300;">
                     <!-- Left Section: Home and Welcome Message -->
                     <div class="d-flex align-items-center" style="margin-top: 10px;"> <!-- Added margin-top to lower the left section -->
                         <div>
-                            <h1 style="color:#36b9cc; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Home</h1> <!-- Reduced spacing -->
+                            <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Home</h1> <!-- Reduced spacing -->
                             <p style="font-size:15px; color: #555; font-family:'Poppins'; margin: 0px;">
                                 Welcome Back, 
                                 <span style="font-weight: 800;">
@@ -196,7 +198,7 @@ include_once('../auth/db.php');
                         <div class="mr-2" style="position: relative;">
                             <!-- Notification Button -->
                             <button id="notification-button" style="color: #36b9cc; padding-right: 50px; position: relative; background: none; border: none; cursor: pointer;">
-                                <img src="../images/notif.png" alt="Notification" style="height: 20px; width: 20px;">
+                                <img src="../images/notif_yellow.png" alt="Notification" style="height: 20px; width: 20px;">
                                 <span id="notification-count" style="
                                     font-family: 'Poppins', sans-serif; 
                                     font-weight: bold; 
@@ -211,8 +213,6 @@ include_once('../auth/db.php');
                                     
                                 </span>
                             </button>
-
-
                             <!-- Dropdown Container (Initially hidden) -->
                             <div id="notification-dropdown" 
                                 style="
@@ -309,9 +309,9 @@ include_once('../auth/db.php');
                 </div>
                 <!-- End of Topbar -->
                 <!-- Home Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" style=" background-color:#15151a;">
                     <div class="col-md-12 mb-6">
-                        <div class="card shadow-sm">
+                        <div class="card shadow-sm" style=" background-color:#1f2024; border:none;">
                             <div class="card-body">
                                     <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
                                     <div class="stage-title" style="width: 100%; text-align: left; margin-bottom: 0; padding-bottom: 0; display: flex; align-items: start;">
@@ -319,47 +319,47 @@ include_once('../auth/db.php');
                                             <img src="<?php echo $_SESSION['image']  ?>" alt="Project Icon" style="width: 60px; height: 60px; vertical-align: middle;" />
                                         </div>
                                         <div class="col-md-12 mb-3">
-                                            <p style="color: #36b9cc; margin-top: 0; font-family: 'Poppins'; font-size:30px; font-weight:bold; display: inline;"><strong><?php echo $_SESSION['user_name']  ?></p>
-                                            <p id="projectUniqueId" style="color: #36b9cc; margin-top: 0; margin-bottom: 5px; font-family: 'Poppins'; font-size: 12px; font-weight: 500;">
+                                            <p style="color: white; margin-top: 0; font-family: 'Poppins'; font-size:30px; font-weight:bold; display: inline;"><strong><?php echo $_SESSION['user_name']  ?></p>
+                                            <p id="projectUniqueId" style="color: white; margin-top: 0; margin-bottom: 5px; font-family: 'Poppins'; font-size: 12px; font-weight: 500;">
                                                 User ID: <span id="project-id-placeholder"><strong><?php echo $_SESSION['user_id_c']  ?></strong></span>
                                             </p>
                                         </div>
                                     </div>
                                     <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
-                                        <button onclick="goBack()" style="background: none; border: none; color: #36b9cc; font-size: 24px; cursor: pointer;">
+                                        <button onclick="goBack()" style="background: none; border: none; color: #555; font-size: 24px; cursor: pointer;">
                                             <i class="fas fa-arrow-left"></i>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
-                                    <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
+                                <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
+                                    <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
                                         <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="clientCompany" class="form-label" style="font-size: 12px; color: white;">Name</label>
-                                                        <input readonly type="text" class="form-control input-sm" id="clientCompany" value="<?php echo $_SESSION['user_name']  ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
+                                                        <label for="clientCompany" class="form-label" style="font-size: 12px; color: #555;">Name</label>
+                                                        <input readonly type="text" class="form-control input-sm" id="clientCompany" value="<?php echo $_SESSION['user_name']  ?>" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="accountManager" class="form-label" style="font-size: 12px; color: white;">Email</label>
-                                                        <input readonly type="text" class="form-control" id="accountManager" value="<?php echo $_SESSION['email']  ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
+                                                        <label for="accountManager" class="form-label" style="font-size: 12px; color: #555;">Email</label>
+                                                        <input readonly type="text" class="form-control" id="accountManager" value="<?php echo $_SESSION['email']  ?>" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="productType" class="form-label" style="font-size: 12px; color: white;">Company</label>
-                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo $_SESSION['company']  ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
+                                                        <label for="productType" class="form-label" style="font-size: 12px; color: #555;">Company</label>
+                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo $_SESSION['company']  ?>" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="startDate" class="form-label" style="font-size: 12px; color: white;">Position</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo $_SESSION['position']  ?>" id="startDate" style="font-size: 12px; color: #555; padding: 5px;" required>
+                                                        <label for="startDate" class="form-label" style="font-size: 12px; color: #555;">Position</label>
+                                                        <input readonly type="text" class="form-control" value="<?php echo $_SESSION['position']  ?>" id="startDate" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="endDate" class="form-label" style="font-size: 12px; color: white;">Role</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo $_SESSION['role_display']  ?>" id="endDate" style="font-size: 12px; color: #555; padding: 5px;" required>
+                                                        <label for="endDate" class="form-label" style="font-size: 12px; color: #555;">Role</label>
+                                                        <input readonly type="text" class="form-control" value="<?php echo $_SESSION['role_display']  ?>" id="endDate" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="endDate" class="form-label" style="font-size: 12px; color: white;">Role</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo $_SESSION['gender']  ?>" id="endDate" style="font-size: 12px; color: #555; padding: 5px;" required>
+                                                        <label for="endDate" class="form-label" style="font-size: 12px; color: #555;">Role</label>
+                                                        <input readonly type="text" class="form-control" value="<?php echo $_SESSION['gender']  ?>" id="endDate" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                 </div>
                                                 </div>
@@ -390,15 +390,6 @@ include_once('../auth/db.php');
             </div>
             <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Powered by Workforce Management Team 2024</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
 
         </div>
         <!-- End of Content Wrapper -->

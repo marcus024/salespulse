@@ -15,7 +15,7 @@
       padding-left: 0;
       padding-right: 0;
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(to bottom right, #f0f4f8, #d9f7f6);
+      background: #1f2024;
       height: 100%;
     }
     * {
@@ -30,7 +30,7 @@
     flex-wrap: wrap;
     margin: 0; /* Remove margin */
     padding: 0;
-    background-color: white;
+    background-color: #1f2024;
 }
 
     .left-section {
@@ -38,7 +38,7 @@
       max-width: 400px;
       height: 100vh; /* Full height of the viewport */
       text-align: center;
-      background-color: #006270;
+      background-color: #f9ce45;
       border-top-left-radius: 50px; /* Curved top-left corner */
       border-bottom-left-radius: 50px; /* Curved bottom-left corner */
       display: flex; /* Center content */
@@ -58,12 +58,12 @@
     .right-section h1 {
       font-family: 'Poppins';
       font-size: 2rem;
-      color: #555;
+      color: white;
       margin-bottom: 0;
     }
     .right-section p {
       font-size: 1rem;
-      color: #777;
+      color: white;
       font-family: 'Poppins';
       font-weight: bold;
     }
@@ -102,28 +102,28 @@
       padding: 15px;
       font-size: 12px;
       font-family:'Poppins';
-      border: 1px solid #006272;
+      border: 1px solid #555;
       border-radius: 10px;
-      background-color: white; /* Light green background */
-      color: #36b9cc;
+      background-color: #1f2024; /* Light green background */
+      color: white;
       width: 100%;
       margin: 0 auto; 
       height: 40px;
       
     }
     .input-group input::placeholder {
-      color: #36b9cc;
+      color: #555;
       font-size:12px;
       font-family:'Poppins'
     }
     .input-group input:focus::placeholder {
-    color: #36b9cc; /* Makes the placeholder invisible */
+    color: white; /* Makes the placeholder invisible */
     }
     .input-group input:focus {
-      border-color: #17a2b8;
+      border-color: white;
       outline: none;
 
-      background-color: white; /* Slightly darker green when focused */
+      background-color:#1f2024; /* Slightly darker green when focused */
     }
     .input-group span {
     position: absolute;
@@ -133,7 +133,7 @@
     font-size: 12px;
     font-weight:bold;
     font-family:'Poppins';
-    color: #17a2b8;
+    color: white;
     cursor: pointer;
 
   }
@@ -142,30 +142,30 @@
     padding: 5px;
     font-size: 12px;
     font-family: 'Poppins';
-    border: 1px solid #006272 ;
+    border: 1px solid #555;
     border-radius: 10px;
-    background-color: white; /* Matches the input background */
-    color: #36b9cc;
+    background-color: #1f2024; /* Matches the input background */
+    color: white;
     width: 100%;
     height: 40px;
     }
 
     .input-group select:focus {
-        border-color: #006272 ;
+        border-color: white ;
         outline: none;
-        background-color: white; /* Slightly darker green for focus */
+        background-color: #1f2024; /* Slightly darker green for focus */
     }
 
     .input-group select option {
-        color: #006272; /* Black text for dropdown items */
+        color: #555; /* Black text for dropdown items */
     }
 
     .login-btn {
       width: 130px;
       height: 40px;
       padding: 5px;
-      background: #17a2b8;
-      color: #ffffff;
+      background: #f9ce45 ;
+      color:#1f2024 ;
       font-size: 15px;
       border: none;
       border-radius: 20px;
@@ -178,17 +178,18 @@
       margin-left:41%;
     }
     .login-btn:hover {
-      background: #138996;
+      background: rgb(232, 180, 11) ;
     }
     .signup-link {
       margin-left: 36%;
       margin-top: 1%;
       font-family:'Poppins';
       font-size:12px;
+      color:white;
      
     }
     .signup-link a {
-      color: #17a2b8;
+      color:  #f9ce45;
       text-decoration: none;
     }
     .signup-link a:hover {
@@ -259,10 +260,10 @@
     <!-- Right Section -->
     <div class="right-section">
       <h1>
-        <img src="../images/salespulselogo.png" alt="Logo" style="width: 45px; height: 40px; vertical-align: middle; margin-right: 10px;">
+        <img src="../images/log_icon_x.png" alt="Logo" style="width: 45px; height: 40px; vertical-align: middle; margin-right: 10px;">
         Sales Pulse
       </h1>
-      <p class="loginP" style="font-size: 40px; font-family:'Poppins'; margin-top: 1%; margin-bottom: 10px; color: black;">Register</p>
+      <p class="loginP" style="font-size: 40px; font-family:'Poppins'; margin-top: 1%; margin-bottom: 10px; color: white;">Register</p>
         <form class="user" action="regBack.php" method="POST">
             <!-- First Row - Two Columns -->
             <div class="row">
@@ -277,7 +278,7 @@
                 <div class="input-group">
                     <label for="gender">Gender</label>
                     <select required name="gender" id="gender" autocomplete="off">
-                        <option value="">Select your gender</option>
+                        <option value="" style="color:#555">Select your gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
@@ -326,8 +327,8 @@
                 <div class="input-group">
                     <label for="zipCode">Role</label>
                     <select name="role" class="form-select" id="roleSelect">
-                        <option value="" disabled selected>Select a Role</option> <!-- Visible text before selection -->
-                        <option value="salesdirector">Sales and Marketing Director</option>
+                        <option value="" style="color:#555" disabled selected>Select a Role</option> <!-- Visible text before selection -->
+                        <option value="salesdirector" >Sales and Marketing Director</option>
                         <option value="unithead">Business Unit Head</option>
                         <option value="salesmanager">Sales Manager</option>
                         <option value="accountmanager">Account Manager</option>
@@ -335,7 +336,7 @@
                 </div>
             </div>
             <!-- Submit Button -->
-            <button type="submit" class="login-btn">REGISTER</button>
+            <button type="submit" class="login-btn" >REGISTER</button>
         </form>
 
       <div class="signup-link">

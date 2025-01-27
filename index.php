@@ -15,7 +15,7 @@
       padding-left: 0;
       padding-right: 0;
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(to bottom right, #f0f4f8, #d9f7f6);
+      background: #1f2024;
       height: 100%;
     }
     * {
@@ -30,14 +30,14 @@
       flex-wrap: wrap;
       margin: 0; /* Remove margin */
       padding: 0;
-      background-color: white;
+      background-color: #1f2024;
     }
     .left-section {
       flex: 1;
       max-width: 400px;
       height: 100vh; /* Full height of the viewport */
       text-align: center;
-      background-color: #006270;
+      background-color: #f9ce45;
       border-top-left-radius: 50px; /* Curved top-left corner */
       border-bottom-left-radius: 50px; /* Curved bottom-left corner */
       display: flex; /* Center content */
@@ -56,12 +56,12 @@
     .right-section h1 {
       font-family: 'Poppins';
       font-size: 2rem;
-      color: #555;
+      color: white;
       margin-bottom: 0;
     }
     .right-section p {
       font-size: 1rem;
-      color: #777;
+      color: white;
       font-family: 'Poppins';
       font-weight: bold;
     }
@@ -83,25 +83,25 @@
       padding: 15px;
       font-size: 12px;
       font-family:'Poppins';
-      border: 1px solid #006272;
+      border: 1px solid #555;
       border-radius: 10px;
-      background-color: white; /* Light green background */
-      color: #36b9cc;
+      background-color: transparent; /* Light green background */
+      color: white;
       width: 70%;
       margin: 0 auto; 
     }
     .input-group input::placeholder {
-      color: #36b9cc;
+      color: #555d;
       font-size:12px;
       font-family:'Poppins'
     }
     .input-group input:focus::placeholder {
-    color: #36b9cc; /* Makes the placeholder invisible */
+    color: white; /* Makes the placeholder invisible */
     }
     .input-group input:focus {
-      border-color: #36b9cc;
+      border-color:white;
       outline: none;
-      background-color: white; /* Slightly darker green when focused */
+      background-color: transparent; /* Slightly darker green when focused */
     }
     .input-group span {
     position: absolute;
@@ -119,8 +119,8 @@
       width: 130px;
       height: 40px;
       padding: 5px;
-      background: #17a2b8;
-      color: #ffffff;
+      background: #f9ce45;
+      color: #1f2024;
       font-size: 15px;
       border: none;
       border-radius: 20px;
@@ -133,17 +133,18 @@
       margin-left:20%;
     }
     .login-btn:hover {
-      background: #138996;
+      background:rgb(232, 180, 11);
     }
     .signup-link {
       margin-left: 12%;
       margin-top: 1%;
       font-family:'Poppins';
       font-size:12px;
+      color:white;
      
     }
     .signup-link a {
-      color: #17a2b8;
+      color: #f9ce45;
       text-decoration: none;
     }
     .signup-link a:hover {
@@ -255,11 +256,11 @@
     <!-- Right Section -->
     <div class="right-section">
       <h1>
-        <img src="images/salespulselogo.png" alt="Logo" style="width: 45px; height: 40px; vertical-align: middle; margin-right: 10px;">
+        <img src="images/log_icon_x.png" alt="Logo" style="width: 45px; height: 40px; vertical-align: middle; margin-right: 10px;">
         Sales Pulse
       </h1>
       <p>Welcome back!</p>
-      <p class="loginP" style="font-size: 40px; font-family:'Poppins'; margin: 0; margin-bottom: 10px; color: black;">Log In</p>
+      <p class="loginP" style="font-size: 40px; font-family:'Poppins'; margin: 0; margin-bottom: 10px; color: white;">Log In</p>
       <div class="loading-overlay" id="loadingOverlay">
           <div class="spinner"></div>
           <div class="loading-text">Logging in, please wait...</div>
@@ -272,7 +273,7 @@
             <div class="input-group">
                 <label for="password">Password</label>
                 <input required name="password" type="password" placeholder="Enter your password" autocomplete="off" />
-                <span onclick="togglePassword()">Forgot Password?</span>
+                <span onclick="togglePassword()" style="color:white;">Forgot Password?</span>
             </div>
             <button type="submit" class="login-btn">LOGIN</button>
         </form>

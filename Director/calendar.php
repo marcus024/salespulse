@@ -78,7 +78,7 @@ include("../auth/db.php");
         /* Active Nav Item Background Color */
         .nav-item.active .nav-link {
             padding-left:10px;
-             background-color: #2a2925; 
+            background-color: #2a2925; 
             color: white; 
             font-weight: bold; /* Optional: Make the active menu text bold */
             border-radius:10px;
@@ -204,7 +204,7 @@ include("../auth/db.php");
                         <div class="mr-2" style="position: relative;">
                             <!-- Notification Button -->
                             <button id="notification-button" style="color: #36b9cc; padding-right: 50px; position: relative; background: none; border: none; cursor: pointer;">
-                                <img src="../images/notif.png" alt="Notification" style="height: 20px; width: 20px;">
+                                <img src="../images/notif_yellow.png" alt="Notification" style="height: 20px; width: 20px;">
                                 <span id="notification-count" style="
                                     font-family: 'Poppins', sans-serif; 
                                     font-weight: bold; 
@@ -219,8 +219,6 @@ include("../auth/db.php");
                                     
                                 </span>
                             </button>
-
-
                             <!-- Dropdown Container (Initially hidden) -->
                             <div id="notification-dropdown" 
                                 style="
@@ -329,7 +327,7 @@ include("../auth/db.php");
                                         <p style="font-family:'Poppins'; font-size:15px; font-weight:700; color:white; margin: 0;">Calendar</p>
                                         <!-- Edit Button -->
                                         <i class="fas fa-edit edit-icon"
-                                        style="font-size: 10px; color: white; cursor: pointer;"
+                                        style="font-size: 10px; color: #555; cursor: pointer;"
                                         data-bs-toggle="modal"
                                         data-bs-target="#exampleModal"></i>
                                     </div>
@@ -672,9 +670,9 @@ include("../auth/db.php");
                         </div>
                         <!-- Wide Container for Calendar Content -->
                         <div class="col-md-9 mb-4">
-                            <div class="card shadow-sm" style="background: #f9ce45; border:none;">
+                            <div class="card shadow-sm" style="background: #1f2024; border:none;">
                                 <div class="card-body" id="calendar-container" style="min-height: 400px; color: white;">
-                                    <h1 class="h5 mb-4" style="color:#1f2024;">Calendar Content</h1>
+                                    <h1 class="h5 mb-4" style="color:white;">Calendar Content</h1>
                                     <!-- Calendars will be dynamically added here -->
                                 </div>
                             </div>

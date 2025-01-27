@@ -20,7 +20,6 @@ include_once('dirback/dirviewback.php');
 <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 <!-- Custom styles for this page (if needed) -->
 <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
     <style>
         /* Set Poppins as the default font for the entire document */
         body, html {
@@ -64,6 +63,10 @@ include_once('dirback/dirviewback.php');
         }
     </style>
     <style>
+        :root {
+            --accent-color: #f9ce45; /* Accent color */
+        }
+
         .nav-item{
             color: white; /* Optional: Adjust text color when the item is active */
             font-weight: bold; /* Optional: Make the active menu text bold */
@@ -72,18 +75,19 @@ include_once('dirback/dirviewback.php');
         }
         /* Active Nav Item Background Color */
         .nav-item.active .nav-link {
-            /* padding-left:10px; */
-            background-color: white; /* Change this color to your preferred background color */
-            color: #36b9cc; /* Optional: Adjust text color when the item is active */
+            padding-left:10px;
+            background-color: #2a2925; /* Change this color to your preferred background color */
+            color: white; /* Optional: Adjust text color when the item is active */
             font-weight: bold; /* Optional: Make the active menu text bold */
             border-radius:10px;
             margin-bottom:5px;
+            border-left: 5px solid var(--accent-color);
         }
         /* Hover Effect for Nav Items */
         .nav-item .nav-link:hover {
-            /* padding-left:10px; */
-            background-color: white; /* Same color for hover effect */
-            color: #36b9cc; /* Text color for hover */
+            padding-left:10px;
+            background-color: #2a2925; /* Same color for hover effect */
+            color:white; /* Text color for hover */
             border-radius:10px;
             margin-bottom:5px;
         }
@@ -132,12 +136,12 @@ include_once('dirback/dirviewback.php');
         }
     </style>
 </head>
-<body id="page-top">
+<body id="page-top" style="background-color:#15151a;">
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" style="background-color:#15151a;">
         <!-- Sidebar -->
         <!-- Sidebar -->
-        <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#36b9cc; width: 200px; transition: all 0.3s; padding-left: 20px;">
+        <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#1f2024; width: 200px; transition: all 0.3s; padding-left: 20px;">
             <!-- Sidebar - Brand -->
             <div 
                 class="d-flex align-items-center mx-1" 
@@ -185,7 +189,6 @@ include_once('dirback/dirviewback.php');
             </li>
             <!-- Spacer to Push Footer to Bottom -->
             <li style="flex-grow: 1;"></li>
-            
             <li class="nav-item footer">
                 <span class="powered-by">Powered by</span>
                 <span class="company-name">WORKFORCE NEXTGEN</span><br>
@@ -195,26 +198,24 @@ include_once('dirback/dirviewback.php');
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content" style="background-color:white;">
                 <!-- Topbar -->
-                <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:white; padding-right:30px; padding-left:220px; z-index: 300;">
+                <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:#15151a; padding-right:30px; padding-left:220px; z-index: 300;">
                     <!-- Left Section: Home and Welcome Message -->
                     <div class="d-flex align-items-center" style="margin-top: 10px;"> <!-- Added margin-top to lower the left section -->
                         <div>
-                            <h1 style="color:#36b9cc; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Home</h1> <!-- Reduced spacing -->
+                            <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Home</h1> <!-- Reduced spacing -->
                             <p style="font-size:15px; color: #555; font-family:'Poppins'; margin: 0px;">Welcome Back <?php echo $_SESSION['user_name']; ?>!</p>
                         </div>
                     </div>
-
                     <!-- Right Section: Notification and Profile -->
                     <div class="d-flex align-items-center">
                         <!-- Notification Button -->
                         <div class="mr-2" style="position: relative;">
                             <!-- Notification Button -->
                             <button id="notification-button" style="color: #36b9cc; padding-right: 50px; position: relative; background: none; border: none; cursor: pointer;">
-                                <img src="../images/notif.png" alt="Notification" style="height: 20px; width: 20px;">
+                                <img src="../images/notif_yellow.png" alt="Notification" style="height: 20px; width: 20px;">
                                 <span id="notification-count" style="
                                     font-family: 'Poppins', sans-serif; 
                                     font-weight: bold; 
@@ -229,8 +230,6 @@ include_once('dirback/dirviewback.php');
                                     
                                 </span>
                             </button>
-
-
                             <!-- Dropdown Container (Initially hidden) -->
                             <div id="notification-dropdown" 
                                 style="
@@ -290,7 +289,7 @@ include_once('dirback/dirviewback.php');
                             style="position: absolute; top: 50px; right: 0; width: 200px; background-color: #fff; border: 1px solid #ccc; border-radius: 8px; padding: 10px; display: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                             <nav style="display: flex; flex-direction: column; font-family: 'Poppins'; font-size: 14px;">
                                 <a href="#" class="popup-link" onclick="showProfile()">Profile</a>
-                                <a href="#" class="popup-link" onclick="showProfile()">Settings</a>
+                                <a href="#" class="popup-link" >Settings</a>
                                 <a href="#" class="popup-link logout-link" data-bs-toggle="modal" data-bs-target="#outLog">Logout</a>
                             </nav>
                         </div>
@@ -327,78 +326,76 @@ include_once('dirback/dirviewback.php');
                 </div>
                 <!-- End of Topbar -->
                 <!-- Home Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" style=" background-color:#15151a;">
                     <div class="col-md-12 mb-6">
-                        <div class="card shadow-sm">
+                        <div class="card shadow-sm" style="background-color:#1f2024; border:none;">
                             <div class="card-body">
                                     <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
                                     <div class="stage-title" style="width: 100%; text-align: left; margin-bottom: 0; padding-bottom: 0; display: flex; align-items: start;">
                                         <div style="margin-right: 10px;">
-                                            <img src="../images/projecticon.png" alt="Project Icon" style="width: 60px; height: 60px; vertical-align: middle;" />
+                                            <img src="../images/project_s.png" alt="Project Icon" style="width: 60px; height: 60px; vertical-align: middle;" />
                                         </div>
                                         <div class="col-md-12 mb-3">
-                                            <p style="color: #36b9cc; margin-top: 0; font-family: 'Poppins'; font-size:30px; font-weight:bold; display: inline;">PROJECT PROFILE</p>
-                                            <p id="projectUniqueId" style="color: #36b9cc; margin-top: 0; margin-bottom: 5px; font-family: 'Poppins'; font-size: 12px; font-weight: 500;">
+                                            <p style="color:white; margin-top: 0; font-family: 'Poppins'; font-size:30px; font-weight:bold; display: inline;">PROJECT PROFILE</p>
+                                            <p id="projectUniqueId" style="color: white; margin-top: 0; margin-bottom: 5px; font-family: 'Poppins'; font-size: 12px; font-weight: 500;">
                                                 Project ID: <span id="project-id-placeholder"><strong><?php echo htmlspecialchars($project['project_unique_id']); ?></strong></span>
                                             </p>
                                         </div>
                                     </div>
                                     <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
-                                        <button onclick="history.back()" style="background: none; border: none; color: #36b9cc; font-size: 24px; cursor: pointer;">
+                                        <button onclick="history.back()" style="background: none; border: none; color: #555; font-size: 24px; cursor: pointer;">
                                             <i class="fas fa-arrow-left"></i> 
                                         </button>
                                     </div>
                                 </div>
-                                <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
-                                    <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
+                                <div class="container" style="background-color:#1f2024; padding: 10px; border-radius: 20px"> 
+                                    <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
                                         <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="clientCompany" class="form-label" style="font-size: 12px; color: white;">Client/Company</label>
-                                                        <input readonly type="text" class="form-control input-sm" id="clientCompany" value="<?php echo htmlspecialchars($project['company_name']); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
+                                                        <label for="clientCompany" class="form-label" style="font-size: 12px; color:#555;">Client/Company</label>
+                                                        <input readonly type="text" class="form-control input-sm" id="clientCompany" value="<?php echo htmlspecialchars($project['company_name']); ?>" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="accountManager" class="form-label" style="font-size: 12px; color: white;">Account Manager</label>
-                                                        <input readonly type="text" class="form-control" id="accountManager" value="<?php echo htmlspecialchars($project['account_manager']); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
+                                                        <label for="accountManager" class="form-label" style="font-size: 12px; color: #555;">Account Manager</label>
+                                                        <input readonly type="text" class="form-control" id="accountManager" value="<?php echo htmlspecialchars($project['account_manager']); ?>" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="productType" class="form-label" style="font-size: 12px; color: white;">Product Type</label>
-                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['product_type']); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="startDate" class="form-label" style="font-size: 12px; color: white;">Start Date</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['start_date']); ?>" id="startDate" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="endDate" class="form-label" style="font-size: 12px; color: white;">End Date</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['end_date']); ?>" id="endDate" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="source" class="form-label" style="font-size: 12px; color: white;">Source</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['source']); ?>" id="source" style="font-size: 12px; color: #555; padding: 5px;" required>
+                                                        <label for="productType" class="form-label" style="font-size: 12px; color: #555;">Product Type</label>
+                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['product_type']); ?>" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="status" class="form-label" style="font-size: 12px; color: white;">Status</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['status']); ?>" id="currentStage"  style="font-size: 12px; color: #555; padding: 5px;" required>
+                                                        <label for="startDate" class="form-label" style="font-size: 12px; color: #555;">Start Date</label>
+                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['start_date']); ?>" id="startDate" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="currentStage" class="form-label" style="font-size: 12px; color: white;">Current Stage</label>
-                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['current_stage']); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
+                                                        <label for="endDate" class="form-label" style="font-size: 12px; color: #555;">End Date</label>
+                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['end_date']); ?>" id="endDate" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="clientType" class="form-label" style="font-size: 12px; color: white;">Client Type</label>
-                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['client_type']); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
+                                                        <label for="source" class="form-label" style="font-size: 12px; color: #555;">Source</label>
+                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['source']); ?>" id="source" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4 mb-2">
+                                                        <label for="status" class="form-label" style="font-size: 12px; color: #555;">Status</label>
+                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['status']); ?>" id="currentStage"  style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
+                                                    </div>
+                                                    <div class="col-md-4 mb-2">
+                                                        <label for="currentStage" class="form-label" style="font-size: 12px; color: #555;">Current Stage</label>
+                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['current_stage']); ?>" style="font-size: 12px; color:white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
+                                                    </div>
+                                                    <div class="col-md-4 mb-2">
+                                                        <label for="clientType" class="form-label" style="font-size: 12px; color: #555;">Client Type</label>
+                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['client_type']); ?>" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                 </div>
                                                 <?php include("dirback/pro_stage_details.php"); ?>
-                                                  
-                                              
-                                                <div class="container mt-4 p-3" style="background: white; border-radius: 8px;">
-                                                    <h3 style="font-family: 'Poppins', sans-serif; font-weight: bold; color: #555; text-align: center; margin-bottom: 5pxpx;">Stages Summary of <?php echo htmlspecialchars($project['company_name']); ?></h3>
+                                                <div class="container mt-4 p-3" style="background: #555; border-radius: 5px;">
+                                                    <h3 style="font-family: 'Poppins', sans-serif; font-weight: bold; color: white; text-align: center; margin-bottom: 5pxpx;">Stages Summary of <?php echo htmlspecialchars($project['company_name']); ?></h3>
                                                    <!-- Row to hold the search bar and export buttons -->
                                                     <div class="d-flex justify-content-between align-items-center mb-1">
                                                         <!-- Placeholder for future left-side content (if needed) -->
@@ -407,13 +404,13 @@ include_once('dirback/dirviewback.php');
                                                         <div class="d-flex align-items-center" style="gap: 10px;">
                                                             <!-- Refresh Text Button -->
                                                             <button type="button" class="btn btn-link" onclick="refreshPage()" 
-                                                                    style="font-size: 12px; text-decoration: underline; color: #36b9cc; margin: 0; padding: 0;">
+                                                                    style="font-size: 12px; text-decoration: underline; color:#f9ce45; margin: 0; padding: 0;">
                                                                 Refresh
                                                             </button>
                                                             <!-- Dropdown for Export Options -->
                                                             <div class="btn-group" role="group">
                                                                 <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
-                                                                        style="font-size: 10px; height: 30px; margin: 0; border:none; background-color:#36b9cc">
+                                                                        style="font-size: 10px; color:#1f2024;  height: 30px; margin: 0; border:none; background-color:#f9ce45">
                                                                     Export
                                                                 </button>
                                                                 <ul class="dropdown-menu">
@@ -425,22 +422,22 @@ include_once('dirback/dirviewback.php');
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="table-responsive"  id="table-view"  style="overflow-x: auto; overflow-y: auto; max-height: 400px;">
-                                                        <table class="table table-bordered " id="stageTable" style="font-size: 10px; width: 100%; min-width: 1200px;">
-                                                            <thead class="table-light" yle="font-size: 10px;">
+                                                    <div class="table-responsive" id="table-view" style="overflow-x: auto; overflow-y: auto; max-height: 400px; background: #1f2024;">
+                                                        <table class="modern-table" id="stageTable">
+                                                            <thead>
                                                                 <tr>
-                                                                    <th style="padding: 5px;">Stage</th>
-                                                                    <th style="padding: 5px;">Unique ID</th>
-                                                                    <th style="padding: 5px;">Start Date</th>
-                                                                    <th style="padding: 5px;">End Date</th>
-                                                                    <th style="padding: 5px;">Status</th>
-                                                                    <th style="padding: 5px;">Duration</th>
-                                                                    <th style="padding: 5px;">Solution</th>
-                                                                    <th style="padding: 5px;">Technology</th>
-                                                                    <th style="padding: 5px;">Deal Size</th>
-                                                                    <th style="padding: 5px;">Product</th>
-                                                                    <th style="padding: 5px;">Stage Remarks</th>
-                                                                    <th style="padding: 5px;">Action</th>
+                                                                    <th>Stage</th>
+                                                                    <th>Unique ID</th>
+                                                                    <th>Start Date</th>
+                                                                    <th>End Date</th>
+                                                                    <th>Status</th>
+                                                                    <th>Duration</th>
+                                                                    <th>Solution</th>
+                                                                    <th>Technology</th>
+                                                                    <th>Deal Size</th>
+                                                                    <th>Product</th>
+                                                                    <th>Stage Remarks</th>
+                                                                    <th>Action</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -457,18 +454,23 @@ include_once('dirback/dirviewback.php');
                                                                     $stage_data = $project_data[$key];
                                                                 ?>
                                                                 <tr>
-                                                                    <td style="padding: 5px;"><?php echo $stage_name; ?></td>
-                                                                    <td style="padding: 5px;"><?php echo htmlspecialchars($current_project_id); ?></td>
-                                                                    <td style="padding: 5px;"><?php echo !empty($stage_data['start_date_' . $key]) ? htmlspecialchars($stage_data['start_date_' . $key]) : 'Not Yet Started'; ?></td>
-                                                                    <td style="padding: 5px;"><?php echo !empty($stage_data['end_date_' . $key]) ? htmlspecialchars($stage_data['end_date_' . $key]) : 'Not Yet Ended'; ?></td>
-                                                                    <td style="padding: 5px;"><?php echo !empty($stage_data['status_' . $key]) ? htmlspecialchars($stage_data['status_' . $key]) : 'No Status'; ?></td>
-                                                                    <td style="padding: 5px;"><?php echo !empty($stage_data['duration']) ? htmlspecialchars($stage_data['duration']) : '0'; ?></td>
-                                                                    <td style="padding: 5px;"><?php echo !empty($stage_data['solution']) ? htmlspecialchars($stage_data['solution']) : 'N/A'; ?></td>
-                                                                    <td style="padding: 5px;"><?php echo !empty($stage_data['technology']) ? htmlspecialchars($stage_data['technology']) : 'N/A'; ?></td>
-                                                                    <td style="padding: 5px;"><?php echo !empty($stage_data['deal_size']) ? htmlspecialchars($stage_data['deal_size']) : 'N/A'; ?></td>
-                                                                    <td style="padding: 5px;"><?php echo !empty($stage_data['product']) ? htmlspecialchars($stage_data['product']) : 'N/A'; ?></td>
-                                                                    <td style="padding: 5px;"><?php echo !empty($stage_data['stage_' . $key . '_remarks']) ? htmlspecialchars($stage_data['stage_' . $key . '_remarks']) : 'N/A'; ?></td>
-                                                                    <td class="action-buttons" style="padding: 5px;">
+                                                                    <td><?php echo $stage_name; ?></td>
+                                                                    <td><?php echo htmlspecialchars($current_project_id); ?></td>
+                                                                    <td><?php echo !empty($stage_data['start_date_' . $key]) ? htmlspecialchars($stage_data['start_date_' . $key]) : 'Not Yet Started'; ?></td>
+                                                                    <td><?php echo !empty($stage_data['end_date_' . $key]) ? htmlspecialchars($stage_data['end_date_' . $key]) : 'Not Yet Ended'; ?></td>
+                                                                    <td><?php echo !empty($stage_data['status_' . $key]) ? htmlspecialchars($stage_data['status_' . $key]) : 'No Status'; ?></td>
+                                                                    <td><?php echo !empty($stage_data['duration']) ? htmlspecialchars($stage_data['duration']) : '0'; ?></td>
+                                                                    <td><?php echo !empty($stage_data['solution']) ? htmlspecialchars($stage_data['solution']) : 'N/A'; ?></td>
+                                                                    <td><?php echo !empty($stage_data['technology']) ? htmlspecialchars($stage_data['technology']) : 'N/A'; ?></td>
+                                                                    <td><?php echo !empty($stage_data['deal_size']) ? htmlspecialchars($stage_data['deal_size']) : 'N/A'; ?></td>
+                                                                    <td><?php echo !empty($stage_data['product']) ? htmlspecialchars($stage_data['product']) : 'N/A'; ?></td>
+                                                                    <td><?php echo !empty($stage_data['stage_' . $key . '_remarks']) ? htmlspecialchars($stage_data['stage_' . $key . '_remarks']) : 'N/A'; ?></td>
+                                                                    <!-- <td class="action-buttons">
+                                                                        <a class="view-btn" href="#" onclick="smoothNavigate('viewstage<?php echo $stage_map[$key]; ?>.php?project_id=<?php echo htmlspecialchars($current_project_id); ?>')">
+                                                                            <i class="fas fa-eye"></i>
+                                                                        </a>
+                                                                    </td> -->
+                                                                    <td class="action-buttons">
                                                                        <?php 
                                                                         $stage_map = [
                                                                             'stage_one' => '1',
@@ -479,20 +481,8 @@ include_once('dirback/dirviewback.php');
                                                                         ];
                                                                         ?>
                                                                         <a class="view-btn" href="#" onclick="smoothNavigate('viewstage<?php echo $stage_map[$key]; ?>.php?project_id=<?php echo htmlspecialchars($current_project_id); ?>')">
-                                                                            <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
+                                                                            <i class="fas fa-eye" style="font-size: 12px; color: #f9ce45;"></i>
                                                                         </a>
-                                                                        <!-- <?php if (empty($project_data['stage_five']['status_stage_five']) || $project_data['stage_five']['status_stage_five'] !== 'Completed'): ?>
-                                                                            <button type="button" class="edit-btn" 
-                                                                                    data-bs-toggle="modal" 
-                                                                                    data-bs-target="#multiStepModal" 
-                                                                                    onclick="openModal('<?php echo htmlspecialchars($current_project_id); ?>')" 
-                                                                                    style="background: none; border: none;">
-                                                                                <i class="fas fa-pencil-alt" style="font-size: 12px; color: #36b9cc;"></i>
-                                                                            </button>
-                                                                        <?php endif; ?>
-                                                                        <button type="button" class="delete-btn" id="deleteButtons<?php echo $stage_map[$key]; ?>"  data-project-id="<?php echo $project['project_unique_id']; ?>" style="background: none; border: none;">
-                                                                            <i class="fas fa-trash" style="font-size: 12px; color: #ff4c4c;"></i>
-                                                                        </button> -->
                                                                     </td>
                                                                 </tr>
                                                                 <?php } ?>
@@ -510,7 +500,6 @@ include_once('dirback/dirviewback.php');
                                                         align-items: center;
                                                     }
                                                     
-
                                                     .action-buttons .view-btn i,
                                                     .action-buttons .edit-btn i,
                                                     .action-buttons .delete-btn i {
@@ -532,7 +521,68 @@ include_once('dirback/dirviewback.php');
                                                         color: #cc0000; /* Hover color for delete icon */
                                                         transform: scale(1.2); /* Slightly enlarge */
                                                     }
+                                                    .modern-table {
+                                                        width: 100%;
+                                                        min-width: 1200px;
+                                                        border-collapse: collapse;
+                                                        font-size: 12px;
+                                                        background: #1f2024;
+                                                        color: white;
+                                                    }
 
+                                                    .modern-table thead {
+                                                        position: sticky;
+                                                        top: 0;
+                                                        background: #282b30;
+                                                        z-index: 1;
+                                                    }
+
+                                                    .modern-table thead th {
+                                                        text-align: left;
+                                                        padding: 10px;
+                                                        font-family: 'Poppins', sans-serif;
+                                                        color: white;
+                                                        font-weight: 600;
+                                                        border-bottom: 2px solid #333;
+                                                    }
+
+                                                    .modern-table tbody tr {
+                                                        border-bottom: 1px solid #333;
+                                                        transition: background-color 0.2s ease;
+                                                    }
+
+                                                    .modern-table tbody tr:hover {
+                                                        background-color: #35373d;
+                                                    }
+
+                                                    .modern-table tbody td {
+                                                        padding: 10px;
+                                                        font-family: 'Poppins', sans-serif;
+                                                        color: #d1d1d1;
+                                                    }
+
+                                                    /* Action Buttons Styling */
+                                                    .action-buttons {
+                                                        display: flex;
+                                                        gap: 8px;
+                                                        justify-content: center;
+                                                    }
+
+                                                    .action-buttons a {
+                                                        text-decoration: none;
+                                                        font-size: 14px;
+                                                        color: #36b9cc;
+                                                        transition: color 0.3s ease;
+                                                    }
+
+                                                    .action-buttons a:hover {
+                                                        color: #2892a1;
+                                                    }
+
+                                                    /* Remove Borders from Container */
+                                                    .table-responsive {
+                                                        border: none;
+                                                    }
                                                 </style>
                                                 <style>
                                                     .table-responsive::-webkit-scrollbar {
@@ -541,9 +591,10 @@ include_once('dirback/dirviewback.php');
                                                     }
 
                                                     .table-responsive::-webkit-scrollbar-thumb {
-                                                        background-color: #36b9cc;
+                                                        background-color: #f9ce45;
                                                         border-radius: 10px;
                                                         height: 10px;
+                                                        width:15px;
                                                     }
 
                                                     .table-responsive::-webkit-scrollbar-thumb:hover {
@@ -551,7 +602,7 @@ include_once('dirback/dirviewback.php');
                                                     }
                                                 </style>
 
-                                                    <div class="container" style="background-color: #36b9cc; padding-top: 100px; border-radius: 20px; position: relative;">
+                                                    <div class="container" style="background-color: #1f2024; padding-top: 100px; border-radius: 20px; position: relative;">
                                                         <?php
                                                         $stageFiveStatus = isset($project_data['stage_five']['status_stage_five']) 
                                                             ? htmlspecialchars($project_data['stage_five']['status_stage_five']) 
@@ -590,7 +641,7 @@ include_once('dirback/dirviewback.php');
                                                                 class="btn btn-white play-btn" 
                                                                 id="completeProjectButton" 
                                                                 onclick="completeProject('<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
-                                                                style="position: absolute; bottom: 10px; right: 10px;">
+                                                                style="position: absolute; bottom: 10px; right: 10px; background:#f9ce45; ">
                                                                 <i class="fas fa-play"></i> Complete Project
                                                             </button>
                                                         <?php elseif ($status == 'Not Yet Started'): ?>
@@ -600,7 +651,7 @@ include_once('dirback/dirviewback.php');
                                                                 id="startJourneyButton" 
                                                                 data-bs-toggle="modal" 
                                                                 data-bs-target="#startJourneyModal" 
-                                                                style="position: absolute; bottom: 10px; right: 10px;">
+                                                                style="position: absolute; bottom: 10px; right: 10px; background:#f9ce45; ">
                                                                 <i class="fas fa-play"></i> Start Journey
                                                             </button>
                                                         <?php elseif ($status == 'Cancelled'): ?>
@@ -610,7 +661,7 @@ include_once('dirback/dirviewback.php');
                                                                 id="startJourneyButton" 
                                                                 data-bs-toggle="modal" 
                                                                 data-bs-target="#startJourneyModal" 
-                                                                style="position: absolute; bottom: 10px; right: 10px;">
+                                                                style="position: absolute; bottom: 10px; right: 10px; background:#f9ce45; ">
                                                                 <i class="fas fa-play"></i> Continue Journey
                                                             </button>
                                                         <?php else: ?>
@@ -621,7 +672,7 @@ include_once('dirback/dirviewback.php');
                                                                 data-bs-toggle="modal" 
                                                                 data-bs-target="#multiStepModal" 
                                                                 onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
-                                                                style="position: absolute; bottom: 10px; right: 10px;">
+                                                                style="position: absolute; bottom: 10px; right: 10px; background:#f9ce45; ">
                                                                 <i class="fas fa-play"></i> Continue Journey
                                                             </button>
                                                         <?php endif; ?>
@@ -632,14 +683,14 @@ include_once('dirback/dirviewback.php');
                                                         data-bs-toggle="modal" 
                                                         data-bs-target="#multiStepModal" 
                                                         onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
-                                                        style="position: absolute; bottom: 10px; right: 10px; display: none;">
+                                                        style="position: absolute; bottom: 10px; right: 10px; display: none; background:#f9ce45; ">
                                                         <i class="fas fa-play"></i> Continue Journey
                                                     </button>
                                                     <style>
                                                         .btn.play-btn {
                                                             background-color: white;
-                                                            border: 2px solid #36b9cc; /* Button border color */
-                                                            color: #36b9cc; /* Text color */
+                                                            border: 2px solid#1f2024; /* Button border color */
+                                                            color:#1f2024; /* Text color */
                                                             padding: 10px 20px;
                                                             font-size: 16px;
                                                             font-weight: bold;
@@ -652,13 +703,13 @@ include_once('dirback/dirviewback.php');
 
                                                         /* Style for the icon inside the button */
                                                         .btn.play-btn i {
-                                                            color: #36b9cc; /* Icon color */
+                                                            color: #1f2024; /* Icon color */
                                                             transition: color 0.3s ease; /* Smooth transition when changing color */
                                                         }
 
                                                         /* Button hover effect */
                                                         .btn.play-btn:hover {
-                                                            background-color: #36b9cc; /* Change background color on hover */
+                                                            background-color:#1f2024; /* Change background color on hover */
                                                             color: white; /* Change text color on hover */
                                                             border-color:white; /* Change border color on hover */
                                                             
@@ -1032,8 +1083,7 @@ function checkProjectStatus() {
             popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
         }
         function showProfile() {
-            // Redirect or perform action to show the profile
-            alert('Navigating to Profile Page');
+            window.location.href = "viewprofile.php";
         }
         // Hide the popup when clicking outside
         document.addEventListener('click', function (event) {

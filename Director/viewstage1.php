@@ -282,7 +282,7 @@ include_once('dirback/dirviewback.php');
                             style="position: absolute; top: 50px; right: 0; width: 200px; background-color: #fff; border: 1px solid #ccc; border-radius: 8px; padding: 10px; display: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                             <nav style="display: flex; flex-direction: column; font-family: 'Poppins'; font-size: 14px;">
                                 <a href="#" class="popup-link" onclick="showProfile()">Profile</a>
-                                <a href="#" class="popup-link" onclick="showProfile()">Settings</a>
+                                <a href="#" class="popup-link">Settings</a>
                                 <a href="#" class="popup-link logout-link" data-bs-toggle="modal" data-bs-target="#outLog">Logout</a>
                             </nav>
                         </div>
@@ -968,7 +968,6 @@ function checkProjectStatus() {
 
             if (response.status === 'success') {
                 var button = document.querySelector(".play-btn");
-
                 if (response.project_status === 'Ongoing') {
                     button.innerHTML = '<i class="fas fa-play"></i> Continue Journey'; // Change text to Continue Journey
                     button.setAttribute("onclick", "continuePhase()"); // Update the onclick action
@@ -981,12 +980,7 @@ function checkProjectStatus() {
     };
 }
 
-// Call the function to check project status when the page loads
-// window.onload = function() {
-//     checkProjectStatus();
-// };
-
-    </script>
+</script>
 
     <script>
         function togglePopup() {
@@ -994,8 +988,7 @@ function checkProjectStatus() {
             popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
         }
         function showProfile() {
-            // Redirect or perform action to show the profile
-            alert('Navigating to Profile Page');
+            window.location.href = "viewprofile.php";
         }
         // Hide the popup when clicking outside
         document.addEventListener('click', function (event) {

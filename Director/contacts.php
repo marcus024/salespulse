@@ -65,28 +65,34 @@ include("../auth/db.php");
         }
     </style>
     <style>
+        :root {
+            --accent-color: #f9ce45; /* Accent color */
+        }
+
         .nav-item{
-            color: white; /* Optional: Adjust text color when the item is active */
+            color: #76777a; /* Optional: Adjust text color when the item is active */
             font-weight: bold; /* Optional: Make the active menu text bold */
             border-radius:10px;
             margin-bottom:5px;
         }
         /* Active Nav Item Background Color */
         .nav-item.active .nav-link {
-            /* padding-left:10px; */
-            background-color: white; /* Change this color to your preferred background color */
-            color: #36b9cc; /* Optional: Adjust text color when the item is active */
+            padding-left:10px;
+            background-color: #2a2925; /* Change this color to your preferred background color */
+            color: white; /* Optional: Adjust text color when the item is active */
             font-weight: bold; /* Optional: Make the active menu text bold */
             border-radius:10px;
             margin-bottom:5px;
+            border-left: 5px solid var(--accent-color);
         }
         /* Hover Effect for Nav Items */
         .nav-item .nav-link:hover {
-            /* padding-left:10px; */
-            background-color: white; /* Same color for hover effect */
-            color: #36b9cc; /* Text color for hover */
+            padding-left:10px;
+            background-color: #2a2925; /* Same color for hover effect */
+            color: white; /* Text color for hover */
             border-radius:10px;
             margin-bottom:5px;
+            border-left: 5px solid var(--accent-color);
         }
     </style>
     <style>
@@ -115,18 +121,17 @@ include("../auth/db.php");
 
 </head>
 
-<body id="page-top">
+<body id="page-top" style="background-color:#15151a;">
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" style="background-color:#15151a;">
         <!-- Sidebar -->
         <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="
-            background-color:#36b9cc; 
+            background-color:#1f2024; 
             width: 200px; 
             transition: all 0.3s; 
             padding-left: 20px; 
             display: flex; 
-            flex-direction: column; 
-            height: 100vh;">
+            ">
             
             <!-- Sidebar - Brand -->
             <div 
@@ -145,11 +150,10 @@ include("../auth/db.php");
                 <!-- The text -->
                 <span>SALES PULSE</span>
             </div>
-            
+            <!-- <div style="height: 0.5px; background-color:white;"></div> -->
+            <div style="height: 0.5px;"></div>
             <!-- Divider -->
-            <li class="nav-item">
-                <hr class="sidebar-divider my-2">
-            </li>
+            <hr class="sidebar-divider my-2">
             
             <!-- Nav Items -->
             <li class="nav-item">
@@ -201,11 +205,11 @@ include("../auth/db.php");
 
                 <!-- Topbar -->
                 <!-- Fixed Topbar -->
-                <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:white; padding-right:30px; padding-left:220px; z-index: 300;">
+                <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:#15151a; padding-right:30px; padding-left:220px; z-index: 300;">
                     <!-- Left Section: Home and Welcome Message -->
                     <div class="d-flex align-items-center" style="margin-top: 30px;"> <!-- Added margin-top to lower the left section -->
                         <div>
-                            <h1 style="color:#36b9cc; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Contacts</h1> <!-- Reduced spacing -->
+                            <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Contacts</h1> <!-- Reduced spacing -->
                             <!-- <p style="font-size:15px; color: #555; font-family:'Poppins'; margin: 0px;">Welcome Back <?php echo $_SESSION['user_name']; ?>!</p> -->
                         </div>
                     </div>
@@ -216,7 +220,7 @@ include("../auth/db.php");
                         <div class="mr-2" style="position: relative;">
                             <!-- Notification Button -->
                             <button id="notification-button" style="color: #36b9cc; padding-right: 50px; position: relative; background: none; border: none; cursor: pointer;">
-                                <img src="../images/notif.png" alt="Notification" style="height: 20px; width: 20px;">
+                                <img src="../images/notif_yellow.png" alt="Notification" style="height: 20px; width: 20px;">
                                 <span id="notification-count" style="
                                     font-family: 'Poppins', sans-serif; 
                                     font-weight: bold; 
@@ -328,14 +332,14 @@ include("../auth/db.php");
                 </div>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" style=" background-color:#15151a;">
                     <div class="row">
                         <!-- Narrow Container for Add Calendar -->
                         <div class="col-md-3 mb-4">
-                            <div class="card shadow-sm">
+                            <div class="card shadow-sm" style="background-color:#1f2024; border:none;">
                                 <div class="card-body">
                                     <p style="font-family:'Poppins'; font-size:15px; font-weight:700; color:#555">Contacts</p>
-                                        <a href="#" class="btn btn-info btn-icon-split w-70" data-bs-toggle="modal" data-bs-target="#addContact">
+                                        <a href="#" style="border:none; background:#f9ce45;" class="btn btn-info btn-icon-split w-70" data-bs-toggle="modal" data-bs-target="#addContact">
                                             <span class="icon text-white-0">
                                             <i class="fas fa-plus"></i>
                                             </span>
@@ -347,11 +351,11 @@ include("../auth/db.php");
                                                     margin: 0;
                                                     box-shadow: none; 
                                                     display: inline-block; 
-                                                    color: inherit; 
+                                                    color: #1f2024; 
                                                     font-size: 16px;
                                                 }
                                             </style>
-                                            <span class="text" style="font-family:'Poppins'">Add Contacts</span>
+                                            <span class="text" style="font-family:'Poppins'; color:#1f2024; background:#f9ce45;">Add Contacts</span>
                                         </a>
                                 </div>
                             </div>
@@ -359,9 +363,9 @@ include("../auth/db.php");
 
                         <!-- Wide Container for Calendar Content -->
                         <div class="col-md-9 mb-4">
-                            <div class="card shadow-sm" style="background-color:#36b9cc;">
+                            <div class="card shadow-sm" style="background-color:#1f2024; border:none;">
                                 <div class="card-body" id="calendar-container" style="min-height: 400px; color: white;">
-                                    <h1 class="h5 mb-4" style="font-family:'Poppins'">My Contacts</h1>
+                                    <h1 class="h5 mb-4" style="font-family:'Poppins'; color:#f9ce45; ">My Contacts</h1>
                                     <!-- Contact List Cards -->
                                     <div id="contact-list" class="contact-list">
                                         <style>
@@ -374,14 +378,14 @@ include("../auth/db.php");
                                                     width: 8px;
                                                 }
                                                 #contact-list::-webkit-scrollbar-thumb {
-                                                    background-color: #009394;
+                                                    background-color: #f9ce45;
                                                     border-radius: 4px;
                                                 }
                                                 #contact-list::-webkit-scrollbar-thumb:hover {
-                                                    background-color: #004d47;
+                                                    background-color:#f9ce45;
                                                 }
                                                 #contact-list::-webkit-scrollbar-track {
-                                                    background: #f0f0f0;
+                                                    background:#1f2024;
                                                 }
                                         </style>
                                         <!-- Example Contact Card 1 -->
@@ -407,13 +411,13 @@ include("../auth/db.php");
                                         $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         ?>
 
-                                        <div class="container">
+                                        <div class="container" style="border:none;">
                                             <?php foreach ($contacts as $contact): ?>
-                                                <div class="card mb-3" style="border-radius: 20px;">
-                                                    <div class="card-header" style="font-family:'Poppins';background: linear-gradient(to right, #36b9cc,rgb(25, 230, 230)); color: white; border-radius:20px; font-size: 18px; font-weight: bold;">
+                                                <div class="card mb-3" style="border-radius: 20px; border:none;">
+                                                    <div class="card-header" style="font-family:'Poppins';background:  #f9ce45; color: #1f2024; border-color: #f9ce45; border-radius:20px 20px 0 0; font-size: 18px; font-weight: bold;">
                                                         Contact Profile
                                                     </div>
-                                                    <div class="card-body" style="background-color: white; color: #555; padding: 10px; border-radius:20px; padding-left: 50px;">
+                                                    <div class="card-body" style="background-color: #2a2925; color: white; border-color:#2a2925; padding: 10px; border-radius:0 0 20px 20px; padding-left: 50px;">
                                                         <div class="d-flex align-items-center mb-2" style="gap: 50px;">
                                                                 <!-- Change image source based on gender -->
                                                                 <?php if ($contact['gender'] == 'Male'): ?>
@@ -448,13 +452,13 @@ include("../auth/db.php");
                                                                 <div style="height:10px;"></div>
                                                                 <div class="d-flex justify-content-between align-items-center" style="font-size: 14px;">
                                                                     <p class="mb-0" style="font-size: 10px; font-family: 'Poppins';">
-                                                                        <i class="fas fa-envelope" style="font-size: 20px; color: #009394; margin-right: 5px;"></i>
+                                                                        <i class="fas fa-envelope" style="font-size: 20px; color: #f9ce45; margin-right: 5px;"></i>
                                                                         <span id="email" data-field="email"><?php echo htmlspecialchars($contact['email']); ?></span>
                                                                         <i class="fas fa-edit edit-icon" data-target="email" style="font-size: 9px; color: #555;"></i>
                                                                     </p>
                                                                     <div style="width: 20px;"></div>
                                                                     <p class="mb-0" style="font-size: 10px; font-family: 'Poppins';">
-                                                                        <i class="fas fa-phone-alt" style="font-size: 20px; color: #009394; margin-right: 8px;"></i>
+                                                                        <i class="fas fa-phone-alt" style="font-size: 20px; color: #f9ce45; margin-right: 8px;"></i>
                                                                         <span id="contact_number" data-field="contact_number"><?php echo htmlspecialchars($contact['contact_number']); ?></span>
                                                                         <i class="fas fa-edit edit-icon" data-target="contact_number" style="font-size: 9px; color: #555;"></i>
                                                                     </p>
@@ -467,7 +471,7 @@ include("../auth/db.php");
                                                                     cursor: pointer;
                                                                 }
                                                                 i:hover {
-                                                                    color: #009394; /* Hover color for edit icon */
+                                                                    color:#f9ce45; /* Hover color for edit icon */
                                                                     transform: scale(1.2); /* Slightly enlarge */
                                                                 }
                                                             </style>
@@ -488,34 +492,34 @@ include("../auth/db.php");
                 <div class="modal fade" id="addContact" tabindex="-1" aria-labelledby="editTaskModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header" style="background-color:#36b9cc; height: 50px;">
-                                <h5 class="modal-title" id="addProjectModalLabel" style="font-family:'Poppins';font-size: 15px; color:white;">Add Contact</h5>
+                            <div class="modal-header" style="background-color:#f9ce45; border:none; height: 50px;">
+                                <h5 class="modal-title" id="addProjectModalLabel" style="font-family:'Poppins';font-size: 15px; color:#1f2024;">Add Contact</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body" style="font-size: 12px;">
+                            <div class="modal-body" style="font-size: 12px; background:#1f2024;">
                                 <form id="editTaskForm" method="POST"action="dirback/add_contact.php">
                                     <!-- Third Row: Company and Name -->
                                     <div class="row mb-1">
                                         <div class="col-md-12">
-                                            <label for="company" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Company</label>
-                                            <input name="companyContact" type="text" style="font-family:'Poppins'; font-size:14px" class="form-control form-control-sm" id="company" placeholder="Enter company name">
+                                            <label for="company" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Company</label>
+                                            <input name="companyContact" type="text" style="color:white; background:#1f2024; font-family:'Poppins'; font-size:12px" class="form-control" id="company" placeholder="Enter company name">
                                         </div>
                                     </div>
                                     <div class="row mb-1">
                                         <div class="col-md-12">
-                                            <label for="name" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Name</label>
-                                            <input name="nameContact" type="text" style="font-family:'Poppins'; font-size:14px" class="form-control form-control-sm" id="name" placeholder="Enter name">
+                                            <label for="name" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Name</label>
+                                            <input name="nameContact" type="text" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px" class="form-control" id="name" placeholder="Enter name">
                                         </div>
                                     </div>
                                     <div class="row mb-1">
                                         <div class="col-md-6">
-                                            <label for="position" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Position</label>
-                                            <input name="position" type="text" style="font-family:'Poppins'; font-size:14px" class="form-control form-control-sm" id="position" placeholder="Enter position">
+                                            <label for="position" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Position</label>
+                                            <input name="position" type="text" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px" class="form-control" id="position" placeholder="Enter position">
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="position" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Gender</label>
-                                            <select name="gender" class="form-select" style="color:#555; font-family:'Poppins'; font-size:14px" required>
-                                                <option value="" selected disabled>Select gender</option>
+                                            <label for="position" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Gender</label>
+                                            <select name="gender" class="form-select" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px"  required>
+                                                <option value="" selected disabled style="color:#555;">Select gender</option>
                                                 <option value="Male">Male</option>
                                                 <option value="Female">Female</option>
                                             </select>
@@ -524,17 +528,17 @@ include("../auth/db.php");
                                     <!-- Fourth Row: Position, Number, and Email -->
                                     <div class="row mb-3">
                                         <div class="col-md-6">
-                                            <label for="number" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Number</label>
-                                            <input name="contactNum" type="number" style="font-family:'Poppins'; font-size:14px" class="form-control form-control-sm" id="number" placeholder="Enter number">
+                                            <label for="number" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Number</label>
+                                            <input name="contactNum" type="number" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px" class="form-control" id="number" placeholder="Enter number">
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="email" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Email</label>
-                                            <input name="email" type="email" style="font-family:'Poppins'; font-size:14px" class="form-control form-control-sm" id="email" placeholder="Enter email">
+                                            <label for="email" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Email</label>
+                                            <input name="email" type="email" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px" class="form-control " id="email" placeholder="Enter email">
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer" style="border:none;">
                                         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" style="font-family:'Poppins'; font-size: 12px;">Cancel</button>
-                                        <button type="submit"  class="btn btn-primary btn-sm" style="font-family:'Poppins'; font-size: 12px; background-color: #36b9cc; border: none;">Save Changes</button>
+                                        <button type="submit"  class="btn btn-primary btn-sm" style="font-family:'Poppins'; font-size: 12px;color:#1f2024; background-color: #f9ce45; border: none;">Save Changes</button>
                                     </div>
                                 </form>
                             </div>
@@ -544,13 +548,6 @@ include("../auth/db.php");
             </div>
             <!-- End of Main Content -->
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
-                    </div>
-                </div>
-            </footer>
             <!-- End of Footer -->
         </div>
         <!-- End of Content Wrapper -->

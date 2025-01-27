@@ -1155,8 +1155,7 @@ function checkProjectStatus() {
             popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
         }
         function showProfile() {
-            // Redirect or perform action to show the profile
-            alert('Navigating to Profile Page');
+             window.location.href = "viewprofile.php";
         }
         // Hide the popup when clicking outside
         document.addEventListener('click', function (event) {
