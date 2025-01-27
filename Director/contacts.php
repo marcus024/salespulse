@@ -412,7 +412,7 @@ include("../auth/db.php");
                                         $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         ?>
 
-                                        <div class="container">
+                                        <div class="container" style="background-color:#2a2925;">
                                             <?php foreach ($contacts as $contact): ?>
                                                 <div class="card mb-3" style="border-radius: 20px;">
                                                     <div class="card-header" style="font-family:'Poppins';background:  #f9ce45; color: #1f2024; border-radius:20px; font-size: 18px; font-weight: bold;">
