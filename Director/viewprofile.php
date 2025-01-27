@@ -310,6 +310,7 @@ include_once('../auth/db.php');
                 <!-- End of Topbar -->
                 <!-- Home Content -->
                 <div class="container-fluid" style=" background-color:#15151a;">
+                    <a href="director.php">Back</a>
                     <div class="col-md-12 mb-6">
                         <div class="card shadow-sm" style=" background-color:#1f2024; border:none;">
                             <div class="card-body">
@@ -403,7 +404,7 @@ include_once('../auth/db.php');
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-<a href="director.php">Back</a>
+
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
