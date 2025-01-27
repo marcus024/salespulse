@@ -357,7 +357,7 @@ include("../auth/db.php");
                                                     font-size: 16px;
                                                 }
                                             </style>
-                                            <span class="text" style="font-family:'Poppins'">Add Contacts</span>
+                                            <span class="text" style="font-family:'Poppins'; color:#1f2024; background:#f9ce45;">Add Contacts</span>
                                         </a>
                                 </div>
                             </div>
@@ -365,9 +365,9 @@ include("../auth/db.php");
 
                         <!-- Wide Container for Calendar Content -->
                         <div class="col-md-9 mb-4">
-                            <div class="card shadow-sm" style="background-color:#36b9cc;">
+                            <div class="card shadow-sm" style="background-color:#f9ce45;">
                                 <div class="card-body" id="calendar-container" style="min-height: 400px; color: white;">
-                                    <h1 class="h5 mb-4" style="font-family:'Poppins'">My Contacts</h1>
+                                    <h1 class="h5 mb-4" style="font-family:'Poppins'; color:#1f2024; ">My Contacts</h1>
                                     <!-- Contact List Cards -->
                                     <div id="contact-list" class="contact-list">
                                         <style>
@@ -416,7 +416,7 @@ include("../auth/db.php");
                                         <div class="container">
                                             <?php foreach ($contacts as $contact): ?>
                                                 <div class="card mb-3" style="border-radius: 20px;">
-                                                    <div class="card-header" style="font-family:'Poppins';background: linear-gradient(to right, #36b9cc,rgb(25, 230, 230)); color: white; border-radius:20px; font-size: 18px; font-weight: bold;">
+                                                    <div class="card-header" style="font-family:'Poppins';background: #f9ce45; color: white; border-radius:20px; font-size: 18px; font-weight: bold;">
                                                         Contact Profile
                                                     </div>
                                                     <div class="card-body" style="background-color: white; color: #555; padding: 10px; border-radius:20px; padding-left: 50px;">
