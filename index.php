@@ -133,7 +133,7 @@
       margin-left:20%;
     }
     .login-btn:hover {
-      background:  #f9ce45;
+      background:rgb(232, 180, 11);
     }
     .signup-link {
       margin-left: 12%;
