@@ -318,7 +318,7 @@ include("../auth/db.php");
                 </div>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" style="padding-top: 50px; background-color:#15151a;">
                     <div class="row">
                         <!-- Narrow Container for Add Calendar -->
                         <div class="col-md-3 mb-4">
