@@ -442,7 +442,7 @@ include("../auth/db.php");
             <div class="modal fade" id="contactAdmin" tabindex="-1" aria-labelledby="contactAdminLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div style="background-color:red" class="modal-header">
+                        <div style="background-color:red; border:none;" class="modal-header">
                             <h6 style="color:white;"class="modal-title" id="contactAdminLabel">Access Denied</h6>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
