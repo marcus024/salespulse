@@ -339,7 +339,7 @@ include("../auth/db.php");
                                                 font-size: 16px;
                                             }
                                         </style>
-                                        <span class="text" style="font-family:'Poppins'">Add Members</span>
+                                        <span class="text" style="font-family:'Poppins'; color:#1f2024">Add Members</span>
                                     </a>
                                 </div>
                             </div>
