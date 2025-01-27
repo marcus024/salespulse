@@ -20,7 +20,6 @@ include_once('dirback/dirviewback.php');
 <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 <!-- Custom styles for this page (if needed) -->
 <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
     <style>
         /* Set Poppins as the default font for the entire document */
         body, html {
@@ -190,7 +189,6 @@ include_once('dirback/dirviewback.php');
             </li>
             <!-- Spacer to Push Footer to Bottom -->
             <li style="flex-grow: 1;"></li>
-            
             <li class="nav-item footer">
                 <span class="powered-by">Powered by</span>
                 <span class="company-name">WORKFORCE NEXTGEN</span><br>
@@ -200,7 +198,6 @@ include_once('dirback/dirviewback.php');
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content" style="background-color:white;">
                 <!-- Topbar -->
@@ -212,7 +209,6 @@ include_once('dirback/dirviewback.php');
                             <p style="font-size:15px; color: #555; font-family:'Poppins'; margin: 0px;">Welcome Back <?php echo $_SESSION['user_name']; ?>!</p>
                         </div>
                     </div>
-
                     <!-- Right Section: Notification and Profile -->
                     <div class="d-flex align-items-center">
                         <!-- Notification Button -->
