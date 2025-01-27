@@ -415,7 +415,7 @@ include("../auth/db.php");
                                         <div class="container">
                                             <?php foreach ($contacts as $contact): ?>
                                                 <div class="card mb-3" style="border-radius: 20px;">
-                                                    <div class="card-header" style="font-family:'Poppins';background: #f9ce45; color: white; border-radius:20px; font-size: 18px; font-weight: bold;">
+                                                    <div class="card-header" style="font-family:'Poppins';background: #1f2024; color:  #f9ce45; border-radius:20px; font-size: 18px; font-weight: bold;">
                                                         Contact Profile
                                                     </div>
                                                     <div class="card-body" style="background-color: white; color: #555; padding: 10px; border-radius:20px; padding-left: 50px;">
@@ -453,13 +453,13 @@ include("../auth/db.php");
                                                                 <div style="height:10px;"></div>
                                                                 <div class="d-flex justify-content-between align-items-center" style="font-size: 14px;">
                                                                     <p class="mb-0" style="font-size: 10px; font-family: 'Poppins';">
-                                                                        <i class="fas fa-envelope" style="font-size: 20px; color: #009394; margin-right: 5px;"></i>
+                                                                        <i class="fas fa-envelope" style="font-size: 20px; color: #f9ce45; margin-right: 5px;"></i>
                                                                         <span id="email" data-field="email"><?php echo htmlspecialchars($contact['email']); ?></span>
                                                                         <i class="fas fa-edit edit-icon" data-target="email" style="font-size: 9px; color: #555;"></i>
                                                                     </p>
                                                                     <div style="width: 20px;"></div>
                                                                     <p class="mb-0" style="font-size: 10px; font-family: 'Poppins';">
-                                                                        <i class="fas fa-phone-alt" style="font-size: 20px; color: #009394; margin-right: 8px;"></i>
+                                                                        <i class="fas fa-phone-alt" style="font-size: 20px; color: #f9ce45; margin-right: 8px;"></i>
                                                                         <span id="contact_number" data-field="contact_number"><?php echo htmlspecialchars($contact['contact_number']); ?></span>
                                                                         <i class="fas fa-edit edit-icon" data-target="contact_number" style="font-size: 9px; color: #555;"></i>
                                                                     </p>
