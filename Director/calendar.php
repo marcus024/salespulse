@@ -511,7 +511,7 @@ include("../auth/db.php");
                                                             </button>
                                                         </li>
                                                         <li class="nav-item" style="border:none;">
-                                                            <button style ="font-size:12px; font-family:'Poppins'" class="nav-link" id="outlook-tab" data-bs-toggle="tab" data-bs-target="#outlook" type="button" role="tab" aria-controls="outlook" aria-selected="false">
+                                                            <button style ="font-size:12px; font-family:'Poppins'; color:#1f2024; background:#f9ce45;" class="nav-link" id="outlook-tab" data-bs-toggle="tab" data-bs-target="#outlook" type="button" role="tab" aria-controls="outlook" aria-selected="false">
                                                                 Outlook Calendar
                                                             </button>
                                                         </li>
