@@ -272,7 +272,7 @@
             <div class="input-group">
                 <label for="password">Password</label>
                 <input required name="password" type="password" placeholder="Enter your password" autocomplete="off" />
-                <span onclick="togglePassword()">Forgot Password?</span>
+                <span onclick="togglePassword()" style="color:white;">Forgot Password?</span>
             </div>
             <button type="submit" class="login-btn">LOGIN</button>
         </form>
