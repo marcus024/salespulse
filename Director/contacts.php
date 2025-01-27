@@ -498,7 +498,7 @@ include("../auth/db.php");
                                 <h5 class="modal-title" id="addProjectModalLabel" style="font-family:'Poppins';font-size: 15px; color:#1f2024;">Add Contact</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body" style="font-size: 12px;">
+                            <div class="modal-body" style="font-size: 12px; background:#1f2024;">
                                 <form id="editTaskForm" method="POST"action="dirback/add_contact.php">
                                     <!-- Third Row: Company and Name -->
                                     <div class="row mb-1">
