@@ -394,7 +394,7 @@ include_once('dirback/dirviewback.php');
                                                     </div>
                                                     <div class="col-md-4 mb-2">
                                                         <label for="clientType" class="form-label" style="font-size: 12px; color: #555;">Client Type</label>
-                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['client_type']); ?>" style="font-size: 12px; color: white; background:#1f2024; padding: 5px;" required>
+                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['client_type']); ?>" style="font-size: 12px; color: white; background:#1f2024; border: #555; padding: 5px;" required>
                                                     </div>
                                                 </div>
                                                 <?php include("dirback/pro_stage_details.php"); ?>
