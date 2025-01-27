@@ -326,13 +326,13 @@ include_once('../auth/db.php');
                                             </p>
                                         </div>
                                     </div>
-                                    <button onclick="history.back()" style="background: none; border: none; color: #555; font-size: 24px; cursor: pointer;">
+                                    <!-- <button onclick="history.back()" style="background: none; border: none; color: #555; font-size: 24px; cursor: pointer;">
                                         <i class="fas fa-arrow-left"></i>
                                     </button>
                                     <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
                                         
-                                    </div>
-                                    <a  href="director.php"><i class="fas fa-arrow-left"></i></a>
+                                    </div> -->
+                                    <a href="director.php" style="background: none; border: none; color: #555; font-size: 24px; cursor: pointer;" ><i class="fas fa-arrow-left"></i></a>
                                 </div>
                                 <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
                                     <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
