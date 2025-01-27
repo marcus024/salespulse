@@ -144,7 +144,7 @@
      
     }
     .signup-link a {
-      color: #17a2b8;
+      color: #f9ce45;
       text-decoration: none;
     }
     .signup-link a:hover {
