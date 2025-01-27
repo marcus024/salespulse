@@ -547,6 +547,7 @@ include_once('dirback/dirviewback.php');
                                                         background-color: #f9ce45;
                                                         border-radius: 10px;
                                                         height: 10px;
+                                                        width:15px;
                                                     }
 
                                                     .table-responsive::-webkit-scrollbar-thumb:hover {
