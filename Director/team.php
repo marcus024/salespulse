@@ -447,7 +447,7 @@ include("../auth/db.php");
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body" style="background:#1f2024;">
-                            <p style="color:#555">You are not authorized to add team members. Please contact your admin or head for assistance.</p>
+                            <p style="color:white;">You are not authorized to add team members. Please contact your admin or head for assistance.</p>
                         </div>
                     </div>
                 </div>
