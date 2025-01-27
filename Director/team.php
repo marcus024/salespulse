@@ -346,7 +346,7 @@ include("../auth/db.php");
                         </div>
                         <!-- Wide Container for Calendar Content -->
                         <div class="col-md-9 mb-4">
-                            <div class="card shadow-sm" style="background:  #36b9cc">
+                            <div class="card shadow-sm" style="background: #1f2024">
                                 <div class="card-body" id="calendar-container" style="min-height: 400px; color: white;">
                                     <h1 class="h5 mb-4" style="font-family:'Poppins'">My Team Members</h1>
                                     <!-- Contact List Cards -->
