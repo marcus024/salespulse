@@ -418,7 +418,7 @@ include("../auth/db.php");
                                                     <div class="card-header" style="font-family:'Poppins';background:  #f9ce45; color: #1f2024; border-radius:20px 20px 0 0; font-size: 18px; font-weight: bold;">
                                                         Contact Profile
                                                     </div>
-                                                    <div class="card-body" style="background-color: #2a2925; color: white; padding: 10px; border-radius:0 20px 0 0; padding-left: 50px;">
+                                                    <div class="card-body" style="background-color: #2a2925; color: white; padding: 10px; border-radius:0 0 20px 20px; padding-left: 50px;">
                                                         <div class="d-flex align-items-center mb-2" style="gap: 50px;">
                                                                 <!-- Change image source based on gender -->
                                                                 <?php if ($contact['gender'] == 'Male'): ?>
