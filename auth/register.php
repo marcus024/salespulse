@@ -102,10 +102,10 @@
       padding: 15px;
       font-size: 12px;
       font-family:'Poppins';
-      border: 1px solid #006272;
+      border: 1px solid #555;
       border-radius: 10px;
-      background-color: white; /* Light green background */
-      color: #36b9cc;
+      background-color: #1f2024; /* Light green background */
+      color: white;
       width: 100%;
       margin: 0 auto; 
       height: 40px;
