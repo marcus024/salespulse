@@ -91,7 +91,7 @@
       margin: 0 auto; 
     }
     .input-group input::placeholder {
-      color: #36b9cc;
+      color: #555d;
       font-size:12px;
       font-family:'Poppins'
     }
