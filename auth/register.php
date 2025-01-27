@@ -15,7 +15,7 @@
       padding-left: 0;
       padding-right: 0;
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(to bottom right, #f0f4f8, #d9f7f6);
+      background: #1f2024;
       height: 100%;
     }
     * {
@@ -30,7 +30,7 @@
     flex-wrap: wrap;
     margin: 0; /* Remove margin */
     padding: 0;
-    background-color: white;
+    background-color: #1f2024;
 }
 
     .left-section {
@@ -38,7 +38,7 @@
       max-width: 400px;
       height: 100vh; /* Full height of the viewport */
       text-align: center;
-      background-color: #006270;
+      background-color: #f9ce45;
       border-top-left-radius: 50px; /* Curved top-left corner */
       border-bottom-left-radius: 50px; /* Curved bottom-left corner */
       display: flex; /* Center content */
@@ -259,7 +259,7 @@
     <!-- Right Section -->
     <div class="right-section">
       <h1>
-        <img src="../images/salespulselogo.png" alt="Logo" style="width: 45px; height: 40px; vertical-align: middle; margin-right: 10px;">
+        <img src="../images/log_icon_x.png" alt="Logo" style="width: 45px; height: 40px; vertical-align: middle; margin-right: 10px;">
         Sales Pulse
       </h1>
       <p class="loginP" style="font-size: 40px; font-family:'Poppins'; margin-top: 1%; margin-bottom: 10px; color: black;">Register</p>
