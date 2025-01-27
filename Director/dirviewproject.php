@@ -430,7 +430,7 @@ include_once('dirback/dirviewback.php');
                                                     </div>
                                                     <div class="table-responsive"  id="table-view"  style="overflow-x: auto; overflow-y: auto; max-height: 400px;">
                                                         <table class="table table-bordered " id="stageTable" style="font-size: 10px; width: 100%; min-width: 1200px;">
-                                                            <thead class="table-light" yle="font-size: 10px;">
+                                                            <thead class="table-light" styyle="font-size: 10px;">
                                                                 <tr>
                                                                     <th style="padding: 5px;">Stage</th>
                                                                     <th style="padding: 5px;">Unique ID</th>
