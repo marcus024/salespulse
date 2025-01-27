@@ -497,12 +497,12 @@ include("../auth/db.php");
                                         <div class="modal-dialog modal-lg">
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
-                                                <div class="modal-header">
+                                                <div class="modal-header" style=" background:#f9ce45; border:none;">
                                                     <h5 class="modal-title" id="calendarGuideModalLabel" style="font-family:'Poppins'; color:#555; font-size:15px">User Guide to Add a Calendar</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <!-- Modal Body -->
-                                                <div class="modal-body">
+                                                <div class="modal-body" style=" background:#1f2024;">
                                                     <!-- Tab Navigation -->
                                                     <ul class="nav nav-tabs" id="calendarGuideTabs" role="tablist">
                                                         <li class="nav-item">
