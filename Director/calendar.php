@@ -338,7 +338,7 @@ include("../auth/db.php");
                                         <span class="icon">
                                             <img src="../images/outlookcalendar.png" alt="Outlook Calendar Icon" style="width: 30px; height: 30px;">
                                         </span>
-                                        <p style="font-size:13px; font-family:'Poppins'; font-weight:bold; padding-left:5px; padding-top:10px">Outlook Calendar</p>
+                                        <p style="font-size:13px; font-family:'Poppins';color:#1f2024; font-weight:bold; padding-left:5px; padding-top:10px">Outlook Calendar</p>
                                     </a>
                                     <style>                   
                                         i {
@@ -462,7 +462,7 @@ include("../auth/db.php");
                                         <span class="icon">
                                             <img src="../images/gcalendar.png" alt="Google Calendar Icon" style="width: 30px; height: 30px;">
                                         </span>
-                                        <p style="font-size:13px; font-family:'Poppins'; font-weight:bold; padding-left:5px; padding-top:10px;">Google Calendar</p>
+                                        <p style="font-size:13px; font-family:'Poppins'; color:#1f2024;  font-weight:bold; padding-left:5px; padding-top:10px;">Google Calendar</p>
                                     </a>
                                     <!-- Modal for Inputting Calendar Link -->
                                     <div class="modal fade" id="addGCal" tabindex="-1" aria-labelledby="addCalendarModalLabel" aria-hidden="true">
