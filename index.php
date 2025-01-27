@@ -256,7 +256,7 @@
     <!-- Right Section -->
     <div class="right-section">
       <h1>
-        <img src="images/salespulselogo.png" alt="Logo" style="width: 45px; height: 40px; vertical-align: middle; margin-right: 10px;">
+        <img src="images/log_icon_x.png" alt="Logo" style="width: 45px; height: 40px; vertical-align: middle; margin-right: 10px;">
         Sales Pulse
       </h1>
       <p>Welcome back!</p>
