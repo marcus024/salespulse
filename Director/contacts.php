@@ -150,7 +150,7 @@ include("../auth/db.php");
                 <!-- The text -->
                 <span>SALES PULSE</span>
             </div>
-            
+            <div style="height: 0.5px;"></div>
             <!-- Divider -->
             <li class="nav-item">
                 <hr class="sidebar-divider my-2">
