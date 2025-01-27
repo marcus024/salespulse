@@ -513,9 +513,9 @@ include("../auth/db.php");
                                                         font-size: 12px;
                                                         font-family: 'Poppins', sans-serif;
                                                         background: none;
-                                                        border: none;
+                                                        border-radius:10px;;
                                                         padding: 10px 15px;
-                                                        color: black;
+                                                        color: white;
                                                         cursor: pointer;
                                                         transition: background-color 0.3s ease, color 0.3s ease;
                                                     }
