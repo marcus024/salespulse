@@ -400,7 +400,7 @@ include_once('dirback/dirviewback.php');
                                                 <?php include("dirback/pro_stage_details.php"); ?>
                                                   
                                               
-                                                <div class="container mt-4 p-3" style="background: #1f2024; border-radius: 8px;">
+                                                <div class="container mt-4 p-3" style="background: #2a2925; border-radius: 5px;">
                                                     <h3 style="font-family: 'Poppins', sans-serif; font-weight: bold; color: white; text-align: center; margin-bottom: 5pxpx;">Stages Summary of <?php echo htmlspecialchars($project['company_name']); ?></h3>
                                                    <!-- Row to hold the search bar and export buttons -->
                                                     <div class="d-flex justify-content-between align-items-center mb-1">
@@ -428,8 +428,6 @@ include_once('dirback/dirviewback.php');
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    
-
                                                     <div class="table-responsive" id="table-view" style="overflow-x: auto; overflow-y: auto; max-height: 400px; background: #1f2024;">
                                                         <table class="modern-table" id="stageTable">
                                                             <thead>
