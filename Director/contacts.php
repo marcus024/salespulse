@@ -503,24 +503,24 @@ include("../auth/db.php");
                                     <!-- Third Row: Company and Name -->
                                     <div class="row mb-1">
                                         <div class="col-md-12">
-                                            <label for="company" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Company</label>
-                                            <input name="companyContact" type="text" style="font-family:'Poppins'; font-size:14px" class="form-control form-control-sm" id="company" placeholder="Enter company name">
+                                            <label for="company" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Company</label>
+                                            <input name="companyContact" type="text" style="color:white; font-family:'Poppins'; font-size:12px" class="form-control form-control-sm" id="company" placeholder="Enter company name">
                                         </div>
                                     </div>
                                     <div class="row mb-1">
                                         <div class="col-md-12">
-                                            <label for="name" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Name</label>
-                                            <input name="nameContact" type="text" style="font-family:'Poppins'; font-size:14px" class="form-control form-control-sm" id="name" placeholder="Enter name">
+                                            <label for="name" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Name</label>
+                                            <input name="nameContact" type="text" style="color:white; font-family:'Poppins'; font-size:12px" class="form-control form-control-sm" id="name" placeholder="Enter name">
                                         </div>
                                     </div>
                                     <div class="row mb-1">
                                         <div class="col-md-6">
-                                            <label for="position" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Position</label>
-                                            <input name="position" type="text" style="font-family:'Poppins'; font-size:14px" class="form-control form-control-sm" id="position" placeholder="Enter position">
+                                            <label for="position" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Position</label>
+                                            <input name="position" type="text" style="color:white; font-family:'Poppins'; font-size:12px" class="form-control form-control-sm" id="position" placeholder="Enter position">
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="position" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Gender</label>
-                                            <select name="gender" class="form-select" style="color:#555; font-family:'Poppins'; font-size:14px" required>
+                                            <label for="position" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Gender</label>
+                                            <select name="gender" class="form-select" style="color:white; font-family:'Poppins'; font-size:12px" required>
                                                 <option value="" selected disabled>Select gender</option>
                                                 <option value="Male">Male</option>
                                                 <option value="Female">Female</option>
