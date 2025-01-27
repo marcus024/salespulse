@@ -530,11 +530,11 @@ include("../auth/db.php");
                                     <!-- Fourth Row: Position, Number, and Email -->
                                     <div class="row mb-3">
                                         <div class="col-md-6">
-                                            <label for="number" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Number</label>
+                                            <label for="number" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Number</label>
                                             <input name="contactNum" type="number" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px" class="form-control form-control-sm" id="number" placeholder="Enter number">
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="email" class="form-label" style="font-family:'Poppins'; font-size: 12px;">Email</label>
+                                            <label for="email" class="form-label" style="font-family:'Poppins'; color:#555; font-size: 12px;">Email</label>
                                             <input name="email" type="email" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px" class="form-control form-control-sm" id="email" placeholder="Enter email">
                                         </div>
                                     </div>
