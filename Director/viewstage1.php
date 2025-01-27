@@ -968,7 +968,6 @@ function checkProjectStatus() {
 
             if (response.status === 'success') {
                 var button = document.querySelector(".play-btn");
-
                 if (response.project_status === 'Ongoing') {
                     button.innerHTML = '<i class="fas fa-play"></i> Continue Journey'; // Change text to Continue Journey
                     button.setAttribute("onclick", "continuePhase()"); // Update the onclick action

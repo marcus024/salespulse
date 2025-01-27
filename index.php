@@ -15,7 +15,7 @@
       padding-left: 0;
       padding-right: 0;
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(to bottom right, #f0f4f8, #d9f7f6);
+      background: #1f2024;
       height: 100%;
     }
     * {
@@ -37,7 +37,7 @@
       max-width: 400px;
       height: 100vh; /* Full height of the viewport */
       text-align: center;
-      background-color: #006270;
+      background-color: #f9ce45;
       border-top-left-radius: 50px; /* Curved top-left corner */
       border-bottom-left-radius: 50px; /* Curved bottom-left corner */
       display: flex; /* Center content */
