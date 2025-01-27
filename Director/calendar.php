@@ -506,7 +506,7 @@ include("../auth/db.php");
                                                     <!-- Tab Navigation -->
                                                     <ul class="nav nav-tabs" id="calendarGuideTabs" role="tablist">
                                                         <li class="nav-item" style="border:none;">
-                                                            <button style ="font-size:12px; font-family:'Poppins'" class="nav-link active" id="google-tab" data-bs-toggle="tab" data-bs-target="#google" type="button" role="tab" aria-controls="google" aria-selected="true">
+                                                            <button style ="font-size:12px; font-family:'Poppins'; color:#1f2024; background:#f9ce45;" class="nav-link active" id="google-tab" data-bs-toggle="tab" data-bs-target="#google" type="button" role="tab" aria-controls="google" aria-selected="true">
                                                                 Google Calendar
                                                             </button>
                                                         </li>
