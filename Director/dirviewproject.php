@@ -400,7 +400,7 @@ include_once('dirback/dirviewback.php');
                                                 <?php include("dirback/pro_stage_details.php"); ?>
                                                   
                                               
-                                                <div class="container mt-4 p-3" style="background: #555 border-radius: 5px;">
+                                                <div class="container mt-4 p-3" style="background: #555; border-radius: 5px;">
                                                     <h3 style="font-family: 'Poppins', sans-serif; font-weight: bold; color: white; text-align: center; margin-bottom: 5pxpx;">Stages Summary of <?php echo htmlspecialchars($project['company_name']); ?></h3>
                                                    <!-- Row to hold the search bar and export buttons -->
                                                     <div class="d-flex justify-content-between align-items-center mb-1">
