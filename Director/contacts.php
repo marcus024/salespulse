@@ -494,8 +494,8 @@ include("../auth/db.php");
                 <div class="modal fade" id="addContact" tabindex="-1" aria-labelledby="editTaskModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header" style="background-color:#36b9cc; height: 50px;">
-                                <h5 class="modal-title" id="addProjectModalLabel" style="font-family:'Poppins';font-size: 15px; color:white;">Add Contact</h5>
+                            <div class="modal-header" style="background-color:#f9ce45; border:none; height: 50px;">
+                                <h5 class="modal-title" id="addProjectModalLabel" style="font-family:'Poppins';font-size: 15px; color:#1f2024;">Add Contact</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body" style="font-size: 12px;">
