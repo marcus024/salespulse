@@ -165,7 +165,7 @@
       height: 40px;
       padding: 5px;
       background: #f9ce45 ;
-      color: #ffffff;
+      color:#1f2024 ;
       font-size: 15px;
       border: none;
       border-radius: 20px;
@@ -185,6 +185,7 @@
       margin-top: 1%;
       font-family:'Poppins';
       font-size:12px;
+      color:white;
      
     }
     .signup-link a {
