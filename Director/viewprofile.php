@@ -311,7 +311,7 @@ include_once('../auth/db.php');
                 <!-- Home Content -->
                 <div class="container-fluid" style=" background-color:#15151a;">
                     <div class="col-md-12 mb-6">
-                        <div class="card shadow-sm" style=" background-color:#15151a; border:none;">
+                        <div class="card shadow-sm" style=" background-color:#1f2024; border:none;">
                             <div class="card-body">
                                     <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
                                     <div class="stage-title" style="width: 100%; text-align: left; margin-bottom: 0; padding-bottom: 0; display: flex; align-items: start;">
