@@ -352,8 +352,8 @@ include_once('dirback/dirviewback.php');
                                         </button>
                                     </div>
                                 </div>
-                                <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px"> 
-                                    <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
+                                <div class="container" style="background-color:#1f2024; padding: 10px; border-radius: 20px"> 
+                                    <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
                                         <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-md-4 mb-2">
