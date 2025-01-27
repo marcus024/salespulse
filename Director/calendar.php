@@ -329,7 +329,7 @@ include("../auth/db.php");
                                         <p style="font-family:'Poppins'; font-size:15px; font-weight:700; color:white; margin: 0;">Calendar</p>
                                         <!-- Edit Button -->
                                         <i class="fas fa-edit edit-icon"
-                                        style="font-size: 10px; color: #555; cursor: pointer;"
+                                        style="font-size: 10px; color: white; cursor: pointer;"
                                         data-bs-toggle="modal"
                                         data-bs-target="#exampleModal"></i>
                                     </div>
@@ -489,7 +489,7 @@ include("../auth/db.php");
                                    <!-- Trigger Button -->
                                     <!-- Trigger Button -->
                                     <a href="#" class="btn calendar-button w-90 text-center" data-bs-toggle="modal" data-bs-target="#calendarGuideModal" 
-                                    style="font-size: 13px; font-family: 'Poppins'; font-weight: bold; text-decoration: none;">
+                                    style="font-size: 13px; font-family: 'Poppins'; background-color:#f9ce45; color:#1f2024;  font-weight: bold; text-decoration: none;">
                                         Guide to Add Calendar
                                     </a>
                                     <!-- Modal -->
