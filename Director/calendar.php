@@ -615,7 +615,7 @@ include("../auth/db.php");
                                                     </div>
                                                 </div>
                                                 <!-- Modal Footer -->
-                                                <div class="modal-footer">
+                                                <div class="modal-footer" style="background:#1f2024;">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                 </div>
                                             </div>
