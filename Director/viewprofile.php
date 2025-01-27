@@ -332,7 +332,7 @@ include_once('../auth/db.php');
                                     <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
                                         
                                     </div>
-                                    <button href="director.php">Back</button>
+                                    <a href="director.php">Back</a>
                                 </div>
                                 <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
                                     <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
