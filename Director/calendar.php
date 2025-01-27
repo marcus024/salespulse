@@ -361,7 +361,7 @@ include("../auth/db.php");
                                         <div class="modal-dialog" style="width: 420px;">
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
-                                                <div class="modal-header" style="background-color:#f9ce45">
+                                                <div class="modal-header" style="background-color:#f9ce45; border:none">
                                                 <h5 class="modal-title" id="exampleModalLabel" style="color:#1f2024; font-family:'Poppins'; font-size:15px;">Edit Item</h5>
                                                 <button
                                                     type="button"
@@ -381,7 +381,7 @@ include("../auth/db.php");
                                                                 type="text"
                                                                 class="form-control"
                                                                 id="fieldOne"
-                                                                placeholder="Enter first value" style="color:#555; font-family:'Poppins'; font-size:12px;"
+                                                                placeholder="Enter first value" style="color:white; background-color:#1f2024; font-family:'Poppins'; font-size:12px;"
                                                                 />
                                                             </div>
                                                             <div class="col-md-4 d-flex align-items-end">
@@ -400,7 +400,7 @@ include("../auth/db.php");
                                                             <div class="col-md-8">
                                                                 <label for="fieldTwo" class="form-label" style="color:#555; font-family:'Poppins'; font-size:12px; font-weight:bold;">Google Calendar Link</label>
                                                                 <input
-                                                                type="text" style="color:#555; font-family:'Poppins'; font-size:12px;"
+                                                                type="text" style="color:white; background-color:#1f2024; font-family:'Poppins'; font-size:12px;"
                                                                 class="form-control"
                                                                 id="fieldTwo"
                                                                 placeholder="Enter second value"
