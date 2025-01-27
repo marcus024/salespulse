@@ -58,12 +58,12 @@
     .right-section h1 {
       font-family: 'Poppins';
       font-size: 2rem;
-      color: #555;
+      color: white;
       margin-bottom: 0;
     }
     .right-section p {
       font-size: 1rem;
-      color: #777;
+      color: white;
       font-family: 'Poppins';
       font-weight: bold;
     }
@@ -112,18 +112,18 @@
       
     }
     .input-group input::placeholder {
-      color: #36b9cc;
+      color: #555;
       font-size:12px;
       font-family:'Poppins'
     }
     .input-group input:focus::placeholder {
-    color: #36b9cc; /* Makes the placeholder invisible */
+    color: #555; /* Makes the placeholder invisible */
     }
     .input-group input:focus {
-      border-color: #17a2b8;
+      border-color: #555;
       outline: none;
 
-      background-color: white; /* Slightly darker green when focused */
+      background-color:#1f2024; /* Slightly darker green when focused */
     }
     .input-group span {
     position: absolute;
@@ -133,7 +133,7 @@
     font-size: 12px;
     font-weight:bold;
     font-family:'Poppins';
-    color: #17a2b8;
+    color: white;
     cursor: pointer;
 
   }
@@ -142,7 +142,7 @@
     padding: 5px;
     font-size: 12px;
     font-family: 'Poppins';
-    border: 1px solid #006272 ;
+    border: 1px solid #555;
     border-radius: 10px;
     background-color: white; /* Matches the input background */
     color: #36b9cc;
@@ -151,20 +151,20 @@
     }
 
     .input-group select:focus {
-        border-color: #006272 ;
+        border-color: white ;
         outline: none;
         background-color: white; /* Slightly darker green for focus */
     }
 
     .input-group select option {
-        color: #006272; /* Black text for dropdown items */
+        color: white; /* Black text for dropdown items */
     }
 
     .login-btn {
       width: 130px;
       height: 40px;
       padding: 5px;
-      background: #17a2b8;
+      background: #f9ce45 ;
       color: #ffffff;
       font-size: 15px;
       border: none;
@@ -178,7 +178,7 @@
       margin-left:41%;
     }
     .login-btn:hover {
-      background: #138996;
+      background: rgb(232, 180, 11) ;
     }
     .signup-link {
       margin-left: 36%;
@@ -188,7 +188,7 @@
      
     }
     .signup-link a {
-      color: #17a2b8;
+      color:  #f9ce45;
       text-decoration: none;
     }
     .signup-link a:hover {
