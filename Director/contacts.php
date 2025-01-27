@@ -65,28 +65,34 @@ include("../auth/db.php");
         }
     </style>
     <style>
+        :root {
+            --accent-color: #f9ce45; /* Accent color */
+        }
+
         .nav-item{
-            color: white; /* Optional: Adjust text color when the item is active */
+            color: #76777a; /* Optional: Adjust text color when the item is active */
             font-weight: bold; /* Optional: Make the active menu text bold */
             border-radius:10px;
             margin-bottom:5px;
         }
         /* Active Nav Item Background Color */
         .nav-item.active .nav-link {
-            /* padding-left:10px; */
-            background-color: white; /* Change this color to your preferred background color */
-            color: #36b9cc; /* Optional: Adjust text color when the item is active */
+            padding-left:10px;
+            background-color: #2a2925; /* Change this color to your preferred background color */
+            color: white; /* Optional: Adjust text color when the item is active */
             font-weight: bold; /* Optional: Make the active menu text bold */
             border-radius:10px;
             margin-bottom:5px;
+            border-left: 5px solid var(--accent-color);
         }
         /* Hover Effect for Nav Items */
         .nav-item .nav-link:hover {
-            /* padding-left:10px; */
-            background-color: white; /* Same color for hover effect */
-            color: #36b9cc; /* Text color for hover */
+            padding-left:10px;
+            background-color: #2a2925; /* Same color for hover effect */
+            color: white; /* Text color for hover */
             border-radius:10px;
             margin-bottom:5px;
+            border-left: 5px solid var(--accent-color);
         }
     </style>
     <style>
@@ -115,12 +121,12 @@ include("../auth/db.php");
 
 </head>
 
-<body id="page-top">
+<body id="page-top" style="background-color:#15151a;">
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" style="background-color:#15151a;">
         <!-- Sidebar -->
         <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="
-            background-color:#36b9cc; 
+            background-color:#1f2024; 
             width: 200px; 
             transition: all 0.3s; 
             padding-left: 20px; 
@@ -201,11 +207,11 @@ include("../auth/db.php");
 
                 <!-- Topbar -->
                 <!-- Fixed Topbar -->
-                <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:white; padding-right:30px; padding-left:220px; z-index: 300;">
+                <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:#15151a; padding-right:30px; padding-left:220px; z-index: 300;">
                     <!-- Left Section: Home and Welcome Message -->
                     <div class="d-flex align-items-center" style="margin-top: 30px;"> <!-- Added margin-top to lower the left section -->
                         <div>
-                            <h1 style="color:#36b9cc; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Contacts</h1> <!-- Reduced spacing -->
+                            <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Contacts</h1> <!-- Reduced spacing -->
                             <!-- <p style="font-size:15px; color: #555; font-family:'Poppins'; margin: 0px;">Welcome Back <?php echo $_SESSION['user_name']; ?>!</p> -->
                         </div>
                     </div>
@@ -328,11 +334,11 @@ include("../auth/db.php");
                 </div>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" style=" background-color:#15151a;">
                     <div class="row">
                         <!-- Narrow Container for Add Calendar -->
                         <div class="col-md-3 mb-4">
-                            <div class="card shadow-sm">
+                            <div class="card shadow-sm" style="background-color:#1f2024; border:none;">
                                 <div class="card-body">
                                     <p style="font-family:'Poppins'; font-size:15px; font-weight:700; color:#555">Contacts</p>
                                         <a href="#" class="btn btn-info btn-icon-split w-70" data-bs-toggle="modal" data-bs-target="#addContact">

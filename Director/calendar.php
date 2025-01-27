@@ -78,7 +78,7 @@ include("../auth/db.php");
         /* Active Nav Item Background Color */
         .nav-item.active .nav-link {
             padding-left:10px;
-             background-color: #2a2925; 
+            background-color: #2a2925; 
             color: white; 
             font-weight: bold; /* Optional: Make the active menu text bold */
             border-radius:10px;
