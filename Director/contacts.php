@@ -414,7 +414,7 @@ include("../auth/db.php");
 
                                         <div class="container" >
                                             <?php foreach ($contacts as $contact): ?>
-                                                <div class="card mb-3" style="border-radius: 20px;">
+                                                <div class="card mb-3" style="border-radius: 20px; border:none;">
                                                     <div class="card-header" style="font-family:'Poppins';background:  #f9ce45; color: #1f2024; border-color: #f9ce45; border-radius:20px 20px 0 0; font-size: 18px; font-weight: bold;">
                                                         Contact Profile
                                                     </div>
