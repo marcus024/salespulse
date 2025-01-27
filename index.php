@@ -61,7 +61,7 @@
     }
     .right-section p {
       font-size: 1rem;
-      color: #777;
+      color: white;
       font-family: 'Poppins';
       font-weight: bold;
     }
