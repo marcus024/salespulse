@@ -415,10 +415,10 @@ include("../auth/db.php");
                                         <div class="container">
                                             <?php foreach ($contacts as $contact): ?>
                                                 <div class="card mb-3" style="border-radius: 20px;">
-                                                    <div class="card-header" style="font-family:'Poppins';background:  #f9ce45; color:  #1f2024; border-radius:20px; font-size: 18px; font-weight: bold;">
+                                                    <div class="card-header" style="font-family:'Poppins';background:  #f9ce45; color: #1f2024; border-radius:20px; font-size: 18px; font-weight: bold;">
                                                         Contact Profile
                                                     </div>
-                                                    <div class="card-body" style="background-color: white; color: #555; padding: 10px; border-radius:20px; padding-left: 50px;">
+                                                    <div class="card-body" style="background-color: #2a2925; color: white; padding: 10px; border-radius:20px; padding-left: 50px;">
                                                         <div class="d-flex align-items-center mb-2" style="gap: 50px;">
                                                                 <!-- Change image source based on gender -->
                                                                 <?php if ($contact['gender'] == 'Male'): ?>
