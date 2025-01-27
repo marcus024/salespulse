@@ -325,11 +325,11 @@ include_once('../auth/db.php');
                                             </p>
                                         </div>
                                     </div>
+                                    <button onclick="history.back()" style="background: none; border: none; color: #555; font-size: 24px; cursor: pointer;">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </button>
                                     <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
-                                        <!-- <button onclick="if (history.length > 1) { history.back(); } else { window.location.href = 'director.php'; }"  style="background: none; border: none; color: #555; font-size: 24px; cursor: pointer;">
-                                            <i class="fas fa-arrow-left"></i>
-                                        </button> -->
-                                        <a href="director.php">Back</a>
+                                        
                                     </div>
                                 </div>
                                 <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
