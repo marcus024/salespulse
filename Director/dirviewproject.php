@@ -484,13 +484,68 @@ include_once('dirback/dirviewback.php');
                                                                         <a class="view-btn" href="#" onclick="smoothNavigate('viewstage<?php echo $stage_map[$key]; ?>.php?project_id=<?php echo htmlspecialchars($current_project_id); ?>')">
                                                                             <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
                                                                         </a>
-                                                                        
                                                                     </td>
                                                                 </tr>
                                                                 <?php } ?>
                                                             </tbody>
                                                         </table>
                                                     </div>
+
+                                                    <div class="table-responsive" id="table-view" style="overflow-x: auto; overflow-y: auto; max-height: 400px; background: #1f2024;">
+                                                        <table class="modern-table" id="stageTable">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Stage</th>
+                                                                    <th>Unique ID</th>
+                                                                    <th>Start Date</th>
+                                                                    <th>End Date</th>
+                                                                    <th>Status</th>
+                                                                    <th>Duration</th>
+                                                                    <th>Solution</th>
+                                                                    <th>Technology</th>
+                                                                    <th>Deal Size</th>
+                                                                    <th>Product</th>
+                                                                    <th>Stage Remarks</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php 
+                                                                $stages = [
+                                                                    'stage_one' => 'Stage 1 - Awareness/Prospecting',
+                                                                    'stage_two' => 'Stage 2 - Engagement/Discovery',
+                                                                    'stage_three' => 'Stage 3 - Presentation/Proposal',
+                                                                    'stage_four' => 'Stage 4 - Negotiation/Commitment',
+                                                                    'stage_five' => 'Stage 5 - Delivery/Follow-Up'
+                                                                ];
+
+                                                                foreach ($stages as $key => $stage_name) {
+                                                                    $stage_data = $project_data[$key];
+                                                                ?>
+                                                                <tr>
+                                                                    <td><?php echo $stage_name; ?></td>
+                                                                    <td><?php echo htmlspecialchars($current_project_id); ?></td>
+                                                                    <td><?php echo !empty($stage_data['start_date_' . $key]) ? htmlspecialchars($stage_data['start_date_' . $key]) : 'Not Yet Started'; ?></td>
+                                                                    <td><?php echo !empty($stage_data['end_date_' . $key]) ? htmlspecialchars($stage_data['end_date_' . $key]) : 'Not Yet Ended'; ?></td>
+                                                                    <td><?php echo !empty($stage_data['status_' . $key]) ? htmlspecialchars($stage_data['status_' . $key]) : 'No Status'; ?></td>
+                                                                    <td><?php echo !empty($stage_data['duration']) ? htmlspecialchars($stage_data['duration']) : '0'; ?></td>
+                                                                    <td><?php echo !empty($stage_data['solution']) ? htmlspecialchars($stage_data['solution']) : 'N/A'; ?></td>
+                                                                    <td><?php echo !empty($stage_data['technology']) ? htmlspecialchars($stage_data['technology']) : 'N/A'; ?></td>
+                                                                    <td><?php echo !empty($stage_data['deal_size']) ? htmlspecialchars($stage_data['deal_size']) : 'N/A'; ?></td>
+                                                                    <td><?php echo !empty($stage_data['product']) ? htmlspecialchars($stage_data['product']) : 'N/A'; ?></td>
+                                                                    <td><?php echo !empty($stage_data['stage_' . $key . '_remarks']) ? htmlspecialchars($stage_data['stage_' . $key . '_remarks']) : 'N/A'; ?></td>
+                                                                    <td class="action-buttons">
+                                                                        <a class="view-btn" href="#" onclick="smoothNavigate('viewstage<?php echo $stage_map[$key]; ?>.php?project_id=<?php echo htmlspecialchars($current_project_id); ?>')">
+                                                                            <i class="fas fa-eye"></i>
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <?php } ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+
                                                     <div id="details-view" style="display: none;">
                                                         
                                                     </div>
@@ -524,6 +579,71 @@ include_once('dirback/dirviewback.php');
                                                         color: #cc0000; /* Hover color for delete icon */
                                                         transform: scale(1.2); /* Slightly enlarge */
                                                     }
+
+                                                    /* General Table Styling */
+.modern-table {
+    width: 100%;
+    min-width: 1200px;
+    border-collapse: collapse;
+    font-size: 12px;
+    background: #1f2024;
+    color: white;
+}
+
+.modern-table thead {
+    position: sticky;
+    top: 0;
+    background: #282b30;
+    z-index: 1;
+}
+
+.modern-table thead th {
+    text-align: left;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-weight: 600;
+    border-bottom: 2px solid #333;
+}
+
+.modern-table tbody tr {
+    border-bottom: 1px solid #333;
+    transition: background-color 0.2s ease;
+}
+
+.modern-table tbody tr:hover {
+    background-color: #35373d;
+}
+
+.modern-table tbody td {
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    color: #d1d1d1;
+}
+
+/* Action Buttons Styling */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.action-buttons a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #36b9cc;
+    transition: color 0.3s ease;
+}
+
+.action-buttons a:hover {
+    color: #2892a1;
+}
+
+/* Remove Borders from Container */
+.table-responsive {
+    border: none;
+}
+
 
                                                 </style>
                                                 <style>
