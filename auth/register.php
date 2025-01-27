@@ -325,7 +325,7 @@
                     <input required name="position" type="text" placeholder="Enter your position" autocomplete="off" />
                 </div>
                 <div class="input-group">
-                    <label for="zipCode"></label>
+                    <label for="zipCode">Role</label>
                     <select name="role" class="form-select" id="roleSelect">
                         <option value="" style="color:#555" disabled selected>Select a Role</option> <!-- Visible text before selection -->
                         <option value="salesdirector" >Sales and Marketing Director</option>
