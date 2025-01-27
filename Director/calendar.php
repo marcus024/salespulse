@@ -322,7 +322,7 @@ include("../auth/db.php");
                     <div class="row">
                         <!-- Narrow Container for Add Calendar -->
                         <div class="col-md-3 mb-4">
-                            <div class="card shadow-sm" style="background-color:#2a2925; border:none;">
+                            <div class="card shadow-sm" style="background-color:#1f2024; border:none;">
                                 <div class="card-body">
                                     <div class="col align-items-center" style="display: flex; justify-content: space-between;">
                                         <!-- Calendar Text -->
