@@ -446,7 +446,7 @@ include("../auth/db.php");
                                                 <div class="modal-body" style=" background:#1f2024;">
                                                     <form id="calendarForm">
                                                         <div class="mb-3">
-                                                            <label for="calendarLink" style="font-size:12px; color:#555 font-weight:bold; font-family:'Poppins';" class="form-label">Calendar Link</label>
+                                                            <label for="calendarLink" style="font-size:12px; color:#555; font-weight:bold; font-family:'Poppins';" class="form-label">Calendar Link</label>
                                                             <input type="url" class="form-control" style="background:#1f2024; color:white; " id="calendarLink" required>
                                                         </div>
                                                         <button type="submit" class="btn" style="background:#f9ce45; color:#1f2024; font-family:'Poppins'; font-size:15px;">Save</button>
