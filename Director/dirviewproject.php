@@ -432,18 +432,18 @@ include_once('dirback/dirviewback.php');
                                                         <table class="table table-bordered " id="stageTable" style="font-size: 10px; width: 100%; min-width: 1200px; background:#1f2024;">
                                                             <thead class="table-light" styyle="font-size: 10px; background:#1f2024;">
                                                                 <tr>
-                                                                    <th style="padding: 5px;">Stage</th>
-                                                                    <th style="padding: 5px;">Unique ID</th>
-                                                                    <th style="padding: 5px;">Start Date</th>
-                                                                    <th style="padding: 5px;">End Date</th>
-                                                                    <th style="padding: 5px;">Status</th>
-                                                                    <th style="padding: 5px;">Duration</th>
-                                                                    <th style="padding: 5px;">Solution</th>
-                                                                    <th style="padding: 5px;">Technology</th>
-                                                                    <th style="padding: 5px;">Deal Size</th>
-                                                                    <th style="padding: 5px;">Product</th>
-                                                                    <th style="padding: 5px;">Stage Remarks</th>
-                                                                    <th style="padding: 5px;">Action</th>
+                                                                    <th style="padding: 5px; background:#1f2024;">Stage</th>
+                                                                    <th style="padding: 5px; background:#1f2024;">Unique ID</th>
+                                                                    <th style="padding: 5px; background:#1f2024;">Start Date</th>
+                                                                    <th style="padding: 5px; background:#1f2024;">End Date</th>
+                                                                    <th style="padding: 5px; background:#1f2024;">Status</th>
+                                                                    <th style="padding: 5px; background:#1f2024;">Duration</th>
+                                                                    <th style="padding: 5px; background:#1f2024;">Solution</th>
+                                                                    <th style="padding: 5px; background:#1f2024;">Technology</th>
+                                                                    <th style="padding: 5px; background:#1f2024;">Deal Size</th>
+                                                                    <th style="padding: 5px; background:#1f2024;">Product</th>
+                                                                    <th style="padding: 5px; background:#1f2024;">Stage Remarks</th>
+                                                                    <th style="padding: 5px; background:#1f2024;">Action</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -460,17 +460,17 @@ include_once('dirback/dirviewback.php');
                                                                     $stage_data = $project_data[$key];
                                                                 ?>
                                                                 <tr>
-                                                                    <td style="padding: 5px;"><?php echo $stage_name; ?></td>
-                                                                    <td style="padding: 5px;"><?php echo htmlspecialchars($current_project_id); ?></td>
-                                                                    <td style="padding: 5px;"><?php echo !empty($stage_data['start_date_' . $key]) ? htmlspecialchars($stage_data['start_date_' . $key]) : 'Not Yet Started'; ?></td>
-                                                                    <td style="padding: 5px;"><?php echo !empty($stage_data['end_date_' . $key]) ? htmlspecialchars($stage_data['end_date_' . $key]) : 'Not Yet Ended'; ?></td>
-                                                                    <td style="padding: 5px;"><?php echo !empty($stage_data['status_' . $key]) ? htmlspecialchars($stage_data['status_' . $key]) : 'No Status'; ?></td>
-                                                                    <td style="padding: 5px;"><?php echo !empty($stage_data['duration']) ? htmlspecialchars($stage_data['duration']) : '0'; ?></td>
-                                                                    <td style="padding: 5px;"><?php echo !empty($stage_data['solution']) ? htmlspecialchars($stage_data['solution']) : 'N/A'; ?></td>
-                                                                    <td style="padding: 5px;"><?php echo !empty($stage_data['technology']) ? htmlspecialchars($stage_data['technology']) : 'N/A'; ?></td>
-                                                                    <td style="padding: 5px;"><?php echo !empty($stage_data['deal_size']) ? htmlspecialchars($stage_data['deal_size']) : 'N/A'; ?></td>
-                                                                    <td style="padding: 5px;"><?php echo !empty($stage_data['product']) ? htmlspecialchars($stage_data['product']) : 'N/A'; ?></td>
-                                                                    <td style="padding: 5px;"><?php echo !empty($stage_data['stage_' . $key . '_remarks']) ? htmlspecialchars($stage_data['stage_' . $key . '_remarks']) : 'N/A'; ?></td>
+                                                                    <td style="padding: 5px; background:#1f2024;"><?php echo $stage_name; ?></td>
+                                                                    <td style="padding: 5px; background:#1f2024;"><?php echo htmlspecialchars($current_project_id); ?></td>
+                                                                    <td style="padding: 5px; background:#1f2024;"><?php echo !empty($stage_data['start_date_' . $key]) ? htmlspecialchars($stage_data['start_date_' . $key]) : 'Not Yet Started'; ?></td>
+                                                                    <td style="padding: 5px; background:#1f2024;"><?php echo !empty($stage_data['end_date_' . $key]) ? htmlspecialchars($stage_data['end_date_' . $key]) : 'Not Yet Ended'; ?></td>
+                                                                    <td style="padding: 5px; background:#1f2024;"><?php echo !empty($stage_data['status_' . $key]) ? htmlspecialchars($stage_data['status_' . $key]) : 'No Status'; ?></td>
+                                                                    <td style="padding: 5px; background:#1f2024;"><?php echo !empty($stage_data['duration']) ? htmlspecialchars($stage_data['duration']) : '0'; ?></td>
+                                                                    <td style="padding: 5px; background:#1f2024;"><?php echo !empty($stage_data['solution']) ? htmlspecialchars($stage_data['solution']) : 'N/A'; ?></td>
+                                                                    <td style="padding: 5px; background:#1f2024;"><?php echo !empty($stage_data['technology']) ? htmlspecialchars($stage_data['technology']) : 'N/A'; ?></td>
+                                                                    <td style="padding: 5px; background:#1f2024;"><?php echo !empty($stage_data['deal_size']) ? htmlspecialchars($stage_data['deal_size']) : 'N/A'; ?></td>
+                                                                    <td style="padding: 5px; background:#1f2024;"><?php echo !empty($stage_data['product']) ? htmlspecialchars($stage_data['product']) : 'N/A'; ?></td>
+                                                                    <td style="padding: 5px; background:#1f2024;"><?php echo !empty($stage_data['stage_' . $key . '_remarks']) ? htmlspecialchars($stage_data['stage_' . $key . '_remarks']) : 'N/A'; ?></td>
                                                                     <td class="action-buttons" style="padding: 5px;">
                                                                        <?php 
                                                                         $stage_map = [
