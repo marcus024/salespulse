@@ -503,29 +503,29 @@ include("../auth/db.php");
                                                 </div>
                                                 <style>
                                                    .custom-nav-tabs {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
+                                                        list-style-type: none;
+                                                        padding: 0;
+                                                        margin: 0;
+                                                        display: flex;
+                                                    }
 
-.custom-nav-link {
-    font-size: 12px;
-    font-family: 'Poppins', sans-serif;
-    background: none;
-    border: none;
-    padding: 10px 15px;
-    color: black;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
+                                                    .custom-nav-link {
+                                                        font-size: 12px;
+                                                        font-family: 'Poppins', sans-serif;
+                                                        background: none;
+                                                        border: none;
+                                                        padding: 10px 15px;
+                                                        color: black;
+                                                        cursor: pointer;
+                                                        transition: background-color 0.3s ease, color 0.3s ease;
+                                                    }
 
-.custom-nav-link:hover, 
-.custom-nav-link.active {
-    background-color: yellow;
-    color: black;
-    font-weight: bold;
-}
+                                                    .custom-nav-link:hover, 
+                                                    .custom-nav-link.active {
+                                                        background-color: #f9ce45;
+                                                        color: #1f2024;
+                                                        font-weight: bold;
+                                                    }
 
 
                                                 </style>
@@ -533,34 +533,31 @@ include("../auth/db.php");
                                                 <div class="modal-body" style=" background:#1f2024;">
                                                     <!-- Tab Navigation -->
                                                     <ul class="nav custom-nav-tabs" id="calendarGuideTabs" role="tablist">
-    <li class="nav-item">
-        <button class="custom-nav-link active" 
-                id="google-tab" 
-                data-bs-toggle="tab" 
-                data-bs-target="#google" 
-                type="button" 
-                role="tab" 
-                aria-controls="google" 
-                aria-selected="true">
-            Google Calendar
-        </button>
-    </li>
-    <li class="nav-item">
-        <button class="custom-nav-link" 
-                id="outlook-tab" 
-                data-bs-toggle="tab" 
-                data-bs-target="#outlook" 
-                type="button" 
-                role="tab" 
-                aria-controls="outlook" 
-                aria-selected="false">
-            Outlook Calendar
-        </button>
-    </li>
-</ul>
-
-
-
+                                                        <li class="nav-item">
+                                                            <button class="custom-nav-link active" 
+                                                                    id="google-tab" 
+                                                                    data-bs-toggle="tab" 
+                                                                    data-bs-target="#google" 
+                                                                    type="button" 
+                                                                    role="tab" 
+                                                                    aria-controls="google" 
+                                                                    aria-selected="true">
+                                                                Google Calendar
+                                                            </button>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <button class="custom-nav-link" 
+                                                                    id="outlook-tab" 
+                                                                    data-bs-toggle="tab" 
+                                                                    data-bs-target="#outlook" 
+                                                                    type="button" 
+                                                                    role="tab" 
+                                                                    aria-controls="outlook" 
+                                                                    aria-selected="false">
+                                                                Outlook Calendar
+                                                            </button>
+                                                        </li>
+                                                    </ul>
                                                     <!-- Tab Content -->
                                                     <div class="tab-content mt-3" id="calendarGuideTabContent">
                                                         <!-- Google Calendar Tab -->
