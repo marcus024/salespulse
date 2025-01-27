@@ -361,7 +361,7 @@ include("../auth/db.php");
                                         <div class="modal-dialog" style="width: 420px;">
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
-                                                <div class="modal-header" style="background-color:#36b9cc">
+                                                <div class="modal-header" style="background-color:#f9ce45">
                                                 <h5 class="modal-title" id="exampleModalLabel" style="color:white; font-family:'Poppins'; font-size:15px;">Edit Item</h5>
                                                 <button
                                                     type="button"
@@ -418,8 +418,8 @@ include("../auth/db.php");
                                                             <style>
                                                                 .button-cal{
                                                                 border: none; 
-                                                                color:white; 
-                                                                background-color: #36b9cc; 
+                                                                color:#1f2024; 
+                                                                background-color: #f9ce45; 
                                                                 font-family:'Poppins'; 
                                                                 font-size:12px;
                                                                 }
@@ -631,9 +631,9 @@ include("../auth/db.php");
                         </div>
                         <!-- Wide Container for Calendar Content -->
                         <div class="col-md-9 mb-4">
-                            <div class="card shadow-sm" style="background: #36b9cc">
+                            <div class="card shadow-sm" style="background: #f9ce45; border:none;">
                                 <div class="card-body" id="calendar-container" style="min-height: 400px; color: white;">
-                                    <h1 class="h5 mb-4">Calendar Content</h1>
+                                    <h1 class="h5 mb-4" style="color:#1f2024;">Calendar Content</h1>
                                     <!-- Calendars will be dynamically added here -->
                                 </div>
                             </div>
