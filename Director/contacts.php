@@ -347,7 +347,7 @@ include("../auth/db.php");
                                             </span>
                                             <style>
                                                 .icon i{
-                                                    background: #f9ce45;
+                                                    background: none;
                                                     border: none;
                                                     padding: 0;
                                                     margin: 0;
