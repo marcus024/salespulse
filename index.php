@@ -56,7 +56,7 @@
     .right-section h1 {
       font-family: 'Poppins';
       font-size: 2rem;
-      color: #555;
+      color: white;
       margin-bottom: 0;
     }
     .right-section p {
