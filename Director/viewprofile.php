@@ -326,7 +326,7 @@ include_once('../auth/db.php');
                                         </div>
                                     </div>
                                     <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
-                                        <button onclick="goBack()" style="background: none; border: none; color: #555; font-size: 24px; cursor: pointer;">
+                                        <button onclick="history.back()" style="background: none; border: none; color: #555; font-size: 24px; cursor: pointer;">
                                             <i class="fas fa-arrow-left"></i>
                                         </button>
                                     </div>
