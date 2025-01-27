@@ -352,7 +352,7 @@ include("../auth/db.php");
                                                     margin: 0;
                                                     box-shadow: none; 
                                                     display: inline-block; 
-                                                    color: inherit; 
+                                                    color: #1f2024; 
                                                     font-size: 16px;
                                                 }
                                             </style>
