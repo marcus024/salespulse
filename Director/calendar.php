@@ -505,12 +505,12 @@ include("../auth/db.php");
                                                 <div class="modal-body" style=" background:#1f2024;">
                                                     <!-- Tab Navigation -->
                                                     <ul class="nav nav-tabs" id="calendarGuideTabs" role="tablist">
-                                                        <li class="nav-item">
+                                                        <li class="nav-item" style="border:none;">
                                                             <button style ="font-size:12px; font-family:'Poppins'" class="nav-link active" id="google-tab" data-bs-toggle="tab" data-bs-target="#google" type="button" role="tab" aria-controls="google" aria-selected="true">
                                                                 Google Calendar
                                                             </button>
                                                         </li>
-                                                        <li class="nav-item">
+                                                        <li class="nav-item" style="border:none;">
                                                             <button style ="font-size:12px; font-family:'Poppins'" class="nav-link" id="outlook-tab" data-bs-toggle="tab" data-bs-target="#outlook" type="button" role="tab" aria-controls="outlook" aria-selected="false">
                                                                 Outlook Calendar
                                                             </button>
