@@ -347,7 +347,7 @@ include_once('dirback/dirviewback.php');
                                         </div>
                                     </div>
                                     <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
-                                        <button onclick="history.back()" style="background: none; border: none; color: #36b9cc; font-size: 24px; cursor: pointer;">
+                                        <button onclick="history.back()" style="background: none; border: none; color: #555; font-size: 24px; cursor: pointer;">
                                             <i class="fas fa-arrow-left"></i> 
                                         </button>
                                     </div>
@@ -554,7 +554,7 @@ include_once('dirback/dirviewback.php');
                                                     }
                                                 </style>
 
-                                                    <div class="container" style="background-color: #36b9cc; padding-top: 100px; border-radius: 20px; position: relative;">
+                                                    <div class="container" style="background-color: #1f2024; padding-top: 100px; border-radius: 20px; position: relative;">
                                                         <?php
                                                         $stageFiveStatus = isset($project_data['stage_five']['status_stage_five']) 
                                                             ? htmlspecialchars($project_data['stage_five']['status_stage_five']) 
