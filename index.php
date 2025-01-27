@@ -99,7 +99,7 @@
     color: white; /* Makes the placeholder invisible */
     }
     .input-group input:focus {
-      border-color:#555;
+      border-color:white;
       outline: none;
       background-color: transparent; /* Slightly darker green when focused */
     }
