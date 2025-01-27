@@ -472,7 +472,7 @@ include("../auth/db.php");
                                                                     cursor: pointer;
                                                                 }
                                                                 i:hover {
-                                                                    color: #009394; /* Hover color for edit icon */
+                                                                    color:#f9ce45; /* Hover color for edit icon */
                                                                     transform: scale(1.2); /* Slightly enlarge */
                                                                 }
                                                             </style>
