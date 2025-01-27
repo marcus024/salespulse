@@ -538,7 +538,7 @@ include("../auth/db.php");
                                             <input name="email" type="email" style="color:white; background:#1f2024;  font-family:'Poppins'; font-size:12px" class="form-control form-control-sm" id="email" placeholder="Enter email">
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer" style="border:none;">
                                         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" style="font-family:'Poppins'; font-size: 12px;">Cancel</button>
                                         <button type="submit"  class="btn btn-primary btn-sm" style="font-family:'Poppins'; font-size: 12px;color:#1f2024; background-color: #f9ce45; border: none;">Save Changes</button>
                                     </div>
