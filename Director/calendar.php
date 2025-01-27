@@ -468,17 +468,17 @@ include("../auth/db.php");
                                     <div class="modal fade" id="addGCal" tabindex="-1" aria-labelledby="addCalendarModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
-                                                <div class="modal-header" style="background:#36b9cc">
-                                                    <p class="modal-title" style="font-weight:bold; font-size:12px; font-family:'Poppins'; color:white;" id="addCalendarModalLabel">Add Calendar Link</p>
+                                                <div class="modal-header" style="background:#f9ce45; border:none;">
+                                                    <p class="modal-title" style="font-weight:bold; font-size:12px; font-family:'Poppins'; color:#1f2024;" id="addCalendarModalLabel">Add Calendar Link</p>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <form id="gcalendarForm">
                                                         <div class="mb-3">
-                                                            <label for="calendarLink" style="font-size:12px; font-weight:bold; font-family:'Poppins';" class="form-label">Calendar Link</label>
-                                                            <input type="url" class="form-control" id="gcalendarLink" required>
+                                                            <label for="calendarLink" style="font-size:12px; color:#555; font-weight:bold; font-family:'Poppins';" class="form-label">Calendar Link</label>
+                                                            <input type="url" class="form-control" style="background:#1f2024; color:white;" id="gcalendarLink" required>
                                                         </div>
-                                                        <button type="submit" class="btn" style="background:#36b9cc; color:white; font-family:'Poppins'; font-size:15px;">Save</button>
+                                                        <button type="submit" class="btn" style="background:#f9ce45; color:white; font-family:'Poppins'; font-size:15px;">Save</button>
                                                     </form>
                                                 </div>
                                             </div>
