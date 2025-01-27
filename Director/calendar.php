@@ -326,7 +326,7 @@ include("../auth/db.php");
                                 <div class="card-body">
                                     <div class="col align-items-center" style="display: flex; justify-content: space-between;">
                                         <!-- Calendar Text -->
-                                        <p style="font-family:'Poppins'; font-size:15px; font-weight:700; color:#555; margin: 0;">Calendar</p>
+                                        <p style="font-family:'Poppins'; font-size:15px; font-weight:700; color:white; margin: 0;">Calendar</p>
                                         <!-- Edit Button -->
                                         <i class="fas fa-edit edit-icon"
                                         style="font-size: 10px; color: #555; cursor: pointer;"
@@ -458,7 +458,7 @@ include("../auth/db.php");
 
                                     <hr class="my-2">
                                     <!-- Button for Google Calendar -->
-                                    <a href="#" class="btn calendar-button w-90" id="gCalButton" style="display:none;">
+                                    <a href="#" class="btn calendar-button w-90" id="gCalButton" style=" background-color:#f9ce45;">
                                         <span class="icon">
                                             <img src="../images/gcalendar.png" alt="Google Calendar Icon" style="width: 30px; height: 30px;">
                                         </span>
