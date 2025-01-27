@@ -398,8 +398,6 @@ include_once('dirback/dirviewback.php');
                                                     </div>
                                                 </div>
                                                 <?php include("dirback/pro_stage_details.php"); ?>
-                                                  
-                                              
                                                 <div class="container mt-4 p-3" style="background: #555; border-radius: 5px;">
                                                     <h3 style="font-family: 'Poppins', sans-serif; font-weight: bold; color: white; text-align: center; margin-bottom: 5pxpx;">Stages Summary of <?php echo htmlspecialchars($project['company_name']); ?></h3>
                                                    <!-- Row to hold the search bar and export buttons -->
@@ -487,7 +485,7 @@ include_once('dirback/dirviewback.php');
                                                                         ];
                                                                         ?>
                                                                         <a class="view-btn" href="#" onclick="smoothNavigate('viewstage<?php echo $stage_map[$key]; ?>.php?project_id=<?php echo htmlspecialchars($current_project_id); ?>')">
-                                                                            <i class="fas fa-eye" style="font-size: 12px; color: #36b9cc;"></i>
+                                                                            <i class="fas fa-eye" style="font-size: 12px; color: #f9ce45;"></i>
                                                                         </a>
                                                                     </td>
                                                                 </tr>
@@ -495,8 +493,6 @@ include_once('dirback/dirviewback.php');
                                                             </tbody>
                                                         </table>
                                                     </div>
-
-
                                                     <div id="details-view" style="display: none;">
                                                         
                                                     </div>
@@ -508,7 +504,6 @@ include_once('dirback/dirviewback.php');
                                                         align-items: center;
                                                     }
                                                     
-
                                                     .action-buttons .view-btn i,
                                                     .action-buttons .edit-btn i,
                                                     .action-buttons .delete-btn i {
@@ -530,72 +525,68 @@ include_once('dirback/dirviewback.php');
                                                         color: #cc0000; /* Hover color for delete icon */
                                                         transform: scale(1.2); /* Slightly enlarge */
                                                     }
+                                                    .modern-table {
+                                                        width: 100%;
+                                                        min-width: 1200px;
+                                                        border-collapse: collapse;
+                                                        font-size: 12px;
+                                                        background: #1f2024;
+                                                        color: white;
+                                                    }
 
-                                                    /* General Table Styling */
-.modern-table {
-    width: 100%;
-    min-width: 1200px;
-    border-collapse: collapse;
-    font-size: 12px;
-    background: #1f2024;
-    color: white;
-}
+                                                    .modern-table thead {
+                                                        position: sticky;
+                                                        top: 0;
+                                                        background: #282b30;
+                                                        z-index: 1;
+                                                    }
 
-.modern-table thead {
-    position: sticky;
-    top: 0;
-    background: #282b30;
-    z-index: 1;
-}
+                                                    .modern-table thead th {
+                                                        text-align: left;
+                                                        padding: 10px;
+                                                        font-family: 'Poppins', sans-serif;
+                                                        color: white;
+                                                        font-weight: 600;
+                                                        border-bottom: 2px solid #333;
+                                                    }
 
-.modern-table thead th {
-    text-align: left;
-    padding: 10px;
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    font-weight: 600;
-    border-bottom: 2px solid #333;
-}
+                                                    .modern-table tbody tr {
+                                                        border-bottom: 1px solid #333;
+                                                        transition: background-color 0.2s ease;
+                                                    }
 
-.modern-table tbody tr {
-    border-bottom: 1px solid #333;
-    transition: background-color 0.2s ease;
-}
+                                                    .modern-table tbody tr:hover {
+                                                        background-color: #35373d;
+                                                    }
 
-.modern-table tbody tr:hover {
-    background-color: #35373d;
-}
+                                                    .modern-table tbody td {
+                                                        padding: 10px;
+                                                        font-family: 'Poppins', sans-serif;
+                                                        color: #d1d1d1;
+                                                    }
 
-.modern-table tbody td {
-    padding: 10px;
-    font-family: 'Poppins', sans-serif;
-    color: #d1d1d1;
-}
+                                                    /* Action Buttons Styling */
+                                                    .action-buttons {
+                                                        display: flex;
+                                                        gap: 8px;
+                                                        justify-content: center;
+                                                    }
 
-/* Action Buttons Styling */
-.action-buttons {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-}
+                                                    .action-buttons a {
+                                                        text-decoration: none;
+                                                        font-size: 14px;
+                                                        color: #36b9cc;
+                                                        transition: color 0.3s ease;
+                                                    }
 
-.action-buttons a {
-    text-decoration: none;
-    font-size: 14px;
-    color: #36b9cc;
-    transition: color 0.3s ease;
-}
+                                                    .action-buttons a:hover {
+                                                        color: #2892a1;
+                                                    }
 
-.action-buttons a:hover {
-    color: #2892a1;
-}
-
-/* Remove Borders from Container */
-.table-responsive {
-    border: none;
-}
-
-
+                                                    /* Remove Borders from Container */
+                                                    .table-responsive {
+                                                        border: none;
+                                                    }
                                                 </style>
                                                 <style>
                                                     .table-responsive::-webkit-scrollbar {
