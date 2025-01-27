@@ -201,7 +201,7 @@ include("../auth/db.php");
                         <div class="mr-2" style="position: relative;">
                             <!-- Notification Button -->
                             <button id="notification-button" style="color: #f9ce45; padding-right: 50px; position: relative; background: none; border: none; cursor: pointer;">
-                                <img src="../images/notif.png" alt="Notification" style="height: 20px; width: 20px;">
+                                <img src="../images/notif_yellow.png" alt="Notification" style="height: 20px; width: 20px;">
                                 <span id="notification-count" style="
                                     font-family: 'Poppins', sans-serif; 
                                     font-weight: bold; 
