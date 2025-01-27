@@ -446,7 +446,7 @@ include("../auth/db.php");
                             <h6 style="color:white;"class="modal-title" id="contactAdminLabel">Access Denied</h6>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" style="background:#1f2024;">
                             <p style="color:#555">You are not authorized to add team members. Please contact your admin or head for assistance.</p>
                         </div>
                     </div>
