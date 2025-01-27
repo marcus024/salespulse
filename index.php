@@ -83,7 +83,7 @@
       padding: 15px;
       font-size: 12px;
       font-family:'Poppins';
-      border: 1px solid #1f2024;
+      border: 1px solid #555;
       border-radius: 10px;
       background-color: transparent; /* Light green background */
       color: white;
@@ -96,12 +96,12 @@
       font-family:'Poppins'
     }
     .input-group input:focus::placeholder {
-    color: #36b9cc; /* Makes the placeholder invisible */
+    color: white; /* Makes the placeholder invisible */
     }
     .input-group input:focus {
-      border-color: #36b9cc;
+      border-color:#555;
       outline: none;
-      background-color: white; /* Slightly darker green when focused */
+      background-color: transparent; /* Slightly darker green when focused */
     }
     .input-group span {
     position: absolute;
