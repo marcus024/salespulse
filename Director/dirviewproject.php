@@ -410,13 +410,13 @@ include_once('dirback/dirviewback.php');
                                                         <div class="d-flex align-items-center" style="gap: 10px;">
                                                             <!-- Refresh Text Button -->
                                                             <button type="button" class="btn btn-link" onclick="refreshPage()" 
-                                                                    style="font-size: 12px; text-decoration: underline; color: #36b9cc; margin: 0; padding: 0;">
+                                                                    style="font-size: 12px; text-decoration: underline; color:#f9ce45; margin: 0; padding: 0;">
                                                                 Refresh
                                                             </button>
                                                             <!-- Dropdown for Export Options -->
                                                             <div class="btn-group" role="group">
                                                                 <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
-                                                                        style="font-size: 10px; height: 30px; margin: 0; border:none; background-color:#36b9cc">
+                                                                        style="font-size: 10px; height: 30px; margin: 0; border:none; background-color:#f9ce45">
                                                                     Export
                                                                 </button>
                                                                 <ul class="dropdown-menu">
