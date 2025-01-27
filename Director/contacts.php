@@ -341,13 +341,13 @@ include("../auth/db.php");
                             <div class="card shadow-sm" style="background-color:#1f2024; border:none;">
                                 <div class="card-body">
                                     <p style="font-family:'Poppins'; font-size:15px; font-weight:700; color:#555">Contacts</p>
-                                        <a href="#" class="btn btn-info btn-icon-split w-70" data-bs-toggle="modal" data-bs-target="#addContact">
+                                        <a href="#" style="border:none;" class="btn btn-info btn-icon-split w-70" data-bs-toggle="modal" data-bs-target="#addContact">
                                             <span class="icon text-white-0">
                                             <i class="fas fa-plus"></i>
                                             </span>
                                             <style>
                                                 .icon i{
-                                                    background: none;
+                                                    background: #f9ce45;
                                                     border: none;
                                                     padding: 0;
                                                     margin: 0;
