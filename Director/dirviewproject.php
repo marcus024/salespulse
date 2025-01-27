@@ -358,39 +358,39 @@ include_once('dirback/dirviewback.php');
                                                 <div class="row">
                                                     <div class="col-md-4 mb-2">
                                                         <label for="clientCompany" class="form-label" style="font-size: 12px; color:#555;">Client/Company</label>
-                                                        <input readonly type="text" class="form-control input-sm" id="clientCompany" value="<?php echo htmlspecialchars($project['company_name']); ?>" style="font-size: 12px; color: white; background:#1f2024; padding: 5px;" required>
+                                                        <input readonly type="text" class="form-control input-sm" id="clientCompany" value="<?php echo htmlspecialchars($project['company_name']); ?>" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
                                                         <label for="accountManager" class="form-label" style="font-size: 12px; color: #555;">Account Manager</label>
-                                                        <input readonly type="text" class="form-control" id="accountManager" value="<?php echo htmlspecialchars($project['account_manager']); ?>" style="font-size: 12px; color: white; background:#1f2024; padding: 5px;" required>
+                                                        <input readonly type="text" class="form-control" id="accountManager" value="<?php echo htmlspecialchars($project['account_manager']); ?>" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
                                                         <label for="productType" class="form-label" style="font-size: 12px; color: #555;">Product Type</label>
-                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['product_type']); ?>" style="font-size: 12px; color: white; background:#1f2024; padding: 5px;" required>
+                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['product_type']); ?>" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-4 mb-2">
                                                         <label for="startDate" class="form-label" style="font-size: 12px; color: #555;">Start Date</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['start_date']); ?>" id="startDate" style="font-size: 12px; color: white; background:#1f2024; padding: 5px;" required>
+                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['start_date']); ?>" id="startDate" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
                                                         <label for="endDate" class="form-label" style="font-size: 12px; color: #555;">End Date</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['end_date']); ?>" id="endDate" style="font-size: 12px; color: white; background:#1f2024; padding: 5px;" required>
+                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['end_date']); ?>" id="endDate" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
                                                         <label for="source" class="form-label" style="font-size: 12px; color: #555;">Source</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['source']); ?>" id="source" style="font-size: 12px; color: white; background:#1f2024; padding: 5px;" required>
+                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['source']); ?>" id="source" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-4 mb-2">
                                                         <label for="status" class="form-label" style="font-size: 12px; color: #555;">Status</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['status']); ?>" id="currentStage"  style="font-size: 12px; color: white; background:#1f2024; padding: 5px;" required>
+                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['status']); ?>" id="currentStage"  style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
                                                         <label for="currentStage" class="form-label" style="font-size: 12px; color: #555;">Current Stage</label>
-                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['current_stage']); ?>" style="font-size: 12px; color:white; background:#1f2024; padding: 5px;" required>
+                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['current_stage']); ?>" style="font-size: 12px; color:white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
                                                         <label for="clientType" class="form-label" style="font-size: 12px; color: #555;">Client Type</label>
