@@ -593,7 +593,7 @@ include_once('dirback/dirviewback.php');
                                                                 class="btn btn-white play-btn" 
                                                                 id="completeProjectButton" 
                                                                 onclick="completeProject('<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
-                                                                style="position: absolute; bottom: 10px; right: 10px;">
+                                                                style="position: absolute; bottom: 10px; right: 10px; background:#f9ce45; color:#1f2024">
                                                                 <i class="fas fa-play"></i> Complete Project
                                                             </button>
                                                         <?php elseif ($status == 'Not Yet Started'): ?>
@@ -603,7 +603,7 @@ include_once('dirback/dirviewback.php');
                                                                 id="startJourneyButton" 
                                                                 data-bs-toggle="modal" 
                                                                 data-bs-target="#startJourneyModal" 
-                                                                style="position: absolute; bottom: 10px; right: 10px;">
+                                                                style="position: absolute; bottom: 10px; right: 10px; background:#f9ce45; color:#1f2024">
                                                                 <i class="fas fa-play"></i> Start Journey
                                                             </button>
                                                         <?php elseif ($status == 'Cancelled'): ?>
@@ -613,7 +613,7 @@ include_once('dirback/dirviewback.php');
                                                                 id="startJourneyButton" 
                                                                 data-bs-toggle="modal" 
                                                                 data-bs-target="#startJourneyModal" 
-                                                                style="position: absolute; bottom: 10px; right: 10px;">
+                                                                style="position: absolute; bottom: 10px; right: 10px; background:#f9ce45; color:#1f2024">
                                                                 <i class="fas fa-play"></i> Continue Journey
                                                             </button>
                                                         <?php else: ?>
@@ -624,7 +624,7 @@ include_once('dirback/dirviewback.php');
                                                                 data-bs-toggle="modal" 
                                                                 data-bs-target="#multiStepModal" 
                                                                 onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
-                                                                style="position: absolute; bottom: 10px; right: 10px;">
+                                                                style="position: absolute; bottom: 10px; right: 10px; background:#f9ce45; color:#1f2024">
                                                                 <i class="fas fa-play"></i> Continue Journey
                                                             </button>
                                                         <?php endif; ?>
@@ -635,7 +635,7 @@ include_once('dirback/dirviewback.php');
                                                         data-bs-toggle="modal" 
                                                         data-bs-target="#multiStepModal" 
                                                         onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
-                                                        style="position: absolute; bottom: 10px; right: 10px; display: none;">
+                                                        style="position: absolute; bottom: 10px; right: 10px; display: none; background:#f9ce45; color:#1f2024">
                                                         <i class="fas fa-play"></i> Continue Journey
                                                     </button>
                                                     <style>
