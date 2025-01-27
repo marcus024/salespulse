@@ -1083,7 +1083,7 @@ function checkProjectStatus() {
             popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
         }
         function showProfile() {
-            / window.location.href = "viewprofile.php";
+            window.location.href = "viewprofile.php";
         }
         // Hide the popup when clicking outside
         document.addEventListener('click', function (event) {
