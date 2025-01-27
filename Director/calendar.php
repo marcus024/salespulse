@@ -329,7 +329,7 @@ include("../auth/db.php");
                                         <p style="font-family:'Poppins'; font-size:15px; font-weight:700; color:white; margin: 0;">Calendar</p>
                                         <!-- Edit Button -->
                                         <i class="fas fa-edit edit-icon"
-                                        style="font-size: 10px; color: white; cursor: pointer;"
+                                        style="font-size: 10px; color: #555; cursor: pointer;"
                                         data-bs-toggle="modal"
                                         data-bs-target="#exampleModal"></i>
                                     </div>
@@ -672,9 +672,9 @@ include("../auth/db.php");
                         </div>
                         <!-- Wide Container for Calendar Content -->
                         <div class="col-md-9 mb-4">
-                            <div class="card shadow-sm" style="background: #f9ce45; border:none;">
+                            <div class="card shadow-sm" style="background: #1f2024; border:none;">
                                 <div class="card-body" id="calendar-container" style="min-height: 400px; color: white;">
-                                    <h1 class="h5 mb-4" style="color:#1f2024;">Calendar Content</h1>
+                                    <h1 class="h5 mb-4" style="color:white;">Calendar Content</h1>
                                     <!-- Calendars will be dynamically added here -->
                                 </div>
                             </div>
