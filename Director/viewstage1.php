@@ -981,12 +981,7 @@ function checkProjectStatus() {
     };
 }
 
-// Call the function to check project status when the page loads
-// window.onload = function() {
-//     checkProjectStatus();
-// };
-
-    </script>
+</script>
 
     <script>
         function togglePopup() {
