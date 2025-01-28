@@ -1932,7 +1932,7 @@ include("../auth/db.php");
                                     <!-- Account Manager -->
                                     <div class="col-md-6 mb-2">
                                         <label for="accountManager" class="form-label" style="font-size: 10px; color: #555;">Account Manager</label>
-                                        <input readonly  name="account_manager" type="text" class="form-control addPinputs" id="accountManager" value="<?php echo $_SESSION['user_name']; ?>"  required>
+                                        <input  name="account_manager" type="text" class="form-control addPinputs" id="accountManager" value="<?php echo $_SESSION['user_name']; ?>"  required>
                                     </div>
                                 </div>
                                 <div class="row">
