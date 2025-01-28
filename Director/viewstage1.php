@@ -351,13 +351,21 @@ include_once('dirback/dirviewback.php');
                                 <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
                                     <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
                                         <div class="form-step" id="step1">
-                                            <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
-                                                
-                                                <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color:white;">
+                                            <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0;">
+                                                <!-- Right Section: Stage Percentage -->
+                                                <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: white;">
+                                                    <!-- Placeholder for percentage or additional content -->
                                                 </div>
+
+                                                <!-- Left Section: Stage Title -->
                                                 <div class="stage-title" style="width: 30%; text-align: left; margin-bottom: 0; padding-bottom: 0;">
-                                                    <p id="projectUniqueId" style="color:white; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 1 <span hidden style="color:rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span></p> 
-                                                    <p style="color:white; margin-top: 0; font-family: 'Poppins'; font-size:12px;">Awareness/Prospecting</p>
+                                                    <p id="projectUniqueId" style="color: white; margin-bottom: 5px; font-family: 'Poppins', sans-serif; font-size: 16px;">
+                                                        Stage 1 
+                                                        <span hidden style="color: rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span>
+                                                    </p>
+                                                    <p style="color: white; margin-top: 0; font-family: 'Poppins', sans-serif; font-size: 12px;">
+                                                        Awareness/Prospecting
+                                                    </p>
                                                 </div>
                                             </div>
                                             <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
