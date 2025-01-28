@@ -58,19 +58,19 @@ document.addEventListener('DOMContentLoaded', function () {
         const newReqId = `st5req${nextBlockIndex}`;
 
         newBlock.innerHTML = `
-            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
                 Requirement ${nextBlockIndex}
             </p>
             <input type="hidden" name="requirement_id_5[]" value="${newReqId}">
             <div class="row mb-1">
                 <div class="col-md-4">
-                    <label for="requirement" class="form-label text-white">Requirement</label>
+                    <label for="requirement" class="form-label ">Requirement</label>
                 </div>
                 <div class="col-md-3">
-                    <label for="product" class="form-label text-white">Product</label>
+                    <label for="product" class="form-label ">Product</label>
                 </div>
                 <div class="col-md-3">
-                    <label for="distributor" class="form-label text-white">Distributor</label>
+                    <label for="distributor" class="form-label ">Distributor</label>
                 </div>
             </div>
             <div class="row mb-3">
@@ -99,16 +99,16 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
             <div class="row mb-1">
                 <div class="col-md-3">
-                    <label for="requirement" class="form-label text-white">Quantity</label>
+                    <label for="requirement" class="form-label ">Quantity</label>
                 </div>
                 <div class="col-md-2">
-                    <label for="requirement" class="form-label text-white">Pricing</label>
+                    <label for="requirement" class="form-label ">Pricing</label>
                 </div>
                 <div class="col-md-2">
-                    <label for="requirement" class="form-label text-white">Date Required</label>
+                    <label for="requirement" class="form-label ">Date Required</label>
                 </div>
                 <div class="col-md-4">
-                    <label for="requirement" class="form-label text-white">Remarks</label>
+                    <label for="requirement" class="form-label ">Remarks</label>
                 </div>
             </div>
             <div class="row mb-3">

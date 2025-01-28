@@ -208,19 +208,19 @@
 
         // Populate the block content
         newBlock.innerHTML = `
-            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="req_1_id">
+            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="req_1_id">
             Requirement ${blockIndex}
             </p>
             <input type="hidden" name="requirement_id_1[]" value="${requirementId}" id="req_1_id">
             <div class="row mb-2">
                 <div class="col-md-4">
-                    <label class="form-label text-white">Requirement</label>
+                    <label class="form-label ">Requirement</label>
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label text-white">Product</label>
+                    <label class="form-label ">Product</label>
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label text-white">Distributor</label>
+                    <label class="form-label ">Distributor</label>
                 </div>
                 <div class="col-md-2"></div>
             </div>
@@ -463,25 +463,25 @@
 
         // Populate the block content
         newBlock.innerHTML = `
-            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="rq_2_id">
+            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="rq_2_id">
             Requirement ${blockIndex}
             </p>
             <input type="hidden" name="requirement_id_2[]" value="${requirementId}" id="rq_2_id">
             <div class="row mb-1">
                 <div class="col-md-2">
-                        <label for="requirement" class="form-label text-white">Requirement</label>
+                        <label for="requirement" class="form-label ">Requirement</label>
                     </div>
                     <div class="col-md-2">
-                    <label for="product" class="form-label text-white">Product</label>
+                    <label for="product" class="form-label ">Product</label>
                     </div>
                     <div class="col-md-2">
-                    <label for="distributor" class="form-label text-white">Distributor</label>
+                    <label for="distributor" class="form-label ">Distributor</label>
                     </div>
                     <div class="col-md-2">
-                        <label for="requirement" class="form-label text-white">Date</label>
+                        <label for="requirement" class="form-label ">Date</label>
                     </div>
                     <div class="col-md-3">
-                        <label for="requirement" class="form-label text-white">Requirement Remarks</label>
+                        <label for="requirement" class="form-label ">Requirement Remarks</label>
                     </div>
                 </div>
             <div class="row mb-1">
@@ -588,19 +588,19 @@
         newBlock.dataset.index = blockIndex;
 
         newBlock.innerHTML = `
-            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement${blockIndex}">
+            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement${blockIndex}">
             Engagement ${blockIndex}
             </p>
             <input type="hidden" name="engagement_id_2[]" value="${engagementId}" id="eng_${blockIndex}_id">
             <div class="row mb-1">
             <div class="col-md-4">
-                <label for="engagement" class="form-label text-white">Type of Engagement</label>
+                <label for="engagement" class="form-label ">Type of Engagement</label>
             </div>
             <div class="col-md-2">
-                <label for="engagement" class="form-label text-white">Date</label>
+                <label for="engagement" class="form-label ">Date</label>
             </div>
             <div class="col-md-5">
-                <label for="engagement" class="form-label text-white">Remarks</label>
+                <label for="engagement" class="form-label ">Remarks</label>
             </div>
             </div>
             <div id="engagement-fields-container">
@@ -809,19 +809,19 @@
 
         // Populate the block content
         newBlock.innerHTML = `
-            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagethree">
+            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagethree">
                 Requirement ${blockIndex}
             </p>
             <input type="hidden" name="requirement_id_3[]" value="${requirementId}" id="req_3_id">
             <div class="row mb-1">
                 <div class="col-md-4">
-                    <label for="requirement" class="form-label text-white">Requirement</label>
+                    <label for="requirement" class="form-label ">Requirement</label>
                 </div>
                 <div class="col-md-3">
-                    <label for="product" class="form-label text-white">Product</label>
+                    <label for="product" class="form-label ">Product</label>
                 </div>
                 <div class="col-md-3">
-                    <label for="distributor" class="form-label text-white">Distributor</label>
+                    <label for="distributor" class="form-label ">Distributor</label>
                 </div>
             </div>
             <div class="row mb-1">
@@ -867,16 +867,16 @@
             </div>
             <div class="row mb-1">
                 <div class="col-md-3">
-                    <label for="requirement" class="form-label text-white">Quantity</label>
+                    <label for="requirement" class="form-label ">Quantity</label>
                 </div>
                 <div class="col-md-2">
-                    <label for="requirement" class="form-label text-white">Pricing</label>
+                    <label for="requirement" class="form-label ">Pricing</label>
                 </div>
                 <div class="col-md-2">
-                    <label for="requirement" class="form-label text-white">Date</label>
+                    <label for="requirement" class="form-label ">Date</label>
                 </div>
                 <div class="col-md-3">
-                    <label for="requirement" class="form-label text-white">Remarks</label>
+                    <label for="requirement" class="form-label ">Remarks</label>
                 </div>
             </div>
             <div class="row mb-1">
@@ -946,19 +946,19 @@
         newBlock.dataset.index = blockIndex;
 
         newBlock.innerHTML = `
-            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagementstagethree">
+            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagementstagethree">
                 Engagement ${blockIndex}
             </p>
             <input type="hidden" name="engagement_id_3[]" value="${engagementId}" id="eng_3_id_${blockIndex}">
             <div class="row mb-1">
                 <div class="col-md-3">
-                    <label for="engagement" class="form-label text-white">Type of Engagement</label>
+                    <label for="engagement" class="form-label ">Type of Engagement</label>
                 </div>
                 <div class="col-md-3">
-                    <label for="engagement" class="form-label text-white">Date</label>
+                    <label for="engagement" class="form-label ">Date</label>
                 </div>
                 <div class="col-md-4">
-                    <label for="engagement" class="form-label text-white">Remarks</label>
+                    <label for="engagement" class="form-label ">Remarks</label>
                 </div>
             </div>
             <div id="engagement-fields-container3">
@@ -1122,19 +1122,19 @@
     newBlock.dataset.index = blockIndex;
 
     newBlock.innerHTML = `
-        <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefour">
+        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefour">
             Requirement ${blockIndex}
         </p>
         <input type="hidden" name="requirement_id_4[]" value="${requirementId}" id="req_4_id">
         <div class="row mb-1">
             <div class="col-md-3">
-                <label for="requirement" class="form-label text-white">Requirement</label>
+                <label for="requirement" class="form-label ">Requirement</label>
             </div>
             <div class="col-md-3">
-                <label for="product" class="form-label text-white">Product</label>
+                <label for="product" class="form-label ">Product</label>
             </div>
             <div class="col-md-3">
-                <label for="distributor" class="form-label text-white">Distributor</label>
+                <label for="distributor" class="form-label ">Distributor</label>
             </div>
         </div>
         <div class="row mb-3">
@@ -1180,16 +1180,16 @@
         </div>
         <div class="row mb-1">
             <div class="col-md-3">
-                <label for="quantity" class="form-label text-white">Quantity</label>
+                <label for="quantity" class="form-label ">Quantity</label>
             </div>
             <div class="col-md-2">
-                <label for="pricing" class="form-label text-white">Pricing</label>
+                <label for="pricing" class="form-label ">Pricing</label>
             </div>
             <div class="col-md-2">
-                <label for="date_required" class="form-label text-white">Date Required</label>
+                <label for="date_required" class="form-label ">Date Required</label>
             </div>
             <div class="col-md-4">
-                <label for="remarks" class="form-label text-white">Remarks</label>
+                <label for="remarks" class="form-label ">Remarks</label>
             </div>
         </div>
         <div class="row mb-3">
@@ -1391,22 +1391,22 @@ function createUpsellBlock(blockIndex, upsellItem, projectId) {
     newBlock.dataset.index = blockIndex;
 
     newBlock.innerHTML = `
-        <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="upsellCon">
+        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="upsellCon">
             Upsell ${blockIndex}
         </p>
         <input type="hidden" name="upsell_stage_5[]" value="${upsellId}" id="upsell_id">
         <div class="row mb-1">
             <div class="col-md-2">
-                <label for="requirement" class="form-label text-white">Upsell</label>
+                <label for="requirement" class="form-label ">Upsell</label>
             </div>
             <div class="col-md-2">
-                <label for="quantity" class="form-label text-white">Quantity</label>
+                <label for="quantity" class="form-label ">Quantity</label>
             </div>
             <div class="col-md-2">
-                <label for="amount" class="form-label text-white">Amount</label>
+                <label for="amount" class="form-label ">Amount</label>
             </div>
             <div class="col-md-3">
-                <label for="remarks" class="form-label text-white">Remarks</label>
+                <label for="remarks" class="form-label ">Remarks</label>
             </div>
         </div>
         <div class="row mb-3 upsell-fields">
@@ -1495,19 +1495,19 @@ function createRequirementFiveBlock(blockIndex, reqItem, productList = [], distr
     newBlock.dataset.index = blockIndex;
 
     newBlock.innerHTML = `
-        <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefive">
+        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefive">
             Requirement ${blockIndex}
         </p>
         <input type="hidden" name="requirement_id_5[]" value="${requirementId}" id="req_5_id">
         <div class="row mb-1">
             <div class="col-md-3">
-                <label for="requirement" class="form-label text-white">Requirement</label>
+                <label for="requirement" class="form-label ">Requirement</label>
             </div>
             <div class="col-md-3">
-                <label for="product" class="form-label text-white">Product</label>
+                <label for="product" class="form-label ">Product</label>
             </div>
             <div class="col-md-3">
-                <label for="distributor" class="form-label text-white">Distributor</label>
+                <label for="distributor" class="form-label ">Distributor</label>
             </div>
         </div>
         <div class="row mb-3">
@@ -1553,16 +1553,16 @@ function createRequirementFiveBlock(blockIndex, reqItem, productList = [], distr
         </div>
         <div class="row mb-1">
             <div class="col-md-3">
-                <label for="quantity" class="form-label text-white">Quantity</label>
+                <label for="quantity" class="form-label ">Quantity</label>
             </div>
             <div class="col-md-2">
-                <label for="pricing" class="form-label text-white">Pricing</label>
+                <label for="pricing" class="form-label ">Pricing</label>
             </div>
             <div class="col-md-2">
-                <label for="date_required" class="form-label text-white">Date Required</label>
+                <label for="date_required" class="form-label ">Date Required</label>
             </div>
             <div class="col-md-4">
-                <label for="remarks" class="form-label text-white">Remarks</label>
+                <label for="remarks" class="form-label ">Remarks</label>
             </div>
         <div class="row mb-3">
             <div class="col-md-3">

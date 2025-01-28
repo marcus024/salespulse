@@ -8,38 +8,38 @@
                     width: 50px;
                     height: 50px;
                     border-radius: 50%;
-                    background: white;
-                    color: #36b9cc;
+                    background: #777;
+                    color:#f9ce45;
                     font-size: 20px;
                     font-family: 'Poppins';
                     font-weight : 700px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    border: 2px solid #36b9cc;
+                    border: 2px solid #f9ce45;
                 }
                 .step-line {
                     flex: 1;
                     height: 2px;
-                    background: #ddd;
+                    background: #777;
                 }
                 .step-circle.active {
-                    background: #36b9cc;
-                    color: #fff;
-                    border-color: #36b9cc;
+                    background:#f9ce45;
+                    color: #1f2024;
+                    border-color:#f9ce45;
                 }
                 .step-line.active {
-                    background: #36b9cc;
+                    background:#f9ce45;
                 }
                 .step-circle.completed {
-                    background: #36b9cc;
-                    color: #fff;
-                    border-color: #36b9cc;
+                    background:#f9ce45;
+                    color: #1f2024;
+                    border-color:#f9ce45;
                     font-size: 24px; /* Adjust the font size for the check mark */
                 }
                 .form-label, .btn {
                     font-size: 12px;
-                    color:white;
+                    color:#555;
                     font-family: 'Poppins'
                 }
                 .modal-title{
@@ -50,14 +50,35 @@
                 }
                 input, select {
                     font-size: 12px;
+                    color:white;
+                    font-family: 'Poppins';
+                    background-color:#1f2024;
+                }
+                .form-control{
+                    font-size: 12px;
                     color:#555;
                     font-family: 'Poppins';
+                    background-color:#1f2024;
+                    border: 1px solid #555;
+                }
+                .form-control:readonly{
+                    font-size: 12px;
+                    color:#555;
+                    font-family: 'Poppins';
+                    background-color:#1f2024;
+                }
+                .form-control:focus{
+                    font-size: 12px;
+                    color:white;
+                    font-family: 'Poppins';
+                    background-color:#1f2024;
+                    border: 1px solid white;
                 }
                 #multiStepModal .modal-dialog {
                     max-width: 1000px; /* Increased width */
                 }
                 #multiStepModal .form-container {
-                    background-color: #009393;
+                    background-color: #1f2024;
                     padding: 20px;
                     border-radius: 8px;
                 }
@@ -76,12 +97,43 @@
                     font-size: 1rem;
                     color: #555;
                 }
+                .btn-primary{
+                    background:rgb(185, 240, 2);
+                    color:#1f2024;
+                    border:none;
+                }
+                .btn-primary:hover{
+                    background:rgb(96, 120, 14);
+                    color:#1f2024;
+                    
+                }
+                .custom-select select {
+                padding: 5px;
+                font-size: 12px;
+                font-family: 'Poppins';
+                border: 1px solid #555;
+                border-radius: 10px;
+                background-color: #1f2024; /* Matches the input background */
+                color: white;
+                width: 100%;
+                height: 40px;
+                }
+
+                .custom-select:focus {
+                    border-color: white ;
+                    outline: none;
+                    background-color: #1f2024; /* Slightly darker green for focus */
+                }
+
+                .custom-select option {
+                    color: white; /* Black text for dropdown items */
+                }
             </style>
             <div class="modal fade" id="multiStepModal" tabindex="-1" aria-labelledby="multiStepModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content" class="modal-content" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(2px); border-radius: 5px;">
-                        <div class="modal-header" style="background-color:#36b9cc; height: 50px;">
-                            <h5 class="modal-title" id="client-name" style="font-size: 15px; color:white;"></h5>
+                    <div class="modal-content" class="modal-content" style="background: #1f2024; backdrop-filter: blur(2px); border-radius: 5px;">
+                        <div class="modal-header" style="background-color:#f9ce45; height: 50px; border:none">
+                            <h5 class="modal-title" id="client-name" style="font-size: 15px; color:#1f2024;"></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="modalCloseButton"></button>
                         </div>
                         <div class="modal-body position-relative">
@@ -100,16 +152,16 @@
                                 <div class="form-step" id="step1">
                                     <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
                                         <div class="stage-title" style="width: 30%; text-align: left; margin-bottom: 0; padding-bottom: 0;">
-                                            <p id="projectUniqueId" style="color: #36b9cc; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 1 <span hidden style="color:rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span></p> 
-                                            <h4 style="color: #36b9cc; margin-top: 0; font-family: 'Poppins', sans-serif;">Awareness/Prospecting</h4>
+                                            <p id="projectUniqueId" style="color:white; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 1 <span hidden style="color:rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span></p> 
+                                            <h4 style="color:white; margin-top: 0; font-family: 'Poppins', sans-serif;">Awareness/Prospecting</h4>
                                         </div>
-                                        <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
-                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: #36b9cc;">20%</span></p>
+                                        <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color:white;">
+                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color:white;">20%</span></p>
                                         </div>
                                     </div>
-                                    <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
-                                        <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
-                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                    <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px"> 
+                                        <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
+                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
                                             Project Profile
                                             </p>
                                             <div class="row mb-3">
@@ -126,42 +178,42 @@
                                                     <input  id="end-date-placeholder" type="text" class="form-control" readonly>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <label for="technology" class="form-label text-white">Technology</label>
+                                                    <label for="technology" class="form-label ">Technology</label>
                                                     <select name="technology" id="technologySelect" class="form-control custom-select" >
                                                         <option disabled selected>Select technology</option>
                                                         <option value="add_new_technology">+ Add New Technology...</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <label for="dealSize" class="form-label text-white">Deal Size</label>
+                                                    <label for="dealSize" class="form-label ">Deal Size</label>
                                                     <input name="deal_size" type="number" class="form-control" id="dealSize1" placeholder="e.g. 5000">
                                                 </div>
                                             </div>
                                             <input name="project_unique_id" id="project-unique-id" type="hidden" value="<?php echo $projectId; ?>" class="form-control" readonly>
                                             <div class="row mb-3">
                                                 <div class="col-md-12">
-                                                    <label for="solution" class="form-label text-white">Solution</label>
+                                                    <label for="solution" class="form-label ">Solution</label>
                                                     <textarea name="solution" class="form-control" id="solution1" placeholder="e.g. Sample Solution" 
                                                     style="height:100px;"></textarea>
                                                 </div>
                                             </div>
-                                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+                                            <div style="border-top: 1px ; margin: 20px 0;"></div>
                                             <div id="requirementsContainer">
                                                 <div class="requirement-block" data-index="1">
-                                                   <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirement1">
+                                                   <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirement1">
                                                     Requirement 1
                                                     </p>
                                                     <input type="hidden" name="requirement_id_1[]" value="st1rq1" id="req_1_id">
 
                                                     <div class="row mb-2">
                                                     <div class="col-md-4">
-                                                        <label class="form-label text-white">Requirement</label>
+                                                        <label class="form-label ">Requirement</label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <label class="form-label text-white">Product</label>
+                                                        <label class="form-label ">Product</label>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <label class="form-label text-white">Distributor</label>
+                                                        <label class="form-label ">Distributor</label>
                                                     </div>
                                                     <!-- <div class="col-md-2">
                                                         <button type="button"
@@ -210,9 +262,9 @@
                                                     </div>
                                                 </div> 
                                             </div> 
-                                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
+                                            <div style="border-top: 1px ; margin: 20px 0;"></div> 
                                             <div class="row mb-4">
-                                                <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                                <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
                                                 Stage Remarks
                                                 </p>
                                                 <div class="mb-6">
@@ -243,72 +295,72 @@
                                 <div class="form-step d-none" id="step2">
                                     <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
                                         <div class="stage-title" style="width: 30%; text-align: left; margin-bottom: 0; padding-bottom: 0;">
-                                            <p class="project-id-dis" style="color: #36b9cc; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 2 <span hidden style="color:rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span></p>
-                                            <h4 style="color: #36b9cc; margin-top: 0; font-family: 'Poppins', sans-serif;">Engagement/Discovery</h4>
+                                            <p class="project-id-dis" style="color: white; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 2 <span hidden style="color:rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span></p>
+                                            <h4 style="color: white; margin-top: 0; font-family: 'Poppins', sans-serif;">Engagement/Discovery</h4>
                                         </div>
-                                        <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
-                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: #36b9cc;">40%</span></p>
+                                        <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: white;">
+                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: white;">40%</span></p>
                                         </div>
                                     </div>
-                                    <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
-                                        <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
-                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                    <div class="container" style="background-color:#1f2024; padding: 10px; border-radius: 20px"> 
+                                        <div class="container" style="background-color:#2a2925; padding: 5px; border-radius: 20px">
+                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
                                             Project Profile
                                             </p>
                                             <div class="row mb-3">
                                                 <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Status</label>
+                                                    <label for="requirement" class="form-label ">Status</label>
                                                     <input type="text" class="form-control" id="stage-two-status"   readonly>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">End Date</label>
+                                                    <label for="requirement" class="form-label ">End Date</label>
                                                     <input type="text" class="form-control" id="stage-two-end"   readonly>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Start Date</label>
+                                                    <label for="requirement" class="form-label ">Start Date</label>
                                                     <input type="text" class="form-control" id="stage-two-start" readonly>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <label for="technology" class="form-label text-white">Technology</label>
+                                                    <label for="technology" class="form-label ">Technology</label>
                                                     <select name="technology" id="technologySelect2" class="form-control custom-select" >
                                                         <option disabled selected>Select technology</option>
                                                         <option value="add_new_technology">+ Add New Technology...</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <label for="dealSize" class="form-label text-white">Deal Size</label>
+                                                    <label for="dealSize" class="form-label ">Deal Size</label>
                                                     <input name="deal_size" type="number" class="form-control" id="deal_size2" placeholder="e.g. 5000">
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-12">
-                                                   <label for="solution" class="form-label text-white">Solution</label>
+                                                   <label for="solution" class="form-label ">Solution</label>
                                                     <textarea name="solution" class="form-control" id="solution2" placeholder="e.g. Sample Solution" 
                                                     style="height:100px;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
+                                        <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
-                                        <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
+                                        <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                             <div id="engagement1Container">
                                                 <div class="engagement-block" data-index="1">
-                                                   <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement1">
+                                                   <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement1">
                                                     Engagement 1
                                                     </p>
                                                     <input type="hidden" name="engagement_id_2[]" value="st2eng1" id="eng_1_id">
                                                     <div class="row mb-1">
                                                         <div class="col-md-4">
-                                                            <label for="engagement" class="form-label text-white">Type of Engagement</label>
+                                                            <label for="engagement" class="form-label ">Type of Engagement</label>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <label for="engagement" class="form-label text-white">Date</label>
+                                                            <label for="engagement" class="form-label ">Date</label>
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <label for="engagement" class="form-label text-white">Remarks</label>
+                                                            <label for="engagement" class="form-label ">Remarks</label>
                                                         </div>
                                                         <!-- <div class="col-md-1">
-                                                            <a href="#" id="addEngagement" class="form-label text-white" style="font-size:10px; cursor: pointer;">
+                                                            <a href="#" id="addEngagement" class="form-label " style="font-size:10px; cursor: pointer;">
                                                                 <i class="fas fa-plus"></i> Add
                                                             </a>
                                                         </div> -->
@@ -337,29 +389,29 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
-                                        <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
+                                        <div style="border-top: 1px ; margin: 20px 0;"></div> 
+                                        <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                             <div id="requirementtwoContainer">
                                                 <div class="requirementtwo-block" data-index="1">
-                                                    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagetwo">
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagetwo">
                                                     Requirement 1
                                                     </p>
                                                     <input type="hidden" name="requirement_id_2[]" value="st2rq1" id="rq_1_id">
                                                     <div class="row mb-1">
                                                         <div class="col-md-2">
-                                                            <label for="requirement" class="form-label text-white">Requirement</label>
+                                                            <label for="requirement" class="form-label ">Requirement</label>
                                                         </div>
                                                         <div class="col-md-2">
-                                                        <label for="product" class="form-label text-white">Product</label>
+                                                        <label for="product" class="form-label ">Product</label>
                                                         </div>
                                                         <div class="col-md-2">
-                                                        <label for="distributor" class="form-label text-white">Distributor</label>
+                                                        <label for="distributor" class="form-label ">Distributor</label>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <label for="requirement" class="form-label text-white">Date</label>
+                                                            <label for="requirement" class="form-label ">Date</label>
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <label for="requirement" class="form-label text-white">Requirement Remarks</label>
+                                                            <label for="requirement" class="form-label ">Requirement Remarks</label>
                                                         </div>
                                                     </div>
                                                     <div >
@@ -398,9 +450,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
-                                        <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
-                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement1">
+                                        <div style="border-top: 1px ; margin: 20px 0;"></div> 
+                                        <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
+                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement1">
                                             Stage Remarks
                                             </p>
                                             <div class="row">
@@ -415,68 +467,68 @@
                                 <div class="form-step d-none" id="step3">
                                 <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
                                         <div class="stage-title" style="width: 30%; text-align: left; margin-bottom: 0; padding-bottom: 0;">
-                                            <p class="project-id-dis" style="color: #36b9cc; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 3 <span hidden style="color:rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span></p>
-                                            <h4 style="color: #36b9cc; margin-top: 0; font-family: 'Poppins', sans-serif;">Presentation/Proposal</h4>
+                                            <p class="project-id-dis" style="color:white; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 3 <span hidden style="color:rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span></p>
+                                            <h4 style="color:white; margin-top: 0; font-family: 'Poppins', sans-serif;">Presentation/Proposal</h4>
                                         </div>
-                                        <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
-                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: #36b9cc;">60%</span></p>
+                                        <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color:white;">
+                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color:white;">60%</span></p>
                                         </div>
                                     </div>
-                                    <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
-                                        <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
-                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                    <div class="container" style="background-color:#1f2024; padding: 10px; border-radius: 20px"> 
+                                        <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
+                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
                                            Project Profile
                                             </p>
                                             <div class="row mb-3">
                                                 <div class="col-md-2">
-                                                    <label for="status" class="form-label text-white">Status</label>
+                                                    <label for="status" class="form-label ">Status</label>
                                                     <input name="" type="text" class="form-control" id="stage-three-status"  readonly>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">End Date</label>
+                                                    <label for="requirement" class="form-label ">End Date</label>
                                                     <input name="" type="text" class="form-control" id="stage-three-end"  readonly>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Start Date</label>
+                                                    <label for="requirement" class="form-label ">Start Date</label>
                                                     <input name="" type="text" class="form-control" id="stage-three-start"  readonly>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Technology</label>
+                                                    <label for="requirement" class="form-label ">Technology</label>
                                                     <select name="technology" id="technologySelect3" class="form-control custom-select" >
                                                         <option disabled selected>Select technology</option>
                                                         <option value="add_new_technology">+ Add New Technology...</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <label for="status" class="form-label text-white">Deal Size(Amount)</label>
+                                                    <label for="status" class="form-label ">Deal Size(Amount)</label>
                                                    <input name="deal_size" type="number" class="form-control" id="deal_size3" placeholder="e.g. 5000">
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-12">
-                                                    <label for="status" class="form-label text-white">Solution</label>
+                                                    <label for="status" class="form-label ">Solution</label>
                                                     <textarea name="solution" class="form-control" id="solution3" placeholder="e.g. Sample Solution" 
                                                     style="height:100px;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
-                                        <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
+                                        <div style="border-top: 1px ; margin: 20px 0;"></div> 
+                                        <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                             <div id="engagementthreeContainer">
                                                 <div class="engagementthree-block" data-index="1">
-                                                    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagementstagethree">
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagementstagethree">
                                                     Engagement 1
                                                     </p>
                                                     <input type="hidden" name="engagement_id_3[]" value="st3eng1" id="eng_3_id">
                                                     <div class="row mb-1">
                                                         <div class="col-md-3">
-                                                            <label for="engagement" class="form-label text-white">Type of Engagement</label>
+                                                            <label for="engagement" class="form-label ">Type of Engagement</label>
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <label for="engagement" class="form-label text-white">Date</label>
+                                                            <label for="engagement" class="form-label ">Date</label>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <label for="engagement" class="form-label text-white">Remarks</label>
+                                                            <label for="engagement" class="form-label ">Remarks</label>
                                                         </div>
                                                     </div>
                                                     <div id="engagement-fields-container3">
@@ -503,23 +555,23 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
-                                        <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
+                                        <div style="border-top: 1px ; margin: 20px 0;"></div> 
+                                        <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                             <div id="requirementthreeContainer">
                                                 <div class="requirementthree-block" data-index="1">
-                                                    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagethree">
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagethree">
                                                     Requirement 1
                                                     </p>
                                                     <input type="hidden" name="requirement_id_3[]" value="st3req1" id="req_3_id">    
                                                     <div class="row mb-1">
                                                         <div class="col-md-4">
-                                                            <label for="requirement" class="form-label text-white">Requirement</label>
+                                                            <label for="requirement" class="form-label ">Requirement</label>
                                                         </div>
                                                         <div class="col-md-3">
-                                                        <label for="requirement" class="form-label text-white">Product</label>
+                                                        <label for="requirement" class="form-label ">Product</label>
                                                         </div>
                                                         <div class="col-md-3">
-                                                        <label for="distributor" class="form-label text-white">Distributor</label>
+                                                        <label for="distributor" class="form-label ">Distributor</label>
                                                         </div>
                                                     </div>
                                                     <div id="requirement-fields-container-3">
@@ -551,16 +603,16 @@
                                                     </div>
                                                     <div class="row mb-1">
                                                         <div class="col-md-3">
-                                                            <label for="requirement" class="form-label text-white">Quantity</label>
+                                                            <label for="requirement" class="form-label ">Quantity</label>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <label for="requirement" class="form-label text-white">Pricing</label>
+                                                            <label for="requirement" class="form-label ">Pricing</label>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <label for="requirement" class="form-label text-white">Date</label>
+                                                            <label for="requirement" class="form-label ">Date</label>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <label for="requirement" class="form-label text-white">Remarks</label>
+                                                            <label for="requirement" class="form-label ">Remarks</label>
                                                         </div>
                                                     </div>
                                                     <div id="requirement-fields-container-3">
@@ -585,15 +637,15 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
+                                        <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
-                                        <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
-                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                        <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
+                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
                                            Stage Remarks
                                             </p>
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <label for="requirement" class="form-label text-white">Stage Remarks</label>
+                                                    <label for="requirement" class="form-label ">Stage Remarks</label>
                                                     <textarea name="stage_three_remarks" class="form-control" id="stageremarks3" placeholder="e.g. Sample Remarks" 
                                                     style="height:100px;"></textarea>
                                                 </div>
@@ -604,69 +656,69 @@
                                 <div class="form-step d-none" id="step4">
                                     <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
                                         <div class="stage-title" style="width: 30%; text-align: left; margin-bottom: 0; padding-bottom: 0;">
-                                            <p class="project-id-dis" style="color: #36b9cc; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 4<span hidden style="color:rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span></p>
-                                            <h4 style="color: #36b9cc; margin-top: 0; font-family: 'Poppins', sans-serif;">Negotiation/Commitment</h4>
+                                            <p class="project-id-dis" style="color: white; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 4<span hidden style="color:rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span></p>
+                                            <h4 style="color: white; margin-top: 0; font-family: 'Poppins', sans-serif;">Negotiation/Commitment</h4>
                                         </div>
-                                        <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
-                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: #36b9cc;">80%</span></p>
+                                        <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: white;">
+                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: white;">80%</span></p>
                                         </div>
                                     </div>
-                                    <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
-                                        <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
-                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                    <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
+                                        <div class="container" style="background-color:#2a2925; padding: 5px; border-radius: 20px">
+                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
                                            Project Profile
                                             </p>
                                             <div class="row mb-3">
                                                 <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Start Date</label>
+                                                    <label for="requirement" class="form-label ">Start Date</label>
                                                     <input type="text" class="form-control" id="stage-four-start"  readonly>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">End Date</label>
+                                                    <label for="requirement" class="form-label ">End Date</label>
                                                     <input type="text" class="form-control" id="stage-four-end"  readonly>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label for="status" class="form-label text-white">Status</label>
+                                                    <label for="status" class="form-label ">Status</label>
                                                     <input type="text" class="form-control" id="stage-four-status"  readonly>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Technology</label>
+                                                    <label for="requirement" class="form-label ">Technology</label>
                                                     <select name="technology" id="technologySelect4" class="form-control custom-select" >
                                                         <option disabled selected>Select technology</option>
                                                         <option value="add_new_technology">+ Add New Technology...</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
-                                                   <label for="dealSize" class="form-label text-white">Deal Size</label>
+                                                   <label for="dealSize" class="form-label ">Deal Size</label>
                                                     <input name="deal_size" type="number" class="form-control" id="deal_size4" placeholder="e.g. 5000">
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-12">
-                                                    <label for="status" class="form-label text-white">Solution</label>
+                                                    <label for="status" class="form-label ">Solution</label>
                                                     <textarea name="solution" class="form-control" id="solution4" placeholder="e.g. Sample Solution" 
                                                     style="height:100px;"></textarea>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
+                                        <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
-                                        <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
+                                        <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                             <div id="requirementfourContainer">
                                                 <div class="requirementfour-block" data-index="1">
-                                                    <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefour">
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefour">
                                                     Requirement 1
                                                     </p>
                                                     <input type="hidden" name="requirement_id_4[]" value="st4req1" id="req_4_id">
                                                     <div class="row mb-1">
                                                         <div class="col-md-3">
-                                                            <label for="requirement" class="form-label text-white">Requirement</label>
+                                                            <label for="requirement" class="form-label ">Requirement</label>
                                                         </div>
                                                         <div class="col-md-3">
-                                                        <label for="requirement" class="form-label text-white">Product</label>
+                                                        <label for="requirement" class="form-label ">Product</label>
                                                         </div>
                                                         <div class="col-md-3">
-                                                        <label for="distributor" class="form-label text-white">Distributor</label>
+                                                        <label for="distributor" class="form-label ">Distributor</label>
                                                         </div>
                                                     </div>
                                                     <div id="requirement-fields-container-3">
@@ -698,16 +750,16 @@
                                                     </div>
                                                     <div class="row mb-1">
                                                         <div class="col-md-3">
-                                                            <label for="requirement" class="form-label text-white">Quantity</label>
+                                                            <label for="requirement" class="form-label ">Quantity</label>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <label for="requirement" class="form-label text-white">Pricing</label>
+                                                            <label for="requirement" class="form-label ">Pricing</label>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <label for="requirement" class="form-label text-white">Date Required</label>
+                                                            <label for="requirement" class="form-label ">Date Required</label>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <label for="requirement" class="form-label text-white">Remarks</label>
+                                                            <label for="requirement" class="form-label ">Remarks</label>
                                                         </div>
                                                     </div>
                                                     <div id="requirement-fields-container-3">
@@ -729,15 +781,15 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
+                                        <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
-                                        <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
-                                            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                        <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
+                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
                                            Stage Remarks
                                             </p>
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <label for="requirement" class="form-label text-white">Stage Remarks</label>
+                                                    <label for="requirement" class="form-label ">Stage Remarks</label>
                                                     <textarea name="stage_four_remarks" class="form-control" id="stageremarks4" placeholder="e.g. Sample Remarks" 
                                                     style="height:100px;"></textarea>
                                                 </div>
@@ -748,66 +800,66 @@
                                 <div class="form-step d-none" id="step5">
                                 <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
                                         <div class="stage-title" style="width: 30%; text-align: left; margin-bottom: 0; padding-bottom: 0;">
-                                            <p class="project-id-dis" style="color: #36b9cc; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 5 <span hidden style="color:rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span></p>
-                                            <h4 style="color: #36b9cc; margin-top: 0; font-family: 'Poppins', sans-serif;">Delivery/Follow-up</h4>
+                                            <p class="project-id-dis" style="color: white; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 5 <span hidden style="color:rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span></p>
+                                            <h4 style="color: white; margin-top: 0; font-family: 'Poppins', sans-serif;">Delivery/Follow-up</h4>
                                         </div>
-                                        <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
-                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: #36b9cc;">100%</span></p>
+                                        <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: white;">
+                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: white;">100%</span></p>
                                         </div>
                                     </div>
-                                    <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
-                                        <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
+                                    <div class="container" style="background-color:#1f2024; padding: 10px; border-radius: 20px"> 
+                                        <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                             <div class="row mb-3">
                                                 <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Start Date</label>
+                                                    <label for="requirement" class="form-label ">Start Date</label>
                                                     <input type="text" class="form-control" id="stage-five-start" readonly>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">End Date</label>
+                                                    <label for="requirement" class="form-label ">End Date</label>
                                                     <input type="text" class="form-control" id="stage-five-end" readonly>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label for="status" class="form-label text-white">Status</label>
+                                                    <label for="status" class="form-label ">Status</label>
                                                     <input type="text" class="form-control" id="stage-five-status"  readonly>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Technology</label>
+                                                    <label for="requirement" class="form-label ">Technology</label>
                                                     <select name="technology" id="technologySelect5" class="form-control custom-select" >
                                                         <option disabled selected>Select technology</option>
                                                         <option value="add_new_technology">+ Add New Technology...</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <label for="requirement" class="form-label text-white">Deal Size(Amount)</label>
+                                                    <label for="requirement" class="form-label ">Deal Size(Amount)</label>
                                                     <input name="deal_size" type="text" class="form-control" id="deal_size5" placeholder="e.g. 5000">
                                                 </div>
                                             </div>
                                              <div class="row mb-3">
                                                 <div class="col-md-12">
-                                                    <label for="status" class="form-label text-white">Solution</label>
+                                                    <label for="status" class="form-label ">Solution</label>
                                                     <textarea name="solution" class="form-control" id="solution5" placeholder="e.g. Sample Solution" 
                                                     style="height:100px;"></textarea>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-3">
-                                                    <label for="status" class="form-label text-white">SPR Number</label>
+                                                    <label for="status" class="form-label ">SPR Number</label>
                                                     <input type="text" class="form-control" id="stage-five-spr"  name="SPR_number" placeholder="e.g. SPR1 ">
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Start Contracted Date</label>
+                                                    <label for="requirement" class="form-label ">Start Contracted Date</label>
                                                     <input name="contractStart" type="date" class="form-control" id="startContract">
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">End Contracted Date</label>
+                                                    <label for="requirement" class="form-label ">End Contracted Date</label>
                                                     <input name="contractEnd" type="date" class="form-control" id="endContract" >
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label for="requirement" class="form-label text-white">Duration</label>
+                                                    <label for="requirement" class="form-label ">Duration</label>
                                                     <input name="contract_duration" type="text" class="form-control" id="contractDuration" placeholder="e.g. 6 days" readonly>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    <label for="billingType" class="form-label text-white">Billing Type</label>
+                                                    <label for="billingType" class="form-label ">Billing Type</label>
                                                     <select name="billing_type" class="form-control custom-select" id="billingType">
                                                         <option   disabled selected>Select Billing Type</option>
                                                         <option value="OPEX">OPEX</option>
@@ -815,25 +867,25 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
+                                            <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
-                                            <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
+                                            <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                                 <div id="requirementfiveContainer">
                                                     <div class="requirementfive-block" data-index="1">
-                                                        <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefive">
+                                                        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefive">
                                                         Requirement 1
                                                         </p>
                                                         <input type="hidden" name="requirement_id_5[]" value="st5req1" id="req_5_id">
                                                         <!-- Header Row -->
                                                         <div class="row mb-1">
                                                             <div class="col-md-4">
-                                                                <label for="requirement" class="form-label text-white">Requirement</label>
+                                                                <label for="requirement" class="form-label ">Requirement</label>
                                                             </div>
                                                             <div class="col-md-3">
-                                                            <label for="requirement" class="form-label text-white">Product</label>
+                                                            <label for="requirement" class="form-label ">Product</label>
                                                             </div>
                                                             <div class="col-md-3">
-                                                            <label for="distributor" class="form-label text-white">Distributor</label>
+                                                            <label for="distributor" class="form-label ">Distributor</label>
                                                             </div>
                                                             
                                                         </div>
@@ -868,16 +920,16 @@
                                                         </div>
                                                         <div class="row mb-1">
                                                             <div class="col-md-3">
-                                                                <label for="requirement" class="form-label text-white">Quantity</label>
+                                                                <label for="requirement" class="form-label ">Quantity</label>
                                                             </div>
                                                             <div class="col-md-2">
-                                                                <label for="requirement" class="form-label text-white">Pricing</label>
+                                                                <label for="requirement" class="form-label ">Pricing</label>
                                                             </div>
                                                             <div class="col-md-2">
-                                                                <label for="requirement" class="form-label text-white">Date Required</label>
+                                                                <label for="requirement" class="form-label ">Date Required</label>
                                                             </div>
                                                             <div class="col-md-4">
-                                                                <label for="requirement" class="form-label text-white">Remarks</label>
+                                                                <label for="requirement" class="form-label ">Remarks</label>
                                                             </div>
                                                         </div>
                                                         <!-- Container for Requirement Fields -->
@@ -901,28 +953,28 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
+                                            <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
-                                            <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
+                                            <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                                 <div id="upsellContainer">
                                                     <div class="upsell-block" data-index="1">
-                                                        <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="upsellCon">
+                                                        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="upsellCon">
                                                         Upsell 1
                                                         </p>
                                                         <input type="hidden" name="upsell_stage_5[]" value="upsell1" id="upsell_id">
                                                         <!-- Fixed Labels Row -->
                                                         <div class="row mb-1">
                                                             <div class="col-md-3">
-                                                                <label for="requirement" class="form-label text-white">Upsell</label>
+                                                                <label for="requirement" class="form-label ">Upsell</label>
                                                             </div>
                                                             <div class="col-md-2">
-                                                                <label for="quantity" class="form-label text-white">Quantity</label>
+                                                                <label for="quantity" class="form-label ">Quantity</label>
                                                             </div>
                                                             <div class="col-md-2">
-                                                                <label for="amount" class="form-label text-white">Amount</label>
+                                                                <label for="amount" class="form-label ">Amount</label>
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <label for="remarks" class="form-label text-white">Remarks</label>
+                                                                <label for="remarks" class="form-label ">Remarks</label>
                                                             </div>
                                                         </div>
                                                         <!-- Container for Input Rows -->
@@ -955,12 +1007,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
+                                        <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
-                                        <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
+                                        <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <label for="requirement" class="form-label text-white">Stage Remarks</label>
+                                                    <label for="requirement" class="form-label ">Stage Remarks</label>
                                                     <textarea name="remarks_stage_five" class="form-control" id="stageremarks5" placeholder="e.g. Sample Remarks" 
                                                     style="height:100px;"></textarea>
                                                 </div>
@@ -1007,15 +1059,15 @@
                                 }
                                 #salesPulse {
                                     font-weight: 800;
-                                    color: #36b9cc;
+                                    color: #f9ce45;
                                     font-size: 25px;
                                     font-family: 'Poppins', sans-serif;
                                 }
                             </style>
-                            <div class="modal-footer">
+                            <div class="modal-footer" style="border:none;">
                                 <div class="footer-left">
                                     <div >
-                                        <img id="logoPlaceholder" src="../images/logo_blue.png" alt="salespulselogo">
+                                        <img id="logoPlaceholder" src="../images/log_icon_x.png" alt="salespulselogo">
                                     </div>
                                     <div id="salesPulse">Sales Pulse</div>
                                 </div>
@@ -1037,13 +1089,13 @@
                                     <i class="fas fa-check-circle" style="color: #28a745; font-size: 16px;"></i>
                                     <span id="notificationMessage"></span>
                                 </div>
-                                <button type="button" class="btn btn-danger " id="deleteButton" style="border-color: red; background-color: #fff; color: red; font-size: 12px;">
+                                <button type="button" class="btn btn-danger " id="deleteButton" style="border-color: red; background-color: #2a2925; color: red; font-size: 12px;">
                                     <i class="fas fa-trash-alt"></i> Delete
                                 </button>
-                                <button type="button" class="btn btn-success " id="saveButton" style="border-weight: 5px; border-color: #36b9cc; background-color: #fff; color: #36b9cc; font-size: 12px;">
+                                <button type="button" class="btn btn-success " id="saveButton" style="border-weight: 5px; border-color: #f9ce45; background-color: #2a2925; color: #f9ce45; font-size: 12px;">
                                     Save
                                 </button>
-                                <button type="button" class="btn btn-success " id="completeButton" style="background-color: #36b9cc; color: white; font-size: 12px;">
+                                <button type="button" class="btn btn-success " id="completeButton" style="border:none; background-color: #f9ce45; color: #2a2925; font-size: 12px;">
                                     Complete
                                 </button>
                             </div>
