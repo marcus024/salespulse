@@ -52,7 +52,7 @@
                     font-size: 12px;
                     color:white;
                     font-family: 'Poppins';
-                    background:#1f2024;
+                    background-color:#1f2024;
                 }
                 #multiStepModal .modal-dialog {
                     max-width: 1000px; /* Increased width */
