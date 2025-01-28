@@ -349,77 +349,9 @@ include_once('dirback/dirviewback.php');
                                 <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
                                     <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
                                         <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="clientCompany" class="form-label" style="font-size: 12px; color: white;">Client/Company</label>
-                                                        <input readonly type="text" class="form-control input-sm" id="clientCompany" value="<?php echo htmlspecialchars($project['company_name']); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="accountManager" class="form-label" style="font-size: 12px; color: white;">Account Manager</label>
-                                                        <input readonly type="text" class="form-control" id="accountManager" value="<?php echo htmlspecialchars($project['account_manager']); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="productType" class="form-label" style="font-size: 12px; color: white;">Product Type</label>
-                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['product_type']); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="startDate" class="form-label" style="font-size: 12px; color: white;">Start Date</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['start_date']); ?>" id="startDate" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="endDate" class="form-label" style="font-size: 12px; color: white;">End Date</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['end_date']); ?>" id="endDate" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="source" class="form-label" style="font-size: 12px; color: white;">Source</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['source']); ?>" id="source" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="status" class="form-label" style="font-size: 12px; color: white;">Status</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['status']); ?>" id="currentStage"  style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="currentStage" class="form-label" style="font-size: 12px; color: white;">Current Stage</label>
-                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['current_stage']); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="clientType" class="form-label" style="font-size: 12px; color: white;">Client Type</label>
-                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['client_type']); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                </div>
                                                 <?php include("dirback/pro_stage_details.php"); ?>
-                                                  
-                                              
                                                 <div class="container mt-4 p-3" style="background: white; border-radius: 8px;">
                                                     <h3 style="font-family: 'Poppins', sans-serif; font-weight: bold; color: #555; text-align: center; margin-bottom: 5pxpx;">Stage 1 of <?php echo htmlspecialchars($project['company_name']); ?></h3>
-                                                   <!-- Row to hold the search bar and export buttons -->
-                                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                                        <!-- Placeholder for future left-side content (if needed) -->
-                                                        <div></div>
-                                                        <!-- Right side: Search bar and Export dropdown -->
-                                                        <!-- <div class="d-flex align-items-center" style="gap: 10px;">
-                                                            <button type="button" class="btn btn-link" onclick="refreshPage()" 
-                                                                    style="font-size: 12px; text-decoration: underline; color: #36b9cc; margin: 0; padding: 0;">
-                                                                Refresh
-                                                            </button>
-                                                            <div class="btn-group" role="group">
-                                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
-                                                                        style="font-size: 10px; height: 30px; margin: 0; border:none; background-color:#36b9cc">
-                                                                    Export
-                                                                </button>
-                                                                <ul class="dropdown-menu">
-                                                                    <li><a class="dropdown-item" href="#" onclick="exportToPDF()">Download PDF</a></li>
-                                                                    <li><a class="dropdown-item" href="#" onclick="exportToExcel()">Download Excel</a></li>
-                                                                    <li><a class="dropdown-item" href="#" onclick="exportToCSV()">Download CSV</a></li>
-                                                                    <li><a class="dropdown-item" href="#" onclick="printTable()">Print</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div> -->
-                                                    </div>
                                                     <?php include('dirback/fetch_s1.php'); ?>
                                                     <div id="details-view" >
                                                         <div class="container" style="background-color:white; padding: 10px; border-radius: 20px"> 
