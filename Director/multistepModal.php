@@ -63,7 +63,7 @@
                 }
                 .form-control:readonly{
                     font-size: 12px;
-                    color:white;
+                    color:#555;
                     font-family: 'Poppins';
                     background-color:#1f2024;
                 }
