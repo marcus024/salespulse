@@ -128,6 +128,86 @@ include_once('dirback/dirviewback.php');
             margin-top: 5px; /* Space between company name and copyright */
         }
     </style>
+    <style>
+        .custom-select {
+            appearance: none; 
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            background: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23555555"%3E%3Cpath d="M7 10l5 5 5-5z"/%3E%3C/svg%3E') no-repeat right 10px center;
+            background-color: #fff;
+            background-size: 12px 12px;
+            padding-right: 30px; 
+        }
+        .custom-select-dark {
+            background: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff"%3E%3Cpath d="M7 10l5 5 5-5z"/%3E%3C/svg%3E') no-repeat right 10px center;
+            background-color: #343a40;
+            color: white;
+            padding-right: 30px;
+        }
+    </style>
+    <style>
+    /* Optional: Add a border or styling for the scrollable area */
+        .notify::-webkit-scrollbar {
+            width: 4px; /* Width of the vertical scrollbar */
+            height: 4px; /* Height of the horizontal scrollbar */
+        }
+
+        .notify::-webkit-scrollbar-thumb {
+            background-color: #36b9cc;
+            border-radius: 10px;
+            height: 5px; /* Minimum height for the scrollbar thumb */
+        }
+
+        .notify::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+    </style>
+    <style>
+        /* Hover effect for profile image */
+        .profile-img:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(1.1);
+            transition: all 0.2s ease-in-out;
+        }
+
+        /* Hover effect for popup links */
+        .popup-link {
+            padding: 8px 0;
+            text-decoration: none;
+            color: #555;
+            margin-bottom: 5px;
+            transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+
+        .popup-link:hover {
+            color: #36b9cc;
+            border-radius: 4px;
+            text-decoration:none;
+        }
+
+        /* Special hover for logout link */
+        .logout-link:hover {
+            color: #36b9cc;
+            text-decoration:none;
+        }
+    </style>
+    <!-- Keyframe Animation -->
+    <style>
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(1.5);
+            opacity: 0.4;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    </style>
 </head>
 <body id="page-top" style="background-color:#15151a;">
     <!-- Page Wrapper -->
@@ -226,8 +306,6 @@ include_once('dirback/dirviewback.php');
                                     
                                 </span>
                             </button>
-
-
                             <!-- Dropdown Container (Initially hidden) -->
                             <div id="notification-dropdown" 
                                 style="
@@ -248,23 +326,6 @@ include_once('dirback/dirviewback.php');
                                 <div style="text-align: center; border-top: 1px solid #ccc; padding: 8px;">
                                     <a href="#" id="toggleNotifications"  style="font-size: 12px; color: #36b9cc; text-decoration: none;">Show All Alerts</a>
                                 </div>
-                                <style>
-                                /* Optional: Add a border or styling for the scrollable area */
-                                    .notify::-webkit-scrollbar {
-                                        width: 4px; /* Width of the vertical scrollbar */
-                                        height: 4px; /* Height of the horizontal scrollbar */
-                                    }
-
-                                    .notify::-webkit-scrollbar-thumb {
-                                        background-color: #36b9cc;
-                                        border-radius: 10px;
-                                        height: 5px; /* Minimum height for the scrollbar thumb */
-                                    }
-
-                                    .notify::-webkit-scrollbar-thumb:hover {
-                                        background-color: #555;
-                                    }
-                                </style>
                             </div>
                         </div>
                         <!-- Profile Name and Picture -->
@@ -291,35 +352,6 @@ include_once('dirback/dirviewback.php');
                                 <a href="#" class="popup-link logout-link" data-bs-toggle="modal" data-bs-target="#outLog">Logout</a>
                             </nav>
                         </div>
-                        <style>
-                            /* Hover effect for profile image */
-                            .profile-img:hover {
-                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                                transform: scale(1.1);
-                                transition: all 0.2s ease-in-out;
-                            }
-
-                            /* Hover effect for popup links */
-                            .popup-link {
-                                padding: 8px 0;
-                                text-decoration: none;
-                                color: #555;
-                                margin-bottom: 5px;
-                                transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-                            }
-
-                            .popup-link:hover {
-                                color: #36b9cc;
-                                border-radius: 4px;
-                                text-decoration:none;
-                            }
-
-                            /* Special hover for logout link */
-                            .logout-link:hover {
-                                color: #36b9cc;
-                                text-decoration:none;
-                            }
-                        </style>
                     </div>
                 </div>
                 <!-- End of Topbar -->
@@ -368,27 +400,7 @@ include_once('dirback/dirviewback.php');
                                                         Awareness/Prospecting
                                                     </p>
                                                 </div>
-
-                                                
                                             </div>
-
-                                            <!-- Keyframe Animation -->
-                                            <style>
-                                            @keyframes pulse {
-                                                0% {
-                                                    transform: scale(1);
-                                                    opacity: 1;
-                                                }
-                                                50% {
-                                                    transform: scale(1.5);
-                                                    opacity: 0.4;
-                                                }
-                                                100% {
-                                                    transform: scale(1);
-                                                    opacity: 1;
-                                                }
-                                            }
-                                            </style>
                                             <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
                                                 <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
                                                     <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
@@ -502,23 +514,7 @@ include_once('dirback/dirviewback.php');
                                                             style="height: 100px;"></textarea>
                                                         </div>
                                                     </div>
-                                                    <style>
-                                                        .custom-select {
-                                                            appearance: none; 
-                                                            -moz-appearance: none;
-                                                            -webkit-appearance: none;
-                                                            background: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23555555"%3E%3Cpath d="M7 10l5 5 5-5z"/%3E%3C/svg%3E') no-repeat right 10px center;
-                                                            background-color: #fff;
-                                                            background-size: 12px 12px;
-                                                            padding-right: 30px; 
-                                                        }
-                                                        .custom-select-dark {
-                                                            background: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff"%3E%3Cpath d="M7 10l5 5 5-5z"/%3E%3C/svg%3E') no-repeat right 10px center;
-                                                            background-color: #343a40;
-                                                            color: white;
-                                                            padding-right: 30px;
-                                                        }
-                                                    </style>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
