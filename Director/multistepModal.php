@@ -107,7 +107,7 @@
                     color:#1f2024;
                     
                 }
-                .custom-select select {
+                .custom-select  {
                 padding: 5px;
                 font-size: 12px;
                 font-family: 'Poppins';
