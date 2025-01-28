@@ -100,11 +100,11 @@
                                 <div class="form-step" id="step1">
                                     <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
                                         <div class="stage-title" style="width: 30%; text-align: left; margin-bottom: 0; padding-bottom: 0;">
-                                            <p id="projectUniqueId" style="color: #36b9cc; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 1 <span hidden style="color:rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span></p> 
-                                            <h4 style="color: #36b9cc; margin-top: 0; font-family: 'Poppins', sans-serif;">Awareness/Prospecting</h4>
+                                            <p id="projectUniqueId" style="color:white; margin-bottom: 5px; font-family: 'Poppins', sans-serif;">Stage 1 <span hidden style="color:rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span></p> 
+                                            <h4 style="color:white; margin-top: 0; font-family: 'Poppins', sans-serif;">Awareness/Prospecting</h4>
                                         </div>
-                                        <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
-                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color: #36b9cc;">20%</span></p>
+                                        <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color:white;">
+                                            <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color:white;">20%</span></p>
                                         </div>
                                     </div>
                                     <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
