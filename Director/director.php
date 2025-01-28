@@ -1997,14 +1997,8 @@ include("../auth/db.php");
                                     }
 
                                     /* For a more modern hover effect */
-                                    .accM:hover {
+                                    .addPinputs:hover {
                                         border-color: #777;
-                                    }
-                                    .accM:read-only {
-                                        background: #1f2024;
-                                        color: #555;
-                                        border-color: #555;
-                                        
                                     }
                                 </style>
                                 <!-- <div class="row"> -->
@@ -2025,7 +2019,7 @@ include("../auth/db.php");
                                 <hr class="my-1">
                                 <div class="modal-footer" style="border:none;">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-size: 12px;">Close</button>
-                                    <button type="submit" class="btn" style="background-color:#f9ce45; color:#1f2024; font-size: 12px;">Save</button>
+                                    <button type="submit" class="btn" style="background-color:#36b9cc; color:#1f2024; font-size: 12px;">Save</button>
                                 </div>
                             </form>
                         </div>
