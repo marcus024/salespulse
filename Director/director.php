@@ -1916,11 +1916,11 @@ include("../auth/db.php");
                 <div class="modal-dialog modal-dialog-centered modal-lg" style="width:1250px;" role="document">
                     <!-- Centered and large modal for better responsiveness -->
                     <div class="modal-content">
-                        <div class="modal-header" style="background-color:#36b9cc; height: 50px;">
-                            <h5 class="modal-title" id="addProjectModalLabel" style="font-size: 15px; color:white;">Add New Project</h5>
+                        <div class="modal-header" style="background-color:#f9ce45; height: 50px; border:none;">
+                            <h5 class="modal-title" id="addProjectModalLabel" style="font-size: 15px; color:#1f2024;">Add New Project</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" style="background:#1f2024; border:none;">
                             <!-- Form to add project -->
                             <form method="post" action="dirback/diradd_project.php">
                                 <div class="row">
