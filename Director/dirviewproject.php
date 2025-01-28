@@ -856,18 +856,21 @@ include_once('dirback/dirviewback.php');
     <script src="insert_fetch_tech5.js"></script>
 
     <script>
-        // Add click event to table rows
         document.addEventListener('DOMContentLoaded', () => {
-            const rows = document.querySelectorAll('.clickable-row');
-            rows.forEach(row => {
-                row.addEventListener('click', () => {
-                    const href = row.dataset.href;
-                    if (href) {
-                        window.location.href = href;
-                    }
-                });
-            });
+    const rows = document.querySelectorAll('.clickable-row');
+    rows.forEach(row => {
+        row.addEventListener('click', (e) => {
+            // Prevent row click if the click is on an <a> element
+            if (e.target.tagName.toLowerCase() === 'a' || e.target.closest('a')) return;
+
+            const href = row.dataset.href;
+            if (href) {
+                window.location.href = href;
+            }
         });
+    });
+});
+
     </script>
     
     <script>
