@@ -135,7 +135,7 @@
                     border: 1px solid #555;
                     border-radius: 10px;
                     background-color: #1f2024; /* Matches the input background */
-                    color: white;
+                    color: black;
                     width: 100%;
                     height: 40px;
                 }
