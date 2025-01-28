@@ -50,7 +50,7 @@
                 }
                 input, select {
                     font-size: 12px;
-                    color:#555;
+                    color:white;
                     font-family: 'Poppins';
                     background:#1f2024;
                 }
