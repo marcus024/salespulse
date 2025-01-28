@@ -21,7 +21,7 @@
                 .step-line {
                     flex: 1;
                     height: 2px;
-                    background: #ddd;
+                    background: #777;
                 }
                 .step-circle.active {
                     background:#f9ce45;
