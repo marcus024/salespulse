@@ -357,8 +357,8 @@ include_once('dirback/dirviewback.php');
                                                     <!-- Placeholder for percentage or additional content -->
                                                 </div>
                                                 <!-- Left Section: Stage Title -->
-                                                <div class="stage-title" style="width: 30%; text-align: left; margin-bottom: 0; padding-bottom: 0;">
-                                                    <p id="projectUniqueId" style="color: white; margin-bottom: 5px; font-family: 'Poppins', sans-serif; font-weight:bold; font-size: 30px;">
+                                                <div class="stage-title" style="width: 30%; display: flex; flex-direction: column; align-items: flex-start; z-index: 2;">
+                                                    <p id="projectUniqueId" style="color: white; margin-bottom: 5px; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 30px;">
                                                         Stage 1 
                                                         <span hidden style="color: rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span>
                                                     </p>
@@ -366,6 +366,23 @@ include_once('dirback/dirviewback.php');
                                                         Awareness/Prospecting
                                                     </p>
                                                 </div>
+                                                <!-- Keyframe Animation -->
+                                                <style>
+                                                    @keyframes pulse {
+                                                        0% {
+                                                            transform: scale(1);
+                                                            opacity: 1;
+                                                        }
+                                                        50% {
+                                                            transform: scale(1.5);
+                                                            opacity: 0.4;
+                                                        }
+                                                        100% {
+                                                            transform: scale(1);
+                                                            opacity: 1;
+                                                        }
+                                                    }
+                                                </style>
                                             </div>
                                             <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
                                                 <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
