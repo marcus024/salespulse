@@ -337,7 +337,7 @@ include_once('../auth/db.php');
                                                 <div class="row">
                                                     <div class="col-md-4 mb-2">
                                                         <label for="clientCompany" class="form-label" style="font-size: 12px; color: #555; font-family:'Poppins';">Name</label>
-                                                        <input readonly type="text" class="form-control input-sm" id="clientCompany " value="<?php echo $_SESSION['user_name']  ?>" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
+                                                        <input readonly type="text" class="form-control input-sm" id="clientCompany " value="<?php echo $_SESSION['user_name']  ?>" style="font-family:'Poppins'; font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
                                                         <label for="accountManager" class="form-label" style="font-size: 12px; color: #555; font-family:'Poppins';">Email</label>
