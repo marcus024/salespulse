@@ -2004,7 +2004,7 @@ include("../auth/db.php");
                                         background: #1f2024;
                                         color: #555;
                                         border-color: #555;
-                                        cursor: not-allowed; /* Optional: Change the cursor */
+                                        
                                     }
                                 </style>
                                 <!-- <div class="row"> -->
