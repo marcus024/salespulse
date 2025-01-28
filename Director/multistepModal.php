@@ -107,7 +107,7 @@
                     color:#1f2024;
                     
                 }
-                .input-group select {
+                .custom-select select {
                 padding: 5px;
                 font-size: 12px;
                 font-family: 'Poppins';
@@ -119,13 +119,13 @@
                 height: 40px;
                 }
 
-                .input-group select:focus {
+                .custom-select:focus {
                     border-color: white ;
                     outline: none;
                     background-color: #1f2024; /* Slightly darker green for focus */
                 }
 
-                .input-group select option {
+                .custom-select option {
                     color: #555; /* Black text for dropdown items */
                 }
             </style>
