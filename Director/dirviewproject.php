@@ -450,6 +450,15 @@ include_once('dirback/dirviewback.php');
             'stage_five' => 'Stage 5 - Delivery/Follow-Up'
         ];
 
+        // Define the stage_map array here
+        $stage_map = [
+            'stage_one' => '1',
+            'stage_two' => '2',
+            'stage_three' => '3',
+            'stage_four' => '4',
+            'stage_five' => '5',
+        ];
+
         foreach ($stages as $key => $stage_name) {
             $stage_data = $project_data[$key];
         ?>
@@ -466,15 +475,6 @@ include_once('dirback/dirviewback.php');
             <td><?php echo !empty($stage_data['product']) ? htmlspecialchars($stage_data['product']) : 'N/A'; ?></td>
             <td><?php echo !empty($stage_data['stage_' . $key . '_remarks']) ? htmlspecialchars($stage_data['stage_' . $key . '_remarks']) : 'N/A'; ?></td>
             <td class="action-buttons">
-                <?php 
-                $stage_map = [
-                    'stage_one' => '1',
-                    'stage_two' => '2',
-                    'stage_three' => '3',
-                    'stage_four' => '4',
-                    'stage_five' => '5',
-                ];
-                ?>
                 <a class="view-btn" href="#" onclick="smoothNavigate('viewstage<?php echo $stage_map[$key]; ?>.php?project_id=<?php echo htmlspecialchars($current_project_id); ?>')">
                     <i class="fas fa-eye" style="font-size: 12px; color: #f9ce45;"></i>
                 </a>
@@ -483,6 +483,7 @@ include_once('dirback/dirviewback.php');
         <?php } ?>
     </tbody>
 </table>
+
                                                     </div>
                                                     <div id="details-view" style="display: none;">
                                                         
