@@ -1916,63 +1916,100 @@ include("../auth/db.php");
                 <div class="modal-dialog modal-dialog-centered modal-lg" style="width:1250px;" role="document">
                     <!-- Centered and large modal for better responsiveness -->
                     <div class="modal-content">
-                        <div class="modal-header" style="background-color:#36b9cc; height: 50px;">
-                            <h5 class="modal-title" id="addProjectModalLabel" style="font-size: 15px; color:white;">Add New Project</h5>
+                        <div class="modal-header" style="background-color:#f9ce45; height: 50px; border:none;">
+                            <h5 class="modal-title" id="addProjectModalLabel" style="font-size: 15px; color:#1f2024;">Add New Project</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" style="background:#1f2024; border:none;">
                             <!-- Form to add project -->
                             <form method="post" action="dirback/diradd_project.php">
                                 <div class="row">
                                     <!-- Client/Company -->
                                     <div class="col-md-6 mb-2">
-                                        <label for="clientCompany" class="form-label" style="font-size: 10px; color: #000;">Client</label>
-                                        <input name="company_name" type="text" class="form-control input-sm" id="clientCompany" placeholder="Enter client or company name" style="font-size: 10px; color: #000; padding: 5px;" required>
+                                        <label for="clientCompany" class="form-label">Client</label>
+                                        <input name="company_name" type="text" class="form-control addPinputs" id="clientCompany" placeholder="Enter client or company name" required>
                                     </div>
                                     <!-- Account Manager -->
                                     <div class="col-md-6 mb-2">
-                                        <label for="accountManager" class="form-label" style="font-size: 10px; color: #000;">Account Manager</label>
-                                        <input readonly  name="account_manager" type="text" class="form-control" id="accountManager" value="<?php echo $_SESSION['user_name']; ?>" style="font-size: 10px; color: #000; padding: 5px;" required>
+                                        <label for="accountManager" class="form-label">Account Manager</label>
+                                        <input readonly name="account_manager" type="text" class="form-control accM addPinputs" id="accountManager" value="<?php echo $_SESSION['user_name']; ?>" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <!-- Product Type -->
                                     <div class="col-md-4 mb-2">
-                                        <label for="product_type" class="form-label" style="font-size: 10px; color: #000;">Account Type</label>
-                                        <select name="product_type" class="form-select" id="productType" style="font-size: 10px; color: #000; padding: 5px;" required>
+                                        <label for="productType" class="form-label">Account Type</label>
+                                        <select name="product_type" class="form-select addPinputs" id="productType" required>
                                             <option value="" selected disabled>Select Product Type</option>
                                             <option value="New">New</option>
                                             <option value="Existing">Existing</option>
                                         </select>
                                     </div>
-                                    <!-- Start Date -->
-                                    <!-- <div class="col-md-4 mb-2">
-                                        <label for="startDate" class="form-label" style="font-size: 10px; color: #000;">Start Date</label>
-                                        <input name="start_date"readonly type="text" placeholder="Auto-generated" class="form-control" id="startDate" style="font-size: 10px; color: #000; padding: 5px;">
-                                    </div> -->
-                                    <!-- End Date -->
-                                    <!-- <div class="col-md-4 mb-2">
-                                        <label for="endDate" class="form-label" style="font-size: 10px; color: #000;">End Date</label>
-                                        <input name="end_date" readonly type="text" placeholder="Auto-generated" class="form-control" id="endDate" style="font-size: 10px; color: #000; padding: 5px;">
-                                    </div> -->
                                     <!-- Source -->
-                                   <div class="col-md-4 mb-2">
-                                        <label for="source" class="form-label" style="font-size: 10px; color: #000;">Source</label>
-                                        <select name="source" class="form-control" id="sourceSelect" style="font-size: 10px; color: #000; padding: 5px;" required>
+                                    <div class="col-md-4 mb-2">
+                                        <label for="source" class="form-label">Source</label>
+                                        <select name="source" class="form-control addPinputs" id="sourceSelect" required>
                                             <option value="" disabled selected>Select source</option>
                                             <!-- Option for adding a new source -->
                                             <option value="add_new_source">+ Add New Source...</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 mb-2">
-                                        <label for="clientType" class="form-label" style="font-size: 10px; color: #000;">Industry</label>
-                                        <select name="client_type" id="clientTypeSelect" class="form-select" style="font-size: 10px; color: #000; padding: 5px;" required>
+                                        <label for="clientType" class="form-label">Industry</label>
+                                        <select name="client_type" id="clientTypeSelect" class="form-select addPinputs" required>
                                             <option value="" disabled selected>Select</option>
                                             <!-- Special option for adding a new client type -->
                                             <option value="add_new">+ Add New Client Type...</option>
                                         </select>
                                     </div>
                                 </div>
+                                <style>
+                                    /* General input and select styling */
+                                    .addPinputs {
+                                        font-size: 10px;
+                                        color: #555;
+                                        background: #1f2024;
+                                        border: 1px solid #555;
+                                        padding: 5px;
+                                        border-radius: 4px;
+                                    }
+
+                                    /* Focus state for input and select */
+                                    .addPinputs:focus {
+                                        color: white;
+                                        border: 1px solid white;
+                                        outline: none;
+                                        background: #1f2024; /* Retain the same background */
+                                    }
+
+                                    /* Labels styling for better consistency */
+                                    .form-label {
+                                        font-size: 10px;
+                                        color: #555;
+                                        font-family: 'Poppins', sans-serif;
+                                    }
+
+                                    /* Optional: Enhance select dropdowns */
+                                    .form-select {
+                                        appearance: none;
+                                        -moz-appearance: none;
+                                        -webkit-appearance: none;
+                                    }
+
+                                    /* For a more modern hover effect */
+                                    .addPinputs:hover {
+                                        border-color: #777;
+                                    }
+
+                                    .addPinputs:readonly {
+                                        font-size: 10px;
+                                        color: #555;
+                                        background: #1f2024;
+                                        border: 1px solid #555;
+                                        padding: 5px;
+                                        border-radius: 4px;
+                                    }
+                                </style>
                                 <!-- <div class="row"> -->
                                     <!-- Status -->
                                     <!-- <div class="col-md-4 mb-2">
@@ -1989,9 +2026,9 @@ include("../auth/db.php");
                                 <!-- </div> -->
                                 <!-- Divider -->
                                 <hr class="my-1">
-                                <div class="modal-footer">
+                                <div class="modal-footer" style="border:none;">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-size: 12px;">Close</button>
-                                    <button type="submit" class="btn" style="background-color:#36b9cc; color:white; font-size: 12px;">Save</button>
+                                    <button type="submit" class="btn" style="background-color:#36b9cc; color:#1f2024; font-size: 12px;">Save</button>
                                 </div>
                             </form>
                         </div>
