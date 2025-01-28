@@ -361,7 +361,7 @@ include_once('dirback/dirviewback.php');
             Stage 1 
             <span hidden style="color: rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span>
         </p>
-        <p style="color: white; margin-top: 0; font-family: 'Poppins', sans-serif; font-size: 12px;">
+        <p style="color: white; margin-top: 0; font-family: 'Poppins', sans-serif; font-size: 16px;">
             Awareness/Prospecting
         </p>
     </div>
