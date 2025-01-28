@@ -208,46 +208,36 @@
       }
     }
 
-    /* Loading Overlay */
 .loading-overlay {
-    display: none; /* Hidden by default */
+    display: none; /* Initially hidden */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    z-index: 9999; /* Ensure it overlays all content */
-    justify-content: center;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    z-index: 9999;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
 }
 
-/* Loading Spinner */
-.spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #17a2b8; /* Color of the spinner */
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 10px;
+.loading-content {
+    text-align: center;
 }
 
-/* Spinner Animation */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.loading-image {
+    width: 100px; /* Adjust size as needed */
+    height: 100px;
+    margin-bottom: 10px; /* Space between image and text */
 }
 
-/* Loading Text */
 .loading-text {
     color: white;
     font-family: 'Poppins', sans-serif;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: center;
+    font-size: 16px;
 }
+
 
   </style>
 </head>
@@ -261,10 +251,12 @@
       </h1>
       <p>Welcome back!</p>
       <p class="loginP" style="font-size: 40px; font-family:'Poppins'; margin: 0; margin-bottom: 10px; color: white;">Log In</p>
-      <div class="loading-overlay" id="loadingOverlay">
-          <div class="spinner"></div>
-          <div class="loading-text">Logging in, please wait...</div>
-      </div>
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-content">
+                <img src="loading_log.gif" alt="Loading..." class="loading-image" />
+                <div class="loading-text">Logging in, please wait...</div>
+            </div>
+        </div>
         <form class="user" action="auth/loginBack.php" method="POST" onsubmit="showLoading(event)">
             <div class="input-group">
                 <label for="email">Email</label>
