@@ -38,7 +38,7 @@
                     font-size: 24px; /* Adjust the font size for the check mark */
                 }
                 .label, .btn {
-                    font-size: 12px;
+                    font-size: 10px;
                     color:#555;
                     font-family: 'Poppins'
                 }
