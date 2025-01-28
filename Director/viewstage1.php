@@ -360,8 +360,8 @@ include_once('dirback/dirviewback.php');
                                                     <p style="color:#555">Progress: <span  style="font-family: 'Poppins'; color:white;">20%</span></p>
                                                 </div>
                                             </div>
-                                            <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px"> 
-                                                <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
+                                            <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
+                                                <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
                                                     <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
                                                     Project Profile
                                                     </p>
