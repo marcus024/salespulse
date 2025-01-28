@@ -340,7 +340,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
+                                        <!-- <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>  -->
 
                                         <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                             <div id="engagement1Container">
@@ -389,7 +389,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
+                                        <!-- <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>  -->
                                         <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                             <div id="requirementtwoContainer">
                                                 <div class="requirementtwo-block" data-index="1">
@@ -450,7 +450,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
+                                        <!-- <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>  -->
                                         <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
                                             <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement1">
                                             Stage Remarks
