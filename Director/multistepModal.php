@@ -100,11 +100,12 @@
                 .btn-primary{
                     background:rgb(185, 240, 2);
                     color:#1f2024;
+                    border:none;
                 }
                 .btn-primary:hover{
                     background:rgb(96, 120, 14);
                     color:#1f2024;
-                    border:none;
+                    
                 }
                 .input-group select {
                 padding: 5px;
