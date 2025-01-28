@@ -9,14 +9,14 @@
                     height: 50px;
                     border-radius: 50%;
                     background: white;
-                    color: #36b9cc;
+                    color:#f9ce45;
                     font-size: 20px;
                     font-family: 'Poppins';
                     font-weight : 700px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    border: 2px solid #36b9cc;
+                    border: 2px solid #f9ce45;
                 }
                 .step-line {
                     flex: 1;
@@ -24,17 +24,17 @@
                     background: #ddd;
                 }
                 .step-circle.active {
-                    background: #36b9cc;
+                    background:#f9ce45;
                     color: #fff;
-                    border-color: #36b9cc;
+                    border-color:#f9ce45;
                 }
                 .step-line.active {
-                    background: #36b9cc;
+                    background:#f9ce45;
                 }
                 .step-circle.completed {
-                    background: #36b9cc;
+                    background:#f9ce45;
                     color: #fff;
-                    border-color: #36b9cc;
+                    border-color:#f9ce45;
                     font-size: 24px; /* Adjust the font size for the check mark */
                 }
                 .form-label, .btn {
@@ -80,7 +80,7 @@
             <div class="modal fade" id="multiStepModal" tabindex="-1" aria-labelledby="multiStepModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content" class="modal-content" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(2px); border-radius: 5px;">
-                        <div class="modal-header" style="background-color:#36b9cc; height: 50px;">
+                        <div class="modal-header" style="background-color:#f9ce45; height: 50px;">
                             <h5 class="modal-title" id="client-name" style="font-size: 15px; color:white;"></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="modalCloseButton"></button>
                         </div>
