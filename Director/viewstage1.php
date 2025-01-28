@@ -356,7 +356,7 @@ include_once('dirback/dirviewback.php');
                                                 <div class="animated-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%); animation: pulse 4s infinite; z-index: 1; pointer-events: none;"></div>
                                                 <!-- Right Section: Stage Percentage -->
                                                 <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: white; z-index: 2;">
-                                                    <!-- Placeholder for percentage or additional content -->
+                                                    <?php echo htmlspecialchars($project['company_name']); ?>
                                                 </div>
                                                 <!-- Left Section: Stage Title with Vertical Alignment -->
                                                 <div class="stage-title" style="width: 30%; display: flex; flex-direction: column; align-items: flex-end; z-index: 2;">
