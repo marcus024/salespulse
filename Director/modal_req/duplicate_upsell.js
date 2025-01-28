@@ -34,22 +34,22 @@ document.addEventListener('DOMContentLoaded', function () {
         const newUpsellId = `upsell${nextBlockIndex}`;
 
         newBlock.innerHTML = `
-            <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;" id="upsellCon">
+            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="upsellCon">
                 Upsell ${nextBlockIndex}
             </p>
             <input type="hidden" name="upsell_stage_5[]" value="${newUpsellId}" id="upsell_id">
             <div class="row mb-1">
                 <div class="col-md-2">
-                    <label for="requirement" class="form-label text-white">Upsell</label>
+                    <label for="requirement" class="form-label ">Upsell</label>
                 </div>
                 <div class="col-md-2">
-                    <label for="quantity" class="form-label text-white">Quantity</label>
+                    <label for="quantity" class="form-label ">Quantity</label>
                 </div>
                 <div class="col-md-2">
-                    <label for="amount" class="form-label text-white">Amount</label>
+                    <label for="amount" class="form-label ">Amount</label>
                 </div>
                 <div class="col-md-3">
-                    <label for="remarks" class="form-label text-white">Remarks</label>
+                    <label for="remarks" class="form-label ">Remarks</label>
                 </div>
             </div>
             <div class="row mb-3 upsell-fields">
