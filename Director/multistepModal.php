@@ -197,7 +197,7 @@
                                                     style="height:100px;"></textarea>
                                                 </div>
                                             </div>
-                                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>
+                                            <div style="border-top: 1px ; margin: 20px 0;"></div>
                                             <div id="requirementsContainer">
                                                 <div class="requirement-block" data-index="1">
                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirement1">
@@ -262,7 +262,7 @@
                                                     </div>
                                                 </div> 
                                             </div> 
-                                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
+                                            <div style="border-top: 1px ; margin: 20px 0;"></div> 
                                             <div class="row mb-4">
                                                 <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
                                                 Stage Remarks
