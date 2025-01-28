@@ -61,7 +61,7 @@
                     background-color:#1f2024;
                     border: 1px solid #555;
                 }
-                .form-control:readonly{
+                .form-control[readonly]{
                     font-size: 12px;
                     color:#555;
                     font-family: 'Poppins';
