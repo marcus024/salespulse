@@ -740,7 +740,7 @@ include_once('dirback/dirviewback.php');
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header" style="background:#f9ce45; border:none;">
-                                                                    <h5 class="modal-title" id="startJourneyModalLabel" style="font-family:'Poppins'; font-size:'12px'; color:#1f2024;" >Are you sure to start your journey?</h5>
+                                                                    <h5 class="modal-title" id="startJourneyModalLabel" style="font-family:'Poppins'; font-size:'12px'; color:#1f2024;" >Confirmation to start</h5>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body" style="color:white; background:#1f2024">
