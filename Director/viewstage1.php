@@ -218,6 +218,16 @@ include_once('dirback/dirviewback.php');
             background:#1f2024;
             font-size:12px;
         }
+        .form-control:readonly{
+            color:white;
+            background:#1f2024;
+            font-size:12px;
+        }
+        .form-control:focus{
+            color:white;
+            background:#1f2024;
+            font-size:12px;
+        }
     </style>
 </head>
 <body id="page-top" style="background-color:#15151a;">
