@@ -1013,7 +1013,7 @@
                                     font-family: 'Poppins', sans-serif;
                                 }
                             </style>
-                            <div class="modal-footer">
+                            <div class="modal-footer" style="border:none;">
                                 <div class="footer-left">
                                     <div >
                                         <img id="logoPlaceholder" src="../images/logo_blue.png" alt="salespulselogo">
@@ -1038,13 +1038,13 @@
                                     <i class="fas fa-check-circle" style="color: #28a745; font-size: 16px;"></i>
                                     <span id="notificationMessage"></span>
                                 </div>
-                                <button type="button" class="btn btn-danger " id="deleteButton" style="border-color: red; background-color: 2a2925; color: red; font-size: 12px;">
+                                <button type="button" class="btn btn-danger " id="deleteButton" style="border-color: red; background-color: #2a2925; color: red; font-size: 12px;">
                                     <i class="fas fa-trash-alt"></i> Delete
                                 </button>
-                                <button type="button" class="btn btn-success " id="saveButton" style="border-weight: 5px; border-color: #f9ce45; background-color: 2a2925; color: #f9ce45; font-size: 12px;">
+                                <button type="button" class="btn btn-success " id="saveButton" style="border-weight: 5px; border-color: #f9ce45; background-color: #2a2925; color: #f9ce45; font-size: 12px;">
                                     Save
                                 </button>
-                                <button type="button" class="btn btn-success " id="completeButton" style="background-color: #f9ce45; color: 2a2925; font-size: 12px;">
+                                <button type="button" class="btn btn-success " id="completeButton" style="background-color: #f9ce45; color: #2a2925; font-size: 12px;">
                                     Complete
                                 </button>
                             </div>
