@@ -352,44 +352,43 @@ include_once('dirback/dirviewback.php');
                                     <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
                                         <div class="form-step" id="step1">
                                             <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background: linear-gradient(135deg, #f9ce45, #2a2925); border-radius: 8px; position: relative; overflow: hidden;">
-    <!-- Animated Background -->
-    <div class="animated-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%); animation: pulse 4s infinite; z-index: 1; pointer-events: none;"></div>
+                                                <!-- Animated Background -->
+                                                <div class="animated-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%); animation: pulse 4s infinite; z-index: 1; pointer-events: none;"></div>
 
-    <!-- Left Section: Stage Title with Vertical Alignment -->
-    <div class="stage-title" style="width: 30%; display: flex; flex-direction: column; align-items: flex-start; z-index: 2;">
-        <p id="projectUniqueId" style="color: white; margin-bottom: 5px; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 30px;">
-            Stage 1 
-            <span hidden style="color: rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span>
-        </p>
-        <p style="color: white; margin-top: 0; font-family: 'Poppins', sans-serif; font-size: 16px;">
-            Awareness/Prospecting
-        </p>
-    </div>
+                                                <!-- Left Section: Stage Title with Vertical Alignment -->
+                                                <div class="stage-title" style="width: 30%; display: flex; flex-direction: column; align-items: flex-start; z-index: 2;">
+                                                    <p id="projectUniqueId" style="color: white; margin-bottom: 5px; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 30px;">
+                                                        Stage 1 
+                                                        <span hidden style="color: rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span>
+                                                    </p>
+                                                    <p style="color: white; margin-top: 0; font-family: 'Poppins', sans-serif; font-size: 16px;">
+                                                        Awareness/Prospecting
+                                                    </p>
+                                                </div>
 
-    <!-- Right Section: Stage Percentage -->
-    <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: white; z-index: 2;">
-        <!-- Placeholder for percentage or additional content -->
-    </div>
-</div>
+                                                <!-- Right Section: Stage Percentage -->
+                                                <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: white; z-index: 2;">
+                                                    <!-- Placeholder for percentage or additional content -->
+                                                </div>
+                                            </div>
 
-<!-- Keyframe Animation -->
-<style>
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.5);
-        opacity: 0.4;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-</style>
-
+                                            <!-- Keyframe Animation -->
+                                            <style>
+                                            @keyframes pulse {
+                                                0% {
+                                                    transform: scale(1);
+                                                    opacity: 1;
+                                                }
+                                                50% {
+                                                    transform: scale(1.5);
+                                                    opacity: 0.4;
+                                                }
+                                                100% {
+                                                    transform: scale(1);
+                                                    opacity: 1;
+                                                }
+                                            }
+                                            </style>
                                             <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
                                                 <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
                                                     <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
