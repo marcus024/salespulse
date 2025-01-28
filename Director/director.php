@@ -1927,19 +1927,19 @@ include("../auth/db.php");
                                     <!-- Client/Company -->
                                     <div class="col-md-6 mb-2">
                                         <label for="clientCompany" class="form-label" style="font-size: 10px; color: #555;">Client</label>
-                                        <input name="company_name" type="text" class="form-control input-sm" id="clientCompany" placeholder="Enter client or company name" style="font-size: 10px; color: #000; padding: 5px;" required>
+                                        <input name="company_name" type="text" class="form-control input-sm addPinputs" id="clientCompany" placeholder="Enter client or company name"  required>
                                     </div>
                                     <!-- Account Manager -->
                                     <div class="col-md-6 mb-2">
                                         <label for="accountManager" class="form-label" style="font-size: 10px; color: #555;">Account Manager</label>
-                                        <input readonly  name="account_manager" type="text" class="form-control" id="accountManager" value="<?php echo $_SESSION['user_name']; ?>" style="font-size: 10px; color: #000; padding: 5px;" required>
+                                        <input readonly  name="account_manager" type="text" class="form-control addPinputs" id="accountManager" value="<?php echo $_SESSION['user_name']; ?>"  required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <!-- Product Type -->
                                     <div class="col-md-4 mb-2">
                                         <label for="product_type" class="form-label" style="font-size: 10px; color: #555;">Account Type</label>
-                                        <select name="product_type" class="form-select" id="productType" style="font-size: 10px; color: #000; padding: 5px;" required>
+                                        <select name="product_type" class="form-select addPinputs" id="productType"  required>
                                             <option value="" selected disabled>Select Product Type</option>
                                             <option value="New">New</option>
                                             <option value="Existing">Existing</option>
@@ -1958,7 +1958,7 @@ include("../auth/db.php");
                                     <!-- Source -->
                                    <div class="col-md-4 mb-2">
                                         <label for="source" class="form-label" style="font-size: 10px; color: #555;">Source</label>
-                                        <select name="source" class="form-control" id="sourceSelect" style="font-size: 10px; color: #000; padding: 5px;" required>
+                                        <select name="source" class="form-control addPinputs" id="sourceSelect"  required>
                                             <option value="" disabled selected>Select source</option>
                                             <!-- Option for adding a new source -->
                                             <option value="add_new_source">+ Add New Source...</option>
@@ -1966,13 +1966,21 @@ include("../auth/db.php");
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="clientType" class="form-label" style="font-size: 10px; color: #555;">Industry</label>
-                                        <select name="client_type" id="clientTypeSelect" class="form-select" style="font-size: 10px; color: #000; padding: 5px;" required>
+                                        <select name="client_type" id="clientTypeSelect" class="form-select addPinputs"  required>
                                             <option value="" disabled selected>Select</option>
                                             <!-- Special option for adding a new client type -->
                                             <option value="add_new">+ Add New Client Type...</option>
                                         </select>
                                     </div>
                                 </div>
+                                <style>
+                                    .addPinputs{
+                                        font-size: 10px; 
+                                        color: white; 
+                                        padding: 5px;
+                                        background:#1f2024;
+                                    }
+                                </style>
                                 <!-- <div class="row"> -->
                                     <!-- Status -->
                                     <!-- <div class="col-md-4 mb-2">
