@@ -1016,7 +1016,7 @@
                             <div class="modal-footer" style="border:none;">
                                 <div class="footer-left">
                                     <div >
-                                        <img id="logoPlaceholder" src="../images/logo_blue.png" alt="salespulselogo">
+                                        <img id="logoPlaceholder" src="../images/log_icon_x.png" alt="salespulselogo">
                                     </div>
                                     <div id="salesPulse">Sales Pulse</div>
                                 </div>
