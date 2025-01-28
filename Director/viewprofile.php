@@ -336,30 +336,30 @@ include_once('../auth/db.php');
                                         <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="clientCompany" class="form-label" style="font-size: 12px; color: #555;">Name</label>
-                                                        <input readonly type="text" class="form-control input-sm" id="clientCompany" value="<?php echo $_SESSION['user_name']  ?>" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
+                                                        <label for="clientCompany" class="form-label" style="font-size: 12px; color: #555; font-family:'Poppins';">Name</label>
+                                                        <input readonly type="text" class="form-control input-sm" id="clientCompany " value="<?php echo $_SESSION['user_name']  ?>" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="accountManager" class="form-label" style="font-size: 12px; color: #555;">Email</label>
-                                                        <input readonly type="text" class="form-control" id="accountManager" value="<?php echo $_SESSION['email']  ?>" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
+                                                        <label for="accountManager" class="form-label" style="font-size: 12px; color: #555; font-family:'Poppins';">Email</label>
+                                                        <input readonly type="text" class="form-control" id="accountManager" value="<?php echo $_SESSION['email']  ?>" style="font-family:'Poppins'; font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="productType" class="form-label" style="font-size: 12px; color: #555;">Company</label>
-                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo $_SESSION['company']  ?>" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
+                                                        <label for="productType" class="form-label" style="font-size: 12px; color: #555; font-family:'Poppins';">Company</label>
+                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo $_SESSION['company']  ?>" style="font-family:'Poppins'; font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="startDate" class="form-label" style="font-size: 12px; color: #555;">Position</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo $_SESSION['position']  ?>" id="startDate" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
+                                                        <label for="startDate" class="form-label" style="font-size: 12px; color: #555; font-family:'Poppins';">Position</label>
+                                                        <input readonly type="text" class="form-control" value="<?php echo $_SESSION['position']  ?>" id="startDate" style="font-family:'Poppins'; font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="endDate" class="form-label" style="font-size: 12px; color: #555;">Role</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo $_SESSION['role_display']  ?>" id="endDate" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
+                                                        <label for="endDate" class="form-label" style="font-size: 12px; color: #555; font-family:'Poppins';">Role</label>
+                                                        <input readonly type="text" class="form-control" value="<?php echo $_SESSION['role_display']  ?>" id="endDate" style="font-family:'Poppins'; font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="endDate" class="form-label" style="font-size: 12px; color: #555;">Role</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo $_SESSION['gender']  ?>" id="endDate" style="font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
+                                                        <label for="endDate" class="form-label" style="font-size: 12px; color: #555; font-family:'Poppins';">Role</label>
+                                                        <input readonly type="text" class="form-control" value="<?php echo $_SESSION['gender']  ?>" id="endDate" style="font-family:'Poppins'; font-size: 12px; color: white; background:#1f2024; border: 1px solid #555; padding: 5px;" required>
                                                     </div>
                                                 </div>
                                                 </div>
