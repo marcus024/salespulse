@@ -101,6 +101,10 @@
                     background:rgb(185, 240, 2);
                     color:#1f2024;
                 }
+                .btn-primary:hover{
+                    background:rgb(96, 120, 14);
+                    color:#1f2024;
+                }
             </style>
             <div class="modal fade" id="multiStepModal" tabindex="-1" aria-labelledby="multiStepModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
