@@ -1044,7 +1044,7 @@
                                 <button type="button" class="btn btn-success " id="saveButton" style="border-weight: 5px; border-color: #f9ce45; background-color: #2a2925; color: #f9ce45; font-size: 12px;">
                                     Save
                                 </button>
-                                <button type="button" class="btn btn-success " id="completeButton" style="background-color: #f9ce45; color: #2a2925; font-size: 12px;">
+                                <button type="button" class="btn btn-success " id="completeButton" style="border:none; background-color: #f9ce45; color: #2a2925; font-size: 12px;">
                                     Complete
                                 </button>
                             </div>
