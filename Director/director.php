@@ -1997,10 +1997,10 @@ include("../auth/db.php");
                                     }
 
                                     /* For a more modern hover effect */
-                                    .addPinputs:hover {
+                                    .accM:hover {
                                         border-color: #777;
                                     }
-                                    .addPinputs:read-only {
+                                    .accM:read-only {
                                         background: #1f2024;
                                         color: #555;
                                         border-color: #555;
