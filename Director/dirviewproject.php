@@ -739,16 +739,16 @@ include_once('dirback/dirviewback.php');
                                                     <div class="modal fade" id="startJourneyModal" tabindex="-1" aria-labelledby="startJourneyModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="startJourneyModalLabel" style="font-family:'Poppins'; font-size:'12px'; color:#36b9cc;" >Are you sure to start your journey?</h5>
+                                                                <div class="modal-header" style="background:#f9ce45">
+                                                                    <h5 class="modal-title" id="startJourneyModalLabel" style="font-family:'Poppins'; font-size:'12px'; color:white;" >Are you sure to start your journey?</h5>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
-                                                                <div class="modal-body">
-                                                                    Confirm to start
+                                                                <div class="modal-body" style="color:white; background:#1f2024">
+                                                                    Are you sure to start your journey?
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                    <button type="button" class="btn " style="font-size:15px; font-family:'Poppins'; color: white; background: #36b9cc" onclick="startPhase()" >Yes, Start Journey</button>
+                                                                    <button type="button" class="btn " style="font-size:15px; font-family:'Poppins'; color: white; background:#f9ce45" onclick="startPhase()" >Yes, Start Journey</button>
                                                                 </div>
                                                             </div>
                                                         </div>
