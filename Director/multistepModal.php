@@ -39,7 +39,7 @@
                 }
                 .form-label, .btn {
                     font-size: 12px;
-                    color:#555;
+                    color:white;
                     font-family: 'Poppins'
                 }
                 .modal-title{
