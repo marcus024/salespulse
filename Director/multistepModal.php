@@ -79,7 +79,7 @@
             </style>
             <div class="modal fade" id="multiStepModal" tabindex="-1" aria-labelledby="multiStepModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content" class="modal-content" style="background: ##1f2024; backdrop-filter: blur(2px); border-radius: 5px;">
+                    <div class="modal-content" class="modal-content" style="background: #1f2024; backdrop-filter: blur(2px); border-radius: 5px;">
                         <div class="modal-header" style="background-color:#f9ce45; height: 50px; border:none">
                             <h5 class="modal-title" id="client-name" style="font-size: 15px; color:#1f2024;"></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="modalCloseButton"></button>
