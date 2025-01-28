@@ -67,6 +67,11 @@
                     font-family: 'Poppins';
                     background-color:#1f2024;
                 }
+                .form-control[readonly] {
+            color: white;
+            background: #1f2024; /* Keeps the same background as normal state */
+            font-size: 12px;
+        }
                 .form-control:focus{
                     font-size: 12px;
                     color:white;
