@@ -253,7 +253,7 @@
       <p class="loginP" style="font-size: 40px; font-family:'Poppins'; margin: 0; margin-bottom: 10px; color: white;">Log In</p>
         <div class="loading-overlay" id="loadingOverlay">
             <div class="loading-content">
-                <img src="loading_log.gif" alt="Loading..." class="loading-image" />
+                <img src="images/loading_log.gif" alt="Loading..." class="loading-image" />
                 <div class="loading-text">Logging in, please wait...</div>
             </div>
         </div>
