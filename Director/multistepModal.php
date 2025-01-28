@@ -25,7 +25,7 @@
                 }
                 .step-circle.active {
                     background:#f9ce45;
-                    color: #fff;
+                    color: #1f2024;
                     border-color:#f9ce45;
                 }
                 .step-line.active {
@@ -33,7 +33,7 @@
                 }
                 .step-circle.completed {
                     background:#f9ce45;
-                    color: #fff;
+                    color: #1f2024;
                     border-color:#f9ce45;
                     font-size: 24px; /* Adjust the font size for the check mark */
                 }
@@ -57,7 +57,7 @@
                     max-width: 1000px; /* Increased width */
                 }
                 #multiStepModal .form-container {
-                    background-color: #009393;
+                    background-color: #1f2024;
                     padding: 20px;
                     border-radius: 8px;
                 }
