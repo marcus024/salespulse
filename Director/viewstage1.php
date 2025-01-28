@@ -386,7 +386,7 @@ include_once('dirback/dirviewback.php');
                                         <div class="form-step" id="step1">
                                             <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background: linear-gradient(135deg, #f9ce45, #2a2925); border-radius: 8px; position: relative; overflow: hidden;">
                                                 <!-- Animated Background -->
-                                                <div class="animated-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%); animation: pulse 4s infinite; z-index: 1; pointer-events: none;"></div>
+                                                <div class="animated-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 20%); animation: pulse 4s infinite; z-index: 1; pointer-events: none;"></div>
                                                 <!-- Right Section: Stage Percentage -->
                                                 <div class="stage-percentage" style="width: 100%; text-align: left; font-size: 40px; color: #1f2024; z-index: 2; font-weight:bold;">
                                                     <?php echo htmlspecialchars($project['company_name']); ?>
