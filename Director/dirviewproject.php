@@ -748,7 +748,7 @@ include_once('dirback/dirviewback.php');
                                                                 </div>
                                                                 <div class="modal-footer" style="border:none; background:#1f2024;">
                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                    <button type="button" class="btn " style="font-size:15px; font-family:'Poppins'; color: white; background:#f9ce45" onclick="startPhase()" >Yes, Start Journey</button>
+                                                                    <button type="button" class="btn " style="font-size:15px; font-family:'Poppins'; color: #1f2024; background:#f9ce45" onclick="startPhase()" >Yes, Start Journey</button>
                                                                 </div>
                                                             </div>
                                                         </div>
