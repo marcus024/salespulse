@@ -8,7 +8,7 @@
                     width: 50px;
                     height: 50px;
                     border-radius: 50%;
-                    background: white;
+                    background: #777;
                     color:#f9ce45;
                     font-size: 20px;
                     font-family: 'Poppins';
@@ -39,7 +39,7 @@
                 }
                 .form-label, .btn {
                     font-size: 12px;
-                    color:white;
+                    color:#555;
                     font-family: 'Poppins'
                 }
                 .modal-title{
@@ -79,9 +79,9 @@
             </style>
             <div class="modal fade" id="multiStepModal" tabindex="-1" aria-labelledby="multiStepModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content" class="modal-content" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(2px); border-radius: 5px;">
+                    <div class="modal-content" class="modal-content" style="background: #000; backdrop-filter: blur(2px); border-radius: 5px;">
                         <div class="modal-header" style="background-color:#f9ce45; height: 50px;">
-                            <h5 class="modal-title" id="client-name" style="font-size: 15px; color:white;"></h5>
+                            <h5 class="modal-title" id="client-name" style="font-size: 15px; color:#1f2024;"></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="modalCloseButton"></button>
                         </div>
                         <div class="modal-body position-relative">
