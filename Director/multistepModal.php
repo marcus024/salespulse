@@ -1008,7 +1008,7 @@
                                 }
                                 #salesPulse {
                                     font-weight: 800;
-                                    color: #36b9cc;
+                                    color: #f9ce45;
                                     font-size: 25px;
                                     font-family: 'Poppins', sans-serif;
                                 }
