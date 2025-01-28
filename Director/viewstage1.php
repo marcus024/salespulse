@@ -365,8 +365,10 @@ include_once('dirback/dirviewback.php');
                                         <div style="margin-right: 10px;">
                                             <img src="../images/project_s.png" alt="Project Icon" style="width: 60px; height: 60px; vertical-align: middle;" />
                                         </div>
+                                        <?php include("dirback/pro_stage_details.php"); ?>
+                                        <?php include('dirback/fetch_s1.php'); ?>
                                         <div class="col-md-12 mb-3">
-                                            <p style="color:white; margin-top: 0; font-family: 'Poppins'; font-size:30px; font-weight:bold; display: inline;">PROJECT PROFILE</p>
+                                            <p style="color:white; margin-top: 0; font-family: 'Poppins'; font-size:30px; font-weight:bold; display: inline;"><?php echo htmlspecialchars($project['company_name']); ?></p>
                                             <p id="projectUniqueId" style="color:white; margin-top: 0; margin-bottom: 5px; font-family: 'Poppins'; font-size: 12px; font-weight: 500;">
                                                 Project ID: <span id="project-id-placeholder"><strong><?php echo htmlspecialchars($project['project_unique_id']); ?></strong></span>
                                             </p>
@@ -378,8 +380,7 @@ include_once('dirback/dirviewback.php');
                                         </button>
                                     </div>
                                 </div>
-                                <?php include("dirback/pro_stage_details.php"); ?>
-                                <?php include('dirback/fetch_s1.php'); ?>
+                                
                                 <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
                                     <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
                                         <div class="form-step" id="step1">
@@ -457,14 +458,6 @@ include_once('dirback/dirviewback.php');
                                                             <div class="col-md-3">
                                                                 <label class="form-label ">Distributor</label>
                                                             </div>
-                                                            <!-- <div class="col-md-2">
-                                                                <button type="button"
-                                                                        class="btn btn-primary btn-sm"
-                                                                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                                                                        id="addRequirementBtn">
-                                                                <i class="fas fa-plus"></i>&nbsp;Add
-                                                                </button>
-                                                            </div> -->
                                                             </div>
                                                             <div class="row mb-3">
                                                             <div class="col-md-4">
