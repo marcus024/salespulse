@@ -2000,6 +2000,15 @@ include("../auth/db.php");
                                     .addPinputs:hover {
                                         border-color: #777;
                                     }
+
+                                    .addPinputs:readonly {
+                                        font-size: 10px;
+                                        color: #555;
+                                        background: #1f2024;
+                                        border: 1px solid #555;
+                                        padding: 5px;
+                                        border-radius: 4px;
+                                    }
                                 </style>
                                 <!-- <div class="row"> -->
                                     <!-- Status -->
