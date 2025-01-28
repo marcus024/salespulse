@@ -126,7 +126,7 @@
                 }
 
                 .custom-select option {
-                    color: #555; /* Black text for dropdown items */
+                    color: white; /* Black text for dropdown items */
                 }
             </style>
             <div class="modal fade" id="multiStepModal" tabindex="-1" aria-labelledby="multiStepModalLabel" aria-hidden="true">
