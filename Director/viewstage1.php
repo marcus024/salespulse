@@ -211,7 +211,7 @@ include_once('dirback/dirviewback.php');
     <style>
         .form-label{
             color:#555;
-            
+            font-size:12px;
         }
     </style>
 </head>
