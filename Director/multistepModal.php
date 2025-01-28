@@ -1009,7 +1009,7 @@
                                         </div>
                                         <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
-                                        <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
+                                        <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label for="requirement" class="form-label ">Stage Remarks</label>
