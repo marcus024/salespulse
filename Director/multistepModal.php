@@ -107,7 +107,7 @@
                     color:#1f2024;
                     
                 }
-                .custom-select  {
+                .custom-select select {
                 padding: 5px;
                 font-size: 12px;
                 font-family: 'Poppins';
@@ -128,7 +128,6 @@
                 .custom-select option {
                     color: white; /* Black text for dropdown items */
                 }
-                
             </style>
             <div class="modal fade" id="multiStepModal" tabindex="-1" aria-labelledby="multiStepModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
