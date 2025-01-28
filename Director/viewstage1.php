@@ -351,9 +351,9 @@ include_once('dirback/dirviewback.php');
                                 <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
                                     <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
                                         <div class="form-step" id="step1">
-                                            <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background: linear-gradient(135deg, #6a11cb, #2575fc); border-radius: 8px; position: relative; overflow: hidden;">
+                                            <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background: linear-gradient(135deg, #f9ce45, #2a2925); border-radius: 8px; position: relative; overflow: hidden;">
     <!-- Animated Background -->
-    <div class="animated-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(228, 206, 12, 0.71) 0%, transparent 70%); animation: pulse 4s infinite; z-index: 1; pointer-events: none;"></div>
+    <div class="animated-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%); animation: pulse 4s infinite; z-index: 1; pointer-events: none;"></div>
 
     <!-- Left Section: Stage Title with Vertical Alignment -->
     <div class="stage-title" style="width: 30%; display: flex; flex-direction: column; align-items: flex-start; z-index: 2;">
