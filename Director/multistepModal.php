@@ -512,7 +512,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>  -->
+                                        <div style="border-top: 1px ; margin: 20px 0;"></div> 
                                         <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                             <div id="engagementthreeContainer">
                                                 <div class="engagementthree-block" data-index="1">
@@ -555,7 +555,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>  -->
+                                        <div style="border-top: 1px ; margin: 20px 0;"></div> 
                                         <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                             <div id="requirementthreeContainer">
                                                 <div class="requirementthree-block" data-index="1">
@@ -637,7 +637,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div>  -->
+                                        <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
                                             <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
@@ -701,7 +701,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
+                                        <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                             <div id="requirementfourContainer">
@@ -781,7 +781,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
+                                        <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
                                             <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
@@ -867,7 +867,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
+                                            <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
                                             <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                                 <div id="requirementfiveContainer">
@@ -953,7 +953,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
+                                            <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
                                             <div class="container" style="background-color: #36b9cc; padding: 5px; border-radius: 20px">
                                                 <div id="upsellContainer">
@@ -1007,7 +1007,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.5); margin: 20px 0;"></div> 
+                                        <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
                                             <div class="row">
