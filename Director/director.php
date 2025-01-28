@@ -1932,7 +1932,7 @@ include("../auth/db.php");
                                     <!-- Account Manager -->
                                     <div class="col-md-6 mb-2">
                                         <label for="accountManager" class="form-label" style="font-size: 10px; color: #555;">Account Manager</label>
-                                        <input  name="account_manager" type="text" class="form-control addPinputs" id="accountManager" value="<?php echo $_SESSION['user_name']; ?>"  required>
+                                        <input readonly  name="account_manager" type="text" class="form-control accM" id="accountManager" value="<?php echo $_SESSION['user_name']; ?>"  required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -1958,7 +1958,7 @@ include("../auth/db.php");
                                     <!-- Source -->
                                    <div class="col-md-4 mb-2">
                                         <label for="source" class="form-label" style="font-size: 10px; color: #555;">Source</label>
-                                        <select name="source" class="form-control addPinputs" id="sourceSelect"  required>
+                                        <select name="source" class="form-control selectAddP" id="sourceSelect"  required>
                                             <option value="" disabled selected>Select source</option>
                                             <!-- Option for adding a new source -->
                                             <option value="add_new_source">+ Add New Source...</option>
@@ -1966,7 +1966,7 @@ include("../auth/db.php");
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="clientType" class="form-label" style="font-size: 10px; color: #555;">Industry</label>
-                                        <select name="client_type" id="clientTypeSelect" class="form-select addPinputs"  required>
+                                        <select name="client_type" id="clientTypeSelect" class="form-select selectAddP"  required>
                                             <option value="" disabled selected>Select</option>
                                             <!-- Special option for adding a new client type -->
                                             <option value="add_new">+ Add New Client Type...</option>
@@ -1974,11 +1974,41 @@ include("../auth/db.php");
                                     </div>
                                 </div>
                                 <style>
-                                    .addPinputs{
-                                        font-size: 10px; 
-                                        color: white; 
+                                    /* General input and select styling */
+                                    .addPinputs {
+                                        font-size: 10px;
+                                        color: #555;
+                                        background: #1f2024;
+                                        border: 1px solid #555;
                                         padding: 5px;
-                                        background:#1f2024;
+                                        border-radius: 4px;
+                                    }
+
+                                    /* Focus state for input and select */
+                                    .addPinputs:focus {
+                                        color: white;
+                                        border: 1px solid white;
+                                        outline: none;
+                                        background: #1f2024; /* Retain the same background */
+                                    }
+
+                                    /* Labels styling for better consistency */
+                                    .form-label {
+                                        font-size: 10px;
+                                        color: #555;
+                                        font-family: 'Poppins', sans-serif;
+                                    }
+
+                                    /* Optional: Enhance select dropdowns */
+                                    .form-select {
+                                        appearance: none;
+                                        -moz-appearance: none;
+                                        -webkit-appearance: none;
+                                    }
+
+                                    /* For a more modern hover effect */
+                                    .addPinputs:hover {
+                                        border-color: #777;
                                     }
                                 </style>
                                 <!-- <div class="row"> -->
