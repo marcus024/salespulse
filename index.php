@@ -292,7 +292,7 @@
         // Simulate form submission delay (remove this in production)
         setTimeout(() => {
             event.target.submit(); // Submit the form after showing the spinner
-        }, 2000);
+        }, 5000);
     }
 
     function togglePassword() {
