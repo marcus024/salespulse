@@ -209,26 +209,32 @@ include_once('dirback/dirviewback.php');
     }
     </style>
     <style>
-        .form-label{
-            color:#555;
-            font-size:12px;
+        .form-label {
+            color: #555;
+            font-size: 12px;
         }
-        .form-control{
-            color:white;
-            background:#1f2024;
-            font-size:12px;
+        .form-control {
+            color: white;
+            background: #1f2024;
+            font-size: 12px;
+            border: 1px solid #444; /* Optional: Adds a border for better visibility */
+            border-radius: 4px;
         }
-        .form-control:readonly{
-            color:white;
-            background:#1f2024;
-            font-size:12px;
+        .form-control[readonly] {
+            color: white;
+            background: #1f2024; /* Keeps the same background as normal state */
+            font-size: 12px;
         }
-        .form-control:focus{
-            color:white;
-            background:#1f2024;
-            font-size:12px;
+        .form-control:focus {
+            color: white;
+            background: #1f2024;
+            font-size: 12px;
+            outline: none; /* Removes default blue outline */
+            border-color: #555; /* Optional: Changes border color when focused */
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.2); /* Adds subtle focus effect */
         }
     </style>
+
 </head>
 <body id="page-top" style="background-color:#15151a;">
     <!-- Page Wrapper -->
