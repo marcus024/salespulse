@@ -208,6 +208,12 @@ include_once('dirback/dirviewback.php');
         }
     }
     </style>
+    <style>
+        .form-label{
+            color:#555;
+            
+        }
+    </style>
 </head>
 <body id="page-top" style="background-color:#15151a;">
     <!-- Page Wrapper -->
