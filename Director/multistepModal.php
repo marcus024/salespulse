@@ -59,7 +59,7 @@
                     color:#555;
                     font-family: 'Poppins';
                     background-color:#1f2024;
-                    border: 1 solid #555;
+                    border: 1px solid #555;
                 }
                 .form-control:readonly{
                     font-size: 12px;
@@ -72,6 +72,7 @@
                     color:white;
                     font-family: 'Poppins';
                     background-color:#1f2024;
+                    border: 1px solid white;
                 }
                 #multiStepModal .modal-dialog {
                     max-width: 1000px; /* Increased width */
