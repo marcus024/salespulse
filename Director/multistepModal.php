@@ -104,6 +104,28 @@
                 .btn-primary:hover{
                     background:rgb(96, 120, 14);
                     color:#1f2024;
+                    border:none;
+                }
+                .input-group select {
+                padding: 5px;
+                font-size: 12px;
+                font-family: 'Poppins';
+                border: 1px solid #555;
+                border-radius: 10px;
+                background-color: #1f2024; /* Matches the input background */
+                color: white;
+                width: 100%;
+                height: 40px;
+                }
+
+                .input-group select:focus {
+                    border-color: white ;
+                    outline: none;
+                    background-color: #1f2024; /* Slightly darker green for focus */
+                }
+
+                .input-group select option {
+                    color: #555; /* Black text for dropdown items */
                 }
             </style>
             <div class="modal fade" id="multiStepModal" tabindex="-1" aria-labelledby="multiStepModalLabel" aria-hidden="true">
