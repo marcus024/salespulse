@@ -512,8 +512,8 @@ include_once('dirback/dirviewback.php');
                                                         Stage Remarks
                                                         </p>
                                                         <div class="mb-6">
-                                                            <textarea name="stage_one_remarks" value="<?php echo htmlspecialchars($stageOneData['stage_one_remarks'] ?? ''); ?>" class="form-control" id="stageremarks1" placeholder="e.g. Sample Remarks" 
-                                                            style="height: 100px;"></textarea>
+                                                            <textarea name="stage_one_remarks" class="form-control" id="stageremarks1" placeholder="e.g. Sample Remarks" 
+                                                            style="height: 100px;"><?php echo htmlspecialchars($stageOneData['stage_one_remarks'] ?? ''); ?></textarea>
                                                         </div>
                                                     </div>
                                                     
