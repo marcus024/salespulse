@@ -438,27 +438,32 @@ include_once('dirback/dirviewback.php');
                                                     </p>
                                                     <div class="row mb-3">
                                                         <div class="col-md-2">
-                                                            <label for="status" class="form-label ">Status</label>
-                                                            <input name="" type="text" class="form-control" id="stage-three-status"   readonly>
+                                                            <label for="status" class="form-label">Status</label>
+                                                            <input type="text" class="form-control" id="stage-three-status"  
+                                                                value="<?= htmlspecialchars($data['stage_three']['status'] ?? '') ?>" readonly>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <label for="requirement" class="form-label ">Start Date</label>
-                                                            <input name="" type="text" class="form-control" id="stage-three-start"   readonly>
+                                                            <label for="requirement" class="form-label">Start Date</label>
+                                                            <input type="text" class="form-control" id="stage-three-start"  
+                                                                value="<?= htmlspecialchars($data['stage_three']['start_date_stage_three'] ?? '') ?>" readonly>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <label for="requirement" class="form-label ">End Date</label>
-                                                            <input name="" type="text" class="form-control" id="stage-three-end" value="<?php htmlspecialchars(data['stage_three']['end_date_stage_three'] ?? '')?>" readonly>
+                                                            <label for="requirement" class="form-label">End Date</label>
+                                                            <input type="text" class="form-control" id="stage-three-end"  
+                                                                value="<?= htmlspecialchars($data['stage_three']['end_date_stage_three'] ?? '') ?>" readonly>
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <label for="requirement" class="form-label ">Technology</label>
-                                                            <input name="" type="text" class="form-control" id="technology"  value="<?php htmlspecialchars(data['stage_three']['technology'] ?? '')?>" readonly>
-                                                      
+                                                            <label for="requirement" class="form-label">Technology</label>
+                                                            <input type="text" class="form-control" id="technology"  
+                                                                value="<?= htmlspecialchars($data['stage_three']['technology'] ?? '') ?>" readonly>
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <label for="status" class="form-label ">Deal Size(Amount)</label>
-                                                        <input name="deal_size" type="text" class="form-control" id="deal_size3" value="<?php htmlspecialchars(data['stage_three']['deal_size'] ?? '') ?>" placeholder="e.g. 5000">
+                                                            <label for="status" class="form-label">Deal Size (Amount)</label>
+                                                            <input name="deal_size" type="text" class="form-control" id="deal_size3"  
+                                                                value="<?= htmlspecialchars($data['stage_three']['deal_size'] ?? '') ?>" placeholder="e.g. 5000">
                                                         </div>
                                                     </div>
+
                                                     <div class="row mb-3">
                                                         <div class="col-md-12">
                                                             <label for="status" class="form-label ">Solution</label>
@@ -496,14 +501,6 @@ include_once('dirback/dirviewback.php');
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <input name="engagement_remarks_three[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
-                                                                    </div>
-                                                                    <div class="col-md-2">
-                                                                        <button type="button"
-                                                                                class="btn btn-primary btn-sm"
-                                                                                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                                                                                id="addEngagement3Btn">
-                                                                        <i class="fas fa-plus"></i>&nbsp;Add
-                                                                        </button>
                                                                     </div>
                                                                 </div>
                                                             </div>
