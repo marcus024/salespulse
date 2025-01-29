@@ -432,6 +432,10 @@ include_once('dirback/dirviewback.php');
                                             
                                             <div class="container" style="background-color:#1f2024; padding: 10px; border-radius: 20px"> 
                                                 <div class="container" style="background-color: #1f2024; padding: 5px; border-radius: 20px">
+                                                    <?php include('dirback/fetch_s5.php'); ?>
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; color:white;  font-weight:bold;">
+                                                    Project Profile
+                                                    </p>
                                                     <div class="row mb-3">
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">Start Date</label>
