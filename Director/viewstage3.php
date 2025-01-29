@@ -393,7 +393,7 @@ include_once('dirback/dirviewback.php');
                                             <img src="../images/project_s.png" alt="Project Icon" style="width: 60px; height: 60px; vertical-align: middle;" />
                                         </div>
                                         <?php include("dirback/pro_stage_details.php"); ?>
-                                        <?php include('dirback/fetch_s2.php'); ?>
+                                        <?php include('dirback/fetch_s3.php'); ?>
                                         <div class="col-md-12 mb-3">
                                             <p style="color:white; margin-top: 0; font-family: 'Poppins'; font-size:30px; font-weight:bold; display: inline;"><?php echo htmlspecialchars($project['company_name']); ?></p>
                                             <p id="projectUniqueId" style="color:white; margin-top: 0; margin-bottom: 5px; font-family: 'Poppins'; font-size: 12px; font-weight: 500;">
@@ -437,26 +437,24 @@ include_once('dirback/dirviewback.php');
                                                     <div class="row mb-3">
                                                         <div class="col-md-2">
                                                             <label for="status" class="form-label ">Status</label>
-                                                            <input name="" type="text" class="form-control" id="stage-three-status"  readonly>
+                                                            <input name="" type="text" class="form-control" id="stage-three-status"  value="<?= htmlspecialchars($data['stage_three']['status_stage_three'] ?? '') ?>" readonly>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">End Date</label>
-                                                            <input name="" type="text" class="form-control" id="stage-three-end"  readonly>
+                                                            <input name="" type="text" class="form-control" id="stage-three-end" value="<?php htmlspecialchars(data['stage_three']['end_date_stage_three'] ?? '')?>" readonly>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">Start Date</label>
-                                                            <input name="" type="text" class="form-control" id="stage-three-start"  readonly>
+                                                            <input name="" type="text" class="form-control" id="stage-three-start"  value="<?php htmlspecialchars(data['stage_three']['start_date_stage_three'] ?? '')?>" readonly>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="requirement" class="form-label ">Technology</label>
-                                                            <select name="technology" id="technologySelect3" class="form-control custom-select" >
-                                                                <option disabled selected>Select technology</option>
-                                                                <option value="add_new_technology">+ Add New Technology...</option>
-                                                            </select>
+                                                            <input name="" type="text" class="form-control" id="stage-three-start"  value="<?php htmlspecialchars(data['stage_three']['technology'] ?? '')?>" readonly>
+                                                      
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="status" class="form-label ">Deal Size(Amount)</label>
-                                                        <input name="deal_size" type="number" class="form-control" id="deal_size3" placeholder="e.g. 5000">
+                                                        <input name="deal_size" type="text" class="form-control" id="deal_size3" value="<?php htmlspecialchars(data['stage_three']['deal_size'] ?? '') ?>" placeholder="e.g. 5000">
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
