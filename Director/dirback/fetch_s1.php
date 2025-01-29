@@ -92,7 +92,7 @@ if ($projectUniqueId && isset($conn)) {
 }
 
 if (!empty($error)) {
-    echo '<div class="alert alert-warning" role="alert">';
+    echo '<div class="alert alert-warning" style="display:none;" role="alert">';
     echo htmlspecialchars($error);
     echo '</div>';
 }
