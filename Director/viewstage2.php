@@ -490,19 +490,24 @@ include_once('dirback/dirviewback.php');
                                                                     </a>
                                                                 </div> -->
                                                             </div>
-                                                            <div id="engagement-fields-container">
-                                                                <div class="row engagement-fields mb-3">
-                                                                    <div class="col-md-4">
-                                                                        <input name="engagement_type[]" type="text" id="engtype2" class="form-control" placeholder="e.g. Sample Engagement">
+                                                            <?php if (!empty($data['engagements'])): ?>
+                                                                <?php foreach ($data['engagements'] as $engagement): ?>
+                                                                    <div class="row engagement-fields mb-3">
+                                                                        <div class="col-md-4">
+                                                                            <input name="engagement_type[]" type="text" class="form-control" value="<?= htmlspecialchars($engagement['engagement_type']) ?>">
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <input name="engagement_date[]" type="date" class="form-control" value="<?= htmlspecialchars($engagement['engagement_date']) ?>">
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <input name="engagement_remarks[]" type="text" class="form-control" value="<?= htmlspecialchars($engagement['engagement_remarks']) ?>">
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="col-md-2">
-                                                                        <input name="engagement_date[]" type="date" id="engdate2" class="form-control" style="font-size:10px;">
-                                                                    </div>
-                                                                    <div class="col-md-4">
-                                                                        <input name="engagement_remarks[]" type="text" id="engremarks2" class="form-control" placeholder="e.g. Sample Remarks">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                                <?php endforeach; ?>
+                                                            <?php else: ?>
+                                                                <p class="text-warning">No engagement data available.</p>
+                                                            <?php endif; ?>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -532,29 +537,30 @@ include_once('dirback/dirviewback.php');
                                                                 </div>
                                                             </div>
                                                             <div >
-                                                                <div class="row requirement-fields mb-3">
-                                                                    <div class="col-md-2">
-                                                                        <input name="requirement_two[]" type="text" id="req2" class="form-control" placeholder="e.g. Sample Requirement">
-                                                                    </div>
-                                                                    <div class="col-md-2">
-                                                                        <select name="product_two[]" class="form-control custom-select productFetch" >
-                                                                            <option disabled selected>Select</option>
-                                                                            <option value="add_new_product">+ Add New Product...</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-md-2">
-                                                                        <select name="distributor_two[]" class="form-control custom-select distributorFetch" >
-                                                                            <option disabled selected>Select</option>
-                                                                            <option value="add_new">+ Add New Distributor...</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-md-2">
-                                                                        <input name="requirement_date[]" type="date" id="reqdate2" class="form-control" style="font-size:10px;">
-                                                                    </div>
-                                                                    <div class="col-md-2">
-                                                                        <input name="requirement_remarks[]" type="text" id="reqremarks2"class="form-control" placeholder="e.g. Sample Remarks">
-                                                                    </div>
-                                                                </div>
+                                                                <?php if (!empty($data['requirements'])): ?>
+                                                                    <?php foreach ($data['requirements'] as $requirement): ?>
+                                                                        <div class="row requirement-fields mb-3">
+                                                                            <div class="col-md-2">
+                                                                                <input readonly name="requirement_two[]" type="text" class="form-control" value="<?= htmlspecialchars($requirement['requirement_two']) ?>">
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <input readonly name="product_two[]" type="text" class="form-control" value="<?= htmlspecialchars($requirement['product_two']) ?>">
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <input readonly name="distributor_two[]" type="text" class="form-control" value="<?= htmlspecialchars($requirement['distributor_two']) ?>">
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <input readonly name="requirement_date[]" type="date" class="form-control" value="<?= htmlspecialchars($requirement['requirement_date']) ?>">
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <input readonly name="requirement_remarks[]" type="text" class="form-control" value="<?= htmlspecialchars($requirement['requirement_remarks']) ?>">
+                                                                            </div>
+                                                                        </div>
+                                                                    <?php endforeach; ?>
+                                                                <?php else: ?>
+                                                                    <p class="text-warning">No requirement data available.</p>
+                                                                <?php endif; ?>
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -566,7 +572,7 @@ include_once('dirback/dirviewback.php');
                                                     </p>
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <textarea name="stage_two_remarks" class="form-control" id="stageremarks2" placeholder="e.g. Sample Solution" 
+                                                            <textarea readonly name="stage_two_remarks" class="form-control" id="stageremarks2" placeholder="e.g. Sample Solution" 
                                                             style="height:100px;"><?= htmlspecialchars($data['stage_two']['stage_two_remarks'] ?? '') ?></textarea>
                                                         </div>
                                                     </div>
