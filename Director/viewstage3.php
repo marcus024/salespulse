@@ -393,7 +393,7 @@ include_once('dirback/dirviewback.php');
                                             <img src="../images/project_s.png" alt="Project Icon" style="width: 60px; height: 60px; vertical-align: middle;" />
                                         </div>
                                         <?php include("dirback/pro_stage_details.php"); ?>
-                                        <?php include('dirback/fetch_s3.php'); ?>
+                                        
                                         <div class="col-md-12 mb-3">
                                             <p style="color:white; margin-top: 0; font-family: 'Poppins'; font-size:30px; font-weight:bold; display: inline;"><?php echo htmlspecialchars($project['company_name']); ?></p>
                                             <p id="projectUniqueId" style="color:white; margin-top: 0; margin-bottom: 5px; font-family: 'Poppins'; font-size: 12px; font-weight: 500;">
@@ -429,6 +429,7 @@ include_once('dirback/dirviewback.php');
                                                     </p>
                                                 </div>
                                             </div>
+                                            <?php include('dirback/fetch_s3.php'); ?>
                                             <div class="container" style="background-color:#1f2024; padding: 10px; border-radius: 20px"> 
                                                 <div class="container" style="background-color: #1f2024; padding: 5px; border-radius: 20px">
                                                     <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
