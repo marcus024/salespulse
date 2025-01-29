@@ -467,47 +467,44 @@ include_once('dirback/dirviewback.php');
 
                                                 <div class="container" style="background-color: #1f2024; padding: 5px; border-radius: 20px">
                                                     <div id="engagement1Container">
-                                                        <div class="engagement-block" data-index="1">
-                                                        <p class="text-center  mb-1" style="font-style:'Poppins'; color:white;  font-weight:bold;" id="engagement1">
-                                                            Engagement 1
-                                                            </p>
-                                                            <input type="hidden" name="engagement_id_2[]" value="st2eng1" id="eng_1_id">
-                                                            <div class="row mb-1">
-                                                                <div class="col-md-4">
-                                                                    <label for="engagement" class="form-label ">Type of Engagement</label>
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                    <label for="engagement" class="form-label ">Date</label>
-                                                                </div>
-                                                                <div class="col-md-5">
-                                                                    <label for="engagement" class="form-label ">Remarks</label>
-                                                                </div>
-                                                                <!-- <div class="col-md-1">
-                                                                    <a href="#" id="addEngagement" class="form-label " style="font-size:10px; cursor: pointer;">
-                                                                        <i class="fas fa-plus"></i> Add
-                                                                    </a>
-                                                                </div> -->
-                                                            </div>
-                                                            <?php if (!empty($data['engagements'])): ?>
-                                                                <?php foreach ($data['engagements'] as $engagement): ?>
-                                                                    <div class="row engagement-fields mb-3">
-                                                                        <div class="col-md-4">
-                                                                            <input name="engagement_type[]" type="text" class="form-control" value="<?= htmlspecialchars($engagement['engagement_type']) ?>">
-                                                                        </div>
-                                                                        <div class="col-md-2">
-                                                                            <input name="engagement_date[]" type="date" class="form-control" value="<?= htmlspecialchars($engagement['engagement_date']) ?>">
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <input name="engagement_remarks[]" type="text" class="form-control" value="<?= htmlspecialchars($engagement['engagement_remarks']) ?>">
-                                                                        </div>
+                                                    <?php if (!empty($data['engagements'])): ?>
+                                                        <?php foreach ($data['engagements'] as $index => $engagement): ?>
+                                                            <div class="engagement-block" data-index="<?= $index + 1 ?>">
+                                                                <p class="text-center mb-1" style="font-family: 'Poppins'; color:white; font-weight:bold;" id="engagement<?= $index + 1 ?>">
+                                                                    Engagement <?= $index + 1 ?>
+                                                                </p>
+                                                                <input type="hidden" name="engagement_id_2[]" value="st2eng<?= $index + 1 ?>" id="eng_<?= $index + 1 ?>_id">
+                                                                
+                                                                <div class="row mb-1">
+                                                                    <div class="col-md-4">
+                                                                        <label for="engagement" class="form-label">Type of Engagement</label>
                                                                     </div>
-                                                                <?php endforeach; ?>
-                                                            <?php else: ?>
-                                                                <p class="text-warning" style="font-size:10px;">No engagement data available.</p>
-                                                            <?php endif; ?>
+                                                                    <div class="col-md-2">
+                                                                        <label for="engagement" class="form-label">Date</label>
+                                                                    </div>
+                                                                    <div class="col-md-5">
+                                                                        <label for="engagement" class="form-label">Remarks</label>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="row engagement-fields mb-3">
+                                                                    <div class="col-md-4">
+                                                                        <input name="engagement_type[]" type="text" class="form-control" value="<?= htmlspecialchars($engagement['engagement_type']) ?>">
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input name="engagement_date[]" type="date" class="form-control" value="<?= htmlspecialchars($engagement['engagement_date']) ?>">
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <input name="engagement_remarks[]" type="text" class="form-control" value="<?= htmlspecialchars($engagement['engagement_remarks']) ?>">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        <?php endforeach; ?>
+                                                    <?php else: ?>
+                                                        <p class="text-warning" style="font-size:10px;">No engagement data available.</p>
+                                                    <?php endif; ?>
+                                                </div>
 
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <div style="border-top: 1px ; margin: 20px 0;"></div> 
                                                 <div class="container" style="background-color: #1f2024; padding: 5px; border-radius: 20px">
