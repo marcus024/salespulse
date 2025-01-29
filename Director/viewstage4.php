@@ -472,81 +472,78 @@ include_once('dirback/dirviewback.php');
 
                                                 <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                                     <div id="requirementfourContainer">
-                                                        <div class="requirementfour-block" data-index="1">
-                                                            <p class="text-center  mb-1" style="font-style:'Poppins'; color:white; font-weight:bold;" id="requirementstagefour">
-                                                            Requirement 1
-                                                            </p>
-                                                            <input type="hidden" name="requirement_id_4[]" value="st4req1" id="req_4_id">
-                                                            <div class="row mb-1">
-                                                                <div class="col-md-3">
-                                                                    <label for="requirement" class="form-label ">Requirement</label>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                <label for="requirement" class="form-label ">Product</label>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                <label for="distributor" class="form-label ">Distributor</label>
-                                                                </div>
-                                                            </div>
-                                                            <div id="requirement-fields-container-3">
-                                                                <div class="row requirement-fields mb-3">
-                                                                    <div class="col-md-4">
-                                                                        <input name="requirement_four[]" type="text" class="form-control" placeholder="e.g. Sample Requirement">
+                                                        <?php if (!empty($requirements)): ?>
+                                                            <?php foreach ($requirements as $index => $requirement): ?>
+                                                                <div class="requirementfour-block" data-index="<?php echo $index + 1; ?>">
+                                                                    <p class="text-center mb-1" style="font-style:'Poppins'; color:white; font-weight:bold;" id="requirementstagefour">
+                                                                        Requirement <?php echo $index + 1; ?>
+                                                                    </p>
+                                                                    <input type="hidden" name="requirement_id_4[]" value="<?php echo htmlspecialchars($requirement['requirement_id_4']); ?>" id="req_4_id">
+                                                                    
+                                                                    <div class="row mb-1">
+                                                                        <div class="col-md-3">
+                                                                            <label for="requirement" class="form-label">Requirement</label>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <label for="requirement" class="form-label">Product</label>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <label for="distributor" class="form-label">Distributor</label>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="col-md-3">
-                                                                        <select name="product_four[]" class="form-control custom-select productFetch" >
-                                                                            <option disabled selected>Select</option>
-                                                                            <option value="add_new_product">+ Add New Product...</option>
-                                                                        </select>
+                                                                    
+                                                                    <div id="requirement-fields-container-3">
+                                                                        <div class="row requirement-fields mb-3">
+                                                                            <div class="col-md-4">
+                                                                                <input readonly name="requirement_four[]" type="text" class="form-control" value="<?php echo htmlspecialchars($requirement['requirement_four']); ?>" placeholder="e.g. Sample Requirement">
+                                                                            </div>
+                                                                            <div class="col-md-3">
+                                                                                <input readonly name="requirement_four[]" type="text" class="form-control" value="<?php echo htmlspecialchars($requirement['product_four']); ?>" placeholder="e.g. Sample Product">
+                                                                            </div>
+                                                                            <div class="col-md-3">
+                                                                                <input readonly name="requirement_four[]" type="text" class="form-control" value="<?php echo htmlspecialchars($requirement['distributor_four']); ?>" placeholder="e.g. Sample Distributor">
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="col-md-3">
-                                                                        <select name="distributor_four[]" class="form-control custom-select distributorFetch" >
-                                                                            <option disabled selected>Select</option>
-                                                                            <option value="add_new">+ Add New Distributor...</option>
-                                                                        </select>
+                                                                    
+                                                                    <div class="row mb-1">
+                                                                        <div class="col-md-3">
+                                                                            <label for="requirement" class="form-label">Quantity</label>
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <label for="requirement" class="form-label">Pricing</label>
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <label for="requirement" class="form-label">Date Required</label>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <label for="requirement" class="form-label">Remarks</label>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="col-md-2">
-                                                                        <button type="button"
-                                                                                class="btn btn-primary btn-sm"
-                                                                                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                                                                                id="addRequirement4Btn">
-                                                                        <i class="fas fa-plus"></i>&nbsp;Add
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mb-1">
-                                                                <div class="col-md-3">
-                                                                    <label for="requirement" class="form-label ">Quantity</label>
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                    <label for="requirement" class="form-label ">Pricing</label>
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                    <label for="requirement" class="form-label ">Date Required</label>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <label for="requirement" class="form-label ">Remarks</label>
-                                                                </div>
-                                                            </div>
-                                                            <div id="requirement-fields-container-3">
-                                                                <div class="row requirement-fields mb-3">
-                                                                    <div class="col-md-3">
-                                                                        <input name="quantity[]" type="number" class="form-control" placeholder="e.g. 50">
-                                                                    </div>
-                                                                    <div class="col-md-2">
-                                                                        <input name="pricing[]" type="number" class="form-control" placeholder="e.g. 2000">
-                                                                    </div>
-                                                                    <div class="col-md-2">
-                                                                        <input name="date_required[]" type="date" class="form-control" style="font-size:10px;">
-                                                                    </div>
-                                                                    <div class="col-md-4">
-                                                                        <input name="requirement_remarks_four[]" type="text" class="form-control" placeholder="e.g. Sample Remarks">
+                                                                    
+                                                                    <div id="requirement-fields-container-3">
+                                                                        <div class="row requirement-fields mb-3">
+                                                                            <div class="col-md-3">
+                                                                                <input readonly name="quantity[]" type="number" class="form-control" value="<?php echo htmlspecialchars($requirement['quantity']); ?>" placeholder="e.g. 50">
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <input readonly name="pricing[]" type="number" class="form-control" value="<?php echo htmlspecialchars($requirement['pricing']); ?>" placeholder="e.g. 2000">
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <input readonly name="date_required[]" type="date" class="form-control" style="font-size:10px;" value="<?php echo htmlspecialchars($requirement['date_required']); ?>">
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <input readonly name="requirement_remarks_four[]" type="text" class="form-control" value="<?php echo htmlspecialchars($requirement['requirement_remarks_four']); ?>" placeholder="e.g. Sample Remarks">
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
+                                                            <?php endforeach; ?>
+                                                        <?php else: ?>
+                                                            <p class="text-warning" style="font-size:10px;">No requirement data available.</p>
+                                                        <?php endif; ?>
                                                     </div>
+
                                                 </div>
                                                 <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
