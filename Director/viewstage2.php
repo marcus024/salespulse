@@ -437,29 +437,29 @@ include_once('dirback/dirviewback.php');
                                                 <div class="row mb-3">
                                                     <div class="col-md-2">
                                                         <label for="requirement" class="form-label">Status</label>
-                                                        <input type="text" class="form-control" id="stage-two-status" value="<?= htmlspecialchars($data['stage_two']['status_stage_two'] ?? '') ?>" readonly>
+                                                        <input readonly type="text" class="form-control" id="stage-two-status" value="<?= htmlspecialchars($data['stage_two']['status_stage_two'] ?? '') ?>" readonly>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <label for="requirement" class="form-label">End Date</label>
-                                                        <input type="text" class="form-control" id="stage-two-end" value="<?= htmlspecialchars($data['stage_two']['end_date_stage_two'] ?? '') ?>" readonly>
+                                                        <input readonly type="text" class="form-control" id="stage-two-end" value="<?= htmlspecialchars($data['stage_two']['end_date_stage_two'] ?? '') ?>" readonly>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <label for="requirement" class="form-label">Start Date</label>
-                                                        <input type="text" class="form-control" id="stage-two-start" value="<?= htmlspecialchars($data['stage_two']['start_date_stage_two'] ?? '') ?>" readonly>
+                                                        <input readonly type="text" class="form-control" id="stage-two-start" value="<?= htmlspecialchars($data['stage_two']['start_date_stage_two'] ?? '') ?>" readonly>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label for="technology" class="form-label">Technology</label>
-                                                        <input type="text" class="form-control" id="technology" value="<?= htmlspecialchars($data['stage_two']['technology'] ?? '') ?>" readonly>
+                                                        <input readonly type="text" class="form-control" id="technology" value="<?= htmlspecialchars($data['stage_two']['technology'] ?? '') ?>" readonly>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label for="dealSize" class="form-label">Deal Size</label>
-                                                        <input name="deal_size" type="number" class="form-control" id="deal_size2" value="<?= htmlspecialchars($data['stage_two']['deal_size'] ?? '') ?>" placeholder="e.g. 5000">
+                                                        <input readonly name="deal_size" type="number" class="form-control" id="deal_size2" value="<?= htmlspecialchars($data['stage_two']['deal_size'] ?? '') ?>" placeholder="e.g. 5000">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <div class="col-md-12">
                                                         <label for="solution" class="form-label">Solution</label>
-                                                        <textarea name="solution" class="form-control" id="solution2" placeholder="e.g. Sample Solution" style="height:100px;"><?= htmlspecialchars($data['stage_two']['solution'] ?? '') ?></textarea>
+                                                        <textarea readonly name="solution" class="form-control" id="solution2" placeholder="e.g. Sample Solution" style="height:100px;"><?= htmlspecialchars($data['stage_two']['solution'] ?? '') ?></textarea>
                                                     </div>
                                                 </div>
                                                 </div>
@@ -489,13 +489,13 @@ include_once('dirback/dirviewback.php');
                                                                 
                                                                 <div class="row engagement-fields mb-3">
                                                                     <div class="col-md-4">
-                                                                        <input name="engagement_type[]" type="text" class="form-control" value="<?= htmlspecialchars($engagement['engagement_type']) ?>">
+                                                                        <input readonly name="engagement_type[]" type="text" class="form-control" value="<?= htmlspecialchars($engagement['engagement_type']) ?>">
                                                                     </div>
                                                                     <div class="col-md-2">
-                                                                        <input name="engagement_date[]" type="date" class="form-control" value="<?= htmlspecialchars($engagement['engagement_date']) ?>">
+                                                                        <input readonly name="engagement_date[]" type="date" class="form-control" value="<?= htmlspecialchars($engagement['engagement_date']) ?>">
                                                                     </div>
                                                                     <div class="col-md-4">
-                                                                        <input name="engagement_remarks[]" type="text" class="form-control" value="<?= htmlspecialchars($engagement['engagement_remarks']) ?>">
+                                                                        <input readonly name="engagement_remarks[]" type="text" class="form-control" value="<?= htmlspecialchars($engagement['engagement_remarks']) ?>">
                                                                     </div>
                                                                 </div>
                                                             </div>
