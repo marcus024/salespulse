@@ -439,15 +439,15 @@ include_once('dirback/dirviewback.php');
                                                     <div class="row mb-3">
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">Start Date</label>
-                                                            <input type="text" class="form-control" id="stage-four-start" value="<?php echo htmlspecialchars($data['stage_four']['start_date'] ?? ''); ?>" readonly>
+                                                            <input type="text" class="form-control" id="stage-four-start" value="<?php echo htmlspecialchars($data['stage_four']['start_date_stage_four'] ?? ''); ?>" readonly>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">End Date</label>
-                                                            <input type="text" class="form-control" id="stage-four-end" value="<?php echo htmlspecialchars($data['stage_four']['end_date'] ?? ''); ?>" readonly>
+                                                            <input type="text" class="form-control" id="stage-four-end" value="<?php echo htmlspecialchars($data['stage_four']['end_date_stage_four'] ?? ''); ?>" readonly>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="status" class="form-label ">Status</label>
-                                                            <input type="text" class="form-control" id="stage-four-status" value="<?php echo htmlspecialchars($data['stage_four']['status'] ?? ''); ?>" readonly>
+                                                            <input type="text" class="form-control" id="stage-four-status" value="<?php echo htmlspecialchars($data['stage_four']['status_stage_four'] ?? ''); ?>" readonly>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="requirement" class="form-label ">Technology</label>
