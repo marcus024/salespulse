@@ -439,51 +439,51 @@ include_once('dirback/dirviewback.php');
                                                     <div class="row mb-3">
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">Start Date</label>
-                                                            <input type="text" class="form-control" id="stage-five-start" value="<?= $stageFive['start_date_stage_five'] ?? '' ?>" readonly>
+                                                            <input readonly type="text" class="form-control" id="stage-five-start" value="<?= $stageFive['start_date_stage_five'] ?? '' ?>" readonly>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">End Date</label>
-                                                            <input type="text" class="form-control" id="stage-five-end" value="<?= $stageFive['end_date_stage_five'] ?? '' ?>" readonly>
+                                                            <input readonly type="text" class="form-control" id="stage-five-end" value="<?= $stageFive['end_date_stage_five'] ?? '' ?>" readonly>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="status" class="form-label ">Status</label>
-                                                            <input type="text" class="form-control" id="stage-five-status" value="<?= $stageFive['status_stage_five'] ?? '' ?>" readonly>
+                                                            <input readonly type="text" class="form-control" id="stage-five-status" value="<?= $stageFive['status_stage_five'] ?? '' ?>" readonly>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="requirement" class="form-label ">Technology</label>
-                                                            <input name="req_five[]" id="req" type="text" class="form-control" value="<?= $stageFive['technology'] ?? '' ?>">
+                                                            <input readonly name="req_five[]" id="req" type="text" class="form-control" value="<?= $stageFive['technology'] ?? '' ?>">
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="requirement" class="form-label ">Deal Size(Amount)</label>
-                                                            <input name="deal_size" type="text" class="form-control" id="deal_size5" value="<?= $stageFive['deal_size'] ?? '' ?>">
+                                                            <input readonly name="deal_size" type="text" class="form-control" id="deal_size5" value="<?= $stageFive['deal_size'] ?? '' ?>">
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
                                                         <div class="col-md-12">
                                                             <label for="status" class="form-label ">Solution</label>
-                                                            <textarea name="solution" class="form-control" id="solution5" style="height:100px;"><?= $stageFive['solution'] ?? '' ?></textarea>
+                                                            <textarea readonly name="solution" class="form-control" id="solution5" style="height:100px;"><?= $stageFive['solution'] ?? '' ?></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
                                                         <div class="col-md-3">
                                                             <label for="status" class="form-label ">SPR Number</label>
-                                                            <input type="text" class="form-control" id="stage-five-spr" name="SPR_number" value="<?= $stageFive['SPR_number'] ?? '' ?>">
+                                                            <input readonly type="text" class="form-control" id="stage-five-spr" name="SPR_number" value="<?= $stageFive['SPR_number'] ?? '' ?>">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">Start Cont. Date</label>
-                                                            <input name="contractStart" type="text" class="form-control" id="startContract" value="<?= $stageFive['startC'] ?? '' ?>">
+                                                            <input readonly name="contractStart" type="text" class="form-control" id="startContract" value="<?= $stageFive['startC'] ?? '' ?>">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">End Cont. Date</label>
-                                                            <input name="contractEnd" type="text" class="form-control" id="endContract" value="<?= $stageFive['endC'] ?? '' ?>">
+                                                            <input readonly name="contractEnd" type="text" class="form-control" id="endContract" value="<?= $stageFive['endC'] ?? '' ?>">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">Duration</label>
-                                                            <input name="contract_duration" type="text" class="form-control" id="contractDuration" value="<?= $stageFive['contract_duration'] ?? '' ?>" readonly>
+                                                            <input readonly  name="contract_duration" type="text" class="form-control" id="contractDuration" value="<?= $stageFive['contract_duration'] ?? '' ?>" readonly>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="billingType" class="form-label ">Billing Type</label>
-                                                            <input name="billingType[]" id="req" type="text" class="form-control" value="<?= $stageFive['billing_type'] ?? '' ?>">
+                                                            <input readonly name="billingType[]" id="req" type="text" class="form-control" value="<?= $stageFive['billing_type'] ?? '' ?>">
                                                         </div>
                                                     </div>
                                                     <div style="border-top: 1px ; margin: 20px 0;"></div> 
@@ -515,13 +515,13 @@ include_once('dirback/dirviewback.php');
                                                                         <div id="requirement-fields-container-3">
                                                                             <div class="row requirement-fields mb-3">
                                                                                 <div class="col-md-4">
-                                                                                    <input name="req_five[]" type="text" class="form-control" value="<?= $requirement['req_five'] ?>">
+                                                                                    <input readonly name="req_five[]" type="text" class="form-control" value="<?= $requirement['req_five'] ?>">
                                                                                 </div>
                                                                                 <div class="col-md-3">
-                                                                                    <input name="product_five[]" type="text" class="form-control" value="<?= $requirement['product_five'] ?>">
+                                                                                    <input readonly name="product_five[]" type="text" class="form-control" value="<?= $requirement['product_five'] ?>">
                                                                                 </div>
                                                                                 <div class="col-md-3">
-                                                                                    <input name="distributor_five[]" type="text" class="form-control" value="<?= $requirement['distributor_five'] ?>">
+                                                                                    <input readonly name="distributor_five[]" type="text" class="form-control" value="<?= $requirement['distributor_five'] ?>">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -544,16 +544,16 @@ include_once('dirback/dirviewback.php');
                                                                         <div id="requirement-fields-container-3">
                                                                             <div class="row requirement-fields mb-3">
                                                                                 <div class="col-md-3">
-                                                                                    <input name="quantity[]" type="text" class="form-control" value="<?= $requirement['quantity'] ?>">
+                                                                                    <input readonly name="quantity[]" type="text" class="form-control" value="<?= $requirement['quantity'] ?>">
                                                                                 </div>
                                                                                 <div class="col-md-2">
-                                                                                    <input name="pricing[]" type="text" class="form-control" value="<?= $requirement['pricing'] ?>">
+                                                                                    <input readonly  name="pricing[]" type="text" class="form-control" value="<?= $requirement['pricing'] ?>">
                                                                                 </div>
                                                                                 <div class="col-md-2">
-                                                                                    <input name="date_required[]" type="text" class="form-control" style="font-size:10px;" value="<?= $requirement['date_required'] ?>">
+                                                                                    <input readonly name="date_required[]" type="text" class="form-control" style="font-size:10px;" value="<?= $requirement['date_required'] ?>">
                                                                                 </div>
                                                                                 <div class="col-md-4">
-                                                                                    <input name="remarks_req[]" type="text" class="form-control" value="<?= $requirement['remarks_req'] ?>">
+                                                                                    <input readonly name="remarks_req[]" type="text" class="form-control" value="<?= $requirement['remarks_req'] ?>">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -597,16 +597,16 @@ include_once('dirback/dirviewback.php');
                                                                     <div id="upsell-fields-container">
                                                                         <div class="row mb-3 upsell-fields">
                                                                             <div class="col-md-3">
-                                                                                <input type="text" class="form-control" name="upsell[]" value="<?= $upsell['upsell'] ?>">
+                                                                                <input readonly type="text" class="form-control" name="upsell[]" value="<?= $upsell['upsell'] ?>">
                                                                             </div>
                                                                             <div class="col-md-2">
-                                                                                <input name="quantity_upsell[]" type="number" class="form-control" value="<?= $upsell['quantity_upsell'] ?>">
+                                                                                <input readonly name="quantity_upsell[]" type="number" class="form-control" value="<?= $upsell['quantity_upsell'] ?>">
                                                                             </div>
                                                                             <div class="col-md-2">
-                                                                                <input name="amount_upsell[]" type="number" class="form-control" value="<?= $upsell['amount_upsell'] ?>">
+                                                                                <input readonly name="amount_upsell[]" type="number" class="form-control" value="<?= $upsell['amount_upsell'] ?>">
                                                                             </div>
                                                                             <div class="col-md-3">
-                                                                                <input name="remarks_upsell[]" type="text" class="form-control" value="<?= $upsell['remarks_upsell'] ?>">
+                                                                                <input readonly name="remarks_upsell[]" type="text" class="form-control" value="<?= $upsell['remarks_upsell'] ?>">
                                                                             </div>
                                                                             
                                                                         </div>
@@ -628,7 +628,7 @@ include_once('dirback/dirviewback.php');
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <label for="requirement" class="form-label ">Stage Remarks</label>
-                                                            <textarea name="remarks_stage_five" class="form-control" id="stageremarks5" 
+                                                            <textarea readonly name="remarks_stage_five" class="form-control" id="stageremarks5" 
                                                             style="height:100px;"></textarea>
                                                         </div>
                                                     </div>
