@@ -440,7 +440,7 @@ include_once('dirback/dirviewback.php');
                                                         <div class="col-md-2">
                                                             <label for="status" class="form-label">Status</label>
                                                             <input type="text" class="form-control" id="stage-three-status"  
-                                                                value="<?= htmlspecialchars($data['stage_three']['status'] ?? '') ?>" readonly>
+                                                                value="<?= htmlspecialchars($data['stage_three']['status_stage_three'] ?? '') ?>" readonly>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label">Start Date</label>
