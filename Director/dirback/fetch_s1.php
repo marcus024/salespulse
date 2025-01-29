@@ -11,7 +11,9 @@ function fetchStageOneData(PDO $conn, $projectUniqueId) {
             s.status_stage_one,
             s.start_date_stage_one,
             s.end_date_stage_one,
-            r.requirement_one
+            r.requirement_one,
+            r.product_one,
+            r.distributor_one
         FROM stageone AS s
         LEFT JOIN requirementone_tb AS r
             ON s.project_unique_id = r.project_unique_id
@@ -34,12 +36,22 @@ function fetchStageOneData(PDO $conn, $projectUniqueId) {
         'status_stage_one'     => $rows[0]['status_stage_one'],
         'start_date_stage_one' => $rows[0]['start_date_stage_one'],
         'end_date_stage_one'   => $rows[0]['end_date_stage_one'],
-        'requirements'         => []
+        'requirements'         => [],
+        'products'             => [],
+        'distributors'         => []
     ];
 
-    foreach ($rows as $row) {
+     foreach ($rows as $row) {
         if (!empty($row['requirement_one'])) {
             $stageOneData['requirements'][] = $row['requirement_one'];
+        }
+
+        if (!empty($row['product_one'])) {
+            $stageOneData['products'][] = $row['product_one'];
+        }
+
+        if (!empty($row['distributor_one'])) {
+            $stageOneData['distributors'][] = $row['distributor_one'];
         }
     }
 
