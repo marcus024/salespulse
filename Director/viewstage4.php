@@ -433,7 +433,7 @@ include_once('dirback/dirviewback.php');
                                             <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
                                                 <div class="container" style="background-color:#2a2925; padding: 5px; border-radius: 20px">
                                                     <?php include('dirback/fetch_s4.php'); ?>
-                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; color:white; font-weight:bold;">
                                                 Project Profile
                                                     </p>
                                                     <div class="row mb-3">
@@ -473,7 +473,7 @@ include_once('dirback/dirviewback.php');
                                                 <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                                     <div id="requirementfourContainer">
                                                         <div class="requirementfour-block" data-index="1">
-                                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefour">
+                                                            <p class="text-center  mb-1" style="font-style:'Poppins'; color:white; font-weight:bold;" id="requirementstagefour">
                                                             Requirement 1
                                                             </p>
                                                             <input type="hidden" name="requirement_id_4[]" value="st4req1" id="req_4_id">
@@ -551,14 +551,14 @@ include_once('dirback/dirviewback.php');
                                                 <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
                                                 <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
-                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; color:white; font-weight:bold;">
                                                 Stage Remarks
                                                     </p>
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <label for="requirement" class="form-label ">Stage Remarks</label>
                                                             <textarea name="stage_four_remarks" class="form-control" id="stageremarks4" placeholder="e.g. Sample Remarks" 
-                                                            style="height:100px;"></textarea>
+                                                            style="height:100px;"><?php echo htmlspecialchars($data['stage_four']['deal_size'] ?? ''); ?></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
