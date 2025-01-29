@@ -430,7 +430,7 @@ include_once('dirback/dirviewback.php');
                                                 </div>
                                             </div>
                                             <div class="container" style="background-color:#1f2024; padding: 10px; border-radius: 20px"> 
-                                                <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
+                                                <div class="container" style="background-color: #1f2024; padding: 5px; border-radius: 20px">
                                                     <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
                                                     Project Profile
                                                     </p>
@@ -468,7 +468,7 @@ include_once('dirback/dirviewback.php');
                                                     </div>
                                                 </div>
                                                 <div style="border-top: 1px ; margin: 20px 0;"></div> 
-                                                <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
+                                                <div class="container" style="background-color: #1f2024; padding: 5px; border-radius: 20px">
                                                     <div id="engagementthreeContainer">
                                                         <div class="engagementthree-block" data-index="1">
                                                             <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagementstagethree">
@@ -511,7 +511,7 @@ include_once('dirback/dirviewback.php');
                                                     </div>
                                                 </div>
                                                 <div style="border-top: 1px ; margin: 20px 0;"></div> 
-                                                <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
+                                                <div class="container" style="background-color: #1f2024; padding: 5px; border-radius: 20px">
                                                     <div id="requirementthreeContainer">
                                                         <div class="requirementthree-block" data-index="1">
                                                             <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagethree">
@@ -594,7 +594,7 @@ include_once('dirback/dirviewback.php');
                                                 </div>
                                                 <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
-                                                <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
+                                                <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
                                                     <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
                                                 Stage Remarks
                                                     </p>
