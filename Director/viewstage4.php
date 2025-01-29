@@ -431,7 +431,7 @@ include_once('dirback/dirviewback.php');
                                             </div>
                                             
                                             <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
-                                                <div class="container" style="background-color:#2a2925; padding: 5px; border-radius: 20px">
+                                                <div class="container" style="background-color:#1f2024; padding: 5px; border-radius: 20px">
                                                     <?php include('dirback/fetch_s4.php'); ?>
                                                     <p class="text-center  mb-1" style="font-style:'Poppins'; color:white; font-weight:bold;">
                                                 Project Profile
@@ -470,7 +470,7 @@ include_once('dirback/dirviewback.php');
                                                 </div>
                                                 <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
-                                                <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
+                                                <div class="container" style="background-color:#1f2024; padding: 5px; border-radius: 20px">
                                                     <div id="requirementfourContainer">
                                                         <?php if (!empty($requirements)): ?>
                                                             <?php foreach ($requirements as $index => $requirement): ?>
@@ -495,13 +495,13 @@ include_once('dirback/dirviewback.php');
                                                                     <div id="requirement-fields-container-3">
                                                                         <div class="row requirement-fields mb-3">
                                                                             <div class="col-md-4">
-                                                                                <input readonly name="requirement_four[]" type="text" class="form-control" value="<?php echo htmlspecialchars($requirement['requirement_four']); ?>" placeholder="e.g. Sample Requirement">
+                                                                                <input readonly name="requirement_four[]" type="text" class="form-control" value="<?php echo htmlspecialchars($requirement['requirement_four']); ?>" >
                                                                             </div>
                                                                             <div class="col-md-3">
-                                                                                <input readonly name="requirement_four[]" type="text" class="form-control" value="<?php echo htmlspecialchars($requirement['product_four']); ?>" placeholder="e.g. Sample Product">
+                                                                                <input readonly name="requirement_four[]" type="text" class="form-control" value="<?php echo htmlspecialchars($requirement['product_four']); ?>" >
                                                                             </div>
                                                                             <div class="col-md-3">
-                                                                                <input readonly name="requirement_four[]" type="text" class="form-control" value="<?php echo htmlspecialchars($requirement['distributor_four']); ?>" placeholder="e.g. Sample Distributor">
+                                                                                <input readonly name="requirement_four[]" type="text" class="form-control" value="<?php echo htmlspecialchars($requirement['distributor_four']); ?>" >
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -524,16 +524,16 @@ include_once('dirback/dirviewback.php');
                                                                     <div id="requirement-fields-container-3">
                                                                         <div class="row requirement-fields mb-3">
                                                                             <div class="col-md-3">
-                                                                                <input readonly name="quantity[]" type="number" class="form-control" value="<?php echo htmlspecialchars($requirement['quantity']); ?>" placeholder="e.g. 50">
+                                                                                <input readonly name="quantity[]" type="number" class="form-control" value="<?php echo htmlspecialchars($requirement['quantity']); ?>" >
                                                                             </div>
                                                                             <div class="col-md-2">
-                                                                                <input readonly name="pricing[]" type="number" class="form-control" value="<?php echo htmlspecialchars($requirement['pricing']); ?>" placeholder="e.g. 2000">
+                                                                                <input readonly name="pricing[]" type="number" class="form-control" value="<?php echo htmlspecialchars($requirement['pricing']); ?>">
                                                                             </div>
                                                                             <div class="col-md-2">
                                                                                 <input readonly name="date_required[]" type="date" class="form-control" style="font-size:10px;" value="<?php echo htmlspecialchars($requirement['date_required']); ?>">
                                                                             </div>
                                                                             <div class="col-md-4">
-                                                                                <input readonly name="requirement_remarks_four[]" type="text" class="form-control" value="<?php echo htmlspecialchars($requirement['requirement_remarks_four']); ?>" placeholder="e.g. Sample Remarks">
+                                                                                <input readonly name="requirement_remarks_four[]" type="text" class="form-control" value="<?php echo htmlspecialchars($requirement['requirement_remarks_four']); ?>" >
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -547,14 +547,14 @@ include_once('dirback/dirviewback.php');
                                                 </div>
                                                 <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
-                                                <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
+                                                <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
                                                     <p class="text-center  mb-1" style="font-style:'Poppins'; color:white; font-weight:bold;">
                                                 Stage Remarks
                                                     </p>
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <label for="requirement" class="form-label ">Stage Remarks</label>
-                                                            <textarea name="stage_four_remarks" class="form-control" id="stageremarks4" placeholder="e.g. Sample Remarks" 
+                                                            <textarea readonly name="stage_four_remarks" class="form-control" id="stageremarks4" 
                                                             style="height:100px;"><?php echo htmlspecialchars($data['stage_four']['stage_four_remarks'] ?? ''); ?></textarea>
                                                         </div>
                                                     </div>
