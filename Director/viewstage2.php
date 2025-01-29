@@ -512,7 +512,10 @@ include_once('dirback/dirviewback.php');
                                                 <div style="border-top: 1px ; margin: 20px 0;"></div> 
                                                 <div class="container" style="background-color: #1f2024; padding: 5px; border-radius: 20px">
                                                     <div id="requirementtwoContainer">
+                                                        <?php if (!empty($data['requirements'])): ?>
+                                                            <?php foreach ($data['requirements'] as $requirement): ?>
                                                         <div class="requirementtwo-block" data-index="1">
+
                                                             <p class="text-center  mb-1" style="font-style:'Poppins'; color:white;  font-weight:bold;" id="requirementstagetwo">
                                                             Requirement 1
                                                             </p>
@@ -535,32 +538,29 @@ include_once('dirback/dirviewback.php');
                                                                 </div>
                                                             </div>
                                                             <div >
-                                                                <?php if (!empty($data['requirements'])): ?>
-                                                                    <?php foreach ($data['requirements'] as $requirement): ?>
-                                                                        <div class="row requirement-fields mb-3">
-                                                                            <div class="col-md-2">
-                                                                                <input readonly name="requirement_two[]" type="text" class="form-control" value="<?= htmlspecialchars($requirement['requirement_two']) ?>">
-                                                                            </div>
-                                                                            <div class="col-md-2">
-                                                                                <input readonly name="product_two[]" type="text" class="form-control" value="<?= htmlspecialchars($requirement['product_two']) ?>">
-                                                                            </div>
-                                                                            <div class="col-md-2">
-                                                                                <input readonly name="distributor_two[]" type="text" class="form-control" value="<?= htmlspecialchars($requirement['distributor_two']) ?>">
-                                                                            </div>
-                                                                            <div class="col-md-2">
-                                                                                <input readonly name="requirement_date[]" type="date" class="form-control" value="<?= htmlspecialchars($requirement['requirement_date']) ?>">
-                                                                            </div>
-                                                                            <div class="col-md-2">
-                                                                                <input readonly name="requirement_remarks[]" type="text" class="form-control" value="<?= htmlspecialchars($requirement['requirement_remarks']) ?>">
-                                                                            </div>
-                                                                        </div>
-                                                                    <?php endforeach; ?>
-                                                                <?php else: ?>
-                                                                    <p class="text-warning" style="font-size:10px;">No requirement data available.</p>
-                                                                <?php endif; ?>
-
+                                                                <div class="row requirement-fields mb-3">
+                                                                    <div class="col-md-2">
+                                                                        <input readonly name="requirement_two[]" type="text" class="form-control" value="<?= htmlspecialchars($requirement['requirement_two']) ?>">
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input readonly name="product_two[]" type="text" class="form-control" value="<?= htmlspecialchars($requirement['product_two']) ?>">
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input readonly name="distributor_two[]" type="text" class="form-control" value="<?= htmlspecialchars($requirement['distributor_two']) ?>">
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input readonly name="requirement_date[]" type="date" class="form-control" value="<?= htmlspecialchars($requirement['requirement_date']) ?>">
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input readonly name="requirement_remarks[]" type="text" class="form-control" value="<?= htmlspecialchars($requirement['requirement_remarks']) ?>">
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <?php endforeach; ?>
+                                                        <?php else: ?>
+                                                            <p class="text-warning" style="font-size:10px;">No requirement data available.</p>
+                                                        <?php endif; ?>
                                                     </div>
                                                 </div>
                                                 <div style="border-top: 1px ; margin: 20px 0;"></div> 
