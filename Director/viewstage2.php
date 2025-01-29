@@ -437,15 +437,15 @@ include_once('dirback/dirviewback.php');
                                                 <div class="row mb-3">
     <div class="col-md-2">
         <label for="requirement" class="form-label">Status</label>
-        <input type="text" class="form-control" id="stage-two-status" value="<?= htmlspecialchars($data['stage_two']['status'] ?? '') ?>" readonly>
+        <input type="text" class="form-control" id="stage-two-status" value="<?= htmlspecialchars($data['stage_two']['status_stage_two'] ?? '') ?>" readonly>
     </div>
     <div class="col-md-2">
         <label for="requirement" class="form-label">End Date</label>
-        <input type="text" class="form-control" id="stage-two-end" value="<?= htmlspecialchars($data['stage_two']['end_date'] ?? '') ?>" readonly>
+        <input type="text" class="form-control" id="stage-two-end" value="<?= htmlspecialchars($data['stage_two']['end_date_stage_two'] ?? '') ?>" readonly>
     </div>
     <div class="col-md-2">
         <label for="requirement" class="form-label">Start Date</label>
-        <input type="text" class="form-control" id="stage-two-start" value="<?= htmlspecialchars($data['stage_two']['start_date'] ?? '') ?>" readonly>
+        <input type="text" class="form-control" id="stage-two-start" value="<?= htmlspecialchars($data['stage_two']['start_date_stage_two'] ?? '') ?>" readonly>
     </div>
     <div class="col-md-3">
         <label for="technology" class="form-label">Technology</label>
