@@ -514,7 +514,7 @@ include_once('dirback/dirviewback.php');
                                                                 </div>
                                                             <?php endforeach; ?>
                                                         <?php else: ?>
-                                                            <p>No data found to display.</p>
+                                                            <p class="text-warning" style="font-size:10px;">No requirement data available.</p>
                                                         <?php endif; ?>
                                                     </div>
 
