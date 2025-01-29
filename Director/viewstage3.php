@@ -421,11 +421,11 @@ include_once('dirback/dirviewback.php');
                                                 <!-- Left Section: Stage Title with Vertical Alignment -->
                                                 <div class="stage-title" style="width: 30%; display: flex; flex-direction: column; align-items: flex-end; z-index: 2;">
                                                     <p id="projectUniqueId" style="color: white; margin-bottom: 5px; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 30px;">
-                                                        Stage 2 
+                                                        Stage 3 
                                                         <span hidden style="color: rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span>
                                                     </p>
                                                     <p style="color: white; margin-top: 0; font-family: 'Poppins', sans-serif; font-size: 16px;">
-                                                        Engagement/Discovery
+                                                        Presentation/Proposal
                                                     </p>
                                                 </div>
                                             </div>
