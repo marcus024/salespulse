@@ -421,11 +421,11 @@ include_once('dirback/dirviewback.php');
                                                 <!-- Left Section: Stage Title with Vertical Alignment -->
                                                 <div class="stage-title" style="width: 30%; display: flex; flex-direction: column; align-items: flex-end; z-index: 2;">
                                                     <p id="projectUniqueId" style="color: white; margin-bottom: 5px; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 30px;">
-                                                        Stage 1 
+                                                        Stage 2 
                                                         <span hidden style="color: rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span>
                                                     </p>
                                                     <p style="color: white; margin-top: 0; font-family: 'Poppins', sans-serif; font-size: 16px;">
-                                                        Awareness/Prospecting
+                                                        Engagement/Discovery
                                                     </p>
                                                 </div>
                                             </div>
@@ -437,23 +437,23 @@ include_once('dirback/dirviewback.php');
                                                 <div class="row mb-3">
                                                     <div class="col-md-2">
                                                         <label for="requirement" class="form-label">Status</label>
-                                                        <input readonly type="text" class="form-control" id="stage-two-status" value="<?= htmlspecialchars($data['stage_two']['status_stage_two'] ?? '') ?>" readonly>
+                                                        <input  type="text" class="form-control" id="stage-two-status" value="<?= htmlspecialchars($data['stage_two']['status_stage_two'] ?? '') ?>" readonly>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <label for="requirement" class="form-label">End Date</label>
-                                                        <input readonly type="text" class="form-control" id="stage-two-end" value="<?= htmlspecialchars($data['stage_two']['end_date_stage_two'] ?? '') ?>" readonly>
+                                                        <input  type="text" class="form-control" id="stage-two-end" value="<?= htmlspecialchars($data['stage_two']['end_date_stage_two'] ?? '') ?>" readonly>
                                                     </div>
                                                     <div class="col-md-2">
                                                         <label for="requirement" class="form-label">Start Date</label>
-                                                        <input readonly type="text" class="form-control" id="stage-two-start" value="<?= htmlspecialchars($data['stage_two']['start_date_stage_two'] ?? '') ?>" readonly>
+                                                        <input  type="text" class="form-control" id="stage-two-start" value="<?= htmlspecialchars($data['stage_two']['start_date_stage_two'] ?? '') ?>" readonly>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label for="technology" class="form-label">Technology</label>
-                                                        <input readonly type="text" class="form-control" id="technology" value="<?= htmlspecialchars($data['stage_two']['technology'] ?? '') ?>" readonly>
+                                                        <input  type="text" class="form-control" id="technology" value="<?= htmlspecialchars($data['stage_two']['technology'] ?? '') ?>" readonly>
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label for="dealSize" class="form-label">Deal Size</label>
-                                                        <input readonly name="deal_size" type="number" class="form-control" id="deal_size2" value="<?= htmlspecialchars($data['stage_two']['deal_size'] ?? '') ?>" placeholder="e.g. 5000">
+                                                        <input readonly  name="deal_size" type="number" class="form-control" id="deal_size2" value="<?= htmlspecialchars($data['stage_two']['deal_size'] ?? '') ?>" placeholder="e.g. 5000">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
