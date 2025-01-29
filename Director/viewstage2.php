@@ -501,14 +501,6 @@ include_once('dirback/dirviewback.php');
                                                                     <div class="col-md-4">
                                                                         <input name="engagement_remarks[]" type="text" id="engremarks2" class="form-control" placeholder="e.g. Sample Remarks">
                                                                     </div>
-                                                                    <div class="col-md-2">
-                                                                        <button type="button"
-                                                                                class="btn btn-primary btn-sm"
-                                                                                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                                                                                id="addEngagement1Btn">
-                                                                        <i class="fas fa-plus"></i>&nbsp;Add
-                                                                        </button>
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -562,14 +554,6 @@ include_once('dirback/dirviewback.php');
                                                                     <div class="col-md-2">
                                                                         <input name="requirement_remarks[]" type="text" id="reqremarks2"class="form-control" placeholder="e.g. Sample Remarks">
                                                                     </div>
-                                                                    <div class="col-md-2">
-                                                                        <button type="button"
-                                                                                class="btn btn-primary btn-sm"
-                                                                                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
-                                                                                id="addRequirement2Btn">
-                                                                        <i class="fas fa-plus"></i>&nbsp;Add
-                                                                        </button>
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -583,7 +567,7 @@ include_once('dirback/dirviewback.php');
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <textarea name="stage_two_remarks" class="form-control" id="stageremarks2" placeholder="e.g. Sample Solution" 
-                                                            style="height:100px;"></textarea>
+                                                            style="height:100px;"><?= htmlspecialchars($data['stage_two']['stage_two_remarks'] ?? '') ?></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
