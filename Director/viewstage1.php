@@ -466,46 +466,58 @@ include_once('dirback/dirviewback.php');
                                                     </div>
                                                     <div style="border-top: 1px ; margin: 20px 0;"></div>
                                                     <div id="requirementsContainer">
-                                                        <div class="requirement-block" data-index="1">
-                                                        <p class="text-center  mb-1" style="font-style:'Poppins';  color:white; font-weight:bold;" id="requirement1">
-                                                            Requirement 1
-                                                            </p>
-                                                            <input type="hidden" name="requirement_id_1[]" value="st1rq1" id="req_1_id">
+                                                        <?php if (!empty($stageOneData['requirements']) && !empty($stageOneData['products']) && !empty($stageOneData['distributors'])): ?>
+                                                            <?php foreach ($stageOneData['requirements'] as $index => $requirement): ?>
+                                                                <div class="requirement-block" data-index="<?= $index + 1 ?>">
+                                                                    <p class="text-center mb-1" style="font-style: 'Poppins'; color: white; font-weight: bold;" id="requirement<?= $index + 1 ?>">
+                                                                        Requirement <?= $index + 1 ?>
+                                                                    </p>
+                                                                    <input type="hidden" name="requirement_id_<?= $index + 1 ?>[]" value="st1rq<?= $index + 1 ?>" id="req_<?= $index + 1 ?>_id">
 
-                                                            <div class="row mb-2">
-                                                            <div class="col-md-4">
-                                                                <label class="form-label ">Requirement</label>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <label class="form-label ">Product</label>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <label class="form-label ">Distributor</label>
-                                                            </div>
-                                                            </div>
-                                                            <div class="row mb-3">
-                                                            <div class="col-md-4">
-                                                                <input name="requirement_one[]"
-                                                                    style="width: 100%;"
-                                                                    type="text"
-                                                                    class="form-control"
-                                                                    placeholder="e.g. Sample Requirement">
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <select name="product_one[]" class="form-control custom-select productFetch" >
-                                                                <option disabled selected>Select</option>
-                                                                <option value="add_new_product">+ Add New Product...</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <select name="distributor_one[]" class="form-control custom-select distributorFetch" >
-                                                                <option disabled selected>Select</option>
-                                                                <option value="add_new">+ Add New Distributor...</option>
-                                                                </select>
-                                                            </div>
-                                                            </div>
-                                                        </div> 
-                                                    </div> 
+                                                                    <div class="row mb-2">
+                                                                        <div class="col-md-4">
+                                                                            <label class="form-label">Requirement</label>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <label class="form-label">Product</label>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <label class="form-label">Distributor</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mb-3">
+                                                                        <div class="col-md-4">
+                                                                            <input name="requirement_one[]"
+                                                                                style="width: 100%;"
+                                                                                type="text"
+                                                                                class="form-control"
+                                                                                value="<?= htmlspecialchars($requirement) ?>"
+                                                                            >
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <input name="product_one[]"
+                                                                                style="width: 100%;"
+                                                                                type="text"
+                                                                                class="form-control"
+                                                                                value="<?= htmlspecialchars($stageOneData['products'][$index] ?? '') ?>"
+                                                                            >
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <input name="distributor_one[]"
+                                                                                style="width: 100%;"
+                                                                                type="text"
+                                                                                class="form-control"
+                                                                                value="<?= htmlspecialchars($stageOneData['distributors'][$index] ?? '') ?>"
+                                                                            >
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            <?php endforeach; ?>
+                                                        <?php else: ?>
+                                                            <p>No data found to display.</p>
+                                                        <?php endif; ?>
+                                                    </div>
+
                                                     <div style="border-top: 1px ; margin: 20px 0;"></div> 
                                                     <div class="row mb-4">
                                                         <p class="text-center  mb-1" style="font-style:'Poppins'; color:white; font-weight:bold;">
