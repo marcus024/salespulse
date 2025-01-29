@@ -470,12 +470,12 @@ include_once('dirback/dirviewback.php');
                                                             <input type="text" class="form-control" id="stage-five-spr" name="SPR_number" value="<?= $stageFive['SPR_number'] ?? '' ?>">
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <label for="requirement" class="form-label ">Start Contracted Date</label>
-                                                            <input name="contractStart" type="date" class="form-control" id="startContract" value="<?= $stageFive['startC'] ?? '' ?>">
+                                                            <label for="requirement" class="form-label ">Start Cont. Date</label>
+                                                            <input name="contractStart" type="text" class="form-control" id="startContract" value="<?= $stageFive['startC'] ?? '' ?>">
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <label for="requirement" class="form-label ">End Contracted Date</label>
-                                                            <input name="contractEnd" type="date" class="form-control" id="endContract" value="<?= $stageFive['endC'] ?? '' ?>">
+                                                            <label for="requirement" class="form-label ">End Cont. Date</label>
+                                                            <input name="contractEnd" type="text" class="form-control" id="endContract" value="<?= $stageFive['endC'] ?? '' ?>">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">Duration</label>
