@@ -619,7 +619,7 @@ include_once('dirback/dirviewback.php');
 
                                                 <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
                                                     <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
-                                                Stage Remarks
+                                                     Stage Remarks
                                                     </p>
                                                     <div class="row">
                                                         <div class="col-md-12">
