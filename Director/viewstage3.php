@@ -433,7 +433,7 @@ include_once('dirback/dirviewback.php');
                                             <div class="container" style="background-color:#1f2024; padding: 10px; border-radius: 20px"> 
                                                 <div class="container" style="background-color: #1f2024; padding: 5px; border-radius: 20px">
                                                     <?php include('dirback/fetch_s3.php'); ?>
-                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; color:white; font-weight:bold;">
                                                     Project Profile
                                                     </p>
                                                     <div class="row mb-3">
@@ -477,7 +477,7 @@ include_once('dirback/dirviewback.php');
                                                     <?php if (!empty($data['engagements'])): ?>
                                                         <?php foreach ($data['engagements'] as $index => $engagement): ?>
                                                             <div class="engagementthree-block" data-index="<?= $index + 1 ?>">
-                                                                <p class="text-center mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                                                <p class="text-center mb-1" style="font-style:'Poppins'; color:white; font-weight:bold;">
                                                                     Engagement <?= $index + 1 ?>
                                                                 </p>
                                                                 <input type="hidden" name="engagement_id_3[]" value="<?= htmlspecialchars($engagement['engagement_id3'] ?? '') ?>" id="eng_3_id">
@@ -527,7 +527,7 @@ include_once('dirback/dirviewback.php');
                                                         <?php if (!empty($data['requirements'])): ?>
                                                             <?php foreach ($data['requirements'] as $index => $requirement): ?>
                                                                 <div class="requirementthree-block" data-index="<?= $index + 1 ?>">
-                                                                    <p class="text-center mb-1" style="font-family: 'Poppins', sans-serif; font-weight:bold;" id="requirementstagethree">
+                                                                    <p class="text-center mb-1" style="font-family: 'Poppins', sans-serif; color:white; font-weight:bold;" id="requirementstagethree">
                                                                         Requirement <?= $index + 1 ?>
                                                                     </p>
                                                                     <input type="hidden" name="requirement_id_3[]" value="<?= htmlspecialchars($requirement['requirement_id_3'] ?? '') ?>" id="req_3_id">    
