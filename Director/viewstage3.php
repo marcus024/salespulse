@@ -439,15 +439,15 @@ include_once('dirback/dirviewback.php');
                                                     <div class="row mb-3">
                                                         <div class="col-md-2">
                                                             <label for="status" class="form-label ">Status</label>
-                                                            <input name="" type="text" class="form-control" id="stage-three-status"  value="<?= htmlspecialchars($data['stage_three']['status_stage_three'] ?? '') ?>" readonly>
+                                                            <input name="" type="text" class="form-control" id="stage-three-status"   readonly>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label for="requirement" class="form-label ">Start Date</label>
+                                                            <input name="" type="text" class="form-control" id="stage-three-start"   readonly>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">End Date</label>
                                                             <input name="" type="text" class="form-control" id="stage-three-end" value="<?php htmlspecialchars(data['stage_three']['end_date_stage_three'] ?? '')?>" readonly>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <label for="requirement" class="form-label ">Start Date</label>
-                                                            <input name="" type="text" class="form-control" id="stage-three-start"  value="<?php htmlspecialchars(data['stage_three']['start_date_stage_three'] ?? '')?>" readonly>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="requirement" class="form-label ">Technology</label>
