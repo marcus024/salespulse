@@ -516,7 +516,7 @@ include_once('dirback/dirviewback.php');
                                                             </div>
                                                         <?php endforeach; ?>
                                                     <?php else: ?>
-                                                        <p class="text-center text-muted">No engagements found.</p>
+                                                        <p class="text-warning" style="font-size:10px;">No engagement data available.</p>
                                                     <?php endif; ?>
                                                 </div>
 
