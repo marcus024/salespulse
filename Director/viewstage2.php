@@ -453,7 +453,7 @@ include_once('dirback/dirviewback.php');
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label for="dealSize" class="form-label">Deal Size</label>
-                                                        <input readonly  name="deal_size" type="number" class="form-control" id="deal_size2" value="<?= htmlspecialchars($data['stage_two']['deal_size'] ?? '') ?>" placeholder="e.g. 5000">
+                                                        <input readonly  name="deal_size" type="text" class="form-control" id="deal_size2" value="<?= htmlspecialchars($data['stage_two']['deal_size'] ?? '') ?>" placeholder="e.g. 5000">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
@@ -492,7 +492,7 @@ include_once('dirback/dirviewback.php');
                                                                         <input readonly name="engagement_type[]" type="text" class="form-control" value="<?= htmlspecialchars($engagement['engagement_type']) ?>">
                                                                     </div>
                                                                     <div class="col-md-2">
-                                                                        <input readonly name="engagement_date[]" type="date" class="form-control" value="<?= htmlspecialchars($engagement['engagement_date']) ?>">
+                                                                        <input readonly name="engagement_date[]" type="text"  class="form-control" value="<?= htmlspecialchars($engagement['engagement_date']) ?>">
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <input readonly name="engagement_remarks[]" type="text" class="form-control" value="<?= htmlspecialchars($engagement['engagement_remarks']) ?>">
@@ -546,7 +546,7 @@ include_once('dirback/dirviewback.php');
                                                                             <input readonly name="distributor_two[]" type="text" class="form-control" value="<?= !empty($requirement['distributor_two']) ? htmlspecialchars($requirement['distributor_two']) : '' ?>">
                                                                         </div>
                                                                         <div class="col-md-2">
-                                                                            <input readonly name="requirement_date[]" type="date" class="form-control" value="<?= !empty($requirement['requirement_date']) ? htmlspecialchars($requirement['requirement_date']) : '' ?>">
+                                                                            <input readonly name="requirement_date[]" type="text"  class="form-control" value="<?= !empty($requirement['requirement_date']) ? htmlspecialchars($requirement['requirement_date']) : '' ?>">
                                                                         </div>
                                                                         <div class="col-md-2">
                                                                             <input readonly name="requirement_remarks[]" type="text" class="form-control" value="<?= !empty($requirement['requirement_remarks']) ? htmlspecialchars($requirement['requirement_remarks']) : '' ?>">
