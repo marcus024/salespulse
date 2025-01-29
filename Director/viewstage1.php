@@ -437,23 +437,23 @@ include_once('dirback/dirviewback.php');
                                                     <div class="row mb-3">
                                                         <div class="col-md-2">
                                                             <label for="status" class="form-label">Status</label>
-                                                            <input id="status-placeholder" type="text" class="form-control" value="<?php echo htmlspecialchars($stageOneData['status_stage_one'] ?? ''); ?>" readonly>
+                                                            <input readonly  id="status-placeholder" type="text" class="form-control" value="<?php echo htmlspecialchars($stageOneData['status_stage_one'] ?? ''); ?>" readonly>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="startDate" class="form-label">Start Date</label>
-                                                            <input id="start-date-placeholder" type="text" class="form-control" value="<?php echo htmlspecialchars($stageOneData['start_date_stage_one'] ?? ''); ?>" readonly>
+                                                            <input readonly  id="start-date-placeholder" type="text" class="form-control" value="<?php echo htmlspecialchars($stageOneData['start_date_stage_one'] ?? ''); ?>" readonly>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="endDate" class="form-label">End Date</label>
-                                                            <input id="end-date-placeholder" type="text" class="form-control" value="<?php echo htmlspecialchars($stageOneData['end_date_stage_one'] ?? ''); ?>" readonly>
+                                                            <input readonly  id="end-date-placeholder" type="text" class="form-control" value="<?php echo htmlspecialchars($stageOneData['end_date_stage_one'] ?? ''); ?>" readonly>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="technology" class="form-label">Technology</label>
-                                                            <input id="technologySelect" type="text" class="form-control" value="<?php echo htmlspecialchars($stageOneData['technology'] ?? ''); ?>" readonly>
+                                                            <input readonly  id="technologySelect" type="text" class="form-control" value="<?php echo htmlspecialchars($stageOneData['technology'] ?? ''); ?>" readonly>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="dealSize" class="form-label">Deal Size</label>
-                                                            <input name="deal_size" type="number" class="form-control" id="dealSize1" placeholder="e.g. 5000" value="<?php echo htmlspecialchars($stageOneData['deal_size'] ?? ''); ?>">
+                                                            <input readonly name="deal_size" type="number" class="form-control" id="dealSize1" placeholder="e.g. 5000" value="<?php echo htmlspecialchars($stageOneData['deal_size'] ?? ''); ?>">
                                                         </div>
                                                     </div>
                                                     <input name="project_unique_id" id="project-unique-id" type="hidden" value="<?php echo htmlspecialchars($projectUniqueId); ?>" class="form-control" readonly>
@@ -461,7 +461,7 @@ include_once('dirback/dirviewback.php');
                                                     <div class="row mb-3">
                                                         <div class="col-md-12">
                                                             <label for="solution" class="form-label">Solution</label>
-                                                            <textarea name="solution" class="form-control" id="solution1" placeholder="e.g. Sample Solution" style="height:100px;"><?php echo htmlspecialchars($stageOneData['solution'] ?? ''); ?></textarea>
+                                                            <textarea readonly name="solution" class="form-control" id="solution1" placeholder="e.g. Sample Solution" style="height:100px;"><?php echo htmlspecialchars($stageOneData['solution'] ?? ''); ?></textarea>
                                                         </div>
                                                     </div>
                                                     <div style="border-top: 1px ; margin: 20px 0;"></div>
@@ -487,7 +487,7 @@ include_once('dirback/dirviewback.php');
                                                                     </div>
                                                                     <div class="row mb-3">
                                                                         <div class="col-md-4">
-                                                                            <input name="requirement_one[]"
+                                                                            <input readonly name="requirement_one[]"
                                                                                 style="width: 100%;"
                                                                                 type="text"
                                                                                 class="form-control"
@@ -495,7 +495,7 @@ include_once('dirback/dirviewback.php');
                                                                             >
                                                                         </div>
                                                                         <div class="col-md-3">
-                                                                            <input name="product_one[]"
+                                                                            <input readonly name="product_one[]"
                                                                                 style="width: 100%;"
                                                                                 type="text"
                                                                                 class="form-control"
@@ -503,7 +503,7 @@ include_once('dirback/dirviewback.php');
                                                                             >
                                                                         </div>
                                                                         <div class="col-md-3">
-                                                                            <input name="distributor_one[]"
+                                                                            <input readonly name="distributor_one[]"
                                                                                 style="width: 100%;"
                                                                                 type="text"
                                                                                 class="form-control"
@@ -524,7 +524,7 @@ include_once('dirback/dirviewback.php');
                                                         Stage Remarks
                                                         </p>
                                                         <div class="mb-6">
-                                                            <textarea name="stage_one_remarks" class="form-control" id="stageremarks1" placeholder="e.g. Sample Remarks" 
+                                                            <textarea readonly name="stage_one_remarks" class="form-control" id="stageremarks1" placeholder="e.g. Sample Remarks" 
                                                             style="height: 100px;"><?php echo htmlspecialchars($stageOneData['stage_one_remarks'] ?? ''); ?></textarea>
                                                         </div>
                                                     </div>
