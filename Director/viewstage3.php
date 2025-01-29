@@ -429,9 +429,10 @@ include_once('dirback/dirviewback.php');
                                                     </p>
                                                 </div>
                                             </div>
-                                            <?php include('dirback/fetch_s3.php'); ?>
+                                            
                                             <div class="container" style="background-color:#1f2024; padding: 10px; border-radius: 20px"> 
                                                 <div class="container" style="background-color: #1f2024; padding: 5px; border-radius: 20px">
+                                                    <?php include('dirback/fetch_s3.php'); ?>
                                                     <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
                                                     Project Profile
                                                     </p>
