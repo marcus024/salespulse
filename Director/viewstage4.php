@@ -451,11 +451,8 @@ include_once('dirback/dirviewback.php');
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="requirement" class="form-label ">Technology</label>
-                                                            <select name="technology" id="technologySelect4" class="form-control custom-select">
-                                                                <option disabled selected>Select technology</option>
-                                                                <option value="add_new_technology">+ Add New Technology...</option>
-                                                                <!-- You can add logic here to populate technology options if available -->
-                                                            </select>
+                                                            <input type="text" class="form-control" id="technology" value="<?php echo htmlspecialchars($data['stage_four']['technology'] ?? ''); ?>" readonly>
+                                                       
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="dealSize" class="form-label ">Deal Size</label>
