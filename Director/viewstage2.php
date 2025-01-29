@@ -884,9 +884,5 @@ function checkProjectStatus() {
         checkProjectStageAndNavigate();
     });
     </script>
-
-
-
-
 </body>
 </html>
