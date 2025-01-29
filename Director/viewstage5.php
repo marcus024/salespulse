@@ -544,13 +544,13 @@ include_once('dirback/dirviewback.php');
                                                                         <div id="requirement-fields-container-3">
                                                                             <div class="row requirement-fields mb-3">
                                                                                 <div class="col-md-3">
-                                                                                    <input name="quantity[]" type="number" class="form-control" value="<?= $requirement['quantity'] ?>">
+                                                                                    <input name="quantity[]" type="text" class="form-control" value="<?= $requirement['quantity'] ?>">
                                                                                 </div>
                                                                                 <div class="col-md-2">
-                                                                                    <input name="pricing[]" type="number" class="form-control" value="<?= $requirement['pricing'] ?>">
+                                                                                    <input name="pricing[]" type="text" class="form-control" value="<?= $requirement['pricing'] ?>">
                                                                                 </div>
                                                                                 <div class="col-md-2">
-                                                                                    <input name="date_required[]" type="date" class="form-control" style="font-size:10px;" value="<?= $requirement['date_required'] ?>">
+                                                                                    <input name="date_required[]" type="text" class="form-control" style="font-size:10px;" value="<?= $requirement['date_required'] ?>">
                                                                                 </div>
                                                                                 <div class="col-md-4">
                                                                                     <input name="remarks_req[]" type="text" class="form-control" value="<?= $requirement['remarks_req'] ?>">
