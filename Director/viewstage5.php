@@ -596,13 +596,13 @@ include_once('dirback/dirviewback.php');
                                                                                 <input type="text" class="form-control" name="upsell[]" value="<?= $upsell['upsell'] ?>">
                                                                             </div>
                                                                             <div class="col-md-2">
-                                                                                <input name="quantity_upsell[]" type="number" class="form-control" value="<?= $upsell['quantity'] ?>">
+                                                                                <input name="quantity_upsell[]" type="number" class="form-control" value="<?= $upsell['quantity_upsell'] ?>">
                                                                             </div>
                                                                             <div class="col-md-2">
-                                                                                <input name="amount_upsell[]" type="number" class="form-control" value="<?= $upsell['amount'] ?>">
+                                                                                <input name="amount_upsell[]" type="number" class="form-control" value="<?= $upsell['amount_upsell'] ?>">
                                                                             </div>
                                                                             <div class="col-md-3">
-                                                                                <input name="remarks_upsell[]" type="text" class="form-control" value="<?= $upsell['remarks'] ?>">
+                                                                                <input name="remarks_upsell[]" type="text" class="form-control" value="<?= $upsell['remarks_upsell'] ?>">
                                                                             </div>
                                                                             
                                                                         </div>
