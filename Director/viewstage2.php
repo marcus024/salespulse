@@ -434,38 +434,35 @@ include_once('dirback/dirviewback.php');
                                                     <p class="text-center  mb-1" style="font-style:'Poppins'; color:white;  font-weight:bold;">
                                                     Project Profile
                                                     </p>
-                                                    <?php if (!empty($data) && isset($data['stage_two'])): ?>
-    <div class="row mb-3">
-        <div class="col-md-2">
-            <label for="requirement" class="form-label">Status</label>
-            <input type="text" class="form-control" id="stage-two-status" value="<?= htmlspecialchars($data['stage_two']['status'] ?? '') ?>" readonly>
-        </div>
-        <div class="col-md-2">
-            <label for="requirement" class="form-label">End Date</label>
-            <input type="text" class="form-control" id="stage-two-end" value="<?= htmlspecialchars($data['stage_two']['end_date'] ?? '') ?>" readonly>
-        </div>
-        <div class="col-md-2">
-            <label for="requirement" class="form-label">Start Date</label>
-            <input type="text" class="form-control" id="stage-two-start" value="<?= htmlspecialchars($data['stage_two']['start_date'] ?? '') ?>" readonly>
-        </div>
-        <div class="col-md-3">
-            <label for="technology" class="form-label">Technology</label>
-            <input type="text" class="form-control" id="technology" value="<?= htmlspecialchars($data['stage_two']['technology'] ?? '') ?>" readonly>
-        </div>
-        <div class="col-md-3">
-            <label for="dealSize" class="form-label">Deal Size</label>
-            <input name="deal_size" type="number" class="form-control" id="deal_size2" value="<?= htmlspecialchars($data['stage_two']['deal_size'] ?? '') ?>" placeholder="e.g. 5000">
-        </div>
+                                                <div class="row mb-3">
+    <div class="col-md-2">
+        <label for="requirement" class="form-label">Status</label>
+        <input type="text" class="form-control" id="stage-two-status" value="<?= htmlspecialchars($data['stage_two']['status'] ?? '') ?>" readonly>
     </div>
-    <div class="row mb-3">
-        <div class="col-md-12">
-            <label for="solution" class="form-label">Solution</label>
-            <textarea name="solution" class="form-control" id="solution2" placeholder="e.g. Sample Solution" style="height:100px;"><?= htmlspecialchars($data['stage_two']['solution'] ?? '') ?></textarea>
-        </div>
+    <div class="col-md-2">
+        <label for="requirement" class="form-label">End Date</label>
+        <input type="text" class="form-control" id="stage-two-end" value="<?= htmlspecialchars($data['stage_two']['end_date'] ?? '') ?>" readonly>
     </div>
-<?php else: ?>
-    <div class="alert alert-warning" role="alert">No Stage 2 data found for this project.</div>
-<?php endif; ?>
+    <div class="col-md-2">
+        <label for="requirement" class="form-label">Start Date</label>
+        <input type="text" class="form-control" id="stage-two-start" value="<?= htmlspecialchars($data['stage_two']['start_date'] ?? '') ?>" readonly>
+    </div>
+    <div class="col-md-3">
+        <label for="technology" class="form-label">Technology</label>
+        <input type="text" class="form-control" id="technology" value="<?= htmlspecialchars($data['stage_two']['technology'] ?? '') ?>" readonly>
+    </div>
+    <div class="col-md-3">
+        <label for="dealSize" class="form-label">Deal Size</label>
+        <input name="deal_size" type="number" class="form-control" id="deal_size2" value="<?= htmlspecialchars($data['stage_two']['deal_size'] ?? '') ?>" placeholder="e.g. 5000">
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col-md-12">
+        <label for="solution" class="form-label">Solution</label>
+        <textarea name="solution" class="form-control" id="solution2" placeholder="e.g. Sample Solution" style="height:100px;"><?= htmlspecialchars($data['stage_two']['solution'] ?? '') ?></textarea>
+    </div>
+</div>
+
 
                                                 </div>
                                                 <div style="border-top: 1px ; margin: 20px 0;"></div> 
