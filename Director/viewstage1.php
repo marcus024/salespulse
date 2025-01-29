@@ -435,35 +435,36 @@ include_once('dirback/dirviewback.php');
                                                     Project Profile
                                                     </p>
                                                     <div class="row mb-3">
-                                                        <div class="col-md-2">
-                                                            <label for="startDate" class="form-label">Status</label>
-                                                            <input  id="status-placeholder" type="text" class="form-control" readonly>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <label for="startDate" class="form-label">Start Date</label>
-                                                            <input  id="start-date-placeholder" type="text" class="form-control" readonly>
-                                                        </div>
-                                                        <div class="col-md-2">
-                                                            <label for="endDate" class="form-label">End Date</label>
-                                                            <input  id="end-date-placeholder" type="text" class="form-control" readonly>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label for="technology" class="form-label ">Technology</label>
-                                                            <input  id="technologySelect" type="text" class="form-control" readonly>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <label for="dealSize" class="form-label ">Deal Size</label>
-                                                            <input name="deal_size" type="number" class="form-control" id="dealSize1" placeholder="e.g. 5000">
-                                                        </div>
-                                                    </div>
-                                                    <input name="project_unique_id" id="project-unique-id" type="hidden" value="<?php echo $projectId; ?>" class="form-control" readonly>
-                                                    <div class="row mb-3">
-                                                        <div class="col-md-12">
-                                                            <label for="solution" class="form-label ">Solution</label>
-                                                            <textarea name="solution" class="form-control" id="solution1" placeholder="e.g. Sample Solution" 
-                                                            style="height:100px;"></textarea>
-                                                        </div>
-                                                    </div>
+    <div class="col-md-2">
+        <label for="status" class="form-label">Status</label>
+        <input id="status-placeholder" type="text" class="form-control" value="<?php echo htmlspecialchars($stageOneData['status_stage_one'] ?? ''); ?>" readonly>
+    </div>
+    <div class="col-md-2">
+        <label for="startDate" class="form-label">Start Date</label>
+        <input id="start-date-placeholder" type="text" class="form-control" value="<?php echo htmlspecialchars($stageOneData['start_date_stage_one'] ?? ''); ?>" readonly>
+    </div>
+    <div class="col-md-2">
+        <label for="endDate" class="form-label">End Date</label>
+        <input id="end-date-placeholder" type="text" class="form-control" value="<?php echo htmlspecialchars($stageOneData['end_date_stage_one'] ?? ''); ?>" readonly>
+    </div>
+    <div class="col-md-3">
+        <label for="technology" class="form-label">Technology</label>
+        <input id="technologySelect" type="text" class="form-control" value="<?php echo htmlspecialchars($stageOneData['technology'] ?? ''); ?>" readonly>
+    </div>
+    <div class="col-md-3">
+        <label for="dealSize" class="form-label">Deal Size</label>
+        <input name="deal_size" type="number" class="form-control" id="dealSize1" placeholder="e.g. 5000" value="<?php echo htmlspecialchars($stageOneData['deal_size'] ?? ''); ?>">
+    </div>
+</div>
+<input name="project_unique_id" id="project-unique-id" type="hidden" value="<?php echo htmlspecialchars($projectUniqueId); ?>" class="form-control" readonly>
+
+<div class="row mb-3">
+    <div class="col-md-12">
+        <label for="solution" class="form-label">Solution</label>
+        <textarea name="solution" class="form-control" id="solution1" placeholder="e.g. Sample Solution" style="height:100px;"><?php echo htmlspecialchars($stageOneData['solution'] ?? ''); ?></textarea>
+    </div>
+</div>
+
                                                     <div style="border-top: 1px ; margin: 20px 0;"></div>
                                                     <div id="requirementsContainer">
                                                         <div class="requirement-block" data-index="1">
