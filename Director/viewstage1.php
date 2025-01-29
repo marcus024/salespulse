@@ -431,7 +431,7 @@ include_once('dirback/dirviewback.php');
                                             </div>
                                             <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
                                                 <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
-                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins';  color:white; font-weight:bold;">
                                                     Project Profile
                                                     </p>
                                                     <div class="row mb-3">
@@ -467,7 +467,7 @@ include_once('dirback/dirviewback.php');
                                                     <div style="border-top: 1px ; margin: 20px 0;"></div>
                                                     <div id="requirementsContainer">
                                                         <div class="requirement-block" data-index="1">
-                                                        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirement1">
+                                                        <p class="text-center  mb-1" style="font-style:'Poppins';  color:white; font-weight:bold;" id="requirement1">
                                                             Requirement 1
                                                             </p>
                                                             <input type="hidden" name="requirement_id_1[]" value="st1rq1" id="req_1_id">
@@ -508,7 +508,7 @@ include_once('dirback/dirviewback.php');
                                                     </div> 
                                                     <div style="border-top: 1px ; margin: 20px 0;"></div> 
                                                     <div class="row mb-4">
-                                                        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                                        <p class="text-center  mb-1" style="font-style:'Poppins'; color:white; font-weight:bold;">
                                                         Stage Remarks
                                                         </p>
                                                         <div class="mb-6">
