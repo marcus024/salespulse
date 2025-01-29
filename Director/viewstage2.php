@@ -429,106 +429,165 @@ include_once('dirback/dirviewback.php');
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
-                                                <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
-                                                    <p class="text-center  mb-1" style="font-style:'Poppins';  color:white; font-weight:bold;">
+                                            <div class="container" style="background-color:#1f2024; padding: 10px; border-radius: 20px"> 
+                                                <div class="container" style="background-color:#2a2925; padding: 5px; border-radius: 20px">
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
                                                     Project Profile
                                                     </p>
                                                     <div class="row mb-3">
                                                         <div class="col-md-2">
-                                                            <label for="status" class="form-label">Status</label>
-                                                            <input id="status-placeholder" type="text" class="form-control" value="<?php echo htmlspecialchars($stageOneData['status_stage_one'] ?? ''); ?>" readonly>
+                                                            <label for="requirement" class="form-label ">Status</label>
+                                                            <input type="text" class="form-control" id="stage-two-status"   readonly>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <label for="startDate" class="form-label">Start Date</label>
-                                                            <input id="start-date-placeholder" type="text" class="form-control" value="<?php echo htmlspecialchars($stageOneData['start_date_stage_one'] ?? ''); ?>" readonly>
+                                                            <label for="requirement" class="form-label ">End Date</label>
+                                                            <input type="text" class="form-control" id="stage-two-end"   readonly>
                                                         </div>
                                                         <div class="col-md-2">
-                                                            <label for="endDate" class="form-label">End Date</label>
-                                                            <input id="end-date-placeholder" type="text" class="form-control" value="<?php echo htmlspecialchars($stageOneData['end_date_stage_one'] ?? ''); ?>" readonly>
+                                                            <label for="requirement" class="form-label ">Start Date</label>
+                                                            <input type="text" class="form-control" id="stage-two-start" readonly>
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <label for="technology" class="form-label">Technology</label>
-                                                            <input id="technologySelect" type="text" class="form-control" value="<?php echo htmlspecialchars($stageOneData['technology'] ?? ''); ?>" readonly>
+                                                            <label for="technology" class="form-label ">Technology</label>
+                                                            <select name="technology" id="technologySelect2" class="form-control custom-select" >
+                                                                <option disabled selected>Select technology</option>
+                                                                <option value="add_new_technology">+ Add New Technology...</option>
+                                                            </select>
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <label for="dealSize" class="form-label">Deal Size</label>
-                                                            <input name="deal_size" type="number" class="form-control" id="dealSize1" placeholder="e.g. 5000" value="<?php echo htmlspecialchars($stageOneData['deal_size'] ?? ''); ?>">
+                                                            <label for="dealSize" class="form-label ">Deal Size</label>
+                                                            <input name="deal_size" type="number" class="form-control" id="deal_size2" placeholder="e.g. 5000">
                                                         </div>
                                                     </div>
-                                                    <input name="project_unique_id" id="project-unique-id" type="hidden" value="<?php echo htmlspecialchars($projectUniqueId); ?>" class="form-control" readonly>
-
                                                     <div class="row mb-3">
                                                         <div class="col-md-12">
-                                                            <label for="solution" class="form-label">Solution</label>
-                                                            <textarea name="solution" class="form-control" id="solution1" placeholder="e.g. Sample Solution" style="height:100px;"><?php echo htmlspecialchars($stageOneData['solution'] ?? ''); ?></textarea>
+                                                        <label for="solution" class="form-label ">Solution</label>
+                                                            <textarea name="solution" class="form-control" id="solution2" placeholder="e.g. Sample Solution" 
+                                                            style="height:100px;"></textarea>
                                                         </div>
                                                     </div>
-                                                    <div style="border-top: 1px ; margin: 20px 0;"></div>
-                                                    <div id="requirementsContainer">
-                                                        <?php if (!empty($stageOneData['requirements']) && !empty($stageOneData['products']) && !empty($stageOneData['distributors'])): ?>
-                                                            <?php foreach ($stageOneData['requirements'] as $index => $requirement): ?>
-                                                                <div class="requirement-block" data-index="<?= $index + 1 ?>">
-                                                                    <p class="text-center mb-1" style="font-style: 'Poppins'; color: white; font-weight: bold;" id="requirement<?= $index + 1 ?>">
-                                                                        Requirement <?= $index + 1 ?>
-                                                                    </p>
-                                                                    <input type="hidden" name="requirement_id_<?= $index + 1 ?>[]" value="st1rq<?= $index + 1 ?>" id="req_<?= $index + 1 ?>_id">
+                                                </div>
+                                                <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
-                                                                    <div class="row mb-2">
-                                                                        <div class="col-md-4">
-                                                                            <label class="form-label">Requirement</label>
-                                                                        </div>
-                                                                        <div class="col-md-3">
-                                                                            <label class="form-label">Product</label>
-                                                                        </div>
-                                                                        <div class="col-md-3">
-                                                                            <label class="form-label">Distributor</label>
-                                                                        </div>
+                                                <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
+                                                    <div id="engagement1Container">
+                                                        <div class="engagement-block" data-index="1">
+                                                        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement1">
+                                                            Engagement 1
+                                                            </p>
+                                                            <input type="hidden" name="engagement_id_2[]" value="st2eng1" id="eng_1_id">
+                                                            <div class="row mb-1">
+                                                                <div class="col-md-4">
+                                                                    <label for="engagement" class="form-label ">Type of Engagement</label>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <label for="engagement" class="form-label ">Date</label>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <label for="engagement" class="form-label ">Remarks</label>
+                                                                </div>
+                                                                <!-- <div class="col-md-1">
+                                                                    <a href="#" id="addEngagement" class="form-label " style="font-size:10px; cursor: pointer;">
+                                                                        <i class="fas fa-plus"></i> Add
+                                                                    </a>
+                                                                </div> -->
+                                                            </div>
+                                                            <div id="engagement-fields-container">
+                                                                <div class="row engagement-fields mb-3">
+                                                                    <div class="col-md-4">
+                                                                        <input name="engagement_type[]" type="text" id="engtype2" class="form-control" placeholder="e.g. Sample Engagement">
                                                                     </div>
-                                                                    <div class="row mb-3">
-                                                                        <div class="col-md-4">
-                                                                            <input name="requirement_one[]"
-                                                                                style="width: 100%;"
-                                                                                type="text"
-                                                                                class="form-control"
-                                                                                value="<?= htmlspecialchars($requirement) ?>"
-                                                                            >
-                                                                        </div>
-                                                                        <div class="col-md-3">
-                                                                            <input name="product_one[]"
-                                                                                style="width: 100%;"
-                                                                                type="text"
-                                                                                class="form-control"
-                                                                                value="<?= htmlspecialchars($stageOneData['products'][$index] ?? '') ?>"
-                                                                            >
-                                                                        </div>
-                                                                        <div class="col-md-3">
-                                                                            <input name="distributor_one[]"
-                                                                                style="width: 100%;"
-                                                                                type="text"
-                                                                                class="form-control"
-                                                                                value="<?= htmlspecialchars($stageOneData['distributors'][$index] ?? '') ?>"
-                                                                            >
-                                                                        </div>
+                                                                    <div class="col-md-2">
+                                                                        <input name="engagement_date[]" type="date" id="engdate2" class="form-control" style="font-size:10px;">
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <input name="engagement_remarks[]" type="text" id="engremarks2" class="form-control" placeholder="e.g. Sample Remarks">
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <button type="button"
+                                                                                class="btn btn-primary btn-sm"
+                                                                                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                                                                id="addEngagement1Btn">
+                                                                        <i class="fas fa-plus"></i>&nbsp;Add
+                                                                        </button>
                                                                     </div>
                                                                 </div>
-                                                            <?php endforeach; ?>
-                                                        <?php else: ?>
-                                                            <p>No data found to display.</p>
-                                                        <?php endif; ?>
-                                                    </div>
-
-                                                    <div style="border-top: 1px ; margin: 20px 0;"></div> 
-                                                    <div class="row mb-4">
-                                                        <p class="text-center  mb-1" style="font-style:'Poppins'; color:white; font-weight:bold;">
-                                                        Stage Remarks
-                                                        </p>
-                                                        <div class="mb-6">
-                                                            <textarea name="stage_one_remarks" class="form-control" id="stageremarks1" placeholder="e.g. Sample Remarks" 
-                                                            style="height: 100px;"><?php echo htmlspecialchars($stageOneData['stage_one_remarks'] ?? ''); ?></textarea>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    
+                                                </div>
+                                                <div style="border-top: 1px ; margin: 20px 0;"></div> 
+                                                <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
+                                                    <div id="requirementtwoContainer">
+                                                        <div class="requirementtwo-block" data-index="1">
+                                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagetwo">
+                                                            Requirement 1
+                                                            </p>
+                                                            <input type="hidden" name="requirement_id_2[]" value="st2rq1" id="rq_1_id">
+                                                            <div class="row mb-1">
+                                                                <div class="col-md-2">
+                                                                    <label for="requirement" class="form-label ">Requirement</label>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                <label for="product" class="form-label ">Product</label>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                <label for="distributor" class="form-label ">Distributor</label>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <label for="requirement" class="form-label ">Date</label>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="requirement" class="form-label ">Requirement Remarks</label>
+                                                                </div>
+                                                            </div>
+                                                            <div >
+                                                                <div class="row requirement-fields mb-3">
+                                                                    <div class="col-md-2">
+                                                                        <input name="requirement_two[]" type="text" id="req2" class="form-control" placeholder="e.g. Sample Requirement">
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <select name="product_two[]" class="form-control custom-select productFetch" >
+                                                                            <option disabled selected>Select</option>
+                                                                            <option value="add_new_product">+ Add New Product...</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <select name="distributor_two[]" class="form-control custom-select distributorFetch" >
+                                                                            <option disabled selected>Select</option>
+                                                                            <option value="add_new">+ Add New Distributor...</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input name="requirement_date[]" type="date" id="reqdate2" class="form-control" style="font-size:10px;">
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input name="requirement_remarks[]" type="text" id="reqremarks2"class="form-control" placeholder="e.g. Sample Remarks">
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <button type="button"
+                                                                                class="btn btn-primary btn-sm"
+                                                                                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                                                                id="addRequirement2Btn">
+                                                                        <i class="fas fa-plus"></i>&nbsp;Add
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="border-top: 1px ; margin: 20px 0;"></div> 
+                                                <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement1">
+                                                    Stage Remarks
+                                                    </p>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <textarea name="stage_two_remarks" class="form-control" id="stageremarks2" placeholder="e.g. Sample Solution" 
+                                                            style="height:100px;"></textarea>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
