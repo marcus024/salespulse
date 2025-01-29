@@ -430,8 +430,8 @@ include_once('dirback/dirviewback.php');
                                                 </div>
                                             </div>
                                             <div class="container" style="background-color:#1f2024; padding: 10px; border-radius: 20px"> 
-                                                <div class="container" style="background-color:#2a2925; padding: 5px; border-radius: 20px">
-                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                                <div class="container" style="background-color:#1f2024; padding: 5px; border-radius: 20px">
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; color:white;  font-weight:bold;">
                                                     Project Profile
                                                     </p>
                                                     <div class="row mb-3">
@@ -469,10 +469,10 @@ include_once('dirback/dirviewback.php');
                                                 </div>
                                                 <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
-                                                <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
+                                                <div class="container" style="background-color: #1f2024; padding: 5px; border-radius: 20px">
                                                     <div id="engagement1Container">
                                                         <div class="engagement-block" data-index="1">
-                                                        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement1">
+                                                        <p class="text-center  mb-1" style="font-style:'Poppins'; color:white;  font-weight:bold;" id="engagement1">
                                                             Engagement 1
                                                             </p>
                                                             <input type="hidden" name="engagement_id_2[]" value="st2eng1" id="eng_1_id">
@@ -517,10 +517,10 @@ include_once('dirback/dirviewback.php');
                                                     </div>
                                                 </div>
                                                 <div style="border-top: 1px ; margin: 20px 0;"></div> 
-                                                <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
+                                                <div class="container" style="background-color: #1f2024; padding: 5px; border-radius: 20px">
                                                     <div id="requirementtwoContainer">
                                                         <div class="requirementtwo-block" data-index="1">
-                                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagetwo">
+                                                            <p class="text-center  mb-1" style="font-style:'Poppins'; color:white;  font-weight:bold;" id="requirementstagetwo">
                                                             Requirement 1
                                                             </p>
                                                             <input type="hidden" name="requirement_id_2[]" value="st2rq1" id="rq_1_id">
@@ -578,8 +578,8 @@ include_once('dirback/dirviewback.php');
                                                     </div>
                                                 </div>
                                                 <div style="border-top: 1px ; margin: 20px 0;"></div> 
-                                                <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
-                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement1">
+                                                <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; color:white; font-weight:bold;" id="engagement1">
                                                     Stage Remarks
                                                     </p>
                                                     <div class="row">
