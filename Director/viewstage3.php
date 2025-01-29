@@ -451,7 +451,7 @@ include_once('dirback/dirviewback.php');
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="requirement" class="form-label ">Technology</label>
-                                                            <input name="" type="text" class="form-control" id="stage-three-start"  value="<?php htmlspecialchars(data['stage_three']['technology'] ?? '')?>" readonly>
+                                                            <input name="" type="text" class="form-control" id="technology"  value="<?php htmlspecialchars(data['stage_three']['technology'] ?? '')?>" readonly>
                                                       
                                                         </div>
                                                         <div class="col-md-3">
