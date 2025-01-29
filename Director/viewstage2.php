@@ -513,51 +513,50 @@ include_once('dirback/dirviewback.php');
                                                 <div class="container" style="background-color: #1f2024; padding: 5px; border-radius: 20px">
                                                     <div id="requirementtwoContainer">
                                                         <?php if (!empty($data['requirements'])): ?>
-                                                            <?php foreach ($data['requirements'] as $requirement): ?>
-                                                        <div class="requirementtwo-block" data-index="1">
+                                                            <?php foreach ($data['requirements'] as $index => $requirement): ?>
+                                                                <div class="requirementtwo-block" data-index="<?= $index + 1 ?>">
+                                                                    <p class="text-center mb-1" style="font-family: 'Poppins'; color:white; font-weight:bold;" id="requirementstagetwo">
+                                                                        Requirement <?= $index + 1 ?>
+                                                                    </p>
+                                                                    <input type="hidden" name="requirement_id_2[]" value="st2rq<?= $index + 1 ?>" id="rq_<?= $index + 1 ?>_id">
+                                                                    
+                                                                    <div class="row mb-1">
+                                                                        <div class="col-md-2">
+                                                                            <label class="form-label">Requirement</label>
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <label class="form-label">Product</label>
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <label class="form-label">Distributor</label>
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <label class="form-label">Date</label>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <label class="form-label">Requirement Remarks</label>
+                                                                        </div>
+                                                                    </div>
 
-                                                            <p class="text-center  mb-1" style="font-style:'Poppins'; color:white;  font-weight:bold;" id="requirementstagetwo">
-                                                            Requirement 1
-                                                            </p>
-                                                            <input type="hidden" name="requirement_id_2[]" value="st2rq1" id="rq_1_id">
-                                                            <div class="row mb-1">
-                                                                <div class="col-md-2">
-                                                                    <label for="requirement" class="form-label ">Requirement</label>
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                <label for="product" class="form-label ">Product</label>
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                <label for="distributor" class="form-label ">Distributor</label>
-                                                                </div>
-                                                                <div class="col-md-2">
-                                                                    <label for="requirement" class="form-label ">Date</label>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <label for="requirement" class="form-label ">Requirement Remarks</label>
-                                                                </div>
-                                                            </div>
-                                                            <div >
-                                                                <div class="row requirement-fields mb-3">
-                                                                    <div class="col-md-2">
-                                                                        <input readonly name="requirement_two[]" type="text" class="form-control" value="<?= htmlspecialchars($requirement['requirement_two']) ?>">
-                                                                    </div>
-                                                                    <div class="col-md-2">
-                                                                        <input readonly name="product_two[]" type="text" class="form-control" value="<?= htmlspecialchars($requirement['product_two']) ?>">
-                                                                    </div>
-                                                                    <div class="col-md-2">
-                                                                        <input readonly name="distributor_two[]" type="text" class="form-control" value="<?= htmlspecialchars($requirement['distributor_two']) ?>">
-                                                                    </div>
-                                                                    <div class="col-md-2">
-                                                                        <input readonly name="requirement_date[]" type="date" class="form-control" value="<?= htmlspecialchars($requirement['requirement_date']) ?>">
-                                                                    </div>
-                                                                    <div class="col-md-2">
-                                                                        <input readonly name="requirement_remarks[]" type="text" class="form-control" value="<?= htmlspecialchars($requirement['requirement_remarks']) ?>">
+                                                                    <div class="row requirement-fields mb-3">
+                                                                        <div class="col-md-2">
+                                                                            <input readonly name="requirement_two[]" type="text" class="form-control" value="<?= !empty($requirement['requirement_two']) ? htmlspecialchars($requirement['requirement_two']) : '' ?>">
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <input readonly name="product_two[]" type="text" class="form-control" value="<?= !empty($requirement['product_two']) ? htmlspecialchars($requirement['product_two']) : '' ?>">
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <input readonly name="distributor_two[]" type="text" class="form-control" value="<?= !empty($requirement['distributor_two']) ? htmlspecialchars($requirement['distributor_two']) : '' ?>">
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <input readonly name="requirement_date[]" type="date" class="form-control" value="<?= !empty($requirement['requirement_date']) ? htmlspecialchars($requirement['requirement_date']) : '' ?>">
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <input readonly name="requirement_remarks[]" type="text" class="form-control" value="<?= !empty($requirement['requirement_remarks']) ? htmlspecialchars($requirement['requirement_remarks']) : '' ?>">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        <?php endforeach; ?>
+                                                            <?php endforeach; ?>
                                                         <?php else: ?>
                                                             <p class="text-warning" style="font-size:10px;">No requirement data available.</p>
                                                         <?php endif; ?>
