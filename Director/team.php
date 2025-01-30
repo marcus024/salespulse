@@ -380,7 +380,7 @@ include("../auth/db.php");
                                             } else {
                                                 foreach ($teamMembers as $member):
                                             ?>
-                                            <div class="card mb-3" style="border-radius: 20px;">
+                                            <div class="card mb-3" style="border-radius: 20px; background-color: #2a2925;">
                                                 <div class="card-header" style="border:none; font-family:'Poppins';background: linear-gradient(to right, #f9ce45,rgb(241, 245, 12)); color: white; border-radius:20px; font-size: 18px; font-weight: bold;">
                                                     Profile
                                                 </div>
