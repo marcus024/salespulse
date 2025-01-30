@@ -439,7 +439,7 @@ include_once('dirback/dirviewback.php');
                                                     <div class="row mb-3">
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">Start Date</label>
-                                                            <input readonly type="text" class="form-control" id="stage-five-start" value="<?= $stageFive['start_date_stage_five'] ?? '' ?>" readonly>
+                                                            <input readonly type="text" class="form-control" id="stage-five-start" value="<?php echo htmlspecialchars($data['stage_five']['start_date_stage_five'] ?? ''); ?>" readonly>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">End Date</label>
