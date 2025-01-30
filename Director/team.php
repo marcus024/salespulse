@@ -626,8 +626,8 @@ include("../auth/db.php");
 
             li.innerHTML = `
                 <div>
-                    <strong>${user.name}</strong>
-                    <p class="mb-0 text-muted" style="font-size: 12px;">${user.position}</p>
+                    <strong style="color:white;">${user.name}</strong>
+                    <p class="mb-0 text-muted" style="font-size: 12px; color:white; ">${user.position}</p>
                 </div>
                 <button class="btn btn-sm btn-primary" style="background-color: #f9ce45; border: none;" onclick="addUser('${currentUserId}', '${user.user_id_current}')">
                     <i class="fas fa-plus"></i> Add
