@@ -525,7 +525,7 @@
                 <div class="col-md-2">
                     <button type="button"
                             class="btn btn-danger btn-sm"
-                            style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                            style="width:100px; display:inline-flex; color:white; align-items:center; justify-content:center; font-size:12px;"
                             onclick="deleteRequirementtwo('${requirementId}', this, '${projectId}')">
                     <i class="fas fa-minus"></i>&nbsp;Remove
                     </button>
@@ -617,7 +617,7 @@
                 <div class="col-md-2">
                 <button type="button"
                         class="btn btn-danger btn-sm "
-                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                        style="width:100px; display:inline-flex; color:white; align-items:center; justify-content:center; font-size:12px;"
                         onclick="deleteEngagement('${engagementId}', this, '${projectId}')">
                     <i class="fas fa-minus"></i>&nbsp;Remove
                 </button>
@@ -860,7 +860,7 @@
                 <div class="col-md-2">
                     <button type="button"
                             class="btn btn-danger btn-sm"
-                            style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                            style="width:100px; display:inline-flex; color:white; align-items:center; justify-content:center; font-size:12px;"
                             onclick="deleteRequirementthree('${requirementId}', this, '${projectId}')">
                         <i class="fas fa-minus"></i>&nbsp;Remove
                     </button>
@@ -976,7 +976,7 @@
                     <div class="col-md-2">
                         <button type="button"
                                 class="btn btn-danger btn-sm"
-                                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                style="width:100px; display:inline-flex; color: white; align-items:center; justify-content:center; font-size:12px;"
                                 onclick="deleteEngagementThree('${engagementId}', this, '${projectId}')">
                             <i class="fas fa-minus"></i>&nbsp;Remove
                         </button>
@@ -1173,7 +1173,7 @@
             <div class="col-md-2">
                 <button type="button"
                         class="btn btn-danger btn-sm"
-                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                        style="width:100px; display:inline-flex; color:white; align-items:center; justify-content:center; font-size:12px;"
                         onclick="deleteRequirementFour('${requirementId}', this, '${projectId}')">
                     <i class="fas fa-minus"></i>&nbsp;Remove
                 </button>
@@ -1426,7 +1426,7 @@ function createUpsellBlock(blockIndex, upsellItem, projectId) {
             <div class="col-md-2">
                 <button type="button" class="btn btn-danger btn-sm" 
                 onclick="deleteUpsell('${upsellId}', '${projectId}', this)"
-                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
+                style="width:100px; display:inline-flex; align-items:center; color:white; justify-content:center; font-size:12px;">
                     <i class="fas fa-minus"></i>&nbsp;Remove
                 </button>
             </div>
@@ -1546,7 +1546,7 @@ function createRequirementFiveBlock(blockIndex, reqItem, productList = [], distr
             <div class="col-md-2">
                 <button type="button"
                         class="btn btn-danger btn-sm"
-                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                        style="width:100px; display:inline-flex; color:white; align-items:center; justify-content:center; font-size:12px;"
                         onclick="deleteRequirementFive('${requirementId}', this, '${projectId}')">
                     <i class="fas fa-minus"></i>&nbsp;Remove
                 </button>
