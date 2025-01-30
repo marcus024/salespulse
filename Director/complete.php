@@ -434,7 +434,6 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
         // Update the stagethree table
         $query = "UPDATE stagethree SET 
             stage_three_remarks = ?, 
-            product = ?, 
             deal_size = ?, 
             technology = ?, 
             solution = ? 
@@ -442,7 +441,6 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
         $stmt = $conn->prepare($query);
         $stmt->execute([
             $inputData['stage_three_remarks'] ?? null,
-            $inputData['product'] ?? null,
             $inputData['deal_size'] ?? null,
             $inputData['technology'] ?? null,
             $inputData['solution'] ?? null,
