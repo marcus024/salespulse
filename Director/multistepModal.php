@@ -1011,9 +1011,11 @@
                                         <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
+                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                           Stage Remarks
+                                            </p>
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <label for="requirement" class="form-label ">Stage Remarks</label>
                                                     <textarea name="remarks_stage_five" class="form-control" id="stageremarks5" placeholder="e.g. Sample Remarks" 
                                                     style="height:100px;"></textarea>
                                                 </div>
