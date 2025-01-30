@@ -264,7 +264,7 @@ include("../auth/db.php");
                                     }
 
                                     .notify::-webkit-scrollbar-thumb {
-                                        background-color: #36b9cc;
+                                        background-color:#f9ce45;
                                         border-radius: 10px;
                                         height: 5px; /* Minimum height for the scrollbar thumb */
                                     }
