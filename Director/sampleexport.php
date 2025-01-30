@@ -1,26 +1,26 @@
 <?php
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *'); // Allow all origins (you can restrict this)
+header('Access-Control-Allow-Origin: *'); // Allow all origins
 header('Access-Control-Allow-Methods: GET');
 header('Access-Control-Allow-Headers: Content-Type');
 
-include('../auth/db.php'); // Ensure this contains a valid `$conn` connection
+include('../auth/db.php'); // Ensure database connection is established
 
-// Check if database connection is established
+// Check if database connection is valid
 if (!isset($conn) || $conn->connect_error) {
     echo json_encode(["error" => "Database connection failed", "details" => $conn->connect_error]);
     exit;
 }
 
-// Fetch all project data from projecttb
-$sql = "SELECT * FROM projecttb";
+// Fetch all product data from product_tb
+$sql = "SELECT id, product, created_at, user_id, company FROM product_tb";
 $result = $conn->query($sql);
 
-$projects = [];
+$products = [];
 
 if ($result) {
     while ($row = $result->fetch_assoc()) {
-        $projects[] = $row;
+        $products[] = $row;
     }
     $result->free();
 } else {
@@ -29,7 +29,7 @@ if ($result) {
 }
 
 // Return JSON data
-echo json_encode($projects, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+echo json_encode($products, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 
 $conn->close();
 ?>
