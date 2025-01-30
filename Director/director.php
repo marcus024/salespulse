@@ -2113,7 +2113,6 @@ include("../auth/db.php");
     <!-- Custom scripts for all pages -->
     <script src="../js/sb-admin-2.min.js"></script>
     <script src="notif.js"></script>
-    <!-- Page level custom scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./openModal.js"></script>
     <script src="toogleNav.js"></script>
