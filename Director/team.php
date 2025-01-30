@@ -397,25 +397,25 @@ include("../auth/db.php");
                                                                 <?php echo htmlspecialchars($member['role_display']); ?>
                                                             </p>
                                                             <div class="row mt-0" style="gap: 10px; padding-right:5px;">
-                                                                <div class="col card text-center" style="border-color:white; background:  #2a2925; border-radius: 15px; padding: 2px; width: 140px;">
+                                                                <div class="col card text-center" style="border-color: #2a2925; background:  #2a2925; border-radius: 15px; padding: 2px; width: 140px;">
                                                                     <p style="font-size: 30px; color:white; font-weight: bold; margin: 0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">
                                                                         <?php echo $member['completed_projects'] ?? 0; ?>
                                                                     </p>
                                                                     <p style="font-size: 9px; font-weight: bold; color: #ddd; margin: 0; width: 100%;">Completed Projects</p>
                                                                 </div>
-                                                                <div class="col card text-center" style="border-color:white; background:  #2a2925; border-radius: 15px; padding: 2px; width: 140px;">
+                                                                <div class="col card text-center" style="border-color: #2a2925; background:  #2a2925; border-radius: 15px; padding: 2px; width: 140px;">
                                                                     <p style="font-size: 30px; color:white; font-weight: bold; margin: 0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">
                                                                         <?php echo $member['ongoing_projects'] ?? 0; ?>
                                                                     </p>
                                                                     <p style="font-size: 9px; font-weight: bold; color: #ddd; margin: 0; width: 100%;">Ongoing Projects</p>
                                                                 </div>
-                                                                <div class="col card text-center" style="border-color:white; background:  #2a2925; border-radius: 15px; padding: 2px; width: 100px;">
+                                                                <div class="col card text-center" style="border-color: #2a2925; background:  #2a2925; border-radius: 15px; padding: 2px; width: 100px;">
                                                                     <p style="font-size: 30px; color:white; font-weight: bold; margin: 0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">
                                                                         <?php echo $member['cancelled_projects'] ?? 0; ?>
                                                                     </p>
                                                                     <p style="font-size: 9px; font-weight: bold; color:#ddd; margin: 0; width: 100%;">Cancelled Projects</p>
                                                                 </div>
-                                                                <div class="col card text-center" style="border-color:white; background:  #2a2925; border-radius: 15px; padding: 2px; width: 140px;">
+                                                                <div class="col card text-center" style="border-color: #2a2925; background:  #2a2925; border-radius: 15px; padding: 2px; width: 140px;">
                                                                     <p style="font-size: 30px; color:white; font-weight: bold; margin: 0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">
                                                                         <?php echo $member['avg_project_duration'] ?? 0; ?>
                                                                     </p>
