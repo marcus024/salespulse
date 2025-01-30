@@ -381,7 +381,7 @@ include("../auth/db.php");
                                                 foreach ($teamMembers as $member):
                                             ?>
                                             <div class="card mb-3" style="border-radius: 20px;">
-                                                <div class="card-header" style="font-family:'Poppins';background: linear-gradient(to right, #f9ce45,rgb(25, 230, 230)); color: white; border-radius:20px; font-size: 18px; font-weight: bold;">
+                                                <div class="card-header" style="font-family:'Poppins';background: linear-gradient(to right, #f9ce45,rgb(241, 245, 12)); color: white; border-radius:20px; font-size: 18px; font-weight: bold;">
                                                     Profile
                                                 </div>
                                                 <div class="card-body" style="background-color: #2a2925; color: #555; padding: 10px; border-radius:20px; padding-left: 20px;">
