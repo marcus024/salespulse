@@ -25,10 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         // Check if the client type already exists
-        $sqlCheck = "SELECT * FROM clienttype_tb";
+        $sqlCheck = "SELECT * FROM clienttype_tb WHERE client_type = :client_type AND company = :company";
         $stmtCheck = $conn->prepare($sqlCheck);
-        // $stmtCheck->bindParam(':client_type', $newClientType, PDO::PARAM_STR);
-        // $stmtCheck->bindParam(':company', $currentCompany, PDO::PARAM_STR);
+        $stmtCheck->bindParam(':client_type', $newClientType, PDO::PARAM_STR);
+        $stmtCheck->bindParam(':company', $currentCompany, PDO::PARAM_STR);
         $stmtCheck->execute();
 
         if ($stmtCheck->rowCount() > 0) {
