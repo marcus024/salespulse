@@ -1,12 +1,9 @@
 <?php
 header('Content-Type: application/json');
 
-include('../auth/db.php'); // Fixed syntax error
+include('../auth/db.php');// Fixed syntax error
 
-// Check if connection exists
-if (!isset($conn) || $conn->connect_error) {
-    die(json_encode(["error" => "Database connection failed"]));
-}
+
 
 // Fetch project data
 $sql = "SELECT project_unique_id, company_name, account_manager, status, start_date, end_date, created_at, product_type, current_stage, client_type, source FROM projects";
