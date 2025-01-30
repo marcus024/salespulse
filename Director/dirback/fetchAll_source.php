@@ -13,7 +13,7 @@ if (empty($currentCompany)) {
 
 try {
     // Retrieve client type list for the current company
-    $sql = "SELECT  * sourcetype ORDER BY sourcetype ASC";
+    $sql = "SELECT *  FROM source_tb ORDER BY sourcetype ASC";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
 

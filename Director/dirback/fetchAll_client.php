@@ -13,7 +13,9 @@ if (empty($currentCompany)) {
 
 try {
     // Retrieve client type list for the current company
-    $sql = "SELECT * client_type FROM clienttype_tb ORDER BY client_type ASC";
+    
+    $sql = "SELECT * FROM clienttype_tb ORDER BY client_type ASC";
+
     $stmt = $conn->prepare($sql);
     $stmt->execute();
 
