@@ -381,19 +381,19 @@ include("../auth/db.php");
                                                 foreach ($teamMembers as $member):
                                             ?>
                                             <div class="card mb-3" style="border-radius: 20px;">
-                                                <div class="card-header" style="font-family:'Poppins';background: linear-gradient(to right, #36b9cc,rgb(25, 230, 230)); color: white; border-radius:20px; font-size: 18px; font-weight: bold;">
+                                                <div class="card-header" style="font-family:'Poppins';background: linear-gradient(to right, #f9ce45,rgb(25, 230, 230)); color: white; border-radius:20px; font-size: 18px; font-weight: bold;">
                                                     Profile
                                                 </div>
-                                                <div class="card-body" style="background-color: white; color: #555; padding: 10px; border-radius:20px; padding-left: 20px;">
+                                                <div class="card-body" style="background-color: #2a2925; color: #555; padding: 10px; border-radius:20px; padding-left: 20px;">
                                                     <div class="d-flex align-items-center mb-2" style="gap: 30px;">
                                                         <img src="../images/<?php echo ($member['gender'] === 'Male') ? 'man.png' : 'woman.png'; ?>" 
                                                             alt="Profile Picture" class="contact-image" 
                                                             style="width: 130px; height: 130px; border-radius: 50%;">
                                                         <div class="contact-info">
-                                                            <p class="mb-1" style="font-size: 30px; font-weight: bold; font-family: 'Poppins';">
+                                                            <p class="mb-1" style="font-size: 30px; font-weight: bold; font-family: 'Poppins'; color:white;">
                                                                 <?php echo htmlspecialchars($member['name']); ?>
                                                             </p>
-                                                            <p class="mb-1" style="font-size: 15px; font-family: 'Poppins';">
+                                                            <p class="mb-1" style="font-size: 15px; font-family: 'Poppins'; color:#ddd">
                                                                 <?php echo htmlspecialchars($member['role_display']); ?>
                                                             </p>
                                                             <div class="row mt-0" style="gap: 10px; padding-right:5px;">
