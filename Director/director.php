@@ -475,7 +475,7 @@ include("../auth/db.php");
                                         height: 4px; 
                                     }
                                     .notify::-webkit-scrollbar-thumb {
-                                        background-color: #36b9cc;
+                                        background-color:#f9ce45;
                                         border-radius: 10px;
                                         height: 5px; 
                                     }
