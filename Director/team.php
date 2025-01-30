@@ -368,7 +368,7 @@ include("../auth/db.php");
                                                     background-color:  #1f2024;
                                                 }
                                                 #contact-list::-webkit-scrollbar-track {
-                                                    background: #f0f0f0;
+                                                    background:  #1f2024;
                                                 }
                                         </style>
                                         <!-- Example Contact Card 1 -->
