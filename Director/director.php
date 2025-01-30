@@ -457,8 +457,8 @@ include("../auth/db.php");
                                     top: 40px; 
                                     right: 0; 
                                     width: 220px; 
-                                    background-color: #fff; 
-                                    border: 1px solid #ccc; 
+                                    background-color:#1f2024; 
+                                    border: 1px solid #1f2024; 
                                     border-radius: 5px; 
                                     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                                 ">
