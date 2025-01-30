@@ -232,7 +232,7 @@ include("../auth/db.php");
                                     border-radius: 5px; 
                                     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                                 ">
-                                <h6 style=" color: black; padding: 8px; margin: 0; border-bottom: 1px solid #ccc; font-size: 14px;">Notifications</h6>
+                                <h6 style=" color: white; padding: 8px; margin: 0; border-bottom: 1px solid #ccc; font-size: 14px;">Notifications</h6>
 
                                 <!-- Notification Items -->
                                 <div class="notify" id="notifs" style="padding: 8px; font-size: 13px; color: #555; max-height: 200px; overflow-y: auto;"></div>
