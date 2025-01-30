@@ -478,13 +478,13 @@ include("../auth/db.php");
                                     }
 
                                     .userClass::-webkit-scrollbar-thumb {
-                                        background-color: #36b9cc;
+                                        background-color:  #f9ce45;
                                         border-radius: 10px;
                                         height: 5px; /* Minimum height for the scrollbar thumb */
                                     }
 
                                     .userClass::-webkit-scrollbar-thumb:hover {
-                                        background-color: #555;
+                                        background-color: #1f2024;
                                     }
                                 </style>
                                 <!-- User List -->
