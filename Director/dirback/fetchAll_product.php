@@ -15,6 +15,7 @@ try {
     // Retrieve product list for the current company
     $sql = "SELECT * FROM product_tb  ORDER BY product ASC";
     $stmt = $conn->prepare($sql);
+    // $stmt->bindParam(':company', $currentCompany, PDO::PARAM_STR);
     $stmt->execute();
 
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
