@@ -419,7 +419,6 @@ include("../auth/db.php");
             <div id="content" style="background-color:white;">
                <!-- Fixed Topbar -->
                 <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:#15151a; padding-right:30px; padding-left:220px; z-index: 300;">
-                   
                     <div class="d-flex align-items-center" style="margin-top: 10px;"> 
                         <div>
                             <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Home</h1> 
@@ -431,12 +430,11 @@ include("../auth/db.php");
                             </p>
                         </div>
                     </div>
-                   
                     <div class="d-flex align-items-center">
                         <!-- Notification Button -->
                         <div class="mr-2" style="position: relative;">
                             <!-- Notification Button -->
-                            <button id="notification-button" style="color: #36b9cc; padding-right: 50px; position: relative; background: none; border: none; cursor: pointer;">
+                            <button id="notification-button" style="color: #f9ce45; padding-right: 50px; position: relative; background: none; border: none; cursor: pointer;">
                                 <img src="../images/notif_yellow.png" alt="Notification" style="height: 20px; width: 20px;">
                                 <span id="notification-count" style="
                                     font-family: 'Poppins', sans-serif; 
@@ -449,7 +447,6 @@ include("../auth/db.php");
                                     position: absolute; 
                                     top: -5px; 
                                     right: 35px;">
-                                    
                                 </span>
                             </button>
                             <!-- Dropdown Container (Initially hidden) -->
@@ -2116,7 +2113,6 @@ include("../auth/db.php");
     <!-- Custom scripts for all pages -->
     <script src="../js/sb-admin-2.min.js"></script>
     <script src="notif.js"></script>
-    <!-- Page level custom scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./openModal.js"></script>
     <script src="toogleNav.js"></script>
