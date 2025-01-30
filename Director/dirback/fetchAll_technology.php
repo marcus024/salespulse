@@ -23,7 +23,6 @@ try {
     ORDER BY technology ASC
     ";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':company', $currentCompany, PDO::PARAM_STR);
     $stmt->execute();
 
     $technologies = $stmt->fetchAll(PDO::FETCH_ASSOC);
