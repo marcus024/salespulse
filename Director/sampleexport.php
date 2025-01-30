@@ -7,7 +7,7 @@ header('Access-Control-Allow-Headers: Content-Type');
 include("../auth/db.php"); 
 
 // Hardcoded or passed user ID (Power BI doesn't support sessions)
-$user_id = $_GET['user_id'] ?? null;
+$user_id =$_SESSION['user_id_c'] ?? null;
 
 if (!$user_id) {
     echo json_encode(["error" => "User ID is required"]);
