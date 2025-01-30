@@ -475,7 +475,7 @@ include_once('dirback/dirviewback.php');
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">End Cont. Date</label>
-                                                            <input readonly name="contractEnd" type="text" class="form-control" id="endContract" value="<?php echo htmlspecialchars($data['stage_five']['endC'] ?? ''); ?>>">
+                                                            <input readonly name="contractEnd" type="text" class="form-control" id="endContract" value="<?php echo htmlspecialchars($data['stage_five']['endC'] ?? ''); ?>">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">Duration</label>
