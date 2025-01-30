@@ -11,7 +11,7 @@ if (!$user_id) {
 
 
 
-if ($project_id) {
+if ($user_id) {
     try {
         
         $sql = "SELECT project_unique_id, company_name, account_manager, start_date, end_date, status,product_type,current_stage,client_type,source
