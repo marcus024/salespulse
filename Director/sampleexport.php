@@ -1,37 +1,37 @@
 <?php
-session_start();
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *'); // Allow all origins
+header('Access-Control-Allow-Methods: GET');
+header('Access-Control-Allow-Headers: Content-Type');
+
 include("../auth/db.php"); 
 
-$user_id = $_SESSION['user_id_c'] ?? null;
+// Hardcoded or passed user ID (Power BI doesn't support sessions)
+$user_id = $_GET['user_id'] ?? null;
 
 if (!$user_id) {
-    header("Location: ../../login.php");
+    echo json_encode(["error" => "User ID is required"]);
     exit;
 }
 
+try {
+    // Prepare SQL query
+    $sql = "SELECT project_unique_id, company_name, account_manager, start_date, 
+                   end_date, status, product_type, current_stage, client_type, source
+            FROM projecttb
+            WHERE user_id_cur = :user_id";
 
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt->execute();
 
-if ($user_id) {
-    try {
-        
-        $sql = "SELECT project_unique_id, company_name, account_manager, start_date, end_date, status,product_type,current_stage,client_type,source
-                FROM projecttb
-                WHERE  user_id_cur = :user_id";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR);
-        $stmt->execute();
-        
-      
-        $project = $stmt->fetch(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        echo "<div style='color:red;'>Error: " . htmlspecialchars($e->getMessage()) . "</div>";
-        exit;
-    }
-}
+    // Fetch all results as an array
+    $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-if (!$project) {
-    echo "<div style='color:red;'>Project not found or access denied.</div>";
-    echo "<a href='projectList.php'>Back to Project List</a>";
+    // Return JSON output for Power BI
+    echo json_encode($projects, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+} catch (PDOException $e) {
+    echo json_encode(["error" => "Query failed", "details" => $e->getMessage()]);
     exit;
 }
 ?>
