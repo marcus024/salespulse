@@ -11,8 +11,6 @@ async function fetchNotifications() {
         }
         const data = await response.json();
 
-
-
         currentUserId = data.user_id_cur;
 
 
