@@ -208,7 +208,7 @@
 
         // Populate the block content
         newBlock.innerHTML = `
-            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="req_1_id">
+            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="req_1_id">
             Requirement ${blockIndex}
             </p>
             <input type="hidden" name="requirement_id_1[]" value="${requirementId}" id="req_1_id">
@@ -463,7 +463,7 @@
 
         // Populate the block content
         newBlock.innerHTML = `
-            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="rq_2_id">
+            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="rq_2_id">
             Requirement ${blockIndex}
             </p>
             <input type="hidden" name="requirement_id_2[]" value="${requirementId}" id="rq_2_id">
@@ -588,7 +588,7 @@
         newBlock.dataset.index = blockIndex;
 
         newBlock.innerHTML = `
-            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement${blockIndex}">
+            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="engagement${blockIndex}">
             Engagement ${blockIndex}
             </p>
             <input type="hidden" name="engagement_id_2[]" value="${engagementId}" id="eng_${blockIndex}_id">
@@ -810,7 +810,7 @@
 
         // Populate the block content
         newBlock.innerHTML = `
-            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagethree">
+            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="requirementstagethree">
                 Requirement ${blockIndex}
             </p>
             <input type="hidden" name="requirement_id_3[]" value="${requirementId}" id="req_3_id">
@@ -947,7 +947,7 @@
         newBlock.dataset.index = blockIndex;
 
         newBlock.innerHTML = `
-            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagementstagethree">
+            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="engagementstagethree">
                 Engagement ${blockIndex}
             </p>
             <input type="hidden" name="engagement_id_3[]" value="${engagementId}" id="eng_3_id_${blockIndex}">
@@ -1123,7 +1123,7 @@
     newBlock.dataset.index = blockIndex;
 
     newBlock.innerHTML = `
-        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefour">
+        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="requirementstagefour">
             Requirement ${blockIndex}
         </p>
         <input type="hidden" name="requirement_id_4[]" value="${requirementId}" id="req_4_id">
@@ -1392,7 +1392,7 @@ function createUpsellBlock(blockIndex, upsellItem, projectId) {
     newBlock.dataset.index = blockIndex;
 
     newBlock.innerHTML = `
-        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="upsellCon">
+        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="upsellCon">
             Upsell ${blockIndex}
         </p>
         <input type="hidden" name="upsell_stage_5[]" value="${upsellId}" id="upsell_id">
@@ -1496,7 +1496,7 @@ function createRequirementFiveBlock(blockIndex, reqItem, productList = [], distr
     newBlock.dataset.index = blockIndex;
 
     newBlock.innerHTML = `
-        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefive">
+        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="requirementstagefive">
             Requirement ${blockIndex}
         </p>
         <input type="hidden" name="requirement_id_5[]" value="${requirementId}" id="req_5_id">
