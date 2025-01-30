@@ -665,6 +665,7 @@
         document.getElementById('stage-three-status').value = data.stages.stage_three.status     || 'No Data';
         document.getElementById('deal_size3').value = Number(data.stages.stage_three.deal_size_three) || Number(data.stages.stage_two.deal_size_two) || 'No Data';
         document.getElementById('stageremarks3').value = data.stages.stage_three.remarks_three || data.stages.stage_two.remarks_two || 'No Data';
+        document.getElementById('solution3').value = data.stages.stage_three.solution_three || data.stages.stage_two.solution_two || 'No Data';
         // Fetch Technology Select
         const technology3 = document.getElementById('technologySelect3');
         const techValue = data.stages.stage_three.technology_three || data.stages.stage_two.technology_two || 'Select';
