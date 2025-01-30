@@ -459,14 +459,14 @@ include_once('dirback/dirviewback.php');
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="status" class="form-label">Deal Size (Amount)</label>
-                                                            <input name="deal_size" type="text" class="form-control" id="deal_size3"  
-                                                                value="<?= htmlspecialchars($data['stage_three']['deal_size'] ?? '') ?>" placeholder="e.g. 5000">
+                                                            <input name="deal_size" type="text" class="form-control" id="deal_size3"  readonly
+                                                                value="<?= htmlspecialchars($data['stage_three']['deal_size'] ?? '') ?>" >
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
                                                         <div class="col-md-12">
                                                             <label for="status" class="form-label ">Solution</label>
-                                                            <textarea name="solution" class="form-control" id="solution3" placeholder="e.g. Sample Solution" 
+                                                            <textarea name="solution" class="form-control" id="solution3" readonly 
                                                             style="height:100px;"></textarea>
                                                         </div>
                                                     </div>
@@ -497,17 +497,17 @@ include_once('dirback/dirviewback.php');
                                                                 <div id="engagement-fields-container3">
                                                                     <div class="row engagement-fields mb-3">
                                                                         <div class="col-md-3">
-                                                                            <input name="engagement_three[]" type="text" class="form-control" 
+                                                                            <input readonly name="engagement_three[]" type="text" class="form-control" 
                                                                                 value="<?= htmlspecialchars($engagement['engagement_three'] ?? '') ?>" 
-                                                                                placeholder="e.g. Sample Engagement">
+                                                                                >
                                                                         </div>
                                                                         <div class="col-md-3">
-                                                                            <input name="engagement_date[]" type="date" class="form-control" 
+                                                                            <input readonly name="engagement_date[]" type="date" class="form-control" 
                                                                                 value="<?= htmlspecialchars($engagement['engagement_date'] ?? '') ?>" 
                                                                                 style="font-size:10px;">
                                                                         </div>
                                                                         <div class="col-md-4">
-                                                                            <input name="engagement_remarks_three[]" type="text" class="form-control" 
+                                                                            <input readonly name="engagement_remarks_three[]" type="text" class="form-control" 
                                                                                 value="<?= htmlspecialchars($engagement['engagement_remarks_three'] ?? '') ?>" 
                                                                                 placeholder="e.g. Sample Remarks">
                                                                         </div>
@@ -549,19 +549,19 @@ include_once('dirback/dirviewback.php');
                                                                     <div id="requirement-fields-container-3">
                                                                         <div class="row requirement-fields mb-3">
                                                                             <div class="col-md-4">
-                                                                                <input name="requirement_three[]" type="text" class="form-control" 
+                                                                                <input readonly name="requirement_three[]" type="text" class="form-control" 
                                                                                     value="<?= htmlspecialchars($requirement['requirement_three'] ?? '') ?>" 
-                                                                                    placeholder="e.g. Sample Requirement">
+                                                                                   >
                                                                             </div>
                                                                             <div class="col-md-3">
-                                                                                <input name="product_three[]" type="text" class="form-control" 
+                                                                                <input readonly name="product_three[]" type="text" class="form-control" 
                                                                                     value="<?= htmlspecialchars($requirement['product_three'] ?? '') ?>" 
-                                                                                    placeholder="e.g. Sample Product">
+                                                                                    >
                                                                             </div>
                                                                             <div class="col-md-3">
-                                                                                <input name="distributor_three[]" type="text" class="form-control" 
+                                                                                <input readonly name="distributor_three[]" type="text" class="form-control" 
                                                                                     value="<?= htmlspecialchars($requirement['distributor_three'] ?? '') ?>" 
-                                                                                    placeholder="e.g. Sample Distributor">
+                                                                                    >
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -586,24 +586,24 @@ include_once('dirback/dirviewback.php');
                                                                     <div id="requirement-fields-container-3">
                                                                         <div class="row requirement-fields mb-3">
                                                                             <div class="col-md-3">
-                                                                                <input name="quantity[]" type="number" class="form-control" 
+                                                                                <input name="quantity[]" type="number" class="form-control" readonly
                                                                                     value="<?= htmlspecialchars($requirement['quantity'] ?? '') ?>" 
-                                                                                    placeholder="e.g. 50">
+                                                                                    >
                                                                             </div>
                                                                             <div class="col-md-2">
-                                                                                <input name="pricing[]" type="number" class="form-control" 
+                                                                                <input name="pricing[]" type="number" class="form-control" readonly
                                                                                     value="<?= htmlspecialchars($requirement['pricing'] ?? '') ?>" 
-                                                                                    placeholder="e.g. 5000">
+                                                                                    >
                                                                             </div>
                                                                             <div class="col-md-2">
-                                                                                <input name="requirement_date[]" type="date" class="form-control" 
+                                                                                <input name="requirement_date[]" type="date" class="form-control" readonly
                                                                                     value="<?= htmlspecialchars($requirement['requirement_date'] ?? '') ?>" 
                                                                                     style="font-size:10px;">
                                                                             </div>
                                                                             <div class="col-md-4">
-                                                                                <input name="requirement_remarks_three[]" type="text" class="form-control" 
+                                                                                <input name="requirement_remarks_three[]" type="text" class="form-control" readonly
                                                                                     value="<?= htmlspecialchars($requirement['requirement_remarks_three'] ?? '') ?>" 
-                                                                                    placeholder="e.g. Sample Remarks">
+                                                                                    >
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -624,7 +624,7 @@ include_once('dirback/dirviewback.php');
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <label for="requirement" class="form-label ">Stage Remarks</label>
-                                                            <textarea name="stage_three_remarks" class="form-control" id="stageremarks3" placeholder="e.g. Sample Remarks" 
+                                                            <textarea name="stage_three_remarks" class="form-control" id="stageremarks3" readonly 
                                                             style="height:100px;"><?= htmlspecialchars($data['stage_three']['stage_three_remarks'] ?? '') ?></textarea>
                                                         </div>
                                                     </div>
