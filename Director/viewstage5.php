@@ -455,35 +455,35 @@ include_once('dirback/dirviewback.php');
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="requirement" class="form-label ">Deal Size(Amount)</label>
-                                                            <input readonly name="deal_size" type="text" class="form-control" id="deal_size5" value="<?= $stageFive['deal_size'] ?? '' ?>">
+                                                            <input readonly name="deal_size" type="text" class="form-control" id="deal_size5" value="<?php echo htmlspecialchars($data['stage_five']['deal_size'] ?? ''); ?>">
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
                                                         <div class="col-md-12">
                                                             <label for="status" class="form-label ">Solution</label>
-                                                            <textarea readonly name="solution" class="form-control" id="solution5" style="height:100px;"><?= $stageFive['solution'] ?? '' ?></textarea>
+                                                            <textarea readonly name="solution" class="form-control" id="solution5" style="height:100px;"><?php echo htmlspecialchars($data['stage_five']['solution'] ?? ''); ?></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
                                                         <div class="col-md-3">
                                                             <label for="status" class="form-label ">SPR Number</label>
-                                                            <input readonly type="text" class="form-control" id="stage-five-spr" name="SPR_number" value="<?= $stageFive['SPR_number'] ?? '' ?>">
+                                                            <input readonly type="text" class="form-control" id="stage-five-spr" name="SPR_number" value="<?php echo htmlspecialchars($data['stage_five']['SPR_number'] ?? ''); ?>">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">Start Cont. Date</label>
-                                                            <input readonly name="contractStart" type="text" class="form-control" id="startContract" value="<?= $stageFive['startC'] ?? '' ?>">
+                                                            <input readonly name="contractStart" type="text" class="form-control" id="startContract" value="<?php echo htmlspecialchars($data['stage_five']['startC'] ?? ''); ?>">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">End Cont. Date</label>
-                                                            <input readonly name="contractEnd" type="text" class="form-control" id="endContract" value="<?= $stageFive['endC'] ?? '' ?>">
+                                                            <input readonly name="contractEnd" type="text" class="form-control" id="endContract" value="<?php echo htmlspecialchars($data['stage_five']['endC'] ?? ''); ?>>">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">Duration</label>
-                                                            <input readonly  name="contract_duration" type="text" class="form-control" id="contractDuration" value="<?= $stageFive['contract_duration'] ?? '' ?>" readonly>
+                                                            <input readonly  name="contract_duration" type="text" class="form-control" id="contractDuration" value="<?php echo htmlspecialchars($data['stage_five']['contract_duration'] ?? ''); ?>" readonly>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="billingType" class="form-label ">Billing Type</label>
-                                                            <input readonly name="billingType[]" id="req" type="text" class="form-control" value="<?= $stageFive['billing_type'] ?? '' ?>">
+                                                            <input readonly name="billingType[]" id="req" type="text" class="form-control" value="<?php echo htmlspecialchars($data['stage_five']['billing_type'] ?? ''); ?>">
                                                         </div>
                                                     </div>
                                                     <div style="border-top: 1px ; margin: 20px 0;"></div> 
