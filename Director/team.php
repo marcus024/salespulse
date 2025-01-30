@@ -623,7 +623,7 @@ include("../auth/db.php");
             li.className = "list-group-item d-flex justify-content-between align-items-center";
             li.style.fontFamily = "Poppins";
             li.style.fontSize = "14px";
-            li.style.background = #1f2024;
+            li.style.backgroundColor = #1f2024;
 
             li.innerHTML = `
                 <div>
