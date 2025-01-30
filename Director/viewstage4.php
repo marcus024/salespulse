@@ -456,14 +456,13 @@ include_once('dirback/dirviewback.php');
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="dealSize" class="form-label ">Deal Size</label>
-                                                            <input name="deal_size" type="number" class="form-control" id="deal_size4" value="<?php echo htmlspecialchars($data['stage_four']['deal_size'] ?? ''); ?>" placeholder="e.g. 5000">
+                                                            <input name="deal_size" type="number" class="form-control" id="deal_size4" value="<?php echo htmlspecialchars($data['stage_four']['deal_size'] ?? ''); ?>" readonly>
                                                         </div>
                                                     </div>
-
                                                     <div class="row mb-3">
                                                         <div class="col-md-12">
                                                             <label for="status" class="form-label ">Solution</label>
-                                                            <textarea name="solution" class="form-control" id="solution4" placeholder="e.g. Sample Solution" style="height:100px;"><?php echo htmlspecialchars($data['stage_four']['solution'] ?? ''); ?></textarea>
+                                                            <textarea name="solution" class="form-control" id="solution4" readonly style="height:100px;"><?php echo htmlspecialchars($data['stage_four']['solution'] ?? ''); ?></textarea>
                                                         </div>
                                                     </div>
 
