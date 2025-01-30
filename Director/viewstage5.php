@@ -443,15 +443,15 @@ include_once('dirback/dirviewback.php');
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="requirement" class="form-label ">End Date</label>
-                                                            <input readonly type="text" class="form-control" id="stage-five-end" value="<?= $stageFive['end_date_stage_five'] ?? '' ?>" readonly>
+                                                            <input readonly type="text" class="form-control" id="stage-five-end" value="<?php echo htmlspecialchars($data['stage_five']['end_date_stage_five'] ?? ''); ?>" readonly>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <label for="status" class="form-label ">Status</label>
-                                                            <input readonly type="text" class="form-control" id="stage-five-status" value="<?= $stageFive['status_stage_five'] ?? '' ?>" readonly>
+                                                            <input readonly type="text" class="form-control" id="stage-five-status" value="<?php echo htmlspecialchars($data['stage_five']['status_stage_five'] ?? ''); ?>" readonly>
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="requirement" class="form-label ">Technology</label>
-                                                            <input readonly name="req_five[]" id="req" type="text" class="form-control" value="<?= $stageFive['technology'] ?? '' ?>">
+                                                            <input readonly name="req_five[]" id="req" type="text" class="form-control" value="<?php echo htmlspecialchars($data['stage_five']['technology'] ?? ''); ?>">
                                                         </div>
                                                         <div class="col-md-3">
                                                             <label for="requirement" class="form-label ">Deal Size(Amount)</label>
