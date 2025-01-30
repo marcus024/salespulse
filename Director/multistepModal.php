@@ -159,7 +159,7 @@
                                     </div>
                                     <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px"> 
                                         <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
-                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;">
                                             Project Profile
                                             </p>
                                             <div class="row mb-3">
@@ -198,7 +198,7 @@
                                             <div style="border-top: 1px ; margin: 20px 0;"></div>
                                             <div id="requirementsContainer">
                                                 <div class="requirement-block" data-index="1">
-                                                   <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirement1">
+                                                   <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="requirement1">
                                                     Requirement 1
                                                     </p>
                                                     <input type="hidden" name="requirement_id_1[]" value="st1rq1" id="req_1_id">
@@ -262,7 +262,7 @@
                                             </div> 
                                             <div style="border-top: 1px ; margin: 20px 0;"></div> 
                                             <div class="row mb-4">
-                                                <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                                <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;">
                                                 Stage Remarks
                                                 </p>
                                                 <div class="mb-6">
@@ -302,7 +302,7 @@
                                     </div>
                                     <div class="container" style="background-color:#1f2024; padding: 10px; border-radius: 20px"> 
                                         <div class="container" style="background-color:#2a2925; padding: 5px; border-radius: 20px">
-                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;">
                                             Project Profile
                                             </p>
                                             <div class="row mb-3">
@@ -343,7 +343,7 @@
                                         <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                             <div id="engagement1Container">
                                                 <div class="engagement-block" data-index="1">
-                                                   <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement1">
+                                                   <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="engagement1">
                                                     Engagement 1
                                                     </p>
                                                     <input type="hidden" name="engagement_id_2[]" value="st2eng1" id="eng_1_id">
@@ -391,7 +391,7 @@
                                         <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                             <div id="requirementtwoContainer">
                                                 <div class="requirementtwo-block" data-index="1">
-                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagetwo">
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="requirementstagetwo">
                                                     Requirement 1
                                                     </p>
                                                     <input type="hidden" name="requirement_id_2[]" value="st2rq1" id="rq_1_id">
@@ -450,7 +450,7 @@
                                         </div>
                                         <div style="border-top: 1px ; margin: 20px 0;"></div> 
                                         <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
-                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement1">
+                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="engagement1">
                                             Stage Remarks
                                             </p>
                                             <div class="row">
@@ -474,7 +474,7 @@
                                     </div>
                                     <div class="container" style="background-color:#1f2024; padding: 10px; border-radius: 20px"> 
                                         <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
-                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;">
                                            Project Profile
                                             </p>
                                             <div class="row mb-3">
@@ -514,7 +514,7 @@
                                         <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                             <div id="engagementthreeContainer">
                                                 <div class="engagementthree-block" data-index="1">
-                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagementstagethree">
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="engagementstagethree">
                                                     Engagement 1
                                                     </p>
                                                     <input type="hidden" name="engagement_id_3[]" value="st3eng1" id="eng_3_id">
@@ -557,7 +557,7 @@
                                         <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                             <div id="requirementthreeContainer">
                                                 <div class="requirementthree-block" data-index="1">
-                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagethree">
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="requirementstagethree">
                                                     Requirement 1
                                                     </p>
                                                     <input type="hidden" name="requirement_id_3[]" value="st3req1" id="req_3_id">    
@@ -638,7 +638,7 @@
                                         <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
-                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;">
                                            Stage Remarks
                                             </p>
                                             <div class="row">
@@ -663,7 +663,7 @@
                                     </div>
                                     <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
                                         <div class="container" style="background-color:#2a2925; padding: 5px; border-radius: 20px">
-                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;">
                                            Project Profile
                                             </p>
                                             <div class="row mb-3">
@@ -704,7 +704,7 @@
                                         <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                             <div id="requirementfourContainer">
                                                 <div class="requirementfour-block" data-index="1">
-                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefour">
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="requirementstagefour">
                                                     Requirement 1
                                                     </p>
                                                     <input type="hidden" name="requirement_id_4[]" value="st4req1" id="req_4_id">
@@ -782,7 +782,7 @@
                                         <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
-                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;">
                                            Stage Remarks
                                             </p>
                                             <div class="row">
@@ -807,7 +807,7 @@
                                     </div>
                                     <div class="container" style="background-color:#1f2024; padding: 10px; border-radius: 20px"> 
                                         <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
-                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;">
                                            Project Profile
                                             </p>
                                             <div class="row mb-3">
@@ -873,7 +873,7 @@
                                             <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                                 <div id="requirementfiveContainer">
                                                     <div class="requirementfive-block" data-index="1">
-                                                        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefive">
+                                                        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="requirementstagefive">
                                                         Requirement 1
                                                         </p>
                                                         <input type="hidden" name="requirement_id_5[]" value="st5req1" id="req_5_id">
@@ -959,7 +959,7 @@
                                             <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
                                                 <div id="upsellContainer">
                                                     <div class="upsell-block" data-index="1">
-                                                        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="upsellCon">
+                                                        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="upsellCon">
                                                         Upsell 1
                                                         </p>
                                                         <input type="hidden" name="upsell_stage_5[]" value="upsell1" id="upsell_id">
@@ -1011,7 +1011,7 @@
                                         <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
                                         <div class="container" style="background-color: #2a2925; padding: 10px; border-radius: 20px">
-                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;">
                                            Stage Remarks
                                             </p>
                                             <div class="row">
