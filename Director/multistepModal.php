@@ -807,6 +807,9 @@
                                     </div>
                                     <div class="container" style="background-color:#1f2024; padding: 10px; border-radius: 20px"> 
                                         <div class="container" style="background-color: #2a2925; padding: 5px; border-radius: 20px">
+                                            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+                                           Project Profile
+                                            </p>
                                             <div class="row mb-3">
                                                 <div class="col-md-2">
                                                     <label for="requirement" class="form-label ">Start Date</label>
