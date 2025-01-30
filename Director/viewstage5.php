@@ -629,7 +629,7 @@ include_once('dirback/dirviewback.php');
                                                         <div class="col-md-12">
                                                             <label for="requirement" class="form-label ">Stage Remarks</label>
                                                             <textarea readonly name="remarks_stage_five" class="form-control" id="stageremarks5" 
-                                                            style="height:100px;"></textarea>
+                                                            style="height:100px;"><?php echo htmlspecialchars($data['stage_five']['remarks_stage_five'] ?? ''); ?></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
