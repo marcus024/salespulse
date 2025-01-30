@@ -361,11 +361,11 @@ include("../auth/db.php");
                                                     width: 8px;
                                                 }
                                                 #contact-list::-webkit-scrollbar-thumb {
-                                                    background-color: #009394;
+                                                    background-color: #f9ce45;
                                                     border-radius: 4px;
                                                 }
                                                 #contact-list::-webkit-scrollbar-thumb:hover {
-                                                    background-color: #004d47;
+                                                    background-color:  #1f2024;
                                                 }
                                                 #contact-list::-webkit-scrollbar-track {
                                                     background: #f0f0f0;
