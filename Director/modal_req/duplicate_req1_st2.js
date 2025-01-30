@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const newReqId = `st2rq${nextBlockIndex}`;
 
     newBlock.innerHTML = `
-        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;">
             Requirement ${nextBlockIndex}
         </p>
         <input type="hidden" name="requirement_id_2[]" value="${newReqId}">

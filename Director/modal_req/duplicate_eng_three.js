@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const newEngagementId = `st3eng${nextBlockIndex}`;
 
     newEngagementBlock.innerHTML = `
-        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;">
+        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;">
             Engagement ${nextBlockIndex}
         </p>
         <input type="hidden" name="engagement_id_3[]" value="${newEngagementId}">

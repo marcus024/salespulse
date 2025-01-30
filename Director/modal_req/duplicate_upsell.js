@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const newUpsellId = `upsell${nextBlockIndex}`;
 
         newBlock.innerHTML = `
-            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="upsellCon">
+            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="upsellCon ">
                 Upsell ${nextBlockIndex}
             </p>
             <input type="hidden" name="upsell_stage_5[]" value="${newUpsellId}" id="upsell_id">
