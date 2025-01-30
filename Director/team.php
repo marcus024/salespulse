@@ -630,7 +630,7 @@ include("../auth/db.php");
                     <strong style="color:white;">${user.name}</strong>
                     <p class="mb-0 text-muted" style="font-size: 12px; color:white; ">${user.position}</p>
                 </div>
-                <button class="btn btn-sm btn-primary" style="background-color: #f9ce45; border: none;" onclick="addUser('${currentUserId}', '${user.user_id_current}')">
+                <button class="btn btn-sm btn-primary" style="background-color: #f9ce45; border: none; color:#1f2024;" onclick="addUser('${currentUserId}', '${user.user_id_current}')">
                     <i class="fas fa-plus" style="color:#1f2024;"></i> Add
                 </button>
             `;
