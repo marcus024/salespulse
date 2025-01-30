@@ -1249,7 +1249,7 @@
                 } else {
                     alert('All steps completed!');
                 }
-                if (currentStep !== 5) {
+                if (currentStep !== 6) {
                     openModal(projectId);
                 }
             } else {
