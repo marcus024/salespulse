@@ -5,7 +5,7 @@ include('../auth/db.php');// Fixed syntax error
 
 
 // Fetch project data
-$sql = "SELECT project_unique_id, company_name, account_manager, status, start_date, end_date, created_at, product_type, current_stage, client_type, source FROM projecttb";
+$sql = "SELECT * FROM projecttb";
 
 $result = $conn->query($sql);
 
