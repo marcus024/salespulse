@@ -462,7 +462,7 @@ include("../auth/db.php");
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <!-- Modal Body -->
-                            <div class="modal-body" style="height: 400px;">
+                            <div class="modal-body" style="height: 400px; background:#1f2024; ">
                                 <!-- Search Engine -->
                                 <div class="row mb-3">
                                     <div class="col-12">
