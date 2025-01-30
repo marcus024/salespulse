@@ -467,7 +467,7 @@ include("../auth/db.php");
                                 <div class="row mb-3">
                                     <div class="col-12">
                                         <input type="text" id="userSearch" class="form-control" onkeyup="filterUsers()" placeholder="Search users by name or position..." 
-                                            style="font-family:'Poppins'; font-size: 14px; border: 1px solid #555; color:#555; background:#1f2024; border-radius: 4px; padding: 8px;">
+                                            style="font-family:'Poppins'; font-size: 14px; border: 1px solid #555; color:white; background:#1f2024; border-radius: 4px; padding: 8px;">
                                     </div>
                                 </div>
                                 <style>
