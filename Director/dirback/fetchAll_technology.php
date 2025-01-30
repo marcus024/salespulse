@@ -20,7 +20,6 @@ try {
         LOWER(SUBSTRING(technology, 2))
         ) AS technology
     FROM technology_tb
-    WHERE company = :company
     ORDER BY technology ASC
     ";
     $stmt = $conn->prepare($sql);
