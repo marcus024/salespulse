@@ -457,7 +457,7 @@ include("../auth/db.php");
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <!-- Modal Header -->
-                            <div class="modal-header" style="background-color:#36b9cc; height: 50px;">
+                            <div class="modal-header" style="background-color:#f9ce45; height: 50px;">
                                 <h5 class="modal-title" id="addTeamModalLabel" style="font-family:'Poppins';font-size: 15px; color:white;">Add Team Member</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
