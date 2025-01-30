@@ -1649,7 +1649,6 @@ function updateContractDuration() {
     }
 }
 
-
 // Call the function from outside
 document.getElementById('startContract').addEventListener('change', updateContractDuration);
 document.getElementById('endContract').addEventListener('change', updateContractDuration);
