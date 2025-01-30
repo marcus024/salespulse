@@ -61,12 +61,13 @@
                     background-color:#1f2024;
                     border: 1px solid #555;
                 }
-                .form-control:readonly{
+                .form-control[readonly]{
                     font-size: 12px;
                     color:#555;
                     font-family: 'Poppins';
                     background-color:#1f2024;
                 }
+                
                 .form-control:focus{
                     font-size: 12px;
                     color:white;
@@ -82,7 +83,7 @@
                     padding: 20px;
                     border-radius: 8px;
                 }
-                #multiStepModal .stage-title {
+                #multiStepModal .stage-title{
                     font-size: 1.5rem;
                     font-weight: bold;
                     color: #fff;
@@ -105,28 +106,25 @@
                 .btn-primary:hover{
                     background:rgb(96, 120, 14);
                     color:#1f2024;
-                    
                 }
-                .custom-select select {
+                .custom-select[select] {
                 padding: 5px;
                 font-size: 12px;
                 font-family: 'Poppins';
                 border: 1px solid #555;
                 border-radius: 10px;
-                background-color: #1f2024; /* Matches the input background */
+                background-color: #1f2024; 
                 color: white;
                 width: 100%;
                 height: 40px;
                 }
-
                 .custom-select:focus {
                     border-color: white ;
                     outline: none;
-                    background-color: #1f2024; /* Slightly darker green for focus */
+                    background-color: #1f2024; 
                 }
-
                 .custom-select option {
-                    color: white; /* Black text for dropdown items */
+                    color: white;
                 }
             </style>
             <div class="modal fade" id="multiStepModal" tabindex="-1" aria-labelledby="multiStepModalLabel" aria-hidden="true">
@@ -1251,7 +1249,7 @@
                 } else {
                     alert('All steps completed!');
                 }
-                if (currentStep !== 5) {
+                if (currentStep !== 6) {
                     openModal(projectId);
                 }
             } else {

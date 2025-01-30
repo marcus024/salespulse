@@ -7,13 +7,13 @@ function fetchStageOneData(PDO $conn, $projectUniqueId) {
             s.solution,
             s.technology,
             s.deal_size,
-            s.distributor,
             s.stage_one_remarks,
-            s.product,
             s.status_stage_one,
             s.start_date_stage_one,
             s.end_date_stage_one,
-            r.requirement_one
+            r.requirement_one,
+            r.product_one,
+            r.distributor_one
         FROM stageone AS s
         LEFT JOIN requirementone_tb AS r
             ON s.project_unique_id = r.project_unique_id
@@ -32,18 +32,26 @@ function fetchStageOneData(PDO $conn, $projectUniqueId) {
         'solution'             => $rows[0]['solution'],
         'technology'           => $rows[0]['technology'],
         'deal_size'            => $rows[0]['deal_size'],
-        'distributor'          => $rows[0]['distributor'],
         'stage_one_remarks'    => $rows[0]['stage_one_remarks'],
-        'product'              => $rows[0]['product'],
         'status_stage_one'     => $rows[0]['status_stage_one'],
         'start_date_stage_one' => $rows[0]['start_date_stage_one'],
         'end_date_stage_one'   => $rows[0]['end_date_stage_one'],
-        'requirements'         => []
+        'requirements'         => [],
+        'products'             => [],
+        'distributors'         => []
     ];
 
-    foreach ($rows as $row) {
+     foreach ($rows as $row) {
         if (!empty($row['requirement_one'])) {
             $stageOneData['requirements'][] = $row['requirement_one'];
+        }
+
+        if (!empty($row['product_one'])) {
+            $stageOneData['products'][] = $row['product_one'];
+        }
+
+        if (!empty($row['distributor_one'])) {
+            $stageOneData['distributors'][] = $row['distributor_one'];
         }
     }
 
@@ -84,7 +92,7 @@ if ($projectUniqueId && isset($conn)) {
 }
 
 if (!empty($error)) {
-    echo '<div class="alert alert-warning" role="alert">';
+    echo '<div class="alert alert-warning" style="display:none;" role="alert">';
     echo htmlspecialchars($error);
     echo '</div>';
 }

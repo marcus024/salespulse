@@ -42,11 +42,16 @@ try {
             exit;
         }
 
-        $user_id_sql = "SELECT COUNT(*) FROM salesauth";
+        // Get the highest existing user ID
+        $user_id_sql = "SELECT MAX(CAST(SUBSTRING_INDEX(user_id_current, '-', -1) AS UNSIGNED)) FROM salesauth";
         $user_id_stmt = $conn->prepare($user_id_sql);
         $user_id_stmt->execute();
-        $user_count = $user_id_stmt->fetchColumn();
-        $new_user_id = "UAS-SALESPULSE-USER-" . ($user_count + 1);
+        $max_user_id = $user_id_stmt->fetchColumn();
+
+        // Determine the new user ID
+        $new_user_id_number = ($max_user_id !== null) ? $max_user_id + 1 : 1;
+        $new_user_id = "UAS-SALESPULSE-USER-" . $new_user_id_number;
+
 
         // Insert user data into the database
         $sql = "INSERT INTO salesauth (user_id_current, firstname, lastname, email, company, position, role, gender, image, password, apass, status) 

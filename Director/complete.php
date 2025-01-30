@@ -79,90 +79,88 @@ function updateStageOne($conn, $projectUniqueId, $inputData) {
             $projectUniqueId
         ]);
 
-        // 2) Handle requirement items in requirementone_tb
-        $insertedCount = 0;
-        $updatedCount  = 0;
+        // Handle requirement items in requirementone_tb
+        $insertedRequirementCount = 0;
+        $updatedRequirementCount = 0;
 
         if (!empty($inputData['requirement_one'])) {
             // Prepare statements
-            $insertStmt = $conn->prepare("
+            $insertReqStmt = $conn->prepare("
                 INSERT INTO requirementone_tb
                     (requirement_one, project_unique_id, distributor_one, product_one, requirement_id_1)
                 VALUES (?, ?, ?, ?, ?)
             ");
 
-            $updateStmt = $conn->prepare("
+            $updateReqStmt = $conn->prepare("
                 UPDATE requirementone_tb
-                   SET requirement_one = ?,
-                       distributor_one = ?,
-                       product_one    = ?
-                 WHERE requirement_id_1 = ?
-                   AND project_unique_id = ?
+                SET requirement_one = ?,
+                    distributor_one = ?,
+                    product_one = ?
+                WHERE requirement_id_1 = ?
+                AND project_unique_id = ?
             ");
 
-            // We'll also need a check statement to see if the row truly exists
-            $checkStmt = $conn->prepare("
+            $checkReqStmt = $conn->prepare("
                 SELECT 1 
-                  FROM requirementone_tb
-                 WHERE requirement_id_1 = ? 
-                   AND project_unique_id = ?
+                FROM requirementone_tb
+                WHERE requirement_id_1 = ?
+                AND project_unique_id = ?
                 LIMIT 1
             ");
 
-            // Loop each row by index
-            foreach ($inputData['requirement_one'] as $index => $reqValue) {
-                // Sanitize
-                $requirementOne = htmlspecialchars($reqValue ?? '', ENT_QUOTES, 'UTF-8');
-                $productOne     = htmlspecialchars($inputData['product_one'][$index]     ?? '', ENT_QUOTES, 'UTF-8');
+            foreach ($inputData['requirement_one'] as $index => $requirement) {
+                // Sanitize input
+                $sanitizedRequirement = htmlspecialchars($requirement ?? '', ENT_QUOTES, 'UTF-8');
+                $productOne = htmlspecialchars($inputData['product_one'][$index] ?? '', ENT_QUOTES, 'UTF-8');
                 $distributorOne = htmlspecialchars($inputData['distributor_one'][$index] ?? '', ENT_QUOTES, 'UTF-8');
-                $requirementId  = $inputData['requirement_id_1'][$index]                ?? '';
+                $requirementId = $inputData['requirement_id_1'][$index] ?? '';
 
+                // Skip insert if either product_one or distributor_one is 'Select'
+                if ($productOne === 'Select' || $distributorOne === 'Select') {
+                    error_log("Skipping insert for Project ID {$projectUniqueId} because product or distributor is 'Select'.");
+                    continue;
+                }
+
+                // Only proceed if at least one field (requirement_one, product_one, distributor_one) is not empty
+                if (empty($sanitizedRequirement) && empty($productOne) && empty($distributorOne)) {
+                    error_log("Skipping blank requirement entry for Project ID {$projectUniqueId}. All fields are empty.");
+                    continue;
+                }
+
+                // If requirement_id_1 exists and at least one field is not empty, proceed with update or insert
                 if (!empty($requirementId)) {
-                    // Attempt UPDATE first
-                    $updateStmt->execute([
-                        $requirementOne,
+                    $updateReqStmt->execute([
+                        $sanitizedRequirement,
                         $distributorOne,
                         $productOne,
                         $requirementId,
                         $projectUniqueId
                     ]);
 
-                    $updatedRows = $updateStmt->rowCount();
+                    $updatedRows = $updateReqStmt->rowCount();
                     if ($updatedRows > 0) {
-                        // Data was actually changed
-                        $updatedCount += $updatedRows;
+                        $updatedRequirementCount += $updatedRows;
                     } else {
-                        // rowCount=0 => either row not found OR data unchanged
-                        // Let's check if the row truly exists
-                        $checkStmt->execute([$requirementId, $projectUniqueId]);
-                        if ($checkStmt->rowCount() === 0) {
-                            // No row => do Insert
-                            $insertStmt->execute([
-                                $requirementOne,
+                        // Check if requirement_id_1 exists, then insert if it doesn't
+                        $checkReqStmt->execute([$requirementId, $projectUniqueId]);
+                        if ($checkReqStmt->rowCount() === 0) {
+                            // Insert the new requirement
+                            $insertReqStmt->execute([
+                                $sanitizedRequirement,
                                 $projectUniqueId,
                                 $distributorOne,
                                 $productOne,
                                 $requirementId
                             ]);
-                            // MySQL often returns 0 for rowCount on INSERT, so manually increment
-                            $insertedCount++;
-                        } 
-                        // else row found, but data is unchanged => do nothing
+                            $insertedRequirementCount++;
+                        }
                     }
                 } else {
-                    // No requirementId => new row => always INSERT
-                    $insertStmt->execute([
-                        $requirementOne,
-                        $projectUniqueId,
-                        $distributorOne,
-                        $productOne,
-                        '' // or generate an ID if you want
-                    ]);
-                    // Manually increment for a successful insert
-                    $insertedCount++;
+                    error_log("Empty requirement_id_1 for Project ID {$projectUniqueId}. Skipping insert.");
                 }
             }
         }
+
 
         // Insert data into stagetwo table
         $stagetwoQuery = "INSERT INTO stagetwo (start_date_stage_two, end_date_stage_two, status_stage_two, project_unique_id) 
@@ -434,7 +432,6 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
         // Update the stagethree table
         $query = "UPDATE stagethree SET 
             stage_three_remarks = ?, 
-            product = ?, 
             deal_size = ?, 
             technology = ?, 
             solution = ? 
@@ -442,7 +439,6 @@ function updateStageThree($conn, $projectUniqueId, $inputData) {
         $stmt = $conn->prepare($query);
         $stmt->execute([
             $inputData['stage_three_remarks'] ?? null,
-            $inputData['product'] ?? null,
             $inputData['deal_size'] ?? null,
             $inputData['technology'] ?? null,
             $inputData['solution'] ?? null,

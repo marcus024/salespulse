@@ -13,9 +13,8 @@ if (empty($currentCompany)) {
 
 try {
     // Retrieve client type list for the current company
-    $sql = "SELECT sourcetype FROM source_tb WHERE company = :company ORDER BY sourcetype ASC";
+    $sql = "SELECT *  FROM source_tb ORDER BY sourcetype ASC";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':company', $currentCompany, PDO::PARAM_STR);
     $stmt->execute();
 
     $clientTypes = $stmt->fetchAll(PDO::FETCH_ASSOC);

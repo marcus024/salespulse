@@ -16,9 +16,9 @@ if (empty($currentCompany)) {
 
 try {
     // Retrieve distributor list for current company; ordering alphabetically
-    $sql = "SELECT distrubutor FROM distributor WHERE company = :company ORDER BY distrubutor ASC";
+    $sql = "SELECT * FROM distributor  ORDER BY distrubutor ASC";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':company', $currentCompany, PDO::PARAM_STR);
+    // $stmt->bindParam(':company', $currentCompany, PDO::PARAM_STR);
     $stmt->execute();
     
     $distributors = $stmt->fetchAll(PDO::FETCH_ASSOC);

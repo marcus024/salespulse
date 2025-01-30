@@ -69,7 +69,6 @@ try {
                 $stmt = $conn->prepare($insertQuery);
                 $stmt->execute(['logged_in' => $loginTime, 'peak_user' => $userId]);
 
-
                 // Implement login attempt tracking
                 if (isset($_SESSION['login_attempts'])) {
                     unset($_SESSION['login_attempts']); // Reset login attempts on successful login

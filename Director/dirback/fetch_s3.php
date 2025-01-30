@@ -72,10 +72,9 @@ if ($projectUniqueId && isset($conn)) {
     }
 }
 
+// Display Error Message if Any
 if (!empty($error)) {
-    echo '<div class="alert alert-warning" role="alert">';
-    echo htmlspecialchars($error);
-    echo '</div>';
+    echo '<div class="alert alert-warning" style="display:none;" role="alert">' . htmlspecialchars($error) . '</div>';
 }
 
 ?>

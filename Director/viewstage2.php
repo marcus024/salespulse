@@ -56,6 +56,10 @@ include_once('dirback/dirviewback.php');
         }
     </style>
     <style>
+        :root {
+            --accent-color: #f9ce45; /* Accent color */
+        }
+
         .nav-item{
             color: white; /* Optional: Adjust text color when the item is active */
             font-weight: bold; /* Optional: Make the active menu text bold */
@@ -64,18 +68,19 @@ include_once('dirback/dirviewback.php');
         }
         /* Active Nav Item Background Color */
         .nav-item.active .nav-link {
-            /* padding-left:10px; */
-            background-color: white; /* Change this color to your preferred background color */
-            color: #36b9cc; /* Optional: Adjust text color when the item is active */
+            padding-left:10px;
+            background-color: #2a2925; /* Change this color to your preferred background color */
+            color: white; /* Optional: Adjust text color when the item is active */
             font-weight: bold; /* Optional: Make the active menu text bold */
             border-radius:10px;
             margin-bottom:5px;
+            border-left: 5px solid var(--accent-color);
         }
         /* Hover Effect for Nav Items */
         .nav-item .nav-link:hover {
-            /* padding-left:10px; */
-            background-color: white; /* Same color for hover effect */
-            color: #36b9cc; /* Text color for hover */
+            padding-left:10px;
+            background-color:  #2a2925; /* Same color for hover effect */
+            color:white; /* Text color for hover */
             border-radius:10px;
             margin-bottom:5px;
         }
@@ -123,13 +128,120 @@ include_once('dirback/dirviewback.php');
             margin-top: 5px; /* Space between company name and copyright */
         }
     </style>
+    <style>
+        .custom-select {
+            appearance: none; 
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            background: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23555555"%3E%3Cpath d="M7 10l5 5 5-5z"/%3E%3C/svg%3E') no-repeat right 10px center;
+            background-color: #fff;
+            background-size: 12px 12px;
+            padding-right: 30px; 
+        }
+        .custom-select-dark {
+            background: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff"%3E%3Cpath d="M7 10l5 5 5-5z"/%3E%3C/svg%3E') no-repeat right 10px center;
+            background-color: #343a40;
+            color: white;
+            padding-right: 30px;
+        }
+    </style>
+    <style>
+    /* Optional: Add a border or styling for the scrollable area */
+        .notify::-webkit-scrollbar {
+            width: 4px; /* Width of the vertical scrollbar */
+            height: 4px; /* Height of the horizontal scrollbar */
+        }
+
+        .notify::-webkit-scrollbar-thumb {
+            background-color: #36b9cc;
+            border-radius: 10px;
+            height: 5px; /* Minimum height for the scrollbar thumb */
+        }
+
+        .notify::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+    </style>
+    <style>
+        /* Hover effect for profile image */
+        .profile-img:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(1.1);
+            transition: all 0.2s ease-in-out;
+        }
+
+        /* Hover effect for popup links */
+        .popup-link {
+            padding: 8px 0;
+            text-decoration: none;
+            color: #555;
+            margin-bottom: 5px;
+            transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+
+        .popup-link:hover {
+            color: #36b9cc;
+            border-radius: 4px;
+            text-decoration:none;
+        }
+
+        /* Special hover for logout link */
+        .logout-link:hover {
+            color: #36b9cc;
+            text-decoration:none;
+        }
+    </style>
+    <!-- Keyframe Animation -->
+    <style>
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(1.5);
+            opacity: 0.4;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    </style>
+    <style>
+        .form-label {
+            color: #555;
+            font-size: 12px;
+        }
+        .form-control {
+            color: white;
+            background: #1f2024;
+            font-size: 12px;
+            border: 1px solid #444; /* Optional: Adds a border for better visibility */
+            border-radius: 4px;
+        }
+        .form-control[readonly] {
+            color: white;
+            background: #1f2024; /* Keeps the same background as normal state */
+            font-size: 12px;
+        }
+        .form-control:focus {
+            color: white;
+            background: #1f2024;
+            font-size: 12px;
+            outline: none; /* Removes default blue outline */
+            border-color: #555; /* Optional: Changes border color when focused */
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.2); /* Adds subtle focus effect */
+        }
+    </style>
+
 </head>
-<body id="page-top">
+<body id="page-top" style="background-color:#15151a;">
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" style="background-color:#15151a;">
         <!-- Sidebar -->
         <!-- Sidebar -->
-        <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#36b9cc; width: 200px; transition: all 0.3s; padding-left: 20px;">
+        <ul class="navbar-nav floating-sidebar" id="accordionSidebar" style="background-color:#1f2024; width: 200px; transition: all 0.3s; padding-left: 20px;">
             <!-- Sidebar - Brand -->
             <div 
                 class="d-flex align-items-center mx-1" 
@@ -191,11 +303,11 @@ include_once('dirback/dirviewback.php');
             <!-- Main Content -->
             <div id="content" style="background-color:white;">
                 <!-- Topbar -->
-                <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:white; padding-right:30px; padding-left:220px; z-index: 300;">
+                <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:#15151a; padding-right:30px; padding-left:220px; z-index: 300;">
                     <!-- Left Section: Home and Welcome Message -->
                     <div class="d-flex align-items-center" style="margin-top: 10px;"> <!-- Added margin-top to lower the left section -->
                         <div>
-                            <h1 style="color:#36b9cc; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Home</h1> <!-- Reduced spacing -->
+                            <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Home</h1> <!-- Reduced spacing -->
                             <p style="font-size:15px; color: #555; font-family:'Poppins'; margin: 0px;">Welcome Back <?php echo $_SESSION['user_name']; ?>!</p>
                         </div>
                     </div>
@@ -206,7 +318,7 @@ include_once('dirback/dirviewback.php');
                         <div class="mr-2" style="position: relative;">
                             <!-- Notification Button -->
                             <button id="notification-button" style="color: #36b9cc; padding-right: 50px; position: relative; background: none; border: none; cursor: pointer;">
-                                <img src="../images/notif.png" alt="Notification" style="height: 20px; width: 20px;">
+                                <img src="../images/notif_yellow.png" alt="Notification" style="height: 20px; width: 20px;">
                                 <span id="notification-count" style="
                                     font-family: 'Poppins', sans-serif; 
                                     font-weight: bold; 
@@ -221,8 +333,6 @@ include_once('dirback/dirviewback.php');
                                     
                                 </span>
                             </button>
-
-
                             <!-- Dropdown Container (Initially hidden) -->
                             <div id="notification-dropdown" 
                                 style="
@@ -243,23 +353,6 @@ include_once('dirback/dirviewback.php');
                                 <div style="text-align: center; border-top: 1px solid #ccc; padding: 8px;">
                                     <a href="#" id="toggleNotifications"  style="font-size: 12px; color: #36b9cc; text-decoration: none;">Show All Alerts</a>
                                 </div>
-                                <style>
-                                /* Optional: Add a border or styling for the scrollable area */
-                                    .notify::-webkit-scrollbar {
-                                        width: 4px; /* Width of the vertical scrollbar */
-                                        height: 4px; /* Height of the horizontal scrollbar */
-                                    }
-
-                                    .notify::-webkit-scrollbar-thumb {
-                                        background-color: #36b9cc;
-                                        border-radius: 10px;
-                                        height: 5px; /* Minimum height for the scrollbar thumb */
-                                    }
-
-                                    .notify::-webkit-scrollbar-thumb:hover {
-                                        background-color: #555;
-                                    }
-                                </style>
                             </div>
                         </div>
                         <!-- Profile Name and Picture -->
@@ -282,497 +375,200 @@ include_once('dirback/dirviewback.php');
                             style="position: absolute; top: 50px; right: 0; width: 200px; background-color: #fff; border: 1px solid #ccc; border-radius: 8px; padding: 10px; display: none; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                             <nav style="display: flex; flex-direction: column; font-family: 'Poppins'; font-size: 14px;">
                                 <a href="#" class="popup-link" onclick="showProfile()">Profile</a>
-                                <a href="#" class="popup-link" >Settings</a>
+                                <a href="#" class="popup-link">Settings</a>
                                 <a href="#" class="popup-link logout-link" data-bs-toggle="modal" data-bs-target="#outLog">Logout</a>
                             </nav>
                         </div>
-                        <style>
-                            /* Hover effect for profile image */
-                            .profile-img:hover {
-                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                                transform: scale(1.1);
-                                transition: all 0.2s ease-in-out;
-                            }
-
-                            /* Hover effect for popup links */
-                            .popup-link {
-                                padding: 8px 0;
-                                text-decoration: none;
-                                color: #555;
-                                margin-bottom: 5px;
-                                transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-                            }
-
-                            .popup-link:hover {
-                                color: #36b9cc;
-                                border-radius: 4px;
-                                text-decoration:none;
-                            }
-
-                            /* Special hover for logout link */
-                            .logout-link:hover {
-                                color: #36b9cc;
-                                text-decoration:none;
-                            }
-                        </style>
                     </div>
                 </div>
                 <!-- End of Topbar -->
                 <!-- Home Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" style=" background-color:#15151a;">
                     <div class="col-md-12 mb-6">
-                        <div class="card shadow-sm">
+                        <div class="card shadow-sm" style=" background-color:#1f2024; border:none;">
                             <div class="card-body">
                                     <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 0px;">
                                     <div class="stage-title" style="width: 100%; text-align: left; margin-bottom: 0; padding-bottom: 0; display: flex; align-items: start;">
                                         <div style="margin-right: 10px;">
-                                            <img src="../images/projecticon.png" alt="Project Icon" style="width: 60px; height: 60px; vertical-align: middle;" />
+                                            <img src="../images/project_s.png" alt="Project Icon" style="width: 60px; height: 60px; vertical-align: middle;" />
                                         </div>
+                                        <?php include("dirback/pro_stage_details.php"); ?>
+                                       
                                         <div class="col-md-12 mb-3">
-                                            <p style="color: #36b9cc; margin-top: 0; font-family: 'Poppins'; font-size:30px; font-weight:bold; display: inline;">PROJECT PROFILE</p>
-                                            <p id="projectUniqueId" style="color: #36b9cc; margin-top: 0; margin-bottom: 5px; font-family: 'Poppins'; font-size: 12px; font-weight: 500;">
+                                            <p style="color:white; margin-top: 0; font-family: 'Poppins'; font-size:30px; font-weight:bold; display: inline;"><?php echo htmlspecialchars($project['company_name']); ?></p>
+                                            <p id="projectUniqueId" style="color:white; margin-top: 0; margin-bottom: 5px; font-family: 'Poppins'; font-size: 12px; font-weight: 500;">
                                                 Project ID: <span id="project-id-placeholder"><strong><?php echo htmlspecialchars($project['project_unique_id']); ?></strong></span>
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #36b9cc;">
-                                        <button onclick="history.back()" style="background: none; border: none; color: #36b9cc; font-size: 24px; cursor: pointer;">
+                                    <div class="stage-percentage" style="width: 45%; text-align: right; font-size: 16px; color: #555;">
+                                        <button onclick="history.back()" style="background: none; border: none; color: #555; font-size: 24px; cursor: pointer;">
                                             <i class="fas fa-arrow-left"></i> 
                                         </button>
                                     </div>
                                 </div>
-                                <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px"> 
-                                    <div class="container" style="background-color: #36b9cc; padding: 10px; border-radius: 20px">
-                                        <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="clientCompany" class="form-label" style="font-size: 12px; color: white;">Client/Company</label>
-                                                        <input readonly type="text" class="form-control input-sm" id="clientCompany" value="<?php echo htmlspecialchars($project['company_name']); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="accountManager" class="form-label" style="font-size: 12px; color: white;">Account Manager</label>
-                                                        <input readonly type="text" class="form-control" id="accountManager" value="<?php echo htmlspecialchars($project['account_manager']); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="productType" class="form-label" style="font-size: 12px; color: white;">Product Type</label>
-                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['product_type']); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
+                                
+                                <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px"> 
+                                    <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
+                                        <div class="form-step" id="step1">
+                                            <div class="stage-container" style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background: linear-gradient(135deg, #f9ce45, #2a2925); border-radius: 8px; position: relative; overflow: hidden;">
+                                                <!-- Animated Background -->
+                                                <div class="animated-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 20%); animation: pulse 4s infinite; z-index: 1; pointer-events: none;"></div>
+                                                <!-- Right Section: Stage Percentage -->
+                                                <div class="stage-percentage" style="width: 100%; text-align: left; font-size: 40px; color: #1f2024; z-index: 2; font-weight:bold;">
+                                                    
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="startDate" class="form-label" style="font-size: 12px; color: white;">Start Date</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['start_date']); ?>" id="startDate" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="endDate" class="form-label" style="font-size: 12px; color: white;">End Date</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['end_date']); ?>" id="endDate" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="source" class="form-label" style="font-size: 12px; color: white;">Source</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['source']); ?>" id="source" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
+                                                <!-- Left Section: Stage Title with Vertical Alignment -->
+                                                <div class="stage-title" style="width: 30%; display: flex; flex-direction: column; align-items: flex-end; z-index: 2;">
+                                                    <p id="projectUniqueId" style="color: white; margin-bottom: 5px; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 30px;">
+                                                        Stage 2 
+                                                        <span hidden style="color: rgba(255, 255, 255, 0.9);" id="project-id-placeholder">[Project ID]</span>
+                                                    </p>
+                                                    <p style="color: white; margin-top: 0; font-family: 'Poppins', sans-serif; font-size: 16px;">
+                                                        Engagement/Discovery
+                                                    </p>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="status" class="form-label" style="font-size: 12px; color: white;">Status</label>
-                                                        <input readonly type="text" class="form-control" value="<?php echo htmlspecialchars($project['status']); ?>" id="currentStage"  style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="currentStage" class="form-label" style="font-size: 12px; color: white;">Current Stage</label>
-                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['current_stage']); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                    <div class="col-md-4 mb-2">
-                                                        <label for="clientType" class="form-label" style="font-size: 12px; color: white;">Client Type</label>
-                                                        <input readonly type="text" class="form-control" id="currentStage" value="<?php echo htmlspecialchars($project['client_type']); ?>" style="font-size: 12px; color: #555; padding: 5px;" required>
-                                                    </div>
-                                                </div>
-                                                <?php include("dirback/pro_stage_details.php"); ?>
-                                                <div class="container mt-4 p-3" style="background: white; border-radius: 8px;">
-                                                    <h3 style="font-family: 'Poppins', sans-serif; font-weight: bold; color: #555; text-align: center; margin-bottom: 5pxpx;">Stage 2 of <?php echo htmlspecialchars($project['company_name']); ?></h3>
-                                                   <!-- Row to hold the search bar and export buttons -->
-                                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                                        <!-- Placeholder for future left-side content (if needed) -->
-                                                        <div></div>
-                                                        <!-- Right side: Search bar and Export dropdown -->
-                                                        <!-- <div class="d-flex align-items-center" style="gap: 10px;">
-                                                            
-                                                            <button type="button" class="btn btn-link" onclick="refreshPage()" 
-                                                                    style="font-size: 12px; text-decoration: underline; color: #36b9cc; margin: 0; padding: 0;">
-                                                                Refresh
-                                                            </button>
-                                                            
-                                                            <div class="btn-group" role="group">
-                                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
-                                                                        style="font-size: 10px; height: 30px; margin: 0; border:none; background-color:#36b9cc">
-                                                                    Export
-                                                                </button>
-                                                                <ul class="dropdown-menu">
-                                                                    <li><a class="dropdown-item" href="#" onclick="exportToPDF()">Download PDF</a></li>
-                                                                    <li><a class="dropdown-item" href="#" onclick="exportToExcel()">Download Excel</a></li>
-                                                                    <li><a class="dropdown-item" href="#" onclick="exportToCSV()">Download CSV</a></li>
-                                                                    <li><a class="dropdown-item" href="#" onclick="printTable()">Print</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div> -->
-                                                    </div>
+                                            </div>
+                                            <div class="container" style="background-color:#1f2024; padding: 10px; border-radius: 20px"> 
+                                                <div class="container" style="background-color:#1f2024; padding: 5px; border-radius: 20px">
                                                     <?php include('dirback/fetch_s2.php'); ?>
-                                                    <?php
-                                                    // Ensure data exists before populating the fields
-                                                    if (!empty($data)) {
-                                                        $stageTwoRow = $data['stage_two'];
-                                                        $engagements = $data['engagements'];
-                                                        $requirements = $data['requirements'];
-                                                    }
-                                                    ?>
-                                                    <div id="details-view" >
-                                                        <div class="container" style="background-color: white; padding: 10px; border-radius: 20px"> 
-                                                            <div class="container" style="background-color: white; padding: 5px; border-radius: 20px">
-                                                                <div class="row mb-3">
-                                                                    <!-- Start Date -->
-                                                                    <div class="col-md-3">
-                                                                        <label style="font-size:12px; color:#555" class="form-label">Start Date</label>
-                                                                        <input 
-                                                                            style="font-size:12px; color:#555" 
-                                                                            type="text" 
-                                                                            class="form-control" 
-                                                                            id="stage-two-start"
-                                                                            readonly
-                                                                            value="<?php echo htmlspecialchars($stageTwoRow['start_date_stage_two'] ?? ''); ?>"
-                                                                        >
-                                                                    </div>
-                                                                    <!-- End Date -->
-                                                                    <div class="col-md-3">
-                                                                        <label style="font-size:12px; color:#555" class="form-label">End Date</label>
-                                                                        <input 
-                                                                            style="font-size:12px; color:#555" 
-                                                                            type="text" 
-                                                                            class="form-control" 
-                                                                            id="stage-two-end"
-                                                                            readonly
-                                                                            value="<?php echo htmlspecialchars($stageTwoRow['end_date_stage_two'] ?? ''); ?>"
-                                                                        >
-                                                                    </div>
-                                                                    <!-- Status -->
-                                                                    <div class="col-md-3">
-                                                                        <label style="font-size:12px; color:#555" class="form-label">Status</label>
-                                                                        <input 
-                                                                            style="font-size:12px; color:#555"
-                                                                            type="text"
-                                                                            class="form-control"
-                                                                            id="stage-two-status"
-                                                                            readonly
-                                                                            value="<?php echo htmlspecialchars($stageTwoRow['status_stage_two'] ?? ''); ?>"
-                                                                        >
-                                                                    </div>
-                                                                    <!-- Technology -->
-                                                                    <div class="col-md-3">
-                                                                        <label style="font-size:12px; color:#555" class="form-label">Technology</label>
-                                                                        <input 
-                                                                            style="font-size:12px; color:#555"
-                                                                            type="text"
-                                                                            class="form-control"
-                                                                            id="technology"
-                                                                            readonly
-                                                                            value="<?php echo htmlspecialchars($stageTwoRow['technology'] ?? ''); ?>"
-                                                                        >
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row mb-3">
-                                                                    <!-- Deal Size -->
-                                                                    <div class="col-md-3">
-                                                                        <label style="font-size:12px; color:#555" class="form-label">Deal Size</label>
-                                                                        <input 
-                                                                            style="font-size:12px; color:#555"
-                                                                            type="number"
-                                                                            class="form-control"
-                                                                            id="dealSize"
-                                                                            readonly
-                                                                            value="<?php echo htmlspecialchars($stageTwoRow['deal_size'] ?? ''); ?>"
-                                                                        >
-                                                                    </div>
-                                                                    <!-- Product -->
-                                                                    <div class="col-md-3">
-                                                                        <label style="font-size:12px; color:#555" class="form-label">Product</label>
-                                                                        <input 
-                                                                            style="font-size:12px; color:#555"
-                                                                            type="text"
-                                                                            class="form-control"
-                                                                            id="product"
-                                                                            readonly
-                                                                            value="<?php echo htmlspecialchars($stageTwoRow['product'] ?? ''); ?>"
-                                                                        >
-                                                                    </div>
-                                                                    <!-- Solution -->
-                                                                    <div class="col-md-6">
-                                                                        <label style="font-size:12px; color:#555" class="form-label">Solution</label>
-                                                                        <textarea 
-                                                                            name="solution"
-                                                                            class="form-control"
-                                                                            id="remarks" 
-                                                                            style="font-size:12px; color:#555"
-                                                                            readonly
-                                                                        ><?php echo htmlspecialchars($stageTwoRow['solution'] ?? ''); ?></textarea>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; color:white;  font-weight:bold;">
+                                                    Project Profile
+                                                    </p>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-2">
+                                                        <label for="requirement" class="form-label">Status</label>
+                                                        <input  type="text" class="form-control" id="stage-two-status" value="<?= htmlspecialchars($data['stage_two']['status_stage_two'] ?? '') ?>" readonly>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="requirement" class="form-label">End Date</label>
+                                                        <input  type="text" class="form-control" id="stage-two-end" value="<?= htmlspecialchars($data['stage_two']['end_date_stage_two'] ?? '') ?>" readonly>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <label for="requirement" class="form-label">Start Date</label>
+                                                        <input  type="text" class="form-control" id="stage-two-start" value="<?= htmlspecialchars($data['stage_two']['start_date_stage_two'] ?? '') ?>" readonly>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label for="technology" class="form-label">Technology</label>
+                                                        <input  type="text" class="form-control" id="technology" value="<?= htmlspecialchars($data['stage_two']['technology'] ?? '') ?>" readonly>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label for="dealSize" class="form-label">Deal Size</label>
+                                                        <input readonly  name="deal_size" type="text" class="form-control" id="deal_size2" value="<?= htmlspecialchars($data['stage_two']['deal_size'] ?? '') ?>" placeholder="e.g. 5000">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-12">
+                                                        <label for="solution" class="form-label">Solution</label>
+                                                        <textarea readonly name="solution" class="form-control" id="solution2" placeholder="e.g. Sample Solution" style="height:100px;"><?= htmlspecialchars($data['stage_two']['solution'] ?? '') ?></textarea>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div style="border-top: 1px ; margin: 20px 0;"></div> 
 
-                                                            <!-- Engagements Container -->
-                                                            <div class="container" style="background-color: white; padding: 5px; border-radius: 20px">
-                                                                <div class="row mb-3">
-                                                                    <div class="col-md-3">
-                                                                        <label style="font-size:12px; color:#555" class="form-label">Type of Engagement</label>
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <label style="font-size:12px; color:#555" class="form-label">Date</label>
-                                                                    </div>
-                                                                    <div class="col-md-5">
-                                                                        <label style="font-size:12px; color:#555" class="form-label">Remarks</label>
-                                                                    </div>
-                                                                </div>
-                                                                <!-- Loop over each engagement row -->
-                                                                <div >
-                                                                    <?php if (!empty($engagements)): ?>
-                                                                        <?php foreach ($engagements as $eng): ?>
-                                                                            <div class="row engagement-fields mb-3">
-                                                                                <div class="col-md-3">
-                                                                                    <input 
-                                                                                        style="font-size:12px; color:#555"
-                                                                                        type="text"
-                                                                                        class="form-control"
-                                                                                        readonly
-                                                                                        value="<?php echo htmlspecialchars($eng['engagement_type'] ?? ''); ?>"
-                                                                                    >
-                                                                                </div>
-                                                                                <div class="col-md-3">
-                                                                                    <input 
-                                                                                        style="font-size:12px; color:#555"
-                                                                                        type="text"
-                                                                                        class="form-control"
-                                                                                        readonly
-                                                                                        value="<?php echo htmlspecialchars($eng['engagement_date'] ?? ''); ?>"
-                                                                                    >
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <input 
-                                                                                        style="font-size:12px; color:#555"
-                                                                                        type="text"
-                                                                                        class="form-control"
-                                                                                        readonly
-                                                                                        value="<?php echo htmlspecialchars($eng['engagement_remarks'] ?? ''); ?>"
-                                                                                    >
-                                                                                </div>
-                                                                            </div>
-                                                                        <?php endforeach; ?>
-                                                                    <?php else: ?>
-                                                                        <p style="font-size:12px; color:#555;">No engagements found.</p>
-                                                                    <?php endif; ?>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Requirements Container -->
-                                                            <div class="container" style="background-color: white; padding: 5px; border-radius: 20px">
-                                                                <!-- Header Row -->
-                                                                <div class="row mb-3">
-                                                                    <div class="col-md-3">
-                                                                        <label style="font-size:12px; color:#555" class="form-label">Requirement</label>
+                                                <div class="container" style="background-color: #1f2024; padding: 5px; border-radius: 20px">
+                                                    <div id="engagement1Container">
+                                                    <?php if (!empty($data['engagements'])): ?>
+                                                        <?php foreach ($data['engagements'] as $index => $engagement): ?>
+                                                            <div class="engagement-block" data-index="<?= $index + 1 ?>">
+                                                                <p class="text-center mb-1" style="font-family: 'Poppins'; color:white; font-weight:bold;" id="engagement<?= $index + 1 ?>">
+                                                                    Engagement <?= $index + 1 ?>
+                                                                </p>
+                                                                <input type="hidden" name="engagement_id_2[]" value="st2eng<?= $index + 1 ?>" id="eng_<?= $index + 1 ?>_id">
+                                                                
+                                                                <div class="row mb-1">
+                                                                    <div class="col-md-4">
+                                                                        <label for="engagement" class="form-label">Type of Engagement</label>
                                                                     </div>
                                                                     <div class="col-md-2">
-                                                                        <label style="font-size:12px; color:#555" class="form-label">Date</label>
+                                                                        <label for="engagement" class="form-label">Date</label>
                                                                     </div>
                                                                     <div class="col-md-5">
-                                                                        <label style="font-size:12px; color:#555" class="form-label">Requirement Remarks</label>
+                                                                        <label for="engagement" class="form-label">Remarks</label>
                                                                     </div>
                                                                 </div>
-                                                                <!-- Loop over each requirement -->
-                                                                <div >
-                                                                    <?php if (!empty($requirements)): ?>
-                                                                        <?php foreach ($requirements as $req): ?>
-                                                                            <div class="row requirement-fields mb-3">
-                                                                                <div class="col-md-3">
-                                                                                    <input 
-                                                                                        style="font-size:12px; color:#555"
-                                                                                        type="text"
-                                                                                        class="form-control"
-                                                                                        readonly
-                                                                                        value="<?php echo htmlspecialchars($req['requirement_two'] ?? ''); ?>"
-                                                                                    >
-                                                                                </div>
-                                                                                <div class="col-md-2">
-                                                                                    <input 
-                                                                                        style="font-size:12px; color:#555"
-                                                                                        type="text"
-                                                                                        class="form-control"
-                                                                                        readonly
-                                                                                        value="<?php echo htmlspecialchars($req['requirement_date'] ?? ''); ?>"
-                                                                                    >
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <input 
-                                                                                        style="font-size:12px; color:#555"
-                                                                                        type="text"
-                                                                                        class="form-control"
-                                                                                        readonly
-                                                                                        value="<?php echo htmlspecialchars($req['requirement_remarks'] ?? ''); ?>"
-                                                                                    >
-                                                                                </div>
-                                                                            </div>
-                                                                        <?php endforeach; ?>
-                                                                    <?php else: ?>
-                                                                        <p style="font-size:12px; color:#555;">No requirements found.</p>
-                                                                    <?php endif; ?>
-                                                                </div>
-                                                            </div>
-
-                                                            <!-- Stage Two Remarks -->
-                                                            <div class="container" style="background-color: white; padding: 10px; border-radius: 20px">
-                                                                <div class="row">
-                                                                    <div class="col-md-12">
-                                                                        <label style="font-size:12px; color:#555" class="form-label">Stage Remarks</label>
-                                                                        <input 
-                                                                            style="font-size:12px; color:#555"
-                                                                            type="text"
-                                                                            class="form-control"
-                                                                            id="stageremarks"
-                                                                            readonly
-                                                                            value="<?php echo htmlspecialchars($stageTwoRow['stage_two_remarks'] ?? ''); ?>"
-                                                                        >
+                                                                
+                                                                <div class="row engagement-fields mb-3">
+                                                                    <div class="col-md-4">
+                                                                        <input readonly name="engagement_type[]" type="text" class="form-control" value="<?= htmlspecialchars($engagement['engagement_type']) ?>">
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input readonly name="engagement_date[]" type="text"  class="form-control" value="<?= htmlspecialchars($engagement['engagement_date']) ?>">
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <input readonly name="engagement_remarks[]" type="text" class="form-control" value="<?= htmlspecialchars($engagement['engagement_remarks']) ?>">
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
+                                                        <?php endforeach; ?>
+                                                    <?php else: ?>
+                                                        <p class="text-warning" style="font-size:10px;">No engagement data available.</p>
+                                                    <?php endif; ?>
                                                 </div>
-                                                <style>
-                                                    .action-buttons {
-                                                        display: flex;
-                                                        gap: 10px; /* Space between buttons */
-                                                        align-items: center;
-                                                    }
-                                                    
 
-                                                    .action-buttons .view-btn i,
-                                                    .action-buttons .edit-btn i,
-                                                    .action-buttons .delete-btn i {
-                                                        transition: color 0.3s ease, transform 0.3s ease;
-                                                        cursor: pointer;
-                                                    }
+                                                </div>
+                                                <div style="border-top: 1px ; margin: 20px 0;"></div> 
+                                                <div class="container" style="background-color: #1f2024; padding: 5px; border-radius: 20px">
+                                                    <div id="requirementtwoContainer">
+                                                        <?php if (!empty($data['requirements'])): ?>
+                                                            <?php foreach ($data['requirements'] as $index => $requirement): ?>
+                                                                <div class="requirementtwo-block" data-index="<?= $index + 1 ?>">
+                                                                    <p class="text-center mb-1" style="font-family: 'Poppins'; color:white; font-weight:bold;" id="requirementstagetwo">
+                                                                        Requirement <?= $index + 1 ?>
+                                                                    </p>
+                                                                    <input type="hidden" name="requirement_id_2[]" value="st2rq<?= $index + 1 ?>" id="rq_<?= $index + 1 ?>_id">
+                                                                    
+                                                                    <div class="row mb-1">
+                                                                        <div class="col-md-2">
+                                                                            <label class="form-label">Requirement</label>
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <label class="form-label">Product</label>
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <label class="form-label">Distributor</label>
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <label class="form-label">Date</label>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <label class="form-label">Requirement Remarks</label>
+                                                                        </div>
+                                                                    </div>
 
-                                                    .action-buttons .view-btn i:hover {
-                                                        color: #009394; /* Hover color for view icon */
-                                                        transform: scale(1.2); /* Slightly enlarge */
-                                                    }
-
-                                                    .action-buttons .edit-btn i:hover {
-                                                        color: #009394; /* Hover color for edit icon */
-                                                        transform: scale(1.2); /* Slightly enlarge */
-                                                    }
-
-                                                    .action-buttons .delete-btn i:hover {
-                                                        color: #cc0000; /* Hover color for delete icon */
-                                                        transform: scale(1.2); /* Slightly enlarge */
-                                                    }
-
-                                                </style>
-
-                                                    <div class="container" style="background-color: #36b9cc; padding-top: 100px; border-radius: 20px; position: relative;">
-                                                        <?php if ($status === 'Completed'): ?>
-                                                            <!-- Show the "Complete Project" button -->
-                                                           <button 
-                                                                class="btn btn-white play-btn" 
-                                                                id="completeProjectButton" 
-                                                                onclick="completeProject('<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
-                                                                style="position: absolute; bottom: 10px; right: 10px;">
-                                                                <i class="fas fa-play"></i> Complete Project
-                                                            </button>
-                                                        <?php elseif ($status != 'Ongoing'): ?>
-                                                            <!-- Original logic: if not 'Ongoing', show "Start Journey" -->
-                                                            <button 
-                                                                class="btn btn-white play-btn" 
-                                                                id="startJourneyButton" 
-                                                                data-bs-toggle="modal" 
-                                                                data-bs-target="#startJourneyModal" 
-                                                                style="position: absolute; bottom: 10px; right: 10px;">
-                                                                <i class="fas fa-play"></i> Start Journey
-                                                            </button>
+                                                                    <div class="row requirement-fields mb-3">
+                                                                        <div class="col-md-2">
+                                                                            <input readonly name="requirement_two[]" type="text" class="form-control" value="<?= !empty($requirement['requirement_two']) ? htmlspecialchars($requirement['requirement_two']) : '' ?>">
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <input readonly name="product_two[]" type="text" class="form-control" value="<?= !empty($requirement['product_two']) ? htmlspecialchars($requirement['product_two']) : '' ?>">
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <input readonly name="distributor_two[]" type="text" class="form-control" value="<?= !empty($requirement['distributor_two']) ? htmlspecialchars($requirement['distributor_two']) : '' ?>">
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <input readonly name="requirement_date[]" type="text"  class="form-control" value="<?= !empty($requirement['requirement_date']) ? htmlspecialchars($requirement['requirement_date']) : '' ?>">
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <input readonly name="requirement_remarks[]" type="text" class="form-control" value="<?= !empty($requirement['requirement_remarks']) ? htmlspecialchars($requirement['requirement_remarks']) : '' ?>">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            <?php endforeach; ?>
                                                         <?php else: ?>
-                                                            <!-- Otherwise, show "Continue Journey" -->
-                                                            <button 
-                                                                class="btn btn-white play-btn" 
-                                                                id="continueJourneyButton" 
-                                                                data-bs-toggle="modal" 
-                                                                data-bs-target="#multiStepModal" 
-                                                                onclick="openModal('<?php echo htmlspecialchars($project['project_unique_id']); ?>')"
-                                                                style="position: absolute; bottom: 10px; right: 10px;">
-                                                                <i class="fas fa-play"></i> Continue Journey
-                                                            </button>
-                                                            <?php include("multistepModal.php"); ?>
+                                                            <p class="text-warning" style="font-size:10px;">No requirement data available.</p>
                                                         <?php endif; ?>
                                                     </div>
-
-                                                    <style>
-                                                        .btn.play-btn {
-                                                            background-color: white;
-                                                            border: 2px solid #36b9cc; /* Button border color */
-                                                            color: #36b9cc; /* Text color */
-                                                            padding: 10px 20px;
-                                                            font-size: 16px;
-                                                            font-weight: bold;
-                                                            border-radius: 5px;
-                                                            display: flex;
-                                                            align-items: center;
-                                                            gap: 10px; /* Space between icon and text */
-                                                            transition: all 0.3s ease;
-                                                        }
-
-                                                        /* Style for the icon inside the button */
-                                                        .btn.play-btn i {
-                                                            color: #36b9cc; /* Icon color */
-                                                            transition: color 0.3s ease; /* Smooth transition when changing color */
-                                                        }
-
-                                                        /* Button hover effect */
-                                                        .btn.play-btn:hover {
-                                                            background-color: #36b9cc; /* Change background color on hover */
-                                                            color: white; /* Change text color on hover */
-                                                            border-color:white; /* Change border color on hover */
-                                                            
-                                                        }
-
-                                                        /* Change icon color when the button is hovered */
-                                                        .btn.play-btn:hover i {
-                                                            color: white; /* Change icon color to white on hover */
-                                                        }
-
-                                                        /* Button focus effect */
-                                                        .btn.play-btn:focus {
-                                                            box-shadow: 0 0 5px rgba(54, 185, 204, 0.5); /* Light shadow for focus effect */
-                                                        }
-
-                                                        /* Button disabled state */
-                                                        .btn.play-btn:disabled {
-                                                            background-color: #f1f1f1;
-                                                            color: #aaa;
-                                                            border-color: #ddd;
-                                                            cursor: not-allowed;
-                                                        }
-
-
-                                                    </style>
-                                                    <!-- Start Journey Modal -->
-                                                    <div class="modal fade" id="startJourneyModal" tabindex="-1" aria-labelledby="startJourneyModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="startJourneyModalLabel" style="font-family:'Poppins'; font-size:'12px'; color:#36b9cc;" >Are you sure to start your journey?</h5>
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    Confirm to start
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                    <button type="button" class="btn " style="font-size:15px; font-family:'Poppins'; color: white; background: #36b9cc" onclick="startPhase()">Yes, Start Journey</button>
-                                                                </div>
-                                                            </div>
+                                                </div>
+                                                <div style="border-top: 1px ; margin: 20px 0;"></div> 
+                                                <div class="container" style="background-color: #1f2024; padding: 10px; border-radius: 20px">
+                                                    <p class="text-center  mb-1" style="font-style:'Poppins'; color:white; font-weight:bold;" id="engagement1">
+                                                    Stage Remarks
+                                                    </p>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <textarea readonly name="stage_two_remarks" class="form-control" id="stageremarks2" placeholder="e.g. Sample Solution" 
+                                                            style="height:100px;"><?= htmlspecialchars($data['stage_two']['stage_two_remarks'] ?? '') ?></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -803,13 +599,6 @@ include_once('dirback/dirviewback.php');
             </div>
             <!-- End of Main Content -->
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Powered by Workforce Management Team 2024</span>
-                    </div>
-                </div>
-            </footer>
             <!-- End of Footer -->
 
         </div>
@@ -872,9 +661,7 @@ include_once('dirback/dirviewback.php');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="dirviewproject.js"></script>
     <script src="notif.js"></script>
-    <script>
-
-    </script>
+    
     
     <script>
         // Export to PDF
@@ -1055,7 +842,6 @@ function checkProjectStatus() {
 
             if (response.status === 'success') {
                 var button = document.querySelector(".play-btn");
-
                 if (response.project_status === 'Ongoing') {
                     button.innerHTML = '<i class="fas fa-play"></i> Continue Journey'; // Change text to Continue Journey
                     button.setAttribute("onclick", "continuePhase()"); // Update the onclick action
@@ -1068,12 +854,7 @@ function checkProjectStatus() {
     };
 }
 
-// Call the function to check project status when the page loads
-// window.onload = function() {
-//     checkProjectStatus();
-// };
-
-    </script>
+</script>
 
     <script>
         function togglePopup() {
@@ -1081,7 +862,7 @@ function checkProjectStatus() {
             popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
         }
         function showProfile() {
-             window.location.href = "viewprofile.php";
+            window.location.href = "viewprofile.php";
         }
         // Hide the popup when clicking outside
         document.addEventListener('click', function (event) {
@@ -1145,9 +926,5 @@ function checkProjectStatus() {
         checkProjectStageAndNavigate();
     });
     </script>
-
-
-
-
 </body>
 </html>

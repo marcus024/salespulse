@@ -424,70 +424,66 @@ include_once('dirback/dirviewback.php');
                                                     </div>
                                                     <div class="table-responsive" id="table-view" style="overflow-x: auto; overflow-y: auto; max-height: 400px; background: #1f2024;">
                                                         <table class="modern-table" id="stageTable">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Stage</th>
-                                                                    <th>Unique ID</th>
-                                                                    <th>Start Date</th>
-                                                                    <th>End Date</th>
-                                                                    <th>Status</th>
-                                                                    <th>Duration</th>
-                                                                    <th>Solution</th>
-                                                                    <th>Technology</th>
-                                                                    <th>Deal Size</th>
-                                                                    <th>Product</th>
-                                                                    <th>Stage Remarks</th>
-                                                                    <th>Action</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <?php 
-                                                                $stages = [
-                                                                    'stage_one' => 'Stage 1 - Awareness/Prospecting',
-                                                                    'stage_two' => 'Stage 2 - Engagement/Discovery',
-                                                                    'stage_three' => 'Stage 3 - Presentation/Proposal',
-                                                                    'stage_four' => 'Stage 4 - Negotiation/Commitment',
-                                                                    'stage_five' => 'Stage 5 - Delivery/Follow-Up'
-                                                                ];
+    <thead>
+        <tr>
+            <th>Stage</th>
+            <th>Unique ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Status</th>
+            <th>Duration</th>
+            <th>Solution</th>
+            <th>Technology</th>
+            <th>Deal Size</th>
+            <th>Product</th>
+            <th>Stage Remarks</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php 
+        $stages = [
+            'stage_one' => 'Stage 1 - Awareness/Prospecting',
+            'stage_two' => 'Stage 2 - Engagement/Discovery',
+            'stage_three' => 'Stage 3 - Presentation/Proposal',
+            'stage_four' => 'Stage 4 - Negotiation/Commitment',
+            'stage_five' => 'Stage 5 - Delivery/Follow-Up'
+        ];
 
-                                                                foreach ($stages as $key => $stage_name) {
-                                                                    $stage_data = $project_data[$key];
-                                                                ?>
-                                                                <tr>
-                                                                    <td><?php echo $stage_name; ?></td>
-                                                                    <td><?php echo htmlspecialchars($current_project_id); ?></td>
-                                                                    <td><?php echo !empty($stage_data['start_date_' . $key]) ? htmlspecialchars($stage_data['start_date_' . $key]) : 'Not Yet Started'; ?></td>
-                                                                    <td><?php echo !empty($stage_data['end_date_' . $key]) ? htmlspecialchars($stage_data['end_date_' . $key]) : 'Not Yet Ended'; ?></td>
-                                                                    <td><?php echo !empty($stage_data['status_' . $key]) ? htmlspecialchars($stage_data['status_' . $key]) : 'No Status'; ?></td>
-                                                                    <td><?php echo !empty($stage_data['duration']) ? htmlspecialchars($stage_data['duration']) : '0'; ?></td>
-                                                                    <td><?php echo !empty($stage_data['solution']) ? htmlspecialchars($stage_data['solution']) : 'N/A'; ?></td>
-                                                                    <td><?php echo !empty($stage_data['technology']) ? htmlspecialchars($stage_data['technology']) : 'N/A'; ?></td>
-                                                                    <td><?php echo !empty($stage_data['deal_size']) ? htmlspecialchars($stage_data['deal_size']) : 'N/A'; ?></td>
-                                                                    <td><?php echo !empty($stage_data['product']) ? htmlspecialchars($stage_data['product']) : 'N/A'; ?></td>
-                                                                    <td><?php echo !empty($stage_data['stage_' . $key . '_remarks']) ? htmlspecialchars($stage_data['stage_' . $key . '_remarks']) : 'N/A'; ?></td>
-                                                                    <!-- <td class="action-buttons">
-                                                                        <a class="view-btn" href="#" onclick="smoothNavigate('viewstage<?php echo $stage_map[$key]; ?>.php?project_id=<?php echo htmlspecialchars($current_project_id); ?>')">
-                                                                            <i class="fas fa-eye"></i>
-                                                                        </a>
-                                                                    </td> -->
-                                                                    <td class="action-buttons">
-                                                                       <?php 
-                                                                        $stage_map = [
-                                                                            'stage_one' => '1',
-                                                                            'stage_two' => '2',
-                                                                            'stage_three' => '3',
-                                                                            'stage_four' => '4',
-                                                                            'stage_five' => '5',
-                                                                        ];
-                                                                        ?>
-                                                                        <a class="view-btn" href="#" onclick="smoothNavigate('viewstage<?php echo $stage_map[$key]; ?>.php?project_id=<?php echo htmlspecialchars($current_project_id); ?>')">
-                                                                            <i class="fas fa-eye" style="font-size: 12px; color: #f9ce45;"></i>
-                                                                        </a>
-                                                                    </td>
-                                                                </tr>
-                                                                <?php } ?>
-                                                            </tbody>
-                                                        </table>
+        // Define the stage_map array here
+        $stage_map = [
+            'stage_one' => '1',
+            'stage_two' => '2',
+            'stage_three' => '3',
+            'stage_four' => '4',
+            'stage_five' => '5',
+        ];
+
+        foreach ($stages as $key => $stage_name) {
+            $stage_data = $project_data[$key];
+        ?>
+        <tr class="clickable-row" data-href="viewstage<?php echo $stage_map[$key]; ?>.php?project_id=<?php echo htmlspecialchars($current_project_id); ?>">
+            <td><?php echo $stage_name; ?></td>
+            <td><?php echo htmlspecialchars($current_project_id); ?></td>
+            <td><?php echo !empty($stage_data['start_date_' . $key]) ? htmlspecialchars($stage_data['start_date_' . $key]) : 'Not Yet Started'; ?></td>
+            <td><?php echo !empty($stage_data['end_date_' . $key]) ? htmlspecialchars($stage_data['end_date_' . $key]) : 'Not Yet Ended'; ?></td>
+            <td><?php echo !empty($stage_data['status_' . $key]) ? htmlspecialchars($stage_data['status_' . $key]) : 'No Status'; ?></td>
+            <td><?php echo !empty($stage_data['duration']) ? htmlspecialchars($stage_data['duration']) : '0'; ?></td>
+            <td><?php echo !empty($stage_data['solution']) ? htmlspecialchars($stage_data['solution']) : 'N/A'; ?></td>
+            <td><?php echo !empty($stage_data['technology']) ? htmlspecialchars($stage_data['technology']) : 'N/A'; ?></td>
+            <td><?php echo !empty($stage_data['deal_size']) ? htmlspecialchars($stage_data['deal_size']) : 'N/A'; ?></td>
+            <td><?php echo !empty($stage_data['product']) ? htmlspecialchars($stage_data['product']) : 'N/A'; ?></td>
+            <td><?php echo !empty($stage_data['stage_' . $key . '_remarks']) ? htmlspecialchars($stage_data['stage_' . $key . '_remarks']) : 'N/A'; ?></td>
+            <td class="action-buttons">
+                <a class="view-btn" href="#" onclick="smoothNavigate('viewstage<?php echo $stage_map[$key]; ?>.php?project_id=<?php echo htmlspecialchars($current_project_id); ?>')">
+                    <i class="fas fa-eye" style="font-size: 12px; color: #f9ce45;"></i>
+                </a>
+            </td>
+        </tr>
+        <?php } ?>
+    </tbody>
+</table>
+
                                                     </div>
                                                     <div id="details-view" style="display: none;">
                                                         
@@ -859,6 +855,24 @@ include_once('dirback/dirviewback.php');
     <script src="insert_fetch_tech3.js"></script>
     <script src="insert_fetch_tech4.js"></script>
     <script src="insert_fetch_tech5.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const rows = document.querySelectorAll('.clickable-row');
+    rows.forEach(row => {
+        row.addEventListener('click', (e) => {
+            // Prevent row click if the click is on an <a> element
+            if (e.target.tagName.toLowerCase() === 'a' || e.target.closest('a')) return;
+
+            const href = row.dataset.href;
+            if (href) {
+                window.location.href = href;
+            }
+        });
+    });
+});
+
+    </script>
     
     <script>
         // Export to PDF

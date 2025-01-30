@@ -361,14 +361,14 @@ include("../auth/db.php");
                                                     width: 8px;
                                                 }
                                                 #contact-list::-webkit-scrollbar-thumb {
-                                                    background-color: #009394;
+                                                    background-color: #f9ce45;
                                                     border-radius: 4px;
                                                 }
                                                 #contact-list::-webkit-scrollbar-thumb:hover {
-                                                    background-color: #004d47;
+                                                    background-color:  #1f2024;
                                                 }
                                                 #contact-list::-webkit-scrollbar-track {
-                                                    background: #f0f0f0;
+                                                    background:  #1f2024;
                                                 }
                                         </style>
                                         <!-- Example Contact Card 1 -->
@@ -380,46 +380,46 @@ include("../auth/db.php");
                                             } else {
                                                 foreach ($teamMembers as $member):
                                             ?>
-                                            <div class="card mb-3" style="border-radius: 20px;">
-                                                <div class="card-header" style="font-family:'Poppins';background: linear-gradient(to right, #36b9cc,rgb(25, 230, 230)); color: white; border-radius:20px; font-size: 18px; font-weight: bold;">
+                                            <div class="card mb-3" style="border-radius: 20px; border: 1px solid  #2a2925 ; background-color: #2a2925;">
+                                                <div class="card-header" style="border:none; font-family:'Poppins';background: linear-gradient(to right, #f9ce45,rgb(241, 245, 12)); color: #1f2024; border-radius:20px; font-size: 18px; font-weight: bold;">
                                                     Profile
                                                 </div>
-                                                <div class="card-body" style="background-color: white; color: #555; padding: 10px; border-radius:20px; padding-left: 20px;">
+                                                <div class="card-body" style="background-color: #2a2925; color: #555; padding: 10px; border-radius:20px; padding-left: 20px;">
                                                     <div class="d-flex align-items-center mb-2" style="gap: 30px;">
                                                         <img src="../images/<?php echo ($member['gender'] === 'Male') ? 'man.png' : 'woman.png'; ?>" 
                                                             alt="Profile Picture" class="contact-image" 
                                                             style="width: 130px; height: 130px; border-radius: 50%;">
                                                         <div class="contact-info">
-                                                            <p class="mb-1" style="font-size: 30px; font-weight: bold; font-family: 'Poppins';">
+                                                            <p class="mb-1" style="font-size: 30px; font-weight: bold; font-family: 'Poppins'; color:white;">
                                                                 <?php echo htmlspecialchars($member['name']); ?>
                                                             </p>
-                                                            <p class="mb-1" style="font-size: 15px; font-family: 'Poppins';">
+                                                            <p class="mb-1" style="font-size: 15px; font-family: 'Poppins'; color:#ddd">
                                                                 <?php echo htmlspecialchars($member['role_display']); ?>
                                                             </p>
                                                             <div class="row mt-0" style="gap: 10px; padding-right:5px;">
-                                                                <div class="col card text-center" style="border-color:white; background: white; border-radius: 15px; padding: 2px; width: 140px;">
-                                                                    <p style="font-size: 30px; color:#006270; font-weight: bold; margin: 0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">
+                                                                <div class="col card text-center" style="border-color: #2a2925; background:  #2a2925; border-radius: 15px; padding: 2px; width: 140px;">
+                                                                    <p style="font-size: 30px; color:white; font-weight: bold; margin: 0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">
                                                                         <?php echo $member['completed_projects'] ?? 0; ?>
                                                                     </p>
-                                                                    <p style="font-size: 9px; font-weight: bold; color: #006270; margin: 0; width: 100%;">Completed Projects</p>
+                                                                    <p style="font-size: 9px; font-weight: bold; color: #ddd; margin: 0; width: 100%;">Completed Projects</p>
                                                                 </div>
-                                                                <div class="col card text-center" style="border-color:white; background: white; border-radius: 15px; padding: 2px; width: 140px;">
-                                                                    <p style="font-size: 30px; color:#006270; font-weight: bold; margin: 0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">
+                                                                <div class="col card text-center" style="border-color: #2a2925; background:  #2a2925; border-radius: 15px; padding: 2px; width: 140px;">
+                                                                    <p style="font-size: 30px; color:white; font-weight: bold; margin: 0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">
                                                                         <?php echo $member['ongoing_projects'] ?? 0; ?>
                                                                     </p>
-                                                                    <p style="font-size: 9px; font-weight: bold; color: #006270; margin: 0; width: 100%;">Ongoing Projects</p>
+                                                                    <p style="font-size: 9px; font-weight: bold; color: #ddd; margin: 0; width: 100%;">Ongoing Projects</p>
                                                                 </div>
-                                                                <div class="col card text-center" style="border-color:white; background: white; border-radius: 15px; padding: 2px; width: 100px;">
-                                                                    <p style="font-size: 30px; color:#006270; font-weight: bold; margin: 0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">
+                                                                <div class="col card text-center" style="border-color: #2a2925; background:  #2a2925; border-radius: 15px; padding: 2px; width: 100px;">
+                                                                    <p style="font-size: 30px; color:white; font-weight: bold; margin: 0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">
                                                                         <?php echo $member['cancelled_projects'] ?? 0; ?>
                                                                     </p>
-                                                                    <p style="font-size: 9px; font-weight: bold; color:#006270; margin: 0; width: 100%;">Cancelled Projects</p>
+                                                                    <p style="font-size: 9px; font-weight: bold; color:#ddd; margin: 0; width: 100%;">Cancelled Projects</p>
                                                                 </div>
-                                                                <div class="col card text-center" style="border-color:white; background: white; border-radius: 15px; padding: 2px; width: 140px;">
-                                                                    <p style="font-size: 30px; color:#006270; font-weight: bold; margin: 0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">
+                                                                <div class="col card text-center" style="border-color: #2a2925; background:  #2a2925; border-radius: 15px; padding: 2px; width: 140px;">
+                                                                    <p style="font-size: 30px; color:white; font-weight: bold; margin: 0; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">
                                                                         <?php echo $member['avg_project_duration'] ?? 0; ?>
                                                                     </p>
-                                                                    <p style="font-size: 9px; font-weight: bold; color:#006270; margin: 0; width: 100%;">Avg. Days/Comp. Proj.</p>
+                                                                    <p style="font-size: 9px; font-weight: bold; color:#ddd; margin: 0; width: 100%;">Avg. Days/Comp. Proj.</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -457,17 +457,17 @@ include("../auth/db.php");
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <!-- Modal Header -->
-                            <div class="modal-header" style="background-color:#36b9cc; height: 50px;">
-                                <h5 class="modal-title" id="addTeamModalLabel" style="font-family:'Poppins';font-size: 15px; color:white;">Add Team Member</h5>
+                            <div class="modal-header" style="background-color:#f9ce45; color:#1f2024; height: 50px; border:none;">
+                                <h5 class="modal-title" id="addTeamModalLabel" style="font-family:'Poppins'; color:#1f2024; font-size: 15px; ">Add Team Member</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <!-- Modal Body -->
-                            <div class="modal-body" style="height: 400px;">
+                            <div class="modal-body" style="height: 400px; background:#1f2024; ">
                                 <!-- Search Engine -->
                                 <div class="row mb-3">
                                     <div class="col-12">
                                         <input type="text" id="userSearch" class="form-control" onkeyup="filterUsers()" placeholder="Search users by name or position..." 
-                                            style="font-family:'Poppins'; font-size: 14px; border: 1px solid #36b9cc; border-radius: 4px; padding: 8px;">
+                                            style="font-family:'Poppins'; font-size: 14px; border: 1px solid #555; color:white; background:#1f2024; border-radius: 4px; padding: 8px;">
                                     </div>
                                 </div>
                                 <style>
@@ -478,13 +478,13 @@ include("../auth/db.php");
                                     }
 
                                     .userClass::-webkit-scrollbar-thumb {
-                                        background-color: #36b9cc;
+                                        background-color:  #f9ce45;
                                         border-radius: 10px;
                                         height: 5px; /* Minimum height for the scrollbar thumb */
                                     }
 
                                     .userClass::-webkit-scrollbar-thumb:hover {
-                                        background-color: #555;
+                                        background-color: #1f2024;
                                     }
                                 </style>
                                 <!-- User List -->
@@ -497,7 +497,7 @@ include("../auth/db.php");
                                 </div>
                             </div>
                             <!-- Modal Footer -->
-                            <div class="modal-footer">
+                            <div class="modal-footer" style="background:#1f2024; border:none;">
                                 <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" style="font-family:'Poppins'; font-size: 12px;">Close</button>
                             </div>
                         </div>
@@ -623,14 +623,15 @@ include("../auth/db.php");
             li.className = "list-group-item d-flex justify-content-between align-items-center";
             li.style.fontFamily = "Poppins";
             li.style.fontSize = "14px";
+            li.style.backgroundColor = "#1f2024"; 
 
             li.innerHTML = `
                 <div>
-                    <strong>${user.name}</strong>
-                    <p class="mb-0 text-muted" style="font-size: 12px;">${user.position}</p>
+                    <strong style="color:white;">${user.name}</strong>
+                    <p class="mb-0 text-muted" style="font-size: 12px; color:white; ">${user.position}</p>
                 </div>
-                <button class="btn btn-sm btn-primary" style="background-color: #36b9cc; border: none;" onclick="addUser('${currentUserId}', '${user.user_id_current}')">
-                    <i class="fas fa-plus"></i> Add
+                <button class="btn btn-sm btn-primary" style="background-color: #f9ce45; border: none; color:#1f2024;" onclick="addUser('${currentUserId}', '${user.user_id_current}')">
+                    <i class="fas fa-plus" style="color:#1f2024;"></i> Add
                 </button>
             `;
 

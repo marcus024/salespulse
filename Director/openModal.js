@@ -259,7 +259,7 @@
                 <div class="col-md-2">
                     <button type="button"
                             class="btn btn-danger btn-sm"
-                            style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                            style="width:100px; color:white; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
                             onclick="deleteRequirement('${requirementId}', this,'${projectId}')">
                     <i class="fas fa-minus"></i>&nbsp;Remove
                     </button>
@@ -525,7 +525,7 @@
                 <div class="col-md-2">
                     <button type="button"
                             class="btn btn-danger btn-sm"
-                            style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                            style="width:100px; display:inline-flex; color:white; align-items:center; justify-content:center; font-size:12px;"
                             onclick="deleteRequirementtwo('${requirementId}', this, '${projectId}')">
                     <i class="fas fa-minus"></i>&nbsp;Remove
                     </button>
@@ -617,7 +617,7 @@
                 <div class="col-md-2">
                 <button type="button"
                         class="btn btn-danger btn-sm "
-                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                        style="width:100px; display:inline-flex; color:white; align-items:center; justify-content:center; font-size:12px;"
                         onclick="deleteEngagement('${engagementId}', this, '${projectId}')">
                     <i class="fas fa-minus"></i>&nbsp;Remove
                 </button>
@@ -665,6 +665,7 @@
         document.getElementById('stage-three-status').value = data.stages.stage_three.status     || 'No Data';
         document.getElementById('deal_size3').value = Number(data.stages.stage_three.deal_size_three) || Number(data.stages.stage_two.deal_size_two) || 'No Data';
         document.getElementById('stageremarks3').value = data.stages.stage_three.remarks_three || data.stages.stage_two.remarks_two || 'No Data';
+        document.getElementById('solution3').value = data.stages.stage_three.solution_three || data.stages.stage_two.solution_two || 'No Data';
         // Fetch Technology Select
         const technology3 = document.getElementById('technologySelect3');
         const techValue = data.stages.stage_three.technology_three || data.stages.stage_two.technology_two || 'Select';
@@ -859,7 +860,7 @@
                 <div class="col-md-2">
                     <button type="button"
                             class="btn btn-danger btn-sm"
-                            style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                            style="width:100px; display:inline-flex; color:white; align-items:center; justify-content:center; font-size:12px;"
                             onclick="deleteRequirementthree('${requirementId}', this, '${projectId}')">
                         <i class="fas fa-minus"></i>&nbsp;Remove
                     </button>
@@ -975,7 +976,7 @@
                     <div class="col-md-2">
                         <button type="button"
                                 class="btn btn-danger btn-sm"
-                                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                                style="width:100px; display:inline-flex; color: white; align-items:center; justify-content:center; font-size:12px;"
                                 onclick="deleteEngagementThree('${engagementId}', this, '${projectId}')">
                             <i class="fas fa-minus"></i>&nbsp;Remove
                         </button>
@@ -1172,7 +1173,7 @@
             <div class="col-md-2">
                 <button type="button"
                         class="btn btn-danger btn-sm"
-                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                        style="width:100px; display:inline-flex; color:white; align-items:center; justify-content:center; font-size:12px;"
                         onclick="deleteRequirementFour('${requirementId}', this, '${projectId}')">
                     <i class="fas fa-minus"></i>&nbsp;Remove
                 </button>
@@ -1425,7 +1426,7 @@ function createUpsellBlock(blockIndex, upsellItem, projectId) {
             <div class="col-md-2">
                 <button type="button" class="btn btn-danger btn-sm" 
                 onclick="deleteUpsell('${upsellId}', '${projectId}', this)"
-                style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">
+                style="width:100px; display:inline-flex; align-items:center; color:white; justify-content:center; font-size:12px;">
                     <i class="fas fa-minus"></i>&nbsp;Remove
                 </button>
             </div>
@@ -1545,7 +1546,7 @@ function createRequirementFiveBlock(blockIndex, reqItem, productList = [], distr
             <div class="col-md-2">
                 <button type="button"
                         class="btn btn-danger btn-sm"
-                        style="width:100px; display:inline-flex; align-items:center; justify-content:center; font-size:12px;"
+                        style="width:100px; display:inline-flex; color:white; align-items:center; justify-content:center; font-size:12px;"
                         onclick="deleteRequirementFive('${requirementId}', this, '${projectId}')">
                     <i class="fas fa-minus"></i>&nbsp;Remove
                 </button>
@@ -1647,7 +1648,6 @@ function updateContractDuration() {
         contractDurationInput.value = 'Invalid Range'; // If the end date is earlier than start date
     }
 }
-
 
 // Call the function from outside
 document.getElementById('startContract').addEventListener('change', updateContractDuration);

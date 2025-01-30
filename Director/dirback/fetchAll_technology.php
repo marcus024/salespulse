@@ -20,11 +20,9 @@ try {
         LOWER(SUBSTRING(technology, 2))
         ) AS technology
     FROM technology_tb
-    WHERE company = :company
     ORDER BY technology ASC
     ";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':company', $currentCompany, PDO::PARAM_STR);
     $stmt->execute();
 
     $technologies = $stmt->fetchAll(PDO::FETCH_ASSOC);
