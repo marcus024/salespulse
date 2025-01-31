@@ -72,8 +72,8 @@ include("../auth/db.php");
             font-family:'Poppins';
             font-size:15px;
         }
-        .calcBtn{
-            border:2px solid #f9ce45;
+        .calcBtn:hover{
+            border:1px solid #f9ce45;
             background:#1f2024;
         }
     </style>
