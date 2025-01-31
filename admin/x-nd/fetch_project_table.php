@@ -63,11 +63,11 @@ try {
         }
     }
 
-    // Return JSON response
-    // echo json_encode([
-    //     'status' => 'success',
-    //     'data'   => $rows,
-    // ]);
+    Return JSON response
+    echo json_encode([
+        'status' => 'success',
+        'data'   => $rows,
+    ]);
     
 } catch (PDOException $e) {
     // Handle any DB errors
