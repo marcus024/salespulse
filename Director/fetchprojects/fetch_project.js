@@ -1,7 +1,7 @@
 $(document).ready(function () { 
     function loadProjects() {
         $.ajax({
-            url: './fetch_projects.php',  
+            url: 'fetch_projects.php',  
             type: 'GET',
             dataType: 'json',
             success: function (response) {
