@@ -1253,8 +1253,8 @@ function deleteRequirementFour(requirementId, button, projectId) {
     document.getElementById('stage-five-status').value = data.stages.stage_five.status || 'No Data';
     document.getElementById('stage-five-spr').value = data.stages.stage_five.spr || 'No Data';
     // document.getElementById('contractDuration').value = data.stages.stage_five.contract_duration || 'No Data';
-    // document.getElementById('startContract').value = data.stages.stage_five.contractStart || 'No Data';
-    // document.getElementById('endContract').value = data.stages.stage_five.contractEnd || 'No Data';
+    document.getElementById('grossProfit').value = data.stages.stage_five.contractStart || 'No Data';
+    document.getElementById('netSales').value = data.stages.stage_five.contractEnd || 'No Data';
     document.getElementById('billingType').value = data.stages.stage_five.billing_type || 'No Data';
     document.getElementById('solution5').value = data.stages.stage_five.solution_five || data.stages.stage_four.solution_four || 'No Data';
     document.getElementById('deal_size5').value = Number(data.stages.stage_five.deal_size_five) || Number(data.stages.stage_four.deal_size_four) || 'No Data';
@@ -1269,10 +1269,10 @@ function deleteRequirementFour(requirementId, button, projectId) {
         });
     }
     // Set values for start and end dates
-    const startContractInput = document.getElementById('startContract');
-    const endContractInput = document.getElementById('endContract');
-    startContractInput.value = data.stages.stage_five.contractStart|| '';
-    endContractInput.value = data.stages.stage_five.contractEnd || '';
+    // const startContractInput = document.getElementById('startContract');
+    // const endContractInput = document.getElementById('endContract');
+    // startContractInput.value = data.stages.stage_five.contractStart|| '';
+    // endContractInput.value = data.stages.stage_five.contractEnd || '';
 
     // Call updateContractDuration from outside
     updateContractDuration();
