@@ -1275,7 +1275,7 @@ function deleteRequirementFour(requirementId, button, projectId) {
     // endContractInput.value = data.stages.stage_five.contractEnd || '';
 
     // Call updateContractDuration from outside
-    updateContractDuration();
+    // updateContractDuration();
 
      const requirementsStageFive = 
         Array.isArray(data.stages.stage_five?.requirement_stage_five) && 
