@@ -1,0 +1,29 @@
+:root {
+    --accent-color: #f9ce45; 
+}
+
+.nav-item{
+    color: #76777a; 
+    font-weight: bold; 
+    border-radius:10px;
+    margin-bottom:5px;
+}
+
+.nav-item.active .nav-link {
+    padding-left:10px;
+    background-color: #2a2925; 
+    color: white; 
+    font-weight: bold; 
+    border-radius:10px;
+    margin-bottom:5px;
+    border-left: 5px solid var(--accent-color);
+}
+
+.nav-item .nav-link:hover {
+    padding-left:10px;
+    background-color: #2a2925; 
+    color: white; 
+    border-radius:10px;
+    margin-bottom:5px;
+    border-left: 5px solid var(--accent-color);
+}

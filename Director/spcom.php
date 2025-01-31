@@ -25,75 +25,9 @@ include("../auth/db.php");
 
     <!-- Custom styles for this template -->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-    <style>
-        .sidebar {
-            transition: width 0.3s;
-        }
-        .sidebar.collapsed {
-            width: 80px;
-        }
-        .sidebar.collapsed .nav-item span {
-            display: none;
-        }
-        .sidebar.collapsed .sidebar-brand-text {
-            display: none;
-        }
-        .sidebar.collapsed .sidebar-brand-icon {
-            margin: 0 auto;
-        }
-    </style>
-    <style>
-        /* Floating sidebar styles */
-       .floating-sidebar {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            height: 95vh; /* Adjust the height to be 90% of the viewport height */
-            z-index: 1000;
-            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            padding: 10px; /* Combined padding */
-            overflow-y: auto; /* Allow scrolling inside the sidebar */
-            display: flex;
-        }
-        body{
-            padding-left:200px;
-            padding-bottom:30px;
-            padding-top:100px;
-            color:white;
-        }
-    </style>
-    <style>
-        :root {
-            --accent-color: #f9ce45; /* Accent color */
-        }
-
-        .nav-item{
-            color: #76777a;  /* Optional: Adjust text color when the item is active */
-            font-weight: bold; /* Optional: Make the active menu text bold */
-            border-radius:10px;
-            margin-bottom:5px;
-        }
-        /* Active Nav Item Background Color */
-        .nav-item.active .nav-link {
-            padding-left:10px;
-            background-color: #2a2925; /* Change this color to your preferred background color */
-            color: white; /* Optional: Adjust text color when the item is active */
-            font-weight: bold; /* Optional: Make the active menu text bold */
-            border-radius:10px;
-            margin-bottom:5px;
-            border-left: 5px solid var(--accent-color);
-        }
-        /* Hover Effect for Nav Items */
-        .nav-item .nav-link:hover {
-            padding-left:10px;
-            background-color: #2a2925; /* Same color for hover effect */
-            color: white; /* Text color for hover */
-            border-radius:10px;
-            margin-bottom:5px;
-            border-left: 5px solid var(--accent-color);
-        }
-    </style>
+    <link href="css/spcomfloat.css" rel="stylesheet">
+    <link href="css/spcomnav.css" rel="stylesheet">
+    <link href="css/spcomsidebar.css" rel="stylesheet">
     <style>
         /* Footer Styles */
         .footer {

@@ -1,0 +1,19 @@
+
+.floating-sidebar {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    height: 95vh; /* Adjust the height to be 90% of the viewport height */
+    z-index: 1000;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px; /* Combined padding */
+    overflow-y: auto; /* Allow scrolling inside the sidebar */
+    display: flex;
+}
+body{
+    padding-left:200px;
+    padding-bottom:30px;
+    padding-top:100px;
+    color:white;
+}
