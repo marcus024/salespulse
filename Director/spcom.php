@@ -180,7 +180,24 @@ include("../auth/db.php");
                 </div>
                 <!-- End of Topbar -->
                 <div class="container-fluid" style=" background-color:#15151a;">
-                    
+                    <div class="row">
+                        <!-- Narrow Container for Add Calendar -->
+                        <div class="col-md-3 mb-4">
+                            <div class="card shadow-sm" style="background-color:#1f2024; border:none;">
+                                <div class="card-body">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Wide Container for Calendar Content -->
+                        <div class="col-md-9 mb-4">
+                            <div class="card shadow-sm" style="background: #1f2024; border:none;">
+                                <div class="card-body" id="calendar-container" style="min-height: 400px; color: white;">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- End of Main Content -->

@@ -187,10 +187,8 @@ include("../auth/db.php");
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content" style="background-color:white;">
-
                 <!-- Topbar -->
                 <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:#15151a; padding-right:30px; padding-left:220px; z-index: 300;">
                     <!-- Left Section: Home and Welcome Message -->
