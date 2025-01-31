@@ -66,6 +66,11 @@ include("../auth/db.php");
             font-size:12px;
             border: 1px solid white;
         }
+        .calcBtn{
+            background:#f9ce45;
+            color: #1f2024; 
+            font-family:'Poppins';
+        }
     </style>
 </head>
 <body id="page-top" style="background-color:#15151a;">
@@ -237,7 +242,7 @@ include("../auth/db.php");
                                             <label for="netSales" class="form-label ">Net Sales</label>
                                             <input type="text" class="form-control" id="netSales" name="netSales" placeholder="Enter net sales">
                                         </div>
-                                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                                        <button type="submit" class="btn w-100 calcBtn">Calculate</button>
                                     </form>
                                 </div>
                             </div>
