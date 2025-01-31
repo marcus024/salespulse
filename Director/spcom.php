@@ -225,7 +225,7 @@ include("../auth/db.php");
                                     <form>
                                         <div class="mb-1">
                                             <label for="projects" class="form-label ">Projects</label>
-                                           <select class="form-select" id="fetchProjects" style="font-size: 10px; color: #000; padding: 5px;" required>
+                                           <select class="form-select" id="fetchProjects"  required>
                                                 <option value="" selected disabled>Select Project</option>
                                             </select>
                                         </div>
