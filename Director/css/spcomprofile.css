@@ -1,0 +1,24 @@
+.profile-img:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(1.1);
+            transition: all 0.2s ease-in-out;
+        }
+
+.popup-link {
+    padding: 8px 0;
+    text-decoration: none;
+    color: #555;
+    margin-bottom: 5px;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.popup-link:hover {
+    color: #36b9cc;
+    border-radius: 4px;
+    text-decoration:none;
+}
+
+.logout-link:hover {
+    color: #36b9cc;
+    text-decoration:none;
+}

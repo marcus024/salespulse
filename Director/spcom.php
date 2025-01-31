@@ -28,75 +28,10 @@ include("../auth/db.php");
     <link href="css/spcomfloat.css" rel="stylesheet">
     <link href="css/spcomnav.css" rel="stylesheet">
     <link href="css/spcomsidebar.css" rel="stylesheet">
-    <style>
-        /* Footer Styles */
-        .footer {
-            padding-bottom: 10px;
-            color: #fff;
-            font-size: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center align all footer content */
-        }
-
-        .footer .powered-by {
-            font-weight: lighter;
-        }
-
-        .footer .company-name {
-            font-weight: bold;
-        }
-
-        .footer .copyright {
-            margin-top: 5px; /* Space between company name and copyright */
-        }
-    </style>
-    <style>
-        /* Hover effect for profile image */
-        .profile-img:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transform: scale(1.1);
-            transition: all 0.2s ease-in-out;
-        }
-
-        /* Hover effect for popup links */
-        .popup-link {
-            padding: 8px 0;
-            text-decoration: none;
-            color: #555;
-            margin-bottom: 5px;
-            transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-        }
-
-        .popup-link:hover {
-            color: #36b9cc;
-            border-radius: 4px;
-            text-decoration:none;
-        }
-
-        /* Special hover for logout link */
-        .logout-link:hover {
-            color: #36b9cc;
-            text-decoration:none;
-        }
-    </style>
-    <style>
-    /* Optional: Add a border or styling for the scrollable area */
-        .notify::-webkit-scrollbar {
-            width: 4px; /* Width of the vertical scrollbar */
-            height: 4px; /* Height of the horizontal scrollbar */
-        }
-
-        .notify::-webkit-scrollbar-thumb {
-            background-color: #36b9cc;
-            border-radius: 10px;
-            height: 5px; /* Minimum height for the scrollbar thumb */
-        }
-
-        .notify::-webkit-scrollbar-thumb:hover {
-            background-color: #555;
-        }
-    </style>
+    <link href="css/spcomfooter.css" rel="stylesheet">
+    <link href="css/spcomnotif.css" rel="stylesheet">
+    <link href="css/spcomprofile.css.css" rel="stylesheet">
+    
 </head>
 <body id="page-top" style="background-color:#15151a;">
     <!-- Page Wrapper -->
