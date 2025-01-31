@@ -5,10 +5,19 @@ header('Content-Type: application/json');
 // Include your database connection
 include('../../auth/db.php');
 
-// 1. Retrieve the current user's company
-$currentUserCompany = $_SESSION['company'] ?? '';
-
 try {
+    // Get the company from the request or fallback to session
+    $currentUserCompany = $_GET['company'] ?? $_SESSION['company'] ?? '';
+
+    // If company is missing, return an error
+    if (empty($currentUserCompany)) {
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Company parameter is required.'
+        ]);
+        exit;
+    }
+
     $sql = "
         SELECT 
             p.project_unique_id,
@@ -43,7 +52,7 @@ try {
     $stmt->bindParam(':company', $currentUserCompany, PDO::PARAM_STR);
     $stmt->execute();
 
-    // 3. Fetch data
+    // Fetch data
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Ensure all statuses are included, even if their count is zero
@@ -54,7 +63,7 @@ try {
         }
     }
 
-    // 4. Return JSON
+    // Return JSON response
     echo json_encode([
         'status' => 'success',
         'data'   => $rows,
