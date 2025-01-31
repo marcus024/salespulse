@@ -39,8 +39,11 @@ include("../auth/db.php");
         }
         .form-control:focus{
             border; 1px solid white;
-            background:#1f2024;
+            background: #1f2024;
             color:white;
+        }
+        .form-control::placeholder{
+            color:#555;
         }
     </style>
 </head>
