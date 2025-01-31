@@ -270,6 +270,7 @@ include("../auth/db.php");
     <script src="alerts/notif.js"></script>
     <script src="alerts/notifCount.js"></script>
     <script src="current_year.js"></script>
+    <script src="fetchprojects/fetch_project.js"></script>
     <script>
         function togglePopup() {
             const popup = document.getElementById('popup-container');
