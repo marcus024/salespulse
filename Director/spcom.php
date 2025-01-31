@@ -240,7 +240,11 @@ include("../auth/db.php");
                                             </select>
                                         </div>
                                         <div class="mb-1">
-                                            <label for="grossProfit" class="form-label ">Gross Profit</label>
+                                            <label for="grossProfit" class="form-label ">Actual Gross Profit</label>
+                                            <input type="text" class="form-control" id="grossProfit" name="grossProfit" placeholder="Enter gross profit">
+                                        </div>
+                                        <div class="mb-1">
+                                            <label for="grossProfit" class="form-label ">Target Gross Profit</label>
                                             <input type="text" class="form-control" id="grossProfit" name="grossProfit" placeholder="Enter gross profit">
                                         </div>
                                         <div class="mb-3">
