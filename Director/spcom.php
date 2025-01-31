@@ -188,7 +188,9 @@ include("../auth/db.php");
                                     <form>
                                         <div class="mb-3">
                                             <label for="projects" class="form-label ">Projects</label>
-                                            <input type="text" class="form-control" id="projects" name="projects" placeholder="Enter projects">
+                                           <select class="form-select" id="fetchProjects" style="font-size: 10px; color: #000; padding: 5px;" required>
+                                                <option value="" selected disabled>Select Project</option>
+                                            </select>
                                         </div>
                                         <div class="mb-3">
                                             <label for="grossProfit" class="form-label ">Gross Profit</label>
