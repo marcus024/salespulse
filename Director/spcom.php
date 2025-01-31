@@ -241,15 +241,15 @@ include("../auth/db.php");
                                         </div>
                                         <div class="mb-1">
                                             <label for="grossProfit" class="form-label ">Actual Gross Profit</label>
-                                            <input type="text" class="form-control" id="grossProfit" name="grossProfit" placeholder="Enter actual gross profit">
+                                            <input type="number" class="form-control" id="grossProfit" name="grossProfit" placeholder="Enter actual gross profit">
                                         </div>
                                         <div class="mb-1">
                                             <label for="grossProfit" class="form-label ">Target Gross Profit</label>
-                                            <input type="text" class="form-control" id="targetgross" name="grossProfit" placeholder="Enter target gross profit">
+                                            <input type="number" class="form-control" id="targetgross" name="grossProfit" placeholder="Enter target gross profit">
                                         </div>
                                         <div class="mb-3">
                                             <label for="netSales" class="form-label ">Net Sales</label>
-                                            <input type="text" class="form-control" id="netSales" name="netSales" placeholder="Enter net sales">
+                                            <input type="number" class="form-control" id="netSales" name="netSales" placeholder="Enter net sales">
                                         </div>
                                         <button type="submit" class="btn w-100 calcBtn">Calculate</button>
                                     </form>
