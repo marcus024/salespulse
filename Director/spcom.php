@@ -70,6 +70,11 @@ include("../auth/db.php");
             background:#f9ce45;
             color: #1f2024; 
             font-family:'Poppins';
+            font-size:15px;
+        }
+        .calcBtn{
+            border:2px solid #f9ce45;
+            background:#1f2024;
         }
     </style>
 </head>
