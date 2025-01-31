@@ -22,7 +22,7 @@ try {
             WHERE user_id_cur = :user_id";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR);
     $stmt->execute();
 
     // Fetch all results as an array
