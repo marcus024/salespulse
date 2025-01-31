@@ -170,6 +170,12 @@ include("../auth/db.php");
                     <span style="font-size:13px; font-family:'Poppins'; ">Team Members</span>
                 </a>
             </li>
+            <li class="nav-item active" >
+                <a class="nav-link" href="spcom.php" style="border-radius:10px; padding-left:10px;">
+                    <i class="fas fa-fw fa-money-bill-wave"></i>
+                    <span style="font-size:13px; font-family:'Poppins'; ">Commissions</span>
+                </a>
+            </li>
             <!-- Spacer to Push Footer to Bottom -->
             <li style="flex-grow: 1;"></li>
             

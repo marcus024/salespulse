@@ -281,10 +281,10 @@ include_once('dirback/dirviewback.php');
                     <span style="font-size:13px; font-family:'Poppins';">Contacts</span>
                 </a>
             </li>
-            <li class="nav-item" >
-                <a class="nav-link" href="team.php" style="border-radius:10px;padding-left:10px;">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span style="font-size:13px; font-family:'Poppins'; ">Team Members</span>
+            <li class="nav-item  " >
+                <a class="nav-link" href="spcom.php" style="border-radius:10px; padding-left:10px;">
+                    <i class="fas fa-fw fa-money-bill-wave"></i>
+                    <span style="font-size:13px; font-family:'Poppins'; ">Commissions</span>
                 </a>
             </li>
             <!-- Spacer to Push Footer to Bottom -->
