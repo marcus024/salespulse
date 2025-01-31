@@ -31,7 +31,6 @@ include("../auth/db.php");
     <link href="css/spcomfooter.css" rel="stylesheet">
     <link href="css/spcomnotif.css" rel="stylesheet">
     <link href="css/spcomprofile.css.css" rel="stylesheet">
-    
 </head>
 <body id="page-top" style="background-color:#15151a;">
     <!-- Page Wrapper -->
