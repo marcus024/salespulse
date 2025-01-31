@@ -243,10 +243,6 @@ include("../auth/db.php");
                                             <label for="grossProfit" class="form-label ">Actual Gross Profit</label>
                                             <input type="number" class="form-control" id="grossProfit" name="grossProfit" placeholder="Enter actual gross profit">
                                         </div>
-                                        <div class="mb-1">
-                                            <label for="grossProfit" class="form-label ">Target Gross Profit</label>
-                                            <input type="number" class="form-control" id="targetgross" name="grossProfit" placeholder="Enter target gross profit">
-                                        </div>
                                         <div class="mb-3">
                                             <label for="netSales" class="form-label ">Net Sales</label>
                                             <input type="number" class="form-control" id="netSales" name="netSales" placeholder="Enter net sales">
@@ -316,8 +312,6 @@ include("../auth/db.php");
                 <p><strong>Individual Commission Rate:</strong> <span id="individualComRate"></span></p>
                 <p><strong>Commission Value:</strong> <span id="commissionValue"></span></p>
                 <p><strong>Actual Commission:</strong> <span id="actualCommission"></span></p>
-                <p><strong>Deficit:</strong> <span id="deficit"></span></p>
-                <p><strong>Potential Commission:</strong> <span id="potentialCommission"></span></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
