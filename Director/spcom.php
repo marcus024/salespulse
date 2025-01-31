@@ -364,7 +364,6 @@ include("../auth/db.php");
 
             // Get input values
             const grossProfit = parseFloat(document.getElementById('grossProfit').value);
-            const targetGrossProfit = parseFloat(document.getElementById('targetgross').value);
             const netSales = parseFloat(document.getElementById('netSales').value);
 
             if (isNaN(grossProfit) || isNaN(targetGrossProfit) || isNaN(netSales)) {
@@ -427,8 +426,6 @@ include("../auth/db.php");
             document.getElementById('individualComRate').textContent = (individualComRate * 100).toFixed(2) + '%';
             document.getElementById('commissionValue').textContent = commissionValue.toFixed(2);
             document.getElementById('actualCommission').textContent = actualCommission.toFixed(2);
-            document.getElementById('deficit').textContent = deficit.toFixed(2);
-            document.getElementById('potentialCommission').textContent = potentialCommission.toFixed(2);
 
             // Show the modal
             var modal = new bootstrap.Modal(document.getElementById('resultModal'));
