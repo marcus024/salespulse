@@ -302,6 +302,31 @@ include("../auth/db.php");
             </div>
         </div>
     </div>
+    <!-- Results Modal -->
+    <!-- Modal Structure -->
+    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resultModalLabel">Calculation Results</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Total Commission Rate:</strong> <span id="totalComRate"></span></p>
+                <p><strong>Individual Commission Rate:</strong> <span id="individualComRate"></span></p>
+                <p><strong>Commission Value:</strong> <span id="commissionValue"></span></p>
+                <p><strong>Actual Commission:</strong> <span id="actualCommission"></span></p>
+                <p><strong>Deficit:</strong> <span id="deficit"></span></p>
+                <p><strong>Potential Commission:</strong> <span id="potentialCommission"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="saveBtn">Save</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
 
@@ -338,6 +363,69 @@ include("../auth/db.php");
             }
         });
     </script>
-</body>
 
+    <script>
+        document.querySelector('.calcBtn').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get input values
+            const grossProfit = parseFloat(document.getElementById('grossProfit').value);
+            const targetGrossProfit = parseFloat(document.getElementById('targetgross').value);
+            const netSales = parseFloat(document.getElementById('netSales').value);
+
+            if (isNaN(grossProfit) || isNaN(targetGrossProfit) || isNaN(netSales)) {
+                alert("Please fill all fields correctly.");
+                return;
+            }
+
+            // Compute Total Commission Rate
+            const totalComRate = grossProfit / netSales;
+
+            // Compute Individual Commission Rate based on the Total Commission Rate
+            let individualComRate = 0;
+            if ([0.13, 0.133, 0.1395].includes(totalComRate)) {
+                individualComRate = 0.025; // 2.5%
+            } else {
+                // Add other conditions based on the Total Commission Rate (example)
+                if (totalComRate > 0.14) individualComRate = 0.03; // Example condition
+                // Add more conditions if needed
+            }
+
+            // Compute Commission Value
+            const commissionValue = grossProfit * individualComRate;
+
+            // Compute Actual Commission
+            const actualCommission = commissionValue * 0.70;
+
+            // Compute Deficit (if any)
+            let deficit = 0;
+            if (grossProfit > targetGrossProfit) {
+                deficit = targetGrossProfit - grossProfit;
+            }
+
+            // Compute Potential Commission
+            const potentialCommission = deficit * 0.05 * 0.70;
+
+            // Show results in the modal
+            document.getElementById('totalComRate').textContent = totalComRate.toFixed(2);
+            document.getElementById('individualComRate').textContent = (individualComRate * 100).toFixed(2) + '%';
+            document.getElementById('commissionValue').textContent = commissionValue.toFixed(2);
+            document.getElementById('actualCommission').textContent = actualCommission.toFixed(2);
+            document.getElementById('deficit').textContent = deficit.toFixed(2);
+            document.getElementById('potentialCommission').textContent = potentialCommission.toFixed(2);
+
+            // Show the modal
+            var modal = new bootstrap.Modal(document.getElementById('resultModal'));
+            modal.show();
+
+            // Save button logic
+            document.getElementById('saveBtn').addEventListener('click', function() {
+                // You can send the data to the backend here
+                alert("Data saved successfully!");
+                modal.hide();
+            });
+        });
+    </script>
+
+</body>
 </html>
