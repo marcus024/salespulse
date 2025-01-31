@@ -361,7 +361,7 @@ include("../auth/db.php");
     <script>
         document.querySelector('.calcBtn').addEventListener('click', function(event) {
             event.preventDefault(); // Prevent form submission
-
+            
             // Get input values
             const grossProfit = parseFloat(document.getElementById('grossProfit').value);
             const netSales = parseFloat(document.getElementById('netSales').value);
