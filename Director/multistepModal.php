@@ -848,12 +848,12 @@
                                                     <input type="text" class="form-control" id="stage-five-spr"  name="SPR_number" placeholder="e.g. SPR1 ">
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label for="requirement" class="form-label ">Start Contracted Date</label>
-                                                    <input name="contractStart" type="date" class="form-control" id="startContract">
+                                                    <label for="requirement" class="form-label ">Gross Profit</label>
+                                                    <input name="contractStart" type="text" class="form-control" id="grossProfit">
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label for="requirement" class="form-label ">End Contracted Date</label>
-                                                    <input name="contractEnd" type="date" class="form-control" id="endContract" >
+                                                    <label for="requirement" class="form-label ">Net Sales</label>
+                                                    <input name="contractEnd" type="text" class="form-control" id="netSales" >
                                                 </div>
                                                 <div class="col-md-2">
                                                     <label for="requirement" class="form-label ">Duration</label>
