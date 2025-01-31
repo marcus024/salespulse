@@ -36,6 +36,8 @@ include("../auth/db.php");
             background: #1f2024;
             color:#555;
             border: 1px solid #555;
+            font-family:'Poppins';
+            font-size:12px;
         }
         .form-control:focus{
             border; 1px solid white;
@@ -45,6 +47,7 @@ include("../auth/db.php");
         .form-control::placeholder{
             color:#555;
         }
+        
     </style>
 </head>
 <body id="page-top" style="background-color:#15151a;">
