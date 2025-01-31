@@ -52,6 +52,12 @@ include("../auth/db.php");
             font-family:'Poppins';
             font-size:12px;
         }
+        .form-select{
+            color:#555;
+            background:#1f2024;
+            font-family:'Poppins';
+            font-size:12px;
+        }
     </style>
 </head>
 <body id="page-top" style="background-color:#15151a;">
