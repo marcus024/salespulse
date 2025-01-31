@@ -47,7 +47,11 @@ include("../auth/db.php");
         .form-control::placeholder{
             color:#555;
         }
-        
+        .form-label{
+            color:#555;
+            font-family:'Poppins';
+            font-size:12px;
+        }
     </style>
 </head>
 <body id="page-top" style="background-color:#15151a;">
@@ -205,17 +209,17 @@ include("../auth/db.php");
                                 <div class="card-body">
                                     
                                     <form>
-                                        <div class="mb-3">
+                                        <div class="mb-1">
                                             <label for="projects" class="form-label ">Projects</label>
                                            <select class="form-select" id="fetchProjects" style="font-size: 10px; color: #000; padding: 5px;" required>
                                                 <option value="" selected disabled>Select Project</option>
                                             </select>
                                         </div>
-                                        <div class="mb-3">
+                                        <div class="mb-1">
                                             <label for="grossProfit" class="form-label ">Gross Profit</label>
                                             <input type="text" class="form-control" id="grossProfit" name="grossProfit" placeholder="Enter gross profit">
                                         </div>
-                                        <div class="mb-3">
+                                        <div class="mb-1">
                                             <label for="netSales" class="form-label ">Net Sales</label>
                                             <input type="text" class="form-control" id="netSales" name="netSales" placeholder="Enter net sales">
                                         </div>
