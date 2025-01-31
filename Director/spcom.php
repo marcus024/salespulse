@@ -181,13 +181,30 @@ include("../auth/db.php");
                 <!-- End of Topbar -->
                 <div class="container-fluid" style=" background-color:#15151a;">
                     <div class="row">
+                        <!-- Commission Calculator -->
                         <div class="col-md-3 mb-4">
                             <div class="card shadow-sm" style="background-color:#1f2024; border:none;">
                                 <div class="card-body">
-                                    
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="projects" class="form-label text-white">Projects</label>
+                                            <input type="text" class="form-control" id="projects" name="projects" placeholder="Enter projects">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="grossProfit" class="form-label text-white">Gross Profit</label>
+                                            <input type="text" class="form-control" id="grossProfit" name="grossProfit" placeholder="Enter gross profit">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="netSales" class="form-label text-white">Net Sales</label>
+                                            <input type="text" class="form-control" id="netSales" name="netSales" placeholder="Enter net sales">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Chart Panels -->
                         <div class="col-md-9 mb-4">
                             <div class="card shadow-sm" style="background: #1f2024; border:none;">
                                 <div class="card-body" id="calendar-container" style="min-height: 400px; color: white;">
