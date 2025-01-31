@@ -231,7 +231,7 @@ include("../auth/db.php");
                         <div class="col-md-3 mb-4">
                             <div class="card shadow-sm" style="background-color:#1f2024; border:none;">
                                 <div class="card-body">
-                                    <p style="color:#ddd; font-weight:bold; font-size:20px; ">SaleSync</p>
+                                    <p style="color:#ddd; font-weight:bold; font-size:20px; font-family:'Poppins' ">SaleSync</p>
                                     <form>
                                         <div class="mb-1">
                                             <label for="projects" class="form-label ">Projects</label>
