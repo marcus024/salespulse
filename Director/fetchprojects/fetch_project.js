@@ -1,7 +1,7 @@
 $(document).ready(function () { 
     function loadProjects() {
         $.ajax({
-            url: './dirback/fetch_projects.php',  
+            url: './fetch_projects.php',  
             type: 'GET',
             dataType: 'json',
             success: function (response) {
@@ -11,11 +11,12 @@ $(document).ready(function () {
                     // Clear existing options except the first disabled one
                     $select.find('option:not(:disabled)').remove();
 
-                    // Populate the dropdown with project names
+                    // Populate the dropdown with project data
                     response.data.forEach(function (item) {
-                        const projectName = item.project_name;
+                        const projectId = item.project_unique_id;
+                        const companyName = item.company_name;
                         $select.append(
-                            `<option value="${escapeHtml(projectName)}">${escapeHtml(projectName)}</option>`
+                            `<option value="${escapeHtml(projectId)}">${escapeHtml(companyName)}</option>`
                         );
                     });
                 } else {
