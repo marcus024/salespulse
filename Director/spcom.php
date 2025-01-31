@@ -57,6 +57,14 @@ include("../auth/db.php");
             background:#1f2024;
             font-family:'Poppins';
             font-size:12px;
+            border: 1px solid #555;
+        }
+        .form-select:focus{
+            color:white;
+            background:#1f2024;
+            font-family:'Poppins';
+            font-size:12px;
+            border: 1px solid white;
         }
     </style>
 </head>
