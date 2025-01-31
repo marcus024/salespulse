@@ -383,7 +383,7 @@ include("../auth/db.php");
 
             // Compute Individual Commission Rate based on the Total Commission Rate
             let individualComRate = 0;
-            
+
             const wholeNumberComRate = Math.floor(totalComRate * 100); // Convert to percentage and round down to the nearest whole number
 
             if (wholeNumberComRate === 13) {
@@ -412,7 +412,6 @@ include("../auth/db.php");
                 // Default value for any other cases if necessary
                 individualComRate = 0; // No commission if rate is less than 13%
             }
-
 
             // Compute Commission Value
             const commissionValue = grossProfit * individualComRate;
