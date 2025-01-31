@@ -48,7 +48,7 @@ include("../auth/db.php");
             color:#555;
         }
         .form-label{
-            color:#555;
+            color:#ddd;
             font-family:'Poppins';
             font-size:12px;
         }
