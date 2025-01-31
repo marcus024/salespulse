@@ -198,7 +198,7 @@ include("../auth/db.php");
                     </div>
                     <!-- Table Panel -->
                     <div class="row">
-                        <div class="col-md-9 mb-4">
+                        <div class="col-md-13 mb-4">
                             <div class="card shadow-sm" style="background: #1f2024; border:none;">
                                 <div class="card-body" id="calendar-container" style="min-height: 400px; color: white;">
                                     
