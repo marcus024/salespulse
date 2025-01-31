@@ -178,7 +178,6 @@ include("../auth/db.php");
             </li>
             <!-- Spacer to Push Footer to Bottom -->
             <li style="flex-grow: 1;"></li>
-            
             <li class="nav-item footer">
                 <span class="powered-by">Powered by</span>
                 <span class="company-name">WORKFORCE NEXTGEN</span><br>
