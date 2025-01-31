@@ -31,6 +31,12 @@ include("../auth/db.php");
     <link href="css/spcomfooter.css" rel="stylesheet">
     <link href="css/spcomnotif.css" rel="stylesheet">
     <link href="css/spcomprofile.css.css" rel="stylesheet">
+    <style>
+        .form-control{
+            background: #1f2024;
+            color:white;
+        }
+    </style>
 </head>
 <body id="page-top" style="background-color:#15151a;">
     <!-- Page Wrapper -->
@@ -185,6 +191,7 @@ include("../auth/db.php");
                         <div class="col-md-3 mb-4">
                             <div class="card shadow-sm" style="background-color:#1f2024; border:none;">
                                 <div class="card-body">
+                                    
                                     <form>
                                         <div class="mb-3">
                                             <label for="projects" class="form-label ">Projects</label>
