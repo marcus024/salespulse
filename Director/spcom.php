@@ -383,13 +383,36 @@ include("../auth/db.php");
 
             // Compute Individual Commission Rate based on the Total Commission Rate
             let individualComRate = 0;
-            if ([0.13, 0.133, 0.1395].includes(totalComRate)) {
+            
+            const wholeNumberComRate = Math.floor(totalComRate * 100); // Convert to percentage and round down to the nearest whole number
+
+            if (wholeNumberComRate === 13) {
                 individualComRate = 0.025; // 2.5%
+            } else if (wholeNumberComRate === 14) {
+                individualComRate = 0.0275; // 2.75%
+            } else if (wholeNumberComRate === 15) {
+                individualComRate = 0.03; // 3.0%
+            } else if (wholeNumberComRate === 16) {
+                individualComRate = 0.0325; // 3.25%
+            } else if (wholeNumberComRate === 17) {
+                individualComRate = 0.035; // 3.5%
+            } else if (wholeNumberComRate === 18) {
+                individualComRate = 0.0375; // 3.75%
+            } else if (wholeNumberComRate === 19) {
+                individualComRate = 0.04; // 4.0%
+            } else if (wholeNumberComRate === 20) {
+                individualComRate = 0.0425; // 4.25%
+            } else if (wholeNumberComRate === 21) {
+                individualComRate = 0.045; // 4.5%
+            } else if (wholeNumberComRate === 22) {
+                individualComRate = 0.0475; // 4.75%
+            } else if (wholeNumberComRate >= 23) {
+                individualComRate = 0.05; // 5.0%
             } else {
-                // Add other conditions based on the Total Commission Rate (example)
-                if (totalComRate > 0.14) individualComRate = 0.03; // Example condition
-                // Add more conditions if needed
+                // Default value for any other cases if necessary
+                individualComRate = 0; // No commission if rate is less than 13%
             }
+
 
             // Compute Commission Value
             const commissionValue = grossProfit * individualComRate;
