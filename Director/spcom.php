@@ -187,15 +187,15 @@ include("../auth/db.php");
                                 <div class="card-body">
                                     <form>
                                         <div class="mb-3">
-                                            <label for="projects" class="form-label text-white">Projects</label>
+                                            <label for="projects" class="form-label ">Projects</label>
                                             <input type="text" class="form-control" id="projects" name="projects" placeholder="Enter projects">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="grossProfit" class="form-label text-white">Gross Profit</label>
+                                            <label for="grossProfit" class="form-label ">Gross Profit</label>
                                             <input type="text" class="form-control" id="grossProfit" name="grossProfit" placeholder="Enter gross profit">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="netSales" class="form-label text-white">Net Sales</label>
+                                            <label for="netSales" class="form-label ">Net Sales</label>
                                             <input type="text" class="form-control" id="netSales" name="netSales" placeholder="Enter net sales">
                                         </div>
                                         <button type="submit" class="btn btn-primary w-100">Submit</button>
