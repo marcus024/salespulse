@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 include('../../auth/db.php');
 
 // Get the current user's ID and company from session
-$currentUserId = $_SESSION['user_id'] ?? '';  
+$currentUserId = $_SESSION['user_id_c'] ?? '';  
 $currentUserCompany = $_SESSION['company'] ?? '';
 
 if (empty($currentUserId) || empty($currentUserCompany)) {
