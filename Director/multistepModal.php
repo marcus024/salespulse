@@ -847,17 +847,13 @@
                                                     <label for="status" class="form-label ">SPR Number</label>
                                                     <input type="text" class="form-control" id="stage-five-spr"  name="SPR_number" placeholder="e.g. SPR1 ">
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-3">
                                                     <label for="requirement" class="form-label ">Gross Profit</label>
                                                     <input name="contractStart" type="text" class="form-control" id="grossProfit">
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-3">
                                                     <label for="requirement" class="form-label ">Net Sales</label>
                                                     <input name="contractEnd" type="text" class="form-control" id="netSales" >
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label for="requirement" class="form-label ">Duration</label>
-                                                    <input name="contract_duration" type="text" class="form-control" id="contractDuration" placeholder="e.g. 6 days" readonly>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="billingType" class="form-label ">Billing Type</label>
