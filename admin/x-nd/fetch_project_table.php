@@ -63,7 +63,7 @@ try {
         }
     }
 
-    Return JSON response
+    // Return JSON response
     echo json_encode([
         'status' => 'success',
         'data'   => $rows,
