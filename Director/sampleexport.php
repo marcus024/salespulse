@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *'); // Allow all origins
 header('Access-Control-Allow-Methods: GET');
 header('Access-Control-Allow-Headers: Content-Type');
-
+session_start();
 include("../auth/db.php"); 
 
 // Hardcoded or passed user ID (Power BI doesn't support sessions)
