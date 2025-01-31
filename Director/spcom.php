@@ -311,7 +311,7 @@ include("../auth/db.php");
                 <h5 class="modal-title" id="resultModalLabel">Calculation Results</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="background:#1f2024;">
                 <p><strong>Total Commission Rate:</strong> <span id="totalComRate"></span></p>
                 <p><strong>Individual Commission Rate:</strong> <span id="individualComRate"></span></p>
                 <p><strong>Commission Value:</strong> <span id="commissionValue"></span></p>
