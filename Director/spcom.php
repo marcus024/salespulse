@@ -163,7 +163,7 @@ include("../auth/db.php");
                     <span style="font-size:13px; font-family:'Poppins';">Contacts</span>
                 </a>
             </li>
-            <li class="nav-item active" >
+            <li class="nav-item" >
                 <a class="nav-link" href="team.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-users"></i>
                     <span style="font-size:13px; font-family:'Poppins'; ">Team Members</span>
@@ -196,7 +196,7 @@ include("../auth/db.php");
                     <!-- Left Section: Home and Welcome Message -->
                     <div class="d-flex align-items-center" style="margin-top: 30px;"> <!-- Added margin-top to lower the left section -->
                         <div>
-                            <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Team Members</h1> <!-- Reduced spacing -->
+                            <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Commissions</h1> <!-- Reduced spacing -->
                             <!-- <p style="font-size:15px; color: #555; font-family:'Poppins'; margin: 0px;">Welcome Back <?php echo $_SESSION['user_name']; ?>!</p> -->
                         </div>
                     </div>
