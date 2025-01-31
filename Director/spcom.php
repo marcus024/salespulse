@@ -205,7 +205,6 @@ include("../auth/db.php");
                                 </div>
                             </div>
                         </div>
-
                         <!-- Chart Panels -->
                         <div class="col-md-9 mb-4">
                             <div class="card shadow-sm" style="background: #1f2024; border:none;">
