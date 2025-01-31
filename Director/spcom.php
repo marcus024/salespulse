@@ -117,8 +117,53 @@ include("../auth/db.php");
             margin-top: 5px; /* Space between company name and copyright */
         }
     </style>
-</head>
+    <style>
+        /* Hover effect for profile image */
+        .profile-img:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: scale(1.1);
+            transition: all 0.2s ease-in-out;
+        }
 
+        /* Hover effect for popup links */
+        .popup-link {
+            padding: 8px 0;
+            text-decoration: none;
+            color: #555;
+            margin-bottom: 5px;
+            transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+
+        .popup-link:hover {
+            color: #36b9cc;
+            border-radius: 4px;
+            text-decoration:none;
+        }
+
+        /* Special hover for logout link */
+        .logout-link:hover {
+            color: #36b9cc;
+            text-decoration:none;
+        }
+    </style>
+    <style>
+    /* Optional: Add a border or styling for the scrollable area */
+        .notify::-webkit-scrollbar {
+            width: 4px; /* Width of the vertical scrollbar */
+            height: 4px; /* Height of the horizontal scrollbar */
+        }
+
+        .notify::-webkit-scrollbar-thumb {
+            background-color: #36b9cc;
+            border-radius: 10px;
+            height: 5px; /* Minimum height for the scrollbar thumb */
+        }
+
+        .notify::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
 <body id="page-top" style="background-color:#15151a;">
     <!-- Page Wrapper -->
     <div id="wrapper" style="background-color:#15151a;">
@@ -177,7 +222,6 @@ include("../auth/db.php");
             </li>
             <!-- Spacer to Push Footer to Bottom -->
             <li style="flex-grow: 1;"></li>
-            
             <li class="nav-item footer">
                 <span class="powered-by">Powered by</span>
                 <span class="company-name">WORKFORCE NEXTGEN</span><br>
@@ -187,10 +231,8 @@ include("../auth/db.php");
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content" style="background-color:white;">
-
                 <!-- Topbar -->
                 <div id="topbartoggle" class="d-flex justify-content-between align-items-center fixed-top" style="background-color:#15151a; padding-right:30px; padding-left:220px; z-index: 300;">
                     <!-- Left Section: Home and Welcome Message -->
@@ -218,11 +260,8 @@ include("../auth/db.php");
                                     position: absolute; 
                                     top: -5px; 
                                     right: 35px;">
-                                    
                                 </span>
                             </button>
-
-
                             <!-- Dropdown Container (Initially hidden) -->
                             <div id="notification-dropdown" 
                                 style="
@@ -243,23 +282,6 @@ include("../auth/db.php");
                                 <div style="text-align: center; border-top: 1px solid #ccc; padding: 8px;">
                                     <a href="#" id="toggleNotifications"  style="font-size: 12px; color: #36b9cc; text-decoration: none;">Show All Alerts</a>
                                 </div>
-                                <style>
-                                /* Optional: Add a border or styling for the scrollable area */
-                                    .notify::-webkit-scrollbar {
-                                        width: 4px; /* Width of the vertical scrollbar */
-                                        height: 4px; /* Height of the horizontal scrollbar */
-                                    }
-
-                                    .notify::-webkit-scrollbar-thumb {
-                                        background-color: #36b9cc;
-                                        border-radius: 10px;
-                                        height: 5px; /* Minimum height for the scrollbar thumb */
-                                    }
-
-                                    .notify::-webkit-scrollbar-thumb:hover {
-                                        background-color: #555;
-                                    }
-                                </style>
                             </div>
                         </div>
                         <!-- Profile Name and Picture -->
@@ -286,147 +308,22 @@ include("../auth/db.php");
                                 <a href="#" class="popup-link logout-link" data-bs-toggle="modal" data-bs-target="#outLog">Logout</a>
                             </nav>
                         </div>
-                        <style>
-                            /* Hover effect for profile image */
-                            .profile-img:hover {
-                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                                transform: scale(1.1);
-                                transition: all 0.2s ease-in-out;
-                            }
-
-                            /* Hover effect for popup links */
-                            .popup-link {
-                                padding: 8px 0;
-                                text-decoration: none;
-                                color: #555;
-                                margin-bottom: 5px;
-                                transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-                            }
-
-                            .popup-link:hover {
-                                color: #36b9cc;
-                                border-radius: 4px;
-                                text-decoration:none;
-                            }
-
-                            /* Special hover for logout link */
-                            .logout-link:hover {
-                                color: #36b9cc;
-                                text-decoration:none;
-                            }
-                        </style>
                     </div>
                 </div>
                 <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-                <!-- Begin Page Content -->
                 <div class="container-fluid" style=" background-color:#15151a;">
                     
                 </div>
-                <!-- /.container-fluid -->
-
             </div>
             <!-- End of Main Content -->
-            <!-- Modals -->
-            <!-- Contact Admin Modal -->
-            <div class="modal fade" id="contactAdmin" tabindex="-1" aria-labelledby="contactAdminLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div style="background-color:red; border:none;" class="modal-header">
-                            <h6 style="color:white;"class="modal-title" id="contactAdminLabel">Access Denied</h6>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body" style="background:#1f2024;">
-                            <p style="color:white;">You are not authorized to add team members. Please contact your admin or head for assistance.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-             <!-- Add Team Modal -->
-                <div class="modal fade" id="addTeam" tabindex="-1" aria-labelledby="addTeamModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <!-- Modal Header -->
-                            <div class="modal-header" style="background-color:#f9ce45; color:#1f2024; height: 50px; border:none;">
-                                <h5 class="modal-title" id="addTeamModalLabel" style="font-family:'Poppins'; color:#1f2024; font-size: 15px; ">Add Team Member</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <!-- Modal Body -->
-                            <div class="modal-body" style="height: 400px; background:#1f2024; ">
-                                <!-- Search Engine -->
-                                <div class="row mb-3">
-                                    <div class="col-12">
-                                        <input type="text" id="userSearch" class="form-control" onkeyup="filterUsers()" placeholder="Search users by name or position..." 
-                                            style="font-family:'Poppins'; font-size: 14px; border: 1px solid #555; color:white; background:#1f2024; border-radius: 4px; padding: 8px;">
-                                    </div>
-                                </div>
-                                <style>
-                                /* Optional: Add a border or styling for the scrollable area */
-                                    .userClass::-webkit-scrollbar {
-                                        width: 4px; /* Width of the vertical scrollbar */
-                                        height: 4px; /* Height of the horizontal scrollbar */
-                                    }
-
-                                    .userClass::-webkit-scrollbar-thumb {
-                                        background-color:  #f9ce45;
-                                        border-radius: 10px;
-                                        height: 5px; /* Minimum height for the scrollbar thumb */
-                                    }
-
-                                    .userClass::-webkit-scrollbar-thumb:hover {
-                                        background-color: #1f2024;
-                                    }
-                                </style>
-                                <!-- User List -->
-                                <div class="row">
-                                    <div class="col-12">
-                                        <ul class="list-group" id="userList" class="userClass" style="max-height: 380px; overflow-y: auto;">
-                                            
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Modal Footer -->
-                            <div class="modal-footer" style="background:#1f2024; border:none;">
-                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal" style="font-family:'Poppins'; font-size: 12px;">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <!-- Footer -->
-            <!-- End of Footer -->
-
         </div>
         <!-- End of Content Wrapper -->
-
     </div>
     <!-- End of Page Wrapper -->
-
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="index.php">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Logout Modal-->
     <div class="modal fade" id="outLog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -462,13 +359,6 @@ include("../auth/db.php");
     <script src="alerts/notif.js"></script>
     <script src="alerts/notifCount.js"></script>
     <script src="current_year.js"></script>
-    <!-- <script>
-        // Toggle sidebar collapse
-        document.getElementById('sidebarToggle').addEventListener('click', function () {
-            const sidebar = document.getElementById('accordionSidebar');
-            sidebar.classList.toggle('collapsed');
-        });
-    </script> -->
     <script>
         function togglePopup() {
             const popup = document.getElementById('popup-container');
@@ -485,106 +375,6 @@ include("../auth/db.php");
             }
         });
     </script>
-
-<script>
-    let users = []; // Global variable to store the fetched users
-    
-
-    // Fetch users dynamically from the server
-    async function fetchUsers() {
-        try {
-            const response = await fetch("dirback/teamUser.php");
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            users = await response.json(); // Store the users globally
-            renderUserList(users); // Render the initial user list
-        } catch (error) {
-            console.error("Error fetching users:", error);
-        }
-    }
-
-    // Render user list dynamically
-    function renderUserList(userList) {
-        const userListContainer = document.getElementById("userList");
-        userListContainer.innerHTML = ""; // Clear existing list
-
-        userList.forEach(user => {
-            const li = document.createElement("li");
-            li.className = "list-group-item d-flex justify-content-between align-items-center";
-            li.style.fontFamily = "Poppins";
-            li.style.fontSize = "14px";
-            li.style.backgroundColor = "#1f2024"; 
-
-            li.innerHTML = `
-                <div>
-                    <strong style="color:white;">${user.name}</strong>
-                    <p class="mb-0 text-muted" style="font-size: 12px; color:white; ">${user.position}</p>
-                </div>
-                <button class="btn btn-sm btn-primary" style="background-color: #f9ce45; border: none; color:#1f2024;" onclick="addUser('${currentUserId}', '${user.user_id_current}')">
-                    <i class="fas fa-plus" style="color:#1f2024;"></i> Add
-                </button>
-            `;
-
-            userListContainer.appendChild(li);
-        });
-    }
-
-    // Filter user list based on search input
-    function filterUsers() {
-        const searchValue = document.getElementById("userSearch").value.toLowerCase();
-        const filteredUsers = users.filter(user => 
-            user.name.toLowerCase().includes(searchValue) || user.position.toLowerCase().includes(searchValue)
-        );
-
-        renderUserList(filteredUsers); // Render the filtered list
-    }
-
-   // Add user function (custom logic to handle adding the user)
-    async function addUser(currentUserId, selectedUserId) {
-         const confirmAdd = confirm(`Are you sure you want to add user with ID ${selectedUserId} to your team?`);
-
-        if (!confirmAdd) {
-            // If the user cancels, exit the function
-            return;
-        }
-        try {
-            // Send the user IDs to the backend
-            const response = await fetch("dirback/addTeam.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    head_user_id: currentUserId,
-                    team_user_id: selectedUserId,
-                }),
-            });
-
-            // Parse the response
-            const result = await response.json();
-
-            if (result.success) {
-                alert(`User successfully added to the team: ${result.message}`);
-                window.location.reload();
-            } else {
-                throw new Error(result.message);
-            }
-        } catch (error) {
-            console.error("Error adding user to the team:", error);
-            alert("Failed to add user to the team. Please try again.");
-        }
-    }
-
-
-    // Initialize the user list on page load
-    document.addEventListener("DOMContentLoaded", () => {
-        fetchUsers(); // Fetch the users list
-    });
-</script>
-
-
-
 </body>
 
 </html>
