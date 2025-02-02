@@ -310,7 +310,7 @@ include("../auth/db.php");
     <script src="alerts/notif.js"></script>
     <script src="alerts/notifCount.js"></script>
     <script src="current_year.js"></script>
-    <script src="fetchprojects/fetch_project.js"></script>
+    <script src="fetchprojects/fetch_com_table.js"></script>
     <script>
         function togglePopup() {
             const popup = document.getElementById('popup-container');
@@ -328,58 +328,6 @@ include("../auth/db.php");
         });
     </script>
 
-    <script>
-     $(document).ready(function() {
-    $.ajax({
-        url: './dirback/spcome_fetch_table.php',  // The PHP file
-        type: 'GET',
-        dataType: 'json',
-        success: function(data) {
-            $('#commission-table').empty(); // Clear previous content
-
-            if (data.length === 0) {
-                showError('No projects found.');
-                return;
-            }
-
-            // Append data rows dynamically
-            data.forEach(project => {
-                $('#commission-table').append(`
-                    <div class="d-flex p-3 mb-2" style="background: #292a2f; border-radius: 8px;">
-                        <div class="col-2 comRows">${project.project_name}</div>
-                        <div class="col-2 comRows">${project.start_date}</div>
-                        <div class="col-2 comRows">${project.end_date}</div>
-                        <div class="col-2 comRows">Php ${project.net_sales || 0}</div>
-                        <div class="col-2 comRows">Php ${project.gross_profit || 0}</div>
-                        <div class="col-2 comRows">Php ${project.commission || 0}</div> <!-- Default to 0 if commission is missing -->
-                    </div>
-                `);
-            });
-        },
-        error: function(xhr, status, error) {
-            let errorMessage = 'An error occurred while fetching data.';
-
-            if (xhr.responseJSON && xhr.responseJSON.error) {
-                errorMessage = xhr.responseJSON.error;
-            }
-
-            showError(errorMessage);
-            console.error('Error fetching data:', error);
-        }
-    });
-
-    // Function to display error notifications
-    function showError(message) {
-        $('#commission-table').html(`
-            <div class="alert alert-danger" role="alert">
-                ${message}
-            </div>
-        `);
-    }
-});
-
-
-    </script>
 
 </body>
 </html>
