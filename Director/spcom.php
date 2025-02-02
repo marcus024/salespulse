@@ -214,7 +214,7 @@ include("../auth/db.php");
                         <!-- Chart Panels -->
                         <div class="col-md-9 mb-4">
                             <div class="card shadow-sm" style="background: #1f2024; border:none;">
-                                <p>Completed Project Commissions</p>
+                                <p>Completed Projects Commissions</p>
                                 <div class="card-body" id="calendar-container" style="min-height: 400px; color: white;">
                                     
                                 </div>
