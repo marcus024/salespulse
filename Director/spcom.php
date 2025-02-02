@@ -226,6 +226,27 @@ include("../auth/db.php");
                         <div class="col-md-13 mb-4">
                             <div class="card shadow-sm" style="background: #1f2024; border:none;">
                                 <p style="color:white; font-size:20px; font-family:'Poppins'; font-weight:bold; margin-top:10px; margin-left:20px;">Completed Projects Commissions</p>
+                                <!-- Row to hold the search bar and dropdowns -->
+                                <div class="d-flex align-items-center" style="gap: 10px;">
+                                    <!-- Search Bar -->
+                                    <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search..." 
+                                        style="background-color:#2a2925; color:white; font-size: 10px; border: none; border-radius: 4px; outline: white; width: 200px; height: 30px; margin: 0;">
+                                    
+                                    <!-- Dropdown for Export Options -->
+                                    <div class="btn-group" role="group">
+                                        <!-- Export Dropdown -->
+                                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
+                                                style="color:black; font-size: 10px; height: 30px; margin: 0; border:none; background-color:#f9ce45">
+                                            Export
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="exportToPDF()">Download PDF</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="exportToExcel()">Download Excel</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="exportToCSV()">Download CSV</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="printTable()">Print</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
                                 <div class="card-body" style="min-height: 400px; color: white; padding-top: 5px;">
                                     
                                     <!-- Table Header -->
