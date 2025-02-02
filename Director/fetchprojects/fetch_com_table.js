@@ -84,3 +84,27 @@
             }
         });
     });
+
+    // Search function to filter rows based on input
+function searchTable() {
+    let input = document.getElementById("searchInput");
+    let filter = input.value.toLowerCase();
+    let rows = document.querySelectorAll("#commission-table .d-flex"); // Get all row containers
+
+    rows.forEach(row => {
+        let cells = row.querySelectorAll(".comRows"); // Get all cells in the current row
+        let rowText = "";
+        
+        // Concatenate text content of each cell for searching
+        cells.forEach(cell => {
+            rowText += cell.textContent.toLowerCase(); // Add cell text to rowText
+        });
+
+        // Show/hide row based on the search input
+        if (rowText.includes(filter)) {
+            row.style.display = ""; // Show row
+        } else {
+            row.style.display = "none"; // Hide row
+        }
+    });
+}
