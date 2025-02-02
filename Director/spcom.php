@@ -262,56 +262,28 @@ include("../auth/db.php");
                         </div>
                     </div>
                     <!-- Table Panel -->
-<div class="row">
-    <div class="col-md-13 mb-4">
-        <div class="card shadow-sm" style="background: #1f2024; border:none;">
-            <div class="card-body" id="calendar-container" style="min-height: 400px; color: white;">
-                
-                <!-- Table Header -->
-                <div class="d-flex p-3 mb-2" style="background: #2a2b30; border-radius: 8px; font-weight: bold;">
-                    <div class="col-2">Project Name</div>
-                    <div class="col-2">Start Date</div>
-                    <div class="col-2">End Date</div>
-                    <div class="col-2">Net Sales</div>
-                    <div class="col-2">Gross Profit</div>
-                    <div class="col-2">Commission</div>
-                </div>
+                    <div class="row">
+                        <div class="col-md-13 mb-4">
+                            <div class="card shadow-sm" style="background: #1f2024; border:none;">
+                                <div class="card-body" style="min-height: 400px; color: white;">
+                                    
+                                    <!-- Table Header -->
+                                    <div class="d-flex p-3 mb-2" style="background: #2a2b30; border-radius: 8px; font-weight: bold;">
+                                        <div class="col-2">Project Name</div>
+                                        <div class="col-2">Start Date</div>
+                                        <div class="col-2">End Date</div>
+                                        <div class="col-2">Net Sales</div>
+                                        <div class="col-2">Gross Profit</div>
+                                        <div class="col-2">Commission</div>
+                                    </div>
 
-                <!-- Row 1 -->
-                <div class="d-flex p-3 mb-2" style="background: #292a2f; border-radius: 8px;">
-                    <div class="col-2">Alpha Project</div>
-                    <div class="col-2">2024-01-15</div>
-                    <div class="col-2">2024-06-30</div>
-                    <div class="col-2">$50,000</div>
-                    <div class="col-2">$15,000</div>
-                    <div class="col-2">$3,000</div>
-                </div>
-
-                <!-- Row 2 -->
-                <div class="d-flex p-3 mb-2" style="background: #292a2f; border-radius: 8px;">
-                    <div class="col-2">Beta Project</div>
-                    <div class="col-2">2024-03-10</div>
-                    <div class="col-2">2024-09-15</div>
-                    <div class="col-2">$75,000</div>
-                    <div class="col-2">$20,000</div>
-                    <div class="col-2">$4,500</div>
-                </div>
-
-                <!-- Row 3 -->
-                <div class="d-flex p-3 mb-2" style="background: #292a2f; border-radius: 8px;">
-                    <div class="col-2">Gamma Project</div>
-                    <div class="col-2">2024-05-01</div>
-                    <div class="col-2">2024-12-31</div>
-                    <div class="col-2">$100,000</div>
-                    <div class="col-2">$30,000</div>
-                    <div class="col-2">$6,000</div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
+                                    <div id="commission-table">
+                                        <!-- rows here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- End of Main Content -->
@@ -479,6 +451,37 @@ include("../auth/db.php");
                 modal.hide();
             });
         });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+    $.ajax({
+        url: 'fetch_projects.php',  // The PHP file we created
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            $('#commission-table').empty(); // Clear any previous rows
+
+            // Append fetched rows
+            data.forEach(project => {
+                $('#commission-table').append(`
+                    <div class="d-flex p-3 mb-2" style="background: #292a2f; border-radius: 8px;">
+                        <div class="col-2">${project.project_name}</div>
+                        <div class="col-2">${project.start_date}</div>
+                        <div class="col-2">${project.end_date}</div>
+                        <div class="col-2">$${project.endC}</div>
+                        <div class="col-2">$${project.startC}</div>
+                        <div class="col-2">$${project.commission}</div>
+                    </div>
+                `);
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching data:', error);
+        }
+    });
+});
+
     </script>
 
 </body>
