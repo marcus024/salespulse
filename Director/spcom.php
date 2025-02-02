@@ -233,13 +233,13 @@ include("../auth/db.php");
         <div class="d-flex align-items-center" style="gap: 10px;">
             <!-- Search Bar -->
             <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search..." 
-                style="background-color:#2a2925; color:white; font-size: 10px; border: none; border-radius: 4px; outline: white; width: 200px; height: 30px; margin: 0;">
+                style="background-color:#2a2925; color:white; font-size: 12px; border: none; border-radius: 4px; outline: white; width: 200px; height: 30px; margin: 0;">
             
             <!-- Dropdown for Export Options -->
             <div class="btn-group" role="group">
                 <!-- Export Dropdown -->
                 <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
-                        style="color:black; font-size: 10px; height: 30px; margin: 0; border:none; background-color:#f9ce45">
+                        style="color:black; font-size: 12px; height: 30px; margin: 0; border:none; background-color:#f9ce45">
                     Export
                 </button>
                 <ul class="dropdown-menu">
