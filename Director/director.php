@@ -1788,7 +1788,7 @@ include("../auth/db.php");
                     </form>
                 </div>
 
-                <div class="modal-footer" style="border:none;">
+                <div class="modal-footer" style="border:none; background:#1f2024;">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <!-- Give the button an ID so we can bind an event to it -->
                     <button type="button" id="saveScheduleBtn" class="btn btn-primary" style="background-color:#36b9cc; color:white;">
