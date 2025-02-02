@@ -200,9 +200,9 @@ include("../auth/db.php");
                                     </div>
                                     <button type="button" class="btn w-100 calcBtn">Calculate</button> <!-- Changed type to 'button' -->
                                 </form>
-                                <div>
-                                    <p>Potential Commission</p>
-                                    <p id="potentialCommission">
+                                <div style="margin-top:5px;">
+                                    <p style="color:white; font-weight:bold; font-family:'Poppins' ">Potential Commission</p>
+                                    <p id="potentialCommission" style="color:white;  font-family:'Poppins'>
                                         <!-- Display here the calculated potential commission -->
                                     </p>
                                 </div>
