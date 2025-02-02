@@ -471,12 +471,12 @@ include("../auth/db.php");
             data.forEach(project => {
                 $('#commission-table').append(`
                     <div class="d-flex p-3 mb-2" style="background: #292a2f; border-radius: 8px;">
-                        <div class="col-2">${project.project_name}</div>
-                        <div class="col-2">${project.start_date}</div>
-                        <div class="col-2">${project.end_date}</div>
-                        <div class="col-2">Php ${project.net_sales || 0}</div>
-                        <div class="col-2">Php${project.gross_profit || 0}</div>
-                        <div class="col-2">Php${project.commission || 0}</div> <!-- Default to 0 if commission is missing -->
+                        <div class="col-2 comdesign">${project.project_name}</div>
+                        <div class="col-2 comdesign">${project.start_date}</div>
+                        <div class="col-2 comdesign">${project.end_date}</div>
+                        <div class="col-2 comdesign">Php ${project.net_sales || 0}</div>
+                        <div class="col-2 comdesign">Php${project.gross_profit || 0}</div>
+                        <div class="col-2 comdesign">Php${project.commission || 0}</div> <!-- Default to 0 if commission is missing -->
                     </div>
                 `);
             });
