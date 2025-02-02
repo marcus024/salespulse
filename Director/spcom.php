@@ -456,7 +456,7 @@ include("../auth/db.php");
     <script>
         $(document).ready(function() {
     $.ajax({
-        url: 'fetch_projects.php',  // The PHP file we created
+        url: 'spcome_fetch_table.php',  // The PHP file we created
         type: 'GET',
         dataType: 'json',
         success: function(data) {
