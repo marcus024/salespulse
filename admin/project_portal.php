@@ -298,6 +298,8 @@ include("../auth/db.php");
                                                             <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search..." 
                                                                 style="font-size: 10px; border: 1px solid #36b9cc; border-radius: 4px; outline: none; width: 200px; height: 30px; margin: 0;">
                                                             
+                                                            <input type="hidden" id="company" value="<?php echo $_SESSION['company']; ?>">
+
                                                             <!-- Dropdown for Export Options -->
                                                             <div class="btn-group" role="group">
                                                                 <!-- Export Dropdown -->
@@ -310,6 +312,7 @@ include("../auth/db.php");
                                                                     <li><a class="dropdown-item" href="#" onclick="exportToExcel()">Download Excel</a></li>
                                                                     <li><a class="dropdown-item" href="#" onclick="exportToCSV()">Download CSV</a></li>
                                                                     <li><a class="dropdown-item" href="#" onclick="printTable()">Print</a></li>
+                                                                    <li><a class="dropdown-item" href="#" onclick="exportToAPI()">API</a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>

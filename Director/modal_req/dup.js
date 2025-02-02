@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const newReqId = 'st1rq' + requirementCount;
 
     newBlock.innerHTML = `
-      <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold;">
+      <p class="text-center text-white mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;">
         Requirement ${requirementCount}
       </p>
       <input type="hidden" name="requirement_id_1[]" value="${newReqId}">

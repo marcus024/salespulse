@@ -94,3 +94,19 @@
         newWindow.document.close();
         newWindow.print();
     }
+
+    function exportToAPI() {
+        // Get the company value from the hidden input field
+        const company = encodeURIComponent(document.getElementById("company").value);
+        
+        // Construct the API URL with the company parameter
+        const apiUrl = window.location.origin + "/admin/x-nd/fetch_project_table.php?company=" + company;
+
+        // Copy API URL to clipboard
+        navigator.clipboard.writeText(apiUrl).then(() => {
+            alert("API URL copied to clipboard: " + apiUrl);
+        }).catch(err => {
+            alert("Failed to copy API URL.");
+            console.error(err);
+        });
+    }

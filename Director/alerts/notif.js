@@ -13,14 +13,12 @@ async function fetchNotifications() {
 
         currentUserId = data.user_id_cur;
 
-
         const notifications = {
             allNotifications: [],
             unreadNotifications: 0,
             newNotifications: [],
             userId: data.user_id_cur,
         };
-
 
         if (data.projects && data.projects.length > 0) {
             data.projects.forEach((project) => {
@@ -144,7 +142,6 @@ async function markNotificationRead(element, userId) {
 
 function updateNotificationBadge(currentUserId) {
     const notificationCountElement = document.getElementById("notification-count");
-
     // Append the user ID (string) to the request URL
     fetch(`alerts/get_unread_count.php?user_id=${encodeURIComponent(currentUserId)}`)
         .then(response => response.json())
@@ -294,9 +291,9 @@ async function getAllCurrentUserNotif(currentUserId) {
             data-bs-toggle="modal" 
             data-bs-target="#multiStepModal"
             onclick="markNotificationRead(this); openModal('${notif.related_id}');">
-                <div style="display: flex; align-items: center;">
-                    ${isUnread ? `<div style="width: 8px; height: 8px; background-color: #36b9cc; border-radius: 50%; margin-right: 8px;"></div>` : ''}
-                    <div style="font-weight: bold; font-family:'Poppins'">
+                <div style="display: flex; align-items: center; background:#1f2024;">
+                    ${isUnread ? `<div style="width: 10px; height: 10px; background-color:#f9ce45; border-radius: 50%; margin-right: 8px;"></div>` : ''}
+                    <div style="font-weight: bold; font-family:'Poppins'; color:#FAF9F6">
                         ${notif.type}: ${notif.content}
                     </div>
                 </div>

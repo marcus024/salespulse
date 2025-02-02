@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const newEngagementId = `st2eng${nextEngagementIndex}`;
 
     newEngagementBlock.innerHTML = `
-      <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement${nextEngagementIndex}">
+      <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="engagement${nextEngagementIndex}">
         Engagement ${nextEngagementIndex}
       </p>
       <input type="hidden" name="engagement_id_2[]" value="${newEngagementId}" id="eng_${nextEngagementIndex}_id">

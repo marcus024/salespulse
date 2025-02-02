@@ -403,6 +403,12 @@ include("../auth/db.php");
                     <span style="font-size:13px; font-family:'Poppins'">Team Members</span>
                 </a>
             </li>
+            <li class="nav-item " >
+                <a class="nav-link" href="spcom.php" style="border-radius:10px; padding-left:10px;">
+                    <i class="fas fa-fw fa-money-bill-wave"></i>
+                    <span style="font-size:13px; font-family:'Poppins'; ">Commissions</span>
+                </a>
+            </li>
             <!-- Spacer to Push Footer to Bottom -->
             <li style="flex-grow: 1;"></li>
             
@@ -457,12 +463,12 @@ include("../auth/db.php");
                                     top: 40px; 
                                     right: 0; 
                                     width: 220px; 
-                                    background-color: #fff; 
-                                    border: 1px solid #ccc; 
+                                    background-color:#1f2024; 
+                                    border: 1px solid #1f2024; 
                                     border-radius: 5px; 
                                     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                                 ">
-                                <h6 style=" color: black; padding: 8px; margin: 0; border-bottom: 1px solid #ccc; font-size: 14px; font-family:'Poppins'">Notifications</h6>
+                                <h6 style=" color: white; padding: 8px; margin: 0; border-bottom: 1px solid #ccc; font-size: 14px; font-family:'Poppins'">Notifications</h6>
 
                                 <!-- Notification Items -->
                                 <div class="notify" id="notifs" style="padding: 8px; font-size: 13px; color: #555; max-height: 200px; overflow-y: auto;"></div>
@@ -475,7 +481,7 @@ include("../auth/db.php");
                                         height: 4px; 
                                     }
                                     .notify::-webkit-scrollbar-thumb {
-                                        background-color: #36b9cc;
+                                        background-color:#f9ce45;
                                         border-radius: 10px;
                                         height: 5px; 
                                     }
@@ -1739,16 +1745,16 @@ include("../auth/db.php");
             </style>
 
             <!-- Add New Schedule Modal -->
-            <div class="modal fade" id="addSchedule" tabindex="-1" aria-labelledby="addProjectModalLabel" aria-hidden="true">
+            <div class="modal fade" id="addSchedule" tabindex="-1" aria-labelledby="addProjectModalLabel" aria-hidden="true" style="border:none;">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(2px); border-radius: 5px;">
-                <div class="modal-header" style="background-color:#36b9cc; height: 50px;">
-                    <font color="white">
+                <div class="modal-header" style="border:none; font-family:'Poppins'; color:#1f2024; font-size:15px; background-color:#f9ce45; height: 50px;">
+                    <font color="#1f2024">
                     <h5 class="m" id="addProjectModalLabel">Add New Schedule</h5>
                     </font>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="background:#1f2024">
                     <!-- Form to add schedule -->
                     <form id="addScheduleForm">
                     <div class="row">
@@ -1782,10 +1788,10 @@ include("../auth/db.php");
                     </form>
                 </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <div class="modal-footer" style="border:none; background:#1f2024;">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="color:white;">Close</button>
                     <!-- Give the button an ID so we can bind an event to it -->
-                    <button type="button" id="saveScheduleBtn" class="btn btn-primary" style="background-color:#36b9cc; color:white;">
+                    <button type="button" id="saveScheduleBtn" class="btn btn-primary" style="background-color:#f9ce45; color:#1f2024;">
                     Save
                     </button>
                 </div>
@@ -1799,13 +1805,13 @@ include("../auth/db.php");
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <!-- Centered and large modal for better responsiveness -->
                     <div class="modal-content" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(2px); border-radius: 5px;">
-                        <div class="modal-header" style="background-color:#36b9cc; height: 50px;">
-                            <font color="white">
+                        <div class="modal-header" style="background-color:#f9ce45; height: 50px; border:none;">
+                            <font color="#1f2024">
                                 <h5 class="modal-title" id="addProjectModalLabel">Add New Task</h5>
                             </font>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" style="border:none; background:#1f2024;">
                             <!-- Form to add task -->
                             <form id="taskForm">
                                 <div class="row">
@@ -1834,9 +1840,9 @@ include("../auth/db.php");
                                 </div>
                             </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary todo-save" style="background-color:#36b9cc; color:white;" id="saveTaskBtn">Save</button>
+                        <div class="modal-footer" style="border:none; background:#1f2024;">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="color:white;">Close</button>
+                            <button type="submit" class="btn btn-primary todo-save" style="background-color:#f9ce45; color:white;" id="saveTaskBtn">Save</button>
                         </div>
                     </div>
                 </div>

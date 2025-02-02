@@ -1,0 +1,44 @@
+    .form-control{
+        background: #1f2024;
+        color:#555;
+        border: 1px solid #555;
+        font-family:'Poppins';
+        font-size:12px;
+    }
+    .form-control:focus{
+        border: 1px solid white;
+        background: #1f2024;
+        color:white;
+    }
+    .form-control::placeholder{
+        color:#555;
+    }
+    .form-label{
+        color:#ddd;
+        font-family:'Poppins';
+        font-size:12px;
+    }
+    .form-select{
+        color:#555;
+        background:#1f2024;
+        font-family:'Poppins';
+        font-size:12px;
+        border: 1px solid #555;
+    }
+    .form-select:focus{
+        color:white;
+        background:#1f2024;
+        font-family:'Poppins';
+        font-size:12px;
+        border: 1px solid white;
+    }
+    .calcBtn{
+        background:#f9ce45;
+        color: #1f2024; 
+        font-family:'Poppins';
+        font-size:15px;
+    }
+    .calcBtn:hover{
+        border:1px solid #f9ce45;
+        background:#1f2024;
+    }

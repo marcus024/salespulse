@@ -208,7 +208,7 @@
 
         // Populate the block content
         newBlock.innerHTML = `
-            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="req_1_id">
+            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="req_1_id">
             Requirement ${blockIndex}
             </p>
             <input type="hidden" name="requirement_id_1[]" value="${requirementId}" id="req_1_id">
@@ -463,7 +463,7 @@
 
         // Populate the block content
         newBlock.innerHTML = `
-            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="rq_2_id">
+            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="rq_2_id">
             Requirement ${blockIndex}
             </p>
             <input type="hidden" name="requirement_id_2[]" value="${requirementId}" id="rq_2_id">
@@ -588,7 +588,7 @@
         newBlock.dataset.index = blockIndex;
 
         newBlock.innerHTML = `
-            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagement${blockIndex}">
+            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="engagement${blockIndex}">
             Engagement ${blockIndex}
             </p>
             <input type="hidden" name="engagement_id_2[]" value="${engagementId}" id="eng_${blockIndex}_id">
@@ -810,7 +810,7 @@
 
         // Populate the block content
         newBlock.innerHTML = `
-            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagethree">
+            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="requirementstagethree">
                 Requirement ${blockIndex}
             </p>
             <input type="hidden" name="requirement_id_3[]" value="${requirementId}" id="req_3_id">
@@ -947,7 +947,7 @@
         newBlock.dataset.index = blockIndex;
 
         newBlock.innerHTML = `
-            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="engagementstagethree">
+            <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="engagementstagethree">
                 Engagement ${blockIndex}
             </p>
             <input type="hidden" name="engagement_id_3[]" value="${engagementId}" id="eng_3_id_${blockIndex}">
@@ -1123,7 +1123,7 @@
     newBlock.dataset.index = blockIndex;
 
     newBlock.innerHTML = `
-        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefour">
+        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="requirementstagefour">
             Requirement ${blockIndex}
         </p>
         <input type="hidden" name="requirement_id_4[]" value="${requirementId}" id="req_4_id">
@@ -1253,8 +1253,8 @@ function deleteRequirementFour(requirementId, button, projectId) {
     document.getElementById('stage-five-status').value = data.stages.stage_five.status || 'No Data';
     document.getElementById('stage-five-spr').value = data.stages.stage_five.spr || 'No Data';
     // document.getElementById('contractDuration').value = data.stages.stage_five.contract_duration || 'No Data';
-    // document.getElementById('startContract').value = data.stages.stage_five.contractStart || 'No Data';
-    // document.getElementById('endContract').value = data.stages.stage_five.contractEnd || 'No Data';
+    document.getElementById('grossProfit').value = data.stages.stage_five.contractStart || 'No Data';
+    document.getElementById('netSales').value = data.stages.stage_five.contractEnd || 'No Data';
     document.getElementById('billingType').value = data.stages.stage_five.billing_type || 'No Data';
     document.getElementById('solution5').value = data.stages.stage_five.solution_five || data.stages.stage_four.solution_four || 'No Data';
     document.getElementById('deal_size5').value = Number(data.stages.stage_five.deal_size_five) || Number(data.stages.stage_four.deal_size_four) || 'No Data';
@@ -1269,13 +1269,13 @@ function deleteRequirementFour(requirementId, button, projectId) {
         });
     }
     // Set values for start and end dates
-    const startContractInput = document.getElementById('startContract');
-    const endContractInput = document.getElementById('endContract');
-    startContractInput.value = data.stages.stage_five.contractStart|| '';
-    endContractInput.value = data.stages.stage_five.contractEnd || '';
+    // const startContractInput = document.getElementById('startContract');
+    // const endContractInput = document.getElementById('endContract');
+    // startContractInput.value = data.stages.stage_five.contractStart|| '';
+    // endContractInput.value = data.stages.stage_five.contractEnd || '';
 
     // Call updateContractDuration from outside
-    updateContractDuration();
+    // updateContractDuration();
 
      const requirementsStageFive = 
         Array.isArray(data.stages.stage_five?.requirement_stage_five) && 
@@ -1392,7 +1392,7 @@ function createUpsellBlock(blockIndex, upsellItem, projectId) {
     newBlock.dataset.index = blockIndex;
 
     newBlock.innerHTML = `
-        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="upsellCon">
+        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="upsellCon">
             Upsell ${blockIndex}
         </p>
         <input type="hidden" name="upsell_stage_5[]" value="${upsellId}" id="upsell_id">
@@ -1496,7 +1496,7 @@ function createRequirementFiveBlock(blockIndex, reqItem, productList = [], distr
     newBlock.dataset.index = blockIndex;
 
     newBlock.innerHTML = `
-        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold;" id="requirementstagefive">
+        <p class="text-center  mb-1" style="font-style:'Poppins'; font-weight:bold; color:white;" id="requirementstagefive">
             Requirement ${blockIndex}
         </p>
         <input type="hidden" name="requirement_id_5[]" value="${requirementId}" id="req_5_id">
@@ -1622,33 +1622,33 @@ function deleteRequirementFive(requirementId, button, projectId) {
 /**
  * Function to calculate and update contract duration
  */
-function updateContractDuration() {
-    const startContractInput = document.getElementById('startContract');
-    const endContractInput = document.getElementById('endContract');
-    const contractDurationInput = document.getElementById('contractDuration');
+// function updateContractDuration() {
+//     const startContractInput = document.getElementById('startContract');
+//     const endContractInput = document.getElementById('endContract');
+//     const contractDurationInput = document.getElementById('contractDuration');
 
-    // Convert input values to Date objects
-    const startDate = new Date(startContractInput.value);
-    const endDate = new Date(endContractInput.value);
+//     // Convert input values to Date objects
+//     const startDate = new Date(startContractInput.value);
+//     const endDate = new Date(endContractInput.value);
 
-    // Validate if both start and end dates are valid dates
-    if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
-        contractDurationInput.value = 'Invalid Dates';
-        return;
-    }
+//     // Validate if both start and end dates are valid dates
+//     if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+//         contractDurationInput.value = 'Invalid Dates';
+//         return;
+//     }
 
-    // Calculate the difference in time between the two dates
-    const durationInMilliseconds = endDate - startDate;
-    const durationInDays = durationInMilliseconds / (1000 * 60 * 60 * 24); // Convert milliseconds to days
+//     // Calculate the difference in time between the two dates
+//     const durationInMilliseconds = endDate - startDate;
+//     const durationInDays = durationInMilliseconds / (1000 * 60 * 60 * 24); // Convert milliseconds to days
 
-    // Ensure duration is non-negative
-    if (durationInDays >= 0) {
-        contractDurationInput.value = `${Math.ceil(durationInDays)} days`; // Round up if needed
-    } else {
-        contractDurationInput.value = 'Invalid Range'; // If the end date is earlier than start date
-    }
-}
+//     // Ensure duration is non-negative
+//     if (durationInDays >= 0) {
+//         contractDurationInput.value = `${Math.ceil(durationInDays)} days`; // Round up if needed
+//     } else {
+//         contractDurationInput.value = 'Invalid Range'; // If the end date is earlier than start date
+//     }
+// }
 
-// Call the function from outside
-document.getElementById('startContract').addEventListener('change', updateContractDuration);
-document.getElementById('endContract').addEventListener('change', updateContractDuration);
+// // Call the function from outside
+// document.getElementById('startContract').addEventListener('change', updateContractDuration);
+// document.getElementById('endContract').addEventListener('change', updateContractDuration);
