@@ -225,7 +225,7 @@ include("../auth/db.php");
                                 <div class="card-body" style="min-height: 400px; color: white;">
                                     
                                     <!-- Table Header -->
-                                    <div class="d-flex p-3 mb-2" style="background: #2a2b30; border-radius: 8px; font-weight: bold;">
+                                    <div class="d-flex p-3 mb-2" style="background: #2a2925; border-radius: 8px; font-weight: bold;">
                                         <div class="col-2 comHead">Project Name</div>
                                         <div class="col-2 comHead">Start Date</div>
                                         <div class="col-2 comHead">End Date</div>
