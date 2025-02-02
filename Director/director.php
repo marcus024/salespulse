@@ -1748,7 +1748,7 @@ include("../auth/db.php");
             <div class="modal fade" id="addSchedule" tabindex="-1" aria-labelledby="addProjectModalLabel" aria-hidden="true" style="border:none;">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(2px); border-radius: 5px;">
-                <div class="modal-header" style="border:none; font-family:'Poppins'; background-color:#f9ce45; height: 50px;">
+                <div class="modal-header" style="border:none; font-family:'Poppins'; color:#1f2024; font-size:15px; background-color:#f9ce45; height: 50px;">
                     <font color="white">
                     <h5 class="m" id="addProjectModalLabel">Add New Schedule</h5>
                     </font>
