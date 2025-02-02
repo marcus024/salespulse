@@ -202,7 +202,7 @@ include("../auth/db.php");
                                 </form>
                                 <div style="margin-top:5px;">
                                     <p style="color:white; font-weight:bold; font-family:'Poppins' ">Potential Commission</p>
-                                    <p id="potentialCommission" style="color:white;  font-family:'Poppins'>
+                                    <p id="potentialCommission" style="color:white;  font-family:'Poppins'">
                                         <!-- Display here the calculated potential commission -->
                                     </p>
                                 </div>
