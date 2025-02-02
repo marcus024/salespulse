@@ -226,7 +226,7 @@ include("../auth/db.php");
                         <div class="col-md-13 mb-4">
                             <div class="card shadow-sm" style="background: #1f2024; border:none;">
                                 <p style="color:white; font-size:20px; font-family:'Poppins'; font-weight:bold; margin-top:10px; margin-left:20px;">Completed Projects Commissions</p>
-                                <div class="card-body" style="min-height: 400px; color: white;">
+                                <div class="card-body" style="min-height: 400px; color: white; margin-top: 0;">
                                     
                                     <!-- Table Header -->
                                     <div class="d-flex p-3 mb-2" style="background: #2a2925; border-radius: 8px; font-weight: bold;">
