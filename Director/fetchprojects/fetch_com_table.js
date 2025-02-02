@@ -57,16 +57,30 @@
 
         // Trigger the calculation when the Calculate button is clicked
         $('.calcBtn').on('click', function() {
-            // Get actual gross profit and target gross profit values
-            let targetGross = parseFloat($('#targetGross').val()) || 0;
+            try {
+                // Get actual gross profit and target gross profit values
+                let targetGross = parseFloat($('#targetGross').val()) || 0;
 
-            // Calculate the deficit
-            let deficit = targetGross - actualGross;
+                if (isNaN(targetGross) || targetGross <= 0) {
+                    alert("Please enter a valid target gross profit.");
+                    return;
+                }
 
-            // Calculate the potential commission (Deficit * 5% * 70%)
-            let potentialCommission = deficit * 0.05 * 0.70;
+                // Calculate the deficit
+                let deficit = targetGross - actualGross;
 
-            // Display the potential commission
-            $('#potentialCommission').text(`Php ${potentialCommission.toFixed(2)}`);
+                // Calculate the potential commission (Deficit * 5% * 70%)
+                let potentialCommission = deficit * 0.05 * 0.70;
+
+                // Display the potential commission
+                $('#potentialCommission').text(`Php ${potentialCommission.toFixed(2)}`);
+
+                // Alert to notify the user that the calculation was successful
+                alert("Potential Commission has been successfully calculated!");
+            } catch (error) {
+                // Alert to notify if something went wrong
+                alert("There was an error in calculating the potential commission. Please try again.");
+                console.error(error); // Log the error for debugging purposes
+            }
         });
     });
