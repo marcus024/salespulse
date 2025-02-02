@@ -232,6 +232,7 @@ include("../auth/db.php");
                                         <div class="col-2 comHead">Net Sales</div>
                                         <div class="col-2 comHead">Gross Profit</div>
                                         <div class="col-2 comHead">Commission</div>
+                                        <div class="col-2 comHead">Status</div>
                                     </div>
 
                                     <div id="commission-table">
