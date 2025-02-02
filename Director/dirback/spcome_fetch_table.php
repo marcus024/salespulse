@@ -21,11 +21,12 @@ $sql = "
         p.company_name AS project_name, 
         p.start_date, 
         p.end_date,
+        p.status
         s.endC AS net_sales, 
         s.startC AS gross_profit
     FROM projecttb p
     JOIN stagefive s ON p.project_unique_id = s.project_unique_id
-    WHERE p.user_id_cur = :user_id
+    WHERE p.user_id_cur = :user_id AND p.status = 'Completed'
 ";
 
 try {
