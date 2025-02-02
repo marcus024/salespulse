@@ -1748,13 +1748,13 @@ include("../auth/db.php");
             <div class="modal fade" id="addSchedule" tabindex="-1" aria-labelledby="addProjectModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(2px); border-radius: 5px;">
-                <div class="modal-header" style="background-color:#36b9cc; height: 50px;">
+                <div class="modal-header" style="background-color:#f9ce45; height: 50px;">
                     <font color="white">
                     <h5 class="m" id="addProjectModalLabel">Add New Schedule</h5>
                     </font>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="background:#1f2024">
                     <!-- Form to add schedule -->
                     <form id="addScheduleForm">
                     <div class="row">
