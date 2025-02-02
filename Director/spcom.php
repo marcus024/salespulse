@@ -31,62 +31,9 @@ include("../auth/db.php");
     <link href="css/spcomfooter.css" rel="stylesheet">
     <link href="css/spcomnotif.css" rel="stylesheet">
     <link href="css/spcomprofile.css" rel="stylesheet">
-    <style>
-        .form-control{
-            background: #1f2024;
-            color:#555;
-            border: 1px solid #555;
-            font-family:'Poppins';
-            font-size:12px;
-        }
-        .form-control:focus{
-            border; 1px solid white;
-            background: #1f2024;
-            color:white;
-        }
-        .form-control::placeholder{
-            color:#555;
-        }
-        .form-label{
-            color:#ddd;
-            font-family:'Poppins';
-            font-size:12px;
-        }
-        .form-select{
-            color:#555;
-            background:#1f2024;
-            font-family:'Poppins';
-            font-size:12px;
-            border: 1px solid #555;
-        }
-        .form-select:focus{
-            color:white;
-            background:#1f2024;
-            font-family:'Poppins';
-            font-size:12px;
-            border: 1px solid white;
-        }
-        .calcBtn{
-            background:#f9ce45;
-            color: #1f2024; 
-            font-family:'Poppins';
-            font-size:15px;
-        }
-        .calcBtn:hover{
-            border:1px solid #f9ce45;
-            background:#1f2024;
-        }
-    </style>
-    <style>
-        .comRows{
-            font-size:12px;
-            font-family:'Poppins';
-        }
-        .comHead{
-            font-size:15px;
-            font-family:'Poppins';
-        }
-    </style>
+    <link href="css/spcommodal.css" rel="stylesheet">
+    <link href="css/spcomtable.css" rel="stylesheet">
+    
 </head>
 <body id="page-top" style="background-color:#15151a;">
     <!-- Page Wrapper -->
