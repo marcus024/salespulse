@@ -187,7 +187,7 @@ include("../auth/db.php");
                         <!-- Commission Calculator -->
                         <div class="col-md-3 mb-4">
                             <div class="card shadow-sm" style="background-color:#1f2024; border:none;">
-                                <div class="card-body">
+                           <div class="card-body">
     <p style="color:#ddd; font-weight:bold; font-size:20px; font-family:'Poppins' ">SaleSync</p>
     <form id="commission-form">
         <div class="mb-1">
@@ -198,7 +198,7 @@ include("../auth/db.php");
             <label for="netSales" class="form-label ">Target Gross Profit</label>
             <input type="number" class="form-control" id="targetGross" name="netSales" placeholder="Enter net sales">
         </div>
-        <button type="submit" class="btn w-100 calcBtn">Calculate</button>
+        <button type="button" class="btn w-100 calcBtn">Calculate</button> <!-- Changed type to 'button' -->
     </form>
     <div>
         <p>Potential Commission</p>

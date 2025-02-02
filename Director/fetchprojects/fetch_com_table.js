@@ -55,10 +55,8 @@
             `);
         }
 
-        // Calculate potential commission when form is submitted
-        $('#commission-form').on('submit', function(event) {
-            event.preventDefault(); // Prevent the form from refreshing the page
-
+        // Trigger the calculation when the Calculate button is clicked
+        $('.calcBtn').on('click', function() {
             // Get actual gross profit and target gross profit values
             let targetGross = parseFloat($('#targetGross').val()) || 0;
 
