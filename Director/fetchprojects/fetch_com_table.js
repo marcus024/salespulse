@@ -45,4 +45,22 @@
             </div>
         `);
     }
+
+      // Calculate potential commission when form is submitted
+        $('#commission-form').on('submit', function(event) {
+            event.preventDefault(); // Prevent the form from refreshing the page
+
+            // Get actual gross profit and target gross profit values
+            let actualGross = parseFloat($('#actualGross').val()) || 0;
+            let targetGross = parseFloat($('#targetGross').val()) || 0;
+
+            // Calculate the deficit
+            let deficit = targetGross - actualGross;
+
+            // Calculate the potential commission (Deficit * 5% * 70%)
+            let potentialCommission = deficit * 0.05 * 0.70;
+
+            // Display the potential commission
+            $('#potentialCommission').text(`Php ${potentialCommission.toFixed(2)}`);
+        });
 });

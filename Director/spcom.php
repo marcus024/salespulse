@@ -189,7 +189,7 @@ include("../auth/db.php");
                             <div class="card shadow-sm" style="background-color:#1f2024; border:none;">
                                 <div class="card-body">
                                     <p style="color:#ddd; font-weight:bold; font-size:20px; font-family:'Poppins' ">SaleSync</p>
-                                    <form>
+                                    <form id="commission-form">
                                         <div class="mb-1">
                                             <label for="grossProfit" class="form-label ">Actual Gross Profit</label>
                                             <input type="number" class="form-control" id="actualGross" name="grossProfit" placeholder="Enter actual gross profit">
@@ -201,10 +201,8 @@ include("../auth/db.php");
                                         <button type="submit" class="btn w-100 calcBtn">Calculate</button>
                                     </form>
                                     <div>
-                                        <p>
-                                            Potential Commission
-                                        </p>
-                                        <p>
+                                        <p>Potential Commission</p>
+                                        <p id="potentialCommission">
                                             <!-- Display here the calculated potential commission -->
                                         </p>
                                     </div>
