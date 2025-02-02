@@ -1748,7 +1748,7 @@ include("../auth/db.php");
             <div class="modal fade" id="addSchedule" tabindex="-1" aria-labelledby="addProjectModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(2px); border-radius: 5px;">
-                <div class="modal-header" style="background-color:#f9ce45; height: 50px;">
+                <div class="modal-header" style="border:none; background-color:#f9ce45; height: 50px;">
                     <font color="white">
                     <h5 class="m" id="addProjectModalLabel">Add New Schedule</h5>
                     </font>
@@ -1788,7 +1788,7 @@ include("../auth/db.php");
                     </form>
                 </div>
 
-                <div class="modal-footer">
+                <div class="modal-footer" style="border:none;">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <!-- Give the button an ID so we can bind an event to it -->
                     <button type="button" id="saveScheduleBtn" class="btn btn-primary" style="background-color:#36b9cc; color:white;">
