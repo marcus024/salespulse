@@ -435,6 +435,7 @@ include("../auth/db.php");
                         <div class="col-2 comRows">Php ${project.net_sales || 0}</div>
                         <div class="col-2 comRows">Php ${project.gross_profit || 0}</div>
                         <div class="col-2 comRows">Php ${project.commission || 0}</div> <!-- Default to 0 if commission is missing -->
+                        <div class="col-2 comRows">${project.projectStatus}</div>
                     </div>
                 `);
             });
