@@ -77,6 +77,16 @@ include("../auth/db.php");
             background:#1f2024;
         }
     </style>
+    <style>
+        .comRows{
+            font-size:12px;
+            font-family:'Poppins';
+        }
+        .comHead{
+            font-size:15px;
+            font-family:'Poppins';
+        }
+    </style>
 </head>
 <body id="page-top" style="background-color:#15151a;">
     <!-- Page Wrapper -->
