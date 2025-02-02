@@ -1805,8 +1805,8 @@ include("../auth/db.php");
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <!-- Centered and large modal for better responsiveness -->
                     <div class="modal-content" style="background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(2px); border-radius: 5px;">
-                        <div class="modal-header" style="background-color:#36b9cc; height: 50px;">
-                            <font color="white">
+                        <div class="modal-header" style="background-color:#f9ce45; height: 50px; border:none;">
+                            <font color="#1f2024">
                                 <h5 class="modal-title" id="addProjectModalLabel">Add New Task</h5>
                             </font>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -1840,9 +1840,9 @@ include("../auth/db.php");
                                 </div>
                             </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary todo-save" style="background-color:#36b9cc; color:white;" id="saveTaskBtn">Save</button>
+                        <div class="modal-footer" style="border:none;">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="color:white;">Close</button>
+                            <button type="submit" class="btn btn-primary todo-save" style="background-color:#f9ce45; color:white;" id="saveTaskBtn">Save</button>
                         </div>
                     </div>
                 </div>
