@@ -30,7 +30,7 @@ include("../auth/db.php");
     <link href="css/spcomsidebar.css" rel="stylesheet">
     <link href="css/spcomfooter.css" rel="stylesheet">
     <link href="css/spcomnotif.css" rel="stylesheet">
-    <link href="css/spcomprofile.css.css" rel="stylesheet">
+    <link href="css/spcomprofile.css" rel="stylesheet">
     <style>
         .form-control{
             background: #1f2024;
