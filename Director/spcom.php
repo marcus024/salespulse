@@ -200,6 +200,14 @@ include("../auth/db.php");
                                         </div>
                                         <button type="submit" class="btn w-100 calcBtn">Calculate</button>
                                     </form>
+                                    <div>
+                                        <p>
+                                            Potential Commission
+                                        </p>
+                                        <p>
+                                            <!-- Display here the calculated potential commission -->
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
