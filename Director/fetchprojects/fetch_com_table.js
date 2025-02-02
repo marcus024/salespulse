@@ -77,8 +77,6 @@
                 // Display the potential commission
                  $('#potentialCommission').text(`Php ${formattedCommission}`);
 
-                // Alert to notify the user that the calculation was successful
-                alert("Potential Commission has been successfully calculated!");
             } catch (error) {
                 // Alert to notify if something went wrong
                 alert("There was an error in calculating the potential commission. Please try again.");
