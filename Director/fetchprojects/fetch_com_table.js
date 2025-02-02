@@ -1,4 +1,6 @@
  $(document).ready(function() {
+        let actualGross = 0;
+
         // Fetch and display data from the server
         $.ajax({
             url: './dirback/spcome_fetch_table.php',  // The PHP file
@@ -12,8 +14,11 @@
                     return;
                 }
 
-                // Append data rows dynamically
+                // Sum the gross profits
                 data.forEach(project => {
+                    actualGross += parseFloat(project.gross_profit) || 0;
+
+                    // Append data rows dynamically
                     $('#commission-table').append(`
                         <div class="d-flex p-3 mb-2" style="background: #292a2f; border-radius: 8px;">
                             <div class="col-2 comRows">${project.project_name}</div>
@@ -25,6 +30,9 @@
                         </div>
                     `);
                 });
+
+                // Display the sum of gross profit as actual gross profit
+                $('#actualGross').val(actualGross.toFixed(2));
             },
             error: function(xhr, status, error) {
                 let errorMessage = 'An error occurred while fetching data.';
@@ -52,7 +60,6 @@
             event.preventDefault(); // Prevent the form from refreshing the page
 
             // Get actual gross profit and target gross profit values
-            let actualGross = parseFloat($('#actualGross').val()) || 0;
             let targetGross = parseFloat($('#targetGross').val()) || 0;
 
             // Calculate the deficit
