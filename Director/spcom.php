@@ -188,25 +188,26 @@ include("../auth/db.php");
                         <div class="col-md-3 mb-4">
                             <div class="card shadow-sm" style="background-color:#1f2024; border:none;">
                                 <div class="card-body">
-                                    <p style="color:#ddd; font-weight:bold; font-size:20px; font-family:'Poppins' ">SaleSync</p>
-                                    <form id="commission-form">
-                                        <div class="mb-1">
-                                            <label for="grossProfit" class="form-label ">ctual Gross Profit</label>
-                                            <input type="number" class="form-control" id="actualGross" name="grossProfit" placeholder="Enter actual gross profit">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="netSales" class="form-label ">Target Gross Profit</label>
-                                            <input type="number" class="form-control" id="targetGross" name="netSales" placeholder="Enter net sales">
-                                        </div>
-                                        <button type="submit" class="btn w-100 calcBtn">Calculate</button>
-                                    </form>
-                                    <div>
-                                        <p>Potential Commission</p>
-                                        <p id="potentialCommission">
-                                            <!-- Display here the calculated potential commission -->
-                                        </p>
-                                    </div>
-                                </div>
+    <p style="color:#ddd; font-weight:bold; font-size:20px; font-family:'Poppins' ">SaleSync</p>
+    <form id="commission-form">
+        <div class="mb-1">
+            <label for="grossProfit" class="form-label ">Actual Gross Profit</label>
+            <input type="number" class="form-control" id="actualGross" name="grossProfit" placeholder="Enter actual gross profit" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="netSales" class="form-label ">Target Gross Profit</label>
+            <input type="number" class="form-control" id="targetGross" name="netSales" placeholder="Enter net sales">
+        </div>
+        <button type="submit" class="btn w-100 calcBtn">Calculate</button>
+    </form>
+    <div>
+        <p>Potential Commission</p>
+        <p id="potentialCommission">
+            <!-- Display here the calculated potential commission -->
+        </p>
+    </div>
+</div>
+
                             </div>
                         </div>
                         <!-- Chart Panels -->
