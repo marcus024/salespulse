@@ -26,8 +26,9 @@ $sql = "
         s.startC AS gross_profit
     FROM projecttb p
     JOIN stagefive s ON p.project_unique_id = s.project_unique_id
-    WHERE p.user_id_cur = :user_id AND projectStatus = 'Completed'
+    WHERE p.user_id_cur = :user_id AND p.status = 'Completed'
 ";
+
 
 try {
     $stmt = $conn->prepare($sql);
