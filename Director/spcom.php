@@ -187,35 +187,34 @@ include("../auth/db.php");
                         <!-- Commission Calculator -->
                         <div class="col-md-3 mb-4">
                             <div class="card shadow-sm" style="background-color:#1f2024; border:none;">
-                           <div class="card-body">
-                                <p style="color:#ddd; font-weight:bold; font-size:20px; font-family:'Poppins' ">SaleSync</p>
-                                <form id="commission-form">
-                                    <div class="mb-1">
-                                        <label for="grossProfit" class="form-label ">Actual Gross Profit</label>
-                                        <input type="number" class="form-control" id="actualGross" name="grossProfit" placeholder="Enter actual gross profit" readonly>
+                                <div class="card-body">
+                                    <p style="color:#ddd; font-weight:bold; font-size:20px; font-family:'Poppins' ">SaleSync</p>
+                                    <form id="commission-form">
+                                        <div class="mb-1">
+                                            <label for="grossProfit" class="form-label ">Actual Gross Profit</label>
+                                            <input type="number" class="form-control" id="actualGross" name="grossProfit" placeholder="Enter actual gross profit" readonly>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="netSales" class="form-label ">Target Gross Profit</label>
+                                            <input type="number" class="form-control" id="targetGross" name="netSales" placeholder="Enter net sales">
+                                        </div>
+                                        <button type="button" class="btn w-100 calcBtn">Calculate</button> <!-- Changed type to 'button' -->
+                                    </form>
+                                    <div style="margin-top:20px;">
+                                        <p style="color:white;  font-family:'Poppins'; font-size:15px; ">Potential Commission</p>
+                                        <div style=" border-radius: 10px; height:70px; background:#2a2925; padding:20px;">
+                                            <p id="potentialCommission" style="color:white;  font-family:'Poppins'; font-size:15px; font-weight:bold;">
+                                                
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="netSales" class="form-label ">Target Gross Profit</label>
-                                        <input type="number" class="form-control" id="targetGross" name="netSales" placeholder="Enter net sales">
-                                    </div>
-                                    <button type="button" class="btn w-100 calcBtn">Calculate</button> <!-- Changed type to 'button' -->
-                                </form>
-                                <div style="margin-top:20px;">
-                                    <p style="color:white;  font-family:'Poppins'; font-size:15px; ">Potential Commission</p>
-                                    <div style=" border-radius: 10px; height:70px; background:#2a2925; padding:20px;">
-                                        <p id="potentialCommission" style="color:white;  font-family:'Poppins'; font-size:15px; font-weight:bold;">
-                                            
-                                        </p>
-                                    </div>
-                                    
                                 </div>
-                            </div>
-
                             </div>
                         </div>
                         <!-- Chart Panels -->
                         <div class="col-md-9 mb-4">
                             <div class="card shadow-sm" style="background: #1f2024; border:none;">
+                                <p>Completed Project Commissions</p>
                                 <div class="card-body" id="calendar-container" style="min-height: 400px; color: white;">
                                     
                                 </div>
