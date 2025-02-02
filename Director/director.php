@@ -1811,7 +1811,7 @@ include("../auth/db.php");
                             </font>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" style="border:none; color:#1f2024;">
                             <!-- Form to add task -->
                             <form id="taskForm">
                                 <div class="row">
@@ -1840,7 +1840,7 @@ include("../auth/db.php");
                                 </div>
                             </form>
                         </div>
-                        <div class="modal-footer" style="border:none;">
+                        <div class="modal-footer" style="border:none; color:#1f2024;">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="color:white;">Close</button>
                             <button type="submit" class="btn btn-primary todo-save" style="background-color:#f9ce45; color:white;" id="saveTaskBtn">Save</button>
                         </div>
