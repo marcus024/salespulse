@@ -21,7 +21,7 @@ $sql = "
         p.company_name AS project_name, 
         p.start_date, 
         p.end_date,
-        p.status
+        p.status,
         s.endC AS net_sales, 
         s.startC AS gross_profit
     FROM projecttb p
