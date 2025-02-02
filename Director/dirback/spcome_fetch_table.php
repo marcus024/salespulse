@@ -8,7 +8,7 @@ $user_id = $_SESSION['user_id_c'];  // Assuming you're storing the user ID in se
 // SQL Query to fetch data
 $sql = "
     SELECT 
-        p.project_name, 
+        p.company_name, 
         p.start_date, 
         p.end_date,
         s.endC, 
