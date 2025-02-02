@@ -1,20 +1,28 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // db_connection.php - include your database connection here
 include '../../auth/db.php';
 
 session_start();
-$user_id = $_SESSION['user_id_c'];  // Assuming you're storing the user ID in session
+$user_id = $_SESSION['user_id_c'];
 
 $response = [];  // Array to store the response
 
-// Check if user_id is set
 if (!$user_id) {
-    http_response_code(400); // Bad Request
+    http_response_code(400);
     echo json_encode(['error' => 'User ID not found in session.']);
     exit();
 }
 
-// SQL Query to fetch data
+// Check database connection
+if ($conn->connect_error) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Database connection failed: ' . $conn->connect_error]);
+    exit();
+}
+
 $sql = "
     SELECT 
         p.company_name AS project_name, 
@@ -27,20 +35,19 @@ $sql = "
     WHERE p.user_id_cur = ?
 ";
 
-// Prepare and execute the query
 $stmt = $conn->prepare($sql);
 
 if (!$stmt) {
-    http_response_code(500);  // Internal Server Error
-    echo json_encode(['error' => 'Failed to prepare SQL statement.']);
+    http_response_code(500);
+    echo json_encode(['error' => 'Failed to prepare SQL statement: ' . $conn->error]);
     exit();
 }
 
 $stmt->bind_param("i", $user_id);
 
 if (!$stmt->execute()) {
-    http_response_code(500);  // Internal Server Error
-    echo json_encode(['error' => 'Failed to execute SQL query.']);
+    http_response_code(500);
+    echo json_encode(['error' => 'Failed to execute SQL query: ' . $stmt->error]);
     exit();
 }
 
@@ -51,13 +58,11 @@ while ($row = $result->fetch_assoc()) {
     $projects[] = $row;
 }
 
-// Check if projects are found
 if (empty($projects)) {
-    http_response_code(404);  // Not Found
+    http_response_code(404);
     echo json_encode(['error' => 'No projects found for the user.']);
     exit();
 }
 
-// Return data as JSON
 echo json_encode($projects);
 ?>
