@@ -16,7 +16,6 @@ if (!$user_id) {
     exit();
 }
 
-
 $sql = "
     SELECT 
         p.company_name AS project_name, 
@@ -26,37 +25,28 @@ $sql = "
         s.startC AS gross_profit
     FROM projecttb p
     JOIN stagefive s ON p.project_unique_id = s.project_unique_id
-    WHERE p.user_id_cur = ?
+    WHERE p.user_id_cur = :user_id
 ";
 
-$stmt = $conn->prepare($sql);
+try {
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR); // Use PDO binding
 
-if (!$stmt) {
+    $stmt->execute();
+
+    $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if (empty($projects)) {
+        http_response_code(404);
+        echo json_encode(['error' => 'No projects found for the user.']);
+        exit();
+    }
+
+    echo json_encode($projects);
+
+} catch (PDOException $e) {
     http_response_code(500);
-    echo json_encode(['error' => 'Failed to prepare SQL statement: ' . $conn->error]);
+    echo json_encode(['error' => 'Database error: ' . $e->getMessage()]);
     exit();
 }
-
-$stmt->bind_param("s", $user_id);
-
-if (!$stmt->execute()) {
-    http_response_code(500);
-    echo json_encode(['error' => 'Failed to execute SQL query: ' . $stmt->error]);
-    exit();
-}
-
-$result = $stmt->get_result();
-
-$projects = [];
-while ($row = $result->fetch_assoc()) {
-    $projects[] = $row;
-}
-
-if (empty($projects)) {
-    http_response_code(404);
-    echo json_encode(['error' => 'No projects found for the user.']);
-    exit();
-}
-
-echo json_encode($projects);
 ?>
