@@ -1789,7 +1789,7 @@ include("../auth/db.php");
                 </div>
 
                 <div class="modal-footer" style="border:none; background:#1f2024;">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="color:white;">Close</button>
                     <!-- Give the button an ID so we can bind an event to it -->
                     <button type="button" id="saveScheduleBtn" class="btn btn-primary" style="background-color:#f9ce45; color:#1f2024;">
                     Save
