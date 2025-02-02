@@ -72,8 +72,10 @@
                 // Calculate the potential commission (Deficit * 5% * 70%)
                 let potentialCommission = deficit * 0.05 * 0.70;
 
+                let formattedCommission = potentialCommission.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
                 // Display the potential commission
-                $('#potentialCommission').text(`Php ${potentialCommission.toFixed(2)}`);
+                 $('#potentialCommission').text(`Php ${formattedCommission}`);
 
                 // Alert to notify the user that the calculation was successful
                 alert("Potential Commission has been successfully calculated!");
