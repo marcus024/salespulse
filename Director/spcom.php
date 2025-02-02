@@ -225,7 +225,7 @@ include("../auth/db.php");
                     <div class="row">
                         <div class="col-md-13 mb-4">
                             <div class="card shadow-sm" style="background: #1f2024; border:none;">
-                                <p style="color:white; font-size:20px; font-family:'Poppins'; font-weight:bold;">Completed Projects Commissions</p>
+                                <p style="color:white; font-size:20px; font-family:'Poppins'; font-weight:bold; justify:center;">Completed Projects Commissions</p>
                                 <div class="card-body" style="min-height: 400px; color: white;">
                                     
                                     <!-- Table Header -->
