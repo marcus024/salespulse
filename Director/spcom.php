@@ -233,7 +233,7 @@ include("../auth/db.php");
         <div class="d-flex align-items-center" style="gap: 10px;">
             <!-- Search Bar -->
             <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search..." 
-                style="background-color:#2a2925; color:white; font-size: 12px; border: none; font-family:'Poppins'; border-radius: 4px; outline: white; width: 200px; height: 30px; margin: 0;">
+                style="background-color:#2a2925; color:white; font-size: 12px; border: none; font-family:'Poppins'; border-radius: 4px; outline: white; width: 200px; height: 30px; margin: 0; padding-left: 10px;">
             
             <!-- Dropdown for Export Options -->
             <div class="btn-group" role="group">
