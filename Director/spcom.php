@@ -269,12 +269,12 @@ include("../auth/db.php");
                                     
                                     <!-- Table Header -->
                                     <div class="d-flex p-3 mb-2" style="background: #2a2b30; border-radius: 8px; font-weight: bold;">
-                                        <div class="col-2">Project Name</div>
-                                        <div class="col-2">Start Date</div>
-                                        <div class="col-2">End Date</div>
-                                        <div class="col-2">Net Sales</div>
-                                        <div class="col-2">Gross Profit</div>
-                                        <div class="col-2">Commission</div>
+                                        <div class="col-2 comHead">Project Name</div>
+                                        <div class="col-2 comHead">Start Date</div>
+                                        <div class="col-2 comHead">End Date</div>
+                                        <div class="col-2 comHead">Net Sales</div>
+                                        <div class="col-2 comHead">Gross Profit</div>
+                                        <div class="col-2 comHead">Commission</div>
                                     </div>
 
                                     <div id="commission-table">
@@ -471,12 +471,12 @@ include("../auth/db.php");
             data.forEach(project => {
                 $('#commission-table').append(`
                     <div class="d-flex p-3 mb-2" style="background: #292a2f; border-radius: 8px;">
-                        <div class="col-2 comdesign">${project.project_name}</div>
-                        <div class="col-2 comdesign">${project.start_date}</div>
-                        <div class="col-2 comdesign">${project.end_date}</div>
-                        <div class="col-2 comdesign">Php ${project.net_sales || 0}</div>
-                        <div class="col-2 comdesign">Php ${project.gross_profit || 0}</div>
-                        <div class="col-2 comdesign">Php ${project.commission || 0}</div> <!-- Default to 0 if commission is missing -->
+                        <div class="col-2 comRows">${project.project_name}</div>
+                        <div class="col-2 comRows">${project.start_date}</div>
+                        <div class="col-2 comRows">${project.end_date}</div>
+                        <div class="col-2 comRows">Php ${project.net_sales || 0}</div>
+                        <div class="col-2 comRows">Php ${project.gross_profit || 0}</div>
+                        <div class="col-2 comRows">Php ${project.commission || 0}</div> <!-- Default to 0 if commission is missing -->
                     </div>
                 `);
             });
