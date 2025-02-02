@@ -29,13 +29,11 @@ $sql = "
     WHERE p.user_id_cur = :user_id AND p.status = 'Completed'
 ";
 
-
 try {
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR); // Use PDO binding
 
     $stmt->execute();
-
     $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     if (empty($projects)) {
@@ -44,6 +42,58 @@ try {
         exit();
     }
 
+    // Iterate through each project and calculate the commission
+    foreach ($projects as &$project) {
+        $grossProfit = (float) $project['gross_profit'];
+        $netSales = (float) $project['net_sales'];
+
+        if ($netSales > 0) {
+            $totalComRate = $grossProfit / $netSales;
+        } else {
+            $totalComRate = 0;
+        }
+
+        // Convert to percentage and round down to nearest whole number
+        $wholeNumberComRate = floor($totalComRate * 100);
+
+        // Determine individual commission rate
+        if ($wholeNumberComRate === 13) {
+            $individualComRate = 0.025;
+        } elseif ($wholeNumberComRate === 14) {
+            $individualComRate = 0.0275;
+        } elseif ($wholeNumberComRate === 15) {
+            $individualComRate = 0.03;
+        } elseif ($wholeNumberComRate === 16) {
+            $individualComRate = 0.0325;
+        } elseif ($wholeNumberComRate === 17) {
+            $individualComRate = 0.035;
+        } elseif ($wholeNumberComRate === 18) {
+            $individualComRate = 0.0375;
+        } elseif ($wholeNumberComRate === 19) {
+            $individualComRate = 0.04;
+        } elseif ($wholeNumberComRate === 20) {
+            $individualComRate = 0.0425;
+        } elseif ($wholeNumberComRate === 21) {
+            $individualComRate = 0.045;
+        } elseif ($wholeNumberComRate === 22) {
+            $individualComRate = 0.0475;
+        } elseif ($wholeNumberComRate >= 23) {
+            $individualComRate = 0.05;
+        } else {
+            $individualComRate = 0; // No commission if rate is less than 13%
+        }
+
+        // Compute Commission Value
+        $commissionValue = $grossProfit * $individualComRate;
+
+        // Compute Actual Commission (70% of commission value)
+        $actualCommission = $commissionValue * 0.70;
+
+        // Add commission to project data
+        $project['commission'] = round($actualCommission, 2);
+    }
+
+    // Return projects with commission data
     echo json_encode($projects);
 
 } catch (PDOException $e) {
