@@ -474,8 +474,8 @@ include("../auth/db.php");
                         <div class="col-2">${project.project_name}</div>
                         <div class="col-2">${project.start_date}</div>
                         <div class="col-2">${project.end_date}</div>
-                        <div class="col-2">$${project.net_sales}</div>
-                        <div class="col-2">$${project.gross_profit}</div>
+                        <div class="col-2">Php ${project.net_sales}</div>
+                        <div class="col-2">Php${project.gross_profit}</div>
                         <div class="col-2">$${project.commission || 0}</div> <!-- Default to 0 if commission is missing -->
                     </div>
                 `);
