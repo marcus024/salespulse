@@ -1,4 +1,55 @@
- $(document).ready(function() {
+// Function to filter the table rows based on search input
+    function searchTable() {
+        const searchInput = document.getElementById("searchInput").value.toLowerCase();
+        const rows = document.querySelectorAll('#commission-table .d-flex');
+        
+        rows.forEach(row => {
+            const projectName = row.querySelector('.comRows:nth-child(1)').textContent.toLowerCase();
+            const startDate = row.querySelector('.comRows:nth-child(2)').textContent.toLowerCase();
+            const endDate = row.querySelector('.comRows:nth-child(3)').textContent.toLowerCase();
+            const netSales = row.querySelector('.comRows:nth-child(4)').textContent.toLowerCase();
+            const grossProfit = row.querySelector('.comRows:nth-child(5)').textContent.toLowerCase();
+            const commission = row.querySelector('.comRows:nth-child(6)').textContent.toLowerCase();
+            
+            if (
+                projectName.includes(searchInput) ||
+                startDate.includes(searchInput) ||
+                endDate.includes(searchInput) ||
+                netSales.includes(searchInput) ||
+                grossProfit.includes(searchInput) ||
+                commission.includes(searchInput)
+            ) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
+    // Export functions (You can implement the actual export logic here)
+    function exportToPDF() {
+        alert("Exporting to PDF... (Implement logic)");
+    }
+
+    function exportToExcel() {
+        alert("Exporting to Excel... (Implement logic)");
+    }
+
+    function exportToCSV() {
+        alert("Exporting to CSV... (Implement logic)");
+    }
+
+    function printTable() {
+        const printContent = document.querySelector('.card-body').innerHTML;
+        const printWindow = window.open('', '', 'height=800, width=1200');
+        printWindow.document.write('<html><head><title>Print</title></head><body>');
+        printWindow.document.write(printContent);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+    }
+
+    $(document).ready(function() {
         let actualGross = 0;
 
         // Fetch and display data from the server
@@ -75,7 +126,7 @@
                 let formattedCommission = potentialCommission.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
                 // Display the potential commission
-                 $('#potentialCommission').text(`Php ${formattedCommission}`);
+                $('#potentialCommission').text(`Php ${formattedCommission}`);
 
             } catch (error) {
                 // Alert to notify if something went wrong
