@@ -204,7 +204,7 @@ include("../auth/db.php");
                                     <p style="color:white;  font-family:'Poppins'; font-size:15px; ">Potential Commission</p>
                                     <div style=" border-radius: 10px; height:70px; background:#2a2925; padding:20px;">
                                         <p id="potentialCommission" style="color:white;  font-family:'Poppins'; font-size:15px; font-weight:bold;">
-                                            <!-- Display here the calculated potential commission -->
+                                            
                                         </p>
                                     </div>
                                     
