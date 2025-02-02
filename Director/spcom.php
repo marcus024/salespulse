@@ -191,18 +191,12 @@ include("../auth/db.php");
                                     <p style="color:#ddd; font-weight:bold; font-size:20px; font-family:'Poppins' ">SaleSync</p>
                                     <form>
                                         <div class="mb-1">
-                                            <label for="projects" class="form-label ">Projects</label>
-                                           <select class="form-select" id="fetchProjects"  required>
-                                                <option value="" selected disabled>Select Project</option>
-                                            </select>
-                                        </div>
-                                        <div class="mb-1">
                                             <label for="grossProfit" class="form-label ">Actual Gross Profit</label>
-                                            <input type="number" class="form-control" id="grossProfit" name="grossProfit" placeholder="Enter actual gross profit">
+                                            <input type="number" class="form-control" id="actualGross" name="grossProfit" placeholder="Enter actual gross profit">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="netSales" class="form-label ">Net Sales</label>
-                                            <input type="number" class="form-control" id="netSales" name="netSales" placeholder="Enter net sales">
+                                            <label for="netSales" class="form-label ">Target Gross Profit</label>
+                                            <input type="number" class="form-control" id="targetGross" name="netSales" placeholder="Enter net sales">
                                         </div>
                                         <button type="submit" class="btn w-100 calcBtn">Calculate</button>
                                     </form>
