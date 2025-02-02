@@ -37,7 +37,7 @@ if (!$stmt) {
     exit();
 }
 
-$stmt->bind_param("i", $user_id);
+$stmt->bind_param("s", $user_id);
 
 if (!$stmt->execute()) {
     http_response_code(500);
