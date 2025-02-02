@@ -191,7 +191,7 @@ include("../auth/db.php");
                                     <p style="color:#ddd; font-weight:bold; font-size:20px; font-family:'Poppins' ">SaleSync</p>
                                     <form id="commission-form">
                                         <div class="mb-1">
-                                            <label for="grossProfit" class="form-label ">Actual Gross Profit</label>
+                                            <label for="grossProfit" class="form-label ">ctual Gross Profit</label>
                                             <input type="number" class="form-control" id="actualGross" name="grossProfit" placeholder="Enter actual gross profit">
                                         </div>
                                         <div class="mb-3">
