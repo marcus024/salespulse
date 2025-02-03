@@ -19,6 +19,4 @@ if ($conn->query($sql) === TRUE) {
     echo json_encode(['status' => 'error', 'message' => 'Error: ' . $conn->error]);
 }
 
-// Close connection
-$conn->close();
 ?>
