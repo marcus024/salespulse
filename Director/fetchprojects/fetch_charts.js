@@ -27,7 +27,7 @@ function populateDropdown(data) {
     });
 }
 
-function fetchData(filter = '') {
+function fetchData(filter = 'All') {
     $.ajax({
         url: './dirback/spcome_fetch_table.php',
         method: 'GET',
