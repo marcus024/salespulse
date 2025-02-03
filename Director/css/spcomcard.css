@@ -1,6 +1,5 @@
  .rectangle-card {
-        /* width: calc(25% - 2px);  */
-    width: 50px;
+        width: calc(25% - 4px); 
         height: 90px;
         background-color:#f9ce45;
         box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
@@ -21,7 +20,7 @@
     }
 
     .card-number {
-        font-size: 20px;
+        font-size: 40px;
         font-weight: bold;
         color:black;
     }
@@ -66,7 +65,7 @@
         }
     }
 
-    @media (max-width: 100px) {
+    @media (max-width: 480px) {
         .rectangle-card {
             width: 100%;
             padding: 8px;
