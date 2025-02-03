@@ -165,25 +165,10 @@ function updateCharts(data) {
                         }
                     }
                 }
-                // datalabels: {
-                //     align: 'top',
-                //     anchor: 'end',
-                //     color: 'white',
-                //     font: {
-                //         family:'Poppins',
-                //         size: '2px',
-                //         weight:'100px'
-                //     },
-                //     formatter: function(value) {
-                //         return value.toLocaleString();
-                //     }
-                // }
             }
-        },
-        plugins: [ChartDataLabels] // Adding the datalabels plugin
+        }
     });
 }
-
 
 // HTML for the filter widget (Unchanged)
 $('#calendar-container').before(`
