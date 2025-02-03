@@ -183,33 +183,37 @@ function updateCharts(data) {
 }
 
 $('#calendar-container').before(`
-    <div style="margin: 10px; width: 350px; top: 10px; right: 10px; display: flex; align-items: center; justify-content: flex-start;">
-        <h4 class="text-white" style="font-family: 'Poppins'; font-size: 18px; margin-top: 5px;">Commissions Summary</h4>
-    </div>
-    <div class="mb-1" style="margin: 10px; width: 350px; top: 10px; right: 10px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="margin: 10px; width: 700px; top: 10px; right: 10px; display: flex; justify-content: space-between; align-items: center;">
+        <!-- Title on the Left -->
         <div>
-            <label for="filterWidget" class="form-label text-white">Filter by Project</label>
-            <select class="form-select" id="filterWidget">
-                <option value="All">All</option>
-                <!-- Projects will be populated here -->
-            </select>
+            <h4 class="text-white" style="font-family: 'Poppins'; font-weight:bold; font-size: 18px; margin-top: 5px;">Commissions Summary</h4>
         </div>
-        <button id="refreshButton" class="btn btn-secondary" style="margin-left: 5px; margin-top: 30px; font-family: 'Poppins'; font-size: 12px; height: 30px; width: 70px;">Refresh</button>
-        <div class="btn-group" role="group" style="margin-left: 5px; margin-top: 30px;">
-            <!-- Export Dropdown -->
-            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
-                    style="color: black; font-size: 12px; font-family: 'Poppins'; height: 30px; margin: 0; border: none; background-color: #f9ce45;">
-                Export
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#" onclick="exportToPDF()">Download PDF</a></li>
-                <li><a class="dropdown-item" href="#" onclick="exportPNG()">Download PNG</a></li>
-                <li><a class="dropdown-item" href="#" onclick="exportJPG()">Download JPG</a></li>
-                <li><a class="dropdown-item" href="#" onclick="printTable()">Print</a></li>
-            </ul>
+        
+        <!-- Filter Widget on the Right -->
+        <div style="display: flex; align-items: center;">
+            <div>
+                <label for="filterWidget" class="form-label text-white" style="margin-right: 5px;">Filter by Project</label>
+                <select class="form-select" id="filterWidget">
+                    <option value="All">All</option>
+                    <!-- Projects will be populated here -->
+                </select>
+            </div>
+            <button id="refreshButton" class="btn btn-secondary" style="margin-left: 5px; font-family: 'Poppins'; font-size: 12px; height: 30px; width: 70px;">Refresh</button>
+            <div class="btn-group" role="group" style="margin-left: 5px;">
+                <!-- Export Dropdown -->
+                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
+                        style="color: black; font-size: 12px; font-family: 'Poppins'; height: 30px; margin: 0; border: none; background-color: #f9ce45;">
+                    Export
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#" onclick="exportToPDF()">Download PDF</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="exportPNG()">Download PNG</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="exportJPG()">Download JPG</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="printTable()">Print</a></li>
+                </ul>
+            </div>
         </div>
     </div>
-    
 `);
 
 
