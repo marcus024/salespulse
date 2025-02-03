@@ -58,7 +58,7 @@ function updateCards(data) {
                     <img src="../images/cancelled_i.png" alt="icon" width="30" height="30">
                 </i>
                 <div class="card-content">
-                    <div class="card-title" style="font-family:'Poppins'">Cancelled</div>
+                    <div class="card-title" style="font-family:'Poppins'">Total Gross Profit</div>
                     <div class="card-number" style="font-family:'Poppins'">Php ${totalGrossProfit.toLocaleString()}</div>
                 </div>
             </div>
@@ -67,7 +67,7 @@ function updateCards(data) {
                     <img src="../images/duration_i.png" alt="icon" width="30" height="30">
                 </i>
                 <div class="card-content">
-                    <div class="card-title" style="font-family:'Poppins'">Duration</div>
+                    <div class="card-title" style="font-family:'Poppins'">Total Commission</div>
                     <div class="card-number" style="font-family:'Poppins'">Php ${totalCommission.toLocaleString()}</div>
                 </div>
             </div>
