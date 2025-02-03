@@ -171,7 +171,7 @@ function updateCharts(data) {
                     color: 'white',
                     font: {
                         family:'Poppins',
-                        size: '5px',
+                        size: '2px',
                         weight:'100px'
                     },
                     formatter: function(value) {
