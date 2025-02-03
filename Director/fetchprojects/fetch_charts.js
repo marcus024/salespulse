@@ -5,7 +5,7 @@ $(document).ready(function() {
         const selectedProject = $(this).val();
 
         // If "All" is selected, reset the filter
-        if (selectedProject === "") {
+        if (selectedProject === "All") {
             fetchData(); // Fetch all projects
         } else {
             fetchData(selectedProject); // Fetch data for the selected project
@@ -166,7 +166,7 @@ $('#calendar-container').before(`
     <div class="mb-1" style="margin: 10px; width: 250px;  top: 10px; right: 10px;">
         <label for="filterWidget" class="form-label text-white">Filter by Project</label>
         <select class="form-select" id="filterWidget">
-            <option value="">All</option>
+            <option value="All">All</option>
             <!-- Projects will be populated here -->
         </select>
     </div>
