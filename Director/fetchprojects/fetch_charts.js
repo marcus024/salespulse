@@ -183,7 +183,7 @@ function updateCharts(data) {
 }
 
 $('#calendar-container').before(`
-    <div style=" width: 700px; top: 10px; right: 0px; display: flex; justify-content: space-between; align-items: center;">
+    <div style=" width: 800px; top: 10px; right: 0px; display: flex; justify-content: space-between; align-items: center;">
         <!-- Title on the Left -->
         <div>
             <h4 class="text-white" style="font-family: 'Poppins'; font-weight:bold; font-size: 20px; margin-top: 5px;">Commissions Summary</h4>
