@@ -92,23 +92,12 @@
 
         // Search function to filter rows based on input
         function searchTable() {
-            let input = document.getElementById("searchInput");
-            let filter = input.value.toLowerCase();
-            let rows = document.querySelectorAll("#commission-table .d-flex");
-
-            rows.forEach(row => {
-                let cells = row.querySelectorAll(".comRows");
-                let rowText = "";
-
-                cells.forEach(cell => {
-                    rowText += cell.textContent.toLowerCase();
-                });
-
-                if (rowText.includes(filter)) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
-                }
+            let filter = document.getElementById("searchInput").value.toLowerCase();
+            document.querySelectorAll("#commission-table .d-flex").forEach(row => {
+                let rowText = Array.from(row.querySelectorAll(".comRows"))
+                                  .map(cell => cell.textContent.toLowerCase())
+                                  .join(" ");
+                row.style.display = rowText.includes(filter) ? "" : "none";
             });
         }
 
