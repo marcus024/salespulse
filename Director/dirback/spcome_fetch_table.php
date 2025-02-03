@@ -8,7 +8,7 @@ include '../../auth/db.php';
 session_start();
 $user_id = $_SESSION['user_id_c'];
 
-$response = [];  // Array to store the response
+$response = []; 
 
 if (!$user_id) {
     http_response_code(400);
