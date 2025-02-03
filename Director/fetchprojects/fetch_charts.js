@@ -1,10 +1,15 @@
-// Fetch data and update cards and charts
 $(document).ready(function() {
     fetchData();
-
     // Filter widget change event
     $('#filterWidget').on('change', function() {
-        fetchData($(this).val());
+        const selectedProject = $(this).val();
+
+        // If "All" is selected, reset the filter
+        if (selectedProject === "") {
+            fetchData(); // Fetch all projects
+        } else {
+            fetchData(selectedProject); // Fetch data for the selected project
+        }
     });
 });
 
