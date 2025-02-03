@@ -334,6 +334,7 @@ include("../auth/db.php");
     <!-- Bootstrap and Popper.js (Use the CDN for the latest version) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="toogleNav.js"></script>
     <script src="alerts/notif.js"></script>
     <script src="alerts/notifCount.js"></script>
