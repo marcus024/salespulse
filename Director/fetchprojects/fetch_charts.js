@@ -71,7 +71,6 @@ function updateCards(data) {
                     <div class="card-number" style="font-family:'Poppins'">Php ${totalCommission.toLocaleString()}</div>
                 </div>
             </div>
-            
         </div>
         <canvas id="projectsChart" style="margin-top: 20px;"></canvas>
     `);
