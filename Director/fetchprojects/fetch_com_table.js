@@ -60,22 +60,28 @@
             try {
                 // Get actual gross profit and target gross profit values
                 let targetGross = parseFloat($('#targetGross').val()) || 0;
+                let actualGross = parseFloat($('#actualGross').val()) || 0;
 
                 if (isNaN(targetGross) || targetGross <= 0) {
                     alert("Please enter a valid target gross profit.");
                     return;
                 }
 
-                // Calculate the deficit
-                let deficit = targetGross - actualGross;
+                if (actualGross > targetGross) {
+                    // Calculate the deficit
+                    let deficit = actualGross - targetGross;
 
-                // Calculate the potential commission (Deficit * 5% * 70%)
-                let potentialCommission = deficit * 0.05 * 0.70;
+                    // Calculate the potential commission (Deficit * 5% * 70%)
+                    let potentialCommission = deficit * 0.05 * 0.70;
 
-                let formattedCommission = potentialCommission.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    let formattedCommission = potentialCommission.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-                // Display the potential commission
-                 $('#potentialCommission').text(`Php ${formattedCommission}`);
+                    // Display the potential commission
+                    $('#potentialCommission').text(`Php ${formattedCommission}`);
+                } else {
+                    // If actual gross is not greater, show zero commission
+                    $('#potentialCommission').text("Php 0.00");
+                }
 
             } catch (error) {
                 // Alert to notify if something went wrong
