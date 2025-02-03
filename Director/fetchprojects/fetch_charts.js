@@ -34,10 +34,14 @@ function fetchData(filter = 'All') {
         dataType: 'json',
         success: function(data) {
 
-             populateDropdown(data);
-            if (filter) {
+            populateDropdown(data);
+
+            // Filter data based on selected project (if any)
+            if (filter !== "All") {
                 data = data.filter(project => project.project_name === filter);
             }
+
+
             updateCards(data);
             updateCharts(data);
         },
