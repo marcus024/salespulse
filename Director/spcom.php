@@ -215,7 +215,7 @@ include("../auth/db.php");
                         <!-- Chart Panels -->
                         <div class="col-md-9 mb-4">
                             <div class="card shadow-sm" style="background: #1f2024; border:none;">
-                                <div class="card-body" id="calendar-container" style="min-height: 400px; background-color: white;">
+                                <div class="card-body" id="calendar-container" style="min-height: 400px; background: white;">
                                     <!-- Cards and Charts Here -->
                                 </div>
                             </div>
