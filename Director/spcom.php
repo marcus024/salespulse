@@ -213,7 +213,7 @@ include("../auth/db.php");
                             </div>
                         </div>
                         <!-- Chart Panels -->
-                        <div class="col-md-9 mb-4">
+                        <div class="col-md-9 mb-2">
                             <div class="card shadow-sm" style="background: #1f2024; border:none;">
                                 <div class="card-body" id="calendar-container" style="min-height: 400px; background:#1f2024 ;">
                                     <!-- Cards and Charts Here -->
