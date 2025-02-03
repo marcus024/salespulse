@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../../../auth/db.php');
 // Get data from POST request
 $actual_com = $_POST['actual_com'];
