@@ -33,6 +33,7 @@ include("../auth/db.php");
     <link href="css/spcomprofile.css" rel="stylesheet">
     <link href="css/spcommodal.css" rel="stylesheet">
     <link href="css/spcomtable.css" rel="stylesheet">
+    <link href="css/spcomcard.css" rel="stylesheet">
     
 </head>
 <body id="page-top" style="background-color:#15151a;">
