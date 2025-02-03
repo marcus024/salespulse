@@ -164,11 +164,24 @@ function updateCharts(data) {
                             return label;
                         }
                     }
+                },
+                datalabels: {
+                    align: 'top',
+                    anchor: 'end',
+                    color: '#000',
+                    font: {
+                        weight: 'bold'
+                    },
+                    formatter: function(value) {
+                        return 'Php ' + value.toLocaleString();
+                    }
                 }
             }
-        }
+        },
+        plugins: [ChartDataLabels] // Adding the datalabels plugin
     });
 }
+
 
 // HTML for the filter widget (Unchanged)
 $('#calendar-container').before(`
