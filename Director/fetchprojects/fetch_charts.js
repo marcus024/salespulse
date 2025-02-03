@@ -11,6 +11,18 @@ $(document).ready(function() {
             fetchData(selectedProject); // Fetch data for the selected project
         }
     });
+
+    // Refresh button click event
+    $('#refreshButton').on('click', function() {
+        const selectedProject = $('#filterWidget').val();
+        
+        // If "All" is selected, reset the filter
+        if (selectedProject === "All") {
+            fetchData(); // Fetch all projects
+        } else {
+            fetchData(selectedProject); // Fetch data for the selected project
+        }
+    });
 });
 
 // Populate the filter dropdown with project names
@@ -170,13 +182,16 @@ function updateCharts(data) {
     });
 }
 
-// HTML for the filter widget (Unchanged)
 $('#calendar-container').before(`
-    <div class="mb-1" style="margin: 10px; width: 250px;  top: 10px; right: 10px;">
-        <label for="filterWidget" class="form-label text-white">Filter by Project</label>
-        <select class="form-select" id="filterWidget">
-            <option value="All">All</option>
-            <!-- Projects will be populated here -->
-        </select>
+    <div class="mb-1" style="margin: 10px; width: 300px;  top: 10px; right: 10px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+            <label for="filterWidget" class="form-label text-white">Filter by Project</label>
+            <select class="form-select" id="filterWidget">
+                <option value="All">All</option>
+                <!-- Projects will be populated here -->
+            </select>
+        </div>
+        <button id="refreshButton" class="btn btn-secondary" style="margin-left: 10px;">Refresh</button>
     </div>
 `);
+
