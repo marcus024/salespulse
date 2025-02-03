@@ -198,8 +198,8 @@ $('#calendar-container').before(`
                     <!-- Projects will be populated here -->
                 </select>
             </div>
-            <button id="refreshButton" class="btn btn-secondary" style="margin-left: 5px; margin-top:35px; font-family: 'Poppins'; font-size: 12px; height: 30px; width: 70px;">Refresh</button>
-            <div class="btn-group" role="group" style="margin-left: 5px;margin-top:35px;">
+            <button id="refreshButton" class="btn btn-secondary" style="margin-left: 5px; margin-top:30px; font-family: 'Poppins'; font-size: 12px; height: 30px; width: 70px;">Refresh</button>
+            <div class="btn-group" role="group" style="margin-left: 5px;margin-top:30px;">
                 <!-- Export Dropdown -->
                 <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
                         style="color: black; font-size: 12px; font-family: 'Poppins'; height: 30px; margin: 0; border: none; background-color: #f9ce45;">
