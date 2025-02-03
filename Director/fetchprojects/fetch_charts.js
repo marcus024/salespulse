@@ -170,8 +170,9 @@ function updateCharts(data) {
                     anchor: 'end',
                     color: 'white',
                     font: {
-                        weight: 'bold',
-                        size: '8px'
+                        family:'Poppins',
+                        size: '5px',
+                        weight:'100px'
                     },
                     formatter: function(value) {
                         return value.toLocaleString();
