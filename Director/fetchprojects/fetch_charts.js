@@ -200,6 +200,8 @@ $('#calendar-container').before(`
             </button>
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#" onclick="exportToPDF()">Download PDF</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportPNG()">Download PNG</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportJPG()">Download JPG</a></li>
                 <li><a class="dropdown-item" href="#" onclick="printTable()">Print</a></li>
             </ul>
         </div>
