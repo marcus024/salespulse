@@ -8,6 +8,20 @@ $(document).ready(function() {
     });
 });
 
+// Populate the filter dropdown with project names
+function populateDropdown(data) {
+    const filterWidget = $('#filterWidget');
+    filterWidget.empty(); // Clear previous options
+
+    // Add "All" option
+    filterWidget.append('<option value="">All</option>');
+
+    // Add options for each project
+    data.forEach(project => {
+        filterWidget.append(`<option value="${project.project_name}">${project.project_name}</option>`);
+    });
+}
+
 function fetchData(filter = '') {
     $.ajax({
         url: './dirback/spcome_fetch_table.php',
@@ -15,7 +29,7 @@ function fetchData(filter = '') {
         dataType: 'json',
         success: function(data) {
             if (filter) {
-                data = data.filter(project => project.projectStatus === filter);
+                data = data.filter(project => project.project_name === filter);
             }
             updateCards(data);
             updateCharts(data);
@@ -140,15 +154,13 @@ function updateCharts(data) {
     });
 }
 
-// HTML for the filter widget
+// HTML for the filter widget (Unchanged)
 $('#calendar-container').before(`
     <div class="mb-3">
-        <label for="filterWidget" class="form-label text-white">Filter by Status</label>
+        <label for="filterWidget" class="form-label text-white">Filter by Project</label> 
         <select class="form-select" id="filterWidget">
             <option value="">All</option>
-            <option value="Completed">Completed</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Pending">Pending</option>
+            <!-- Projects will be populated here -->
         </select>
     </div>
 `);
