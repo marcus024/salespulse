@@ -164,20 +164,20 @@ function updateCharts(data) {
                             return label;
                         }
                     }
-                },
-                datalabels: {
-                    align: 'top',
-                    anchor: 'end',
-                    color: 'white',
-                    font: {
-                        family:'Poppins',
-                        size: '2px',
-                        weight:'100px'
-                    },
-                    formatter: function(value) {
-                        return value.toLocaleString();
-                    }
                 }
+                // datalabels: {
+                //     align: 'top',
+                //     anchor: 'end',
+                //     color: 'white',
+                //     font: {
+                //         family:'Poppins',
+                //         size: '2px',
+                //         weight:'100px'
+                //     },
+                //     formatter: function(value) {
+                //         return value.toLocaleString();
+                //     }
+                // }
             }
         },
         plugins: [ChartDataLabels] // Adding the datalabels plugin
