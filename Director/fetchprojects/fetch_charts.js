@@ -44,15 +44,7 @@ function updateCards(data) {
                     <div class="card-number" style="font-family:'Poppins'">${totalProjects}</div>
                 </div>
             </div>
-            <div class="rectangle-card" onclick="filterTable('Ongoing')">
-                <i class="card-icon">
-                    <img src="../images/ongoing_i.png" alt="icon" width="30" height="30">
-                </i>
-                <div class="card-content">
-                    <div class="card-title" style="font-family:'Poppins'"Total Net Sales</div>
-                    <div class="card-number" style="font-family:'Poppins'">Php ${totalNetSales.toLocaleString()}</div>
-                </div>
-            </div>
+            
             <div class="rectangle-card" onclick="filterTable('Cancelled')">
                 <i class="card-icon">
                     <img src="../images/cancelled_i.png" alt="icon" width="30" height="30">
