@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    // fetchData();
+    fetchData();
     // Filter widget change event
     $('#filterWidget').on('change', function() {
         const selectedProject = $(this).val();
