@@ -214,9 +214,8 @@ include("../auth/db.php");
                         <!-- Chart Panels -->
                         <div class="col-md-9 mb-4">
                             <div class="card shadow-sm" style="background: #1f2024; border:none;">
-                                
                                 <div class="card-body" id="calendar-container" style="min-height: 400px; color: white;">
-                                    
+                                    <!-- Cards and Charts Here -->
                                 </div>
                             </div>
                         </div>
@@ -339,6 +338,7 @@ include("../auth/db.php");
     <script src="alerts/notifCount.js"></script>
     <script src="current_year.js"></script>
     <script src="fetchprojects/fetch_com_table.js"></script>
+    <script src="fetchprojects/fetch_charts.js"></script>
     <script>
         function togglePopup() {
             const popup = document.getElementById('popup-container');
