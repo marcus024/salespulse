@@ -91,8 +91,8 @@ function updateCards(data) {
                     <img src="../images/ongoing_i.png" alt="icon" width="30" height="30">
                 </i>
                 <div class="card-content">
-                    <div class="card-title" style="font-family:'Poppins'">Net Sales</div>
-                    <div class="card-number" style="font-family:'Poppins'">Php ${totalNetSales.toLocaleString()}</div>
+                    <div class="card-title" style="font-family:'Poppins'">Net Sales(Php)</div>
+                    <div class="card-number" style="font-family:'Poppins'"> ${totalNetSales.toLocaleString()}</div>
                 </div>
             </div>
             <div class="rectangle-card" onclick="filterTable('Cancelled')">
@@ -100,8 +100,8 @@ function updateCards(data) {
                     <img src="../images/cancelled_i.png" alt="icon" width="30" height="30">
                 </i>
                 <div class="card-content">
-                    <div class="card-title" style="font-family:'Poppins'">Gross Profit</div>
-                    <div class="card-number" style="font-family:'Poppins'">Php ${totalGrossProfit.toLocaleString()}</div>
+                    <div class="card-title" style="font-family:'Poppins'">Gross Profit(Php)</div>
+                    <div class="card-number" style="font-family:'Poppins'"> ${totalGrossProfit.toLocaleString()}</div>
                 </div>
             </div>
             <div class="rectangle-card" onclick="filterTable('All')">
@@ -109,8 +109,8 @@ function updateCards(data) {
                     <img src="../images/duration_i.png" alt="icon" width="30" height="30">
                 </i>
                 <div class="card-content">
-                    <div class="card-title" style="font-family:'Poppins'">Commission</div>
-                    <div class="card-number" style="font-family:'Poppins'">Php ${totalCommission.toLocaleString()}</div>
+                    <div class="card-title" style="font-family:'Poppins'">Commission(Php)</div>
+                    <div class="card-number" style="font-family:'Poppins'"> ${totalCommission.toLocaleString()}</div>
                 </div>
             </div>
         </div>
