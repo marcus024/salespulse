@@ -192,7 +192,19 @@ $('#calendar-container').before(`
             </select>
         </div>
         <button id="refreshButton" class="btn btn-secondary" style="margin-left: 5px; margin-top:30px; font-family;'Poppins'; font-size:12px; height:30px; width:70px;">Refresh</button>
-       
+        <div class="btn-group" role="group">
+            <!-- Export Dropdown -->
+            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
+                    style="color:black; font-size: 12px; font-family:'Poppins'; height: 30px; margin: 0; border:none; background-color:#f9ce45">
+                Export
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" onclick="exportToPDF()">Download PDF</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportToExcel()">Download Excel</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportToCSV()">Download CSV</a></li>
+                <li><a class="dropdown-item" href="#" onclick="printTable()">Print</a></li>
+            </ul>
+        </div>
     </div>
 `);
 
