@@ -209,6 +209,9 @@ include("../auth/db.php");
                                             </p>
                                         </div>
                                     </div>
+                                    <div>
+                                        <button type="button" class="btn w-100 calcBtn">History</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
