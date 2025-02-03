@@ -168,9 +168,10 @@ function updateCharts(data) {
                 datalabels: {
                     align: 'top',
                     anchor: 'end',
-                    color: '#000',
+                    color: 'white',
                     font: {
-                        weight: 'bold'
+                        weight: 'bold',
+                        size: '8px'
                     },
                     formatter: function(value) {
                         return 'Php ' + value.toLocaleString();
