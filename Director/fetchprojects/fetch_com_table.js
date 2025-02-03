@@ -66,16 +66,21 @@
                     return;
                 }
 
-                // Calculate the deficit
-                let deficit = targetGross - actualGross;
+                let deficit = 0;
 
-                // Calculate the potential commission (Deficit * 5% * 70%)
+                if (actualGross > targetGross) {
+                    deficit = 0; // No deficit if actual gross is greater
+                } else {
+                    deficit = targetGross - actualGross;
+                }
+
+                // Calculate the potential commission only if there is a deficit
                 let potentialCommission = deficit * 0.05 * 0.70;
 
                 let formattedCommission = potentialCommission.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
                 // Display the potential commission
-                 $('#potentialCommission').text(`Php ${formattedCommission}`);
+                $('#potentialCommission').text(`Php ${formattedCommission}`);
 
             } catch (error) {
                 // Alert to notify if something went wrong
