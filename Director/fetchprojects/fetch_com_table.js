@@ -82,12 +82,35 @@
                 // Display the potential commission
                 $('#potentialCommission').text(`Php ${formattedCommission}`);
 
+                // Prepare data for AJAX
+                let formData = {
+                    actual_com: actualGross,
+                    target_com: targetGross,
+                    potential_com: potentialCommission.toFixed(2),
+                };
+
+                // Send data to backend via AJAX
+                $.ajax({
+                    url: 'save_commission.php',  // Backend PHP script
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        alert('Data saved successfully!');
+                        console.log(response); // Log response for debugging
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                        alert('Failed to save data.');
+                    }
+                });
+
             } catch (error) {
                 // Alert to notify if something went wrong
                 alert("There was an error in calculating the potential commission. Please try again.");
                 console.error(error); // Log the error for debugging purposes
             }
         });
+
     });
 
         // Search function to filter rows based on input
