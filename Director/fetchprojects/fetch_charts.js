@@ -190,9 +190,9 @@ $('#calendar-container').before(`
                 <option value="All">All</option>
                 <!-- Projects will be populated here -->
             </select>
-            <button id="refreshButton" class="btn btn-secondary" style="margin-left: 10px; font-family;'Poppins'; font-size:12px; height:20px; width:40px;">Refresh</button>
         </div>
-        
+        <button id="refreshButton" class="btn btn-secondary" style="margin-left: 10px; font-family;'Poppins'; font-size:12px; height:40px; width:70px;">Refresh</button>
+       
     </div>
 `);
 
