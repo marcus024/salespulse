@@ -183,7 +183,10 @@ function updateCharts(data) {
 }
 
 $('#calendar-container').before(`
-    <div class="mb-1" style="margin: 10px; width: 350px;  top: 10px; right: 10px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="margin: 10px; width: 350px; top: 10px; right: 10px; display: flex; align-items: center; justify-content: flex-start;">
+        <h4 class="text-white" style="font-family: 'Poppins'; font-size: 18px; margin-top: 5px;">Commissions Summary</h4>
+    </div>
+    <div class="mb-1" style="margin: 10px; width: 350px; top: 10px; right: 10px; display: flex; align-items: center; justify-content: space-between;">
         <div>
             <label for="filterWidget" class="form-label text-white">Filter by Project</label>
             <select class="form-select" id="filterWidget">
@@ -191,11 +194,11 @@ $('#calendar-container').before(`
                 <!-- Projects will be populated here -->
             </select>
         </div>
-        <button id="refreshButton" class="btn btn-secondary" style="margin-left: 5px; margin-top:30px; font-family;'Poppins'; font-size:12px; height:30px; width:70px;">Refresh</button>
-        <div class="btn-group" role="group" style="margin-left:5px; margin-top:30px;">
+        <button id="refreshButton" class="btn btn-secondary" style="margin-left: 5px; margin-top: 30px; font-family: 'Poppins'; font-size: 12px; height: 30px; width: 70px;">Refresh</button>
+        <div class="btn-group" role="group" style="margin-left: 5px; margin-top: 30px;">
             <!-- Export Dropdown -->
             <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
-                    style="color:black; font-size: 12px; font-family:'Poppins'; height: 30px; margin: 0; border:none; background-color:#f9ce45">
+                    style="color: black; font-size: 12px; font-family: 'Poppins'; height: 30px; margin: 0; border: none; background-color: #f9ce45;">
                 Export
             </button>
             <ul class="dropdown-menu">
@@ -206,5 +209,7 @@ $('#calendar-container').before(`
             </ul>
         </div>
     </div>
+    
 `);
+
 
