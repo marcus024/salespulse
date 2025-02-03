@@ -186,7 +186,7 @@ $('#calendar-container').before(`
     <div style=" width: 750px; padding-left:20px; padding-top: 10px; padding-right: 30px; display: flex; justify-content: space-between; align-items: center;">
         <!-- Title on the Left -->
         <div>
-            <h4 class="text-white" style="font-family: 'Poppins'; font-weight:bold; font-size: 20px; margin-top: 5px;">Commissions Summary</h4>
+            <h4 class="text-white" style="font-family: 'Poppins'; font-weight:bold; font-size: 30px; margin-top: 5px;">Commissions Summary</h4>
         </div>
         
         <!-- Filter Widget on the Right -->
