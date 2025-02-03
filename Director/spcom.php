@@ -210,7 +210,7 @@ include("../auth/db.php");
                                         </div>
                                     </div>
                                     <div style="margin-top:20px;">
-                                        <button type="button" class="btn w-100 calcBtn">History</button>
+                                        <p style="color:white; font-weight:bold; font-size:15px; font-family:'Poppins';">History</p>
                                     </div>
                                 </div>
                             </div>
