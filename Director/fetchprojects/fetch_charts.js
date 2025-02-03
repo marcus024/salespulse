@@ -191,7 +191,7 @@ $('#calendar-container').before(`
                 <!-- Projects will be populated here -->
             </select>
         </div>
-        <button id="refreshButton" class="btn btn-secondary" style="margin-left: 5px; margin-top:15px; font-family;'Poppins'; font-size:12px; height:40px; width:70px;">Refresh</button>
+        <button id="refreshButton" class="btn btn-secondary" style="margin-left: 1px; margin-top:20px; font-family;'Poppins'; font-size:12px; height:40px; width:70px;">Refresh</button>
        
     </div>
 `);
