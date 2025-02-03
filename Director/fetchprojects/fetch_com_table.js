@@ -91,7 +91,7 @@
 
                 // Send data to backend via AJAX
                 $.ajax({
-                    url: 'save_commission.php',  // Backend PHP script
+                    url: './../dirback/save_pot_com/save_commission.php',  // Backend PHP script
                     type: 'POST',
                     data: formData,
                     success: function(response) {
