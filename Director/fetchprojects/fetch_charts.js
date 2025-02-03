@@ -158,7 +158,7 @@ function updateCharts(data) {
 
 // HTML for the filter widget (Unchanged)
 $('#calendar-container').before(`
-    <div class="mb-1" style="margin: 10px; width: 250px; position: absolute; top: 10px; right: 10px;">
+    <div class="mb-1" style="margin: 10px; width: 250px;  top: 10px; right: 10px;">
         <label for="filterWidget" class="form-label text-white">Filter by Project</label>
         <select class="form-select" id="filterWidget">
             <option value="">All</option>
