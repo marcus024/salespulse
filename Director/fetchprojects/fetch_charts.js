@@ -39,7 +39,7 @@ function fetchData(filter = 'All') {
         dataType: 'json',
         success: function(data) {
 
-            populateDropdown(data);
+            populateDropdown(data,"All");
 
             // Filter data based on selected project (if any)
             if (filter !== "All") {
