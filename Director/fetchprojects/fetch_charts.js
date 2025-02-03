@@ -14,18 +14,23 @@ $(document).ready(function() {
 });
 
 // Populate the filter dropdown with project names
-function populateDropdown(data) {
+function populateDropdown(data, selectedProject = 'All') {
     const filterWidget = $('#filterWidget');
     filterWidget.empty(); // Clear previous options
 
-    // Add "All" option
-    filterWidget.append('<option value="">All</option>');
+    // Add "All" option, and select it if no project is selected
+    filterWidget.append('<option value="All" ' + (selectedProject === 'All' ? 'selected' : '') + '>All</option>');
 
     // Add options for each project
     data.forEach(project => {
-        filterWidget.append(`<option value="${project.project_name}">${project.project_name}</option>`);
+        filterWidget.append(`
+            <option value="${project.project_name}" ${selectedProject === project.project_name ? 'selected' : ''}>
+                ${project.project_name}
+            </option>
+        `);
     });
 }
+
 
 function fetchData(filter = 'All') {
     $.ajax({
