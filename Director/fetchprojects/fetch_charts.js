@@ -28,6 +28,8 @@ function fetchData(filter = '') {
         method: 'GET',
         dataType: 'json',
         success: function(data) {
+
+             populateDropdown(data);
             if (filter) {
                 data = data.filter(project => project.project_name === filter);
             }
