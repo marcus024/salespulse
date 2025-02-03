@@ -9,8 +9,8 @@ $account_manager =  $_SESSION['user_id_c'];
 $created_at = date('Y-m-d H:i:s');  // Current timestamp
 
 // SQL Insert query
-$sql = "INSERT INTO potentialCom (actual_com, target_com, account_manager, created_at)
-        VALUES ('$actual_com', '$target_com', '$account_manager', '$created_at')";
+$sql = "INSERT INTO potentialCom (actual_com, target_com, account_manager,potential_com, created_at)
+        VALUES ('$actual_com', '$target_com', '$account_manager',$potential_com, '$created_at')";
 
 // Execute query and respond
 if ($conn->query($sql) === TRUE) {
