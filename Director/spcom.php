@@ -211,6 +211,12 @@ include("../auth/db.php");
                                     </div>
                                     <div style="margin-top:20px;">
                                         <p style="color:white; font-weight:bold; font-size:15px; font-family:'Poppins';">History</p>
+                                        <div id="recent-history" style="color:white; font-family:'Poppins'; font-size:14px;">
+                                            <!-- Recent calculations will be dynamically inserted here -->
+                                        </div>
+                                        <p onclick="viewAllHistory()" style="color:#4CAF50; font-family:'Poppins'; font-size:14px; cursor:pointer; text-decoration:underline; margin-top:5px;">
+                                            See All
+                                        </p>
                                     </div>
                                 </div>
                             </div>
