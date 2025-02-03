@@ -174,7 +174,7 @@ function updateCharts(data) {
                         size: '8px'
                     },
                     formatter: function(value) {
-                        return 'Php ' + value.toLocaleString();
+                        return value.toLocaleString();
                     }
                 }
             }
