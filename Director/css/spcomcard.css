@@ -1,5 +1,5 @@
  .rectangle-card {
-        width: calc(25% - 4px); 
+        width: calc(25% - 2px); 
         height: 90px;
         background-color:#f9ce45;
         box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
