@@ -76,45 +76,48 @@ function updateCards(data) {
     let totalCommission = data.reduce((sum, project) => sum + parseFloat(project.commission), 0);
 
     $('#calendar-container').html(`
-        <div class="row" style="padding: 10px; gap: 4px; margin-top: -0.9xrem;"> <!-- Reduced margin above cards -->
-            <div class="rectangle-card" onclick="filterTable('Completed')">
-                <i class="card-icon">
-                    <img src="../images/completed_i.png" alt="icon" width="30" height="30">
-                </i>
-                <div class="card-content">
-                    <div class="card-title" style="font-family:'Poppins'">Projects</div>
-                    <div class="card-number" style="font-family:'Poppins'">${totalProjects}</div>
+        <div id="exportContainer">
+            <div class="row" style="padding: 10px; gap: 4px; margin-top: -0.9xrem;"> <!-- Reduced margin above cards -->
+                <div class="rectangle-card" onclick="filterTable('Completed')">
+                    <i class="card-icon">
+                        <img src="../images/completed_i.png" alt="icon" width="30" height="30">
+                    </i>
+                    <div class="card-content">
+                        <div class="card-title" style="font-family:'Poppins'">Projects</div>
+                        <div class="card-number" style="font-family:'Poppins'">${totalProjects}</div>
+                    </div>
+                </div>
+                <div class="rectangle-card" onclick="filterTable('Ongoing')">
+                    <i class="card-icon">
+                        <img src="../images/ongoing_i.png" alt="icon" width="30" height="30">
+                    </i>
+                    <div class="card-content">
+                        <div class="card-title" style="font-family:'Poppins'">Net Sales(Php)</div>
+                        <div class="card-number" style="font-family:'Poppins'"> ${totalNetSales.toLocaleString()}</div>
+                    </div>
+                </div>
+                <div class="rectangle-card" onclick="filterTable('Cancelled')">
+                    <i class="card-icon">
+                        <img src="../images/cancelled_i.png" alt="icon" width="30" height="30">
+                    </i>
+                    <div class="card-content">
+                        <div class="card-title" style="font-family:'Poppins'">Gross Profit(Php)</div>
+                        <div class="card-number" style="font-family:'Poppins'"> ${totalGrossProfit.toLocaleString()}</div>
+                    </div>
+                </div>
+                <div class="rectangle-card" onclick="filterTable('All')">
+                    <i class="card-icon">
+                        <img src="../images/duration_i.png" alt="icon" width="30" height="30">
+                    </i>
+                    <div class="card-content">
+                        <div class="card-title" style="font-family:'Poppins'">Commission(Php)</div>
+                        <div class="card-number" style="font-family:'Poppins'"> ${totalCommission.toLocaleString()}</div>
+                    </div>
                 </div>
             </div>
-            <div class="rectangle-card" onclick="filterTable('Ongoing')">
-                <i class="card-icon">
-                    <img src="../images/ongoing_i.png" alt="icon" width="30" height="30">
-                </i>
-                <div class="card-content">
-                    <div class="card-title" style="font-family:'Poppins'">Net Sales(Php)</div>
-                    <div class="card-number" style="font-family:'Poppins'"> ${totalNetSales.toLocaleString()}</div>
-                </div>
-            </div>
-            <div class="rectangle-card" onclick="filterTable('Cancelled')">
-                <i class="card-icon">
-                    <img src="../images/cancelled_i.png" alt="icon" width="30" height="30">
-                </i>
-                <div class="card-content">
-                    <div class="card-title" style="font-family:'Poppins'">Gross Profit(Php)</div>
-                    <div class="card-number" style="font-family:'Poppins'"> ${totalGrossProfit.toLocaleString()}</div>
-                </div>
-            </div>
-            <div class="rectangle-card" onclick="filterTable('All')">
-                <i class="card-icon">
-                    <img src="../images/duration_i.png" alt="icon" width="30" height="30">
-                </i>
-                <div class="card-content">
-                    <div class="card-title" style="font-family:'Poppins'">Commission(Php)</div>
-                    <div class="card-number" style="font-family:'Poppins'"> ${totalCommission.toLocaleString()}</div>
-                </div>
-            </div>
+            <canvas id="projectsChart" style="margin-top: 20px;"></canvas>
         </div>
-        <canvas id="projectsChart" style="margin-top: 20px;"></canvas>
+
     `);
 }
 
