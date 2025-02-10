@@ -34,6 +34,86 @@ include("../auth/db.php");
     <link href="css/spcommodal.css" rel="stylesheet">
     <link href="css/spcomtable.css" rel="stylesheet">
     <link href="css/spcomcard.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #15151a;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .tracker-container {
+            background: #1e1e26;
+            padding: 20px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+            font-size: 14px;
+        }
+
+        .timer {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .start-btn {
+            background-color: yellow;
+            color: black;
+        }
+
+        .stop-btn {
+            background-color: red;
+            color: white;
+        }
+
+        .task-list {
+            margin-top: 20px;
+        }
+
+        .task-item {
+            background: #282832;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
     
 </head>
 <body id="page-top" style="background-color:#15151a;">
@@ -190,38 +270,32 @@ include("../auth/db.php");
                 </div>
                 <!-- End of Topbar -->
                 <div class="container-fluid" style=" background-color:#15151a;">
-                    <div class="container-fluid min-h-screen flex items-center justify-center p-6" style="background-color:#15151a;">
-                        <div class="bg-gray-900 text-white p-6 rounded-lg shadow-lg w-full max-w-lg">
-                            <!-- Task Input -->
-                            <div class="mb-4">
-                                <label class="block text-sm font-semibold mb-1">Task Name</label>
-                                <input type="text" id="taskName" placeholder="Enter task..." 
-                                    class="w-full p-2 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400">
-                            </div>
-
-                            <!-- Project Selector -->
-                            <div class="mb-4">
-                                <label class="block text-sm font-semibold mb-1">Project</label>
-                                <select id="projectSelect" class="w-full p-2 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-yellow-400">
-                                    <option value="Project A">Project A</option>
-                                    <option value="Project B">Project B</option>
-                                    <option value="Project C">Project C</option>
-                                </select>
-                            </div>
-
-                            <!-- Timer Display -->
-                            <div class="text-center text-3xl font-bold mb-4">
-                                <span id="timer">00:00:00</span>
-                            </div>
-
-                            <!-- Start/Stop Button -->
-                            <div class="flex justify-center">
-                                <button id="startStopBtn" onclick="toggleTimer()" class="bg-yellow-400 text-black font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-yellow-500 transition">
-                                    Start
-                                </button>
-                            </div>
+                    <div class="tracker-container">
+                        <!-- Task Input -->
+                        <div class="input-group">
+                            <label>Task Name</label>
+                            <input type="text" id="taskName" placeholder="Enter task...">
                         </div>
+
+                        <!-- Project Selection -->
+                        <div class="input-group">
+                            <label>Project</label>
+                            <select id="projectSelect">
+                                <option value="Project A">Project A</option>
+                                <option value="Project B">Project B</option>
+                                <option value="Project C">Project C</option>
+                            </select>
+                        </div>
+
+                        <!-- Timer -->
+                        <div class="timer" id="timer">00:00:00</div>
+
+                        <!-- Start/Stop Button -->
+                        <button id="startStopBtn" class="btn start-btn" onclick="toggleTimer()">Start</button>
                     </div>
+
+                    <!-- Completed Tasks -->
+                    <div class="task-list" id="taskList"></div>
                 </div>
             </div>
             <!-- End of Main Content -->
@@ -312,34 +386,83 @@ include("../auth/db.php");
         });
     </script>
     <script>
-    let timerInterval;
-    let seconds = 0;
-    let isRunning = false;
+        let timerInterval;
+        let seconds = 0;
+        let isRunning = false;
+        let startTime;
+        let taskData = [];
 
-    function toggleTimer() {
-        const button = document.getElementById('startStopBtn');
-        if (isRunning) {
-            clearInterval(timerInterval);
-            button.textContent = "Start";
-            button.classList.remove('bg-red-500');
-            button.classList.add('bg-yellow-400');
-        } else {
-            timerInterval = setInterval(updateTimer, 1000);
-            button.textContent = "Stop";
-            button.classList.remove('bg-yellow-400');
-            button.classList.add('bg-red-500');
+        function toggleTimer() {
+            const button = document.getElementById('startStopBtn');
+            const taskName = document.getElementById('taskName').value.trim();
+            const projectName = document.getElementById('projectSelect').value;
+
+            if (!taskName) {
+                alert("Please enter a task name.");
+                return;
+            }
+
+            if (isRunning) {
+                clearInterval(timerInterval);
+                button.textContent = "Start";
+                button.classList.remove('stop-btn');
+                button.classList.add('start-btn');
+
+                const stopTime = new Date();
+                recordTask(taskName, projectName, startTime, stopTime);
+
+            } else {
+                seconds = 0;
+                updateTimerDisplay();
+
+                timerInterval = setInterval(updateTimer, 1000);
+                button.textContent = "Stop";
+                button.classList.remove('start-btn');
+                button.classList.add('stop-btn');
+
+                startTime = new Date();
+            }
+            isRunning = !isRunning;
         }
-        isRunning = !isRunning;
-    }
 
-    function updateTimer() {
-        seconds++;
-        const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
-        const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
-        const secs = String(seconds % 60).padStart(2, '0');
-        document.getElementById('timer').textContent = `${hrs}:${mins}:${secs}`;
-    }
-</script>
+        function updateTimer() {
+            seconds++;
+            updateTimerDisplay();
+        }
+
+        function updateTimerDisplay() {
+            const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
+            const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+            const secs = String(seconds % 60).padStart(2, '0');
+            document.getElementById('timer').textContent = `${hrs}:${mins}:${secs}`;
+        }
+
+        function recordTask(taskName, projectName, start, stop) {
+            const taskList = document.getElementById('taskList');
+            const startTimeFormatted = formatDateTime(start);
+            const stopTimeFormatted = formatDateTime(stop);
+
+            taskData.push({
+                task: taskName,
+                project: projectName,
+                start: startTimeFormatted,
+                stop: stopTimeFormatted
+            });
+
+            const taskItem = document.createElement('div');
+            taskItem.classList.add('task-item');
+            taskItem.innerHTML = `
+                <strong>${taskName}</strong> (${projectName})<br>
+                <small>Started: ${startTimeFormatted}</small><br>
+                <small>Stopped: ${stopTimeFormatted}</small>
+            `;
+            taskList.appendChild(taskItem);
+        }
+
+        function formatDateTime(date) {
+            return date.toLocaleDateString() + " " + date.toLocaleTimeString();
+        }
+    </script>
 
 
 </body>
