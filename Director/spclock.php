@@ -47,11 +47,21 @@ include("../auth/db.php");
             flex-direction: column;
         }
 
+        .container-fluid {
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
         .tracker-container {
             background: #1e1e26;
             padding: 20px;
             border-radius: 10px;
-            width: 350px;
             box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
         }
 
@@ -76,7 +86,7 @@ include("../auth/db.php");
 
         .timer {
             text-align: center;
-            font-size: 24px;
+            font-size: 40px; /* Larger than previous */
             font-weight: bold;
             margin-bottom: 15px;
         }
@@ -122,11 +132,21 @@ include("../auth/db.php");
 
         .task-container .task-title {
             font-weight: bold;
+            font-size: 18px;
         }
 
         .task-container .task-details {
-            font-size: 14px;
+            font-size: 16px;
             margin-top: 5px;
+        }
+
+        /* Make task containers bigger */
+        .task-container .task-title, .task-container .task-details p {
+            font-size: 18px;
+        }
+
+        .task-container .task-details p strong {
+            font-size: 16px;
         }
     </style>
     
@@ -286,7 +306,7 @@ include("../auth/db.php");
                 <div class="container-fluid" style="background-color:#15151a;">
                     <div class="row">
                         <!-- Left Side: Time Tracker -->
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <div class="tracker-container">
                                 <!-- Task Input -->
                                 <div class="input-group">
@@ -316,7 +336,7 @@ include("../auth/db.php");
                         </div>
 
                         <!-- Right Side: Task Details Widget -->
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="task-details-widget">
                                 <h3>Task Details</h3>
                                 <div id="taskDetailsContainer">
