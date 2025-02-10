@@ -1,5 +1,7 @@
 <?php
 include("../../auth/db.php");
+session_start(); // Start the session
+
 
 // Insert task time when stopped
 function insertTaskTime($taskName, $project, $user, $startTime, $endTime) {
@@ -22,7 +24,7 @@ function insertTaskTime($taskName, $project, $user, $startTime, $endTime) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $taskName = $_POST['taskName'];
     $project = $_POST['project'];
-    $user = $_POST['user'];  // User info can be fetched from session or input
+    $user = $_SESSION['user_id_c'];  // User info can be fetched from session or input
     $startTime = $_POST['startTime'];
     $endTime = $_POST['endTime'];
     insertTaskTime($taskName, $project, $user, $startTime, $endTime);
