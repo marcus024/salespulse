@@ -463,6 +463,47 @@ include("../auth/db.php");
             return date.toLocaleDateString() + " " + date.toLocaleTimeString();
         }
     </script>
+    <script>
+        function recordTask(taskName, projectName, start, stop) {
+        const startTimeFormatted = formatDateTime(start);
+        const stopTimeFormatted = formatDateTime(stop);
+
+        // Send task data to backend
+        fetch('save_task_time.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                taskName: taskName,
+                project: projectName,
+                user: 'currentUser', // Replace with actual user or session variable
+                startTime: startTimeFormatted,
+                endTime: stopTimeFormatted
+            })
+        }).then(response => response.text())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+
+        // Display task data
+        taskData.push({
+            task: taskName,
+            project: projectName,
+            start: startTimeFormatted,
+            stop: stopTimeFormatted
+        });
+
+        const taskItem = document.createElement('div');
+        taskItem.classList.add('task-item');
+        taskItem.innerHTML = `
+            <strong>${taskName}</strong> (${projectName})<br>
+            <small>Started: ${startTimeFormatted}</small><br>
+            <small>Stopped: ${stopTimeFormatted}</small>
+        `;
+        taskList.appendChild(taskItem);
+    }
+
+    </script>
 
 
 </body>
