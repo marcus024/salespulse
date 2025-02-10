@@ -9,7 +9,7 @@ function insertTaskTime($taskName, $project, $user, $startTime, $endTime) {
     $startTime = date('Y-m-d H:i:s', strtotime($startTime));
     $endTime = date('Y-m-d H:i:s', strtotime($endTime));
 
-    $sql = "INSERT INTO task_time (task, project, user, start_time, end_time) VALUES ('$taskName', '$project', '$user', '$startTime', '$endTime')";
+    $sql = "INSERT INTO workpulse (task, project, user, start_time, end_time) VALUES ('$taskName', '$project', '$user', '$startTime', '$endTime')";
     
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";

@@ -477,7 +477,6 @@ include("../auth/db.php");
             body: new URLSearchParams({
                 taskName: taskName,
                 project: projectName,
-                user: 'currentUser', // Replace with actual user or session variable
                 startTime: startTimeFormatted,
                 endTime: stopTimeFormatted
             })
