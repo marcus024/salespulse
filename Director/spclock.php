@@ -469,7 +469,7 @@ include("../auth/db.php");
         const stopTimeFormatted = formatDateTime(stop);
 
         // Send task data to backend
-        fetch('save_task_time.php', {
+        fetch('dirback/save_task_time.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
