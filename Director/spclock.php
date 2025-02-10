@@ -386,85 +386,95 @@ include("../auth/db.php");
         });
     </script>
     <script>
-        let timerInterval;
-        let seconds = 0;
-        let isRunning = false;
-        let startTime;
-        let taskData = [];
+    let timerInterval;
+    let seconds = 0;
+    let isRunning = false;
+    let startTime;
+    let taskData = [];
 
-        function toggleTimer() {
-            const button = document.getElementById('startStopBtn');
-            const taskName = document.getElementById('taskName').value.trim();
-            const projectName = document.getElementById('projectSelect').value;
+    // Fetch task data from the backend and display it
+    function fetchTaskData() {
+        fetch('dirback/fetch_task_time.php') // Adjust the path if necessary
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(task => {
+                    displayTask(task.task, task.project, task.start, task.end);
+                });
+            })
+            .catch(error => console.error('Error fetching task data:', error));
+    }
 
-            if (!taskName) {
-                alert("Please enter a task name.");
-                return;
-            }
+    function displayTask(taskName, projectName, start, stop) {
+        const taskList = document.getElementById('taskList');
+        const startTimeFormatted = formatDateTime(new Date(start));
+        const stopTimeFormatted = formatDateTime(new Date(stop));
+        const duration = calculateDuration(new Date(start), new Date(stop));
 
-            if (isRunning) {
-                clearInterval(timerInterval);
-                button.textContent = "Start";
-                button.classList.remove('stop-btn');
-                button.classList.add('start-btn');
+        const taskItem = document.createElement('div');
+        taskItem.classList.add('task-item');
+        taskItem.innerHTML = `
+            <strong>${taskName}</strong> (${projectName})<br>
+            <small>Started: ${startTimeFormatted}</small><br>
+            <small>Stopped: ${stopTimeFormatted}</small><br>
+            <small>Duration: ${duration}</small>
+        `;
+        taskList.appendChild(taskItem);
+    }
 
-                const stopTime = new Date();
-                recordTask(taskName, projectName, startTime, stopTime);
+    function calculateDuration(start, stop) {
+        const durationInSeconds = (stop - start) / 1000;  // Difference in seconds
+        const hrs = String(Math.floor(durationInSeconds / 3600)).padStart(2, '0');
+        const mins = String(Math.floor((durationInSeconds % 3600) / 60)).padStart(2, '0');
+        const secs = String(Math.floor(durationInSeconds % 60)).padStart(2, '0');
+        return `${hrs}:${mins}:${secs}`;
+    }
 
-            } else {
-                seconds = 0;
-                updateTimerDisplay();
+    function toggleTimer() {
+        const button = document.getElementById('startStopBtn');
+        const taskName = document.getElementById('taskName').value.trim();
+        const projectName = document.getElementById('projectSelect').value;
 
-                timerInterval = setInterval(updateTimer, 1000);
-                button.textContent = "Stop";
-                button.classList.remove('start-btn');
-                button.classList.add('stop-btn');
-
-                startTime = new Date();
-            }
-            isRunning = !isRunning;
+        if (!taskName) {
+            alert("Please enter a task name.");
+            return;
         }
 
-        function updateTimer() {
-            seconds++;
+        if (isRunning) {
+            clearInterval(timerInterval);
+            button.textContent = "Start";
+            button.classList.remove('stop-btn');
+            button.classList.add('start-btn');
+
+            const stopTime = new Date();
+            recordTask(taskName, projectName, startTime, stopTime);
+
+        } else {
+            seconds = 0;
             updateTimerDisplay();
+
+            timerInterval = setInterval(updateTimer, 1000);
+            button.textContent = "Stop";
+            button.classList.remove('start-btn');
+            button.classList.add('stop-btn');
+
+            startTime = new Date();
         }
+        isRunning = !isRunning;
+    }
 
-        function updateTimerDisplay() {
-            const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
-            const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
-            const secs = String(seconds % 60).padStart(2, '0');
-            document.getElementById('timer').textContent = `${hrs}:${mins}:${secs}`;
-        }
+    function updateTimer() {
+        seconds++;
+        updateTimerDisplay();
+    }
 
-        function recordTask(taskName, projectName, start, stop) {
-            const taskList = document.getElementById('taskList');
-            const startTimeFormatted = formatDateTime(start);
-            const stopTimeFormatted = formatDateTime(stop);
+    function updateTimerDisplay() {
+        const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
+        const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+        const secs = String(seconds % 60).padStart(2, '0');
+        document.getElementById('timer').textContent = `${hrs}:${mins}:${secs}`;
+    }
 
-            taskData.push({
-                task: taskName,
-                project: projectName,
-                start: startTimeFormatted,
-                stop: stopTimeFormatted
-            });
-
-            const taskItem = document.createElement('div');
-            taskItem.classList.add('task-item');
-            taskItem.innerHTML = `
-                <strong>${taskName}</strong> (${projectName})<br>
-                <small>Started: ${startTimeFormatted}</small><br>
-                <small>Stopped: ${stopTimeFormatted}</small>
-            `;
-            taskList.appendChild(taskItem);
-        }
-
-        function formatDateTime(date) {
-            return date.toLocaleDateString() + " " + date.toLocaleTimeString();
-        }
-    </script>
-    <script>
-        function recordTask(taskName, projectName, start, stop) {
+    function recordTask(taskName, projectName, start, stop) {
         const startTimeFormatted = formatDateTime(start);
         const stopTimeFormatted = formatDateTime(stop);
 
@@ -480,30 +490,23 @@ include("../auth/db.php");
                 startTime: startTimeFormatted,
                 endTime: stopTimeFormatted
             })
-        }).then(response => response.text())
+        })
+        .then(response => response.text())
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
 
         // Display task data
-        taskData.push({
-            task: taskName,
-            project: projectName,
-            start: startTimeFormatted,
-            stop: stopTimeFormatted
-        });
-
-        const taskItem = document.createElement('div');
-        taskItem.classList.add('task-item');
-        taskItem.innerHTML = `
-            <strong>${taskName}</strong> (${projectName})<br>
-            <small>Started: ${startTimeFormatted}</small><br>
-            <small>Stopped: ${stopTimeFormatted}</small>
-        `;
-        taskList.appendChild(taskItem);
+        displayTask(taskName, projectName, start, stop);
     }
 
-    </script>
+    function formatDateTime(date) {
+        return date.toLocaleDateString() + " " + date.toLocaleTimeString();
+    }
 
+    // Fetch task data when page loads
+    window.onload = fetchTaskData;
+</script>
 
+   
 </body>
 </html>
