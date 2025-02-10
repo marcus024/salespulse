@@ -148,6 +148,12 @@ include("../auth/db.php");
         .task-container .task-details p strong {
             font-size: 16px;
         }
+        .task-list {
+            margin-top: 20px;
+            max-height: 400px; /* Adjust the height as needed */
+            overflow-y: auto; /* Enables vertical scrolling */
+            padding-right: 10px; /* Adds some padding for the scrollbar */
+        }
     </style>
     
 </head>
