@@ -394,7 +394,7 @@ include("../auth/db.php");
 
     // Fetch task data from the backend and display it
     function fetchTaskData() {
-        fetch('dirback/fetch_task_time.php') // Adjust the path if necessary
+        fetch('dirback/fetch_time.php') // Adjust the path if necessary
             .then(response => response.json())
             .then(data => {
                 data.forEach(task => {
