@@ -190,7 +190,38 @@ include("../auth/db.php");
                 </div>
                 <!-- End of Topbar -->
                 <div class="container-fluid" style=" background-color:#15151a;">
-                    
+                    <div class="container-fluid min-h-screen flex items-center justify-center p-6" style="background-color:#15151a;">
+                        <div class="bg-gray-900 text-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+                            <!-- Task Input -->
+                            <div class="mb-4">
+                                <label class="block text-sm font-semibold mb-1">Task Name</label>
+                                <input type="text" id="taskName" placeholder="Enter task..." 
+                                    class="w-full p-2 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                            </div>
+
+                            <!-- Project Selector -->
+                            <div class="mb-4">
+                                <label class="block text-sm font-semibold mb-1">Project</label>
+                                <select id="projectSelect" class="w-full p-2 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                                    <option value="Project A">Project A</option>
+                                    <option value="Project B">Project B</option>
+                                    <option value="Project C">Project C</option>
+                                </select>
+                            </div>
+
+                            <!-- Timer Display -->
+                            <div class="text-center text-3xl font-bold mb-4">
+                                <span id="timer">00:00:00</span>
+                            </div>
+
+                            <!-- Start/Stop Button -->
+                            <div class="flex justify-center">
+                                <button id="startStopBtn" onclick="toggleTimer()" class="bg-yellow-400 text-black font-semibold py-2 px-6 rounded-md shadow-lg hover:bg-yellow-500 transition">
+                                    Start
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- End of Main Content -->
@@ -239,7 +270,7 @@ include("../auth/db.php");
             </div>
             </div>
         </div>
-        </div>
+    </div>
 
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
@@ -280,6 +311,35 @@ include("../auth/db.php");
             }
         });
     </script>
+    <script>
+    let timerInterval;
+    let seconds = 0;
+    let isRunning = false;
+
+    function toggleTimer() {
+        const button = document.getElementById('startStopBtn');
+        if (isRunning) {
+            clearInterval(timerInterval);
+            button.textContent = "Start";
+            button.classList.remove('bg-red-500');
+            button.classList.add('bg-yellow-400');
+        } else {
+            timerInterval = setInterval(updateTimer, 1000);
+            button.textContent = "Stop";
+            button.classList.remove('bg-yellow-400');
+            button.classList.add('bg-red-500');
+        }
+        isRunning = !isRunning;
+    }
+
+    function updateTimer() {
+        seconds++;
+        const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
+        const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+        const secs = String(seconds % 60).padStart(2, '0');
+        document.getElementById('timer').textContent = `${hrs}:${mins}:${secs}`;
+    }
+</script>
 
 
 </body>
