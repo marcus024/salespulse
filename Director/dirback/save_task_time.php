@@ -29,7 +29,7 @@ function insertTaskTime($taskName, $project, $user, $startTime, $endTime, $durat
     $endTime = date('Y-m-d H:i:s', strtotime($endTime));
 
     // SQL query to insert the task time along with the computed duration
-    $sql = "INSERT INTO workpulse (task, project, user, start_time, end_time, duration) 
+    $sql = "INSERT INTO workpulse (task, project, user, start_time, end_time, time) 
             VALUES ('$taskName', '$project', '$user', '$startTime', '$endTime', '$duration')";
 
     if ($conn->query($sql) === TRUE) {
