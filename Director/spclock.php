@@ -35,83 +35,77 @@ include("../auth/db.php");
     <link href="css/spcomtable.css" rel="stylesheet">
     <link href="css/spcomcard.css" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #15151a;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            flex-direction: column;
-        }
-
         .tracker-container {
-            background: #1e1e26;
             padding: 20px;
-            border-radius: 10px;
-            width: 350px;
-            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+            background-color: #2c2c2c;
+            color: white;
+            border-radius: 8px;
         }
 
         .input-group {
             margin-bottom: 15px;
         }
 
-        label {
-            font-size: 14px;
-            font-weight: bold;
+        .input-group label {
             display: block;
             margin-bottom: 5px;
         }
 
-        input, select {
+        .input-group input, .input-group select {
             width: 100%;
             padding: 8px;
-            border-radius: 5px;
-            border: none;
             font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
 
         .timer {
+            font-size: 2rem;
+            margin: 20px 0;
             text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 15px;
         }
 
         .btn {
-            width: 100%;
-            padding: 10px;
+            padding: 10px 20px;
             font-size: 16px;
-            font-weight: bold;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
         }
 
         .start-btn {
-            background-color: yellow;
-            color: black;
-        }
-
-        .stop-btn {
-            background-color: red;
+            background-color: #4CAF50;
             color: white;
         }
 
-        .task-list {
-            margin-top: 20px;
+        .stop-btn {
+            background-color: #f44336;
+            color: white;
         }
 
-        .task-item {
-            background: #282832;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            font-size: 14px;
-            line-height: 1.5;
+        .task-details-widget {
+            background-color: #2c2c2c;
+            padding: 20px;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .task-details-widget table {
+            width: 100%;
+            color: white;
+        }
+
+        .task-details-widget th, .task-details-widget td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        .task-details-widget tr:nth-child(even) {
+            background-color: #333;
+        }
+
+        .task-details-widget tr:nth-child(odd) {
+            background-color: #444;
         }
     </style>
     
@@ -268,34 +262,59 @@ include("../auth/db.php");
                         </div>
                     </div>
                 </div>
-                <!-- End of Topbar -->
-                <div class="container-fluid" style=" background-color:#15151a;">
-                    <div class="tracker-container">
-                        <!-- Task Input -->
-                        <div class="input-group">
-                            <label>Task Name</label>
-                            <input type="text" id="taskName" placeholder="Enter task...">
+                <div class="container-fluid" style="background-color:#15151a;">
+                    <div class="row">
+                        <!-- Left Side: Time Tracker -->
+                        <div class="col-md-8">
+                            <div class="tracker-container">
+                                <!-- Task Input -->
+                                <div class="input-group">
+                                    <label>Task Name</label>
+                                    <input type="text" id="taskName" placeholder="Enter task...">
+                                </div>
+
+                                <!-- Project Selection -->
+                                <div class="input-group">
+                                    <label>Project</label>
+                                    <select id="projectSelect">
+                                        <option value="Project A">Project A</option>
+                                        <option value="Project B">Project B</option>
+                                        <option value="Project C">Project C</option>
+                                    </select>
+                                </div>
+
+                                <!-- Timer -->
+                                <div class="timer" id="timer">00:00:00</div>
+
+                                <!-- Start/Stop Button -->
+                                <button id="startStopBtn" class="btn start-btn" onclick="toggleTimer()">Start</button>
+                            </div>
+
+                            <!-- Completed Tasks -->
+                            <div class="task-list" id="taskList"></div>
                         </div>
 
-                        <!-- Project Selection -->
-                        <div class="input-group">
-                            <label>Project</label>
-                            <select id="projectSelect">
-                                <option value="Project A">Project A</option>
-                                <option value="Project B">Project B</option>
-                                <option value="Project C">Project C</option>
-                            </select>
+                        <!-- Right Side: Task Details Widget -->
+                        <div class="col-md-4">
+                            <div class="task-details-widget">
+                                <h3>Task Details</h3>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Project Name</th>
+                                            <th>Task Name</th>
+                                            <th>Start Time</th>
+                                            <th>End Time</th>
+                                            <th>Duration</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="taskDetailsTableBody">
+                                        <!-- Task details will be appended here -->
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-
-                        <!-- Timer -->
-                        <div class="timer" id="timer">00:00:00</div>
-
-                        <!-- Start/Stop Button -->
-                        <button id="startStopBtn" class="btn start-btn" onclick="toggleTimer()">Start</button>
                     </div>
-
-                    <!-- Completed Tasks -->
-                    <div class="task-list" id="taskList"></div>
                 </div>
             </div>
             <!-- End of Main Content -->
@@ -385,128 +404,7 @@ include("../auth/db.php");
             }
         });
     </script>
-    <script>
-    let timerInterval;
-    let seconds = 0;
-    let isRunning = false;
-    let startTime;
-    let taskData = [];
-
-    // Fetch task data from the backend and display it
-    function fetchTaskData() {
-        fetch('dirback/fetch_time.php') // Adjust the path if necessary
-            .then(response => response.json())
-            .then(data => {
-                data.forEach(task => {
-                    displayTask(task.task, task.project, task.start, task.end);
-                });
-            })
-            .catch(error => console.error('Error fetching task data:', error));
-    }
-
-    function displayTask(taskName, projectName, start, stop) {
-        const taskList = document.getElementById('taskList');
-        const startTimeFormatted = formatDateTime(new Date(start));
-        const stopTimeFormatted = formatDateTime(new Date(stop));
-        const duration = calculateDuration(new Date(start), new Date(stop));
-
-        const taskItem = document.createElement('div');
-        taskItem.classList.add('task-item');
-        taskItem.innerHTML = `
-            <strong>${taskName}</strong> (${projectName})<br>
-            <small>Started: ${startTimeFormatted}</small><br>
-            <small>Stopped: ${stopTimeFormatted}</small><br>
-            <small>Duration: ${duration}</small>
-        `;
-        taskList.appendChild(taskItem);
-    }
-
-    function calculateDuration(start, stop) {
-        const durationInSeconds = (stop - start) / 1000;  // Difference in seconds
-        const hrs = String(Math.floor(durationInSeconds / 3600)).padStart(2, '0');
-        const mins = String(Math.floor((durationInSeconds % 3600) / 60)).padStart(2, '0');
-        const secs = String(Math.floor(durationInSeconds % 60)).padStart(2, '0');
-        return `${hrs}:${mins}:${secs}`;
-    }
-
-    function toggleTimer() {
-        const button = document.getElementById('startStopBtn');
-        const taskName = document.getElementById('taskName').value.trim();
-        const projectName = document.getElementById('projectSelect').value;
-
-        if (!taskName) {
-            alert("Please enter a task name.");
-            return;
-        }
-
-        if (isRunning) {
-            clearInterval(timerInterval);
-            button.textContent = "Start";
-            button.classList.remove('stop-btn');
-            button.classList.add('start-btn');
-
-            const stopTime = new Date();
-            recordTask(taskName, projectName, startTime, stopTime);
-
-        } else {
-            seconds = 0;
-            updateTimerDisplay();
-
-            timerInterval = setInterval(updateTimer, 1000);
-            button.textContent = "Stop";
-            button.classList.remove('start-btn');
-            button.classList.add('stop-btn');
-
-            startTime = new Date();
-        }
-        isRunning = !isRunning;
-    }
-
-    function updateTimer() {
-        seconds++;
-        updateTimerDisplay();
-    }
-
-    function updateTimerDisplay() {
-        const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
-        const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
-        const secs = String(seconds % 60).padStart(2, '0');
-        document.getElementById('timer').textContent = `${hrs}:${mins}:${secs}`;
-    }
-
-    function recordTask(taskName, projectName, start, stop) {
-        const startTimeFormatted = formatDateTime(start);
-        const stopTimeFormatted = formatDateTime(stop);
-
-        // Send task data to backend
-        fetch('dirback/save_task_time.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: new URLSearchParams({
-                taskName: taskName,
-                project: projectName,
-                startTime: startTimeFormatted,
-                endTime: stopTimeFormatted
-            })
-        })
-        .then(response => response.text())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
-
-        // Display task data
-        displayTask(taskName, projectName, start, stop);
-    }
-
-    function formatDateTime(date) {
-        return date.toLocaleDateString() + " " + date.toLocaleTimeString();
-    }
-
-    // Fetch task data when page loads
-    window.onload = fetchTaskData;
-</script>
-
+    
    
 </body>
 </html>
