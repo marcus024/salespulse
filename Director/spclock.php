@@ -321,6 +321,13 @@ include("../auth/db.php");
                                         <option value="Auxiliary 1">Auxiliary 1</option>
                                         <option value="Auxiliary 2">Auxiliary 2</option>
                                         <option value="Auxiliary 3">Auxiliary 3</option>
+                                        <option value="Auxiliary 4">Auxiliary 4</option>
+                                        <option value="Auxiliary 5">Auxiliary 5</option>
+                                        <option value="Auxiliary 6">Auxiliary 6</option>
+                                        <option value="Auxiliary 7">Auxiliary 7</option>
+                                        <option value="Auxiliary 8">Auxiliary 8</option>
+                                        <option value="Auxiliary 9">Auxiliary 9</option>
+                                        <option value="Auxiliary 10">Auxiliary 10</option>
                                     </select>
                                 </div>
 
