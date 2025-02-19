@@ -345,7 +345,7 @@ include("../auth/db.php");
                         <div class="col-md-6">
                             <div class="task-details-widget">
                                 <p style="font-size:15px; font-weight:bold;">Task Details</p>
-                                <div id="taskDetailsContainer">
+                                <div id="taskDetailsContainer" class="overflow-y-auto max-h-[300px] w-[300px] border p-2 rounded-md shadow-md">
                                     <!-- Task containers will be appended here -->
                                 </div>
                             </div>
@@ -472,9 +472,9 @@ include("../auth/db.php");
             taskContainer.innerHTML = `
                 <div class="task-title">${taskName} (${projectName})</div>
                 <div class="task-details">
-                    <p><strong>Start Time:</strong> ${startTimeFormatted}</p>
-                    <p><strong>End Time:</strong> ${stopTimeFormatted}</p>
-                    <p><strong>Duration:</strong> ${duration}</p>
+                    <p style="font-size:12px;"><strong style="font-size: 12px; font-weight:bold;">Start Time:</strong> ${startTimeFormatted}</p>
+                    <p style="font-size:12px;"><strong style="font-size: 12px; font-weight:bold;">End Time:</strong> ${stopTimeFormatted}</p>
+                    <p style="font-size:12px;"><strong style="font-size: 12px; font-weight:bold;">Duration:</strong> ${duration}</p>
                 </div>
             `;
 
