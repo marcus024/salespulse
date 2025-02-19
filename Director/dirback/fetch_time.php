@@ -23,9 +23,10 @@ function fetchTaskData() {
                 'end' => date("Y-m-d\TH:i:s", strtotime($row['end_time'])) // Ensure ISO format
             ];
         }
+        return json_encode($tasks); // Return fetched data
+    } else {
+        return json_encode(["message" => "No tasks found."]); // Message when no data is available
     }
-
-    return json_encode($tasks);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
