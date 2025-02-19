@@ -15,12 +15,12 @@ $(document).ready(function() {
         rows.forEach(function(row) {
           let htmlRow = `
             <tr>
-              <td>${escapeHtml(row.work_id)}</td>
-              <td>${escapeHtml(row.auxiliary)}</td>
-              <td>${escapeHtml(row.roles)}</td>
-              <td>${escapeHtml(row.start_time)}</td>
-              <td>${escapeHtml(row.end_time)}</td>
-              <td>${escapeHtml(row.duration)}</td>
+              <td style="font-size:12px;">${escapeHtml(row.work_id)}</td>
+              <td style="font-size:12px;">${escapeHtml(row.auxiliary)}</td>
+              <td style="font-size:12px;">${escapeHtml(row.roles)}</td>
+              <td style="font-size:12px;">${escapeHtml(row.start_time)}</td>
+              <td style="font-size:12px;">${escapeHtml(row.end_time)}</td>
+              <td style="font-size:12px;">${escapeHtml(row.duration)}</td>
             </tr>
           `;
           $('#workPulse tbody').append(htmlRow);
