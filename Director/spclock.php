@@ -43,7 +43,7 @@ include("../auth/db.php");
             /* justify-content: center;
             align-items: center; */
             height: 100vh;
-            margin: 0;
+            margin-left: 20px;
             flex-direction: column;
         }
 
