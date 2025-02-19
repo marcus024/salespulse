@@ -1,6 +1,7 @@
 <?php
-include("../../auth/db.php");
 session_start();
+include("../../auth/db.php");
+
 
 
 // Check if user is logged in
