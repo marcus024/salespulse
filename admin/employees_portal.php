@@ -284,7 +284,7 @@ include("../auth/db.php");
                                             <div class="col-md-12">
                                                 <div class="card shadow mb-4">
                                                     <div class="card-header py-2 d-flex justify-content-between align-items-center">
-                                                        <h6 class="m-0 font-weight-bold" style="color:#36b9cc;">App User</h6>
+                                                        <h6 class="m-0 font-weight-bold" style="color:#36b9cc;">Time and Motion Tracker</h6>
                                                         <!-- Row to hold the search bar and dropdowns -->
                                                         <div class="d-flex align-items-center" style="gap: 10px;">
                                                             <!-- Search Bar -->
@@ -309,15 +309,14 @@ include("../auth/db.php");
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="table-responsive" style="max-height: 250px; overflow-y: auto; ">
-                                                            <table id="appUserTable" class="table table-bordered">
+                                                            <table id="workPulse" class="table table-bordered">
                                                                 <thead>
                                                                 <tr>
-                                                                    <th>ID</th>
-                                                                    <th>First&nbsp;Name</th>
-                                                                    <th>Last&nbsp;Name</th>
-                                                                    <th>Company</th>
-                                                                    <th>User&nbsp;ID</th>
-                                                                    <th>Logged&nbsp;In</th>
+                                                                    <th>Work ID</th>
+                                                                    <th>Auxiliary</th>
+                                                                    <th>Start Time</th>
+                                                                    <th>End Time</th>
+                                                                    <th>Duration</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody></tbody>
@@ -387,7 +386,7 @@ include("../auth/db.php");
     <script src="../Director/toogleNav.js"></script>
     <script src="js/peak.js"></script>
     <script src="js/peak_user.js"></script>
-    <script src="js/fetch_app_users.js"></script>
+    <script src="js/fetch_work_time.js"></script>
     <script src="js/export_table.js"></script>
     <script src="js/search_item.js"></script>
     
