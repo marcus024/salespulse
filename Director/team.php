@@ -176,7 +176,7 @@ include("../auth/db.php");
                     <span style="font-size:13px; font-family:'Poppins'; ">Commissions</span>
                 </a>
             </li>
-            <li class="nav-item active" >
+            <li class="nav-item " >
                 <a class="nav-link" href="spclock.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-money-bill-wave"></i>
                     <span style="font-size:13px; font-family:'Poppins'; ">WorkPulse</span>
