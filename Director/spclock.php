@@ -453,27 +453,30 @@ include("../auth/db.php");
                 .catch(error => console.error('Error fetching task data:', error));
         }
 
-        function displayTask(taskName, projectName, start, stop) {
+        function displayTask(projectName, start, stop) {
             const taskDetailsContainer = document.getElementById('taskDetailsContainer');
-            const startTimeFormatted = formatDateTime(new Date(start));
-            const stopTimeFormatted = formatDateTime(new Date(stop));
-            const duration = calculateDuration(new Date(start), new Date(stop));
+            const startTimeFormatted = formatDateTime(start);
+            const stopTimeFormatted = formatDateTime(stop);
+            const duration = calculateDuration(start, stop);
 
             // Create a new task container
             const taskContainer = document.createElement('div');
             taskContainer.classList.add('task-container');
+            taskContainer.style.borderBottom = "1px solid #ddd";
+            taskContainer.style.padding = "5px";
 
             taskContainer.innerHTML = `
                 <div class="task-title" style="font-size:12px; font-weight:bold">${projectName}</div>
                 <div class="task-details">
-                    <p style="font-size:10px;"><strong style="font-size: 10px; font-weight:bold;">Start Time:</strong> ${startTimeFormatted}</p>
-                    <p style="font-size:10px;"><strong style="font-size: 10px; font-weight:bold;">End Time:</strong> ${stopTimeFormatted}</p>
-                    <p style="font-size:10px;"><strong style="font-size: 10px; font-weight:bold;">Duration:</strong> ${duration}</p>
+                    <p style="font-size:10px;"><strong>Start:</strong> ${startTimeFormatted}</p>
+                    <p style="font-size:10px;"><strong>End:</strong> ${stopTimeFormatted}</p>
+                    <p style="font-size:10px;"><strong>Duration:</strong> ${duration}</p>
                 </div>
             `;
 
-            taskDetailsContainer.appendChild(taskContainer);
+            taskDetailsContainer.prepend(taskContainer); // New tasks appear at the top
         }
+
 
         function calculateDuration(start, stop) {
             const durationInSeconds = (stop - start) / 1000;  // Difference in seconds
