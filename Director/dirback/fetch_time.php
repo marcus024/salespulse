@@ -7,27 +7,43 @@ header("Content-Type: application/json"); // Ensure JSON response
 function fetchTaskData() {
     global $conn;
 
-    $sql = "SELECT project, start_time, end_time FROM workpulse";
+    $sql = "SELECT task, project, start_time, end_time FROM workpulse";
     $result = $conn->query($sql);
 
     if (!$result) {
-        die(json_encode(["error" => "SQL Error: " . $conn->error])); // Debugging SQL errors
-    }
-
-    if ($result->num_rows === 0) {
-        die(json_encode(["message" => "No tasks found, but query executed successfully."]));
+        error_log("SQL Error: " . $conn->error); // Log error to server logs
+        die(json_encode(["error" => "SQL Error: " . $conn->error]));
     }
 
     $tasks = [];
-    while ($row = $result->fetch_assoc()) {
-        $tasks[] = [
-            'project' => $row['project'],
-            'start' => date("Y-m-d\TH:i:s", strtotime($row['start_time'])), // Ensure ISO format
-            'end' => date("Y-m-d\TH:i:s", strtotime($row['end_time'])) // Ensure ISO format
-        ];
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            // Convert times to timestamps
+            $startTime = strtotime($row['start_time']);
+            $endTime = strtotime($row['end_time']);
+
+            // Calculate duration in seconds
+            $durationInSeconds = $endTime - $startTime;
+
+            // Convert to HH:MM:SS format
+            $hours = floor($durationInSeconds / 3600);
+            $minutes = floor(($durationInSeconds % 3600) / 60);
+            $seconds = $durationInSeconds % 60;
+            $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
+
+            $tasks[] = [
+                'task' => $row['task'],
+                'project' => $row['project'],
+                'start' => date("Y-m-d\TH:i:s", $startTime),
+                'end' => date("Y-m-d\TH:i:s", $endTime),
+                'duration' => $duration // Include computed duration
+            ];
+        }
+    } else {
+        return json_encode(["message" => "No tasks found."]);
     }
 
-    return json_encode($tasks); // Return actual data
+    return json_encode($tasks);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
