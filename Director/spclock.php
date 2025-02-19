@@ -314,12 +314,6 @@ include("../auth/db.php");
                         <!-- Left Side: Time Tracker -->
                         <div class="col-md-6">
                             <div class="tracker-container">
-                                <!-- Task Input -->
-                                <div class="input-group">
-                                    <label>Task Name</label>
-                                    <input type="text" id="taskName" placeholder="Enter task...">
-                                </div>
-
                                 <!-- Project Selection -->
                                 <div class="input-group">
                                     <label>Auxiliaries</label>
@@ -336,8 +330,6 @@ include("../auth/db.php");
                                 <!-- Start/Stop Button -->
                                 <button id="startStopBtn" class="btn start-btn" onclick="toggleTimer()">Start</button>
                             </div>
-
-                        
                         </div>
 
                         <!-- Right Side: Task Details Widget -->
