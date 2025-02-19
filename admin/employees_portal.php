@@ -312,12 +312,12 @@ include("../auth/db.php");
                                                             <table id="workPulse" class="table table-bordered">
                                                                 <thead>
                                                                 <tr>
-                                                                    <th>Work ID</th>
-                                                                    <th>Auxiliary</th>
-                                                                    <th>Position</th>
-                                                                    <th>Start Time</th>
-                                                                    <th>End Time</th>
-                                                                    <th>Duration</th>
+                                                                    <th style="font-size:12px;">Work ID</th>
+                                                                    <th style="font-size:12px;">Auxiliary</th>
+                                                                    <th style="font-size:12px;">Position</th>
+                                                                    <th style="font-size:12px;">Start Time</th>
+                                                                    <th style="font-size:12px;">End Time</th>
+                                                                    <th style="font-size:12px;">Duration</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody></tbody>
