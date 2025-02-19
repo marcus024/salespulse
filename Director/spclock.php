@@ -435,131 +435,125 @@ include("../auth/db.php");
         });
     </script>
     <script>
-        let timerInterval;
-        let seconds = 0;
-        let isRunning = false;
-        let startTime;
-        let taskData = [];
+       let timerInterval;
+let seconds = 0;
+let isRunning = false;
+let startTime;
 
-        // Fetch task data from the backend and display it
-        function fetchTaskData() {
-            fetch('dirback/fetch_task_time.php') // Adjust the path if necessary
-                .then(response => response.json())
-                .then(data => {
-                    data.forEach(task => {
-                        displayTask(task.task, task.project, task.start, task.end);
-                    });
-                })
-                .catch(error => console.error('Error fetching task data:', error));
-        }
+// Fetch task data from the backend and display it
+function fetchTaskData() {
+    fetch('dirback/fetch_task_time.php') // Adjust the path if necessary
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(task => {
+                displayTask(task.project, new Date(task.start), new Date(task.end));
+            });
+        })
+        .catch(error => console.error('Error fetching task data:', error));
+}
 
-        function displayTask(projectName, start, stop) {
-            const taskDetailsContainer = document.getElementById('taskDetailsContainer');
-            const startTimeFormatted = formatDateTime(start);
-            const stopTimeFormatted = formatDateTime(stop);
-            const duration = calculateDuration(start, stop);
+function displayTask(projectName, start, stop) {
+    const taskDetailsContainer = document.getElementById('taskDetailsContainer');
+    const startTimeFormatted = formatDateTime(start);
+    const stopTimeFormatted = formatDateTime(stop);
+    const duration = calculateDuration(start, stop);
 
-            // Create a new task container
-            const taskContainer = document.createElement('div');
-            taskContainer.classList.add('task-container');
-            taskContainer.style.borderBottom = "1px solid #ddd";
-            taskContainer.style.padding = "5px";
+    // Create a new task container
+    const taskContainer = document.createElement('div');
+    taskContainer.classList.add('task-container');
+    taskContainer.style.borderBottom = "1px solid #ddd";
+    taskContainer.style.padding = "5px";
 
-            taskContainer.innerHTML = `
-                <div class="task-title" style="font-size:12px; font-weight:bold">${projectName}</div>
-                <div class="task-details">
-                    <p style="font-size:10px;"><strong>Start:</strong> ${startTimeFormatted}</p>
-                    <p style="font-size:10px;"><strong>End:</strong> ${stopTimeFormatted}</p>
-                    <p style="font-size:10px;"><strong>Duration:</strong> ${duration}</p>
-                </div>
-            `;
+    taskContainer.innerHTML = `
+        <div class="task-title" style="font-size:12px; font-weight:bold">${projectName}</div>
+        <div class="task-details">
+            <p style="font-size:10px;"><strong>Start:</strong> ${startTimeFormatted}</p>
+            <p style="font-size:10px;"><strong>End:</strong> ${stopTimeFormatted}</p>
+            <p style="font-size:10px;"><strong>Duration:</strong> ${duration}</p>
+        </div>
+    `;
 
-            taskDetailsContainer.prepend(taskContainer); // New tasks appear at the top
-        }
+    taskDetailsContainer.prepend(taskContainer); // New tasks appear at the top
+}
 
+function calculateDuration(start, stop) {
+    const durationInSeconds = Math.floor((stop - start) / 1000); // Difference in seconds
+    const hrs = String(Math.floor(durationInSeconds / 3600)).padStart(2, '0');
+    const mins = String(Math.floor((durationInSeconds % 3600) / 60)).padStart(2, '0');
+    const secs = String(durationInSeconds % 60).padStart(2, '0');
+    return `${hrs}:${mins}:${secs}`;
+}
 
-        function calculateDuration(start, stop) {
-            const durationInSeconds = (stop - start) / 1000;  // Difference in seconds
-            const hrs = String(Math.floor(durationInSeconds / 3600)).padStart(2, '0');
-            const mins = String(Math.floor((durationInSeconds % 3600) / 60)).padStart(2, '0');
-            const secs = String(durationInSeconds % 60).padStart(2, '0');
-            return `${hrs}:${mins}:${secs}`;
-        }
+function toggleTimer() {
+    const button = document.getElementById('startStopBtn');
+    const projectName = document.getElementById('projectSelect').value;
 
-        function toggleTimer() {
-            const button = document.getElementById('startStopBtn');
-            const projectName = document.getElementById('projectSelect').value;
+    if (isRunning) {
+        clearInterval(timerInterval);
+        button.textContent = "Start";
+        button.classList.remove('stop-btn');
+        button.classList.add('start-btn');
 
-            if (!taskName) {
-                alert("Please enter a task name.");
-                return;
-            }
+        const stopTime = new Date();
+        recordTask(projectName, startTime, stopTime);
 
-            if (isRunning) {
-                clearInterval(timerInterval);
-                button.textContent = "Start";
-                button.classList.remove('stop-btn');
-                button.classList.add('start-btn');
+    } else {
+        seconds = 0;
+        updateTimerDisplay();
 
-                const stopTime = new Date();
-                recordTask( projectName, startTime, stopTime);
+        timerInterval = setInterval(updateTimer, 1000);
+        button.textContent = "Stop";
+        button.classList.remove('start-btn');
+        button.classList.add('stop-btn');
 
-            } else {
-                seconds = 0;
-                updateTimerDisplay();
+        startTime = new Date();
+    }
+    isRunning = !isRunning;
+}
 
-                timerInterval = setInterval(updateTimer, 1000);
-                button.textContent = "Stop";
-                button.classList.remove('start-btn');
-                button.classList.add('stop-btn');
+function updateTimer() {
+    seconds++;
+    updateTimerDisplay();
+}
 
-                startTime = new Date();
-            }
-            isRunning = !isRunning;
-        }
+function updateTimerDisplay() {
+    const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
+    const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+    const secs = String(seconds % 60).padStart(2, '0');
+    document.getElementById('timer').textContent = `${hrs}:${mins}:${secs}`;
+}
 
-        function updateTimer() {
-            seconds++;
-            updateTimerDisplay();
-        }
+function recordTask(projectName, start, stop) {
+    const startTimeFormatted = formatDateTime(start);
+    const stopTimeFormatted = formatDateTime(stop);
 
-        function updateTimerDisplay() {
-            const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
-            const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
-            const secs = String(seconds % 60).padStart(2, '0');
-            document.getElementById('timer').textContent = `${hrs}:${mins}:${secs}`;
-        }
+    // Send task data to backend
+    fetch('dirback/save_task_time.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams({
+            project: projectName,
+            startTime: startTimeFormatted,
+            endTime: stopTimeFormatted
+        })
+    })
+    .then(response => response.text())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
 
-        function recordTask(projectName, start, stop) {
-            const startTimeFormatted = formatDateTime(start);
-            const stopTimeFormatted = formatDateTime(stop);
+    // Display task data in containers
+    displayTask(projectName, start, stop);
+}
 
-            // Send task data to backend
-            fetch('dirback/save_task_time.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams({
-                    project: projectName,
-                    startTime: startTimeFormatted,
-                    endTime: stopTimeFormatted
-                })
-            })
-            .then(response => response.text())
-            .then(data => console.log(data))
-            .catch(error => console.error('Error:', error));
+function formatDateTime(date) {
+    return date.toLocaleDateString() + " " + date.toLocaleTimeString();
+}
 
-            // Display task data in containers
-            displayTask( projectName, start, stop);
-        }
+// Fetch task data when page loads
+window.onload = fetchTaskData;
 
-        function formatDateTime(date) {
-            return date.toLocaleDateString() + " " + date.toLocaleTimeString();
-        }
-
-        // Fetch task data when page loads
-        window.onload = fetchTaskData;
     </script>
 
    
