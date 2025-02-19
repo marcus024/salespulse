@@ -20,7 +20,7 @@ $(document).ready(function() {
               <td>${escapeHtml(row.roles)}</td>
               <td>${escapeHtml(row.start_time)}</td>
               <td>${escapeHtml(row.end_time)}</td>
-              <td>${escapeHtml(row.time)}</td>
+              <td>${escapeHtml(row.duration)}</td>
             </tr>
           `;
           $('#workPulse tbody').append(htmlRow);
