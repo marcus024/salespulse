@@ -8,14 +8,17 @@ include('../../auth/db.php');
 try {
     // SQL query to fetch time tracker values
     $sql = "SELECT 
-                w.work_id,
-                w.project AS auxiliary,
-                w.start_time,
-                w.end_time,
-                w.time AS duration,
-                s.position AS roles
-            FROM workpulse AS w
-            LEFT JOIN salesauth AS s ON w.user = s.user_id_current";
+            w.work_id,
+            w.project AS auxiliary,
+            w.start_time,
+            w.end_time,
+            w.time AS duration,
+            COALESCE(s.position, 'Unknown') AS roles
+        FROM workpulse AS w
+        LEFT JOIN salesauth AS s 
+        ON CONVERT(w.user USING utf8mb4) = CONVERT(s.user_id_current USING utf8mb4)";
+
+
 
     $stmt = $conn->prepare($sql);
     $stmt->execute();
