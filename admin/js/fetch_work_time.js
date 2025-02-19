@@ -16,7 +16,7 @@ $(document).ready(function() {
           let htmlRow = `
             <tr>
               <td>${escapeHtml(row.work_id)}</td>
-              <td>${escapeHtml(row.project)}</td>
+              <td>${escapeHtml(row.auxiliary)}</td>
               <td>${escapeHtml(row.roles)}</td>
               <td>${escapeHtml(row.start_time)}</td>
               <td>${escapeHtml(row.end_time)}</td>
