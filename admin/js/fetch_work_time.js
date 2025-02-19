@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  // Fetch time-tracking data when the page loads
+  // Fetch all workpulse data when the page loads
   $.ajax({
     url: 'x-nd/fetch_work_time.php', // Ensure the correct path
     type: 'GET',
@@ -8,18 +8,18 @@ $(document).ready(function() {
       if (response.status === 'success') {
         const rows = response.data;
         
-        // Clear any existing rows
+        // Clear existing table data
         $('#workPulse tbody').empty();
 
-        // Populate the table with fetched data
+        // Populate the table
         rows.forEach(function(row) {
           let htmlRow = `
             <tr>
-              <td>${escapeHtml(row.work_id)}</td>
-              <td>${escapeHtml(row.auxiliary)}</td>
+              <td>${escapeHtml(row.id)}</td>
+              <td>${escapeHtml(row.task)}</td>
               <td>${escapeHtml(row.start_time)}</td>
               <td>${escapeHtml(row.end_time)}</td>
-              <td>${escapeHtml(row.duration)}</td>
+              <td>${escapeHtml(row.time)}</td>
             </tr>
           `;
           $('#workPulse tbody').append(htmlRow);
