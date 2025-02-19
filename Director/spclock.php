@@ -322,11 +322,11 @@ include("../auth/db.php");
 
                                 <!-- Project Selection -->
                                 <div class="input-group">
-                                    <label>Project</label>
+                                    <label>Auxiliaries</label>
                                     <select id="projectSelect">
-                                        <option value="Project A">Project A</option>
-                                        <option value="Project B">Project B</option>
-                                        <option value="Project C">Project C</option>
+                                        <option value="Project A">Auxiliary 1</option>
+                                        <option value="Project B">Auxiliary 2</option>
+                                        <option value="Project C">Auxiliary 3</option>
                                     </select>
                                 </div>
 
