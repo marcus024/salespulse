@@ -7,7 +7,7 @@ header("Content-Type: application/json"); // Ensure JSON response
 function fetchTaskData() {
     global $conn;
 
-    $sql = "SELECT project, start_time, end_time FROM workpulse";
+    $sql = "SELECT * FROM workpulse";
     $result = $conn->query($sql);
 
     if (!$result) {
