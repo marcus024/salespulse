@@ -472,7 +472,7 @@ include("../auth/db.php");
             taskContainer.classList.add('task-container');
 
             taskContainer.innerHTML = `
-                <div class="task-title">${projectName}</div>
+                <div class="task-title" style="font-size:12px; font-weight:bold">${projectName}</div>
                 <div class="task-details">
                     <p style="font-size:12px;"><strong style="font-size: 12px; font-weight:bold;">Start Time:</strong> ${startTimeFormatted}</p>
                     <p style="font-size:12px;"><strong style="font-size: 12px; font-weight:bold;">End Time:</strong> ${stopTimeFormatted}</p>
