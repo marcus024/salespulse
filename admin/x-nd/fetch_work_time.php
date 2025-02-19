@@ -11,7 +11,7 @@ $currentUserDept = $_SESSION['role'] ?? '';
 try {
     // SQL query to fetch time tracker values
     $sql = "SELECT 
-                w.id AS work_id,
+                w.work_id AS work_id,
                 w.task AS auxiliary,
                 w.start_time,
                 w.end_time,
