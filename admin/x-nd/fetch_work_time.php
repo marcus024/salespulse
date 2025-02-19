@@ -17,11 +17,9 @@ try {
                 w.end_time,
                 w.time AS duration
             FROM workpulse AS w
-            JOIN salesauth AS s ON w.user = s.user_id_current
-            WHERE s.department = :department";
+            JOIN salesauth AS s ON w.user = s.user_id_current";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':department', $currentUserDept, PDO::PARAM_STR);
     $stmt->execute();
 
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
