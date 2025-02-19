@@ -440,22 +440,28 @@ include("../auth/db.php");
 
         // Fetch task data from the backend and display it
         function fetchTaskData() {
-            fetch('dirback/fetch_time.php')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log("Fetched Data:", data); // Debugging
+    fetch('dirback/fetch_time.php')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Fetched Data:", data); // Debugging
 
-                    data.forEach(task => {
-                        displayTask(task.project, new Date(task.start), new Date(task.end));
-                    });
-                })
-                .catch(error => console.error('Error fetching task data:', error));
-        }
+            if (data.error) {
+                console.error("Backend Error:", data.error);
+                return;
+            }
+
+            data.forEach(task => {
+                displayTask(task.project, new Date(task.start_time), new Date(task.end_time));
+            });
+        })
+        .catch(error => console.error('Error fetching task data:', error));
+}
+
 
 
         function displayTask(projectName, start, stop) {
