@@ -343,7 +343,7 @@ include("../auth/db.php");
 
                         <!-- Right Side: Task Details Widget -->
                         <div class="col-md-6">
-                            <div class="task-details-widget">
+                            <div class="task-details-widget" style="width:300px">
                                 <p style="font-size:15px; font-weight:bold;">Task Details</p>
                                 <div id="taskDetailsContainer" class="overflow-y-auto max-h-[300px] w-[300px] border p-2 rounded-md shadow-md">
                                     <!-- Task containers will be appended here -->
