@@ -81,7 +81,7 @@ include("../auth/db.php");
             <li class="nav-item" >
                 <a class="nav-link" href="employees_portal.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-users"></i>
-                    <span style="font-size:13px; font-family:'Poppins'; ">Employees</span>
+                    <span style="font-size:13px; font-family:'Poppins'; ">WorkPulse</span>
                 </a>
             </li>
         </ul>
