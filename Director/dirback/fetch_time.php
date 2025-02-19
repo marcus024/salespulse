@@ -2,17 +2,17 @@
 include("../../auth/db.php");
 session_start();
 
-header("Content-Type: application/json"); // Ensure JSON response
+header("Content-Type: application/json");
 
-// Check if the user is logged in
+// Check if user is logged in
 if (!isset($_SESSION['user_id_c'])) {
     die(json_encode(["error" => "User not logged in."]));
 }
 
 $currentUser = $_SESSION['user_id_c'];
 
-// Prepare the SQL query to fetch tasks for the logged-in user
-$sql = "SELECT task, project, start_time, end_time FROM workpulse WHERE user = ?";
+// Query to fetch user-specific task records
+$sql = "SELECT work_id, task, project, start_time, end_time FROM workpulse WHERE user = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $currentUser);
 $stmt->execute();
@@ -24,30 +24,27 @@ if (!$result) {
 }
 
 $tasks = [];
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $startTime = strtotime($row['start_time']);
-        $endTime = strtotime($row['end_time']);
+while ($row = $result->fetch_assoc()) {
+    $startTime = strtotime($row['start_time']);
+    $endTime = strtotime($row['end_time']);
 
-        // Calculate duration in HH:MM:SS format
-        $durationInSeconds = $endTime - $startTime;
-        $hours = floor($durationInSeconds / 3600);
-        $minutes = floor(($durationInSeconds % 3600) / 60);
-        $seconds = $durationInSeconds % 60;
-        $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
+    // Compute duration in HH:MM:SS format
+    $durationInSeconds = $endTime - $startTime;
+    $hours = floor($durationInSeconds / 3600);
+    $minutes = floor(($durationInSeconds % 3600) / 60);
+    $seconds = $durationInSeconds % 60;
+    $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
 
-        $tasks[] = [
-            'task' => $row['task'],
-            'project' => $row['project'],
-            'start' => date("Y-m-d\TH:i:s", $startTime),
-            'end' => date("Y-m-d\TH:i:s", $endTime),
-            'duration' => $duration
-        ];
-    }
-} else {
-    echo json_encode(["message" => "No tasks found for the current user."]);
-    exit;
+    $tasks[] = [
+        'work_id' => $row['work_id'],
+        'task' => $row['task'],
+        'project' => $row['project'],
+        'start_time' => $row['start_time'],
+        'end_time' => $row['end_time'],
+        'duration' => $duration
+    ];
 }
 
+// Return JSON response
 echo json_encode($tasks);
 ?>
