@@ -331,7 +331,6 @@ include("../auth/db.php");
                                 <button id="startStopBtn" class="btn start-btn" onclick="toggleTimer()">Start</button>
                             </div>
                         </div>
-
                         <!-- Right Side: Task Details Widget -->
                         <div class="col-md-8">
                             <div class="task-details-widget" style="width:400px;">
