@@ -324,9 +324,9 @@ include("../auth/db.php");
                                 <div class="input-group">
                                     <label>Auxiliaries</label>
                                     <select id="projectSelect">
-                                        <option value="Project A">Auxiliary 1</option>
-                                        <option value="Project B">Auxiliary 2</option>
-                                        <option value="Project C">Auxiliary 3</option>
+                                        <option value="Auxiliary 1">Auxiliary 1</option>
+                                        <option value="Auxiliary 2">Auxiliary 2</option>
+                                        <option value="Auxiliary 3">Auxiliary 3</option>
                                     </select>
                                 </div>
 
@@ -344,9 +344,12 @@ include("../auth/db.php");
                         <div class="col-md-6 " >
                             <div class="task-details-widget " style="width:300px">
                                 <p style="font-size:15px; font-weight:bold;">Task Details</p>
-                                <div id="taskDetailsContainer" class="overflow-y-auto max-h-[100px]  p-2 rounded-md shadow-md ">
+                                <div class="overflow-y-auto">
+                                    <div id="taskDetailsContainer" class=" h-[50px]  p-2 rounded-md shadow-md ">
                                     <!-- Task containers will be appended here -->
+                                    </div>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -469,7 +472,7 @@ include("../auth/db.php");
             taskContainer.classList.add('task-container');
 
             taskContainer.innerHTML = `
-                <div class="task-title">${taskName} (${projectName})</div>
+                <div class="task-title">${projectName}</div>
                 <div class="task-details">
                     <p style="font-size:12px;"><strong style="font-size: 12px; font-weight:bold;">Start Time:</strong> ${startTimeFormatted}</p>
                     <p style="font-size:12px;"><strong style="font-size: 12px; font-weight:bold;">End Time:</strong> ${stopTimeFormatted}</p>
