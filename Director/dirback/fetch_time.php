@@ -1,50 +1,32 @@
 <?php
-session_start();
 include("../../auth/db.php");
+session_start();
 
-
-
-// Check if user is logged in
+// Debugging: Check if session is set
 if (!isset($_SESSION['user_id_c'])) {
     die(json_encode(["error" => "User not logged in."]));
 }
 
 $currentUser = $_SESSION['user_id_c'];
 
-// Query to fetch user-specific task records
-$sql = "SELECT work_id, task, project, start_time, end_time FROM workpulse WHERE user = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $currentUser);
-$stmt->execute();
-$result = $stmt->get_result();
+try {
+    // Prepare SQL statement
+    $stmt = $conn->prepare("SELECT work_id, task, time, project, start_time, end_time FROM workpulse WHERE user = :user");
+    $stmt->bindParam(":user", $currentUser, PDO::PARAM_STR);
+    $stmt->execute();
+    
+    // Fetch all records
+    $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-if (!$result) {
-    error_log("SQL Error: " . $conn->error);
-    die(json_encode(["error" => "SQL Error: " . $conn->error]));
+    // Add duration computation
+    foreach ($tasks as &$task) {
+        $startTime = strtotime($task['start_time']);
+        $endTime = strtotime($task['end_time']);
+        $task['duration'] = gmdate("H:i:s", $endTime - $startTime);
+    }
+
+    echo json_encode($tasks);
+} catch (PDOException $e) {
+    echo json_encode(["error" => "Query failed: " . $e->getMessage()]);
 }
-
-$tasks = [];
-while ($row = $result->fetch_assoc()) {
-    $startTime = strtotime($row['start_time']);
-    $endTime = strtotime($row['end_time']);
-
-    // Compute duration in HH:MM:SS format
-    $durationInSeconds = $endTime - $startTime;
-    $hours = floor($durationInSeconds / 3600);
-    $minutes = floor(($durationInSeconds % 3600) / 60);
-    $seconds = $durationInSeconds % 60;
-    $duration = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
-
-    $tasks[] = [
-        'work_id' => $row['work_id'],
-        'task' => $row['task'],
-        'project' => $row['project'],
-        'start_time' => $row['start_time'],
-        'end_time' => $row['end_time'],
-        'duration' => $duration
-    ];
-}
-
-// Return JSON response
-echo json_encode($tasks);
 ?>
