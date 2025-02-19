@@ -457,7 +457,6 @@ function displayTask(projectName, start, stop) {
     const stopTimeFormatted = formatDateTime(stop);
     const duration = calculateDuration(start, stop);
 
-    // Create a new task container
     const taskContainer = document.createElement('div');
     taskContainer.classList.add('task-container');
     taskContainer.style.borderBottom = "1px solid #ddd";
@@ -472,8 +471,13 @@ function displayTask(projectName, start, stop) {
         </div>
     `;
 
-    taskDetailsContainer.prepend(taskContainer); // New tasks appear at the top
+    taskDetailsContainer.prepend(taskContainer); // Add to the top
+
+    // Auto-scroll to the latest task
+    const scrollContainer = taskDetailsContainer.parentElement;
+    scrollContainer.scrollTop = 0;
 }
+
 
 function calculateDuration(start, stop) {
     const durationInSeconds = Math.floor((stop - start) / 1000); // Difference in seconds
