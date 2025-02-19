@@ -312,7 +312,7 @@ include("../auth/db.php");
                 <div class="container-fluid" style="background-color:#15151a;">
                     <div class="row">
                         <!-- Left Side: Time Tracker -->
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="tracker-container">
                                 <!-- Project Selection -->
                                 <div class="input-group">
@@ -333,7 +333,7 @@ include("../auth/db.php");
                         </div>
 
                         <!-- Right Side: Task Details Widget -->
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <div class="task-details-widget" style="width:400px;">
                                 <p style="font-size:15px; font-weight:bold;">Task Details</p>
                                 <div style="max-height: 290px; overflow-y: auto;">
