@@ -10,6 +10,10 @@ function fetchTaskData() {
     $sql = "SELECT project, start_time, end_time FROM workpulse";
     $result = $conn->query($sql);
 
+    if (!$result) {
+        die(json_encode(["error" => "SQL Error: " . $conn->error])); // Debug SQL errors
+    }
+
     $tasks = [];
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
