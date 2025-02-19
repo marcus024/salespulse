@@ -97,11 +97,9 @@ function printTable() {
 
 // Export API URL
 function exportToAPI() {
-    // Get the company value from the hidden input field
-    const company = encodeURIComponent(document.getElementById("company").value);
     
     // Construct the API URL with the company parameter
-    const apiUrl = window.location.origin + "/admin/x-nd/fetch_work_time.php?company=" + company;
+    const apiUrl = window.location.origin + "/admin/x-nd/fetch_work_time.php";
 
     // Copy API URL to clipboard
     navigator.clipboard.writeText(apiUrl).then(() => {
