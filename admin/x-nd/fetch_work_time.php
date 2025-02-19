@@ -13,7 +13,7 @@ try {
                 w.start_time,
                 w.end_time,
                 w.time AS duration,
-                s.position AS role
+                s.position AS roles
             FROM workpulse AS w
             LEFT JOIN salesauth AS s ON w.user = s.user_id_current";
 
