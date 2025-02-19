@@ -40,8 +40,8 @@ include("../auth/db.php");
             background-color: #15151a;
             color: white;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            /* justify-content: center;
+            align-items: center; */
             height: 100vh;
             margin: 0;
             flex-direction: column;
