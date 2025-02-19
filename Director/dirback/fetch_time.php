@@ -2,29 +2,29 @@
 include("../../auth/db.php");
 session_start();
 
+header("Content-Type: application/json"); // Ensure JSON response
+
 function fetchTaskData() {
     global $conn;
 
-    // SQL query to fetch task data
-    $sql = "SELECT task, project, start_time, end_time FROM workpulse";
+    $sql = "SELECT project, start_time, end_time FROM workpulse";
     $result = $conn->query($sql);
 
     $tasks = [];
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $tasks[] = [
-                'task' => $row['task'],
                 'project' => $row['project'],
-                'start' => $row['start_time'],
-                'end' => $row['end_time']
+                'start' => date("Y-m-d\TH:i:s", strtotime($row['start_time'])), // Ensure ISO format
+                'end' => date("Y-m-d\TH:i:s", strtotime($row['end_time'])) // Ensure ISO format
             ];
         }
     }
 
-    return json_encode($tasks); // Return as JSON
+    return json_encode($tasks);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    echo fetchTaskData();  // Fetch and return task data
+    echo fetchTaskData();
 }
 ?>
