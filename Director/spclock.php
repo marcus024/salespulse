@@ -342,7 +342,7 @@ include("../auth/db.php");
                         </div>
 
                         <!-- Right Side: Task Details Widget -->
-                        <div class="col-md-8 bg-white" >
+                        <div class="col-md-7 bg-white" >
                             <div class="task-details-widget" style="width:600px">
                                 <p style="font-size:15px; font-weight:bold;">Task Details</p>
                                 <div id="taskDetailsContainer" class="overflow-y-auto max-h-[400px]  p-2 rounded-md shadow-md">
