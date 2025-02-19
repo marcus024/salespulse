@@ -314,6 +314,7 @@ include("../auth/db.php");
                                                                 <tr>
                                                                     <th>Work ID</th>
                                                                     <th>Auxiliary</th>
+                                                                    <th>Position</th>
                                                                     <th>Start Time</th>
                                                                     <th>End Time</th>
                                                                     <th>Duration</th>
