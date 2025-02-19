@@ -462,12 +462,19 @@ function displayTask(projectName, start, stop) {
     taskContainer.style.padding = "5px";
 
     taskContainer.innerHTML = `
-        <div class="task-title" style="font-size:12px; font-weight:bold">${projectName}</div>
-        <div class="task-details">
-            <p style="font-size:10px;"><strong style="font-size:10px;">Start:</strong> ${startTimeFormatted}</p>
-            <p style="font-size:10px;"><strong style="font-size:10px;">End:</strong> ${stopTimeFormatted}</p>
-            <p style="font-size:10px;"><strong style="font-size:10px;">Duration:</strong> ${duration}</p>
+        <div class="task-title" style="font-size:12px; font-weight:bold; margin-bottom: 4px;">${projectName}</div>
+        <div class="task-details" style="display: flex; flex-direction: column; gap: 2px;">
+            <p style="font-size:10px; margin-bottom: 2px;">
+                <strong style="font-size:10px; display: inline-block; width: 60px;">Start:</strong> ${startTimeFormatted}
+            </p>
+            <p style="font-size:10px; margin-bottom: 2px;">
+                <strong style="font-size:10px; display: inline-block; width: 60px;">End:</strong> ${stopTimeFormatted}
+            </p>
+            <p style="font-size:10px; margin-bottom: 2px;">
+                <strong style="font-size:10px; display: inline-block; width: 60px;">Duration:</strong> ${duration}
+            </p>
         </div>
+
     `;
 
     taskDetailsContainer.prepend(taskContainer); // Add to the top
