@@ -2,7 +2,6 @@
 include("../../auth/db.php");
 session_start();
 
-header("Content-Type: application/json");
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id_c'])) {
