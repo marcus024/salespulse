@@ -488,7 +488,6 @@ include("../auth/db.php");
 
         function toggleTimer() {
             const button = document.getElementById('startStopBtn');
-            const taskName = document.getElementById('taskName').value.trim();
             const projectName = document.getElementById('projectSelect').value;
 
             if (!taskName) {
@@ -503,7 +502,7 @@ include("../auth/db.php");
                 button.classList.add('start-btn');
 
                 const stopTime = new Date();
-                recordTask(taskName, projectName, startTime, stopTime);
+                recordTask( projectName, startTime, stopTime);
 
             } else {
                 seconds = 0;
@@ -531,7 +530,7 @@ include("../auth/db.php");
             document.getElementById('timer').textContent = `${hrs}:${mins}:${secs}`;
         }
 
-        function recordTask(taskName, projectName, start, stop) {
+        function recordTask(projectName, start, stop) {
             const startTimeFormatted = formatDateTime(start);
             const stopTimeFormatted = formatDateTime(stop);
 
@@ -542,7 +541,6 @@ include("../auth/db.php");
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
                 body: new URLSearchParams({
-                    taskName: taskName,
                     project: projectName,
                     startTime: startTimeFormatted,
                     endTime: stopTimeFormatted
@@ -553,7 +551,7 @@ include("../auth/db.php");
             .catch(error => console.error('Error:', error));
 
             // Display task data in containers
-            displayTask(taskName, projectName, start, stop);
+            displayTask( projectName, start, stop);
         }
 
         function formatDateTime(date) {
