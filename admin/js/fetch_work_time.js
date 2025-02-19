@@ -15,8 +15,8 @@ $(document).ready(function() {
         rows.forEach(function(row) {
           let htmlRow = `
             <tr>
-              <td>${escapeHtml(row.id)}</td>
-              <td>${escapeHtml(row.task)}</td>
+              <td>${escapeHtml(row.work_id)}</td>
+              <td>${escapeHtml(row.project)}</td>
               <td>${escapeHtml(row.start_time)}</td>
               <td>${escapeHtml(row.end_time)}</td>
               <td>${escapeHtml(row.time)}</td>
