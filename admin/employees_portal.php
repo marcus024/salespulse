@@ -288,7 +288,7 @@ include("../auth/db.php");
                                                         <!-- Row to hold the search bar and dropdowns -->
                                                         <div class="d-flex align-items-center" style="gap: 10px;">
                                                             <!-- Search Bar -->
-                                                            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search..." 
+                                                            <input type="text" id="searchWork" onkeyup="searchKey()" placeholder="Search..." 
                                                                 style="font-size: 10px; border: 1px solid #36b9cc; border-radius: 4px; outline: none; width: 200px; height: 30px; margin: 0;">
                                                             
                                                             <!-- Dropdown for Export Options -->
@@ -303,6 +303,7 @@ include("../auth/db.php");
                                                                     <li><a class="dropdown-item" href="#" onclick="exportToExcel()">Download Excel</a></li>
                                                                     <li><a class="dropdown-item" href="#" onclick="exportToCSV()">Download CSV</a></li>
                                                                     <li><a class="dropdown-item" href="#" onclick="printTable()">Print</a></li>
+                                                                    <li><a class="dropdown-item" href="#" onclick="exportToAPI()">API</a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -388,8 +389,8 @@ include("../auth/db.php");
     <script src="js/peak.js"></script>
     <script src="js/peak_user.js"></script>
     <script src="js/fetch_work_time.js"></script>
-    <script src="js/export_table.js"></script>
-    <script src="js/search_item.js"></script>
+    <script src="js/export_work_time.js"></script>
+    <script src="js/search_work.js"></script>
     
 </body>
 </html>
