@@ -328,6 +328,16 @@ include("../auth/db.php");
                                         <option value="Auxiliary 8">Auxiliary 8</option>
                                         <option value="Auxiliary 9">Auxiliary 9</option>
                                         <option value="Auxiliary 10">Auxiliary 10</option>
+                                        <option value="Auxiliary 11">Auxiliary 11</option>
+                                        <option value="Auxiliary 12">Auxiliary 12</option>
+                                        <option value="Auxiliary 13">Auxiliary 13</option>
+                                        <option value="Auxiliary 14">Auxiliary 14</option>
+                                        <option value="Auxiliary 15">Auxiliary 15</option>
+                                        <option value="Auxiliary 16">Auxiliary 16</option>
+                                        <option value="Auxiliary 17">Auxiliary 17</option>
+                                        <option value="Auxiliary 18">Auxiliary 18</option>
+                                        <option value="Auxiliary 19">Auxiliary 19</option>
+                                        <option value="Auxiliary 20">Auxiliary 20</option>
                                     </select>
                                 </div>
 
