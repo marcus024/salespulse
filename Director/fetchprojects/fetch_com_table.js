@@ -66,16 +66,43 @@
                     return;
                 }
 
-                // Calculate the deficit
-                let deficit = targetGross - actualGross;
+                let deficit = 0;
 
-                // Calculate the potential commission (Deficit * 5% * 70%)
+                if (actualGross > targetGross) {
+                    deficit = 0; // No deficit if actual gross is greater
+                } else {
+                    deficit = targetGross - actualGross;
+                }
+
+                // Calculate the potential commission only if there is a deficit
                 let potentialCommission = deficit * 0.05 * 0.70;
 
                 let formattedCommission = potentialCommission.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
                 // Display the potential commission
-                 $('#potentialCommission').text(`Php ${formattedCommission}`);
+                $('#potentialCommission').text(`Php ${formattedCommission}`);
+
+                // Prepare data for AJAX
+                let formData = {
+                    actual_com: actualGross,
+                    target_com: targetGross,
+                    potential_com: potentialCommission.toFixed(2),
+                };
+
+                // Send data to backend via AJAX
+                $.ajax({
+                    url: './dirback/save_pot_com/save_commission.php',  // Backend PHP script
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        alert('Data saved successfully!');
+                        console.log(response); // Log response for debugging
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                        alert('Failed to save data.');
+                    }
+                });
 
             } catch (error) {
                 // Alert to notify if something went wrong
@@ -83,28 +110,105 @@
                 console.error(error); // Log the error for debugging purposes
             }
         });
+
     });
 
-    // Search function to filter rows based on input
-function searchTable() {
-    let input = document.getElementById("searchInput");
-    let filter = input.value.toLowerCase();
-    let rows = document.querySelectorAll("#commission-table .d-flex"); // Get all row containers
+        // Search function to filter rows based on input
+        function searchTable() {
+            let input = document.getElementById("searchInput");
+            let filter = input.value.toLowerCase();
+            let rows = document.querySelectorAll("#commission-table .d-flex");
 
-    rows.forEach(row => {
-        let cells = row.querySelectorAll(".comRows"); // Get all cells in the current row
-        let rowText = "";
-        
-        // Concatenate text content of each cell for searching
-        cells.forEach(cell => {
-            rowText += cell.textContent.toLowerCase(); // Add cell text to rowText
-        });
+            rows.forEach(row => {
+                let cells = row.querySelectorAll(".comRows");
+                let rowText = "";
 
-        // Show/hide row based on the search input
-        if (rowText.includes(filter)) {
-            row.style.display = ""; // Show row
-        } else {
-            row.style.display = "none"; // Hide row
+                cells.forEach(cell => {
+                    rowText += cell.textContent.toLowerCase();
+                });
+
+                if (rowText.includes(filter)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
         }
-    });
-}
+
+        // Export to CSV
+        function exportToCSV() {
+            let rows = document.querySelectorAll("#commission-table .d-flex");
+            let csvContent = "Project Name,Start Date,End Date,Net Sales,Gross Profit,Commission\n";
+
+            rows.forEach(row => {
+                let cells = row.querySelectorAll(".comRows");
+                let rowData = [];
+                cells.forEach(cell => {
+                    rowData.push(cell.textContent.replace(/Php\s*/g, '').trim());
+                });
+                csvContent += rowData.join(",") + "\n";
+            });
+
+            let blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            let link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "commissions.csv";
+            link.click();
+        }
+
+        // Export to Excel
+        function exportToExcel() {
+            let tableHTML = '<table><tr><th>Project Name</th><th>Start Date</th><th>End Date</th><th>Net Sales</th><th>Gross Profit</th><th>Commission</th></tr>';
+            let rows = document.querySelectorAll("#commission-table .d-flex");
+
+            rows.forEach(row => {
+                tableHTML += '<tr>';
+                let cells = row.querySelectorAll(".comRows");
+                cells.forEach(cell => {
+                    tableHTML += '<td>' + cell.textContent.replace(/Php\s*/g, '').trim() + '</td>';
+                });
+                tableHTML += '</tr>';
+            });
+            tableHTML += '</table>';
+
+            let blob = new Blob([tableHTML], { type: 'application/vnd.ms-excel' });
+            let link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "commissions.xls";
+            link.click();
+        }
+
+        // Export to PDF
+        function exportToPDF() {
+            const { jsPDF } = window.jspdf;
+            let doc = new jsPDF();
+
+            let rows = [];
+            document.querySelectorAll("#commission-table .d-flex").forEach(row => {
+                let rowData = [];
+                row.querySelectorAll(".comRows").forEach(cell => {
+                    rowData.push(cell.textContent.replace(/Php\s*/g, '').trim());
+                });
+                rows.push(rowData);
+            });
+
+            doc.autoTable({
+                head: [['Project Name', 'Start Date', 'End Date', 'Net Sales', 'Gross Profit', 'Commission']],
+                body: rows
+            });
+
+            doc.save('commissions.pdf');
+        }
+
+        // Print the table
+        function printTable() {
+            let printWindow = window.open('', '', 'height=600,width=800');
+            let content = document.querySelector("#commission-table").outerHTML;
+            printWindow.document.write('<html><head><title>Print Commissions</title></head><body>');
+            printWindow.document.write('<h1>Completed Projects Commissions</h1>');
+            printWindow.document.write(content);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+        }
+

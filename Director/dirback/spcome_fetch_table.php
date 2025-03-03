@@ -8,7 +8,7 @@ include '../../auth/db.php';
 session_start();
 $user_id = $_SESSION['user_id_c'];
 
-$response = [];  // Array to store the response
+$response = []; 
 
 if (!$user_id) {
     http_response_code(400);
@@ -57,27 +57,29 @@ try {
         $wholeNumberComRate = floor($totalComRate * 100);
 
         // Determine individual commission rate
-        if ($wholeNumberComRate === 13) {
+        if ($wholeNumberComRate < 15) {
+            $individualComRate = 0.02;
+        }elseif ($wholeNumberComRate === 15) {
             $individualComRate = 0.025;
-        } elseif ($wholeNumberComRate === 14) {
+        }elseif ($wholeNumberComRate === 16) {
             $individualComRate = 0.0275;
-        } elseif ($wholeNumberComRate === 15) {
-            $individualComRate = 0.03;
-        } elseif ($wholeNumberComRate === 16) {
-            $individualComRate = 0.0325;
         } elseif ($wholeNumberComRate === 17) {
-            $individualComRate = 0.035;
+            $individualComRate = 0.03;
         } elseif ($wholeNumberComRate === 18) {
-            $individualComRate = 0.0375;
+            $individualComRate = 0.0325;
         } elseif ($wholeNumberComRate === 19) {
-            $individualComRate = 0.04;
+            $individualComRate = 0.035;
         } elseif ($wholeNumberComRate === 20) {
-            $individualComRate = 0.0425;
+            $individualComRate = 0.0375;
         } elseif ($wholeNumberComRate === 21) {
-            $individualComRate = 0.045;
+            $individualComRate = 0.04;
         } elseif ($wholeNumberComRate === 22) {
+            $individualComRate = 0.0425;
+        } elseif ($wholeNumberComRate === 23) {
+            $individualComRate = 0.045;
+        } elseif ($wholeNumberComRate === 24) {
             $individualComRate = 0.0475;
-        } elseif ($wholeNumberComRate >= 23) {
+        } elseif ($wholeNumberComRate >= 25) {
             $individualComRate = 0.05;
         } else {
             $individualComRate = 0; // No commission if rate is less than 13%

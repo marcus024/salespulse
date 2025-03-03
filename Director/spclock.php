@@ -34,6 +34,127 @@ include("../auth/db.php");
     <link href="css/spcommodal.css" rel="stylesheet">
     <link href="css/spcomtable.css" rel="stylesheet">
     <link href="css/spcomcard.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #15151a;
+            color: white;
+            display: flex;
+            /* justify-content: center;
+            align-items: center; */
+            height: 100vh;
+            margin-left: 20px;
+            flex-direction: column;
+        }
+
+        .container-fluid {
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .tracker-container {
+            background: #1e1e26;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+            font-size: 14px;
+        }
+
+        .timer {
+            text-align: center;
+            font-size: 40px; /* Larger than previous */
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .start-btn {
+            background-color: yellow;
+            color: black;
+        }
+
+        .stop-btn {
+            background-color: red;
+            color: white;
+        }
+
+        .task-details-widget {
+            background-color: #2c2c2c;
+            padding: 20px;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .task-details-widget h3 {
+            margin-bottom: 15px;
+        }
+
+        .task-container {
+            background-color: #333;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            color: white;
+        }
+
+        .task-container .task-title {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .task-container .task-details {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        /* Make task containers bigger */
+        .task-container .task-title, .task-container .task-details p {
+            font-size: 18px;
+        }
+
+        .task-container .task-details p strong {
+            font-size: 16px;
+        }
+        .task-list {
+            margin-top: 20px;
+            max-height: 400px; /* Adjust the height as needed */
+            overflow-y: auto; /* Enables vertical scrolling */
+            padding-right: 10px; /* Adds some padding for the scrollbar */
+        }
+    </style>
     
 </head>
 <body id="page-top" style="background-color:#15151a;">
@@ -86,13 +207,13 @@ include("../auth/db.php");
                     <span style="font-size:13px; font-family:'Poppins'; ">Team Members</span>
                 </a>
             </li>
-            <li class="nav-item active" >
+            <li class="nav-item" >
                 <a class="nav-link" href="spcom.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-money-bill-wave"></i>
                     <span style="font-size:13px; font-family:'Poppins'; ">Commissions</span>
                 </a>
             </li>
-            <li class="nav-item " >
+            <li class="nav-item active" >
                 <a class="nav-link" href="spclock.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-money-bill-wave"></i>
                     <span style="font-size:13px; font-family:'Poppins'; ">WorkPulse</span>
@@ -116,7 +237,7 @@ include("../auth/db.php");
                     <!-- Left Section: Home and Welcome Message -->
                     <div class="d-flex align-items-center" style="margin-top: 30px;"> <!-- Added margin-top to lower the left section -->
                         <div>
-                            <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">Commissions</h1> <!-- Reduced spacing -->
+                            <h1 style="color:#73726e; font-family:'Poppins'; font-weight:bold; margin-bottom: 1px;">WorkPulse</h1> <!-- Reduced spacing -->
                             <!-- <p style="font-size:15px; color: #555; font-family:'Poppins'; margin: 0px;">Welcome Back <?php echo $_SESSION['user_name']; ?>!</p> -->
                         </div>
                     </div>
@@ -188,97 +309,52 @@ include("../auth/db.php");
                         </div>
                     </div>
                 </div>
-                <!-- End of Topbar -->
-                <div class="container-fluid" style=" background-color:#15151a;">
+                <div class="container-fluid" style="background-color:#15151a;">
                     <div class="row">
-                        <!-- Commission Calculator -->
-                        <div class="col-md-3 mb-4">
-                            <div class="card shadow-sm" style="background-color:#1f2024; border:none;">
-                                <div class="card-body">
-                                    <p style="color:#ddd; font-weight:bold; font-size:20px; font-family:'Poppins' ">SaleSync</p>
-                                    <form id="commission-form">
-                                        <div class="mb-1">
-                                            <label for="grossProfit" class="form-label ">Actual Gross Profit</label>
-                                            <input type="number" class="form-control" id="actualGross" name="grossProfit" placeholder="Enter actual gross profit" readonly>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="netSales" class="form-label ">Target Gross Profit</label>
-                                            <input type="number" class="form-control" id="targetGross" name="netSales" placeholder="Enter net sales">
-                                        </div>
-                                        <button type="button" class="btn w-100 calcBtn">Calculate</button> <!-- Changed type to 'button' -->
-                                    </form>
-                                    <div style="margin-top:20px;">
-                                        <p style="color:white;  font-family:'Poppins'; font-size:15px; ">Potential Commission</p>
-                                        <div style=" border-radius: 10px; height:70px; background:#2a2925; padding:20px;">
-                                            <p id="potentialCommission" style="color:white;  font-family:'Poppins'; font-size:15px; font-weight:bold;">
-                                                
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div style="margin-top:20px;">
-                                        <p style="color:white; font-weight:bold; font-size:15px; font-family:'Poppins';">History</p>
-                                        <div id="recent-history" style="color:white; font-family:'Poppins'; font-size:14px;">
-                                            <!-- Recent calculations will be dynamically inserted here -->
-                                        </div>
-                                        <p onclick="viewAllHistory()" style="color:#f9ce45; font-family:'Poppins'; font-size:12px; cursor:pointer; text-decoration:underline; margin-top:5px;">
-                                            See All
-                                        </p>
-                                    </div>
+                        <!-- Left Side: Time Tracker -->
+                        <div class="col-md-4">
+                            <div class="tracker-container">
+                                <!-- Project Selection -->
+                                <div class="input-group">
+                                    <label>Auxiliaries</label>
+                                    <select id="projectSelect">
+                                        <option value="Auxiliary 1">Auxiliary 1</option>
+                                        <option value="Auxiliary 2">Auxiliary 2</option>
+                                        <option value="Auxiliary 3">Auxiliary 3</option>
+                                        <option value="Auxiliary 4">Auxiliary 4</option>
+                                        <option value="Auxiliary 5">Auxiliary 5</option>
+                                        <option value="Auxiliary 6">Auxiliary 6</option>
+                                        <option value="Auxiliary 7">Auxiliary 7</option>
+                                        <option value="Auxiliary 8">Auxiliary 8</option>
+                                        <option value="Auxiliary 9">Auxiliary 9</option>
+                                        <option value="Auxiliary 10">Auxiliary 10</option>
+                                        <option value="Auxiliary 11">Auxiliary 11</option>
+                                        <option value="Auxiliary 12">Auxiliary 12</option>
+                                        <option value="Auxiliary 13">Auxiliary 13</option>
+                                        <option value="Auxiliary 14">Auxiliary 14</option>
+                                        <option value="Auxiliary 15">Auxiliary 15</option>
+                                        <option value="Auxiliary 16">Auxiliary 16</option>
+                                        <option value="Auxiliary 17">Auxiliary 17</option>
+                                        <option value="Auxiliary 18">Auxiliary 18</option>
+                                        <option value="Auxiliary 19">Auxiliary 19</option>
+                                        <option value="Auxiliary 20">Auxiliary 20</option>
+                                    </select>
                                 </div>
+
+                                <!-- Timer -->
+                                <div class="timer" id="timer">00:00:00</div>
+
+                                <!-- Start/Stop Button -->
+                                <button id="startStopBtn" class="btn start-btn" onclick="toggleTimer()">Start</button>
                             </div>
                         </div>
-                        <!-- Chart Panels -->
-                        <div class="col-md-9 mb-2">
-                            <div class="card shadow-sm" style="background: #1f2024; border:none;">
-                                <div class="card-body" id="calendar-container" style="min-height: 400px; background:#1f2024 ; margin-top: 0px; padding-top:0px;">
-                                    <!-- Cards and Charts Here -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Table Panel -->
-                    <div class="row">
-                        <div class="col-md-13 mb-4">
-                            <div class="card shadow-sm" style="background: #1f2024; border:none;">
-                                <div class="d-flex justify-content-between align-items-center" style="padding: 10px 20px;">
-                                    <!-- Title -->
-                                    <p style="color:white; font-size:20px; font-family:'Poppins'; font-weight:bold; margin: 0;">Completed Projects Commissions</p>
-
-                                    <!-- Row to hold the search bar and dropdowns -->
-                                    <div class="d-flex align-items-center" style="gap: 10px;">
-                                        <!-- Search Bar -->
-                                        <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search..." 
-                                            style="background-color:#2a2925; color:white; font-size: 12px; border: none; font-family:'Poppins'; border-radius: 4px; outline: white; width: 200px; height: 30px; margin: 0; padding-left: 10px;">
-                                        <!-- Dropdown for Export Options -->
-                                        <div class="btn-group" role="group">
-                                            <!-- Export Dropdown -->
-                                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" 
-                                                    style="color:black; font-size: 12px; font-family:'Poppins'; height: 30px; margin: 0; border:none; background-color:#f9ce45">
-                                                Export
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#" onclick="exportToPDF()">Download PDF</a></li>
-                                                <li><a class="dropdown-item" href="#" onclick="exportToExcel()">Download Excel</a></li>
-                                                <li><a class="dropdown-item" href="#" onclick="exportToCSV()">Download CSV</a></li>
-                                                <li><a class="dropdown-item" href="#" onclick="printTable()">Print</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card-body" style="min-height: 400px; color: white; padding-top: 5px;">
-                                    <!-- Table Header -->
-                                    <div class="d-flex p-3 mb-2" style="background: #2a2925; border-radius: 8px; font-weight: bold;">
-                                        <div class="col-2 comHead">Project Name</div>
-                                        <div class="col-2 comHead">Start Date</div>
-                                        <div class="col-2 comHead">End Date</div>
-                                        <div class="col-2 comHead">Net Sales</div>
-                                        <div class="col-2 comHead">Gross Profit</div>
-                                        <div class="col-2 comHead">Commission</div>
-                                    </div>
-
-                                    <div id="commission-table">
-                                        <!-- rows here -->
+                        <!-- Right Side: Task Details Widget -->
+                        <div class="col-md-8">
+                            <div class="task-details-widget" style="width:400px;">
+                                <p style="font-size:15px; font-weight:bold;">Task Details</p>
+                                <div style="height: 350px; overflow-y: auto;">
+                                    <div id="taskDetailsContainer" class="p-2 rounded-md shadow-md" style="height:100px">
+                                        <!-- Task containers will be appended here -->
                                     </div>
                                 </div>
                             </div>
@@ -332,7 +408,7 @@ include("../auth/db.php");
             </div>
             </div>
         </div>
-        </div>
+    </div>
 
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
@@ -355,8 +431,8 @@ include("../auth/db.php");
     <script src="alerts/notif.js"></script>
     <script src="alerts/notifCount.js"></script>
     <script src="current_year.js"></script>
-    <script src="fetchprojects/fetch_com_table.js"></script>
-    <script src="fetchprojects/fetch_charts.js"></script>
+    <!-- <script src="fetchprojects/fetch_com_table.js"></script> -->
+    <!-- <script src="fetchprojects/fetch_charts.js"></script> -->
     <script>
         function togglePopup() {
             const popup = document.getElementById('popup-container');
@@ -373,7 +449,153 @@ include("../auth/db.php");
             }
         });
     </script>
+    <script>
+       let timerInterval;
+        let seconds = 0;
+        let isRunning = false;
+        let startTime;
+
+        // Fetch task data from the backend and display it
+        function fetchTaskData() {
+    fetch('dirback/fetch_time.php')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Fetched Data:", data); // Debugging
+
+            if (data.error) {
+                console.error("Backend Error:", data.error);
+                return;
+            }
+
+            data.forEach(task => {
+                displayTask(task.project, new Date(task.start_time), new Date(task.end_time));
+            });
+        })
+        .catch(error => console.error('Error fetching task data:', error));
+}
 
 
+
+        function displayTask(projectName, start, stop) {
+            const taskDetailsContainer = document.getElementById('taskDetailsContainer');
+            const startTimeFormatted = formatDateTime(start);
+            const stopTimeFormatted = formatDateTime(stop);
+            const duration = calculateDuration(start, stop);
+
+            const taskContainer = document.createElement('div');
+            taskContainer.classList.add('task-container');
+            taskContainer.style.borderBottom = "1px solid #ddd";
+            taskContainer.style.padding = "5px";
+
+            taskContainer.innerHTML = `
+                <div class="task-title" style="font-size:12px; font-weight:bold; margin-bottom: 4px;">${projectName}</div>
+                <div class="task-details" style="display: flex; flex-direction: column; gap: 2px;">
+                    <p style="font-size:10px; margin-bottom: 2px;">
+                        <strong style="font-size:10px; display: inline-block; width: 60px;">Start:</strong> ${startTimeFormatted}
+                    </p>
+                    <p style="font-size:10px; margin-bottom: 2px;">
+                        <strong style="font-size:10px; display: inline-block; width: 60px;">End:</strong> ${stopTimeFormatted}
+                    </p>
+                    <p style="font-size:10px; margin-bottom: 2px;">
+                        <strong style="font-size:10px; display: inline-block; width: 60px;">Duration:</strong> ${duration}
+                    </p>
+                </div>
+
+            `;
+
+            taskDetailsContainer.prepend(taskContainer); // Add to the top
+
+            // Auto-scroll to the latest task
+            const scrollContainer = taskDetailsContainer.parentElement;
+            scrollContainer.scrollTop = 0;
+        }
+
+
+        function calculateDuration(start, stop) {
+            const durationInSeconds = Math.floor((stop - start) / 1000); // Difference in seconds
+            const hrs = String(Math.floor(durationInSeconds / 3600)).padStart(2, '0');
+            const mins = String(Math.floor((durationInSeconds % 3600) / 60)).padStart(2, '0');
+            const secs = String(durationInSeconds % 60).padStart(2, '0');
+            return `${hrs}:${mins}:${secs}`;
+        }
+
+        function toggleTimer() {
+            const button = document.getElementById('startStopBtn');
+            const projectName = document.getElementById('projectSelect').value;
+
+            if (isRunning) {
+                clearInterval(timerInterval);
+                button.textContent = "Start";
+                button.classList.remove('stop-btn');
+                button.classList.add('start-btn');
+
+                const stopTime = new Date();
+                recordTask(projectName, startTime, stopTime);
+
+            } else {
+                seconds = 0;
+                updateTimerDisplay();
+
+                timerInterval = setInterval(updateTimer, 1000);
+                button.textContent = "Stop";
+                button.classList.remove('start-btn');
+                button.classList.add('stop-btn');
+
+                startTime = new Date();
+            }
+            isRunning = !isRunning;
+        }
+
+        function updateTimer() {
+            seconds++;
+            updateTimerDisplay();
+        }
+
+        function updateTimerDisplay() {
+            const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
+            const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+            const secs = String(seconds % 60).padStart(2, '0');
+            document.getElementById('timer').textContent = `${hrs}:${mins}:${secs}`;
+        }
+
+        function recordTask(projectName, start, stop) {
+            const startTimeFormatted = formatDateTime(start);
+            const stopTimeFormatted = formatDateTime(stop);
+
+            // Send task data to backend
+            fetch('dirback/save_task_time.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    project: projectName,
+                    startTime: startTimeFormatted,
+                    endTime: stopTimeFormatted
+                })
+            })
+            .then(response => response.text())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+
+            // Display task data in containers
+            displayTask(projectName, start, stop);
+        }
+
+        function formatDateTime(date) {
+            return date.toLocaleDateString() + " " + date.toLocaleTimeString();
+        }
+
+        // Fetch task data when page loads
+        window.onload = fetchTaskData;
+
+    </script>
+
+   
 </body>
 </html>

@@ -79,7 +79,7 @@ include("../auth/db.php");
             <li class="nav-item active" >
                 <a class="nav-link" href="employees_portal.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-users"></i>
-                    <span style="font-size:13px; font-family:'Poppins'; ">Employees</span>
+                    <span style="font-size:13px; font-family:'Poppins'; ">WorkPulse</span>
                 </a>
             </li>
         </ul>
@@ -284,11 +284,11 @@ include("../auth/db.php");
                                             <div class="col-md-12">
                                                 <div class="card shadow mb-4">
                                                     <div class="card-header py-2 d-flex justify-content-between align-items-center">
-                                                        <h6 class="m-0 font-weight-bold" style="color:#36b9cc;">App User</h6>
+                                                        <h6 class="m-0 font-weight-bold" style="color:#36b9cc;">Time and Motion Tracker</h6>
                                                         <!-- Row to hold the search bar and dropdowns -->
                                                         <div class="d-flex align-items-center" style="gap: 10px;">
                                                             <!-- Search Bar -->
-                                                            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search..." 
+                                                            <input type="text" id="searchWork" onkeyup="searchKey()" placeholder="Search..." 
                                                                 style="font-size: 10px; border: 1px solid #36b9cc; border-radius: 4px; outline: none; width: 200px; height: 30px; margin: 0;">
                                                             
                                                             <!-- Dropdown for Export Options -->
@@ -303,21 +303,22 @@ include("../auth/db.php");
                                                                     <li><a class="dropdown-item" href="#" onclick="exportToExcel()">Download Excel</a></li>
                                                                     <li><a class="dropdown-item" href="#" onclick="exportToCSV()">Download CSV</a></li>
                                                                     <li><a class="dropdown-item" href="#" onclick="printTable()">Print</a></li>
+                                                                    <li><a class="dropdown-item" href="#" onclick="exportToAPI()">API</a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="table-responsive" style="max-height: 250px; overflow-y: auto; ">
-                                                            <table id="appUserTable" class="table table-bordered">
+                                                            <table id="workPulse" class="table table-bordered">
                                                                 <thead>
                                                                 <tr>
-                                                                    <th>ID</th>
-                                                                    <th>First&nbsp;Name</th>
-                                                                    <th>Last&nbsp;Name</th>
-                                                                    <th>Company</th>
-                                                                    <th>User&nbsp;ID</th>
-                                                                    <th>Logged&nbsp;In</th>
+                                                                    <th style="font-size:12px;">Work ID</th>
+                                                                    <th style="font-size:12px;">Auxiliary</th>
+                                                                    <th style="font-size:12px;">Position</th>
+                                                                    <th style="font-size:12px;">Start Time</th>
+                                                                    <th style="font-size:12px;">End Time</th>
+                                                                    <th style="font-size:12px;">Duration</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody></tbody>
@@ -387,9 +388,9 @@ include("../auth/db.php");
     <script src="../Director/toogleNav.js"></script>
     <script src="js/peak.js"></script>
     <script src="js/peak_user.js"></script>
-    <script src="js/fetch_app_users.js"></script>
-    <script src="js/export_table.js"></script>
-    <script src="js/search_item.js"></script>
+    <script src="js/fetch_work_time.js"></script>
+    <script src="js/export_work_time.js"></script>
+    <script src="js/search_work.js"></script>
     
 </body>
 </html>
