@@ -28,7 +28,7 @@ if (isset($_POST['id']) && isset($_POST['status'])) {
                 $subject = "Your Account is now Activated";
                 $status_message = $status === 'YES' ? 'activated' : 'deactivated';
                 $login_link = $status === 'YES' ? "\n\nYou can log in now at: SalesPulse(https://lightyellow-tarsier-650234.hostingersite.com/)" : ''; // Add login link if activated
-                $message = "Hello Admin,\n\nThe account for {$user['firstname']} {$user['lastname']} (Email: {$user['email']}) has been {$status_message}." . $login_link . "\n\nBest regards,\nSalesPulse Team";
+                $message = "Hello {$user['firstname']} {$user['lastname']},\n\nThe account for Sales Pulse  (Email: {$user['email']}) has been {$status_message}." . $login_link . "\n\nBest regards,\nSalesPulse Team";
                 // Check the domain of the recipient's email
                 if (strpos($to, '@gmail.com') !== false) {
                     $headers = "From: markantonyvc01@gmail.com";
