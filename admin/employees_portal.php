@@ -314,6 +314,7 @@ include("../auth/db.php");
                                                                 <thead>
                                                                 <tr>
                                                                     <th style="font-size:12px;">Work ID</th>
+                                                                    <th style="font-size:12px;">Employee</th>
                                                                     <th style="font-size:12px;">Auxiliary</th>
                                                                     <th style="font-size:12px;">Position</th>
                                                                     <th style="font-size:12px;">Start Time</th>
