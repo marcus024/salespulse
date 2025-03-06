@@ -13,22 +13,20 @@ $currentUserCompany = $_SESSION['company'] ?? '';
 // 3. Prepare and execute the query
 try {
     $sql = "SELECT 
-                s.id,
-                s.firstname,
-                s.lastname,
-                s.company,
-                s.user_id_current,
-                s.image,
-                p.peak_id,
-                p.peak_user,
-                p.logged_in
-            FROM salesauth AS s
-            JOIN peak_tb AS p 
-              ON s.user_id_current = p.peak_user
-            WHERE s.company = :company";
+            s.id,
+            s.firstname,
+            s.lastname,
+            s.company,
+            s.user_id_current,
+            s.image,
+            p.peak_id,
+            p.peak_user,
+            p.logged_in
+        FROM salesauth AS s
+        JOIN peak_tb AS p 
+          ON s.user_id_current = p.peak_user";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':company', $currentUserCompany, PDO::PARAM_STR);
     $stmt->execute();
 
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
