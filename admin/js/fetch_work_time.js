@@ -16,6 +16,7 @@ $(document).ready(function() {
           let htmlRow = `
             <tr>
               <td style="font-size:12px;">${escapeHtml(row.work_id)}</td>
+              <td style="font-size:12px;">${escapeHtml(row.full_name)}</td>
               <td style="font-size:12px;">${escapeHtml(row.auxiliary)}</td>
               <td style="font-size:12px;">${escapeHtml(row.roles)}</td>
               <td style="font-size:12px;">${escapeHtml(row.start_time)}</td>

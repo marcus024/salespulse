@@ -13,7 +13,8 @@ try {
             w.start_time,
             w.end_time,
             w.time AS duration,
-            COALESCE(s.position, 'Unknown') AS roles
+            COALESCE(s.position, 'Unknown') AS roles,
+            COALESCE(CONCAT(s.firstname, ' ', s.lastname), 'Unknown') AS full_name
         FROM workpulse AS w
         LEFT JOIN salesauth AS s 
         ON CONVERT(w.user USING utf8mb4) = CONVERT(s.user_id_current USING utf8mb4)";
