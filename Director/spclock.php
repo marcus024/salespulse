@@ -450,36 +450,34 @@ include("../auth/db.php");
         });
     </script>
     <script>
-       let timerInterval;
+        let timerInterval;
         let seconds = 0;
         let isRunning = false;
         let startTime;
 
         // Fetch task data from the backend and display it
         function fetchTaskData() {
-    fetch('dirback/fetch_time.php')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Fetched Data:", data); // Debugging
+            fetch('dirback/fetch_time.php')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("Fetched Data:", data); // Debugging
 
-            if (data.error) {
-                console.error("Backend Error:", data.error);
-                return;
-            }
+                    if (data.error) {
+                        console.error("Backend Error:", data.error);
+                        return;
+                    }
 
-            data.forEach(task => {
-                displayTask(task.project, new Date(task.start_time), new Date(task.end_time));
-            });
-        })
-        .catch(error => console.error('Error fetching task data:', error));
-}
-
-
+                    data.forEach(task => {
+                        displayTask(task.project, new Date(task.start_time), new Date(task.end_time));
+                    });
+                })
+                .catch(error => console.error('Error fetching task data:', error));
+        }
 
         function displayTask(projectName, start, stop) {
             const taskDetailsContainer = document.getElementById('taskDetailsContainer');
@@ -524,6 +522,7 @@ include("../auth/db.php");
             return `${hrs}:${mins}:${secs}`;
         }
 
+        // Function to toggle the timer
         function toggleTimer() {
             const button = document.getElementById('startStopBtn');
             const projectName = document.getElementById('projectSelect').value;
@@ -537,7 +536,13 @@ include("../auth/db.php");
                 const stopTime = new Date();
                 recordTask(projectName, startTime, stopTime);
 
+                // Clear stored data
+                localStorage.removeItem('startTime');
+                localStorage.removeItem('seconds');
+                localStorage.setItem('isRunning', 'false');
+
             } else {
+                startTime = new Date();
                 seconds = 0;
                 updateTimerDisplay();
 
@@ -546,16 +551,24 @@ include("../auth/db.php");
                 button.classList.remove('start-btn');
                 button.classList.add('stop-btn');
 
-                startTime = new Date();
+                // Save state
+                localStorage.setItem('startTime', startTime.toISOString());
+                localStorage.setItem('seconds', seconds);
+                localStorage.setItem('isRunning', 'true');
             }
+
             isRunning = !isRunning;
         }
 
+
+        // Function to update the timer
         function updateTimer() {
             seconds++;
             updateTimerDisplay();
+            localStorage.setItem('seconds', seconds); // Update stored seconds
         }
 
+        // Function to update timer display
         function updateTimerDisplay() {
             const hrs = String(Math.floor(seconds / 3600)).padStart(2, '0');
             const mins = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
@@ -563,6 +576,7 @@ include("../auth/db.php");
             document.getElementById('timer').textContent = `${hrs}:${mins}:${secs}`;
         }
 
+        // Function to record task
         function recordTask(projectName, start, stop) {
             const startTimeFormatted = formatDateTime(start);
             const stopTimeFormatted = formatDateTime(stop);
@@ -587,12 +601,38 @@ include("../auth/db.php");
             displayTask(projectName, start, stop);
         }
 
+        // Function to format date and time
         function formatDateTime(date) {
             return date.toLocaleDateString() + " " + date.toLocaleTimeString();
         }
 
-        // Fetch task data when page loads
-        window.onload = fetchTaskData;
+        // Function to restore timer from localStorage
+        function restoreTimerState() {
+            const savedStartTime = localStorage.getItem('startTime');
+            const savedSeconds = localStorage.getItem('seconds');
+            const savedIsRunning = localStorage.getItem('isRunning') === 'true';
+
+            if (savedStartTime && savedIsRunning) {
+                startTime = new Date(savedStartTime);
+                seconds = Math.floor((new Date() - startTime) / 1000);
+                isRunning = true;
+
+                updateTimerDisplay();
+                timerInterval = setInterval(updateTimer, 1000);
+
+                const button = document.getElementById('startStopBtn');
+                button.textContent = "Stop";
+                button.classList.remove('start-btn');
+                button.classList.add('stop-btn');
+            }
+        }
+
+
+        // Restore timer state from localStorage
+        window.onload = function () {
+            fetchTaskData();
+            restoreTimerState();
+        };
 
     </script>
 
