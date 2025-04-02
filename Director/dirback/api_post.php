@@ -12,10 +12,10 @@ require '../../auth/db.php';
 $data = json_decode(file_get_contents("php://input"), true);
 
 // Validate required fields
-if (!isset($data['logged_in'], $data['session_status'], $data['current_users'], $data['device_id'], $data['active_status'])) {
-    echo json_encode(["error" => "Missing required fields"]);
-    exit;
-}
+// if (!isset($data['logged_in'], $data['session_status'], $data['current_users'], $data['device_id'], $data['active_status'])) {
+//     echo json_encode(["error" => "Missing required fields"]);
+//     exit;
+// }
 
 // Assign values with null handling
 $logged_in = !empty($data['logged_in']) ? $data['logged_in'] : null;
