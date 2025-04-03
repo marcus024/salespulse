@@ -76,13 +76,13 @@ include("../auth/db.php");
                     <span style="font-size:13px; font-family:'Poppins';">Teams</span>
                 </a>
             </li>
-            <li class="nav-item active" >
+            <li class="nav-item " >
                 <a class="nav-link" href="employees_portal.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-users"></i>
                     <span style="font-size:13px; font-family:'Poppins'; ">WorkPulse</span>
                 </a>
             </li>
-            <li class="nav-item " >
+            <li class="nav-item active" >
                 <a class="nav-link" href="it_data.php" style="border-radius:10px; padding-left:10px;">
                     <i class="fas fa-fw fa-users"></i>
                     <span style="font-size:13px; font-family:'Poppins'; ">Find U</span>
@@ -294,7 +294,7 @@ include("../auth/db.php");
                                                         <!-- Row to hold the search bar and dropdowns -->
                                                         <div class="d-flex align-items-center" style="gap: 10px;">
                                                             <!-- Search Bar -->
-                                                            <input type="text" id="searchWork" onkeyup="searchKey()" placeholder="Search..." 
+                                                            <input type="text" id="searchFind" onkeyup="searchKey()" placeholder="Search..." 
                                                                 style="font-size: 10px; border: 1px solid #36b9cc; border-radius: 4px; outline: none; width: 200px; height: 30px; margin: 0;">
                                                             
                                                             <!-- Dropdown for Export Options -->
@@ -316,16 +316,17 @@ include("../auth/db.php");
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="table-responsive" style="max-height: 250px; overflow-y: auto; ">
-                                                            <table id="workPulse" class="table table-bordered">
+                                                            <table id="sessionTable" class="table table-bordered">
                                                                 <thead>
                                                                 <tr>
-                                                                    <th style="font-size:12px;">Work ID</th>
-                                                                    <th style="font-size:12px;">Employee</th>
-                                                                    <th style="font-size:12px;">Auxiliary</th>
-                                                                    <th style="font-size:12px;">Position</th>
-                                                                    <th style="font-size:12px;">Start Time</th>
-                                                                    <th style="font-size:12px;">End Time</th>
-                                                                    <th style="font-size:12px;">Duration</th>
+                                                                    <th style="font-size:12px;">Session ID</th>
+                                                                    <th style="font-size:12px;">Logged In</th>
+                                                                    <th style="font-size:12px;">Logged Out</th>
+                                                                    <th style="font-size:12px;">Session Status</th>
+                                                                    <th style="font-size:12px;">Current Users</th>
+                                                                    <th style="font-size:12px;">Last Active</th>
+                                                                    <th style="font-size:12px;">Device ID</th>
+                                                                    <th style="font-size:12px;">Active Status</th> 
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody></tbody>
@@ -395,9 +396,9 @@ include("../auth/db.php");
     <script src="../Director/toogleNav.js"></script>
     <script src="js/peak.js"></script>
     <script src="js/peak_user.js"></script>
-    <script src="js/fetch_work_time.js"></script>
-    <script src="js/export_work_time.js"></script>
-    <script src="js/search_work.js"></script>
+    <script src="js/fetch_findu.js"></script>
+    <script src="js/export_findu.js"></script>
+    <script src="js/search_findu.js"></script>
     
 </body>
 </html>
