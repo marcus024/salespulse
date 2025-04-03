@@ -25,7 +25,7 @@ $(document).ready(function() {
               <td style="font-size:12px;">${escapeHtml(row.active_status)}</td>
             </tr>
           `;
-          $('#workPulse tbody').append(htmlRow);
+          $('#sessionTable tbody').append(htmlRow);
         });
       } else {
         alert('Error: ' + response.message);
