@@ -396,7 +396,7 @@ include("../auth/db.php");
     <script src="../Director/toogleNav.js"></script>
     <script src="js/peak.js"></script>
     <script src="js/peak_user.js"></script>
-    <script src="js/fetch_itdata.js"></script>
+    <script src="js/fetch_findu.js"></script>
     <script src="js/export_findu.js"></script>
     <script src="js/search_work.js"></script>
     
