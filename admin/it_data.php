@@ -294,7 +294,7 @@ include("../auth/db.php");
                                                         <!-- Row to hold the search bar and dropdowns -->
                                                         <div class="d-flex align-items-center" style="gap: 10px;">
                                                             <!-- Search Bar -->
-                                                            <input type="text" id="searchWork" onkeyup="searchKey()" placeholder="Search..." 
+                                                            <input type="text" id="searchFind" onkeyup="searchKey()" placeholder="Search..." 
                                                                 style="font-size: 10px; border: 1px solid #36b9cc; border-radius: 4px; outline: none; width: 200px; height: 30px; margin: 0;">
                                                             
                                                             <!-- Dropdown for Export Options -->
@@ -398,7 +398,7 @@ include("../auth/db.php");
     <script src="js/peak_user.js"></script>
     <script src="js/fetch_findu.js"></script>
     <script src="js/export_findu.js"></script>
-    <script src="js/search_work.js"></script>
+    <script src="js/search_findu.js"></script>
     
 </body>
 </html>
