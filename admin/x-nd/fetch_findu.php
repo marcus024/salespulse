@@ -5,8 +5,13 @@ header('Content-Type: application/json');
 // Include database connection
 include('../../auth/db.php');
 
-// ✅ Restrict access to authenticated users
-if (!isset($_SESSION['user_id_c'])) {
+// Secure API Key (Store securely)
+$valid_api_key = 'UAS-SALESPULSE-USER-6';
+
+// Get API Key from request
+$provided_api_key = $_GET['api_key'] ?? '';
+
+if ($provided_api_key !== $valid_api_key) {
     echo json_encode([
         'status' => 'error',
         'message' => 'Unauthorized access'
