@@ -5,19 +5,14 @@ header('Content-Type: application/json');
 // Include database connection
 include('../../auth/db.php');
 
-// Secure API Key (Store securely)
-$valid_api_key = 'UAS-SALESPULSE-USER-6';
-
-// Get API Key from request
-$provided_api_key = $_GET['api_key'] ?? '';
-
-if ($provided_api_key !== $valid_api_key) {
-    echo json_encode([
-        'status' => 'error',
-        'message' => 'Unauthorized access'
-    ]);
-    exit;
-}
+// ✅ Check if user is logged in
+// if (!isset($_SESSION['user_id_c'])) {
+//     echo json_encode([
+//         'status' => 'error',
+//         'message' => 'Unauthorized access'
+//     ]);
+//     exit;
+// }
 
 try {
     $sql = "SELECT * FROM sessions";
@@ -25,7 +20,7 @@ try {
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // ✅ Encode and send the response securely
+    // ✅ Securely return the response
     echo json_encode([
         'status' => 'success',
         'data'   => $rows
