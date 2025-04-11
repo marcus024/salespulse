@@ -5,7 +5,8 @@ header('Content-Type: application/json');
 // Include database connection
 include('../../auth/db.php');
 
-$valid_api_key = '123#';
+// $valid_api_key = '123#';
+$$valid_api_key = 'find_u_live_3f7b4e92c91d49c5b81c93dbd7fd124f';
 
 // Get headers
 $headers = getallheaders();
