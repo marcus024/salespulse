@@ -5,14 +5,21 @@ header('Content-Type: application/json');
 // Include database connection
 include('../../auth/db.php');
 
-// ✅ Check if user is logged in
-// if (!isset($_SESSION['user_id_c'])) {
-//     echo json_encode([
-//         'status' => 'error',
-//         'message' => 'Unauthorized access'
-//     ]);
-//     exit;
-// }
+$valid_api_key = '123#';
+
+// Get headers
+$headers = getallheaders();
+$provided_api_key = isset($headers['X-API-KEY']) ? $headers['X-API-KEY'] : null;
+
+// Check API key
+if ($provided_api_key !== $valid_api_key) {
+    http_response_code(401); // Unauthorized
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Unauthorized - invalid API key'
+    ]);
+    exit;
+}
 
 try {
     $sql = "SELECT * FROM sessions";
